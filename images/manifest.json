@@ -1,0 +1,754 @@
+﻿[
+    {
+        "type":  "cigarette",
+        "jp":  "メビウス オリジナル",
+        "cn":  "梅比乌斯 原味",
+        "key":  "d9140d39",
+        "query":  "メビウス オリジナル cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "メビウス スーパーライト",
+        "cn":  "梅比乌斯 超淡",
+        "key":  "a9bb5951",
+        "query":  "メビウス スーパーライト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "メビウス メンソール",
+        "cn":  "梅比乌斯 薄荷",
+        "key":  "3f61f8f3",
+        "query":  "メビウス メンソール cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "セブンスター",
+        "cn":  "七星",
+        "key":  "664334db",
+        "query":  "セブンスター cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "セブンスター ボックス",
+        "cn":  "七星 盒装",
+        "key":  "738718e3",
+        "query":  "セブンスター ボックス cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "マールボロ レッド",
+        "cn":  "万宝路 红",
+        "key":  "ddfd4f94",
+        "query":  "マールボロ レッド cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "マールボロ メンソール",
+        "cn":  "万宝路 薄荷",
+        "key":  "0706b155",
+        "query":  "マールボロ メンソール cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "マールボロ ダブルバースト",
+        "cn":  "万宝路 双爆珠",
+        "key":  "a9f9f8de",
+        "query":  "マールボロ ダブルバースト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ラーク クラシック",
+        "cn":  "乐富门 经典",
+        "key":  "93b9e6ad",
+        "query":  "ラーク クラシック cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ラーク ハイブリッド",
+        "cn":  "乐富门 混合",
+        "key":  "38a4a46b",
+        "query":  "ラーク ハイブリッド cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "キャスター 3",
+        "cn":  "卡斯特 3mg",
+        "key":  "6f2e33ac",
+        "query":  "キャスター 3 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "キャメル クラフト 6",
+        "cn":  "骆驼 Craft 6",
+        "key":  "248e5846",
+        "query":  "キャメル クラフト 6 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ナチュラル アメリカン スピリット",
+        "cn":  "美式精神",
+        "key":  "41c5077d",
+        "query":  "ナチュラル アメリカン スピリット cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ピース ライト",
+        "cn":  "和平 轻量",
+        "key":  "4c84898a",
+        "query":  "ピース ライト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ピース インフィニティ",
+        "cn":  "和平 无限",
+        "key":  "38e95636",
+        "query":  "ピース インフィニティ cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ウィンストン XS",
+        "cn":  "温斯顿 XS",
+        "key":  "614979a6",
+        "query":  "ウィンストン XS cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ウィンストン キャスター ホワイト",
+        "cn":  "温斯顿 白",
+        "key":  "84898a7d",
+        "query":  "ウィンストン キャスター ホワイト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "クール ブースト",
+        "cn":  "KOOL 爆珠",
+        "key":  "eab0c81f",
+        "query":  "クール ブースト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "メビウス ゴールド オリジナル",
+        "cn":  "梅比乌斯 金装原味",
+        "key":  "91298bb7",
+        "query":  "メビウス ゴールド オリジナル cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "メビウス プレミアム メンソール",
+        "cn":  "梅比乌斯 高级薄荷",
+        "key":  "ede9d6fc",
+        "query":  "メビウス プレミアム メンソール cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "セーラム ライト",
+        "cn":  "沙龙 淡味",
+        "key":  "f4d02a7e",
+        "query":  "セーラム ライト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "セーラム ブラックメンソール",
+        "cn":  "沙龙 黑薄荷",
+        "key":  "bd94fccc",
+        "query":  "セーラム ブラックメンソール cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "マールボロ ゴールド",
+        "cn":  "万宝路 金",
+        "key":  "3b302223",
+        "query":  "マールボロ ゴールド cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "マールボロ アイスブラスト 8",
+        "cn":  "万宝路 冰爆 8",
+        "key":  "bbaf2077",
+        "query":  "マールボロ アイスブラスト 8 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ラーク 1",
+        "cn":  "乐富门 1mg",
+        "key":  "5897c66d",
+        "query":  "ラーク 1 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ラーク メンソール 5",
+        "cn":  "乐富门 薄荷 5",
+        "key":  "ecc24bee",
+        "query":  "ラーク メンソール 5 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "キャスター 5",
+        "cn":  "卡斯特 5mg",
+        "key":  "964f4640",
+        "query":  "キャスター 5 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "キャメル クラフト 14",
+        "cn":  "骆驼 Craft 14",
+        "key":  "34076d6e",
+        "query":  "キャメル クラフト 14 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "アメリカン スピリット ターコイズ",
+        "cn":  "美式精神 绿松石",
+        "key":  "bcf9d061",
+        "query":  "アメリカン スピリット ターコイズ cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ピース スーパーライト",
+        "cn":  "和平 超淡",
+        "key":  "8e4b3e3a",
+        "query":  "ピース スーパーライト cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ピアニッシモ アリア メンソール",
+        "cn":  "百乐门细支 薄荷",
+        "key":  "9671c132",
+        "query":  "ピアニッシモ アリア メンソール cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "バージニア エス ロゼ メンソール",
+        "cn":  "Virginia S 粉薄荷",
+        "key":  "15d6e16c",
+        "query":  "バージニア エス ロゼ メンソール cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "クール ナノ ブースト 8",
+        "cn":  "KOOL Nano 爆珠 8",
+        "key":  "237ab3d9",
+        "query":  "クール ナノ ブースト 8 cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "ホープ",
+        "cn":  "Hope",
+        "key":  "0f8b545b",
+        "query":  "ホープ cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "わかば",
+        "cn":  "若叶",
+        "key":  "1ff5038c",
+        "query":  "わかば cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "cigarette",
+        "jp":  "エコー",
+        "cn":  "Echo",
+        "key":  "704c4225",
+        "query":  "エコー cigarette pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア レギュラー",
+        "cn":  "IQOS TEREA 经典",
+        "key":  "5814d907",
+        "query":  "IQOS テリア レギュラー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア メンソール",
+        "cn":  "IQOS TEREA 薄荷",
+        "key":  "0e9b32fb",
+        "query":  "IQOS テリア メンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア ブラックメンソール",
+        "cn":  "IQOS TEREA 黑薄荷",
+        "key":  "8e0ca7db",
+        "query":  "IQOS テリア ブラックメンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア スムース レギュラー",
+        "cn":  "IQOS TEREA 柔和经典",
+        "key":  "1b6407ab",
+        "query":  "IQOS テリア スムース レギュラー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア フュージョン ミント",
+        "cn":  "IQOS TEREA 融合薄荷",
+        "key":  "4c7e1f2c",
+        "query":  "IQOS テリア フュージョン ミント heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS センティア バランスド イエロー",
+        "cn":  "IQOS SENTIA 均衡黄",
+        "key":  "a2453daf",
+        "query":  "IQOS センティア バランスド イエロー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS センティア フロスト グリーン",
+        "cn":  "IQOS SENTIA 冰绿薄荷",
+        "key":  "67412a06",
+        "query":  "IQOS センティア フロスト グリーン heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "Ploom X メビウス ディープ レギュラー",
+        "cn":  "Ploom X 深度经典",
+        "key":  "a0144581",
+        "query":  "Ploom X メビウス ディープ レギュラー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "Ploom X メビウス スムース",
+        "cn":  "Ploom X 柔和",
+        "key":  "dde44cf6",
+        "query":  "Ploom X メビウス スムース heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "Ploom X メビウス コールド メンソール",
+        "cn":  "Ploom X 冷感薄荷",
+        "key":  "617f6c70",
+        "query":  "Ploom X メビウス コールド メンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "Ploom X キャメル メンソール",
+        "cn":  "Ploom X 骆驼薄荷",
+        "key":  "c14eaf04",
+        "query":  "Ploom X キャメル メンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "glo hyper ラッキー ストライク リッチ",
+        "cn":  "glo 幸运击 浓郁",
+        "key":  "4be0bfb8",
+        "query":  "glo hyper ラッキー ストライク リッチ heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "glo hyper ラッキー ストライク メンソール",
+        "cn":  "glo 幸运击 薄荷",
+        "key":  "0c3cf525",
+        "query":  "glo hyper ラッキー ストライク メンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "glo hyper ネオ ブリリアント ベリー",
+        "cn":  "glo neo 闪耀莓果",
+        "key":  "828f0c99",
+        "query":  "glo hyper ネオ ブリリアント ベリー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "glo hyper ネオ トロピカル スワール",
+        "cn":  "glo neo 热带旋风",
+        "key":  "02d15250",
+        "query":  "glo hyper ネオ トロピカル スワール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "lil HYBRID ミックス レギュラー",
+        "cn":  "lil HYBRID 混合经典",
+        "key":  "87a6e2f9",
+        "query":  "lil HYBRID ミックス レギュラー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "lil HYBRID ミックス メンソール",
+        "cn":  "lil HYBRID 混合薄荷",
+        "key":  "6b6d64c1",
+        "query":  "lil HYBRID ミックス メンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "lil HYBRID ミックス ベリー",
+        "cn":  "lil HYBRID 混合莓果",
+        "key":  "42eb84b0",
+        "query":  "lil HYBRID ミックス ベリー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア ルビー レギュラー",
+        "cn":  "IQOS TEREA 红宝石经典",
+        "key":  "496b84df",
+        "query":  "IQOS テリア ルビー レギュラー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "IQOS テリア ウォーム レギュラー",
+        "cn":  "IQOS TEREA 温感经典",
+        "key":  "5d9f5770",
+        "query":  "IQOS テリア ウォーム レギュラー heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "Ploom X メビウス シャープ コールド",
+        "cn":  "Ploom X 锐冷薄荷",
+        "key":  "919f9270",
+        "query":  "Ploom X メビウス シャープ コールド heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "Ploom X キャメル スムース",
+        "cn":  "Ploom X 骆驼柔和",
+        "key":  "73a772c5",
+        "query":  "Ploom X キャメル スムース heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "glo hyper ネオ アイスド メンソール",
+        "cn":  "glo neo 冰感薄荷",
+        "key":  "99949260",
+        "query":  "glo hyper ネオ アイスド メンソール heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "heated",
+        "jp":  "glo hyper ラッキー ストライク ダーク",
+        "cn":  "glo 幸运击 深色款",
+        "key":  "bde8ff84",
+        "query":  "glo hyper ラッキー ストライク ダーク heated tobacco pack",
+        "status":  "exists"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i ワン",
+        "cn":  "IQOS ILUMA i ONE",
+        "key":  "a7151e84",
+        "query":  "IQOS イルマ i ワン IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse1.mm.bing.net/th/id/OIF.BIBln77vIlPLKeBXUGYa3w?pid=Api",
+        "sourcePage":  "https://auctions.yahoo.co.jp/jp/auction/f1223389321",
+        "title":  "Yahoo!オークション - IQOS アイコス ILUMAi ONE イルマアイワン オレ..."
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i ワン ミネラ モデル",
+        "cn":  "IQOS ILUMA i ONE Minera 限定款",
+        "key":  "6d527191",
+        "query":  "IQOS イルマ i ワン ミネラ モデル IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse2.explicit.bing.net/th/id/OIP.VNI9o-38QIKkOTZ2Uc10AwHaD9?pid=Api",
+        "sourcePage":  "https://jp.iqos.com/news/iqos-iluma-i-minera-limited-edition",
+        "title":  "【数量限定】静寂の輝きをまとう「IQOS イルマ i ミネラ モデル」新登場! | IQOS（アイコス）公式サイト"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i",
+        "cn":  "IQOS ILUMA i",
+        "key":  "019a6e50",
+        "query":  "IQOS イルマ i IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse4.mm.bing.net/th/id/OIP.XqpM4mBN-hf4rGMzR7scBQHaDt?pid=Api",
+        "sourcePage":  "https://jp.iqos.com/shop/catalogue/iluma/devices",
+        "title":  "アイコス イルマ i（IQOS ILUMA i）のデバイス本体の購入 | IQOS（アイコス）公式サイト"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i ミネラ モデル",
+        "cn":  "IQOS ILUMA i Minera 限定款",
+        "key":  "644d3011",
+        "query":  "IQOS イルマ i ミネラ モデル IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse2.explicit.bing.net/th/id/OIP.VNI9o-38QIKkOTZ2Uc10AwHaD9?pid=Api",
+        "sourcePage":  "https://jp.iqos.com/news/iqos-iluma-i-minera-limited-edition",
+        "title":  "【数量限定】静寂の輝きをまとう「IQOS イルマ i ミネラ モデル」新登場! | IQOS（アイコス）公式サイト"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i アニバーサリーモデル",
+        "cn":  "IQOS ILUMA i 周年限定款",
+        "key":  "00aae8f2",
+        "query":  "IQOS イルマ i アニバーサリーモデル IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse3.mm.bing.net/th/id/OIP.KbPR6wdor9G_hd31sJr8RQHaE8?pid=Api",
+        "sourcePage":  "https://jp.iqos.com/news/cvs-iqos-iluma-i-anniversary-edition",
+        "title":  "全国のコンビニに登場!IQOS 10周年を祝した数量限定モデル | IQOS（アイコス）公式サイト"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i プライム",
+        "cn":  "IQOS ILUMA i PRIME",
+        "key":  "8a3659f1",
+        "query":  "IQOS イルマ i プライム IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse4.mm.bing.net/th/id/OIP.XqpM4mBN-hf4rGMzR7scBQHaDt?pid=Api",
+        "sourcePage":  "https://jp.iqos.com/shop/catalogue/iluma/devices",
+        "title":  "アイコス イルマ i（IQOS ILUMA i）のデバイス本体の購入 | IQOS（アイコス）公式サイト"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i プライム アスペングリーン",
+        "cn":  "IQOS ILUMA i PRIME Aspen Green",
+        "key":  "ace9b7cc",
+        "query":  "IQOS イルマ i プライム アスペングリーン IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse4.mm.bing.net/th/id/OIP.pyDZh_otYz9yRe8-co2KAgHaHa?pid=Api",
+        "sourcePage":  "https://room.rakuten.co.jp/room_d4cbb85aee/1700280728366306",
+        "title":  "【IQOS 公式】【はじめて割対象商品】【自動製品登録】アイコス イルマ i プライム アスペングリーン 加熱式タバコデバイス 製品 本体 正規品"
+    },
+    {
+        "type":  "device",
+        "jp":  "IQOS イルマ i プライム アニバーサリーモデル",
+        "cn":  "IQOS ILUMA i PRIME 周年限定款",
+        "key":  "681096c7",
+        "query":  "IQOS イルマ i プライム アニバーサリーモデル IQOS device",
+        "status":  "downloaded",
+        "imageUrl":  "https://tse1.mm.bing.net/th/id/OIP.cXj7oNzJCbVICsFvdMXoMQHaEK?pid=Api",
+        "sourcePage":  "https://yosk8.com/iqos-iluma-i-prime-anniversary-model-device-review/",
+        "title":  "IQOSイルマiプライムのアニバーサリーモデルを買ってみた!実機カラーを詳しく紹介 | NEOSMO（ネオスモ）"
+    },
+    {
+        "type":  "pod",
+        "jp":  "RELX Infinity ミント ポッド",
+        "cn":  "RELX 无限 薄荷烟弹",
+        "key":  "28892ceb",
+        "query":  "RELX Infinity ミント ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "RELX Infinity グレープ ポッド",
+        "cn":  "RELX 无限 葡萄烟弹",
+        "key":  "208d35e6",
+        "query":  "RELX Infinity グレープ ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "RELX Infinity ウォーターメロン ポッド",
+        "cn":  "RELX 无限 西瓜烟弹",
+        "key":  "73e48c5a",
+        "query":  "RELX Infinity ウォーターメロン ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "RELX Infinity レモンティー ポッド",
+        "cn":  "RELX 无限 柠檬茶烟弹",
+        "key":  "81931da6",
+        "query":  "RELX Infinity レモンティー ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "RELX Artisan ライチアイス ポッド",
+        "cn":  "RELX 艺术家 荔枝冰烟弹",
+        "key":  "ded3b4e7",
+        "query":  "RELX Artisan ライチアイス ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "MOTI PLAY ミント ポッド",
+        "cn":  "MOTI PLAY 薄荷烟弹",
+        "key":  "72a17c2f",
+        "query":  "MOTI PLAY ミント ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "MOTI PLAY マンゴー ポッド",
+        "cn":  "MOTI PLAY 芒果烟弹",
+        "key":  "9b111d4f",
+        "query":  "MOTI PLAY マンゴー ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "VAPORESSO XROS メッシュポッド 0.6Ω",
+        "cn":  "VAPORESSO XROS 网芯烟弹 0.6Ω",
+        "key":  "c90b1a8c",
+        "query":  "VAPORESSO XROS メッシュポッド 0.6Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "VAPORESSO XROS メッシュポッド 0.8Ω",
+        "cn":  "VAPORESSO XROS 网芯烟弹 0.8Ω",
+        "key":  "ccf933cc",
+        "query":  "VAPORESSO XROS メッシュポッド 0.8Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "VAPORESSO XROS メッシュポッド 1.0Ω",
+        "cn":  "VAPORESSO XROS 网芯烟弹 1.0Ω",
+        "key":  "9ece56c2",
+        "query":  "VAPORESSO XROS メッシュポッド 1.0Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "Uwell Caliburn G3 ポッド 0.6Ω",
+        "cn":  "Uwell Caliburn G3 烟弹 0.6Ω",
+        "key":  "bb8dfbfa",
+        "query":  "Uwell Caliburn G3 ポッド 0.6Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "Uwell Caliburn G3 ポッド 0.9Ω",
+        "cn":  "Uwell Caliburn G3 烟弹 0.9Ω",
+        "key":  "c2fa9472",
+        "query":  "Uwell Caliburn G3 ポッド 0.9Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "Voopoo Argus POD カートリッジ",
+        "cn":  "Voopoo Argus 烟弹",
+        "key":  "ba2104ac",
+        "query":  "Voopoo Argus POD カートリッジ vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "ELFBAR 600 ピーチアイス",
+        "cn":  "ELFBAR 600 蜜桃冰",
+        "key":  "e5d8b04e",
+        "query":  "ELFBAR 600 ピーチアイス vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "ELFBAR 600 ブルーベリー",
+        "cn":  "ELFBAR 600 蓝莓",
+        "key":  "0673f899",
+        "query":  "ELFBAR 600 ブルーベリー vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "ELFBAR 600 レモンミント",
+        "cn":  "ELFBAR 600 柠檬薄荷",
+        "key":  "a0479a45",
+        "query":  "ELFBAR 600 レモンミント vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "ELFBAR 600 グリーンアップル",
+        "cn":  "ELFBAR 600 青苹果",
+        "key":  "16b6dd08",
+        "query":  "ELFBAR 600 グリーンアップル vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "ELFBAR 600 コーラアイス",
+        "cn":  "ELFBAR 600 可乐冰",
+        "key":  "74d516e1",
+        "query":  "ELFBAR 600 コーラアイス vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "RELX Infinity 緑豆 ポッド",
+        "cn":  "RELX 无限 绿豆烟弹",
+        "key":  "b1b82ac0",
+        "query":  "RELX Infinity 緑豆 ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "MOTI PLAY ブルーベリー ポッド",
+        "cn":  "MOTI PLAY 蓝莓烟弹",
+        "key":  "243186da",
+        "query":  "MOTI PLAY ブルーベリー ポッド vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "Uwell Caliburn G3 ポッド 1.2Ω",
+        "cn":  "Uwell Caliburn G3 烟弹 1.2Ω",
+        "key":  "444ca8aa",
+        "query":  "Uwell Caliburn G3 ポッド 1.2Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "Voopoo Argus POD 0.7Ω",
+        "cn":  "Voopoo Argus 烟弹 0.7Ω",
+        "key":  "0cbc663a",
+        "query":  "Voopoo Argus POD 0.7Ω vape pod",
+        "status":  "exists"
+    },
+    {
+        "type":  "pod",
+        "jp":  "ELFBAR 600 ストロベリーキウイ",
+        "cn":  "ELFBAR 600 草莓奇异果",
+        "key":  "373a8a8a",
+        "query":  "ELFBAR 600 ストロベリーキウイ vape pod",
+        "status":  "exists"
+    }
+]
