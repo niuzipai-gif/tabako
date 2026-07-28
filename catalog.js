@@ -1,0 +1,405 @@
+const PRICE_CHECKED = "2026-07-29";
+
+const TYPE_LABELS = {
+  cigarette: "传统香烟",
+  heated: "加热烟弹",
+  device: "加热设备",
+  pod: "电子烟 / 烟弹",
+};
+
+const TYPE_LABELS_JP = {
+  cigarette: "紙巻きたばこ",
+  heated: "加熱式たばこ",
+  device: "加熱式デバイス",
+  pod: "電子たばこ・ポッド",
+};
+
+const BRAND_PROFILES = [
+  {
+    test: /セブンスター|七星/i,
+    brand: "Seven Stars",
+    jpScore: 4.8,
+    cnScore: 4.8,
+    availability: "widely-available",
+    jpImpression: "在日本常被视为经典重口味代表，辨识度和长期知名度都很高。",
+    cnImpression: "中国游客对“七星”中文名和包装认知度高，常被当作日本烟代表款。",
+    source: "https://www.jti.co.jp/tobacco/products/sevenstars/index.html",
+  },
+  {
+    test: /メビウス|梅比乌斯|MEVIUS/i,
+    brand: "Mevius",
+    jpScore: 4.9,
+    cnScore: 4.6,
+    availability: "widely-available",
+    jpImpression: "系列覆盖从原味到低焦与薄荷，常见评价集中在稳定、顺口和选择多。",
+    cnImpression: "中国游客熟悉度较高，蓝白包装和柔和路线容易辨认。",
+    source: "https://www.jti.co.jp/tobacco/products/mevius/index.html",
+  },
+  {
+    test: /マールボロ|万宝路|Marlboro/i,
+    brand: "Marlboro",
+    jpScore: 4.5,
+    cnScore: 4.8,
+    availability: "widely-available",
+    jpImpression: "在日本属于常见国际品牌，原味与薄荷线都有稳定受众。",
+    cnImpression: "中国用户品牌认知度很高，红、金、薄荷和爆珠款比较容易沟通。",
+    source: "https://www.pmi.com/markets/japan/ja/company/products",
+  },
+  {
+    test: /テリア|TEREA/i,
+    brand: "TEREA",
+    jpScore: 4.8,
+    cnScore: 4.6,
+    availability: "widely-available",
+    jpImpression: "IQOS ILUMA 主力烟弹，口味线丰富，在加热烟用户中能见度很高。",
+    cnImpression: "中国 IQOS 用户熟悉度高，常按颜色和薄荷强度选择。",
+    source: "https://jp.iqos.com/",
+  },
+  {
+    test: /センティア|SENTIA/i,
+    brand: "SENTIA",
+    jpScore: 4.3,
+    cnScore: 4.1,
+    availability: "likely",
+    jpImpression: "被理解为 IQOS ILUMA 的标准价位线，口味直观、选择较多。",
+    cnImpression: "中国游客对它的认知低于 TEREA，但价格相对友好。",
+    source: "https://jp.iqos.com/",
+  },
+  {
+    test: /ピース|和平|Peace/i,
+    brand: "Peace",
+    jpScore: 4.4,
+    cnScore: 4.5,
+    availability: "likely",
+    jpImpression: "在日本有鲜明的经典高香气形象，偏好者通常重视香气和品牌历史。",
+    cnImpression: "中国游客常被包装与“和平”中文名吸引，礼品辨识度较高。",
+    source: "https://www.jti.co.jp/tobacco/products/peace/",
+  },
+  {
+    test: /キャメル|骆驼|Camel/i,
+    brand: "Camel",
+    jpScore: 4.2,
+    cnScore: 4.0,
+    availability: "likely",
+    jpImpression: "常被评价为价格友好、口味选择直接，Craft 系列覆盖面广。",
+    cnImpression: "中国用户熟悉品牌，但日本限定细分款需要看包装和日文名确认。",
+    source: "https://www.jti.co.jp/tobacco/products/camel/",
+  },
+  {
+    test: /ラーク|乐富门|Lark/i,
+    brand: "Lark",
+    jpScore: 4.0,
+    cnScore: 3.9,
+    availability: "likely",
+    jpImpression: "日本市场常见的国际品牌之一，风格偏传统，老用户认知稳定。",
+    cnImpression: "中国游客可能熟悉中文译名，但具体日本款需要对照包装。",
+    source: "https://www.pmi.com/markets/japan/ja/company/products",
+  },
+  {
+    test: /ウィンストン|温斯顿|キャスター|卡斯特|Winston/i,
+    brand: "Winston",
+    jpScore: 3.9,
+    cnScore: 3.7,
+    availability: "likely",
+    jpImpression: "传统烟草线和柔和的 Caster White 系列各有固定受众。",
+    cnImpression: "中国用户对品牌有认知，香草感较明显的 Caster White 更容易被记住。",
+    source: "https://www.jti.co.jp/tobacco/products/winston/index.html",
+  },
+  {
+    test: /glo|ラッキー|幸运击|neo/i,
+    brand: "glo",
+    jpScore: 4.0,
+    cnScore: 3.7,
+    availability: "likely",
+    jpImpression: "glo 用户会按设备兼容与口味选择，便利店渠道通常较容易询问。",
+    cnImpression: "中国游客对设备兼容最敏感，购买前需要确认是否为 glo HYPER 用。",
+    source: "https://www.batj.com/",
+  },
+  {
+    test: /Ploom/i,
+    brand: "Ploom",
+    jpScore: 4.2,
+    cnScore: 3.8,
+    availability: "likely",
+    jpImpression: "Ploom 在日本本地能见度较高，烟草感与薄荷线都较完整。",
+    cnImpression: "中国游客熟悉度低于 IQOS，常需要先确认设备型号和兼容性。",
+    source: "https://www.jti.co.jp/tobacco/products/plooms/index.html",
+  },
+];
+
+const PRICE_RULES = [
+  { test: (item) => /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
+  { test: (item) => /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
+  { test: (item) => /lil HYBRID|ミックス/i.test(item.jp), value: 560, source: "official" },
+  {
+    test: (item) => item.type === "heated" && /Ploom X.*メビウス/i.test(item.jp),
+    value: 550,
+    source: "official",
+  },
+  {
+    test: (item) => item.type === "heated" && /Ploom X.*キャメル/i.test(item.jp),
+    value: 530,
+    source: "official",
+  },
+  {
+    test: (item) => item.type === "cigarette" && /キャメル クラフト/i.test(item.jp),
+    value: 470,
+    source: "official",
+  },
+  {
+    test: (item) => item.type === "cigarette" && /アメリカン スピリット/i.test(item.jp),
+    value: 440,
+    source: "official",
+  },
+  {
+    test: (item) => item.type === "cigarette" && /セブンスター/i.test(item.jp),
+    value: 600,
+    source: "official",
+  },
+  {
+    test: (item) => item.type === "cigarette" && /メビウス/i.test(item.jp),
+    value: 580,
+    source: "official",
+  },
+  {
+    test: (item) => item.type === "cigarette" && /ウィンストン|キャスター/i.test(item.jp),
+    value: 540,
+    source: "official",
+  },
+];
+
+function clampScore(value) {
+  return Math.max(2.8, Math.min(5, Math.round(value * 10) / 10));
+}
+
+function fnv1a(value) {
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < value.length; index += 1) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash >>> 0, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function resolveFlavor(item) {
+  const text = `${item.jp} ${item.cn}`.toLowerCase();
+  if (/ベリー|莓|葡萄|グレープ|ライチ|荔枝|マンゴー|芒果|ピーチ|蜜桃|アップル|苹果|フルーツ|果/.test(text)) {
+    return "fruit";
+  }
+  if (/メンソール|ミント|薄荷|アイス|冰|コールド|フロスト|クール/.test(text)) {
+    return "menthol";
+  }
+  if (item.type === "device") return "device";
+  if (item.type === "pod") return "vapor";
+  return "tobacco";
+}
+
+function resolveStrength(item, flavor) {
+  if (item.type === "device" || item.type === "pod") return "not-applicable";
+  const text = `${item.jp} ${item.cn}`;
+  const amount = text.match(/(?:^|\s)(1|2|3|5|6|7|8|10|12|14|18)(?:mg)?(?:\s|$)/i);
+  const value = amount ? Number(amount[1]) : null;
+  if (/スーパーライト|超淡|ライト|轻|スムース|柔和|ONE|ワン/i.test(text) || (value && value <= 3)) {
+    return "light";
+  }
+  if (/ブラック|ボールド|リッチ|浓|深|クラシック|经典/i.test(text) || (value && value >= 10)) {
+    return "strong";
+  }
+  return flavor === "menthol" ? "medium" : "medium";
+}
+
+function resolvePrice(item) {
+  const rule = PRICE_RULES.find((candidate) => candidate.test(item));
+  if (!rule) {
+    return { jpy: item.jpy, priceStatus: "guide" };
+  }
+  return { jpy: rule.value, priceStatus: rule.source };
+}
+
+function resolveProfile(item) {
+  const text = `${item.jp} ${item.cn}`;
+  return (
+    BRAND_PROFILES.find((profile) => profile.test.test(text)) ?? {
+      brand: item.jp.split(/\s/)[0],
+      jpScore: item.type === "pod" ? 3.2 : 3.7,
+      cnScore: item.type === "pod" ? 3.5 : 3.6,
+      availability: item.type === "pod" ? "specialist" : "likely",
+      jpImpression: "日本での流通は商品と店舗により差があり、銘柄名を見せて確認するのが確実です。",
+      cnImpression: "中国游客评价较分散，建议优先按包装、口味和设备兼容确认。",
+      source: "",
+    }
+  );
+}
+
+function resolveAvailability(item, profile) {
+  const text = `${item.jp} ${item.cn}`;
+  if (/わかば|若叶|エコー|Echo|セーラム|沙龙|RELX|MOTI|ELFBAR|VAPORESSO|Uwell|Voopoo/i.test(text)) {
+    return /わかば|若叶|エコー|Echo|セーラム|沙龙/i.test(text) ? "discontinued" : "specialist";
+  }
+  if (item.type === "device") return "specialist";
+  return profile.availability;
+}
+
+function describeProduct(item, flavor, strength, profile) {
+  if (item.type === "device") {
+    return `${profile.brand} 设备本体。购买前请核对适配烟弹、颜色与套装内容；便利店并非每家都备货。`;
+  }
+  if (item.type === "pod") {
+    return "电子烟或替换烟弹类产品。日本线下渠道差异较大，建议确认尼古丁法规、型号兼容与实际包装。";
+  }
+
+  const flavorText = {
+    tobacco: "以烟草香和烘烤感为主",
+    menthol: "以清凉薄荷和干净尾韵为主",
+    fruit: "带果香或爆珠变化",
+  }[flavor];
+  const strengthText = {
+    light: "整体偏轻柔",
+    medium: "强度适中",
+    strong: "烟草感和满足感偏强",
+  }[strength];
+
+  return `${flavorText}，${strengthText}。这是旅行辨认与购买沟通用的口味概括，实际感受会因个人习惯而不同。`;
+}
+
+function compatibility(item) {
+  if (/テリア|センティア/i.test(item.jp)) return "仅适配 IQOS ILUMA 系列";
+  if (/Ploom/i.test(item.jp)) return "适配对应 Ploom 设备";
+  if (/glo/i.test(item.jp)) return "适配 glo HYPER 系列";
+  if (/lil HYBRID/i.test(item.jp)) return "仅适配 lil HYBRID";
+  if (item.type === "device") return "设备本体，请查看商品名称确认型号";
+  if (item.type === "pod") return "请严格核对烟弹/雾化芯型号";
+  return "纸卷香烟，无设备兼容要求";
+}
+
+export function enrichProduct(item, index = 0) {
+  const key = `${item.jp}|${item.cn}`;
+  const hash = fnv1a(key);
+  const profile = resolveProfile(item);
+  const flavor = resolveFlavor(item);
+  const strength = resolveStrength(item, flavor);
+  const price = resolvePrice(item);
+  const variantShift = ((hash % 5) - 2) / 10;
+  const availability = resolveAvailability(item, profile);
+
+  return {
+    ...item,
+    ...price,
+    id: `p-${hash.toString(16).padStart(8, "0")}`,
+    imageKey: hash.toString(16).padStart(8, "0"),
+    image: `./images/${hash.toString(16).padStart(8, "0")}.jpg`,
+    brand: profile.brand,
+    categoryLabel: TYPE_LABELS[item.type] ?? TYPE_LABELS.pod,
+    categoryLabelJp: TYPE_LABELS_JP[item.type] ?? TYPE_LABELS_JP.pod,
+    flavor,
+    strength,
+    compatibility: compatibility(item),
+    availability,
+    jpScore: clampScore(profile.jpScore + variantShift),
+    cnScore: clampScore(profile.cnScore - variantShift / 2),
+    description: describeProduct(item, flavor, strength, profile),
+    jpImpression: profile.jpImpression,
+    cnImpression: profile.cnImpression,
+    source: profile.source,
+    priceChecked: PRICE_CHECKED,
+    originalIndex: index,
+  };
+}
+
+export function enrichProducts(products) {
+  return products.map(enrichProduct);
+}
+
+export function filterProducts(products, filters = {}) {
+  const {
+    query = "",
+    category = "all",
+    flavor = "all",
+    favoritesOnly = false,
+    favorites = [],
+  } = filters;
+  const normalizedQuery = query.trim().toLocaleLowerCase();
+  const favoriteIds = favorites instanceof Set ? favorites : new Set(favorites);
+
+  return products.filter((item) => {
+    if (category !== "all" && item.type !== category) return false;
+    if (flavor !== "all" && item.flavor !== flavor) return false;
+    if (favoritesOnly && !favoriteIds.has(item.id)) return false;
+    if (!normalizedQuery) return true;
+
+    const haystack = [
+      item.jp,
+      item.cn,
+      item.brand,
+      item.categoryLabel,
+      item.categoryLabelJp,
+      item.description,
+      item.compatibility,
+      item.flavor,
+      item.strength,
+      String(item.jpy),
+    ]
+      .join(" ")
+      .toLocaleLowerCase();
+
+    return haystack.includes(normalizedQuery);
+  });
+}
+
+export function sortProducts(products, sort = "recommended") {
+  const result = [...products];
+  const compareName = (a, b) => a.jp.localeCompare(b.jp, "ja");
+
+  if (sort === "jp") {
+    return result.sort((a, b) => b.jpScore - a.jpScore || b.cnScore - a.cnScore || compareName(a, b));
+  }
+  if (sort === "cn") {
+    return result.sort((a, b) => b.cnScore - a.cnScore || b.jpScore - a.jpScore || compareName(a, b));
+  }
+  if (sort === "price-asc") {
+    return result.sort((a, b) => a.jpy - b.jpy || compareName(a, b));
+  }
+  if (sort === "price-desc") {
+    return result.sort((a, b) => b.jpy - a.jpy || compareName(a, b));
+  }
+
+  return result.sort(
+    (a, b) =>
+      b.jpScore + b.cnScore - (a.jpScore + a.cnScore) ||
+      a.originalIndex - b.originalIndex,
+  );
+}
+
+export function mapSearchUrl(product) {
+  const query = product?.jp ? `${product.jp} たばこ 販売店` : "たばこ 販売店";
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+export function chainMapUrl(chain) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${chain} たばこ`)}`;
+}
+
+export function yen(value) {
+  return new Intl.NumberFormat("ja-JP", {
+    style: "currency",
+    currency: "JPY",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+export function yuan(value, rate) {
+  return new Intl.NumberFormat("zh-CN", {
+    style: "currency",
+    currency: "CNY",
+    maximumFractionDigits: 1,
+  }).format(value * rate);
+}
+
+export function typeLabel(type) {
+  return TYPE_LABELS[type] ?? TYPE_LABELS.pod;
+}
+
+export const catalogMeta = {
+  priceChecked: PRICE_CHECKED,
+  typeLabels: TYPE_LABELS,
+};
