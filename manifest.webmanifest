@@ -1,0 +1,13 @@
+{
+  "name": "煙草羅盤 · 日本香烟价格与购买指南",
+  "short_name": "煙草羅盤",
+  "description": "面向中国游客的日本香烟包装、价格、口味、热度与附近购买地点参考工具。",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f2ec",
+  "theme_color": "#f5f2ec",
+  "orientation": "portrait-primary",
+  "categories": ["travel", "reference", "utilities"]
+}

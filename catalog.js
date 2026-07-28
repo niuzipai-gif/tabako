@@ -16,6 +16,16 @@ const TYPE_LABELS_JP = {
 
 const BRAND_PROFILES = [
   {
+    test: /Ploom/i,
+    brand: "Ploom",
+    jpScore: 4.2,
+    cnScore: 3.8,
+    availability: "likely",
+    jpImpression: "Ploom 在日本本地能见度较高，烟草感与薄荷线都较完整。",
+    cnImpression: "中国游客熟悉度低于 IQOS，常需要先确认设备型号和兼容性。",
+    source: "https://www.jti.co.jp/tobacco/products/plooms/index.html",
+  },
+  {
     test: /セブンスター|七星/i,
     brand: "Seven Stars",
     jpScore: 4.8,
@@ -114,16 +124,6 @@ const BRAND_PROFILES = [
     jpImpression: "glo 用户会按设备兼容与口味选择，便利店渠道通常较容易询问。",
     cnImpression: "中国游客对设备兼容最敏感，购买前需要确认是否为 glo HYPER 用。",
     source: "https://www.batj.com/",
-  },
-  {
-    test: /Ploom/i,
-    brand: "Ploom",
-    jpScore: 4.2,
-    cnScore: 3.8,
-    availability: "likely",
-    jpImpression: "Ploom 在日本本地能见度较高，烟草感与薄荷线都较完整。",
-    cnImpression: "中国游客熟悉度低于 IQOS，常需要先确认设备型号和兼容性。",
-    source: "https://www.jti.co.jp/tobacco/products/plooms/index.html",
   },
 ];
 
@@ -368,6 +368,20 @@ export function sortProducts(products, sort = "recommended") {
       b.jpScore + b.cnScore - (a.jpScore + a.cnScore) ||
       a.originalIndex - b.originalIndex,
   );
+}
+
+export function topDistinctBrands(products, sort = "jp", limit = 6) {
+  const result = [];
+  const brands = new Set();
+
+  for (const item of sortProducts(products, sort)) {
+    if (brands.has(item.brand)) continue;
+    brands.add(item.brand);
+    result.push(item);
+    if (result.length >= limit) break;
+  }
+
+  return result;
 }
 
 export function mapSearchUrl(product) {

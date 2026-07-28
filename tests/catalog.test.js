@@ -1,11 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import {
   enrichProduct,
   filterProducts,
   mapSearchUrl,
   sortProducts,
+  topDistinctBrands,
 } from "../catalog.js";
 import { rawProducts } from "../data/products.js";
 
@@ -17,8 +18,39 @@ test("application shell exposes the complete discovery and detail structure", ()
   assert.match(html, /id="productDialog"/);
   assert.match(html, /id="rankingList"/);
   assert.match(html, /id="cards"/);
+  assert.match(html, /id="mobileNearby"/);
   assert.match(html, /aria-live="polite"/);
   assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
+});
+
+test("detail header keeps favorite and close actions in a visible flex row", () => {
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.detail-header\s*>\s*div\s*\{[^}]*display:\s*flex/s);
+  assert.match(styles, /\.detail-header\s+\.favorite-toggle\s*\{[^}]*position:\s*static/s);
+});
+
+test("application controller wires catalog, favorites, dialog history, and maps", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+
+  assert.match(source, /from "\.\/data\/products\.js"/);
+  assert.match(source, /localStorage/);
+  assert.match(source, /showModal\(\)/);
+  assert.match(source, /popstate/);
+  assert.match(source, /mapSearchUrl/);
+  assert.match(source, /aria-pressed/);
+});
+
+test("installable shell links a manifest and registers an offline worker", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const workerPath = new URL("../sw.js", import.meta.url);
+  const manifestPath = new URL("../manifest.webmanifest", import.meta.url);
+
+  assert.equal(existsSync(workerPath), true);
+  assert.equal(existsSync(manifestPath), true);
+  assert.match(html, /rel="manifest"\s+href="\.\/manifest\.webmanifest"/);
+  assert.match(source, /navigator\.serviceWorker\.register\("\.\/sw\.js"\)/);
 });
 
 test("catalog keeps the complete 91-product source set", () => {
@@ -72,9 +104,88 @@ test("Japan ranking sorts descending", () => {
   assert.equal(result[0].id, "b");
 });
 
+test("ranking preview keeps one leading product per brand", () => {
+  const result = topDistinctBrands(
+    [
+      { id: "m1", brand: "Mevius", jpScore: 5 },
+      { id: "m2", brand: "Mevius", jpScore: 4.9 },
+      { id: "s1", brand: "Seven Stars", jpScore: 4.8 },
+    ],
+    "jp",
+    6,
+  );
+
+  assert.deepEqual(result.map((item) => item.id), ["m1", "s1"]);
+});
+
 test("map URL uses the Japanese product name", () => {
   assert.match(
     mapSearchUrl({ jp: "セブンスター" }),
     /%E3%82%BB%E3%83%96%E3%83%B3%E3%82%B9%E3%82%BF%E3%83%BC/,
   );
+});
+
+test("category filter keeps TEREA in heated products", () => {
+  const item = enrichProduct({
+    type: "heated",
+    jp: "IQOS テリア レギュラー",
+    cn: "IQOS TEREA 经典",
+    jpy: 580,
+  });
+
+  assert.equal(
+    filterProducts([item], {
+      category: "heated",
+      flavor: "all",
+      favorites: [],
+    }).length,
+    1,
+  );
+});
+
+test("menthol filter matches Japanese menthol names", () => {
+  const item = enrichProduct({
+    type: "heated",
+    jp: "IQOS テリア ブラックメンソール",
+    cn: "IQOS TEREA 黑薄荷",
+    jpy: 580,
+  });
+
+  assert.equal(
+    filterProducts([item], {
+      category: "all",
+      flavor: "menthol",
+      favorites: [],
+    }).length,
+    1,
+  );
+});
+
+test("favorites-only filter accepts a Set of IDs", () => {
+  const first = enrichProduct({ type: "cigarette", jp: "A", cn: "甲", jpy: 500 });
+  const second = enrichProduct({ type: "cigarette", jp: "B", cn: "乙", jpy: 500 });
+
+  const result = filterProducts([first, second], {
+    category: "all",
+    flavor: "all",
+    favoritesOnly: true,
+    favorites: new Set([second.id]),
+  });
+
+  assert.deepEqual(result.map((item) => item.id), [second.id]);
+});
+
+test("legacy cigarettes are marked discontinued instead of pretending live stock", () => {
+  const result = enrichProduct({
+    type: "cigarette",
+    jp: "わかば",
+    cn: "若叶",
+    jpy: 250,
+  });
+
+  assert.equal(result.availability, "discontinued");
+});
+
+test("generic map URL searches for a tobacco seller", () => {
+  assert.match(mapSearchUrl(), /%E3%81%9F%E3%81%B0%E3%81%93%20%E8%B2%A9%E5%A3%B2%E5%BA%97/);
 });
