@@ -7,6 +7,7 @@ const CORE_ASSETS = [
   "./catalog.js",
   "./data/products.js",
   "./manifest.webmanifest",
+  "./vendor/lucide.min.js",
 ];
 
 self.addEventListener("install", (event) => {

@@ -44,13 +44,18 @@ test("application controller wires catalog, favorites, dialog history, and maps"
 test("installable shell links a manifest and registers an offline worker", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const worker = readFileSync(new URL("../sw.js", import.meta.url), "utf8");
   const workerPath = new URL("../sw.js", import.meta.url);
   const manifestPath = new URL("../manifest.webmanifest", import.meta.url);
+  const iconLibraryPath = new URL("../vendor/lucide.min.js", import.meta.url);
 
   assert.equal(existsSync(workerPath), true);
   assert.equal(existsSync(manifestPath), true);
+  assert.equal(existsSync(iconLibraryPath), true);
   assert.match(html, /rel="manifest"\s+href="\.\/manifest\.webmanifest"/);
+  assert.match(html, /src="\.\/vendor\/lucide\.min\.js"/);
   assert.match(source, /navigator\.serviceWorker\.register\("\.\/sw\.js"\)/);
+  assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
 test("catalog keeps the complete 91-product source set", () => {

@@ -61,6 +61,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\download-search-images.ps1
 - `app.js`：交互状态、收藏、详情、筛选与汇率
 - `styles.css`：移动端优先的视觉与响应式布局
 - `images/`：本地包装参考图
+- `vendor/`：离线可用的 Lucide 图标库与许可证
 - `tests/`：Node 内置测试
 - `docs/`：审计、设计方向、实施方案和视觉 QA 证据
 
