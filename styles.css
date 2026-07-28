@@ -807,6 +807,10 @@ img {
   color: var(--red);
 }
 
+.stock-badge[data-level="restricted"] {
+  color: var(--red);
+}
+
 .jp-name,
 .cn-name,
 .product-price,
@@ -1439,6 +1443,10 @@ img {
   background: var(--red-soft);
 }
 
+.availability-panel[data-level="restricted"] {
+  background: var(--red-soft);
+}
+
 .availability-dot {
   width: 10px;
   height: 10px;
@@ -1452,6 +1460,10 @@ img {
 }
 
 .availability-panel[data-level="discontinued"] .availability-dot {
+  background: var(--red);
+}
+
+.availability-panel[data-level="restricted"] .availability-dot {
   background: var(--red);
 }
 
@@ -1474,6 +1486,11 @@ img {
 .map-actions {
   display: grid;
   gap: 9px;
+  margin-top: 14px;
+}
+
+.regulatory-block .primary-button {
+  width: 100%;
   margin-top: 14px;
 }
 

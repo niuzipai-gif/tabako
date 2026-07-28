@@ -1,4 +1,6 @@
 const PRICE_CHECKED = "2026-07-29";
+const MHLW_E_CIGARETTE_GUIDANCE =
+  "https://kennet.mhlw.go.jp/information/information/dictionary/tobacco/yt-059.html";
 
 const TYPE_LABELS = {
   cigarette: "传统香烟",
@@ -86,6 +88,16 @@ const BRAND_PROFILES = [
     source: "https://www.jti.co.jp/tobacco/products/peace/",
   },
   {
+    test: /アメリカン スピリット|美式精神|American Spirit/i,
+    brand: "American Spirit",
+    jpScore: 4.1,
+    cnScore: 4.2,
+    availability: "likely",
+    jpImpression: "自然派のブランドイメージと香りの個性で、固定ファンに認知されています。",
+    cnImpression: "中国游客常因独特包装和自然烟草定位关注，购买时需留意日本版支数。",
+    source: "https://www.jti.co.jp/tobacco/products/american_spirit/index.html",
+  },
+  {
     test: /キャメル|骆驼|Camel/i,
     brand: "Camel",
     jpScore: 4.2,
@@ -124,6 +136,16 @@ const BRAND_PROFILES = [
     jpImpression: "glo 用户会按设备兼容与口味选择，便利店渠道通常较容易询问。",
     cnImpression: "中国游客对设备兼容最敏感，购买前需要确认是否为 glo HYPER 用。",
     source: "https://www.batj.com/",
+  },
+  {
+    test: /lil HYBRID|ミックス/i,
+    brand: "lil HYBRID",
+    jpScore: 3.8,
+    cnScore: 3.7,
+    availability: "specialist",
+    jpImpression: "専用リキッドとたばこスティックを使う独自方式で、取扱店は事前確認が必要です。",
+    cnImpression: "中国游客对 lil HYBRID 的熟悉度有限，购买前应先核对设备和专用烟弹。",
+    source: "https://jp.iqos.com/node/11511",
   },
 ];
 
@@ -233,6 +255,7 @@ function resolveProfile(item) {
 
 function resolveAvailability(item, profile) {
   const text = `${item.jp} ${item.cn}`;
+  if (item.type === "pod") return "restricted";
   if (/わかば|若叶|エコー|Echo|セーラム|沙龙|RELX|MOTI|ELFBAR|VAPORESSO|Uwell|Voopoo/i.test(text)) {
     return /わかば|若叶|エコー|Echo|セーラム|沙龙/i.test(text) ? "discontinued" : "specialist";
   }
@@ -245,7 +268,7 @@ function describeProduct(item, flavor, strength, profile) {
     return `${profile.brand} 设备本体。购买前请核对适配烟弹、颜色与套装内容；便利店并非每家都备货。`;
   }
   if (item.type === "pod") {
-    return "电子烟或替换烟弹类产品。日本线下渠道差异较大，建议确认尼古丁法规、型号兼容与实际包装。";
+    return "电子烟或替换烟弹类产品。页面无法确认其中是否含尼古丁；日本国内对含尼古丁烟液的销售有严格许可要求，因此不提供购买地点引导。";
   }
 
   const flavorText = {
@@ -279,7 +302,6 @@ export function enrichProduct(item, index = 0) {
   const flavor = resolveFlavor(item);
   const strength = resolveStrength(item, flavor);
   const price = resolvePrice(item);
-  const variantShift = ((hash % 5) - 2) / 10;
   const availability = resolveAvailability(item, profile);
 
   return {
@@ -295,12 +317,13 @@ export function enrichProduct(item, index = 0) {
     strength,
     compatibility: compatibility(item),
     availability,
-    jpScore: clampScore(profile.jpScore + variantShift),
-    cnScore: clampScore(profile.cnScore - variantShift / 2),
+    purchaseAllowed: availability !== "restricted",
+    jpScore: clampScore(profile.jpScore),
+    cnScore: clampScore(profile.cnScore),
     description: describeProduct(item, flavor, strength, profile),
     jpImpression: profile.jpImpression,
     cnImpression: profile.cnImpression,
-    source: profile.source,
+    source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : profile.source,
     priceChecked: PRICE_CHECKED,
     originalIndex: index,
   };
@@ -351,10 +374,22 @@ export function sortProducts(products, sort = "recommended") {
   const compareName = (a, b) => a.jp.localeCompare(b.jp, "ja");
 
   if (sort === "jp") {
-    return result.sort((a, b) => b.jpScore - a.jpScore || b.cnScore - a.cnScore || compareName(a, b));
+    return result.sort(
+      (a, b) =>
+        b.jpScore - a.jpScore ||
+        b.cnScore - a.cnScore ||
+        (a.originalIndex ?? 0) - (b.originalIndex ?? 0) ||
+        compareName(a, b),
+    );
   }
   if (sort === "cn") {
-    return result.sort((a, b) => b.cnScore - a.cnScore || b.jpScore - a.jpScore || compareName(a, b));
+    return result.sort(
+      (a, b) =>
+        b.cnScore - a.cnScore ||
+        b.jpScore - a.jpScore ||
+        (a.originalIndex ?? 0) - (b.originalIndex ?? 0) ||
+        compareName(a, b),
+    );
   }
   if (sort === "price-asc") {
     return result.sort((a, b) => a.jpy - b.jpy || compareName(a, b));

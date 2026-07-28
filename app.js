@@ -70,6 +70,11 @@ const AVAILABILITY = {
     title: "更依赖专门店或品牌门店",
     copy: "便利店不一定常备，建议优先查看烟草专门店、品牌店或大型折扣店。",
   },
+  restricted: {
+    short: "法规待确认",
+    title: "尼古丁状态未知，不提供购买引导",
+    copy: "日本销售含尼古丁电子烟液需要许可；页面无法确认该商品成分，因此请勿把旧价格或图片当成日本在售证明。",
+  },
   discontinued: {
     short: "旧款风险",
     title: "可能停产或仅有旧库存",
@@ -303,6 +308,14 @@ function toggleFavorite(productId) {
   const item = productById.get(productId);
   if (!item) return;
 
+  const activeElement = document.activeElement;
+  const restoreCatalogFocus =
+    activeElement?.classList.contains("favorite-toggle") &&
+    activeElement.closest(".product-card")?.dataset.productId === productId;
+  const restoreDetailFocus =
+    state.activeProductId === productId &&
+    elements.productDialog.open &&
+    activeElement?.classList.contains("detail-favorite");
   const isFavorite = state.favorites.has(productId);
   if (isFavorite) {
     state.favorites.delete(productId);
@@ -312,8 +325,19 @@ function toggleFavorite(productId) {
 
   localStorage.setItem("tabako:favorites", JSON.stringify([...state.favorites]));
   renderAll();
+  if (restoreCatalogFocus) {
+    const replacement = elements.cards.querySelector(
+      `.product-card[data-product-id="${productId}"] .favorite-toggle`,
+    );
+    (replacement ?? elements.favoritesButton).focus({ preventScroll: true });
+  }
   if (state.activeProductId === productId && elements.productDialog.open) {
     renderProductDetail(item);
+    if (restoreDetailFocus) {
+      requestAnimationFrame(() => {
+        elements.productDetail.querySelector(".detail-favorite")?.focus({ preventScroll: true });
+      });
+    }
   }
   showToast(isFavorite ? "已取消收藏" : "已保存到收藏");
 }
@@ -321,12 +345,60 @@ function toggleFavorite(productId) {
 function renderProductDetail(item) {
   const availability = availabilityMeta(item);
   const officialLabel = item.priceStatus === "official" ? "官方参考价" : "指导价";
+  const sourceLabel = item.purchaseAllowed ? "查看厂商/品牌来源" : "查看日本官方法规说明";
   const sourceLink = item.source
-    ? `<a href="${escapeHtml(item.source)}" target="_blank" rel="noopener noreferrer">查看厂商/品牌来源</a>`
+    ? `<a href="${escapeHtml(item.source)}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a>`
     : `<button class="footer-link" type="button" data-open-method>查看数据说明</button>`;
   const favorite = state.favorites.has(item.id);
   const jpWidth = `${Math.min(100, item.jpScore * 20)}%`;
   const cnWidth = `${Math.min(100, item.cnScore * 20)}%`;
+  const purchaseSection = item.purchaseAllowed
+    ? `
+      <section class="detail-block">
+        <h3>去哪里找</h3>
+        <p>先用商品的日文名在附近搜索；如果结果少，再改用通用“たばこ 販売店”搜索。</p>
+        <div class="map-actions">
+          <a
+            class="primary-button"
+            href="${escapeHtml(mapSearchUrl(item))}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i data-lucide="map-pinned" aria-hidden="true"></i>
+            在 Google 地图查这款烟
+          </a>
+          <a
+            class="secondary-button"
+            href="${escapeHtml(mapSearchUrl())}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            查附近烟草销售点
+          </a>
+        </div>
+        <div class="store-links" aria-label="按常见渠道搜索">
+          <a href="${escapeHtml(chainMapUrl("セブン-イレブン"))}" target="_blank" rel="noopener noreferrer">7-Eleven</a>
+          <a href="${escapeHtml(chainMapUrl("ファミリーマート"))}" target="_blank" rel="noopener noreferrer">FamilyMart</a>
+          <a href="${escapeHtml(chainMapUrl("ローソン"))}" target="_blank" rel="noopener noreferrer">Lawson</a>
+          <a href="${escapeHtml(chainMapUrl("ドン・キホーテ"))}" target="_blank" rel="noopener noreferrer">Don Quijote</a>
+        </div>
+      </section>
+    `
+    : `
+      <section class="detail-block regulatory-block">
+        <h3>日本购买前先确认法规</h3>
+        <p>页面不能确认这款电子烟或烟弹是否含尼古丁。日本厚生劳动省说明，含尼古丁烟液的销售需要许可；因此这里不提供门店或地图购买链接。</p>
+        <a
+          class="primary-button"
+          href="${escapeHtml(item.source)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i data-lucide="shield-alert" aria-hidden="true"></i>
+          查看日本厚生劳动省说明
+        </a>
+      </section>
+    `;
 
   elements.productDetail.innerHTML = `
     <header class="detail-header">
@@ -391,48 +463,20 @@ function renderProductDetail(item) {
       <h3>日本人与中国游客怎么看</h3>
       <div class="audience-grid">
         <article class="audience-card">
-          <div class="audience-head"><span>日本人气指数</span><strong>${item.jpScore.toFixed(1)} / 5</strong></div>
+          <div class="audience-head"><span>日本品牌热度</span><strong>${item.jpScore.toFixed(1)} / 5</strong></div>
           <div class="audience-bar" aria-hidden="true"><span style="--score-width: ${jpWidth}"></span></div>
           <p>${escapeHtml(item.jpImpression)}</p>
         </article>
         <article class="audience-card">
-          <div class="audience-head"><span>中国游客指数</span><strong>${item.cnScore.toFixed(1)} / 5</strong></div>
+          <div class="audience-head"><span>中国游客品牌热度</span><strong>${item.cnScore.toFixed(1)} / 5</strong></div>
           <div class="audience-bar" aria-hidden="true"><span style="--score-width: ${cnWidth}"></span></div>
           <p>${escapeHtml(item.cnImpression)}</p>
         </article>
       </div>
-      <p class="section-note">以上是常见印象的概括与编辑指数，不是用户原话或实时销售统计。</p>
+      <p class="section-note">同品牌烟款共用品牌级编辑指数；以上不是用户原话、随机数或实时销售统计。</p>
     </section>
 
-    <section class="detail-block">
-      <h3>去哪里找</h3>
-      <p>先用商品的日文名在附近搜索；如果结果少，再改用通用“たばこ 販売店”搜索。</p>
-      <div class="map-actions">
-        <a
-          class="primary-button"
-          href="${escapeHtml(mapSearchUrl(item))}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i data-lucide="map-pinned" aria-hidden="true"></i>
-          在 Google 地图查这款烟
-        </a>
-        <a
-          class="secondary-button"
-          href="${escapeHtml(mapSearchUrl())}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          查附近烟草销售点
-        </a>
-      </div>
-      <div class="store-links" aria-label="按常见渠道搜索">
-        <a href="${escapeHtml(chainMapUrl("セブン-イレブン"))}" target="_blank" rel="noopener noreferrer">7-Eleven</a>
-        <a href="${escapeHtml(chainMapUrl("ファミリーマート"))}" target="_blank" rel="noopener noreferrer">FamilyMart</a>
-        <a href="${escapeHtml(chainMapUrl("ローソン"))}" target="_blank" rel="noopener noreferrer">Lawson</a>
-        <a href="${escapeHtml(chainMapUrl("ドン・キホーテ"))}" target="_blank" rel="noopener noreferrer">Don Quijote</a>
-      </div>
-    </section>
+    ${purchaseSection}
 
     <footer class="detail-source">
       <span>图片为包装识别参考；请以门店实物为准。</span>

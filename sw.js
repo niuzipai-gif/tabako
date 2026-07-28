@@ -7,6 +7,8 @@ const CORE_ASSETS = [
   "./catalog.js",
   "./data/products.js",
   "./manifest.webmanifest",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
   "./vendor/lucide.min.js",
 ];
 
@@ -61,7 +63,7 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  if (event.request.mode === "navigate") {
+  if (event.request.mode === "navigate" || event.request.destination !== "image") {
     event.respondWith(networkFirst(event.request));
     return;
   }

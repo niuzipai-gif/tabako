@@ -41,6 +41,22 @@ test("application controller wires catalog, favorites, dialog history, and maps"
   assert.match(source, /aria-pressed/);
 });
 
+test("image maintenance scripts read the extracted product module", () => {
+  const nodeScript = readFileSync(
+    new URL("../scripts/download-search-images.mjs", import.meta.url),
+    "utf8",
+  );
+  const powershellScript = readFileSync(
+    new URL("../scripts/download-search-images.ps1", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(nodeScript, /from "\.\.\/data\/products\.js"/);
+  assert.match(nodeScript, /replace\(\/\^\\uFEFF\//);
+  assert.doesNotMatch(nodeScript, /Unable to locate products array in app\.js/);
+  assert.match(powershellScript, /download-search-images\.mjs/);
+});
+
 test("installable shell links a manifest and registers an offline worker", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
@@ -48,10 +64,23 @@ test("installable shell links a manifest and registers an offline worker", () =>
   const workerPath = new URL("../sw.js", import.meta.url);
   const manifestPath = new URL("../manifest.webmanifest", import.meta.url);
   const iconLibraryPath = new URL("../vendor/lucide.min.js", import.meta.url);
+  const icon192Path = new URL("../icons/icon-192.png", import.meta.url);
+  const icon512Path = new URL("../icons/icon-512.png", import.meta.url);
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
 
   assert.equal(existsSync(workerPath), true);
   assert.equal(existsSync(manifestPath), true);
   assert.equal(existsSync(iconLibraryPath), true);
+  assert.equal(existsSync(icon192Path), true);
+  assert.equal(existsSync(icon512Path), true);
+  const icon192 = readFileSync(icon192Path);
+  const icon512 = readFileSync(icon512Path);
+  assert.deepEqual([icon192.readUInt32BE(16), icon192.readUInt32BE(20)], [192, 192]);
+  assert.deepEqual([icon512.readUInt32BE(16), icon512.readUInt32BE(20)], [512, 512]);
+  assert.deepEqual(
+    manifest.icons.map((icon) => icon.sizes),
+    ["192x192", "512x512"],
+  );
   assert.match(html, /rel="manifest"\s+href="\.\/manifest\.webmanifest"/);
   assert.match(html, /src="\.\/vendor\/lucide\.min\.js"/);
   assert.match(source, /navigator\.serviceWorker\.register\("\.\/sw\.js"\)/);
@@ -123,6 +152,26 @@ test("ranking preview keeps one leading product per brand", () => {
   assert.deepEqual(result.map((item) => item.id), ["m1", "s1"]);
 });
 
+test("variants inherit transparent brand-level popularity instead of name-hash scores", () => {
+  const original = enrichProduct({
+    type: "cigarette",
+    jp: "メビウス オリジナル",
+    cn: "梅比乌斯 原味",
+    jpy: 600,
+  });
+  const menthol = enrichProduct({
+    type: "cigarette",
+    jp: "メビウス メンソール",
+    cn: "梅比乌斯 薄荷",
+    jpy: 600,
+  });
+
+  assert.deepEqual(
+    [original.jpScore, original.cnScore],
+    [menthol.jpScore, menthol.cnScore],
+  );
+});
+
 test("map URL uses the Japanese product name", () => {
   assert.match(
     mapSearchUrl({ jp: "セブンスター" }),
@@ -189,6 +238,39 @@ test("legacy cigarettes are marked discontinued instead of pretending live stock
   });
 
   assert.equal(result.availability, "discontinued");
+});
+
+test("electronic pods with unknown nicotine status do not expose purchase guidance", () => {
+  const result = enrichProduct({
+    type: "pod",
+    jp: "RELX Infinity ミント ポッド",
+    cn: "RELX 无限 薄荷烟弹",
+    jpy: 980,
+  });
+
+  assert.equal(result.availability, "restricted");
+  assert.equal(result.purchaseAllowed, false);
+  assert.match(result.source, /mhlw\.go\.jp/);
+});
+
+test("official reference prices always expose an official source", () => {
+  const americanSpirit = enrichProduct({
+    type: "cigarette",
+    jp: "ナチュラル アメリカン スピリット",
+    cn: "美式精神",
+    jpy: 640,
+  });
+  const lil = enrichProduct({
+    type: "heated",
+    jp: "lil HYBRID ミックス レギュラー",
+    cn: "lil HYBRID 混合经典",
+    jpy: 520,
+  });
+
+  assert.equal(americanSpirit.priceStatus, "official");
+  assert.match(americanSpirit.source, /jti\.co\.jp/);
+  assert.equal(lil.priceStatus, "official");
+  assert.match(lil.source, /iqos\.com/);
 });
 
 test("generic map URL searches for a tobacco seller", () => {

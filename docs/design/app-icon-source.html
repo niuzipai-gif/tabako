@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabako Compass app icon source</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #171510;
+    }
+    body {
+      display: grid;
+      place-items: center;
+    }
+    .icon {
+      display: grid;
+      width: 72%;
+      height: 72%;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 28%;
+      background:
+        radial-gradient(circle at 28% 23%, rgba(255, 255, 255, 0.12), transparent 34%),
+        linear-gradient(145deg, #bb761c, #8f5008);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+    .icon svg {
+      width: 54%;
+      height: 54%;
+      color: #fffaf0;
+      stroke-width: 1.55;
+    }
+  </style>
+</head>
+<body>
+  <div class="icon" aria-label="Tabako Compass map icon">
+    <i data-lucide="map-pinned" aria-hidden="true"></i>
+  </div>
+  <script src="../../vendor/lucide.min.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

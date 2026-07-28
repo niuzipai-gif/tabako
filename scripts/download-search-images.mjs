@@ -1,9 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import vm from "node:vm";
+import { rawProducts } from "../data/products.js";
 
 const projectRoot = process.cwd();
-const appJsPath = path.join(projectRoot, "app.js");
 const imagesDir = path.join(projectRoot, "images");
 
 function imgKeyFromNames(jp, cn) {
@@ -25,20 +24,6 @@ function buildQuery(product) {
   if (product.type === "heated") return `${product.jp} heated tobacco pack`;
   if (product.type === "device") return `${product.jp} IQOS device`;
   return `${product.jp} vape pod`;
-}
-
-async function extractProducts() {
-  const source = await fs.readFile(appJsPath, "utf8");
-  const match = source.match(/const products = \[(.|\r|\n)*?\];/);
-
-  if (!match) {
-    throw new Error("Unable to locate products array in app.js");
-  }
-
-  const context = {};
-  vm.createContext(context);
-  vm.runInContext(`${match[0]}; globalThis.__products = products;`, context);
-  return context.__products;
 }
 
 async function getJson(url, headers = {}) {
@@ -110,7 +95,14 @@ async function downloadImage(url, outputPath) {
 
 async function main() {
   await fs.mkdir(imagesDir, { recursive: true });
-  const products = await extractProducts();
+  const products = rawProducts;
+  const manifestPath = path.join(imagesDir, "manifest.json");
+  let existingManifest = [];
+  try {
+    const manifestSource = (await fs.readFile(manifestPath, "utf8")).replace(/^\uFEFF/, "");
+    existingManifest = JSON.parse(manifestSource);
+  } catch {}
+  const existingByKey = new Map(existingManifest.map((item) => [item.key, item]));
   const manifest = [];
 
   for (const product of products) {
@@ -120,7 +112,15 @@ async function main() {
 
     try {
       await fs.access(outputPath);
-      manifest.push({ ...product, key, query, status: "exists" });
+      manifest.push({
+        ...(existingByKey.get(key) ?? {}),
+        type: product.type,
+        jp: product.jp,
+        cn: product.cn,
+        key,
+        query,
+        status: "exists",
+      });
       continue;
     } catch {}
 
@@ -128,7 +128,9 @@ async function main() {
       const result = await resolveImageUrl(query);
       await downloadImage(result.imageUrl, outputPath);
       manifest.push({
-        ...product,
+        type: product.type,
+        jp: product.jp,
+        cn: product.cn,
         key,
         query,
         status: "downloaded",
@@ -139,7 +141,9 @@ async function main() {
       console.log(`downloaded ${product.jp} -> ${key}.jpg`);
     } catch (error) {
       manifest.push({
-        ...product,
+        type: product.type,
+        jp: product.jp,
+        cn: product.cn,
         key,
         query,
         status: "failed",
@@ -152,8 +156,8 @@ async function main() {
   }
 
   await fs.writeFile(
-    path.join(imagesDir, "manifest.json"),
-    JSON.stringify(manifest, null, 2),
+    manifestPath,
+    `\uFEFF${JSON.stringify(manifest, null, 4)}\n`,
     "utf8",
   );
 }
