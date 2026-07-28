@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   enrichProduct,
   filterProducts,
@@ -7,6 +8,18 @@ import {
   sortProducts,
 } from "../catalog.js";
 import { rawProducts } from "../data/products.js";
+
+test("application shell exposes the complete discovery and detail structure", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+
+  assert.match(html, /id="searchInput"/);
+  assert.match(html, /id="filterDialog"/);
+  assert.match(html, /id="productDialog"/);
+  assert.match(html, /id="rankingList"/);
+  assert.match(html, /id="cards"/);
+  assert.match(html, /aria-live="polite"/);
+  assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
+});
 
 test("catalog keeps the complete 91-product source set", () => {
   assert.equal(rawProducts.length, 91);

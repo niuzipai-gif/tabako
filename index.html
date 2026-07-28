@@ -2,72 +2,320 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>日本热门香烟价格汇总 | タバコ価格ガイド</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f2ec" />
+  <meta
+    name="description"
+    content="面向中国游客的日本香烟价格、包装、口味、受欢迎程度与附近购买地点参考工具。"
+  />
+  <title>煙草羅盤 · 日本香烟价格与购买指南</title>
   <link rel="stylesheet" href="./styles.css" />
+  <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script type="module" src="./app.js"></script>
 </head>
 <body>
-  <div class="bg-blur bg-blur-1"></div>
-  <div class="bg-blur bg-blur-2"></div>
+  <a class="skip-link" href="#mainContent">跳到主要内容</a>
 
-  <main class="container">
-    <header class="hero glass">
-      <p class="eyebrow">タバコ価格ガイド · たばこ価格まとめ</p>
-      <h1>日本热门香烟与电子烟/烟弹价格汇总</h1>
-      <p class="subtitle">
-        所有价格以日元（JPY）为主，人民币价格（CNY）根据实时汇率自动换算显示在下方括号内。
-      </p>
-      <div class="meta">
-        <span id="rateText">汇率加载中...</span>
-        <span id="updatedText"></span>
+  <header class="app-header" id="top">
+    <a class="brand-lockup" href="#top" aria-label="煙草羅盤首页">
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span>
+        <strong>煙草羅盤</strong>
+        <small>Tabako Compass</small>
+      </span>
+    </a>
+    <div class="header-actions">
+      <button class="text-button" id="methodButton" type="button" data-open-method>
+        数据说明
+      </button>
+      <button
+        class="icon-button"
+        id="favoritesButton"
+        type="button"
+        aria-label="只看收藏"
+        aria-pressed="false"
+      >
+        <i data-lucide="bookmark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="discovery-rail" aria-label="快速查找">
+      <div class="rail-inner">
+        <section class="intro" aria-labelledby="pageTitle">
+          <p class="eyebrow">日本旅行 · 20岁以上成人参考</p>
+          <h1 id="pageTitle">先认准，<br />再去买。</h1>
+          <p class="intro-copy">
+            看包装、查日文名与参考价，再了解口味、热度和附近可能有售的地点。
+          </p>
+        </section>
+
+        <a
+          class="nearby-card"
+          id="nearbyPrimary"
+          href="https://www.google.com/maps/search/?api=1&query=%E3%81%9F%E3%81%B0%E3%81%93%20%E8%B2%A9%E5%A3%B2%E5%BA%97"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="nearby-icon"><i data-lucide="map-pinned" aria-hidden="true"></i></span>
+          <span>
+            <small>交给 Google 地图定位</small>
+            <strong>查找附近可能有售</strong>
+          </span>
+          <i data-lucide="arrow-up-right" aria-hidden="true"></i>
+        </a>
+
+        <section class="data-pulse" aria-label="数据状态">
+          <div>
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="rateText">正在获取日元汇率</span>
+          </div>
+          <p id="updatedText">价格校对：2026-07-29</p>
+        </section>
+
+        <nav class="rail-nav" aria-label="页面导航">
+          <a href="#rankings"><i data-lucide="chart-no-axes-column-increasing" aria-hidden="true"></i>人气排行</a>
+          <a href="#catalog"><i data-lucide="rows-3" aria-hidden="true"></i>全部烟款</a>
+          <button type="button" data-open-method>
+            <i data-lucide="badge-info" aria-hidden="true"></i>怎么看库存与评分
+          </button>
+        </nav>
       </div>
-    </header>
+    </aside>
 
-    <section class="toolbar glass">
-      <div class="toolbar-top">
-        <div class="search-wrap">
-          <label class="search-label" for="searchInput">搜索款式</label>
-          <input id="searchInput" class="search-input" type="search" placeholder="输入日文、中文、品牌或口味，例如：万宝路 / メビウス / 薄荷" />
+    <main id="mainContent" class="main-content">
+      <section class="discovery-panel" aria-labelledby="discoveryTitle">
+        <h2 class="sr-only" id="discoveryTitle">搜索与筛选</h2>
+        <div class="search-bar">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <label class="sr-only" for="searchInput">搜索日文名、中文名、品牌或口味</label>
+          <input
+            id="searchInput"
+            type="search"
+            autocomplete="off"
+            enterkeyhint="search"
+            placeholder="搜索：七星 / セブンスター / 薄荷"
+          />
+          <button
+            class="search-clear"
+            id="searchClear"
+            type="button"
+            aria-label="清空搜索"
+            hidden
+          >
+            <i data-lucide="x" aria-hidden="true"></i>
+          </button>
+          <button class="filter-trigger" id="filterButton" type="button">
+            <i data-lucide="sliders-horizontal" aria-hidden="true"></i>
+            <span>筛选</span>
+            <span class="filter-count" id="filterCount" hidden>0</span>
+          </button>
         </div>
-        <p id="resultSummary" class="result-summary">共 0 款</p>
-      </div>
-      <div class="tab-row">
-        <button class="tab-btn active" data-tab="all">全部</button>
-        <button class="tab-btn" data-tab="cigarette">传统香烟</button>
-        <button class="tab-btn" data-tab="heated">加热不燃烧</button>
-        <button class="tab-btn" data-tab="device">IQOS机器本体</button>
-        <button class="tab-btn" data-tab="pod">电子烟与烟弹</button>
-      </div>
-    </section>
 
-    <section id="cards" class="cards"></section>
-    <section id="emptyState" class="empty-state glass hidden">
-      <p class="empty-title">没有找到匹配款式</p>
-      <p class="empty-text">可以试试品牌名、日文名、中文名、口味或类别关键词。</p>
+        <div class="chip-scroller" aria-label="商品类别">
+          <button class="choice-chip is-active" type="button" data-category="all" aria-pressed="true">全部</button>
+          <button class="choice-chip" type="button" data-category="cigarette" aria-pressed="false">传统香烟</button>
+          <button class="choice-chip" type="button" data-category="heated" aria-pressed="false">加热烟弹</button>
+          <button class="choice-chip" type="button" data-category="device" aria-pressed="false">设备</button>
+          <button class="choice-chip" type="button" data-category="pod" aria-pressed="false">电子烟弹</button>
+        </div>
+      </section>
+
+      <section class="ranking-section" id="rankings" aria-labelledby="rankingTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Popularity guide</p>
+            <h2 id="rankingTitle">受欢迎程度排行</h2>
+          </div>
+          <div class="segmented-control" role="group" aria-label="排行人群">
+            <button class="is-active" type="button" data-audience="jp" aria-pressed="true">日本</button>
+            <button type="button" data-audience="cn" aria-pressed="false">中国游客</button>
+          </div>
+        </div>
+        <p class="section-note">
+          综合品牌能见度、渠道覆盖与旅行者认知的编辑指数，不是实时销量。
+        </p>
+        <div class="ranking-list" id="rankingList"></div>
+      </section>
+
+      <section class="catalog-section" id="catalog" aria-labelledby="catalogTitle">
+        <div class="section-heading catalog-heading">
+          <div>
+            <p class="section-kicker">Browse & compare</p>
+            <h2 id="catalogTitle">烟款目录</h2>
+          </div>
+          <label class="sort-control">
+            <span class="sr-only">排序方式</span>
+            <select id="sortSelect">
+              <option value="recommended">综合推荐</option>
+              <option value="jp">日本人气</option>
+              <option value="cn">中国游客人气</option>
+              <option value="price-asc">价格从低到高</option>
+              <option value="price-desc">价格从高到低</option>
+            </select>
+            <i data-lucide="chevron-down" aria-hidden="true"></i>
+          </label>
+        </div>
+
+        <div class="catalog-meta">
+          <p id="resultSummary" aria-live="polite">正在整理商品…</p>
+          <button class="subtle-button" id="resetFilters" type="button" hidden>清除筛选</button>
+        </div>
+
+        <div class="cards" id="cards"></div>
+
+        <section class="empty-state" id="emptyState" hidden>
+          <span class="empty-icon"><i data-lucide="search-x" aria-hidden="true"></i></span>
+          <h3>没有找到相符烟款</h3>
+          <p>试试日文品牌名、中文名，或清除部分筛选条件。</p>
+          <button class="primary-button" type="button" data-reset-filters>查看全部</button>
+        </section>
+      </section>
+
+      <footer class="site-footer">
+        <div>
+          <strong>煙草羅盤</strong>
+          <p>只提供成人旅行信息参考，不销售烟草产品。</p>
+        </div>
+        <button class="footer-link" type="button" data-open-method>数据口径与来源</button>
+        <p class="health-notice">
+          吸烟有害健康。日本法律禁止向未满 20 岁人士销售烟草。价格、库存与评价可能变化，请以门店和厂商信息为准。
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="sheet-dialog filter-dialog" id="filterDialog" aria-labelledby="filterTitle">
+    <div class="dialog-scrim" data-close-dialog></div>
+    <section class="sheet filter-sheet">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <header class="sheet-header">
+        <div>
+          <p class="section-kicker">Narrow results</p>
+          <h2 id="filterTitle">筛选烟款</h2>
+        </div>
+        <button class="icon-button" type="button" data-close-dialog aria-label="关闭筛选">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </header>
+
+      <div class="filter-fields">
+        <fieldset>
+          <legend>类别</legend>
+          <div class="option-grid">
+            <label><input type="radio" name="filterCategory" value="all" checked /><span>全部</span></label>
+            <label><input type="radio" name="filterCategory" value="cigarette" /><span>传统香烟</span></label>
+            <label><input type="radio" name="filterCategory" value="heated" /><span>加热烟弹</span></label>
+            <label><input type="radio" name="filterCategory" value="device" /><span>设备本体</span></label>
+            <label><input type="radio" name="filterCategory" value="pod" /><span>电子烟弹</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>口味方向</legend>
+          <div class="option-grid">
+            <label><input type="radio" name="filterFlavor" value="all" checked /><span>全部口味</span></label>
+            <label><input type="radio" name="filterFlavor" value="tobacco" /><span>烟草原味</span></label>
+            <label><input type="radio" name="filterFlavor" value="menthol" /><span>薄荷清凉</span></label>
+            <label><input type="radio" name="filterFlavor" value="fruit" /><span>果香爆珠</span></label>
+            <label><input type="radio" name="filterFlavor" value="vapor" /><span>电子烟口味</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <footer class="sheet-actions">
+        <button class="secondary-button" id="filterReset" type="button">重置</button>
+        <button class="primary-button" id="filterApply" type="button">查看结果</button>
+      </footer>
     </section>
-  </main>
+  </dialog>
+
+  <dialog class="sheet-dialog product-dialog" id="productDialog" aria-labelledby="detailTitle">
+    <div class="dialog-scrim" data-close-dialog></div>
+    <article class="sheet product-sheet" id="productDetail"></article>
+  </dialog>
+
+  <dialog class="sheet-dialog method-dialog" id="methodDialog" aria-labelledby="methodTitle">
+    <div class="dialog-scrim" data-close-dialog></div>
+    <section class="sheet method-sheet">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <header class="sheet-header">
+        <div>
+          <p class="section-kicker">Transparent by design</p>
+          <h2 id="methodTitle">数据怎么看</h2>
+        </div>
+        <button class="icon-button" type="button" data-close-dialog aria-label="关闭数据说明">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </header>
+      <div class="method-list">
+        <section>
+          <span class="method-index">01</span>
+          <div><h3>价格</h3><p>“官方参考”来自厂商或日本官方公开定价；其余标作“指导价”。人民币按当前汇率换算。</p></div>
+        </section>
+        <section>
+          <span class="method-index">02</span>
+          <div><h3>库存</h3><p>仅按全国渠道覆盖、品牌常见度与品类估算，不连接门店实时库存。到店前建议先在地图中查看或电话确认。</p></div>
+        </section>
+        <section>
+          <span class="method-index">03</span>
+          <div><h3>受欢迎程度</h3><p>满分 5 分的编辑指数，用来辅助比较品牌能见度和旅行者认知，不代表实时销量或统计抽样。</p></div>
+        </section>
+        <section>
+          <span class="method-index">04</span>
+          <div><h3>用户印象</h3><p>页面使用常见感受的概括，不冒充某个真实用户的直接评论。</p></div>
+        </section>
+      </div>
+      <a class="primary-button full-width" href="./README.md">查看完整来源与维护说明</a>
+    </section>
+  </dialog>
 
   <template id="cardTemplate">
-    <article class="card glass" data-type="">
-      <img class="product-image" src="" alt="" loading="lazy" />
-      <div class="card-content">
-        <div class="names">
-          <h2 class="jp-name"></h2>
-          <p class="cn-name"></p>
-        </div>
-        <div class="price-box">
-          <p class="jpy-price"></p>
-          <p class="cny-price"></p>
-        </div>
-        <span class="tag"></span>
-        <p class="img-credit"></p>
-      </div>
+    <article class="product-card">
+      <button class="product-open" type="button">
+        <span class="product-visual">
+          <img class="product-image" alt="" loading="lazy" decoding="async" />
+          <span class="image-fallback" aria-hidden="true"></span>
+        </span>
+        <span class="product-copy">
+          <span class="product-topline">
+            <span class="category-tag"></span>
+            <span class="stock-badge"></span>
+          </span>
+          <strong class="jp-name"></strong>
+          <span class="cn-name"></span>
+          <span class="product-price">
+            <b class="jpy-price"></b>
+            <small class="cny-price"></small>
+          </span>
+          <span class="product-traits"></span>
+          <span class="score-row">
+            <span><small>日本</small><b class="jp-score"></b></span>
+            <span><small>中国游客</small><b class="cn-score"></b></span>
+          </span>
+        </span>
+        <span class="row-arrow"><i data-lucide="chevron-right" aria-hidden="true"></i></span>
+      </button>
+      <button class="favorite-toggle" type="button" aria-label="收藏这款烟">
+        <i data-lucide="bookmark" aria-hidden="true"></i>
+      </button>
     </article>
   </template>
 
-  <script src="./app.js"></script>
+  <template id="rankingTemplate">
+    <button class="ranking-card" type="button">
+      <span class="rank-number"></span>
+      <span class="ranking-image"><img alt="" loading="lazy" decoding="async" /></span>
+      <span class="ranking-copy">
+        <small class="ranking-brand"></small>
+        <strong class="ranking-name"></strong>
+        <span class="ranking-cn"></span>
+      </span>
+      <span class="ranking-score"></span>
+    </button>
+  </template>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>
