@@ -135,8 +135,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/winston-xs-caster-white1-pack-content.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100123",
+      cartonGallery: [
+        {
+          label: "现行 1mg 系一条外箱参考",
+          image:
+            "./images/cartons/winston-caster-white-one-100s-ana-carton-side.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
+          note: "ANA 官方图展示 Winston Caster White One 100's Box 的横向 1カートン外箱侧面；它可帮助辨认当前 1mg Caster 系外箱，但不是旧 XS Caster White 1 Box 完全同名 SKU。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店页面确认“ウィンストン XS キャスターホワイト 1 ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为 XS 泛称，此图按 Caster White 1 Box 作内容物参考。",
+        "ANA 免税店页面确认“ウィンストン XS キャスターホワイト 1 ボックス”销售规格为 20本×10箱 / 1カートン，主图为官方单包正面图，不是整条外箱。本站另补充 ANA 现行 Winston Caster White One 100's Box 的官方一条外箱侧面图，作为 1mg Caster 系后继/近似包装参考；购买时仍需核对完整日文名。",
     },
   ],
   [
