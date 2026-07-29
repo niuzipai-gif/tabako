@@ -480,10 +480,10 @@ const MEDIA_OVERRIDES = new Map([
     "ナチュラル アメリカン スピリット|美式精神",
     {
       cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/american-spirit-turquoise-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
+      cartonImage: "./images/cartons/american-spirit-regular-box-reference.jpg",
+      cartonSource: "https://www.tirakita.com/fl_tabacco/fl_tabacco_22.shtml",
       cartonNote:
-        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为泛称 Natural American Spirit，此图只作为同品牌 Turquoise 近似参考。",
+        "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ。该图比 Turquoise 更适合泛称 Natural American Spirit 的辨认，但仍是单包图，不是一カートン外箱；整条外箱和当前日本在库需以门店为准。",
     },
   ],
   [
