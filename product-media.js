@@ -11,10 +11,12 @@ const MEDIA_OVERRIDES = new Map([
       packageFormat: "软包",
       packageFormatJp: "ソフトパック",
       variantNote: "这是软包版；与“セブンスター ボックス”烟支配方接近，但外壳结构不同，购买时请直接说“ソフト”。",
-      cartonStatus: "source-only",
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/sevenstars-soft-pack-content.jpg",
       cartonSource:
-        "https://duty-free-japan.jp/jfm/jp/goodsDetail.aspx?sCD=5302030018",
-      cartonNote: "官方免税资料确认一カートン为 10 包 / 200 支；整条外箱图片仍待人工核对。",
+        "https://www.anadf.com/itemdetail.aspx?s_cd=3211051013",
+      cartonNote:
+        "ANA 免税店页面确认软包 Seven Stars 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。本站另保留历史软包照片用于辨认软包结构。",
     },
   ],
   [
@@ -46,6 +48,16 @@ const MEDIA_OVERRIDES = new Map([
       cartonStickCount: 400,
       cartonNote:
         "成田机场免税店 MEVIUS BOX 2CT SET 商品图：外箱明确标注 2 CARTONS / 200×2 / 400 CIGARETTES。它不是单独一条图，但可用于辨认 MEVIUS ORIGINAL 免税整条外箱视觉。",
+    },
+  ],
+  [
+    "メビウス スーパーライト|梅比乌斯 超淡",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/mevius-superlight-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083033",
+      cartonNote:
+        "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Super Light 口味与包装色，整条外盒仍待实图核对。",
     },
   ],
   [
@@ -102,6 +114,16 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051034",
       cartonNote:
         "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为官方单盒正面图，不是整条外箱。已另行找到 A.S.D 搜索结果中的长盒图线索，但原始来源暂无法稳定下载，先显示内容物参考。",
+    },
+  ],
+  [
+    "メビウス プレミアム メンソール|梅比乌斯 高级薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/mevius-premium-menthol-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083790",
+      cartonNote:
+        "ANA 免税店页面确认 MEVIUS Premium Menthol 8 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为泛称 Premium Menthol，此图按 8mg 主流款作内容物参考。",
     },
   ],
   [
@@ -216,6 +238,16 @@ const MEDIA_OVERRIDES = new Map([
       cartonStickCount: 120,
       cartonNote:
         "JT 2023 年资料显示旧名“メビウス・リッチ・プルーム・エックス・プルーム・エス用”改为“メビウス・ディープ・レギュラー・プルーム・エックス用”。此图为旧名 Rich 的 1 Carton 外箱（6 包 / 120 支），可作改名前后对应参考；当前新包装仍需另行核对。",
+    },
+  ],
+  [
+    "Ploom X メビウス コールド メンソール|Ploom X 冷感薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/ploom-mevius-menthol-cold-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2030100079",
+      cartonNote:
+        "ANA 免税店页面确认旧名“メビウス・メンソール・コールド・フォー・プルーム・エックス・プルーム・エス”销售规格为 20本×10箱 / 1カートン。图片为官方单盒正面图，不是整条外箱；用于辨认 Cold Menthol 内容物。",
     },
   ],
   [
