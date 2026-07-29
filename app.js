@@ -482,6 +482,31 @@ function renderProductDetail(item) {
           <span>${escapeHtml(item.cartonNote)}</span>
         </div>
       `;
+  const cartonGallery = Array.isArray(item.cartonGallery) && item.cartonGallery.length
+    ? `
+      <div class="carton-reference-gallery" aria-label="补充包装参考图">
+        ${item.cartonGallery
+          .map((entry) => {
+            const title = entry.title || "补充参考图";
+            const note = entry.note || "";
+            const source = entry.source
+              ? `<a href="${escapeHtml(entry.source)}" target="_blank" rel="noopener noreferrer">来源</a>`
+              : "";
+            return `
+              <figure>
+                <img src="${escapeHtml(entry.image)}" alt="${escapeHtml(`${item.jp} ${title}`)}" loading="lazy" />
+                <figcaption>
+                  <strong>${escapeHtml(title)}</strong>
+                  ${note ? `<span>${escapeHtml(note)}</span>` : ""}
+                  ${source}
+                </figcaption>
+              </figure>
+            `;
+          })
+          .join("")}
+      </div>
+    `
+    : "";
   const cartonPrice = item.cartonApplicable
     ? `<strong>${escapeHtml(String(item.cartonPackCount))} 包 · ${escapeHtml(
         String(item.cartonStickCount),
@@ -607,6 +632,7 @@ function renderProductDetail(item) {
             <span data-status="${escapeHtml(item.cartonStatus)}">${escapeHtml(cartonStatus)}</span>
           </header>
           ${cartonVisual}
+          ${cartonGallery}
           <p>${escapeHtml(item.cartonNote)}</p>
           <div class="package-media-links">
             ${cartonSource}

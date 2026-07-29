@@ -484,8 +484,16 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/american-spirit-regular-box-reference.jpg",
       cartonSource: "https://www.tirakita.com/fl_tabacco/fl_tabacco_22.shtml",
+      cartonGallery: [
+        {
+          title: "系列包装参考",
+          image: "./images/cartons/american-spirit-lineup-piazza-reference.png",
+          source: "https://tabacco-piazza.com/tabacco/amespi_naturalamericanspirit/",
+          note: "Tabacco Piazza 旧资料页的 American Spirit 系列图，可帮助区分红、黑、蓝、黄、橙、青、绿等包装色；它不是一カートン外箱图。",
+        },
+      ],
       cartonNote:
-        "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ。该图比 Turquoise 更适合泛称 Natural American Spirit 的辨认，但仍是单包图，不是一カートン外箱；整条外箱和当前日本在库需以门店为准。",
+        "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ。Tabacco Piazza 旧资料也记录 Regular Box 为20本入；但 JT 当前官网已改为 Organic Leaf / Light / Organic Mint 等14本入具体 SKU。这里用 Regular Box 作泛称 Natural American Spirit 主辨认图，并补系列图辅助识别颜色；仍不是一カートン外箱，当前日本在库请按具体变体向门店确认。",
     },
   ],
   [
@@ -831,6 +839,7 @@ export function resolveProductMedia(item, originalImage) {
     cartonStatus: applicable ? (override.cartonStatus ?? "needs-review") : "not-applicable",
     cartonImage: applicable ? (override.cartonImage ?? "") : "",
     cartonSource: applicable ? (override.cartonSource ?? "") : "",
+    cartonGallery: applicable ? (override.cartonGallery ?? []) : [],
     cartonPackCount: applicable ? (override.cartonPackCount ?? 10) : 0,
     cartonStickCount: applicable ? (override.cartonStickCount ?? 200) : 0,
     cartonNote: applicable
