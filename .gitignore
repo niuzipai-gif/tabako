@@ -6,4 +6,5 @@ Desktop.ini
 .dev.vars
 wrangler.toml
 artifacts-qa-*
+_tmp_*
 

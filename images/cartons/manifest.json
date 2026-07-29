@@ -192,6 +192,15 @@
       "sha256": "84f393a304bcca0b6b67f1fab4cf5464b289e1d36c09e74585399aa9320ec308"
     },
     {
+      "productId": "p-eab0c81f",
+      "jp": "クール ブースト",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/kool-boost-fresh-8-ana-carton.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
+      "sha256": "93f4b304777d754b795d562742d198ea63f907e70c7067899af95e99a8b4bf71"
+    },
+    {
       "productId": "p-964f4640",
       "jp": "キャスター 5",
       "status": "verified",

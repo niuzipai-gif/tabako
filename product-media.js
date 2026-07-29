@@ -193,11 +193,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "クール ブースト|KOOL 爆珠",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/kool-boost-fresh8-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/kool-boost-fresh-8-ana-carton.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
       cartonNote:
-        "ANA 免税店页面确认“クール・ブースト・フレッシュ・8・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录为泛称 KOOL Boost，本站按 8mg Fresh 作为内容物参考。",
+        "ANA 免税店页面确认“クール・ブースト・フレッシュ・8・ボックス”销售规格为 20本×10箱 / 1カートン；第二张官方图展示立体外箱/一条包装，正面有 KOOL BOOST FRESH 8 与 Hokkaido Mint 标识。目录为泛称 KOOL Boost，本站按 8mg Fresh 作为已核验整条图。",
     },
   ],
   [
