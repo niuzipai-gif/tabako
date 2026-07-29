@@ -584,10 +584,11 @@ const MEDIA_OVERRIDES = new Map([
     "glo hyper ネオ ブリリアント ベリー|glo neo 闪耀莓果",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-neo-brilliant-berry-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/ItemDetail.aspx?S_CD=2030100074",
+      cartonImage: "./images/cartons/glo-neo-brilliant-berry-1carton-reference.jpg",
+      cartonSource:
+        "https://j-cigarette.com/glo-neo-for-hyper-brilliant-berry-sticks-bursting-with-freshness-berry-blend/",
       cartonNote:
-        "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为公式单盒正面图，不是整条外箱。用于辨认 Brilliant Berry 口味色块与品牌，整条外盒仍待实图核对。",
+        "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)BrilliantBerry，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍，所以作为整条数量参考图使用。",
     },
   ],
   [
@@ -646,11 +647,12 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ネオ トロピカル スワール|glo neo 热带旋风",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/glo-neo-tropical-swirl-variant.gif",
-      cartonSource: "https://kikuya.my.coocan.jp/kent_tb.htm",
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/glo-neo-tropical-swirl-1carton-reference.jpg",
+      cartonSource:
+        "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
       cartonNote:
-        "きくや页面说明“ネオ・ブリリアント・トロピカル・ハイパー”为旧“ネオ・トロピカル・スワール・スティック”系谱，且页面说明 1カートン为10箱。图片为改名/后继款单盒图，不是整条外箱；只作旧名 Tropical Swirl 的近似参考。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”。图片为准确 SKU 单盒图，不是外箱实拍，所以作为整条数量参考图使用。",
     },
   ],
   [
@@ -667,10 +669,11 @@ const MEDIA_OVERRIDES = new Map([
     "glo hyper ネオ アイスド メンソール|glo neo 冰感薄荷",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-neo-iced-menthol-content.png",
-      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonImage: "./images/cartons/glo-neo-iced-menthol-1carton-reference.jpg",
+      cartonSource:
+        "https://j-cigarette.com/glo-neo-for-hyper-iced-menthol-sticks-peppermint-and-cooling-capsule-menthol/",
       cartonNote:
-        "AMANOYA glo hyper 分类页提供 Neo Iced Menthol 单盒图；同一分类含多款 1カートン10個入商品。图片不是整条外箱，用于辨认 Iced Menthol 包装。",
+        "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)IcedMenthol，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍，所以作为整条数量参考图使用。",
     },
   ],
   [
