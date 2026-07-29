@@ -614,30 +614,33 @@ const MEDIA_OVERRIDES = new Map([
     "glo hyper ラッキー ストライク リッチ|glo 幸运击 浓郁",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-rich-content.png",
-      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonImage: "./images/cartons/glo-lucky-strike-rich-1carton-reference.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1-carton-glohyper-lucky-strike-rich-tobacco-recommended-for-paper-roll-medium-tar-about-6mg-mellow-and-thick-you-can-taste-the-clear-vapor-without-any-peculiarities-a-stick-that-is-one-step-different-from-previous/",
       cartonNote:
-        "AMANOYA glo hyper 分类页列出“ラッキーストライク・リッチ・タバコ・glo hyper用（1カートン10個入）”，图片为单盒图，不是整条外箱。用于辨认 Rich Tobacco 蓝色包装。",
+        "j-Cigarette 对应商品页确认“1 Carton = 10 pack = 200 pieces”，图片自身带 1 Carton 标识；仍不是外箱实拍，所以作为整条数量参考图使用。",
     },
   ],
   [
     "glo hyper ラッキー ストライク メンソール|glo 幸运击 薄荷",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-menthol-content.png",
-      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonImage: "./images/cartons/glo-lucky-strike-menthol-1carton-reference.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1-carton-glo-hyper-menthol-lucky-strike-menthol-x-menthol-flavor-refreshing-menthol-flavor/",
       cartonNote:
-        "AMANOYA glo hyper 分类页列出“ラッキーストライク・メンソール・glo hyper用（1カートン10個入）”，图片为单盒图，不是整条外箱。用于辨认 Menthol 绿色包装。",
+        "j-Cigarette 对应商品页确认“1Carton = 10 packs = 200 sticks”，图片自身带 1 carton / 10 pack / 200 piece 标识；仍不是外箱实拍，所以作为整条数量参考图使用。",
     },
   ],
   [
     "glo hyper ラッキー ストライク ダーク|glo 幸运击 深色款",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-dark-content.png",
-      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonImage: "./images/cartons/glo-lucky-strike-dark-1carton-reference.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1-carton-glo-hyper-lucky-strike-dark-tobacco-smoky-flavor-like-aromatic-wood/",
       cartonNote:
-        "AMANOYA glo hyper 分类页列出“ラッキーストライク・ダーク・タバコ・glo hyper用（1カートン10個入）”，图片为单盒图，不是整条外箱。用于辨认 Dark Tobacco 深蓝包装。",
+        "j-Cigarette 对应商品页确认“1 Carton = 10 pack = 200 pieces”，图片自身带 1 Carton 标识；仍不是外箱实拍，所以作为整条数量参考图使用。",
     },
   ],
   [
