@@ -440,6 +440,9 @@ function renderProductDetail(item) {
   }[item.imageStatus] ?? "包装参考";
   const cartonStatus = {
     verified: "整条实拍已核对",
+    "contents-reference": "10 包内容物参考",
+    "multi-carton-reference": "多条装参考",
+    "archive-reference": "历史整条外箱",
     "source-only": "数量来源已核对",
     "needs-review": "整条图片待核对",
     "not-applicable": "不适用",
@@ -450,10 +453,16 @@ function renderProductDetail(item) {
   const cartonSource = item.cartonSource
     ? `<a href="${escapeHtml(item.cartonSource)}" target="_blank" rel="noopener noreferrer">查看一カートン来源</a>`
     : "";
+  const cartonAlt = {
+    verified: `${item.jp} 一カートン整条外包装实拍`,
+    "archive-reference": `${item.jp} 历史一カートン整条外包装参考`,
+    "contents-reference": `${item.jp} 10 包内容物参考`,
+    "multi-carton-reference": `${item.jp} 多条装外包装参考`,
+  }[item.cartonStatus] ?? `${item.jp} 一カートン包装参考`;
   const cartonVisual = item.cartonImage
     ? `
       <div class="package-media-visual carton-visual">
-        <img src="${escapeHtml(item.cartonImage)}" alt="${escapeHtml(item.jp)} 一カートン整条外包装实拍" />
+        <img src="${escapeHtml(item.cartonImage)}" alt="${escapeHtml(cartonAlt)}" />
       </div>
     `
     : item.cartonApplicable
@@ -817,7 +826,7 @@ function openAiDialog(mode = "recommend", { query = "", productId = "" } = {}) {
   elements.aiServiceNote.dataset.state = aiClient.configured ? "online" : "local";
   elements.aiServiceStatus.textContent = aiClient.configured
     ? "在线 MiniMax 已通过安全代理接入"
-    : "本地匹配可用 · 在线 AI 待安全代理";
+    : "本地匹配可用 · 在线 MiniMax 未连接，照片不会上传";
 
   if (query) elements.aiPrompt.value = query.slice(0, AI_LIMITS.query);
   if (mode === "japanese") {
@@ -944,6 +953,7 @@ function setAiProgress({
   steps,
   current,
   state = "running",
+  percentLabel = "",
 }) {
   const boundedValue = Math.max(0, Math.min(100, Math.round(value)));
   elements.aiProgress.hidden = false;
@@ -951,7 +961,7 @@ function setAiProgress({
   elements.aiProgressBar.value = boundedValue;
   elements.aiProgressBar.setAttribute("aria-valuenow", String(boundedValue));
   elements.aiProgressLabel.textContent = label;
-  elements.aiProgressPercent.textContent = `${boundedValue}%`;
+  elements.aiProgressPercent.textContent = percentLabel || `${boundedValue}%`;
 
   const fragment = document.createDocumentFragment();
   steps.forEach((step, index) => {
@@ -1042,11 +1052,12 @@ async function runAiRecommendation() {
     });
   } catch (error) {
     setAiProgress({
-      value: 100,
+      value: 70,
       label: "在线增强失败，已保留本地结果",
       steps,
       current: Math.max(2, steps.length - 2),
       state: "failed",
+      percentLabel: "失败",
     });
     showToast(error.message || "在线 AI 暂不可用，已保留本地结果");
   } finally {
@@ -1100,11 +1111,12 @@ async function runAiVision() {
     await nextPaint();
     if (!aiClient.configured) {
       setAiProgress({
-        value: 100,
-        label: "在线识别未启用；图片没有上传",
+        value: 28,
+        label: "连接检查未通过；在线识别未启用；图片没有上传",
         steps,
         current: 1,
         state: "blocked",
+        percentLabel: "阻断",
       });
       renderAiResult(
         {
@@ -1139,11 +1151,12 @@ async function runAiVision() {
     });
   } catch (error) {
     setAiProgress({
-      value: 100,
+      value: 70,
       label: "图片识别未完成",
       steps,
-      current: 3,
+      current: 2,
       state: "failed",
+      percentLabel: "失败",
     });
     renderAiResult(
       { answer: error.message || "图片识别暂不可用，请稍后重试。", matches: [], sources: [] },

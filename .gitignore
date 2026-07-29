@@ -5,4 +5,5 @@ Desktop.ini
 .env.*
 .dev.vars
 wrangler.toml
+artifacts-qa-*
 

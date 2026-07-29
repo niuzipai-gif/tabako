@@ -28,10 +28,11 @@ const MEDIA_OVERRIDES = new Map([
       packageFormat: "硬盒",
       packageFormatJp: "ボックス",
       variantNote: "这是硬盒版；正面视觉与软包很接近，但顶部翻盖和盒体更硬，日文名要带“ボックス”。",
-      cartonStatus: "source-only",
-      cartonSource:
-        "https://dfree.fukuoka-airport.jp/productDetail.php?product_cd=4411000046",
-      cartonNote: "机场免税商品页确认该 SKU 按一カートン销售；整条外箱图片仍待人工核对。",
+      cartonStatus: "archive-reference",
+      cartonImage: "./images/cartons/seven-stars-box-carton-2008.jpg",
+      cartonSource: "https://bbs.yanyue.cn/thread-111413-1-1.html",
+      cartonNote:
+        "2008 年日本本土版真实一カートン外箱实拍（不是 2026 当前包装）。可用于理解 BOX 硬盒整条的长盒结构，现购必须同时核对上方当前单包图。",
     },
   ],
   [
@@ -46,9 +47,43 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア レギュラー|IQOS TEREA 经典",
     {
       cartonStatus: "verified",
-      cartonImage: "./images/verified/terea-regular-carton.jpg",
-      cartonSource: "https://heetsiqosuae.ae/products/terea-regular/",
-      cartonNote: "零售商整条实拍：10 包 / 200 支。外箱警示文字和印刷批次可能更新。",
+      cartonImage: "./images/cartons/terea-regular-carton.webp",
+      cartonSource:
+        "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-regular/",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。外箱警示文字和印刷批次可能更新。",
+    },
+  ],
+  [
+    "IQOS テリア メンソール|IQOS TEREA 薄荷",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-menthol-carton.webp",
+      cartonSource:
+        "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-menthol/",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。青绿色外箱对应 MENTHOL，购买时仍要核对完整名称。",
+    },
+  ],
+  [
+    "IQOS テリア スムース レギュラー|IQOS TEREA 柔和经典",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-smooth-regular-carton.webp",
+      cartonSource:
+        "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-smooth-regular/",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。灰色外箱对应 SMOOTH REGULAR。",
+    },
+  ],
+  [
+    "IQOS テリア ルビー レギュラー|IQOS TEREA 红宝石经典",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-ruby-regular-carton.jpg",
+      cartonSource: "https://heetsiqosuae.ae/products/terea-ruby-regular/",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。蓝红渐变外箱对应 RUBY REGULAR。",
     },
   ],
 ]);

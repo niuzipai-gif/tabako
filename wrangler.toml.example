@@ -10,7 +10,8 @@ name = "AI_RATE_LIMITER"
 namespace_id = "1001"
 
   [ratelimits.simple]
-  limit = 10
+  # A real visitor will not hit this in normal use; it only stops automated abuse.
+  limit = 600
   period = 60
 
 # Configure the credential outside Git:

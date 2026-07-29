@@ -40,7 +40,7 @@ export const rawProducts = [
   { type: "heated", jp: "IQOS テリア メンソール", cn: "IQOS TEREA 薄荷", jpy: 580, img: "https://picsum.photos/seed/terea-menthol/640/420" },
   { type: "heated", jp: "IQOS テリア ブラックメンソール", cn: "IQOS TEREA 黑薄荷", jpy: 580, img: "https://picsum.photos/seed/terea-black/640/420" },
   { type: "heated", jp: "IQOS テリア スムース レギュラー", cn: "IQOS TEREA 柔和经典", jpy: 580, img: "https://picsum.photos/seed/terea-smooth/640/420" },
-  { type: "heated", jp: "IQOS テリア フュージョン ミント", cn: "IQOS TEREA 融合薄荷", jpy: 580, img: "https://picsum.photos/seed/terea-fusion/640/420" },
+  { type: "heated", jp: "IQOS テリア フュージョン メンソール", cn: "IQOS TEREA 融合薄荷", jpy: 580, img: "https://picsum.photos/seed/terea-fusion/640/420" },
   { type: "heated", jp: "IQOS センティア バランスド イエロー", cn: "IQOS SENTIA 均衡黄", jpy: 530, img: "https://picsum.photos/seed/sentia-yellow/640/420" },
   { type: "heated", jp: "IQOS センティア フロスト グリーン", cn: "IQOS SENTIA 冰绿薄荷", jpy: 530, img: "https://picsum.photos/seed/sentia-green/640/420" },
   { type: "heated", jp: "Ploom X メビウス ディープ レギュラー", cn: "Ploom X 深度经典", jpy: 570, img: "https://picsum.photos/seed/ploom-deep/640/420" },

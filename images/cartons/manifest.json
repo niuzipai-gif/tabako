@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-07-30",
+  "acceptanceRule": "verified means the exact SKU and a visible one-carton outer package; archive-reference is visibly labelled historical and is never presented as current artwork.",
+  "items": [
+    {
+      "productId": "p-738718e3",
+      "jp": "セブンスター ボックス",
+      "status": "archive-reference",
+      "currentness": "historical-2008-not-current-artwork",
+      "quantity": "1 carton / 10 packs",
+      "localPath": "images/cartons/seven-stars-box-carton-2008.jpg",
+      "sourcePage": "https://bbs.yanyue.cn/thread-111413-1-1.html",
+      "sha256": "57163597e0dc398333d40d314b3a69fbb9abb64b81ead25f8300f832d79ca708"
+    },
+    {
+      "productId": "p-5814d907",
+      "jp": "IQOS テリア レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-regular-carton.webp",
+      "sourcePage": "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-regular/",
+      "sha256": "3a1bc566e2ad07b50ed21b79bfc199b6798ab4b5b8165c28e5698c756ee7b457"
+    },
+    {
+      "productId": "p-0e9b32fb",
+      "jp": "IQOS テリア メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-menthol-carton.webp",
+      "sourcePage": "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-menthol/",
+      "sha256": "26538019f892a6e2fd00c7653f4d00c1724170e3ae9d9da98d887ccb35df2311"
+    },
+    {
+      "productId": "p-1b6407ab",
+      "jp": "IQOS テリア スムース レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-smooth-regular-carton.webp",
+      "sourcePage": "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-smooth-regular/",
+      "sha256": "894667b035dc103751a0eedf8b195578e3c5f197f854fa25db0259eb311c6d5d"
+    },
+    {
+      "productId": "p-496b84df",
+      "jp": "IQOS テリア ルビー レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-ruby-regular-carton.jpg",
+      "sourcePage": "https://heetsiqosuae.ae/products/terea-ruby-regular/",
+      "sha256": "dc7080badb0f5cefc580709b3a5af2d850af9d0d2095e463827b2cac45f75e01"
+    }
+  ]
+}
