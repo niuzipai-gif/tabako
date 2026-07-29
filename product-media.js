@@ -510,10 +510,11 @@ const MEDIA_OVERRIDES = new Map([
     "セーラム ブラックメンソール|沙龙 黑薄荷",
     {
       cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/salem-lightbox-archive.webp",
-      cartonSource: "https://conveni-now.com/column/conveni-salem/",
+      cartonImage: "./images/cartons/salem-black-label-menthol-usa-reference.jpg",
+      cartonSource:
+        "https://www.cigarettespedia.com/index.php/Salem_%28Black_Label_Full_Flavor_%27_Menthol%29_L-20-H_-_USA",
       cartonNote:
-        "未找到稳定的“セーラム ブラックメンソール”精确包装或一カートン图源；搜索结果主要指向 Salem 品牌历史资料、Salem Light 停产说明或其他品牌 Black Menthol。此图只作为同品牌 Salem 历史包装线索，不代表 Black Menthol 精确 SKU，也不是整条外箱。",
+        "未找到日本在售“セーラム ブラックメンソール”的稳定商品页或一カートン外箱图。CigarettesPedia 收录的图为美国 Salem Black Label Full Flavor Menthol 100's 包装，可作为“黑薄荷/Black Label”方向的外观线索；日本烟草店旧问答曾把“セーラムブラックラベル(アメリカ)”列为日本未进口品，因此此图不代表日本门店在库，也不是整条外箱。",
     },
   ],
   [
