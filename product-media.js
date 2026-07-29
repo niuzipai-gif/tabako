@@ -40,11 +40,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス オリジナル|梅比乌斯 原味",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/mevius-original-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/3453",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/mevius-original-jdf-2carton.jpg",
+      cartonSource:
+        "https://duty-free-japan.jp/narita/en/goodsDetail.aspx?sCD=5302030459",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
       cartonNote:
-        "プラセール页面标题确认“メビウス（タール10mg）”按1カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
+        "Japan Duty Free 成田机场免税预约页标题为“MEVIUS BOX 2CT SET”，商品图正面明确写有“2 CARTONS SPECIAL OFFER / 200×2 400 CIGARETTES”。这是官方两条装外箱图，可用于辨认 MEVIUS Original 免税整条组合外观；若只买 1 カートン，仍以门店实际包装为准。",
     },
   ],
   [
