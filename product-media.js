@@ -93,8 +93,32 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/marlboro-double-burst-5-pack-content.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098247",
+      cartonGallery: [
+        {
+          label: "KIX 官方 Purple 5 当前包装",
+          image: "./images/cartons/marlboro-wburst-purple-5-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/marlboro-w-burst-purple-5-box-2405300106.html",
+          note: "KIX 官方页展示 MARLBORO W-BURST PURPLE 5 BOX 当前单包图，并列出免税价、库存限制和每人购买上限；该图不是一条外箱。",
+        },
+        {
+          label: "KIX 官方 W-Burst 5 当前包装",
+          image: "./images/cartons/marlboro-wburst-5-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/marlboro-w-burst-5-box-2405300089.html",
+          note: "KIX 官方页展示 MARLBORO W-BURST 5 BOX 当前单包图，可用于区分蓝绿爆珠版与 Purple 版；该图不是一条外箱。",
+        },
+        {
+          label: "5 包排列参考",
+          image:
+            "./images/cartons/marlboro-wburst-purple-5-localcig-5pack-reference.png",
+          source:
+            "https://localcigsupply.com/product/marlboro-w-burst-purple-carton/",
+          note: "第三方页面的 W-Burst Purple 5 多包排列图，只显示 5 包，不是完整 10 包/一条外箱；仅用于确认多包视觉一致性。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为官方单盒正面图，不是整条外箱。用于先辨认内容物口味与包装，整条长盒外观仍待找到。",
+        "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，主图为官方单盒正面图，不是整条外箱。本站另补充 KIX 官方 Purple 5 / W-Burst 5 当前包装图，以及第三方 5 包排列参考；完整一条长盒外观仍待找到。",
     },
   ],
   [
@@ -246,8 +270,16 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/marlboro-iceblast-mega8-pack-content.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200068",
+      cartonGallery: [
+        {
+          label: "JAL 官方当前包装",
+          image: "./images/cartons/marlboro-iceblast-mega8-jal-official-pack.jpg",
+          source: "https://www.jaldutyfree.com/shop/g/g5312040137/",
+          note: "JAL DUTYFREE 页面展示 Marlboro Iceblast Mega Box 8mg 当前单包图，并写明每人合计 40 カートン购买上限；该图不是一条外箱。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店页面确认 Marlboro Ice Blast Mega 8 Box 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为 Ice Blast 8，购买时请核对是否为 Mega 8 当前包装。",
+        "ANA 免税店页面确认 Marlboro Ice Blast Mega 8 Box 销售规格为 20本×10箱 / 1カートン，主图为官方单包正面图，不是整条外箱。目录项为 Ice Blast 8；本站另补充 JAL 官方当前单包图，购买时请核对是否为 Mega 8 当前包装。",
     },
   ],
   [
