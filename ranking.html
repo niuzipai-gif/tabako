@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f2ec" />
+  <meta
+    name="description"
+    content="日本香烟在日本人与中国游客中的受欢迎程度纵向排行。"
+  />
+  <title>人气排行 · 煙草羅盤</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./vendor/lucide.min.js"></script>
+  <script type="module" src="./ranking.js"></script>
+</head>
+<body class="ranking-page">
+  <a class="skip-link" href="#rankingMain">跳到排行内容</a>
+
+  <header class="app-header ranking-header">
+    <a class="brand-lockup" href="./index.html" aria-label="返回煙草羅盤首页">
+      <span class="brand-mark" aria-hidden="true">T</span>
+      <span>
+        <strong>煙草羅盤</strong>
+        <small>Tabako Compass</small>
+      </span>
+    </a>
+    <a class="ranking-back" href="./index.html">
+      <i data-lucide="arrow-left" aria-hidden="true"></i>
+      返回目录
+    </a>
+  </header>
+
+  <main class="ranking-main" id="rankingMain">
+    <section class="ranking-hero" aria-labelledby="rankingPageTitle">
+      <p class="section-kicker">Popularity stream</p>
+      <h1 id="rankingPageTitle">从第一名，<br />一路往下看。</h1>
+      <p>
+        每个品牌只取当前分数最高的代表款，避免同品牌变体挤满榜单。分数是编辑指数，不是实时销量。
+      </p>
+    </section>
+
+    <section class="ranking-toolbar" aria-label="切换排行人群">
+      <div class="segmented-control ranking-page-tabs" role="group">
+        <button
+          class="is-active"
+          type="button"
+          data-ranking-audience="jp"
+          aria-pressed="true"
+        >
+          日本人气
+        </button>
+        <button
+          type="button"
+          data-ranking-audience="cn"
+          aria-pressed="false"
+        >
+          中国游客
+        </button>
+      </div>
+      <p id="rankingContext" aria-live="polite">正在生成日本人气排行…</p>
+    </section>
+
+    <section class="ranking-feed" id="rankingFeed" aria-label="人气排行信息流"></section>
+
+    <footer class="ranking-footer">
+      <p>吸烟有害健康。日本法律禁止向未满 20 岁人士销售烟草。</p>
+      <a href="./index.html#catalog">返回烟款目录</a>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,194 @@
+const GOOGLE_IMAGE_SEARCH = "https://www.google.com/search";
+
+const MEDIA_OVERRIDES = new Map([
+  [
+    "セブンスター|七星",
+    {
+      image: "./images/verified/seven-stars-soft-archive.jpg",
+      imageStatus: "archive-reference",
+      imageSource: "https://www.sakuya765.work/entry/seven_stars",
+      imageNote: "软包实拍，可用来辨认软质折边；照片为旧版警示文字，购买时仍需核对当前包装。",
+      packageFormat: "软包",
+      packageFormatJp: "ソフトパック",
+      variantNote: "这是软包版；与“セブンスター ボックス”烟支配方接近，但外壳结构不同，购买时请直接说“ソフト”。",
+      cartonStatus: "source-only",
+      cartonSource:
+        "https://duty-free-japan.jp/jfm/jp/goodsDetail.aspx?sCD=5302030018",
+      cartonNote: "官方免税资料确认一カートン为 10 包 / 200 支；整条外箱图片仍待人工核对。",
+    },
+  ],
+  [
+    "セブンスター ボックス|七星 盒装",
+    {
+      image: "./images/verified/seven-stars-box.jpg",
+      imageStatus: "verified",
+      imageSource:
+        "https://dfree.fukuoka-airport.jp/productDetail.php?product_cd=4411000046",
+      imageNote: "福冈机场免税店商品图，用于辨认硬盒正面。",
+      packageFormat: "硬盒",
+      packageFormatJp: "ボックス",
+      variantNote: "这是硬盒版；正面视觉与软包很接近，但顶部翻盖和盒体更硬，日文名要带“ボックス”。",
+      cartonStatus: "source-only",
+      cartonSource:
+        "https://dfree.fukuoka-airport.jp/productDetail.php?product_cd=4411000046",
+      cartonNote: "机场免税商品页确认该 SKU 按一カートン销售；整条外箱图片仍待人工核对。",
+    },
+  ],
+  [
+    "メビウス オリジナル|梅比乌斯 原味",
+    {
+      cartonStatus: "source-only",
+      cartonSource: "https://www.jaldutyfree.com/shop/g/g5302030160/",
+      cartonNote: "JAL 免税店确认一カートン 10 包 / 200 支；其页面主图是单包，并非整条外箱。",
+    },
+  ],
+  [
+    "IQOS テリア レギュラー|IQOS TEREA 经典",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/verified/terea-regular-carton.jpg",
+      cartonSource: "https://heetsiqosuae.ae/products/terea-regular/",
+      cartonNote: "零售商整条实拍：10 包 / 200 支。外箱警示文字和印刷批次可能更新。",
+    },
+  ],
+]);
+
+const REVIEW_NOTES = new Map([
+  [
+    "lil HYBRID ミックス レギュラー",
+    "当前图片与薄荷版重复，不能据此确认口味包装；请按完整日文名联网核对。",
+  ],
+  [
+    "lil HYBRID ミックス メンソール",
+    "当前图片与原味版重复，不能据此确认口味包装；请按完整日文名联网核对。",
+  ],
+  [
+    "IQOS イルマ i ワン ミネラ モデル",
+    "当前设备图与另一款 Minera 型号重复；购买前请核对机身形态与完整型号。",
+  ],
+  [
+    "IQOS イルマ i ミネラ モデル",
+    "当前设备图与 i ONE Minera 重复；购买前请核对机身形态与完整型号。",
+  ],
+  [
+    "IQOS イルマ i",
+    "当前设备图与 PRIME 型号重复；图片只作系列识别，不代表精确型号。",
+  ],
+  [
+    "IQOS イルマ i プライム",
+    "当前设备图与标准版重复；图片只作系列识别，不代表精确型号。",
+  ],
+  [
+    "MOTI PLAY ミント ポッド",
+    "三个 MOTI PLAY 口味当前共用图片，且尼古丁状态未核实；仅作旧包装线索。",
+  ],
+  [
+    "MOTI PLAY マンゴー ポッド",
+    "三个 MOTI PLAY 口味当前共用图片，且尼古丁状态未核实；仅作旧包装线索。",
+  ],
+  [
+    "MOTI PLAY ブルーベリー ポッド",
+    "三个 MOTI PLAY 口味当前共用图片，且尼古丁状态未核实；仅作旧包装线索。",
+  ],
+]);
+
+function keyFor(item) {
+  return `${item.jp}|${item.cn}`;
+}
+
+function searchUrl(query) {
+  const url = new URL(GOOGLE_IMAGE_SEARCH);
+  url.searchParams.set("tbm", "isch");
+  url.searchParams.set("q", query);
+  return url.toString();
+}
+
+function baseFormat(item) {
+  const name = `${item.jp} ${item.cn}`;
+  if (item.type === "device") {
+    return { packageFormat: "设备本体", packageFormatJp: "デバイス" };
+  }
+  if (item.type === "pod") {
+    return { packageFormat: "烟弹 / 配件", packageFormatJp: "ポッド" };
+  }
+  if (item.type === "heated") {
+    return { packageFormat: "加热烟草盒", packageFormatJp: "スティック箱" };
+  }
+  if (/ボックス|BOX|盒装/i.test(name)) {
+    return { packageFormat: "硬盒", packageFormatJp: "ボックス" };
+  }
+  if (/ソフト|软包/i.test(name)) {
+    return { packageFormat: "软包", packageFormatJp: "ソフトパック" };
+  }
+  return { packageFormat: "包装形式待核对", packageFormatJp: "要確認" };
+}
+
+function identityLabels(item) {
+  if (item.type === "device") {
+    return {
+      unitLabel: "设备本体",
+      bulkLabel: "购买规格",
+      identityHeading: "先认准设备本体与型号",
+      identityNote: "设备本体不使用传统香烟“一カートン”规格；购买时要同时核对完整型号与兼容烟弹。",
+    };
+  }
+  if (item.type === "pod") {
+    return {
+      unitLabel: "烟弹 / 配件",
+      bulkLabel: "购买规格",
+      identityHeading: "先认准烟弹与适配规格",
+      identityNote: "烟弹与配件不使用传统香烟“一カートン”规格；购买前要核对设备兼容和当地法规。",
+    };
+  }
+  if (item.type === "heated") {
+    return {
+      unitLabel: "单盒",
+      bulkLabel: "一条 / 一カートン",
+      identityHeading: "先认准单盒与一カートン",
+      identityNote: "加热烟草的一条在日本也常说「一カートン」；不同口味的整条外箱会不同，本站只把已核对图片标为实拍。",
+    };
+  }
+  return {
+    unitLabel: "单包",
+    bulkLabel: "一条 / 一カートン",
+    identityHeading: "先认准单包与一カートン",
+    identityNote: "“一条烟”在日本通常说「一カートン」。不同 SKU 的整条外箱会不同，本站只把已核对图片标为实拍。",
+  };
+}
+
+export function resolveProductMedia(item, originalImage) {
+  const override = MEDIA_OVERRIDES.get(keyFor(item)) ?? {};
+  const applicable = item.type === "cigarette" || item.type === "heated";
+  const format = baseFormat(item);
+  const identity = identityLabels(item);
+  const reviewNote = REVIEW_NOTES.get(item.jp) ?? "";
+  const query = `${item.jp} 一カートン 外箱 10包`;
+  const defaultImageNote =
+    "该包装图尚未逐款人工核验，仅作旅行辨认线索；警示文字、印刷批次和外包装可能变化，请以门店实物为准。";
+
+  return {
+    originalImage,
+    image: override.image ?? originalImage,
+    imageStatus: override.imageStatus ?? "review-required",
+    imageSource: override.imageSource ?? "",
+    imageNote:
+      override.imageNote ??
+      (reviewNote || defaultImageNote),
+    packageFormat: override.packageFormat ?? format.packageFormat,
+    packageFormatJp: override.packageFormatJp ?? format.packageFormatJp,
+    unitLabel: identity.unitLabel,
+    bulkLabel: identity.bulkLabel,
+    identityHeading: identity.identityHeading,
+    identityNote: identity.identityNote,
+    variantNote: override.variantNote ?? reviewNote,
+    cartonApplicable: applicable,
+    cartonStatus: applicable ? (override.cartonStatus ?? "needs-review") : "not-applicable",
+    cartonImage: applicable ? (override.cartonImage ?? "") : "",
+    cartonSource: applicable ? (override.cartonSource ?? "") : "",
+    cartonNote: applicable
+      ? (override.cartonNote ?? "整条外箱尚未人工核对；为避免认错，暂不展示不确定图片。")
+      : "设备本体和电子烟配件不按传统香烟“一カートン”展示。",
+    cartonSearchUrl: searchUrl(query),
+    cartonSearchQuery: query,
+  };
+}

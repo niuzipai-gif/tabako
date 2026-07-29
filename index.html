@@ -78,7 +78,7 @@
         </section>
 
         <nav class="rail-nav" aria-label="页面导航">
-          <a href="#rankings"><i data-lucide="chart-no-axes-column-increasing" aria-hidden="true"></i>人气排行</a>
+          <a href="./ranking.html"><i data-lucide="chart-no-axes-column-increasing" aria-hidden="true"></i>完整人气排行</a>
           <a href="#catalog"><i data-lucide="rows-3" aria-hidden="true"></i>全部烟款</a>
           <button type="button" data-open-method>
             <i data-lucide="badge-info" aria-hidden="true"></i>怎么看库存与评分
@@ -157,13 +157,17 @@
             <p class="section-kicker">Popularity guide</p>
             <h2 id="rankingTitle">受欢迎程度排行</h2>
           </div>
-          <div class="segmented-control" role="group" aria-label="排行人群">
-            <button class="is-active" type="button" data-audience="jp" aria-pressed="true">日本</button>
-            <button type="button" data-audience="cn" aria-pressed="false">中国游客</button>
-          </div>
+          <a class="ranking-page-link" href="./ranking.html">
+            完整排行
+            <i data-lucide="arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="segmented-control ranking-preview-tabs" role="group" aria-label="排行人群">
+          <button class="is-active" type="button" data-audience="jp" aria-pressed="true">日本</button>
+          <button type="button" data-audience="cn" aria-pressed="false">中国游客</button>
         </div>
         <p class="section-note">
-          综合品牌能见度、渠道覆盖与旅行者认知的编辑指数，不是实时销量。
+          首页只预览领先品牌；完整页面按从上到下的信息流展开。指数不是实时销量。
         </p>
         <div class="ranking-list" id="rankingList"></div>
       </section>
@@ -298,6 +302,24 @@
         <span class="status-dot" aria-hidden="true"></span>
         <span id="aiServiceStatus">本地匹配可用 · 在线 AI 待安全代理</span>
       </div>
+
+      <section class="ai-progress" id="aiProgress" data-state="running" aria-live="polite" hidden>
+        <div class="ai-progress-heading">
+          <div>
+            <small>实时执行状态</small>
+            <strong id="aiProgressLabel">准备开始</strong>
+          </div>
+          <span id="aiProgressPercent">0%</span>
+        </div>
+        <progress
+          id="aiProgressBar"
+          role="progressbar"
+          value="0"
+          max="100"
+          aria-label="AI 执行进度"
+        ></progress>
+        <ol class="ai-progress-steps" id="aiProgressSteps"></ol>
+      </section>
 
       <div class="ai-mode-tabs" role="tablist" aria-label="AI 功能">
         <button class="is-active" type="button" role="tab" data-ai-mode="recommend" aria-selected="true">

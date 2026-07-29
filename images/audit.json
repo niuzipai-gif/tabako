@@ -1,0 +1,67 @@
+{
+  "checked": "2026-07-29",
+  "groups": [
+    {
+      "status": "resolved",
+      "files": [
+        "./images/664334db.jpg",
+        "./images/738718e3.jpg"
+      ],
+      "products": [
+        "セブンスター",
+        "セブンスター ボックス"
+      ],
+      "explanation": "两个真实 SKU 的旧下载图内容相同。页面已分别改用软包实拍和机场免税店硬盒商品图，并明确解释包装结构差异。"
+    },
+    {
+      "status": "review-required",
+      "files": [
+        "./images/87a6e2f9.jpg",
+        "./images/6b6d64c1.jpg"
+      ],
+      "products": [
+        "lil HYBRID ミックス レギュラー",
+        "lil HYBRID ミックス メンソール"
+      ],
+      "explanation": "原味与薄荷是不同变体，但当前本地图相同；详情页明确标记待核对，不把图片当成精确口味包装。"
+    },
+    {
+      "status": "non-product-variant",
+      "files": [
+        "./images/6d527191.jpg",
+        "./images/644d3011.jpg"
+      ],
+      "products": [
+        "IQOS イルマ i ワン ミネラ モデル",
+        "IQOS イルマ i ミネラ モデル"
+      ],
+      "explanation": "同一 Minera 系列的不同机身型号共用了系列图；详情页提醒按完整型号核对，且设备不展示一カートン。"
+    },
+    {
+      "status": "non-product-variant",
+      "files": [
+        "./images/019a6e50.jpg",
+        "./images/8a3659f1.jpg"
+      ],
+      "products": [
+        "IQOS イルマ i",
+        "IQOS イルマ i プライム"
+      ],
+      "explanation": "标准版与 PRIME 的当前系列图重复；详情页明确图片只作系列识别，不代表精确机型。"
+    },
+    {
+      "status": "review-required",
+      "files": [
+        "./images/72a17c2f.jpg",
+        "./images/9b111d4f.jpg",
+        "./images/243186da.jpg"
+      ],
+      "products": [
+        "MOTI PLAY ミント ポッド",
+        "MOTI PLAY マンゴー ポッド",
+        "MOTI PLAY ブルーベリー ポッド"
+      ],
+      "explanation": "三个受限电子烟口味共用旧包装线索图；页面不提供购买引导，并明确图片未完成口味级核对。"
+    }
+  ]
+}

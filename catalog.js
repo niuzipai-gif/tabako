@@ -1,3 +1,5 @@
+import { resolveProductMedia } from "./product-media.js";
+
 const PRICE_CHECKED = "2026-07-29";
 const MHLW_E_CIGARETTE_GUIDANCE =
   "https://kennet.mhlw.go.jp/information/information/dictionary/tobacco/yt-059.html";
@@ -298,6 +300,8 @@ function compatibility(item) {
 export function enrichProduct(item, index = 0) {
   const key = `${item.jp}|${item.cn}`;
   const hash = fnv1a(key);
+  const imageKey = hash.toString(16).padStart(8, "0");
+  const originalImage = `./images/${imageKey}.jpg`;
   const profile = resolveProfile(item);
   const flavor = resolveFlavor(item);
   const strength = resolveStrength(item, flavor);
@@ -307,9 +311,9 @@ export function enrichProduct(item, index = 0) {
   return {
     ...item,
     ...price,
+    ...resolveProductMedia(item, originalImage),
     id: `p-${hash.toString(16).padStart(8, "0")}`,
-    imageKey: hash.toString(16).padStart(8, "0"),
-    image: `./images/${hash.toString(16).padStart(8, "0")}.jpg`,
+    imageKey,
     brand: profile.brand,
     categoryLabel: TYPE_LABELS[item.type] ?? TYPE_LABELS.pod,
     categoryLabelJp: TYPE_LABELS_JP[item.type] ?? TYPE_LABELS_JP.pod,

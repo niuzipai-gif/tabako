@@ -37,6 +37,11 @@ const elements = {
   aiJapaneseText: document.querySelector("#aiJapaneseText"),
   aiMatchList: document.querySelector("#aiMatchList"),
   aiOpenButton: document.querySelector("#aiOpenButton"),
+  aiProgress: document.querySelector("#aiProgress"),
+  aiProgressBar: document.querySelector("#aiProgressBar"),
+  aiProgressLabel: document.querySelector("#aiProgressLabel"),
+  aiProgressPercent: document.querySelector("#aiProgressPercent"),
+  aiProgressSteps: document.querySelector("#aiProgressSteps"),
   aiPrompt: document.querySelector("#aiPrompt"),
   aiRecommendSubmit: document.querySelector("#aiRecommendSubmit"),
   aiResultBadge: document.querySelector("#aiResultBadge"),
@@ -303,7 +308,8 @@ function renderCatalog() {
     image.alt = `${item.jp} / ${item.cn} 包装参考图`;
     setImageFallback(image);
 
-    card.querySelector(".category-tag").textContent = item.categoryLabel;
+    card.querySelector(".category-tag").textContent =
+      `${item.categoryLabel} · ${item.packageFormat}`;
     card.querySelector(".brand-name").textContent = item.brand;
     const stockBadge = card.querySelector(".stock-badge");
     stockBadge.dataset.level = item.availability;
@@ -348,7 +354,7 @@ function rankingPool() {
 function renderRankings() {
   const sort = state.rankingAudience === "jp" ? "jp" : "cn";
   const scoreKey = state.rankingAudience === "jp" ? "jpScore" : "cnScore";
-  const ranked = topDistinctBrands(rankingPool(), sort, 6);
+  const ranked = topDistinctBrands(rankingPool(), sort, 4);
   const fragment = document.createDocumentFragment();
   elements.rankingList.replaceChildren();
 
@@ -426,6 +432,52 @@ function renderProductDetail(item) {
   const favorite = state.favorites.has(item.id);
   const jpWidth = `${Math.min(100, item.jpScore * 20)}%`;
   const cnWidth = `${Math.min(100, item.cnScore * 20)}%`;
+  const imageStatus = {
+    verified: "已核对",
+    "archive-reference": "旧版实拍",
+    "review-required": "图片待核对",
+    reference: "包装参考",
+  }[item.imageStatus] ?? "包装参考";
+  const cartonStatus = {
+    verified: "整条实拍已核对",
+    "source-only": "数量来源已核对",
+    "needs-review": "整条图片待核对",
+    "not-applicable": "不适用",
+  }[item.cartonStatus] ?? "整条图片待核对";
+  const packageSource = item.imageSource
+    ? `<a href="${escapeHtml(item.imageSource)}" target="_blank" rel="noopener noreferrer">查看单包图片来源</a>`
+    : "";
+  const cartonSource = item.cartonSource
+    ? `<a href="${escapeHtml(item.cartonSource)}" target="_blank" rel="noopener noreferrer">查看一カートン来源</a>`
+    : "";
+  const cartonVisual = item.cartonImage
+    ? `
+      <div class="package-media-visual carton-visual">
+        <img src="${escapeHtml(item.cartonImage)}" alt="${escapeHtml(item.jp)} 一カートン整条外包装实拍" />
+      </div>
+    `
+    : item.cartonApplicable
+      ? `
+        <div class="package-media-review">
+          <i data-lucide="scan-search" aria-hidden="true"></i>
+          <strong>不展示未经核对的整条图</strong>
+          <span>已生成精确检索词：${escapeHtml(item.cartonSearchQuery)}</span>
+        </div>
+      `
+      : `
+        <div class="package-media-review is-not-applicable">
+          <i data-lucide="circle-slash-2" aria-hidden="true"></i>
+          <strong>这类商品不按一カートン展示</strong>
+          <span>${escapeHtml(item.cartonNote)}</span>
+        </div>
+      `;
+  const cartonPrice = item.cartonApplicable
+    ? `<strong>通常 10 包 · 参考合计 ${escapeHtml(yen(item.jpy * 10))}</strong>`
+    : `<strong>不使用一カートン规格</strong>`;
+  const identityKicker = item.cartonApplicable ? "Pack vs. carton" : "Product identity";
+  const variantNote = item.variantNote
+    ? `<p class="variant-note"><i data-lucide="split" aria-hidden="true"></i>${escapeHtml(item.variantNote)}</p>`
+    : "";
   const purchaseSection = item.purchaseAllowed
     ? `
       <section class="detail-block">
@@ -501,7 +553,7 @@ function renderProductDetail(item) {
         <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.jp)} 包装参考图" />
       </div>
       <div class="detail-heading">
-        <span class="category-tag">${escapeHtml(item.categoryLabel)} · ${escapeHtml(item.categoryLabelJp)}</span>
+        <span class="category-tag">${escapeHtml(item.categoryLabel)} · ${escapeHtml(item.packageFormat)}</span>
         <h2 id="detailTitle">${escapeHtml(item.jp)}</h2>
         <p class="detail-cn">${escapeHtml(item.cn)}</p>
         <div class="detail-price">
@@ -512,7 +564,48 @@ function renderProductDetail(item) {
           <i data-lucide="${item.priceStatus === "official" ? "badge-check" : "badge-info"}" aria-hidden="true"></i>
           ${officialLabel} · ${item.priceChecked}
         </span>
+        ${variantNote}
       </div>
+    </section>
+
+    <section class="detail-block package-identity">
+      <div class="detail-block-heading">
+        <div>
+          <p class="section-kicker">${identityKicker}</p>
+          <h3>${escapeHtml(item.identityHeading)}</h3>
+        </div>
+        <span class="media-audit-badge">图片核验</span>
+      </div>
+      <div class="package-media-grid">
+        <article class="package-media-card">
+          <header>
+            <div><small>${escapeHtml(item.unitLabel)}</small><strong>${escapeHtml(item.packageFormat)} · ${escapeHtml(item.packageFormatJp)}</strong></div>
+            <span data-status="${escapeHtml(item.imageStatus)}">${escapeHtml(imageStatus)}</span>
+          </header>
+          <div class="package-media-visual">
+            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.jp)} ${escapeHtml(item.packageFormat)}包装参考图" />
+          </div>
+          <p>${escapeHtml(item.imageNote)}</p>
+          ${packageSource}
+        </article>
+        <article class="package-media-card carton-card">
+          <header>
+            <div><small>${escapeHtml(item.bulkLabel)}</small>${cartonPrice}</div>
+            <span data-status="${escapeHtml(item.cartonStatus)}">${escapeHtml(cartonStatus)}</span>
+          </header>
+          ${cartonVisual}
+          <p>${escapeHtml(item.cartonNote)}</p>
+          <div class="package-media-links">
+            ${cartonSource}
+            ${
+              item.cartonApplicable
+                ? `<a href="${escapeHtml(item.cartonSearchUrl)}" target="_blank" rel="noopener noreferrer">联网核对整条外箱图</a>`
+                : ""
+            }
+          </div>
+        </article>
+      </div>
+      <p class="section-note">${escapeHtml(item.identityNote)}</p>
     </section>
 
     <section class="detail-block">
@@ -557,7 +650,7 @@ function renderProductDetail(item) {
     ${purchaseSection}
 
     <footer class="detail-source">
-      <span>图片为包装识别参考；请以门店实物为准。</span>
+      <span>图片均标注核验状态；请以门店实物为准。</span>
       ${sourceLink}
     </footer>
   `;
@@ -582,8 +675,7 @@ function renderProductDetail(item) {
     },
   );
 
-  const detailImage = elements.productDetail.querySelector(".detail-image-wrap img");
-  if (detailImage) setImageFallback(detailImage);
+  elements.productDetail.querySelectorAll("img").forEach(setImageFallback);
   hydrateIcons(elements.productDetail);
 }
 
@@ -675,6 +767,7 @@ function setAiMode(mode) {
     panel.hidden = !active;
   });
   elements.aiResultSection.hidden = true;
+  resetAiProgress();
 }
 
 function populateJapaneseProducts() {
@@ -817,8 +910,10 @@ function renderAiResult(payload, badge = "本地目录") {
 
   elements.aiResultSection.hidden = false;
   hydrateIcons(elements.aiResultSection);
-  const scrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-  elements.aiResultSection.scrollIntoView({ block: "nearest", behavior: scrollBehavior });
+  if (elements.aiProgress.hidden) {
+    const scrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    elements.aiResultSection.scrollIntoView({ block: "nearest", behavior: scrollBehavior });
+  }
 }
 
 function setButtonBusy(button, busy, busyText) {
@@ -833,6 +928,62 @@ function setButtonBusy(button, busy, busyText) {
   }
 }
 
+function resetAiProgress() {
+  elements.aiProgress.hidden = true;
+  elements.aiProgress.dataset.state = "running";
+  elements.aiProgressBar.value = 0;
+  elements.aiProgressBar.setAttribute("aria-valuenow", "0");
+  elements.aiProgressLabel.textContent = "准备开始";
+  elements.aiProgressPercent.textContent = "0%";
+  elements.aiProgressSteps.replaceChildren();
+}
+
+function setAiProgress({
+  value,
+  label,
+  steps,
+  current,
+  state = "running",
+}) {
+  const boundedValue = Math.max(0, Math.min(100, Math.round(value)));
+  elements.aiProgress.hidden = false;
+  elements.aiProgress.dataset.state = state;
+  elements.aiProgressBar.value = boundedValue;
+  elements.aiProgressBar.setAttribute("aria-valuenow", String(boundedValue));
+  elements.aiProgressLabel.textContent = label;
+  elements.aiProgressPercent.textContent = `${boundedValue}%`;
+
+  const fragment = document.createDocumentFragment();
+  steps.forEach((step, index) => {
+    const item = document.createElement("li");
+    const icon = document.createElement("span");
+    const copy = document.createElement("span");
+    const isTerminal = state !== "running" && index === current;
+    const status = index < current ? "done" : index === current ? state : "pending";
+    item.dataset.status = status;
+    if (index < current || (index === current && state === "complete")) {
+      icon.textContent = "✓";
+    } else if (index === current && state === "blocked") {
+      icon.textContent = "!";
+    } else if (index === current && state === "failed") {
+      icon.textContent = "×";
+    } else {
+      icon.textContent = String(index + 1);
+    }
+    copy.textContent = step;
+    if (isTerminal) copy.setAttribute("aria-current", "step");
+    item.append(icon, copy);
+    fragment.appendChild(item);
+  });
+  elements.aiProgressSteps.replaceChildren(fragment);
+}
+
+function nextPaint() {
+  return new Promise((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(resolve));
+  });
+}
+
 async function runAiRecommendation() {
   const query = elements.aiPrompt.value.trim();
   if (!query) {
@@ -841,26 +992,62 @@ async function runAiRecommendation() {
     return;
   }
 
-  const catalog = compactCatalogForAi();
-  const matches = localRecommend(query, catalog);
-  renderAiResult(
-    {
-      answer: matches.length
-        ? "先按名称、口味、强度、预算和热度，从本地 91 款目录里筛出了这些候选。"
-        : "本地目录暂时没有足够接近的候选，可以继续联网核对。",
-      matches,
-      sources: [],
-    },
-    "本地即时匹配",
-  );
+  const steps = aiClient.configured
+    ? ["理解你的描述", "匹配本地目录", "等待安全代理返回", "整理结果"]
+    : ["理解你的描述", "匹配本地目录", "确认在线增强状态", "完成"];
+  setButtonBusy(elements.aiRecommendSubmit, true, "正在理解你的描述…");
+  setAiProgress({ value: 8, label: "已收到，正在理解你的描述", steps, current: 0 });
+  await nextPaint();
 
-  if (!aiClient.configured) return;
-
-  setButtonBusy(elements.aiRecommendSubmit, true, "MiniMax 正在分析…");
   try {
-    const result = await aiClient.ask({ mode: "recommend", query, catalog });
+    const catalog = compactCatalogForAi();
+    const matches = localRecommend(query, catalog);
+    setAiProgress({ value: 48, label: `本地目录已匹配 ${matches.length} 个候选`, steps, current: 1 });
+    renderAiResult(
+      {
+        answer: matches.length
+          ? "先按名称、口味、强度、预算和热度，从本地 91 款目录里筛出了这些候选。"
+          : "本地目录暂时没有足够接近的候选，可以继续联网核对。",
+        matches,
+        sources: [],
+      },
+      "本地即时匹配",
+    );
+    await nextPaint();
+
+    if (!aiClient.configured) {
+      setAiProgress({
+        value: 100,
+        label: "本地匹配已完成；在线增强未启用",
+        steps,
+        current: 3,
+        state: "complete",
+      });
+      return;
+    }
+
+    setButtonBusy(elements.aiRecommendSubmit, true, "正在等待在线结果…");
+    const resultPromise = aiClient.ask({ mode: "recommend", query, catalog });
+    setAiProgress({ value: 70, label: "请求已发送，正在等待安全代理返回", steps, current: 2 });
+    const result = await resultPromise;
+    setAiProgress({ value: 94, label: "已收到返回，正在整理 AI 与本地目录结果", steps, current: 3 });
+    await nextPaint();
     renderAiResult(result, "MiniMax + 本地目录");
+    setAiProgress({
+      value: 100,
+      label: "匹配完成",
+      steps,
+      current: 3,
+      state: "complete",
+    });
   } catch (error) {
+    setAiProgress({
+      value: 100,
+      label: "在线增强失败，已保留本地结果",
+      steps,
+      current: Math.max(2, steps.length - 2),
+      state: "failed",
+    });
     showToast(error.message || "在线 AI 暂不可用，已保留本地结果");
   } finally {
     setButtonBusy(elements.aiRecommendSubmit, false);
@@ -904,29 +1091,60 @@ async function runAiVision() {
     showToast("请先选择一张烟盒图片");
     return;
   }
-  if (!aiClient.configured) {
-    renderAiResult(
-      {
-        answer:
-          "为避免把密钥暴露在网页里，拍照识烟只会在安全代理配置完成后发送图片；当前图片没有上传。你仍可用“描述偏好”进行本地匹配。",
-        matches: [],
-        sources: [],
-      },
-      "隐私保护",
-    );
-    return;
-  }
-
-  setButtonBusy(elements.aiVisionSubmit, true, "MiniMax 正在识别…");
+  const steps = ["检查图片", "检查安全代理", "等待安全代理返回", "匹配本地目录"];
+  setButtonBusy(elements.aiVisionSubmit, true, "正在检查图片…");
+  setAiProgress({ value: 10, label: "正在检查图片格式和大小", steps, current: 0 });
+  await nextPaint();
   try {
-    const result = await aiClient.ask({
+    setAiProgress({ value: 28, label: "正在检查安全代理是否可用", steps, current: 1 });
+    await nextPaint();
+    if (!aiClient.configured) {
+      setAiProgress({
+        value: 100,
+        label: "在线识别未启用；图片没有上传",
+        steps,
+        current: 1,
+        state: "blocked",
+      });
+      renderAiResult(
+        {
+          answer:
+            "在线识别未启用。为避免把密钥暴露在网页里，拍照识烟只会在安全代理配置完成后发送图片；当前图片没有上传。你仍可用“描述偏好”进行本地匹配。",
+          matches: [],
+          sources: [],
+        },
+        "隐私保护 · 未上传",
+      );
+      return;
+    }
+
+    setButtonBusy(elements.aiVisionSubmit, true, "正在等待识别结果…");
+    const resultPromise = aiClient.ask({
       mode: "vision",
       query: "",
       image: state.aiImageData,
       catalog: compactCatalogForAi(),
     });
+    setAiProgress({ value: 70, label: "图片请求已发送；正在等待安全代理返回", steps, current: 2 });
+    const result = await resultPromise;
+    setAiProgress({ value: 92, label: "已收到识别结果；正在匹配本地目录", steps, current: 3 });
+    await nextPaint();
     renderAiResult(result, "MiniMax 图片理解");
+    setAiProgress({
+      value: 100,
+      label: "图片识别完成",
+      steps,
+      current: 3,
+      state: "complete",
+    });
   } catch (error) {
+    setAiProgress({
+      value: 100,
+      label: "图片识别未完成",
+      steps,
+      current: 3,
+      state: "failed",
+    });
     renderAiResult(
       { answer: error.message || "图片识别暂不可用，请稍后重试。", matches: [], sources: [] },
       "识别未完成",
@@ -1244,3 +1462,8 @@ if ("serviceWorker" in navigator) {
 renderAll();
 hydrateIcons();
 loadRate();
+
+const requestedProductId = new URLSearchParams(window.location.search).get("product");
+if (requestedProductId && productById.has(requestedProductId)) {
+  requestAnimationFrame(() => openProduct(requestedProductId, null, false));
+}
