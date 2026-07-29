@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 15);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 15);
+  assert.equal(manifest.items.length, 16);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 16);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -101,6 +101,19 @@ test("production carton manifest only publishes exact verified or visibly histor
       assert.match(item.currentness, /historical/);
     }
   }
+});
+
+test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
+  const peace = enrichProduct(rawProducts.find((item) => item.jp === "ピース スーパーライト"));
+
+  assert.equal(peace.cartonStatus, "verified");
+  assert.match(peace.cartonImage, /peace-superlights-box-ana-carton-side\.jpg/);
+  assert.match(peace.cartonSource, /anadf\.com\/itemdetail\.aspx\?s_cd=3211051034/);
+  assert.match(peace.cartonNote, /20本×10箱|BOX 外包装|ANA/);
+  const cartonPath = new URL(`../${peace.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
+  const packPath = new URL(`../${peace.image.replace(/^\.\//, "")}`, import.meta.url);
+  assert.equal(existsSync(cartonPath), true);
+  assert.notEqual(sha256(cartonPath), sha256(packPath));
 });
 
 test("all duplicate image payloads are explicitly registered in the media audit", () => {

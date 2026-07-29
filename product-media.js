@@ -276,11 +276,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピース スーパーライト|和平 超淡",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/peace-superlights-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/peace-superlights-box-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051034",
       cartonNote:
-        "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为官方单盒正面图，不是整条外箱。已另行找到 A.S.D 搜索结果中的长盒图线索，但原始来源暂无法稳定下载，先显示内容物参考。",
+        "ANA 免税店同一商品页确认该 SKU 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外包装侧面（Peace Super Lights + 警示文字）。这是官方整条外观参考；当前价格、预约机场和库存仍以 ANA 页面为准。",
     },
   ],
   [

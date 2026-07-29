@@ -136,6 +136,15 @@
       "localPath": "images/cartons/ploom-camel-smooth-carton.jpg",
       "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-smooth-stick-1-carton-120pcs-palatable-smooth-taste/",
       "sha256": "55736d03b8ec488c2c3a30a4d13835f006a961ac7662a8fb40cffbf18b94226f"
+    },
+    {
+      "productId": "p-8e4b3e3a",
+      "jp": "ピース スーパーライト",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/peace-superlights-box-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051034",
+      "sha256": "dd535bb9b66ba244bb661aee1a33ef8d805ac4639d83c68a38d79a79fed1ce01"
     }
   ]
 }
