@@ -73,6 +73,18 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "ラーク クラシック|乐富门 经典",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/lark-mild-400s-2ct-reference.jpg",
+      cartonSource: "https://www.anadf.com/en/itemdetail.aspx?s_cd=2010200053",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
+      cartonNote:
+        "ANA 免税店 LARK MILD KS BOX 400S 商品图：页面规格为 (20cigarettes×10boxes)×2，即 2 カートン / 20 包 / 400 支。目录项是“ラーク クラシック”，此图只作为同品牌 9mg 系列免税整条外箱参考，不标为精确实拍。",
+    },
+  ],
+  [
     "マールボロ ゴールド|万宝路 金",
     {
       cartonStatus: "multi-carton-reference",
@@ -171,6 +183,19 @@ const MEDIA_OVERRIDES = new Map([
       cartonStickCount: 120,
       cartonNote:
         "日本版 MEVIUS Rich 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。该 SKU 与“Deep Regular”口味方向接近，但本站按页面实名单独收录，避免混用。",
+    },
+  ],
+  [
+    "Ploom X メビウス ディープ レギュラー|Ploom X 深度经典",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/ploom-mevius-deep-regular-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "JT 2023 年资料显示旧名“メビウス・リッチ・プルーム・エックス・プルーム・エス用”改为“メビウス・ディープ・レギュラー・プルーム・エックス用”。此图为旧名 Rich 的 1 Carton 外箱（6 包 / 120 支），可作改名前后对应参考；当前新包装仍需另行核对。",
     },
   ],
   [
