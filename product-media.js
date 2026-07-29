@@ -63,11 +63,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ レッド|万宝路 红",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/marlboro-red-box-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/4485",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/marlboro-red-box-ana-2carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098239",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
       cartonNote:
-        "プラセール页面标题确认“マールボロ ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
+        "ANA 免税店商品页为“マールボロ 400's”，规格写明 (20本×10箱)×2；图片可见官方 2 CARTONS 红色外箱。它是两条装参考，不是单独一条拆分图；购买单条时按 10 包 / 200 支理解。",
     },
   ],
   [
@@ -95,11 +97,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ラーク クラシック|乐富门 经典",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lark-classic-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/2884",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/lark-classic-mild-ks-ana-2carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200053",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
       cartonNote:
-        "プラセール页面标题确认“ラーク クラシック マイルド KS ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
+        "ANA 免税店商品页为“ラーク マイルド KS ボックス 400S”，规格写明 (20本×10箱)×2，并说明是2カートンセット；图片可见 2 CARTON SPECIAL 外箱。Placer 对应品名为“ラーク クラシック マイルド KS ボックス”。它是两条装参考，购买单条时按 10 包 / 200 支理解。",
     },
   ],
   [
@@ -289,11 +293,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ ゴールド|万宝路 金",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/marlboro-gold-box-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/4469",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/marlboro-gold-box-ana-2carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=8000002097",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
       cartonNote:
-        "プラセール页面标题确认“マールボロ・ゴールド・ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 Gold Box 单包图，不是外箱实拍。",
+        "ANA 免税店商品页为“マールボロ ゴールド ボックス 400s 2カートン(20パック)”，规格写明 (20本×10箱)×2；图片可见官方 2 CARTONS 金色外箱。它是两条装参考，不是单独一条拆分图；购买单条时按 10 包 / 200 支理解。",
     },
   ],
   [
