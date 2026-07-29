@@ -200,6 +200,19 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/ploom-camel-menthol-cold-carton-large.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 CAMEL Menthol Cold 整条外箱图：图片标注 1 Carton = 120 pcs，页面说明 6 包 × 20 支。目录项为通用 Camel Menthol，此图只作为同系列近似 SKU 外箱参考，不标为精确实拍。",
+    },
+  ],
+  [
     "Ploom X キャメル メンソール コールド|Ploom X 骆驼强冷薄荷",
     {
       cartonStatus: "verified",

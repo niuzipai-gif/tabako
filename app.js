@@ -442,6 +442,7 @@ function renderProductDetail(item) {
     verified: "整条实拍已核对",
     "contents-reference": "10 包内容物参考",
     "multi-carton-reference": "多条装参考",
+    "variant-reference": "近似 SKU 参考",
     "archive-reference": "历史整条外箱",
     "source-only": "数量来源已核对",
     "needs-review": "整条图片待核对",
@@ -458,6 +459,7 @@ function renderProductDetail(item) {
     "archive-reference": `${item.jp} 历史一カートン整条外包装参考`,
     "contents-reference": `${item.jp} 10 包内容物参考`,
     "multi-carton-reference": `${item.jp} 多条装外包装参考`,
+    "variant-reference": `${item.jp} 近似 SKU 外包装参考`,
   }[item.cartonStatus] ?? `${item.jp} 一カートン包装参考`;
   const cartonVisual = item.cartonImage
     ? `

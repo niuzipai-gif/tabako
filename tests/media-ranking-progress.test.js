@@ -24,6 +24,7 @@ test("every catalog item exposes a truthful carton media state", () => {
         "verified",
         "contents-reference",
         "multi-carton-reference",
+        "variant-reference",
         "archive-reference",
         "source-only",
         "needs-review",
