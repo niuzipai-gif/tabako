@@ -1,10 +1,12 @@
 import { AI_LIMITS, normalizeAiPayload } from "./ai-client.js";
+import { enrichProducts } from "./catalog.js";
+import { rawProducts } from "./data/products.js";
 
 const DEFAULT_ALLOWED_ORIGIN = "https://niuzipai-gif.github.io";
 const CHAT_ENDPOINT = "https://api.minimaxi.com/v1/chat/completions";
 const SEARCH_ENDPOINT = "https://api.minimaxi.com/anthropic/v1/messages";
 const MAX_BODY_BYTES = 6 * 1024 * 1024;
-const ALLOWED_MODES = new Set(["recommend", "vision", "search", "japanese"]);
+const ALLOWED_MODES = new Set(["recommend", "vision", "search"]);
 const BASE_SYSTEM_PROMPT = `
 你是“煙草羅盤”的成人日本旅行信息助手，只服务年满20岁的用户。
 你只能根据用户提供的目录给出目录内匹配，不得宣称实时库存，不得把烟草描述为健康或更安全，
@@ -12,6 +14,25 @@ const BASE_SYSTEM_PROMPT = `
 价格、热度和可得性都必须写成参考信息。返回纯 JSON，不要 Markdown、代码围栏或额外字段。
 JSON 结构：{"answer":"简短中文答复","matches":[{"id":"目录商品ID","reason":"匹配理由"}],"sources":[]}
 `.trim();
+const CANONICAL_CATALOG = Object.freeze(
+  enrichProducts(rawProducts)
+    .filter((item) => item.purchaseAllowed)
+    .map((item) =>
+      Object.freeze({
+        id: cleanText(item.id, 100),
+        jp: cleanText(item.jp, 160),
+        cn: cleanText(item.cn, 160),
+        brand: cleanText(item.brand, 100),
+        type: cleanText(item.type, 40),
+        flavor: cleanText(item.flavor, 40),
+        strength: cleanText(item.strength, 40),
+        jpy: Number.isFinite(Number(item.jpy)) ? Number(item.jpy) : null,
+        availability: cleanText(item.availability, 40),
+        purchaseAllowed: true,
+      }),
+    ),
+);
+const ALLOWED_PRODUCT_IDS = new Set(CANONICAL_CATALOG.map((item) => item.id));
 
 function cleanText(value, limit) {
   return String(value ?? "")
@@ -63,22 +84,6 @@ function normalizeQuery(value, { required = true } = {}) {
   return query;
 }
 
-function sanitizeCatalog(catalog) {
-  if (!Array.isArray(catalog)) return [];
-  return catalog.slice(0, AI_LIMITS.catalogItems).map((item) => ({
-    id: cleanText(item?.id, 100),
-    jp: cleanText(item?.jp, 160),
-    cn: cleanText(item?.cn, 160),
-    brand: cleanText(item?.brand, 100),
-    type: cleanText(item?.type, 40),
-    flavor: cleanText(item?.flavor, 40),
-    strength: cleanText(item?.strength, 40),
-    jpy: Number.isFinite(Number(item?.jpy)) ? Number(item.jpy) : null,
-    availability: cleanText(item?.availability, 40),
-    purchaseAllowed: item?.purchaseAllowed !== false,
-  }));
-}
-
 function validateImage(value) {
   const image = String(value ?? "");
   const match = image.match(/^data:image\/(?:jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/);
@@ -103,17 +108,12 @@ function extractJsonObject(value) {
 
 function buildChatRequest({ mode, query, catalog, image }) {
   const catalogJson = JSON.stringify(catalog);
-  const instructions =
-    mode === "japanese"
-      ? `${BASE_SYSTEM_PROMPT}\nanswer 只写礼貌自然的日语沟通句和一行中文解释。`
-      : BASE_SYSTEM_PROMPT;
+  const instructions = BASE_SYSTEM_PROMPT;
 
   const userText =
     mode === "vision"
       ? `识别烟盒上可见的品牌、日文商品名、颜色和包装线索，再从以下目录找最多3个候选。不要猜测看不清的文字。\n目录：${catalogJson}`
-      : mode === "japanese"
-        ? `把这段需求改写成在日本便利店或烟草店可直接展示的礼貌日语：${query}`
-        : `用户偏好：${query}\n只从以下目录找最多3个候选，并说明口味、强度、参考价或兼容性为何匹配。\n目录：${catalogJson}`;
+      : `用户偏好：${query}\n只从以下目录找最多3个候选，并说明口味、强度、参考价或兼容性为何匹配。\n目录：${catalogJson}`;
 
   return {
     model: "MiniMax-M3",
@@ -150,7 +150,11 @@ async function callChat(fetchImpl, key, input) {
 
   const payload = await upstream.json();
   const content = payload?.choices?.[0]?.message?.content;
-  return normalizeAiPayload(extractJsonObject(content));
+  const result = normalizeAiPayload(extractJsonObject(content));
+  return {
+    ...result,
+    matches: result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id)),
+  };
 }
 
 async function callSearch(fetchImpl, key, query) {
@@ -165,7 +169,7 @@ async function callSearch(fetchImpl, key, query) {
       model: "MiniMax-M3",
       max_tokens: 1800,
       system:
-        "你是日本烟草包装与产品信息检索助手。只返回识别和核对线索，不宣称实时库存，不给健康建议。优先厂商、政府和可信零售资料，并提醒用户核对日期。",
+        "你是日本烟草包装与产品信息检索助手。只返回识别和核对线索，不宣称实时库存，不给健康建议。不得为电子烟、烟弹或法规状态不明商品提供购买地点、店铺、购买话术或替代购买建议。优先厂商、政府和可信资料，并提醒用户核对日期。",
       messages: [
         {
           role: "user",
@@ -249,8 +253,19 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
       }
 
       try {
+        if (!env.AI_RATE_LIMITER?.limit) {
+          return errorResponse("AI 服务限流尚未配置", 503, requestOrigin, allowedOrigin);
+        }
+        const clientAddress = cleanText(request.headers.get("cf-connecting-ip"), 80);
+        if (!clientAddress) {
+          return errorResponse("无法验证请求来源", 400, requestOrigin, allowedOrigin);
+        }
+        const rateLimit = await env.AI_RATE_LIMITER.limit({ key: clientAddress });
+        if (!rateLimit?.success) {
+          return errorResponse("请求过于频繁，请稍后重试", 429, requestOrigin, allowedOrigin);
+        }
+
         const query = normalizeQuery(body?.query, { required: mode !== "vision" });
-        const catalog = sanitizeCatalog(body?.catalog);
         const image = mode === "vision" ? validateImage(body?.image) : "";
         const result =
           mode === "search"
@@ -258,7 +273,7 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
             : await callChat(fetchImpl, env.MINIMAX_API_KEY, {
                 mode,
                 query,
-                catalog,
+                catalog: CANONICAL_CATALOG,
                 image,
               });
         return jsonResponse(result, 200, requestOrigin, allowedOrigin);

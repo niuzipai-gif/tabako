@@ -747,7 +747,7 @@ function openAiDialog(mode = "recommend", { query = "", productId = "" } = {}) {
 
 function createAiMatchCard(match) {
   const item = productById.get(match.id);
-  if (!item) return null;
+  if (!item?.purchaseAllowed) return null;
 
   const button = document.createElement("button");
   button.type = "button";

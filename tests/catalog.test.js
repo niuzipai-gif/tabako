@@ -25,6 +25,7 @@ test("application shell exposes the complete discovery and detail structure", ()
 
 test("AI shell exposes text, image, Japanese card, and online fallback", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const appSource = readFileSync(new URL("../app.js", import.meta.url), "utf8");
 
   assert.match(html, /id="aiDialog"/);
   assert.match(html, /id="aiImageInput"/);
@@ -32,6 +33,7 @@ test("AI shell exposes text, image, Japanese card, and online fallback", () => {
   assert.match(html, /data-ai-mode="japanese"/);
   assert.match(html, /id="onlineSearchButton"/);
   assert.match(html, /id="emptyQuery"/);
+  assert.match(appSource, /if \(!item\?\.purchaseAllowed\) return null/);
 });
 
 test("public application files never contain a MiniMax secret", () => {

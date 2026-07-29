@@ -149,7 +149,9 @@ test("configured AI client sends bounded requests and normalizes output", async 
 
   assert.equal(request.url, "https://ai.example.test/api");
   assert.equal(request.init.method, "POST");
-  assert.equal(JSON.parse(request.init.body).query, "七星");
+  const requestBody = JSON.parse(request.init.body);
+  assert.equal(requestBody.query, "七星");
+  assert.equal("catalog" in requestBody, false);
   assert.equal(result.answer, "<b>推荐</b>");
   assert.deepEqual(result.sources.map((source) => source.url), [
     "https://www.jti.co.jp/example",
@@ -163,6 +165,7 @@ test("AI client blocks unsupported modes and oversized input", async () => {
   });
 
   await assert.rejects(client.ask({ mode: "unknown", query: "七星" }), /模式/);
+  await assert.rejects(client.ask({ mode: "japanese", query: "买电子烟" }), /模式/);
   await assert.rejects(
     client.ask({ mode: "recommend", query: "烟".repeat(AI_LIMITS.query + 1) }),
     /过长/,

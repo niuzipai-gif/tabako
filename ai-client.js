@@ -6,7 +6,7 @@ export const AI_LIMITS = Object.freeze({
   sources: 8,
 });
 
-const AI_MODES = new Set(["recommend", "vision", "search", "japanese"]);
+const AI_MODES = new Set(["recommend", "vision", "search"]);
 const SAFE_PROTOCOLS = new Set(["http:", "https:"]);
 const FLAVOR_HINTS = Object.freeze({
   tobacco: ["原味", "烟草", "经典", "醇厚", "regular", "tobacco", "レギュラー"],
@@ -201,22 +201,6 @@ function validateImage(image) {
   return value;
 }
 
-function compactCatalog(catalog) {
-  if (!Array.isArray(catalog)) return [];
-  return catalog.slice(0, AI_LIMITS.catalogItems).map((item) => ({
-    id: cleanText(item?.id, 100),
-    jp: cleanText(item?.jp, 160),
-    cn: cleanText(item?.cn, 160),
-    brand: cleanText(item?.brand, 100),
-    type: cleanText(item?.type, 40),
-    flavor: cleanText(item?.flavor, 40),
-    strength: cleanText(item?.strength, 40),
-    jpy: Number.isFinite(Number(item?.jpy)) ? Number(item.jpy) : null,
-    availability: cleanText(item?.availability, 40),
-    purchaseAllowed: item?.purchaseAllowed !== false,
-  }));
-}
-
 export function createAiClient({
   endpoint = "",
   fetchImpl = globalThis.fetch,
@@ -226,7 +210,7 @@ export function createAiClient({
 
   return Object.freeze({
     configured: Boolean(publicEndpoint),
-    async ask({ mode, query = "", catalog = [], image = "" } = {}) {
+    async ask({ mode, query = "", image = "" } = {}) {
       if (!publicEndpoint) throw new Error("AI 服务尚未配置安全代理");
       if (!AI_MODES.has(mode)) throw new Error("不支持的 AI 模式");
 
@@ -243,7 +227,6 @@ export function createAiClient({
           body: JSON.stringify({
             mode,
             query: normalizedQuery,
-            catalog: compactCatalog(catalog),
             ...(normalizedImage ? { image: normalizedImage } : {}),
           }),
           signal: controller.signal,

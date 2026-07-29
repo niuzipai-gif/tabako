@@ -1,11 +1,19 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createWorker } from "../worker.js";
+import { rawProducts } from "../data/products.js";
+import { enrichProducts } from "../catalog.js";
 
 const ALLOWED_ORIGIN = "https://niuzipai-gif.github.io";
+const canonicalCatalog = enrichProducts(rawProducts);
+const allowedProduct = canonicalCatalog.find((item) => item.purchaseAllowed);
+const restrictedProduct = canonicalCatalog.find((item) => !item.purchaseAllowed);
 const ENV = {
   MINIMAX_API_KEY: "test-secret",
   ALLOWED_ORIGIN,
+  AI_RATE_LIMITER: {
+    limit: async () => ({ success: true }),
+  },
 };
 
 function post(body, { origin = ALLOWED_ORIGIN, headers = {} } = {}) {
@@ -14,6 +22,7 @@ function post(body, { origin = ALLOWED_ORIGIN, headers = {} } = {}) {
     headers: {
       origin,
       "content-type": "application/json",
+      "cf-connecting-ip": "203.0.113.7",
       ...headers,
     },
     body: JSON.stringify(body),
@@ -70,6 +79,36 @@ test("proxy requires a server-side key and an allow-listed mode", async () => {
   assert.equal(unknownMode.status, 400);
 });
 
+test("proxy fails closed without rate limiting and returns 429 when exhausted", async () => {
+  const worker = createWorker({ fetchImpl: async () => new Response("{}") });
+
+  const missingLimiter = await worker.fetch(
+    post({ mode: "recommend", query: "七星" }),
+    { MINIMAX_API_KEY: "test-secret", ALLOWED_ORIGIN },
+  );
+  assert.equal(missingLimiter.status, 503);
+
+  const limited = await worker.fetch(
+    post({ mode: "recommend", query: "七星" }),
+    {
+      ...ENV,
+      AI_RATE_LIMITER: {
+        limit: async () => ({ success: false }),
+      },
+    },
+  );
+  assert.equal(limited.status, 429);
+});
+
+test("proxy rejects the Japanese purchase mode instead of trusting arbitrary client text", async () => {
+  const worker = createWorker({ fetchImpl: async () => new Response("{}") });
+  const response = await worker.fetch(
+    post({ mode: "japanese", query: `${restrictedProduct.jp} を買いたい` }),
+    ENV,
+  );
+  assert.equal(response.status, 400);
+});
+
 test("proxy rejects oversized declared bodies", async () => {
   const worker = createWorker({ fetchImpl: async () => new Response("{}") });
   const response = await worker.fetch(
@@ -95,7 +134,10 @@ test("recommendations use MiniMax-M3 chat completions and normalize JSON", async
               message: {
                 content: JSON.stringify({
                   answer: "更接近经典烟草感。",
-                  matches: [{ id: "p-seven", reason: "名称和风格匹配" }],
+                  matches: [
+                    { id: allowedProduct.id, reason: "名称和风格匹配" },
+                    { id: restrictedProduct.id, reason: "不应返回" },
+                  ],
                   sources: [],
                   ignored: "not returned",
                 }),
@@ -114,10 +156,10 @@ test("recommendations use MiniMax-M3 chat completions and normalize JSON", async
       query: "经典浓一点",
       catalog: [
         {
-          id: "p-seven",
-          jp: "セブンスター",
-          cn: "七星",
-          flavor: "tobacco",
+          id: restrictedProduct.id,
+          jp: restrictedProduct.jp,
+          cn: restrictedProduct.cn,
+          type: "cigarette",
           purchaseAllowed: true,
         },
       ],
@@ -132,7 +174,11 @@ test("recommendations use MiniMax-M3 chat completions and normalize JSON", async
   assert.equal(upstream.body.model, "MiniMax-M3");
   assert.deepEqual(upstream.body.thinking, { type: "disabled" });
   assert.equal(payload.answer, "更接近经典烟草感。");
-  assert.deepEqual(payload.matches, [{ id: "p-seven", reason: "名称和风格匹配" }]);
+  assert.deepEqual(payload.matches, [
+    { id: allowedProduct.id, reason: "名称和风格匹配" },
+  ]);
+  assert.equal(upstream.body.messages[1].content.includes(restrictedProduct.jp), false);
+  assert.equal(upstream.body.messages[1].content.includes(allowedProduct.jp), true);
   assert.equal(JSON.stringify(payload).includes("test-secret"), false);
 });
 
@@ -146,7 +192,14 @@ test("vision mode sends only supported image data to chat completions", async ()
           choices: [
             {
               message: {
-                content: '{"answer":"可能是七星。","matches":[{"id":"p-seven","reason":"包装文字可见"}],"sources":[]}',
+                content: JSON.stringify({
+                  answer: "可能是七星。",
+                  matches: [
+                    { id: allowedProduct.id, reason: "包装文字可见" },
+                    { id: restrictedProduct.id, reason: "不应返回" },
+                  ],
+                  sources: [],
+                }),
               },
             },
           ],
@@ -161,10 +214,11 @@ test("vision mode sends only supported image data to chat completions", async ()
       mode: "vision",
       query: "",
       image: "data:image/jpeg;base64,SGVsbG8=",
-      catalog: [{ id: "p-seven", jp: "セブンスター", cn: "七星" }],
+      catalog: [{ id: restrictedProduct.id, purchaseAllowed: true }],
     }),
     ENV,
   );
+  const payload = await response.json();
 
   assert.equal(response.status, 200);
   assert.equal(body.messages[1].content[1].type, "image_url");
@@ -172,6 +226,10 @@ test("vision mode sends only supported image data to chat completions", async ()
     body.messages[1].content[1].image_url.url,
     "data:image/jpeg;base64,SGVsbG8=",
   );
+  assert.equal(body.messages[1].content[0].text.includes(restrictedProduct.jp), false);
+  assert.deepEqual(payload.matches, [
+    { id: allowedProduct.id, reason: "包装文字可见" },
+  ]);
 });
 
 test("online search uses MiniMax web_search server tool and returns source leads", async () => {

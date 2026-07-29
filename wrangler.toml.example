@@ -5,5 +5,13 @@ compatibility_date = "2026-07-29"
 [vars]
 ALLOWED_ORIGIN = "https://niuzipai-gif.github.io"
 
+[[ratelimits]]
+name = "AI_RATE_LIMITER"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
 # Configure the credential outside Git:
 # npx wrangler secret put MINIMAX_API_KEY

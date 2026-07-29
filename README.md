@@ -55,8 +55,8 @@
 
 本站部署在静态 GitHub Pages 上，浏览器下载得到所有前端代码，因此不能直接保存 MiniMax 密钥。仓库提供了一个 Cloudflare Worker 兼容的安全代理模板：
 
-- `worker.js`：校验来源、请求模式、查询长度、目录规模和图片大小；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
-- `wrangler.toml.example`：只包含公开配置示例，默认仅允许 `https://niuzipai-gif.github.io`。
+- `worker.js`：校验来源、请求模式、查询长度和图片大小；AI 匹配只使用服务端随版本发布的 91 款目录，并过滤购买权限受限条目；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
+- `wrangler.toml.example`：只包含公开配置示例，默认仅允许 `https://niuzipai-gif.github.io`，并要求 Cloudflare Rate Limiting 绑定（每个来源每分钟 10 次）。
 - `config.js`：公开页面只填写部署后的代理 URL，不放密钥。
 
 部署时必须先撤销任何曾在聊天、截图或日志中出现的旧 Key，然后创建新 Key：
@@ -66,6 +66,8 @@ Copy-Item .\wrangler.toml.example .\wrangler.toml
 npx wrangler secret put MINIMAX_API_KEY
 npx wrangler deploy
 ```
+
+代理缺少 `AI_RATE_LIMITER` 绑定时会安全地拒绝请求，不会直接消耗 MiniMax 额度。Cloudflare 会在入口处提供真实来源地址，Worker 以此执行匿名访问限流。
 
 把部署结果的 HTTPS 地址写入 `config.js`：
 
