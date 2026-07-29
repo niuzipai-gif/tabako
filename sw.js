@@ -1,8 +1,8 @@
-const CACHE_VERSION = "tabako-compass-v6-20260730";
+const CACHE_VERSION = "tabako-compass-v7-20260730";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css",
+  "./styles.css?v=20260730-2",
   "./app.js",
   "./ranking.html",
   "./ranking.js",
@@ -41,7 +41,7 @@ self.addEventListener("activate", (event) => {
 
 async function networkFirst(request) {
   try {
-    const response = await fetch(request);
+    const response = await fetch(request, { cache: "no-store" });
     const cache = await caches.open(CACHE_VERSION);
     cache.put(request, response.clone());
     return response;
