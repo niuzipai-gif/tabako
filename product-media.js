@@ -142,12 +142,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ウィンストン キャスター ホワイト|温斯顿 白",
     {
-      cartonStatus: "contents-reference",
-      cartonImage:
-        "./images/cartons/winston-caster-white-5-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/3933",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/winston-caster-white5-ana-carton-side.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
       cartonNote:
-        "プラセール页面标题确认“ウィンストン・キャスター・ホワイト・5・ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 5mg BOX 单包图，不是外箱实拍。",
+        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录项“Winston Caster White”按 5mg Box 主流款核验；购买时请同时确认 1mg/3mg/5mg 与 soft/box 差异。",
     },
   ],
   [

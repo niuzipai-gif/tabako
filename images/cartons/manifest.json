@@ -201,6 +201,15 @@
       "sha256": "93f4b304777d754b795d562742d198ea63f907e70c7067899af95e99a8b4bf71"
     },
     {
+      "productId": "p-84898a7d",
+      "jp": "ウィンストン キャスター ホワイト",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/winston-caster-white5-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
+      "sha256": "0b9337e53d0493d0c41b244b0739ad6d6cc50ed8c533b8ff90911f07f0c5954a"
+    },
+    {
       "productId": "p-964f4640",
       "jp": "キャスター 5",
       "status": "verified",
