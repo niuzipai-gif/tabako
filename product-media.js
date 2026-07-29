@@ -97,13 +97,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ラーク クラシック|乐富门 经典",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/lark-mild-400s-2ct-reference.jpg",
-      cartonSource: "https://www.anadf.com/en/itemdetail.aspx?s_cd=2010200053",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/lark-classic-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/2884",
       cartonNote:
-        "ANA 免税店 LARK MILD KS BOX 400S 商品图：页面规格为 (20cigarettes×10boxes)×2，即 2 カートン / 20 包 / 400 支。目录项是“ラーク クラシック”，此图只作为同品牌 9mg 系列免税整条外箱参考，不标为精确实拍。",
+        "プラセール页面标题确认“ラーク クラシック マイルド KS ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
     },
   ],
   [
@@ -139,11 +137,12 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ウィンストン キャスター ホワイト|温斯顿 白",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/winston-caster-white1-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
+      cartonStatus: "contents-reference",
+      cartonImage:
+        "./images/cartons/winston-caster-white-5-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/3933",
       cartonNote:
-        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・ワン・100's・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为 Caster White 泛称，此图只作为同系列 1mg 近似参考。",
+        "プラセール页面标题确认“ウィンストン・キャスター・ホワイト・5・ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 5mg BOX 单包图，不是外箱实拍。",
     },
   ],
   [
