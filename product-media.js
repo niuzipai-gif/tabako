@@ -40,14 +40,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス オリジナル|梅比乌斯 原味",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/mevius-original-2ct-reference.jpg",
-      cartonSource:
-        "https://duty-free-japan.jp/narita/en/goodsDetail.aspx?sCD=5302030459",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/mevius-original-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/3453",
       cartonNote:
-        "成田机场免税店 MEVIUS BOX 2CT SET 商品图：外箱明确标注 2 CARTONS / 200×2 / 400 CIGARETTES。它不是单独一条图，但可用于辨认 MEVIUS ORIGINAL 免税整条外箱视觉。",
+        "プラセール页面标题确认“メビウス（タール10mg）”按1カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
     },
   ],
   [
@@ -63,25 +60,22 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ レッド|万宝路 红",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/marlboro-red-2ct-reference.jpg",
-      cartonSource: "https://www.anadf.com/en/ItemDetail.aspx?S_CD=7000098239",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/marlboro-red-box-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/4485",
       cartonNote:
-        "ANA 免税店 MARLBORO 400's 商品图：页面规格为 (20 cigarettes×10 boxes)×2，即 2 カートン / 20 包 / 400 支。它不是单独一条图，但能展示 Marlboro Red 免税整条外箱形态。",
+        "プラセール页面标题确认“マールボロ ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
     },
   ],
   [
     "マールボロ メンソール|万宝路 薄荷",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/marlboro-menthol-8-2ct-reference.jpg",
-      cartonSource: "https://www.anadf.com/en/itemdetail.aspx?s_cd=7000098242",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "contents-reference",
+      cartonImage:
+        "./images/cartons/marlboro-menthol8-box-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/4480",
       cartonNote:
-        "ANA 免税店 MARLBORO LIGHTS MENTHOL BOX 400's 商品图：页面规格为 (20cigarettes×10boxes)×2，即 2 カートン / 20 包 / 400 支。目录项是泛称“メンソール”，此图按 Menthol 8 作为多条装外箱参考。",
+        "プラセール页面标题确认“マールボロ・メンソール・8・ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 Menthol 8 单包图，不是外箱实拍。",
     },
   ],
   [
@@ -288,13 +282,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ ゴールド|万宝路 金",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/marlboro-gold-2ct-reference.jpg",
-      cartonSource: "https://www.anadf.com/cn/itemdetail.aspx?s_cd=8000002097",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/marlboro-gold-box-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/4469",
       cartonNote:
-        "ANA 免税店 マールボロ ゴールド ボックス 400s 商品图：页面规格为 (20根×10盒)×2，即 2 カートン / 20 包 / 400 支。它不是单独一条图，但能展示 Marlboro Gold 整条外箱形态。",
+        "プラセール页面标题确认“マールボロ・ゴールド・ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 Gold Box 单包图，不是外箱实拍。",
     },
   ],
   [
