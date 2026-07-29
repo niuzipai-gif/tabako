@@ -30,11 +30,11 @@ const MEDIA_OVERRIDES = new Map([
       packageFormat: "硬盒",
       packageFormatJp: "ボックス",
       variantNote: "这是硬盒版；正面视觉与软包很接近，但顶部翻盖和盒体更硬，日文名要带“ボックス”。",
-      cartonStatus: "archive-reference",
-      cartonImage: "./images/cartons/seven-stars-box-carton-2008.jpg",
-      cartonSource: "https://bbs.yanyue.cn/thread-111413-1-1.html",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/seven-stars-box-mobile01-dutyfree-carton.jpg",
+      cartonSource: "https://www.mobile01.com/topicdetail.php?f=345&t=5177706",
       cartonNote:
-        "2008 年日本本土版真实一カートン外箱实拍（不是 2026 当前包装）。可用于理解 BOX 硬盒整条的长盒结构，现购必须同时核对上方当前单包图。",
+        "Mobile01 日本现场实拍图清楚展示 SevenStars Charcoal Filter BOX 长条外盒，页面讨论也区分软盒/硬盒并提到机场购买；ANA 官方页同时确认该 SKU 为 20本×10箱、タール14mg、ニコチン1.2mg，预约机场含成田/羽田。论坛图用于辨认整条外观，当前价格和库存仍以免税店页面/门店为准。",
     },
   ],
   [

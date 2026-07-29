@@ -57,15 +57,14 @@ test("Seven Stars soft pack and box are distinct, explained variants", () => {
 test("Seven Stars Box rejects the wrong 10 mg single-pack source for its 14 mg carton", () => {
   const box = enrichProduct(rawProducts.find((item) => item.jp === "セブンスター ボックス"));
 
-  assert.notEqual(box.cartonStatus, "verified");
+  assert.equal(box.cartonStatus, "verified");
   assert.doesNotMatch(box.cartonSource, /briquetonline\.com\/products\/detail\/5426/);
-  assert.match(box.cartonNote, /外箱|未展示|参考/);
-  if (box.cartonImage) {
-    const cartonPath = new URL(`../${box.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
-    const packPath = new URL(`../${box.image.replace(/^\.\//, "")}`, import.meta.url);
-    assert.equal(existsSync(cartonPath), true);
-    assert.notEqual(sha256(cartonPath), sha256(packPath));
-  }
+  assert.match(box.cartonSource, /mobile01\.com/);
+  assert.match(box.cartonNote, /BOX|20本×10箱|14mg|ANA/);
+  const cartonPath = new URL(`../${box.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
+  const packPath = new URL(`../${box.image.replace(/^\.\//, "")}`, import.meta.url);
+  assert.equal(existsSync(cartonPath), true);
+  assert.notEqual(sha256(cartonPath), sha256(packPath));
 });
 
 test("production carton manifest only publishes exact verified or visibly historical images", () => {
@@ -74,10 +73,10 @@ test("production carton manifest only publishes exact verified or visibly histor
   );
 
   assert.equal(manifest.items.length, 15);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 14);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 15);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
-    1,
+    0,
   );
 
   for (const item of manifest.items) {

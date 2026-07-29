@@ -5,12 +5,11 @@
     {
       "productId": "p-738718e3",
       "jp": "セブンスター ボックス",
-      "status": "archive-reference",
-      "currentness": "historical-2008-not-current-artwork",
-      "quantity": "1 carton / 10 packs",
-      "localPath": "images/cartons/seven-stars-box-carton-2008.jpg",
-      "sourcePage": "https://bbs.yanyue.cn/thread-111413-1-1.html",
-      "sha256": "57163597e0dc398333d40d314b3a69fbb9abb64b81ead25f8300f832d79ca708"
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/seven-stars-box-mobile01-dutyfree-carton.jpg",
+      "sourcePage": "https://www.mobile01.com/topicdetail.php?f=345&t=5177706",
+      "sha256": "11554ea12d606118d16f5946d64a95a85780691cf41f38e68a0dc452e7d3b5b9"
     },
     {
       "productId": "p-a9bb5951",
