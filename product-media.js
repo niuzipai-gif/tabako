@@ -107,6 +107,126 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "ラーク ハイブリッド|乐富门 混合",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/lark-hybrid-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200052",
+      cartonNote:
+        "ANA 免税店页面确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
+    },
+  ],
+  [
+    "キャスター 3|卡斯特 3mg",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/winston-caster-white3-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100027",
+      cartonNote:
+        "ANA 免税店页面确认现行名“ウィンストン・キャスター・ホワイト・3・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录沿用中国游客常说的 Caster 3，购买时请同时核对 Winston Caster White 3。",
+    },
+  ],
+  [
+    "ウィンストン XS|温斯顿 XS",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/winston-xs-caster-white1-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100123",
+      cartonNote:
+        "ANA 免税店页面确认“ウィンストン XS キャスターホワイト 1 ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为 XS 泛称，此图按 Caster White 1 Box 作内容物参考。",
+    },
+  ],
+  [
+    "ウィンストン キャスター ホワイト|温斯顿 白",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/winston-caster-white1-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
+      cartonNote:
+        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・ワン・100's・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为 Caster White 泛称，此图只作为同系列 1mg 近似参考。",
+    },
+  ],
+  [
+    "キャメル クラフト 6|骆驼 Craft 6",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/camel-craft6-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100180",
+      cartonNote:
+        "ANA 免税店页面确认“キャメル・クラフト 6・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认浅蓝 Craft 6 包装，整条长盒仍待实图核对。",
+    },
+  ],
+  [
+    "ピース ライト|和平 轻量",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/peace-light-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051018",
+      cartonNote:
+        "ANA 免税店页面确认 Peace Light Box 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 10mg Peace Light 内容物，整条长盒仍待实图核对。",
+    },
+  ],
+  [
+    "クール ブースト|KOOL 爆珠",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/kool-boost-fresh8-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
+      cartonNote:
+        "ANA 免税店页面确认“クール・ブースト・フレッシュ・8・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录为泛称 KOOL Boost，本站按 8mg Fresh 作为内容物参考。",
+    },
+  ],
+  [
+    "メビウス ゴールド オリジナル|梅比乌斯 金装原味",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/mevius-gold6-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
+      cartonNote:
+        "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为“Gold Original”泛称，此图按 6mg Gold 主流款作内容物参考。",
+    },
+  ],
+  [
+    "マールボロ アイスブラスト 8|万宝路 冰爆 8",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/marlboro-iceblast-mega8-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200068",
+      cartonNote:
+        "ANA 免税店页面确认 Marlboro Ice Blast Mega 8 Box 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为 Ice Blast 8，购买时请核对是否为 Mega 8 当前包装。",
+    },
+  ],
+  [
+    "ラーク 1|乐富门 1mg",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/lark-tropical-ice1-carton-reference.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200011",
+      cartonNote:
+        "ANA 免税店图片显示 LARK Tropical Ice Menthol 1mg 100's 的横向整条外箱，页面规格为 20本×10箱 / 1カートン。它不是普通“ラーク 1”的精确 SKU，只作为同品牌 1mg 免税整条外箱结构参考。",
+    },
+  ],
+  [
+    "ラーク メンソール 5|乐富门 薄荷 5",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/lark-tropical-ice5-carton-reference.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200010",
+      cartonNote:
+        "ANA 免税店图片显示 LARK Tropical Ice Menthol 5mg KS Box 的横向整条外箱，页面规格为 20本×10箱 / 1カートン。它不是普通“ラーク メンソール 5”的精确 SKU，只作为同品牌 5mg 薄荷系外箱结构参考。",
+    },
+  ],
+  [
+    "キャスター 5|卡斯特 5mg",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/winston-caster-white5-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
+      cartonNote:
+        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录沿用中国游客常说的 Caster 5，购买时请同时核对 Winston Caster White 5。",
+    },
+  ],
+  [
     "ピース スーパーライト|和平 超淡",
     {
       cartonStatus: "contents-reference",
@@ -326,6 +446,26 @@ const MEDIA_OVERRIDES = new Map([
       cartonStickCount: 120,
       cartonNote:
         "日本版 CAMEL SMOOTH 整条外箱图：该销售规格为 6 包 × 20 支，共 120 支。不是常见的 10 包规格，购买时请按页面数量复核。",
+    },
+  ],
+  [
+    "ナチュラル アメリカン スピリット|美式精神",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/american-spirit-turquoise-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
+      cartonNote:
+        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为泛称 Natural American Spirit，此图只作为同品牌 Turquoise 近似参考。",
+    },
+  ],
+  [
+    "アメリカン スピリット ターコイズ|美式精神 绿松石",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/american-spirit-turquoise-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
+      cartonNote:
+        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Turquoise 包装色，整条长盒仍待实图核对。",
     },
   ],
   [
