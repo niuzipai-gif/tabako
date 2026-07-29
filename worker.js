@@ -14,8 +14,9 @@ const BASE_SYSTEM_PROMPT = `
 价格、热度和可得性都必须写成参考信息。返回纯 JSON，不要 Markdown、代码围栏或额外字段。
 JSON 结构：{"answer":"简短中文答复","matches":[{"id":"目录商品ID","reason":"匹配理由"}],"sources":[]}
 `.trim();
+const ALL_CANONICAL_PRODUCTS = Object.freeze(enrichProducts(rawProducts));
 const CANONICAL_CATALOG = Object.freeze(
-  enrichProducts(rawProducts)
+  ALL_CANONICAL_PRODUCTS
     .filter((item) => item.purchaseAllowed)
     .map((item) =>
       Object.freeze({
@@ -33,12 +34,52 @@ const CANONICAL_CATALOG = Object.freeze(
     ),
 );
 const ALLOWED_PRODUCT_IDS = new Set(CANONICAL_CATALOG.map((item) => item.id));
+const RESTRICTED_QUERY_MARKERS = Object.freeze([
+  "电子烟",
+  "電子煙",
+  "烟弹",
+  "煙彈",
+  "ポッド",
+  "vape",
+  "vaping",
+  "e-cig",
+]);
+const RESTRICTED_PRODUCT_TERMS = Object.freeze(
+  [
+    ...ALL_CANONICAL_PRODUCTS
+      .filter((item) => !item.purchaseAllowed)
+      .flatMap((item) => [item.brand, item.jp, item.cn]),
+    "RELX",
+    "ELFBAR",
+    "MOTI",
+    "VAPORESSO",
+    "Caliburn",
+    "Voopoo",
+  ]
+    .map(compactLookupText)
+    .filter((value, index, values) => value.length >= 3 && values.indexOf(value) === index),
+);
 
 function cleanText(value, limit) {
   return String(value ?? "")
     .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
     .trim()
     .slice(0, limit);
+}
+
+function compactLookupText(value) {
+  return String(value ?? "")
+    .normalize("NFKC")
+    .toLocaleLowerCase()
+    .replace(/[^\p{Letter}\p{Number}]+/gu, "");
+}
+
+function isRestrictedSearch(query) {
+  const compact = compactLookupText(query);
+  return (
+    RESTRICTED_QUERY_MARKERS.some((marker) => compact.includes(compactLookupText(marker))) ||
+    RESTRICTED_PRODUCT_TERMS.some((term) => compact.includes(term))
+  );
 }
 
 function isSafeUrl(value) {
@@ -253,6 +294,15 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
       }
 
       try {
+        const query = normalizeQuery(body?.query, { required: mode !== "vision" });
+        if (mode === "search" && isRestrictedSearch(query)) {
+          return errorResponse(
+            "法规状态不明或购买权限受限的电子烟条目不提供联网购买检索",
+            400,
+            requestOrigin,
+            allowedOrigin,
+          );
+        }
         if (!env.AI_RATE_LIMITER?.limit) {
           return errorResponse("AI 服务限流尚未配置", 503, requestOrigin, allowedOrigin);
         }
@@ -265,7 +315,6 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
           return errorResponse("请求过于频繁，请稍后重试", 429, requestOrigin, allowedOrigin);
         }
 
-        const query = normalizeQuery(body?.query, { required: mode !== "vision" });
         const image = mode === "vision" ? validateImage(body?.image) : "";
         const result =
           mode === "search"

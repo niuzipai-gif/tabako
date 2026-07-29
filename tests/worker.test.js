@@ -282,6 +282,28 @@ test("online search uses MiniMax web_search server tool and returns source leads
   ]);
 });
 
+test("online search blocks restricted electronic-product queries before calling MiniMax", async () => {
+  let called = false;
+  const worker = createWorker({
+    fetchImpl: async () => {
+      called = true;
+      return new Response("{}");
+    },
+  });
+
+  for (const query of [
+    restrictedProduct.jp,
+    restrictedProduct.cn,
+    "日本哪里可以买 RELX 电子烟弹",
+    "ELFBAR vape shop",
+  ]) {
+    const response = await worker.fetch(post({ mode: "search", query }), ENV);
+    assert.equal(response.status, 400);
+    assert.match((await response.json()).error, /法规|受限/);
+  }
+  assert.equal(called, false);
+});
+
 test("upstream failures become generic errors without credential leakage", async () => {
   const worker = createWorker({
     fetchImpl: async () =>
