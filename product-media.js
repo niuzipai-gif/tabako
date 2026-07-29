@@ -167,6 +167,16 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "ピアニッシモ アリア メンソール|百乐门细支 薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/pianissimo-aria-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000076238",
+      cartonNote:
+        "ANA 免税店页面确认 Pianissimo Aria Menthol 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Aria Menthol 细支包装，整条长盒仍待实图核对。",
+    },
+  ],
+  [
     "クール ブースト|KOOL 爆珠",
     {
       cartonStatus: "contents-reference",
@@ -466,6 +476,18 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
       cartonNote:
         "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Turquoise 包装色，整条长盒仍待实图核对。",
+    },
+  ],
+  [
+    "ホープ|Hope",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/hope-10-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051019",
+      cartonPackCount: 20,
+      cartonStickCount: 200,
+      cartonNote:
+        "ANA 免税店页面确认 Hope Original 10本入销售规格为 10本×20箱，合计 200 本；图片为官方单包正面图，不是整条外箱。Hope 与常规 20本×10箱不同，购买时请核对 10 本小盒规格。",
     },
   ],
   [
