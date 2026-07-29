@@ -296,6 +296,11 @@ test("online search blocks restricted electronic-product queries before calling 
     restrictedProduct.cn,
     "日本哪里可以买 RELX 电子烟弹",
     "ELFBAR vape shop",
+    "XROS 日本哪里买",
+    "Argus 日本哪里买",
+    "Infinity 日本哪里买",
+    "電子たばこ 日本 店",
+    "電子タバコ 日本 店",
   ]) {
     const response = await worker.fetch(post({ mode: "search", query }), ENV);
     assert.equal(response.status, 400);

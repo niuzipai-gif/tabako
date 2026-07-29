@@ -37,12 +37,17 @@ const ALLOWED_PRODUCT_IDS = new Set(CANONICAL_CATALOG.map((item) => item.id));
 const RESTRICTED_QUERY_MARKERS = Object.freeze([
   "电子烟",
   "電子煙",
+  "電子たばこ",
+  "電子タバコ",
   "烟弹",
   "煙彈",
   "ポッド",
+  "pod",
   "vape",
   "vaping",
   "e-cig",
+  "ecig",
+  "electroniccigarette",
 ]);
 const RESTRICTED_PRODUCT_TERMS = Object.freeze(
   [
@@ -50,11 +55,16 @@ const RESTRICTED_PRODUCT_TERMS = Object.freeze(
       .filter((item) => !item.purchaseAllowed)
       .flatMap((item) => [item.brand, item.jp, item.cn]),
     "RELX",
+    "Infinity",
+    "Artisan",
     "ELFBAR",
     "MOTI",
     "VAPORESSO",
+    "XROS",
+    "Uwell",
     "Caliburn",
     "Voopoo",
+    "Argus",
   ]
     .map(compactLookupText)
     .filter((value, index, values) => value.length >= 3 && values.indexOf(value) === index),
