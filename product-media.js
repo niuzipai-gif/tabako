@@ -213,10 +213,11 @@ const MEDIA_OVERRIDES = new Map([
     "メビウス メンソール|梅比乌斯 薄荷",
     {
       cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/mevius-premium-menthol-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083790",
+      cartonImage:
+        "./images/cartons/mevius-premium-menthol8-10p-monolog-reference.png",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210166117",
       cartonNote:
-        "未找到现行普通“メビウス メンソール”的稳定一カートン图源；JT 当前纸烟列表也未列出该独立名称。旧烟草店资料曾以“メビウス メンソール8”为标题介绍“メビウス：プレミアムメンソール8”（2013年3月中旬全国発売、20本入），因此本站用 ANA 免税店 MEVIUS Premium Menthol 8 的官方单包图作为最接近参考。ANA 页面规格为 20本×10箱，但图片不是整条外箱；购买时请按 Premium Menthol 8 核对，不要把它当普通 Menthol 独立 SKU。",
+        "未找到现行普通“メビウス メンソール”的稳定一カートン外箱图源；JT 当前纸烟列表也未列出该独立名称。旧烟草店资料曾以“メビウス メンソール8”为标题介绍“メビウス：プレミアムメンソール8”（2013年3月中旬全国発売、20本入）。ものログ页面标题为“JT メビウスプレミアムメンソール8 10P”，购买者图片展示 10 包排列实物，可帮助理解一条/10P 内容物；但它不是封闭外箱，也不是普通 Menthol 独立 SKU。购买时请按 Premium Menthol 8 核对。",
     },
   ],
   [
