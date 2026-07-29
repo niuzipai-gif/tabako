@@ -486,14 +486,56 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://www.tirakita.com/fl_tabacco/fl_tabacco_22.shtml",
       cartonGallery: [
         {
-          title: "系列包装参考",
+          title: "旧系列包装参考",
           image: "./images/cartons/american-spirit-lineup-piazza-reference.png",
           source: "https://tabacco-piazza.com/tabacco/amespi_naturalamericanspirit/",
           note: "Tabacco Piazza 旧资料页的 American Spirit 系列图，可帮助区分红、黑、蓝、黄、橙、青、绿等包装色；它不是一カートン外箱图。",
         },
+        {
+          title: "当前 Turquoise 14本入",
+          image: "./images/cartons/american-spirit-organic-leaf-turquoise-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5461",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
+        {
+          title: "当前 Gold 14本入",
+          image: "./images/cartons/american-spirit-organic-leaf-gold-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5462",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
+        {
+          title: "当前 ONE 14本入",
+          image: "./images/cartons/american-spirit-organic-leaf-one-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5464",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
+        {
+          title: "当前 Light 14本入",
+          image: "./images/cartons/american-spirit-organic-leaf-light-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5465",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
+        {
+          title: "当前 Mint Light 14本入",
+          image: "./images/cartons/american-spirit-organic-mint-light-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5080",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
+        {
+          title: "当前 Mint Ultra Light 14本入",
+          image: "./images/cartons/american-spirit-organic-mint-ultralight-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5081",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
+        {
+          title: "当前 Mint ONE 14本入",
+          image: "./images/cartons/american-spirit-organic-mint-one-placer-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5082",
+          note: "Placer 当前商品页标注カートン10個単位、在庫あり；图片为单包正面。",
+        },
       ],
       cartonNote:
-        "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ。Tabacco Piazza 旧资料也记录 Regular Box 为20本入；但 JT 当前官网已改为 Organic Leaf / Light / Organic Mint 等14本入具体 SKU。这里用 Regular Box 作泛称 Natural American Spirit 主辨认图，并补系列图辅助识别颜色；仍不是一カートン外箱，当前日本在库请按具体变体向门店确认。",
+        "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ。Tabacco Piazza 旧资料也记录 Regular Box 为20本入；但 Placer 当前日本页显示常见在售款已是 Organic Leaf / Light / Organic Mint 等14本入具体 SKU，且多款以1カートン/10個、在庫あり销售。这里用 Regular Box 作泛称主辨认图，并补当前变体单包图辅助识别颜色；仍不是一カートン外箱，购买时请按具体变体名确认。",
     },
   ],
   [

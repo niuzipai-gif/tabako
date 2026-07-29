@@ -2076,20 +2076,25 @@ img {
 }
 
 .carton-reference-gallery {
-  display: grid;
+  display: flex;
   gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
   padding: 12px 14px 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .carton-reference-gallery figure {
   display: grid;
   grid-template-columns: minmax(96px, 42%) 1fr;
+  flex: 0 0 min(360px, 92%);
   gap: 10px;
   margin: 0;
   overflow: hidden;
   border: 1px solid rgba(35, 29, 22, 0.08);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.58);
+  scroll-snap-align: start;
 }
 
 .carton-reference-gallery img {
