@@ -66,6 +66,17 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "IQOS テリア ブラックメンソール|IQOS TEREA 黑薄荷",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-black-menthol-carton.webp",
+      cartonSource:
+        "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。黑绿外箱对应 BLACK MENTHOL，右上角为零售商水印。",
+    },
+  ],
+  [
     "IQOS テリア スムース レギュラー|IQOS TEREA 柔和经典",
     {
       cartonStatus: "verified",
@@ -84,6 +95,54 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://heetsiqosuae.ae/products/terea-ruby-regular/",
       cartonNote:
         "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。蓝红渐变外箱对应 RUBY REGULAR。",
+    },
+  ],
+  [
+    "IQOS テリア フュージョン メンソール|IQOS TEREA 融合薄荷",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-fusion-menthol-carton.webp",
+      cartonSource:
+        "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。紫粉渐变外箱对应 FUSION MENTHOL，右上角为零售商水印。",
+    },
+  ],
+  [
+    "IQOS テリア ウォーム レギュラー|IQOS TEREA 温感经典",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-warm-regular-carton.webp",
+      cartonSource:
+        "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
+      cartonNote:
+        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。红橙渐变外箱对应 WARM REGULAR，右上角为零售商水印。",
+    },
+  ],
+  [
+    "Ploom X メビウス スムース|Ploom X 柔和",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-mevius-smooth-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 MEVIUS SMOOTH 整条外箱图：该销售规格为 6 包 × 20 支，共 120 支。不是常见的 10 包规格，购买时请按页面数量复核。",
+    },
+  ],
+  [
+    "Ploom X キャメル スムース|Ploom X 骆驼柔和",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-camel-smooth-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-smooth-stick-1-carton-120pcs-palatable-smooth-taste/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 CAMEL SMOOTH 整条外箱图：该销售规格为 6 包 × 20 支，共 120 支。不是常见的 10 包规格，购买时请按页面数量复核。",
     },
   ],
 ]);
@@ -220,6 +279,8 @@ export function resolveProductMedia(item, originalImage) {
     cartonStatus: applicable ? (override.cartonStatus ?? "needs-review") : "not-applicable",
     cartonImage: applicable ? (override.cartonImage ?? "") : "",
     cartonSource: applicable ? (override.cartonSource ?? "") : "",
+    cartonPackCount: applicable ? (override.cartonPackCount ?? 10) : 0,
+    cartonStickCount: applicable ? (override.cartonStickCount ?? 200) : 0,
     cartonNote: applicable
       ? (override.cartonNote ?? "整条外箱尚未人工核对；为避免认错，暂不展示不确定图片。")
       : "设备本体和电子烟配件不按传统香烟“一カートン”展示。",

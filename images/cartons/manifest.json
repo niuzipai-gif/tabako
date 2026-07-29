@@ -31,6 +31,15 @@
       "sha256": "26538019f892a6e2fd00c7653f4d00c1724170e3ae9d9da98d887ccb35df2311"
     },
     {
+      "productId": "p-8e0ca7db",
+      "jp": "IQOS テリア ブラックメンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-black-menthol-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
+      "sha256": "ea279a8523bac8e4227781e0cdf9dc0b18756ec8c0f94fd25ca30abb752e4650"
+    },
+    {
       "productId": "p-1b6407ab",
       "jp": "IQOS テリア スムース レギュラー",
       "status": "verified",
@@ -47,6 +56,42 @@
       "localPath": "images/cartons/terea-ruby-regular-carton.jpg",
       "sourcePage": "https://heetsiqosuae.ae/products/terea-ruby-regular/",
       "sha256": "dc7080badb0f5cefc580709b3a5af2d850af9d0d2095e463827b2cac45f75e01"
+    },
+    {
+      "productId": "p-ae6a1a1c",
+      "jp": "IQOS テリア フュージョン メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-fusion-menthol-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
+      "sha256": "c6fdb4c37ce5148a2adf6af9ebf63ad10c9959a1715bd17b18db51a9bba76d5b"
+    },
+    {
+      "productId": "p-5d9f5770",
+      "jp": "IQOS テリア ウォーム レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-warm-regular-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
+      "sha256": "2e9936356cd6ea364d0e4a4e8f9ef70126caedcea8659a5b663a50be8e91828c"
+    },
+    {
+      "productId": "p-dde44cf6",
+      "jp": "Ploom X メビウス スムース",
+      "status": "verified",
+      "quantity": "1 carton / 6 packs / 120 sticks",
+      "localPath": "images/cartons/ploom-mevius-smooth-carton.jpg",
+      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
+      "sha256": "a1b3c0212951bf0dbc63ae68459ff9b0ef489a10ef1a3548da7b0aab787bd987"
+    },
+    {
+      "productId": "p-73a772c5",
+      "jp": "Ploom X キャメル スムース",
+      "status": "verified",
+      "quantity": "1 carton / 6 packs / 120 sticks",
+      "localPath": "images/cartons/ploom-camel-smooth-carton.jpg",
+      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-smooth-stick-1-carton-120pcs-palatable-smooth-taste/",
+      "sha256": "55736d03b8ec488c2c3a30a4d13835f006a961ac7662a8fb40cffbf18b94226f"
     }
   ]
 }

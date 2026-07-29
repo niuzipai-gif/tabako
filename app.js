@@ -481,7 +481,9 @@ function renderProductDetail(item) {
         </div>
       `;
   const cartonPrice = item.cartonApplicable
-    ? `<strong>通常 10 包 · 参考合计 ${escapeHtml(yen(item.jpy * 10))}</strong>`
+    ? `<strong>${escapeHtml(String(item.cartonPackCount))} 包 · ${escapeHtml(
+        String(item.cartonStickCount),
+      )} 支 · 参考合计 ${escapeHtml(yen(item.jpy * item.cartonPackCount))}</strong>`
     : `<strong>不使用一カートン规格</strong>`;
   const identityKicker = item.cartonApplicable ? "Pack vs. carton" : "Product identity";
   const variantNote = item.variantNote

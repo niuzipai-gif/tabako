@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 5);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 4);
+  assert.equal(manifest.items.length, 10);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 9);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     1,
