@@ -2239,6 +2239,28 @@ img {
   color: var(--red);
 }
 
+@media (max-width: 720px) {
+  .ai-progress-heading {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 7px;
+  }
+
+  .ai-progress-heading > span {
+    justify-self: start;
+    margin-right: 0;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+  }
+
+  .ai-progress[data-state="blocked"] .ai-progress-heading > span,
+  .ai-progress[data-state="failed"] .ai-progress-heading > span {
+    background: var(--red-soft);
+  }
+}
+
 .ai-progress-steps {
   display: grid;
   gap: 7px;
