@@ -441,8 +441,18 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage:
         "./images/cartons/ploom-mevius-deep-regular-placer-carton-reference.jpg",
       cartonSource: "https://www.placer-tabaco.com/product/5665",
+      cartonGallery: [
+        {
+          label: "清晰单盒参考",
+          image:
+            "./images/cartons/ploom-mevius-deep-regular-cod-pack-reference.jpg",
+          source:
+            "https://cigarsofdubai.com/product/mevius-deep-regular-ploom-x-jp/",
+          note: "Cigars of Dubai 页面确认 1 carton contains 10 packs of 20 tobacco sticks，并提供 Deep Regular 清晰单盒图；该图不是一条外箱。",
+        },
+      ],
       cartonNote:
-        "プラセール页面标题确认“メビウス・ディープ・レギュラー・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
+        "プラセール页面标题确认“メビウス・ディープ・レギュラー・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。主图为准确 SKU 单包图，不是外箱实拍；本站另补充清晰单盒参考和 10 包/200 支文字来源。",
     },
   ],
   [
@@ -800,8 +810,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-mevius-sharp-cold-content.jpg",
       cartonSource: "https://www.placer-tabaco.com/product/5668",
+      cartonGallery: [
+        {
+          label: "清晰单盒参考",
+          image: "./images/cartons/ploom-mevius-sharp-cold-cod-pack-reference.jpg",
+          source:
+            "https://cigarsofdubai.com/product/mevius-sharp-cold-menthol-ploom-x-jp/",
+          note: "Cigars of Dubai 页面确认 1 carton contains 10 packs of 20 tobacco sticks，并提供 Sharp Cold Menthol 清晰单盒图；该图不是一条外箱。",
+        },
+      ],
       cartonNote:
-        "プラセール页面确认“メビウス・シャープ・コールド・メンソール・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为单盒图，不是整条外箱。",
+        "プラセール页面确认“メビウス・シャープ・コールド・メンソール・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为单盒图，不是整条外箱；本站另补充清晰单盒参考和 10 包/200 支文字来源。",
     },
   ],
   [
