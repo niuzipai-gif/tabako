@@ -167,6 +167,16 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "ピース インフィニティ|和平 无限",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/peace-infinity-content.jpg",
+      cartonSource: "https://to-world.com/index.php?main_page=product_info&products_id=86",
+      cartonNote:
+        "TO-WORLD 商品页显示 Peace Infinity 的日本定价按 1カートン列示，并提供该 SKU 包装图；图片为单包正面/斜视图，不是整条外箱。用于辨认 Infinity 深蓝包装，整条长盒仍待实图核对。",
+    },
+  ],
+  [
     "ピアニッシモ アリア メンソール|百乐门细支 薄荷",
     {
       cartonStatus: "contents-reference",
@@ -187,6 +197,16 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "クール ナノ ブースト 8|KOOL Nano 爆珠 8",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/kool-boost-fresh8-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
+      cartonNote:
+        "未找到“クール ナノ ブースト 8”的稳定当前图源；先使用 ANA 免税店“クール・ブースト・フレッシュ・8・ボックス”作为同品牌 8mg 爆珠系近似参考。页面规格为 20本×10箱，但图片不是整条外箱，购买时必须核对完整 Nano 名称。",
+    },
+  ],
+  [
     "メビウス ゴールド オリジナル|梅比乌斯 金装原味",
     {
       cartonStatus: "contents-reference",
@@ -194,6 +214,16 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
       cartonNote:
         "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为“Gold Original”泛称，此图按 6mg Gold 主流款作内容物参考。",
+    },
+  ],
+  [
+    "メビウス メンソール|梅比乌斯 薄荷",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/mevius-premium-menthol-pack-content.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083790",
+      cartonNote:
+        "未找到普通“メビウス メンソール”的稳定一カートン图源；先用 ANA 免税店 MEVIUS Premium Menthol 8 的官方单包图作同品牌薄荷系近似参考。该页面规格为 20本×10箱，但图片不是整条外箱，不能替代普通 Menthol 精确包装。",
     },
   ],
   [
@@ -479,6 +509,36 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "セーラム ライト|沙龙 淡味",
+    {
+      cartonStatus: "archive-reference",
+      cartonImage: "./images/cartons/salem-lightbox-archive.webp",
+      cartonSource: "https://conveni-now.com/column/conveni-salem/",
+      cartonNote:
+        "该图来自便利店烟草资料页的 Salem Light 历史包装说明。页面明确说明 Salem Light 早已终售，因此这里只作历史包装线索，不代表当前日本机场或便利店仍有库存，也不是整条外箱图。",
+    },
+  ],
+  [
+    "セーラム ブラックメンソール|沙龙 黑薄荷",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/salem-lightbox-archive.webp",
+      cartonSource: "https://conveni-now.com/column/conveni-salem/",
+      cartonNote:
+        "未找到稳定的“セーラム ブラックメンソール”精确包装或一カートン图源；搜索结果主要指向 Salem 品牌历史资料、Salem Light 停产说明或其他品牌 Black Menthol。此图只作为同品牌 Salem 历史包装线索，不代表 Black Menthol 精确 SKU，也不是整条外箱。",
+    },
+  ],
+  [
+    "バージニア エス ロゼ メンソール|Virginia S 粉薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/virginia-s-rose-content.jpg",
+      cartonSource: "https://www.world-tobacco.jp/view/item/000000001119?category_page_id=ct110",
+      cartonNote:
+        "世界のたばこ通販商品页提供 Virginia S Rosé Menthol 当前单包图与 20本入り规格。图片不是整条外箱；用于辨认粉色 Rosé Menthol 包装，整条长盒仍待实图核对。",
+    },
+  ],
+  [
     "ホープ|Hope",
     {
       cartonStatus: "contents-reference",
@@ -491,6 +551,36 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "キャメル クラフト 14|骆驼 Craft 14",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/camel-craft14-kikuya-content.gif",
+      cartonSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      cartonNote:
+        "きくや商品页列出“キャメル・クラフト14・ボックス”，并说明该店按カートン（ケース）单位销售，1カートン为10箱。图片为单包图，不是整条外箱；用于先补精确 SKU 识别。",
+    },
+  ],
+  [
+    "わかば|若叶",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/wakaba-kikuya-content.gif",
+      cartonSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      cartonNote:
+        "きくや商品页列出 わかば，并说明该店按カートン（ケース）单位销售，1カートン为10箱。图片为单包图，不是整条外箱；用于辨认 Wakaba 绿白包装。",
+    },
+  ],
+  [
+    "エコー|Echo",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/echo-kikuya-content.gif",
+      cartonSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      cartonNote:
+        "きくや商品页列出 エコー，并说明该店按カートン（ケース）单位销售，1カートン为10箱。图片为单包图，不是整条外箱；用于辨认 Echo 包装。",
+    },
+  ],
+  [
     "glo hyper ネオ ブリリアント ベリー|glo neo 闪耀莓果",
     {
       cartonStatus: "contents-reference",
@@ -498,6 +588,116 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://www.anadf.com/ItemDetail.aspx?S_CD=2030100074",
       cartonNote:
         "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为公式单盒正面图，不是整条外箱。用于辨认 Brilliant Berry 口味色块与品牌，整条外盒仍待实图核对。",
+    },
+  ],
+  [
+    "IQOS センティア バランスド イエロー|IQOS SENTIA 均衡黄",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/sentia-balanced-yellow-content.png",
+      cartonSource: "https://www.e-amanoya.jp/view/item/000000003311",
+      cartonNote:
+        "AMANOYA 页面标题确认“センティア バランスド イエロー（1カートン10個入）”，图片为单盒渲染图，不是整条外箱。用于辨认黄色 Balanced Yellow 包装。",
+    },
+  ],
+  [
+    "IQOS センティア フロスト グリーン|IQOS SENTIA 冰绿薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/sentia-frost-green-content.png",
+      cartonSource: "https://www.placer-tabaco.com/product/5885",
+      cartonNote:
+        "プラセール页面确认“センティア・フロスト・グリーン E”按 1カートン/10個 销售；图片为 AMANOYA/SENTIA 单盒参考，不是整条外箱。用于辨认 Frost Green 包装色。",
+    },
+  ],
+  [
+    "glo hyper ラッキー ストライク リッチ|glo 幸运击 浓郁",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/glo-lucky-strike-rich-content.png",
+      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonNote:
+        "AMANOYA glo hyper 分类页列出“ラッキーストライク・リッチ・タバコ・glo hyper用（1カートン10個入）”，图片为单盒图，不是整条外箱。用于辨认 Rich Tobacco 蓝色包装。",
+    },
+  ],
+  [
+    "glo hyper ラッキー ストライク メンソール|glo 幸运击 薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/glo-lucky-strike-menthol-content.png",
+      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonNote:
+        "AMANOYA glo hyper 分类页列出“ラッキーストライク・メンソール・glo hyper用（1カートン10個入）”，图片为单盒图，不是整条外箱。用于辨认 Menthol 绿色包装。",
+    },
+  ],
+  [
+    "glo hyper ラッキー ストライク ダーク|glo 幸运击 深色款",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/glo-lucky-strike-dark-content.png",
+      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonNote:
+        "AMANOYA glo hyper 分类页列出“ラッキーストライク・ダーク・タバコ・glo hyper用（1カートン10個入）”，图片为单盒图，不是整条外箱。用于辨认 Dark Tobacco 深蓝包装。",
+    },
+  ],
+  [
+    "glo hyper ネオ トロピカル スワール|glo neo 热带旋风",
+    {
+      cartonStatus: "variant-reference",
+      cartonImage: "./images/cartons/glo-neo-tropical-swirl-variant.gif",
+      cartonSource: "https://kikuya.my.coocan.jp/kent_tb.htm",
+      cartonNote:
+        "きくや页面说明“ネオ・ブリリアント・トロピカル・ハイパー”为旧“ネオ・トロピカル・スワール・スティック”系谱，且页面说明 1カートン为10箱。图片为改名/后继款单盒图，不是整条外箱；只作旧名 Tropical Swirl 的近似参考。",
+    },
+  ],
+  [
+    "Ploom X メビウス シャープ コールド|Ploom X 锐冷薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/ploom-mevius-sharp-cold-content.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/5668",
+      cartonNote:
+        "プラセール页面确认“メビウス・シャープ・コールド・メンソール・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为单盒图，不是整条外箱。",
+    },
+  ],
+  [
+    "glo hyper ネオ アイスド メンソール|glo neo 冰感薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/glo-neo-iced-menthol-content.png",
+      cartonSource: "https://www.e-amanoya.jp/view/category/ct349",
+      cartonNote:
+        "AMANOYA glo hyper 分类页提供 Neo Iced Menthol 单盒图；同一分类含多款 1カートン10個入商品。图片不是整条外箱，用于辨认 Iced Menthol 包装。",
+    },
+  ],
+  [
+    "lil HYBRID ミックス レギュラー|lil HYBRID 混合经典",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/lil-miix-regular-content.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonNote:
+        "シリウスタバコ lil HYBRID 页面提供 MIIX Mix 包装图与 20本入り说明。图片为盒装外观/内容物参考，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+    },
+  ],
+  [
+    "lil HYBRID ミックス メンソール|lil HYBRID 混合薄荷",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/lil-miix-menthol-content.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonNote:
+        "シリウスタバコ lil HYBRID 页面提供 MIIX Ice/Menthol 系包装图与 20本入り说明。图片为盒装外观/内容物参考，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+    },
+  ],
+  [
+    "lil HYBRID ミックス ベリー|lil HYBRID 混合莓果",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/lil-miix-berry-content.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonNote:
+        "シリウスタバコ lil HYBRID 页面提供 MIIX Velvet/Berry 系包装图与 20本入り说明。图片为盒装外观/内容物参考，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
 ]);
