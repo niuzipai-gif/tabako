@@ -145,6 +145,78 @@
       "localPath": "images/cartons/peace-superlights-box-ana-carton-side.jpg",
       "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051034",
       "sha256": "dd535bb9b66ba244bb661aee1a33ef8d805ac4639d83c68a38d79a79fed1ce01"
+    },
+    {
+      "productId": "p-664334db",
+      "jp": "セブンスター",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/sevenstars-soft-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051013",
+      "sha256": "fe906d691db86ca5240919547e82983eb411fd0e9d634c95ccdf6e9d9fd49e41"
+    },
+    {
+      "productId": "p-6f2e33ac",
+      "jp": "キャスター 3",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/winston-caster-white3-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100027",
+      "sha256": "b874f4ca051ea355e01e123f0bebc8b9dab9348a94f8a31d2d2b4b8ea610e74c"
+    },
+    {
+      "productId": "p-4c84898a",
+      "jp": "ピース ライト",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/peace-light-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051018",
+      "sha256": "5323a2a0cf43d2805cff329e9da212a706012d6ae7ee669daa71b3a93837e623"
+    },
+    {
+      "productId": "p-9671c132",
+      "jp": "ピアニッシモ アリア メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/pianissimo-aria-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000076238",
+      "sha256": "96cdbdb222c46bf6271ba59a0be35f3062dc7aebad5f31696641a65b055578a3"
+    },
+    {
+      "productId": "p-91298bb7",
+      "jp": "メビウス ゴールド オリジナル",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/mevius-gold-original-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
+      "sha256": "84f393a304bcca0b6b67f1fab4cf5464b289e1d36c09e74585399aa9320ec308"
+    },
+    {
+      "productId": "p-964f4640",
+      "jp": "キャスター 5",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/winston-caster-white5-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
+      "sha256": "0b9337e53d0493d0c41b244b0739ad6d6cc50ed8c533b8ff90911f07f0c5954a"
+    },
+    {
+      "productId": "p-bcf9d061",
+      "jp": "アメリカン スピリット ターコイズ",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/american-spirit-turquoise-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
+      "sha256": "f398f767aa70eb803dbbdea05fc33b4abcdc288012d45cd8c667441f0f242ae6"
+    },
+    {
+      "productId": "p-0f8b545b",
+      "jp": "ホープ",
+      "status": "verified",
+      "quantity": "1 carton / 20 packs / 200 sticks",
+      "localPath": "images/cartons/hope-original-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051019",
+      "sha256": "0f9e4642f09b436cb69d1c7900591dd920c52d5c8de1e0e9876a2dd30e2fe43c"
     }
   ]
 }

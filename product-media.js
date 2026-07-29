@@ -11,12 +11,12 @@ const MEDIA_OVERRIDES = new Map([
       packageFormat: "软包",
       packageFormatJp: "ソフトパック",
       variantNote: "这是软包版；与“セブンスター ボックス”烟支配方接近，但外壳结构不同，购买时请直接说“ソフト”。",
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/sevenstars-soft-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/sevenstars-soft-ana-carton-side.jpg",
       cartonSource:
         "https://www.anadf.com/itemdetail.aspx?s_cd=3211051013",
       cartonNote:
-        "ANA 免税店页面确认软包 Seven Stars 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。本站另保留历史软包照片用于辨认软包结构。",
+        "ANA 免税店页面确认软包 Seven Stars 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向外箱侧面（SevenStars Charcoal Filter + 警示文字）。本站另保留历史软包照片用于辨认软包结构；当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -122,11 +122,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャスター 3|卡斯特 3mg",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/winston-caster-white3-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/winston-caster-white3-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100027",
       cartonNote:
-        "ANA 免税店页面确认现行名“ウィンストン・キャスター・ホワイト・3・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录沿用中国游客常说的 Caster 3，购买时请同时核对 Winston Caster White 3。",
+        "ANA 免税店页面确认现行名“ウィンストン・キャスター・ホワイト・3・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录沿用中国游客常说的 Caster 3，购买时请同时核对 Winston Caster White 3。",
     },
   ],
   [
@@ -163,11 +163,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピース ライト|和平 轻量",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/peace-light-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/peace-light-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051018",
       cartonNote:
-        "ANA 免税店页面确认 Peace Light Box 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 10mg Peace Light 内容物，整条长盒仍待实图核对。",
+        "ANA 免税店页面确认 Peace Light Box 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。用于辨认 10mg Peace Light 整条外观；当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -183,11 +183,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピアニッシモ アリア メンソール|百乐门细支 薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/pianissimo-aria-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/pianissimo-aria-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000076238",
       cartonNote:
-        "ANA 免税店页面确认 Pianissimo Aria Menthol 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Aria Menthol 细支包装，整条长盒仍待实图核对。",
+        "ANA 免税店页面确认 Pianissimo Aria Menthol 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。用于辨认 Aria Menthol 细支整条外观；当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -214,11 +214,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス ゴールド オリジナル|梅比乌斯 金装原味",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/mevius-gold6-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/mevius-gold-original-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
       cartonNote:
-        "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为“Gold Original”泛称，此图按 6mg Gold 主流款作内容物参考。",
+        "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录项为“Gold Original”泛称，此图按 6mg Gold 主流款作整条外观参考。",
     },
   ],
   [
@@ -266,11 +266,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャスター 5|卡斯特 5mg",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/winston-caster-white5-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/winston-caster-white5-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
       cartonNote:
-        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录沿用中国游客常说的 Caster 5，购买时请同时核对 Winston Caster White 5。",
+        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录沿用中国游客常说的 Caster 5，购买时请同时核对 Winston Caster White 5。",
     },
   ],
   [
@@ -554,11 +554,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "アメリカン スピリット ターコイズ|美式精神 绿松石",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/american-spirit-turquoise-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/american-spirit-turquoise-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
       cartonNote:
-        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Turquoise 包装色，整条长盒仍待实图核对。",
+        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向外箱侧面。用于辨认 Turquoise 整条外观；当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -595,13 +595,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ホープ|Hope",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/hope-10-pack-content.jpg",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/hope-original-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051019",
       cartonPackCount: 20,
       cartonStickCount: 200,
       cartonNote:
-        "ANA 免税店页面确认 Hope Original 10本入销售规格为 10本×20箱，合计 200 本；图片为官方单包正面图，不是整条外箱。Hope 与常规 20本×10箱不同，购买时请核对 10 本小盒规格。",
+        "ANA 免税店页面确认 Hope Original 10本入销售规格为 10本×20箱，合计 200 本；第二张官方图展示横向外箱侧面。Hope 与常规 20本×10箱不同，购买时请核对 10 本小盒规格。",
     },
   ],
   [
