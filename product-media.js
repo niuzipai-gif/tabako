@@ -120,6 +120,19 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "Ploom X メビウス リッチ|Ploom X 浓郁经典",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-mevius-deep-regular-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 MEVIUS Rich 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。该 SKU 与“Deep Regular”口味方向接近，但本站按页面实名单独收录，避免混用。",
+    },
+  ],
+  [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
       cartonStatus: "verified",
@@ -130,6 +143,45 @@ const MEDIA_OVERRIDES = new Map([
       cartonStickCount: 120,
       cartonNote:
         "日本版 MEVIUS SMOOTH 整条外箱图：该销售规格为 6 包 × 20 支，共 120 支。不是常见的 10 包规格，购买时请按页面数量复核。",
+    },
+  ],
+  [
+    "Ploom X メビウス メンソール フレッシュ|Ploom X 清新薄荷",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 MEVIUS Menthol Fresh 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。绿色外箱对应 Menthol Fresh，不替代 Cold Menthol。",
+    },
+  ],
+  [
+    "Ploom X キャメル メンソール コールド|Ploom X 骆驼强冷薄荷",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-camel-menthol-cold-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 CAMEL Menthol Cold 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。绿色外箱对应 Cold 强薄荷。",
+    },
+  ],
+  [
+    "Ploom X キャメル メンソール イエロー|Ploom X 骆驼柑橘薄荷",
+    {
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-camel-menthol-yellow-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-yellow-citrus-peel-strong-menthol-stick-1-carton-120pcs-citrus-flavor-with-a-refreshing-scent/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonNote:
+        "日本版 CAMEL Menthol Yellow 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。黄色外箱对应柑橘薄荷。",
     },
   ],
   [
