@@ -61,6 +61,18 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "マールボロ メンソール|万宝路 薄荷",
+    {
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/marlboro-menthol-8-2ct-reference.jpg",
+      cartonSource: "https://www.anadf.com/en/itemdetail.aspx?s_cd=7000098242",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
+      cartonNote:
+        "ANA 免税店 MARLBORO LIGHTS MENTHOL BOX 400's 商品图：页面规格为 (20cigarettes×10boxes)×2，即 2 カートン / 20 包 / 400 支。目录项是泛称“メンソール”，此图按 Menthol 8 作为多条装外箱参考。",
+    },
+  ],
+  [
     "マールボロ ゴールド|万宝路 金",
     {
       cartonStatus: "multi-carton-reference",
