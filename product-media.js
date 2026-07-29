@@ -232,21 +232,22 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ラーク 1|乐富门 1mg",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/lark-tropical-ice1-carton-reference.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200011",
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/cartons/lark-ultra-1-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/1022",
       cartonNote:
-        "ANA 免税店图片显示 LARK Tropical Ice Menthol 1mg 100's 的横向整条外箱，页面规格为 20本×10箱 / 1カートン。它不是普通“ラーク 1”的精确 SKU，只作为同品牌 1mg 免税整条外箱结构参考。",
+        "プラセール页面标题确认“ラーク ウルトラ 1mg 100 ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为 1mg 系列单包图，不是外箱实拍；购买时请核对 Ultra/100s 名称。",
     },
   ],
   [
     "ラーク メンソール 5|乐富门 薄荷 5",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/lark-tropical-ice5-carton-reference.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200010",
+      cartonStatus: "contents-reference",
+      cartonImage:
+        "./images/cartons/lark-select-menthol5-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/5764",
       cartonNote:
-        "ANA 免税店图片显示 LARK Tropical Ice Menthol 5mg KS Box 的横向整条外箱，页面规格为 20本×10箱 / 1カートン。它不是普通“ラーク メンソール 5”的精确 SKU，只作为同品牌 5mg 薄荷系外箱结构参考。",
+        "プラセール页面标题确认“ラーク・セレクト・メンソール・5・100sボックス”按カートン（10個）单位销售。图片为 5mg Menthol 系列单包图，不是外箱实拍；购买时请核对 Select/100s 名称。",
     },
   ],
   [
@@ -381,14 +382,12 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス ディープ レギュラー|Ploom X 深度经典",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/ploom-mevius-deep-regular-carton.jpg",
-      cartonSource:
-        "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
-      cartonPackCount: 6,
-      cartonStickCount: 120,
+      cartonStatus: "contents-reference",
+      cartonImage:
+        "./images/cartons/ploom-mevius-deep-regular-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/5665",
       cartonNote:
-        "JT 2023 年资料显示旧名“メビウス・リッチ・プルーム・エックス・プルーム・エス用”改为“メビウス・ディープ・レギュラー・プルーム・エックス用”。此图为旧名 Rich 的 1 Carton 外箱（6 包 / 120 支），可作改名前后对应参考；当前新包装仍需另行核对。",
+        "プラセール页面标题确认“メビウス・ディープ・レギュラー・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为准确 SKU 单包图，不是外箱实拍。",
     },
   ],
   [
@@ -430,14 +429,12 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/ploom-camel-menthol-cold-carton-large.jpg",
-      cartonSource:
-        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
-      cartonPackCount: 6,
-      cartonStickCount: 120,
+      cartonStatus: "contents-reference",
+      cartonImage:
+        "./images/cartons/ploom-camel-menthol-fresh-placer-carton-reference.jpg",
+      cartonSource: "https://www.placer-tabaco.com/product/5991",
       cartonNote:
-        "日本版 CAMEL Menthol Cold 整条外箱图：图片标注 1 Carton = 120 pcs，页面说明 6 包 × 20 支。目录项为通用 Camel Menthol，此图只作为同系列近似 SKU 外箱参考，不标为精确实拍。",
+        "プラセール页面标题确认“キャメル・メンソール・フレッシュ・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为 Menthol Fresh 单包图，不是外箱实拍；购买时请核对 Fresh/Cold 具体名称。",
     },
   ],
   [
