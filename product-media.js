@@ -411,8 +411,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-mevius-menthol-cold-pack-content.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2030100079",
+      cartonGallery: [
+        {
+          label: "KIX 官方当前包装",
+          image: "./images/cartons/ploom-mevius-cold-menthol-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/mevius-cold-menthol-for-ploom-2412600265.html",
+          note: "KIX 官方页展示当前 MEVIUS Cold Menthol for Ploom 单盒图，并列出免税价/零售价；同页为 Ploom 官方销售来源。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店页面确认旧名“メビウス・メンソール・コールド・フォー・プルーム・エックス・プルーム・エス”销售规格为 20本×10箱 / 1カートン。图片为官方单盒正面图，不是整条外箱；用于辨认 Cold Menthol 内容物。",
+        "ANA 免税店页面确认旧名“メビウス・メンソール・コールド・フォー・プルーム・エックス・プルーム・エス”销售规格为 20本×10箱 / 1カートン。图片为官方单盒正面图，不是整条外箱；KIX 官方页另提供当前包装和免税店购买信息。",
     },
   ],
   [
@@ -641,8 +650,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/glo-neo-brilliant-berry-1carton-reference.jpg",
       cartonSource:
         "https://j-cigarette.com/glo-neo-for-hyper-brilliant-berry-sticks-bursting-with-freshness-berry-blend/",
+      cartonGallery: [
+        {
+          label: "KIX 官方当前包装",
+          image: "./images/cartons/glo-neo-brilliant-berry-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/neo-brilliant-berry-for-glo-hyper-2406100175.html",
+          note: "KIX 官方页展示 neo Brilliant Berry for glo hyper 当前单盒图，并明确 10 boxes per carton (20 sticks per box)。",
+        },
+      ],
       cartonNote:
-        "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)BrilliantBerry，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍，所以作为整条数量参考图使用。",
+        "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)BrilliantBerry，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍；KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
     },
   ],
   [
@@ -683,8 +701,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/glo-lucky-strike-menthol-1carton-reference.jpg",
       cartonSource:
         "https://j-cigarette.com/1-carton-glo-hyper-menthol-lucky-strike-menthol-x-menthol-flavor-refreshing-menthol-flavor/",
+      cartonGallery: [
+        {
+          label: "KIX 官方当前包装",
+          image: "./images/cartons/glo-lucky-strike-menthol-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/lucky-strike-menthol-for-glo-hyper-2406300046.html",
+          note: "KIX 官方页展示 LUCKY STRIKE MENTHOL FOR GLO HYPER 当前单盒图，并明确 10 boxes per carton (20 sticks per box)。",
+        },
+      ],
       cartonNote:
-        "j-Cigarette 对应商品页确认“1Carton = 10 packs = 200 sticks”，图片自身带 1 carton / 10 pack / 200 piece 标识；仍不是外箱实拍，所以作为整条数量参考图使用。",
+        "j-Cigarette 对应商品页确认“1Carton = 10 packs = 200 sticks”，图片自身带 1 carton / 10 pack / 200 piece 标识；仍不是外箱实拍。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
     },
   ],
   [
@@ -694,8 +721,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/glo-lucky-strike-dark-1carton-reference.jpg",
       cartonSource:
         "https://j-cigarette.com/1-carton-glo-hyper-lucky-strike-dark-tobacco-smoky-flavor-like-aromatic-wood/",
+      cartonGallery: [
+        {
+          label: "KIX 官方当前包装",
+          image: "./images/cartons/glo-lucky-strike-dark-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/lucky-strike-dark-menthol-for-glo-hyper-2406300043.html",
+          note: "KIX 官方页展示 LUCKY STRIKE DARK MENTHOL FOR GLO HYPER 当前单盒图，并明确 10 boxes per carton (20 sticks per box)。",
+        },
+      ],
       cartonNote:
-        "j-Cigarette 对应商品页确认“1 Carton = 10 pack = 200 pieces”，图片自身带 1 Carton 标识；仍不是外箱实拍，所以作为整条数量参考图使用。",
+        "j-Cigarette 对应商品页确认“1 Carton = 10 pack = 200 pieces”，图片自身带 1 Carton 标识；仍不是外箱实拍。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
     },
   ],
   [
@@ -705,8 +741,17 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/glo-neo-tropical-swirl-1carton-reference.jpg",
       cartonSource:
         "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
+      cartonGallery: [
+        {
+          label: "KIX 官方当前包装",
+          image: "./images/cartons/glo-neo-tropical-swirl-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/neo-brilliant-tropical-click-for-glo-hyper-2406100176.html",
+          note: "KIX 官方页展示 neo Brilliant Tropical Click for glo hyper 当前单盒图，并明确 10 boxes per carton (20 sticks per box)。",
+        },
+      ],
       cartonNote:
-        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”。图片为准确 SKU 单盒图，不是外箱实拍，所以作为整条数量参考图使用。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”。图片为准确 SKU 单盒图，不是外箱实拍；KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
     },
   ],
   [
