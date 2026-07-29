@@ -193,10 +193,11 @@ const MEDIA_OVERRIDES = new Map([
     "クール ナノ ブースト 8|KOOL Nano 爆珠 8",
     {
       cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/kool-nano-blizzard8-pack-reference.jpg",
-      cartonSource: "https://www.world-tobacco.net/138_8859.html",
+      cartonImage:
+        "./images/cartons/kool-nano-blizzard8-carton-monolog-reference.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/8888396207409",
       cartonNote:
-        "公开资料更稳定对应 KOOL Nano 8 旧线为“クール・ナノ・ブリザード・8”：WORLD TOBACCO 页面列出商品番号 4133、20本入り、タール8mg/ニコチン0.7mg，并说明包装可能变更。该图比 KOOL Boost Fresh 更接近 Nano 包装，但仍不是一カートン外箱，且当前目录名“ナノ ブースト 8”未能被稳定核验，购买前必须核对完整日文名。",
+        "公开资料更稳定对应 KOOL Nano 8 旧线为“クール・ナノ・ブリザード・8”。ものログ页面标题为“Bクールナノブリザード・8カートン”，商品图展示多包排列实物，比单包图更接近一条/カートン语境；但图片清晰度低，不是封闭外箱。WORLD TOBACCO 另列该旧线为20本入り、タール8mg/ニコチン0.7mg。当前目录名“ナノ ブースト 8”仍未能被稳定核验，购买前必须核对完整日文名。",
     },
   ],
   [
