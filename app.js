@@ -1,5 +1,12 @@
 import { rawProducts } from "./data/products.js";
 import {
+  AI_LIMITS,
+  buildExternalSearchLinks,
+  buildJapaneseRequest,
+  createAiClient,
+  localRecommend,
+} from "./ai-client.js";
+import {
   catalogMeta,
   chainMapUrl,
   enrichProducts,
@@ -13,11 +20,38 @@ import {
 
 const products = enrichProducts(rawProducts);
 const productById = new Map(products.map((item) => [item.id, item]));
+const aiClient = createAiClient({
+  endpoint: window.TABAKO_CONFIG?.aiProxyUrl ?? "",
+});
 
 const elements = {
+  aiAnswer: document.querySelector("#aiAnswer"),
+  aiDialog: document.querySelector("#aiDialog"),
+  aiImageInput: document.querySelector("#aiImageInput"),
+  aiImagePlaceholder: document.querySelector("#aiImagePlaceholder"),
+  aiImagePreview: document.querySelector("#aiImagePreview"),
+  aiJapaneseCopy: document.querySelector("#aiJapaneseCopy"),
+  aiJapaneseExplain: document.querySelector("#aiJapaneseExplain"),
+  aiJapaneseProductSelect: document.querySelector("#aiJapaneseProductSelect"),
+  aiJapaneseQuantity: document.querySelector("#aiJapaneseQuantity"),
+  aiJapaneseText: document.querySelector("#aiJapaneseText"),
+  aiMatchList: document.querySelector("#aiMatchList"),
+  aiOpenButton: document.querySelector("#aiOpenButton"),
+  aiPrompt: document.querySelector("#aiPrompt"),
+  aiRecommendSubmit: document.querySelector("#aiRecommendSubmit"),
+  aiResultBadge: document.querySelector("#aiResultBadge"),
+  aiResultSection: document.querySelector("#aiResultSection"),
+  aiServiceNote: document.querySelector("#aiServiceNote"),
+  aiServiceStatus: document.querySelector("#aiServiceStatus"),
+  aiSourceList: document.querySelector("#aiSourceList"),
+  aiVisionSubmit: document.querySelector("#aiVisionSubmit"),
   cards: document.querySelector("#cards"),
   cardTemplate: document.querySelector("#cardTemplate"),
+  emptyImagesLink: document.querySelector("#emptyImagesLink"),
+  emptyOfficialLink: document.querySelector("#emptyOfficialLink"),
+  emptyQuery: document.querySelector("#emptyQuery"),
   emptyState: document.querySelector("#emptyState"),
+  emptyWebLink: document.querySelector("#emptyWebLink"),
   favoritesButton: document.querySelector("#favoritesButton"),
   filterApply: document.querySelector("#filterApply"),
   filterButton: document.querySelector("#filterButton"),
@@ -25,6 +59,14 @@ const elements = {
   filterDialog: document.querySelector("#filterDialog"),
   filterReset: document.querySelector("#filterReset"),
   methodDialog: document.querySelector("#methodDialog"),
+  onlineImagesLink: document.querySelector("#onlineImagesLink"),
+  onlineOfficialLink: document.querySelector("#onlineOfficialLink"),
+  onlineResultList: document.querySelector("#onlineResultList"),
+  onlineSearchButton: document.querySelector("#onlineSearchButton"),
+  onlineSearchDialog: document.querySelector("#onlineSearchDialog"),
+  onlineSearchQuery: document.querySelector("#onlineSearchQuery"),
+  onlineSearchStatus: document.querySelector("#onlineSearchStatus"),
+  onlineWebLink: document.querySelector("#onlineWebLink"),
   productDetail: document.querySelector("#productDetail"),
   productDialog: document.querySelector("#productDialog"),
   rankingList: document.querySelector("#rankingList"),
@@ -100,6 +142,8 @@ const state = {
   favoritesOnly: false,
   favorites: new Set(initialFavorites),
   activeProductId: null,
+  aiImageData: "",
+  aiMode: "recommend",
   jpyToCny: 0.0415,
 };
 
@@ -211,6 +255,33 @@ function setImageFallback(image) {
   );
 }
 
+function currentSearchPhrase() {
+  if (elements.searchInput.value.trim()) return elements.searchInput.value.trim();
+  if (state.category !== "all") {
+    return `${document.querySelector(`[data-category="${state.category}"]`)?.textContent?.trim() ?? ""} 日本`;
+  }
+  if (state.flavor !== "all") return FLAVOR_LABELS[state.flavor] ?? "日本香烟";
+  if (state.favoritesOnly) return "日本热门香烟";
+  return "日本香烟";
+}
+
+function applyExternalLinks(query, targets) {
+  const links = buildExternalSearchLinks(query);
+  targets.images.href = links.images;
+  targets.web.href = links.web;
+  targets.official.href = links.official;
+}
+
+function updateEmptyRecovery() {
+  const phrase = currentSearchPhrase();
+  elements.emptyQuery.textContent = phrase;
+  applyExternalLinks(phrase, {
+    images: elements.emptyImagesLink,
+    web: elements.emptyWebLink,
+    official: elements.emptyOfficialLink,
+  });
+}
+
 function renderCatalog() {
   const visibleProducts = currentProducts();
   const fragment = document.createDocumentFragment();
@@ -224,6 +295,7 @@ function renderCatalog() {
     const availability = availabilityMeta(item);
 
     card.dataset.productId = item.id;
+    card.dataset.category = item.type;
     openButton.setAttribute("aria-label", `查看 ${item.jp}，${item.cn} 的详情`);
     openButton.addEventListener("click", (event) => openProduct(item.id, event.currentTarget));
 
@@ -232,6 +304,7 @@ function renderCatalog() {
     setImageFallback(image);
 
     card.querySelector(".category-tag").textContent = item.categoryLabel;
+    card.querySelector(".brand-name").textContent = item.brand;
     const stockBadge = card.querySelector(".stock-badge");
     stockBadge.dataset.level = item.availability;
     stockBadge.textContent = availability.short;
@@ -259,6 +332,7 @@ function renderCatalog() {
   elements.resultSummary.textContent =
     `当前 ${visibleProducts.length} 款 · 全库 ${products.length} 款`;
   elements.emptyState.hidden = visibleProducts.length > 0;
+  if (visibleProducts.length === 0) updateEmptyRecovery();
   hydrateIcons(elements.cards);
 }
 
@@ -382,6 +456,10 @@ function renderProductDetail(item) {
           <a href="${escapeHtml(chainMapUrl("ローソン"))}" target="_blank" rel="noopener noreferrer">Lawson</a>
           <a href="${escapeHtml(chainMapUrl("ドン・キホーテ"))}" target="_blank" rel="noopener noreferrer">Don Quijote</a>
         </div>
+        <button class="secondary-button full-width japanese-detail-action" type="button" data-japanese-product="${escapeHtml(item.id)}">
+          <i data-lucide="languages" aria-hidden="true"></i>
+          生成给店员看的日语沟通卡
+        </button>
       </section>
     `
     : `
@@ -495,6 +573,14 @@ function renderProductDetail(item) {
     requestProductClose(false);
     openSimpleDialog(elements.methodDialog);
   });
+  elements.productDetail.querySelector("[data-japanese-product]")?.addEventListener(
+    "click",
+    (event) => {
+      const productId = event.currentTarget.dataset.japaneseProduct;
+      requestProductClose(false);
+      openAiDialog("japanese", { productId });
+    },
+  );
 
   const detailImage = elements.productDetail.querySelector(".detail-image-wrap img");
   if (detailImage) setImageFallback(detailImage);
@@ -547,6 +633,368 @@ function openSimpleDialog(dialog) {
 
 function closeSimpleDialog(dialog) {
   if (dialog.open) dialog.close();
+  if (dialog === elements.aiDialog) resetAiImage();
+}
+
+function compactCatalogForAi() {
+  return products.map((item) => ({
+    id: item.id,
+    jp: item.jp,
+    cn: item.cn,
+    brand: item.brand,
+    type: item.type,
+    flavor: item.flavor,
+    strength: item.strength,
+    jpy: item.jpy,
+    availability: item.availability,
+    purchaseAllowed: item.purchaseAllowed,
+    jpScore: item.jpScore,
+    cnScore: item.cnScore,
+    searchText: [
+      item.jp,
+      item.cn,
+      item.brand,
+      item.description,
+      item.compatibility,
+      item.categoryLabel,
+    ].join(" "),
+  }));
+}
+
+function setAiMode(mode) {
+  if (!["recommend", "vision", "japanese"].includes(mode)) return;
+  state.aiMode = mode;
+  document.querySelectorAll("[data-ai-mode]").forEach((button) => {
+    const active = button.dataset.aiMode === mode;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+  document.querySelectorAll("[data-ai-panel]").forEach((panel) => {
+    const active = panel.dataset.aiPanel === mode;
+    panel.classList.toggle("is-active", active);
+    panel.hidden = !active;
+  });
+  elements.aiResultSection.hidden = true;
+}
+
+function populateJapaneseProducts() {
+  const current = elements.aiJapaneseProductSelect.value;
+  const fragment = document.createDocumentFragment();
+  products
+    .filter((item) => item.purchaseAllowed)
+    .forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.id;
+      option.textContent = `${item.jp} · ${item.cn}`;
+      fragment.appendChild(option);
+    });
+  elements.aiJapaneseProductSelect.replaceChildren(fragment);
+  if (current && productById.has(current)) elements.aiJapaneseProductSelect.value = current;
+}
+
+function updateJapaneseCard() {
+  const item = productById.get(elements.aiJapaneseProductSelect.value);
+  if (!item) {
+    elements.aiJapaneseText.textContent = "请选择烟款";
+    elements.aiJapaneseExplain.textContent = "把这张卡直接给便利店或烟草店店员看。";
+    elements.aiJapaneseCopy.disabled = true;
+    return;
+  }
+
+  elements.aiJapaneseText.textContent = buildJapaneseRequest(
+    item.jp,
+    elements.aiJapaneseQuantity.value,
+  );
+  elements.aiJapaneseExplain.textContent =
+    `${item.cn} · 参考 ${yen(item.jpy)}。有无库存请以店员答复为准。`;
+  elements.aiJapaneseCopy.disabled = false;
+}
+
+function resetAiImage() {
+  state.aiImageData = "";
+  elements.aiImageInput.value = "";
+  elements.aiImagePreview.hidden = true;
+  elements.aiImagePreview.removeAttribute("src");
+  elements.aiImagePlaceholder.hidden = false;
+  elements.aiVisionSubmit.disabled = true;
+}
+
+function openAiDialog(mode = "recommend", { query = "", productId = "" } = {}) {
+  setAiMode(mode);
+  elements.aiServiceNote.dataset.state = aiClient.configured ? "online" : "local";
+  elements.aiServiceStatus.textContent = aiClient.configured
+    ? "在线 MiniMax 已通过安全代理接入"
+    : "本地匹配可用 · 在线 AI 待安全代理";
+
+  if (query) elements.aiPrompt.value = query.slice(0, AI_LIMITS.query);
+  if (mode === "japanese") {
+    populateJapaneseProducts();
+    if (productId && productById.get(productId)?.purchaseAllowed) {
+      elements.aiJapaneseProductSelect.value = productId;
+    }
+    updateJapaneseCard();
+  }
+
+  openSimpleDialog(elements.aiDialog);
+  requestAnimationFrame(() => {
+    if (mode === "recommend") elements.aiPrompt.focus({ preventScroll: true });
+    if (mode === "vision") elements.aiImageInput.focus({ preventScroll: true });
+    if (mode === "japanese") {
+      elements.aiJapaneseProductSelect.focus({ preventScroll: true });
+    }
+  });
+}
+
+function createAiMatchCard(match) {
+  const item = productById.get(match.id);
+  if (!item) return null;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "ai-match-card";
+  button.dataset.productId = item.id;
+  button.setAttribute("aria-label", `查看 ${item.jp} 详情`);
+
+  const visual = document.createElement("span");
+  visual.className = "ai-match-visual";
+  const image = document.createElement("img");
+  image.src = item.image;
+  image.alt = `${item.jp} 包装参考图`;
+  image.loading = "lazy";
+  setImageFallback(image);
+  visual.appendChild(image);
+
+  const copy = document.createElement("span");
+  copy.className = "ai-match-copy";
+  const brand = document.createElement("small");
+  brand.textContent = `${item.brand} · ${availabilityMeta(item).short}`;
+  const name = document.createElement("strong");
+  name.textContent = item.jp;
+  const cn = document.createElement("span");
+  cn.textContent = `${item.cn} · ${yen(item.jpy)}`;
+  const reason = document.createElement("em");
+  reason.textContent = match.reason || "与输入线索接近";
+  copy.append(brand, name, cn, reason);
+
+  const arrow = document.createElement("i");
+  arrow.dataset.lucide = "chevron-right";
+  arrow.setAttribute("aria-hidden", "true");
+  button.append(visual, copy, arrow);
+  button.addEventListener("click", () => {
+    closeSimpleDialog(elements.aiDialog);
+    openProduct(item.id, elements.aiOpenButton);
+  });
+  return button;
+}
+
+function renderAiResult(payload, badge = "本地目录") {
+  elements.aiAnswer.textContent =
+    payload.answer || "暂时没有足够线索，请换一个品牌名、包装颜色或口味描述。";
+  elements.aiResultBadge.textContent = badge;
+  elements.aiMatchList.replaceChildren();
+  elements.aiSourceList.replaceChildren();
+
+  for (const match of payload.matches ?? []) {
+    const card = createAiMatchCard(match);
+    if (card) elements.aiMatchList.appendChild(card);
+  }
+
+  for (const source of payload.sources ?? []) {
+    const link = document.createElement("a");
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    const title = document.createElement("strong");
+    title.textContent = source.title;
+    const snippet = document.createElement("span");
+    snippet.textContent = source.snippet || new URL(source.url).hostname;
+    const icon = document.createElement("i");
+    icon.dataset.lucide = "arrow-up-right";
+    icon.setAttribute("aria-hidden", "true");
+    link.append(title, snippet, icon);
+    elements.aiSourceList.appendChild(link);
+  }
+
+  elements.aiResultSection.hidden = false;
+  hydrateIcons(elements.aiResultSection);
+  const scrollBehavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  elements.aiResultSection.scrollIntoView({ block: "nearest", behavior: scrollBehavior });
+}
+
+function setButtonBusy(button, busy, busyText) {
+  if (!button.dataset.idleHtml) button.dataset.idleHtml = button.innerHTML;
+  button.disabled = busy;
+  button.classList.toggle("is-loading", busy);
+  if (busy) {
+    button.textContent = busyText;
+  } else {
+    button.innerHTML = button.dataset.idleHtml;
+    hydrateIcons(button);
+  }
+}
+
+async function runAiRecommendation() {
+  const query = elements.aiPrompt.value.trim();
+  if (!query) {
+    showToast("先描述包装、口味或预算");
+    elements.aiPrompt.focus();
+    return;
+  }
+
+  const catalog = compactCatalogForAi();
+  const matches = localRecommend(query, catalog);
+  renderAiResult(
+    {
+      answer: matches.length
+        ? "先按名称、口味、强度、预算和热度，从本地 91 款目录里筛出了这些候选。"
+        : "本地目录暂时没有足够接近的候选，可以继续联网核对。",
+      matches,
+      sources: [],
+    },
+    "本地即时匹配",
+  );
+
+  if (!aiClient.configured) return;
+
+  setButtonBusy(elements.aiRecommendSubmit, true, "MiniMax 正在分析…");
+  try {
+    const result = await aiClient.ask({ mode: "recommend", query, catalog });
+    renderAiResult(result, "MiniMax + 本地目录");
+  } catch (error) {
+    showToast(error.message || "在线 AI 暂不可用，已保留本地结果");
+  } finally {
+    setButtonBusy(elements.aiRecommendSubmit, false);
+  }
+}
+
+function readImageFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => resolve(String(reader.result)));
+    reader.addEventListener("error", () => reject(new Error("图片读取失败")));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function selectAiImage(file) {
+  resetAiImage();
+  if (!file) return;
+  if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+    showToast("请选择 JPG、PNG 或 WebP 图片");
+    return;
+  }
+  if (file.size > AI_LIMITS.imageBytes) {
+    showToast("图片超过 4 MB，请压缩后再试");
+    return;
+  }
+
+  try {
+    state.aiImageData = await readImageFile(file);
+    elements.aiImagePreview.src = state.aiImageData;
+    elements.aiImagePreview.hidden = false;
+    elements.aiImagePlaceholder.hidden = true;
+    elements.aiVisionSubmit.disabled = false;
+  } catch (error) {
+    showToast(error.message);
+  }
+}
+
+async function runAiVision() {
+  if (!state.aiImageData) {
+    showToast("请先选择一张烟盒图片");
+    return;
+  }
+  if (!aiClient.configured) {
+    renderAiResult(
+      {
+        answer:
+          "为避免把密钥暴露在网页里，拍照识烟只会在安全代理配置完成后发送图片；当前图片没有上传。你仍可用“描述偏好”进行本地匹配。",
+        matches: [],
+        sources: [],
+      },
+      "隐私保护",
+    );
+    return;
+  }
+
+  setButtonBusy(elements.aiVisionSubmit, true, "MiniMax 正在识别…");
+  try {
+    const result = await aiClient.ask({
+      mode: "vision",
+      query: "",
+      image: state.aiImageData,
+      catalog: compactCatalogForAi(),
+    });
+    renderAiResult(result, "MiniMax 图片理解");
+  } catch (error) {
+    renderAiResult(
+      { answer: error.message || "图片识别暂不可用，请稍后重试。", matches: [], sources: [] },
+      "识别未完成",
+    );
+  } finally {
+    setButtonBusy(elements.aiVisionSubmit, false);
+  }
+}
+
+function renderOnlineResults(payload) {
+  elements.onlineResultList.replaceChildren();
+  if (payload.answer) {
+    const summary = document.createElement("p");
+    summary.className = "online-summary";
+    summary.textContent = payload.answer;
+    elements.onlineResultList.appendChild(summary);
+  }
+
+  for (const source of payload.sources ?? []) {
+    const link = document.createElement("a");
+    link.className = "online-result-card";
+    link.href = source.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    const domain = document.createElement("small");
+    domain.textContent = new URL(source.url).hostname;
+    const title = document.createElement("strong");
+    title.textContent = source.title;
+    const snippet = document.createElement("span");
+    snippet.textContent = source.snippet || "打开原网页核对";
+    const icon = document.createElement("i");
+    icon.dataset.lucide = "arrow-up-right";
+    icon.setAttribute("aria-hidden", "true");
+    link.append(domain, title, snippet, icon);
+    elements.onlineResultList.appendChild(link);
+  }
+  hydrateIcons(elements.onlineResultList);
+}
+
+async function openOnlineSearch() {
+  const query = currentSearchPhrase();
+  elements.onlineSearchQuery.textContent = query;
+  elements.onlineResultList.replaceChildren();
+  applyExternalLinks(query, {
+    images: elements.onlineImagesLink,
+    web: elements.onlineWebLink,
+    official: elements.onlineOfficialLink,
+  });
+  openSimpleDialog(elements.onlineSearchDialog);
+
+  if (!aiClient.configured) {
+    elements.onlineSearchStatus.textContent =
+      "在线 AI 代理尚未配置。下方三个入口仍可直接联网搜索，不需要本站保存密钥。";
+    return;
+  }
+
+  elements.onlineSearchStatus.textContent = "MiniMax 正在联网查找当前资料…";
+  try {
+    const result = await aiClient.ask({ mode: "search", query });
+    elements.onlineSearchStatus.textContent =
+      result.sources.length > 0
+        ? `找到 ${result.sources.length} 条可继续核对的网页线索`
+        : "没有找到可靠来源，建议使用下方直接搜索";
+    renderOnlineResults(result);
+  } catch (error) {
+    elements.onlineSearchStatus.textContent =
+      `${error.message || "联网 AI 暂不可用"}。仍可使用下方直接搜索。`;
+  }
 }
 
 function syncFilterForm() {
@@ -659,6 +1107,56 @@ elements.favoritesButton.addEventListener("click", () => {
   renderAll();
   if (state.favoritesOnly && state.favorites.size === 0) {
     showToast("还没有收藏烟款");
+  }
+});
+
+elements.aiOpenButton.addEventListener("click", () => openAiDialog("recommend"));
+elements.onlineSearchButton.addEventListener("click", openOnlineSearch);
+
+document.querySelectorAll("[data-open-ai-search]").forEach((button) => {
+  button.addEventListener("click", () => {
+    openAiDialog("recommend", { query: currentSearchPhrase() });
+  });
+});
+
+document.querySelectorAll("[data-ai-mode]").forEach((button) => {
+  button.addEventListener("click", () => {
+    setAiMode(button.dataset.aiMode);
+    if (button.dataset.aiMode === "japanese") {
+      populateJapaneseProducts();
+      updateJapaneseCard();
+    }
+  });
+});
+
+document.querySelectorAll("[data-ai-suggestion]").forEach((button) => {
+  button.addEventListener("click", () => {
+    elements.aiPrompt.value = button.dataset.aiSuggestion;
+    elements.aiPrompt.focus();
+  });
+});
+
+elements.aiRecommendSubmit.addEventListener("click", runAiRecommendation);
+elements.aiPrompt.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+    event.preventDefault();
+    runAiRecommendation();
+  }
+});
+elements.aiImageInput.addEventListener("change", (event) => {
+  selectAiImage(event.currentTarget.files?.[0]);
+});
+elements.aiVisionSubmit.addEventListener("click", runAiVision);
+elements.aiJapaneseProductSelect.addEventListener("change", updateJapaneseCard);
+elements.aiJapaneseQuantity.addEventListener("change", updateJapaneseCard);
+elements.aiJapaneseCopy.addEventListener("click", async () => {
+  const text = elements.aiJapaneseText.textContent.trim();
+  if (!text || text === "请选择烟款") return;
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast("日语沟通卡已复制");
+  } catch {
+    showToast("复制失败，请长按日语文字复制");
   }
 });
 

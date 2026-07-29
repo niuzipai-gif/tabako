@@ -1,0 +1,9 @@
+name = "tabako-minimax-proxy"
+main = "worker.js"
+compatibility_date = "2026-07-29"
+
+[vars]
+ALLOWED_ORIGIN = "https://niuzipai-gif.github.io"
+
+# Configure the credential outside Git:
+# npx wrangler secret put MINIMAX_API_KEY

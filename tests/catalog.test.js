@@ -23,6 +23,30 @@ test("application shell exposes the complete discovery and detail structure", ()
   assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
 });
 
+test("AI shell exposes text, image, Japanese card, and online fallback", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+
+  assert.match(html, /id="aiDialog"/);
+  assert.match(html, /id="aiImageInput"/);
+  assert.match(html, /id="onlineSearchDialog"/);
+  assert.match(html, /data-ai-mode="japanese"/);
+  assert.match(html, /id="onlineSearchButton"/);
+  assert.match(html, /id="emptyQuery"/);
+});
+
+test("public application files never contain a MiniMax secret", () => {
+  for (const file of [
+    "index.html",
+    "app.js",
+    "ai-client.js",
+    "config.js",
+    "worker.js",
+  ]) {
+    const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+    assert.doesNotMatch(source, /sk-[A-Za-z0-9_-]{20,}/);
+  }
+});
+
 test("detail header keeps favorite and close actions in a visible flex row", () => {
   const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
 

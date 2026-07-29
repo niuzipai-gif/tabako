@@ -1,0 +1,281 @@
+import { AI_LIMITS, normalizeAiPayload } from "./ai-client.js";
+
+const DEFAULT_ALLOWED_ORIGIN = "https://niuzipai-gif.github.io";
+const CHAT_ENDPOINT = "https://api.minimaxi.com/v1/chat/completions";
+const SEARCH_ENDPOINT = "https://api.minimaxi.com/anthropic/v1/messages";
+const MAX_BODY_BYTES = 6 * 1024 * 1024;
+const ALLOWED_MODES = new Set(["recommend", "vision", "search", "japanese"]);
+const BASE_SYSTEM_PROMPT = `
+你是“煙草羅盤”的成人日本旅行信息助手，只服务年满20岁的用户。
+你只能根据用户提供的目录给出目录内匹配，不得宣称实时库存，不得把烟草描述为健康或更安全，
+不得为 purchaseAllowed=false 的条目提供购买地点、推荐或替代购买建议。
+价格、热度和可得性都必须写成参考信息。返回纯 JSON，不要 Markdown、代码围栏或额外字段。
+JSON 结构：{"answer":"简短中文答复","matches":[{"id":"目录商品ID","reason":"匹配理由"}],"sources":[]}
+`.trim();
+
+function cleanText(value, limit) {
+  return String(value ?? "")
+    .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "")
+    .trim()
+    .slice(0, limit);
+}
+
+function isSafeUrl(value) {
+  try {
+    const url = new URL(String(value));
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+function corsHeaders(requestOrigin, allowedOrigin) {
+  const headers = {
+    "content-type": "application/json; charset=utf-8",
+    "cache-control": "no-store",
+    "x-content-type-options": "nosniff",
+    vary: "Origin",
+  };
+  if (requestOrigin && requestOrigin === allowedOrigin) {
+    headers["access-control-allow-origin"] = requestOrigin;
+    headers["access-control-allow-methods"] = "POST, OPTIONS";
+    headers["access-control-allow-headers"] = "Content-Type";
+    headers["access-control-max-age"] = "86400";
+  }
+  return headers;
+}
+
+function jsonResponse(payload, status, requestOrigin, allowedOrigin) {
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: corsHeaders(requestOrigin, allowedOrigin),
+  });
+}
+
+function errorResponse(message, status, requestOrigin, allowedOrigin) {
+  return jsonResponse({ error: message }, status, requestOrigin, allowedOrigin);
+}
+
+function normalizeQuery(value, { required = true } = {}) {
+  const query = cleanText(value, AI_LIMITS.query + 1);
+  if (required && !query) throw new TypeError("请输入查询内容");
+  if (query.length > AI_LIMITS.query) throw new RangeError("查询内容过长");
+  return query;
+}
+
+function sanitizeCatalog(catalog) {
+  if (!Array.isArray(catalog)) return [];
+  return catalog.slice(0, AI_LIMITS.catalogItems).map((item) => ({
+    id: cleanText(item?.id, 100),
+    jp: cleanText(item?.jp, 160),
+    cn: cleanText(item?.cn, 160),
+    brand: cleanText(item?.brand, 100),
+    type: cleanText(item?.type, 40),
+    flavor: cleanText(item?.flavor, 40),
+    strength: cleanText(item?.strength, 40),
+    jpy: Number.isFinite(Number(item?.jpy)) ? Number(item.jpy) : null,
+    availability: cleanText(item?.availability, 40),
+    purchaseAllowed: item?.purchaseAllowed !== false,
+  }));
+}
+
+function validateImage(value) {
+  const image = String(value ?? "");
+  const match = image.match(/^data:image\/(?:jpeg|png|webp);base64,([A-Za-z0-9+/=]+)$/);
+  if (!match) throw new TypeError("图片必须是 JPG、PNG 或 WebP");
+  if (Math.floor((match[1].length * 3) / 4) > AI_LIMITS.imageBytes) {
+    throw new RangeError("图片超过 4 MB");
+  }
+  return image;
+}
+
+function extractJsonObject(value) {
+  const text = String(value ?? "")
+    .replace(/<think>[\s\S]*?<\/think>/gi, "")
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/i, "")
+    .trim();
+  const start = text.indexOf("{");
+  const end = text.lastIndexOf("}");
+  if (start < 0 || end <= start) throw new Error("AI 返回格式不可解析");
+  return JSON.parse(text.slice(start, end + 1));
+}
+
+function buildChatRequest({ mode, query, catalog, image }) {
+  const catalogJson = JSON.stringify(catalog);
+  const instructions =
+    mode === "japanese"
+      ? `${BASE_SYSTEM_PROMPT}\nanswer 只写礼貌自然的日语沟通句和一行中文解释。`
+      : BASE_SYSTEM_PROMPT;
+
+  const userText =
+    mode === "vision"
+      ? `识别烟盒上可见的品牌、日文商品名、颜色和包装线索，再从以下目录找最多3个候选。不要猜测看不清的文字。\n目录：${catalogJson}`
+      : mode === "japanese"
+        ? `把这段需求改写成在日本便利店或烟草店可直接展示的礼貌日语：${query}`
+        : `用户偏好：${query}\n只从以下目录找最多3个候选，并说明口味、强度、参考价或兼容性为何匹配。\n目录：${catalogJson}`;
+
+  return {
+    model: "MiniMax-M3",
+    thinking: { type: "disabled" },
+    stream: false,
+    max_completion_tokens: 1200,
+    temperature: 0.2,
+    messages: [
+      { role: "system", content: instructions },
+      {
+        role: "user",
+        content:
+          mode === "vision"
+            ? [
+                { type: "text", text: userText },
+                { type: "image_url", image_url: { url: image } },
+              ]
+            : userText,
+      },
+    ],
+  };
+}
+
+async function callChat(fetchImpl, key, input) {
+  const upstream = await fetchImpl(CHAT_ENDPOINT, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(buildChatRequest(input)),
+  });
+  if (!upstream.ok) throw new Error("upstream");
+
+  const payload = await upstream.json();
+  const content = payload?.choices?.[0]?.message?.content;
+  return normalizeAiPayload(extractJsonObject(content));
+}
+
+async function callSearch(fetchImpl, key, query) {
+  const upstream = await fetchImpl(SEARCH_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "x-api-key": key,
+      "anthropic-version": "2023-06-01",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "MiniMax-M3",
+      max_tokens: 1800,
+      system:
+        "你是日本烟草包装与产品信息检索助手。只返回识别和核对线索，不宣称实时库存，不给健康建议。优先厂商、政府和可信零售资料，并提醒用户核对日期。",
+      messages: [
+        {
+          role: "user",
+          content: `联网查询“${query}”在日本可能对应的烟草产品、包装、当前参考价或厂商资料。`,
+        },
+      ],
+      tools: [{ type: "web_search_20250305", name: "web_search" }],
+    }),
+  });
+  if (!upstream.ok) throw new Error("upstream");
+
+  const payload = await upstream.json();
+  const textBlocks = [];
+  const sources = [];
+  for (const block of Array.isArray(payload?.content) ? payload.content : []) {
+    if (block?.type === "text" && cleanText(block.text, AI_LIMITS.answer)) {
+      textBlocks.push(cleanText(block.text, AI_LIMITS.answer));
+    }
+    if (block?.type !== "web_search_tool_result" || !Array.isArray(block.content)) continue;
+    for (const result of block.content) {
+      if (result?.type !== "web_search_result" || !isSafeUrl(result.url)) continue;
+      sources.push({
+        title: cleanText(result.title, 180) || "查看来源",
+        url: String(result.url),
+        snippet: cleanText(result.content, 500),
+      });
+    }
+  }
+
+  return normalizeAiPayload({
+    answer: textBlocks.at(-1) || "已找到一些可能相关的网页线索，请打开来源核对。",
+    matches: [],
+    sources,
+  });
+}
+
+export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
+  return Object.freeze({
+    async fetch(request, env = {}) {
+      const allowedOrigin = cleanText(env.ALLOWED_ORIGIN, 300) || DEFAULT_ALLOWED_ORIGIN;
+      const requestOrigin = request.headers.get("origin") || "";
+
+      if (requestOrigin !== allowedOrigin) {
+        return errorResponse("不允许的来源", 403, requestOrigin, allowedOrigin);
+      }
+      if (request.method === "OPTIONS") {
+        return new Response(null, {
+          status: 204,
+          headers: corsHeaders(requestOrigin, allowedOrigin),
+        });
+      }
+      if (request.method !== "POST") {
+        return errorResponse("只支持 POST", 405, requestOrigin, allowedOrigin);
+      }
+      if (!env.MINIMAX_API_KEY) {
+        return errorResponse("AI 服务尚未配置", 503, requestOrigin, allowedOrigin);
+      }
+      if (!request.headers.get("content-type")?.toLowerCase().startsWith("application/json")) {
+        return errorResponse("请求格式必须是 JSON", 415, requestOrigin, allowedOrigin);
+      }
+
+      const declaredLength = Number(request.headers.get("content-length") || 0);
+      if (declaredLength >= MAX_BODY_BYTES) {
+        return errorResponse("请求体过大", 413, requestOrigin, allowedOrigin);
+      }
+
+      let body;
+      try {
+        const text = await request.text();
+        if (new TextEncoder().encode(text).byteLength >= MAX_BODY_BYTES) {
+          return errorResponse("请求体过大", 413, requestOrigin, allowedOrigin);
+        }
+        body = JSON.parse(text);
+      } catch {
+        return errorResponse("JSON 无法解析", 400, requestOrigin, allowedOrigin);
+      }
+
+      const mode = cleanText(body?.mode, 40);
+      if (!ALLOWED_MODES.has(mode)) {
+        return errorResponse("不支持的 AI 模式", 400, requestOrigin, allowedOrigin);
+      }
+
+      try {
+        const query = normalizeQuery(body?.query, { required: mode !== "vision" });
+        const catalog = sanitizeCatalog(body?.catalog);
+        const image = mode === "vision" ? validateImage(body?.image) : "";
+        const result =
+          mode === "search"
+            ? await callSearch(fetchImpl, env.MINIMAX_API_KEY, query)
+            : await callChat(fetchImpl, env.MINIMAX_API_KEY, {
+                mode,
+                query,
+                catalog,
+                image,
+              });
+        return jsonResponse(result, 200, requestOrigin, allowedOrigin);
+      } catch (error) {
+        if (error instanceof TypeError || error instanceof RangeError) {
+          return errorResponse(error.message, 400, requestOrigin, allowedOrigin);
+        }
+        return errorResponse("AI 服务暂不可用，请稍后重试", 502, requestOrigin, allowedOrigin);
+      }
+    },
+  });
+}
+
+const worker = createWorker();
+
+export default {
+  fetch(request, env) {
+    return worker.fetch(request, env);
+  },
+};
