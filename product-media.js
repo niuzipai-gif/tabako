@@ -50,11 +50,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス スーパーライト|梅比乌斯 超淡",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/mevius-superlight-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083033",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/mevius-superlights6-carton-jpcanada-202604.jpg",
+      cartonSource:
+        "https://bbs.jpcanada.com/topics.php?bbs=1&cat=&icon=0&msgid=233158&order=0",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "ANA 免税店页面确认该 SKU 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Super Light 口味与包装色，整条外盒仍待实图核对。",
+        "2026-04 Jpcanada 出品帖文字写明 Mevius super lights (メビウス スーパーライト) 6，1カートン；照片可见未拆封 MEVIUS SUPER LIGHTS 6 soft pack 整条外箱。日本商品名通常写作メビウス・スーパーライト，图片英文面为 SUPER LIGHTS。",
     },
   ],
   [
@@ -70,12 +73,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ メンソール|万宝路 薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage:
-        "./images/cartons/marlboro-menthol8-box-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/4480",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
       cartonNote:
-        "プラセール页面标题确认“マールボロ・メンソール・8・ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为准确 Menthol 8 单包图，不是外箱实拍。",
+        "ANA 免税店商品页为“マールボロ メンソール 8 ボックス 2カートンセット”，规格写明 (20本×10箱)×2；图片可见官方 2 CARTONS 外箱。它是两条装参考，不是单独一条拆分图；购买单条时按 10 包 / 200 支理解。",
     },
   ],
   [
