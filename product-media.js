@@ -270,14 +270,24 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "クール ナノ ブースト 8|KOOL Nano 爆珠 8",
+    "クール ブースト フレッシュ 8|KOOL Boost Fresh 8",
     {
-      cartonStatus: "variant-reference",
-      cartonImage:
-        "./images/cartons/kool-nano-blizzard8-carton-monolog-reference.jpg",
-      cartonSource: "https://monolog.r-n-i.jp/item/8888396207409",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/kool-boost-fresh-8-ana-carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "旧 Nano Blizzard 8 参考",
+          image:
+            "./images/cartons/kool-nano-blizzard8-carton-monolog-reference.jpg",
+          source: "https://monolog.r-n-i.jp/item/8888396207409",
+          note: "旧线“クール・ナノ・ブリザード・8”与当前 Boost Fresh 8 不是同一完整 SKU，仅保留为 KOOL 8mg 爆珠旧资料线索。",
+        },
+      ],
       cartonNote:
-        "公开资料更稳定对应 KOOL Nano 8 旧线为“クール・ナノ・ブリザード・8”。ものログ页面标题为“Bクールナノブリザード・8カートン”，商品图展示多包排列实物，比单包图更接近一条/カートン语境；但图片清晰度低，不是封闭外箱。WORLD TOBACCO 另列该旧线为20本入り、タール8mg/ニコチン0.7mg。当前目录名“ナノ ブースト 8”仍未能被稳定核验，购买前必须核对完整日文名。",
+        "原目录名“クール ナノ ブースト 8”无法被公开资料稳定核验；日本免税与烟草店稳定使用“クール・ブースト・フレッシュ・8・ボックス / KOOL BOOST FRESH 8 BOX”。ANA 免税店页面确认销售规格为 20本×10箱 / 1カートン，第二张官方图展示 KOOL BOOST FRESH 8 一条外箱，按 10 包 / 200 支核验。",
     },
   ],
   [

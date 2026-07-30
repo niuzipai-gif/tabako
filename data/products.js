@@ -31,7 +31,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "ピース スーパーライト", cn: "和平 超淡", jpy: 600, img: "https://picsum.photos/seed/peace-super-lights/640/420" },
   { type: "cigarette", jp: "ピアニッシモ アリア メンソール", cn: "百乐门细支 薄荷", jpy: 570, img: "https://picsum.photos/seed/pianissimo-aria-menthol/640/420" },
   { type: "cigarette", jp: "バージニア エス ロゼ メンソール", cn: "Virginia S 粉薄荷", jpy: 560, img: "https://picsum.photos/seed/virginia-s-rose-menthol/640/420" },
-  { type: "cigarette", jp: "クール ナノ ブースト 8", cn: "KOOL Nano 爆珠 8", jpy: 580, img: "https://picsum.photos/seed/kool-nano-boost/640/420" },
+  { type: "cigarette", jp: "クール ブースト フレッシュ 8", cn: "KOOL Boost Fresh 8", jpy: 580, img: "https://picsum.photos/seed/kool-boost-fresh-8/640/420" },
   { type: "cigarette", jp: "ホープ", cn: "Hope", jpy: 330, img: "https://picsum.photos/seed/hope/640/420" },
   { type: "cigarette", jp: "わかば", cn: "若叶", jpy: 250, img: "https://picsum.photos/seed/wakaba/640/420" },
   { type: "cigarette", jp: "エコー", cn: "Echo", jpy: 450, img: "https://picsum.photos/seed/echo/640/420" },

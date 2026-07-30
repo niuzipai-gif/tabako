@@ -257,11 +257,14 @@
     },
     {
         "type": "cigarette",
-        "jp": "クール ナノ ブースト 8",
-        "cn": "KOOL Nano 爆珠 8",
-        "key": "237ab3d9",
-        "query": "クール ナノ ブースト 8 cigarette pack",
-        "status": "exists"
+        "jp": "クール ブースト フレッシュ 8",
+        "cn": "KOOL Boost Fresh 8",
+        "key": "da62e662",
+        "query": "クール ブースト フレッシュ 8 cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.Kw0jwLZmuJk3qFkIQdZXBwHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.world-tobacco.jp/view/category/sample3?page=2",
+        "title": "紙巻たばこ（シガレット）｜世界のたばこ通販"
     },
     {
         "type": "cigarette",
@@ -638,7 +641,7 @@
         "cn": "IQOS ILUMA i PRIME WE 限定款",
         "key": "19c36f61",
         "query": "IQOS イルマ i プライム WE モデル IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.4Kj10na7ZgWEH8OTUFSWAAHaHa?r=0&pid=Api",
         "sourcePage": "https://store.shopping.yahoo.co.jp/nekogoro2021/iqos-iluma-prime-we-1.html",
         "title": "アイコス（IQOS） 【新品未開封】IQOS イルマ プライム WE 2023 限定モデル登録不可 IQOS ILUMA PRIME WE電子 ..."
@@ -649,7 +652,7 @@
         "cn": "IQOS ILUMA i ONE WE 限定款",
         "key": "26d2fcf6",
         "query": "IQOS イルマ i ワン WE モデル IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.M69a-8yCQXoO-Udt3urlhwHaG2?r=0&pid=Api",
         "sourcePage": "https://item.rakuten.co.jp/nekogoroshop/iqos-iluma-one-we-1/",
         "title": "【楽天市場】【製品登録不可】アイコス イルマ ワン we 2023 モデル iqos iluma one we イルマ 本体キット terea ..."
@@ -704,7 +707,7 @@
         "cn": "Ploom AURA",
         "key": "b6dc9bbf",
         "query": "Ploom AURA IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.KSk-9SNxFgr3yXlYc7NOAwHaHa?r=0&pid=Api",
         "sourcePage": "https://www.ploom.it/it/shop/prodotti/dispositivi/ploom-aura-upgrade-gratuito-navy-blue",
         "title": "Acquista Ploom AURA Navy Blu: Dispositivo per Tabacco Riscaldato più ..."
@@ -759,7 +762,7 @@
         "cn": "glo HYPER pro+",
         "key": "93afaffb",
         "query": "glo HYPER pro+ IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.-z2Y2tjIe_GooDvDWVA3dgHaHa?r=0&pid=Api",
         "sourcePage": "https://www.tabak-brucker.de/glo-hyper-pro-device-kit-tabakerhitzer-lapis-blue",
         "title": "Tabakerhitzer glo Hyper pro Lapis Blue jetzt online kaufen"
@@ -792,7 +795,7 @@
         "cn": "glo Hilo",
         "key": "b6ec083b",
         "query": "glo Hilo IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.VyA7eB2XDdI8reghX4VADgAAAA?r=0&pid=Api",
         "sourcePage": "https://i-setu.com/glo/glo-hilo-iqos/",
         "title": "【グローヒーロとアイコスを比較】吸いごたえ、使い勝手など比べてみた"
@@ -880,7 +883,7 @@
         "cn": "VAPORESSO XROS 5 主机",
         "key": "69f6ad9a",
         "query": "VAPORESSO XROS 5 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.KOq5gSIXtqp5twCtdUtBCgHaHa?r=0&pid=Api",
         "sourcePage": "https://nosmoke.ba/proizvod/vaporesso-xros-5-pod-kit/",
         "title": "Vaporesso XROS 5 POD Kit | Nosmoke - E-Cigarete"
@@ -891,7 +894,7 @@
         "cn": "VAPORESSO XROS 5 Mini 主机",
         "key": "47953d68",
         "query": "VAPORESSO XROS 5 Mini IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.u4nog9cCftI6BXY_DYR8FwHaHa?r=0&pid=Api",
         "sourcePage": "https://www.thevapour-hut.com/product-tag/vaporesso-xros-5-mini/",
         "title": "Vaporesso XROS 5 Mini @ The Vapour Hut"
@@ -946,7 +949,7 @@
         "cn": "Uwell Caliburn G4 Mini 主机",
         "key": "65781916",
         "query": "Uwell Caliburn G4 Mini IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.sBpMPiTdN4zVunlj3LKk-QHaHa?r=0&pid=Api",
         "sourcePage": "https://www.gfc-provap.com/fr/kits-complet/31422-pack-pod-caliburn-g4-mini-uwell.html",
         "title": "Pod Caliburn G4 Mini Uwell"
@@ -1001,7 +1004,7 @@
         "cn": "Voopoo Argus P2 主机",
         "key": "2978085c",
         "query": "Voopoo Argus P2 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.SkV8ENvb8ELSHvQovi-1wwHaHa?r=0&pid=Api",
         "sourcePage": "https://www.neovapo.com/kits-cigarettes-electroniques/kit-argus-p2-voopoo.html",
         "title": "Kit Argus P2 Voopoo dès 31,90"
@@ -1023,7 +1026,7 @@
         "cn": "OXVA XLIM SQ Pro 2 主机",
         "key": "1c961ce6",
         "query": "OXVA XLIM SQ Pro 2 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.-NXucvQGhTGwP2x8GtX4QQHaHa?r=0&pid=Api",
         "sourcePage": "https://www.oxva.id/products/oxva-xlim-sq-pro-2-kit",
         "title": "OXVA Xlim SQ Pro 2 Kit - OXVA.ID"
