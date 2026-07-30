@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 32);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 32);
+  assert.equal(manifest.items.length, 33);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 33);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -470,13 +470,27 @@ test("Cigaronne Phantom Silver is searchable as 卡比龙 and uses verified KIX 
   assert.match(item.cartonNote, /PHANTOM SILVER|カートン空箱|1カートン10箱/);
 });
 
+test("Cigaronne Exclusive Brown uses a readable one-carton outer-box photo", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "シガローネ・エクスクルーシブ・ブラウン"),
+  );
+
+  assert.equal(item.brand, "Cigaronne");
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /cigaronne-exclusive-brown-mercari-carton-box\.jpg/);
+  assert.match(item.cartonSource, /jp\.mercari\.com\/item\/m71960267321/);
+  assert.match(item.cartonNote, /Exclusive Brown|XL FILTER|カートン|10箱|20本/);
+  const cartonPath = new URL(`../${item.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
+  assert.equal(existsSync(cartonPath), true);
+});
+
 test("all Cigaronne catalog entries have sourced pack media and hide unverified carton photos", () => {
   const items = rawProducts
     .map((product) => enrichProduct(product))
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 11);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 2);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 3);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -490,6 +504,10 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-phantom-silver-mercari-shops-carton-set\.jpg/, item.jp);
       assert.match(item.cartonNote, /PHANTOM SILVER|カートン空箱|1カートン10箱/, item.jp);
+    } else if (item.jp === "シガローネ・エクスクルーシブ・ブラウン") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-exclusive-brown-mercari-carton-box\.jpg/, item.jp);
+      assert.match(item.cartonNote, /Exclusive Brown|XL FILTER|カートン|10箱/, item.jp);
     } else {
       assert.equal(item.cartonStatus, "source-only", item.jp);
       assert.equal(item.cartonImage, "", item.jp);

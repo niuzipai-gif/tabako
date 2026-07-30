@@ -745,11 +745,14 @@ const MEDIA_OVERRIDES = new Map([
         "World Tobacco 对应 Exclusive Brown 页面图，棕色横盒，叶巻葉ブレンド说明对应该 SKU。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210001",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-exclusive-brown-mercari-carton-box.jpg",
+      cartonSource:
+        "https://jp.mercari.com/item/m71960267321",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "Fa-So-La 页面确认 115mm ロングサイズ、1カートン10箱、1箱20本入；World Tobacco 单包页确认 20本入り、タール7mg、ニコチン0.7mg。未取得整条外箱实拍，暂不展示。",
+        "Mercari 页面标题与说明写明“シガローネ・エクスクルーシブ・ブラウン×1箱”，并说明该化粧箱是シガローネたばこをカートンで購入した時に付属的外箱；主图外盒正面可读 Exclusive Brown / XL FILTER / Cigaronne。该图为空箱参考，不代表实时库存；Fa-So-La 与 JTeXpress 另确认该 SKU 按 1カートン10箱 / 1箱20本入 销售。",
     },
   ],
   [
