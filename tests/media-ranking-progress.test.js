@@ -594,7 +594,7 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
       "シガローネ・ロイヤルスリム・メンソール",
       {
         source: /jaldutyfree\.com\/shop\/g\/g5319990197/,
-        note: /1カートン10箱|1箱20本入|JAL/,
+        note: /JAL DUTYFREE.*1カートン10箱.*Jirorinmura.*カートン箱付属/s,
       },
     ],
     [
@@ -668,4 +668,17 @@ test("ranking is a separate vertical feed page linked from home", () => {
   assert.match(ranking, /data-ranking-audience="cn"/);
   assert.match(source, /sortProducts/);
   assert.match(source, /index\.html\?product=/);
+});
+
+test("Ploom X Sharp Cold records the exact 15-box text lead without promoting lid photos", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+  );
+
+  assert.equal(item.cartonStatus, "multi-carton-reference");
+  assert.equal(item.cartonSource, "https://www.placer-tabaco.com/product/5668");
+  assert.match(item.cartonNote, /z635262692/);
+  assert.match(item.cartonNote, /空箱15個/);
+  assert.match(item.cartonNote, /上盖\/QR|完整盒身/);
+  assert.equal(item.cartonImage, "");
 });
