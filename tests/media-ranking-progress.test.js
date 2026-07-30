@@ -598,13 +598,29 @@ test("Cigaronne Exclusive Brown uses a readable one-carton outer-box photo", () 
   assert.equal(existsSync(cartonPath), true);
 });
 
+test("Cigaronne Big Boss uses the readable Big Boss x10 carton photos, not Exclusive Brown", () => {
+  const item = enrichProduct(rawProducts.find((product) => product.jp === "シガローネ・ビッグボス"));
+
+  assert.equal(item.brand, "Cigaronne");
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /cigaronne-big-boss-rozetka-open-carton\.jpg/);
+  assert.match(item.cartonSource, /rozetka\.com\.ua\/ua\/cigaronne-4850008002720\/p573345649/);
+  assert.match(item.cartonNote, /Big Boss XL Filter х 10|Пачок в блоці 10|Цигарок в пачці 20/);
+  assert.doesNotMatch(item.cartonNote, /Exclusive Brown 图当作 Big Boss[^。]*已核验/);
+  const cartonPath = new URL(`../${item.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
+  assert.equal(existsSync(cartonPath), true);
+  assert.equal(item.cartonGallery.length, 2);
+  assert.match(item.cartonGallery[0].image, /cigaronne-big-boss-rozetka-closed-carton\.jpg/);
+  assert.match(item.cartonGallery[1].image, /cigaronne-big-boss-rozetka-side\.jpg/);
+});
+
 test("all Cigaronne catalog entries have sourced pack media and hide unverified carton photos", () => {
   const items = rawProducts
     .map((product) => enrichProduct(product))
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 21);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 6);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 7);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -622,6 +638,10 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-exclusive-brown-mercari-carton-box\.jpg/, item.jp);
       assert.match(item.cartonNote, /Exclusive Brown|XL FILTER|カートン|10箱/, item.jp);
+    } else if (item.jp === "シガローネ・ビッグボス") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-big-boss-rozetka-open-carton\.jpg/, item.jp);
+      assert.match(item.cartonNote, /Big Boss XL Filter х 10|Пачок в блоці 10|Цигарок в пачці 20/, item.jp);
     } else if (item.jp === "シガローネ・ロイヤルスリム・メンソール") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, item.jp);
@@ -645,7 +665,6 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
 test("Cigaronne official collection additions use local official media but no unverified carton image", () => {
   const expectations = new Map([
     ["シガローネ・レジェンド", /cigaronne-imperial-legend-official\.png/],
-    ["シガローネ・ビッグボス", /cigaronne-imperial-big-boss-official\.png/],
     ["シガローネ・クラシック・キングサイズ", /cigaronne-classic-king-size-official\.png/],
     ["シガローネ・クラシック・コンパット", /cigaronne-classic-compatto-official\.png/],
     ["シガローネ・クラシック・ウルトラスリム", /cigaronne-classic-ultra-slims-official\.png/],

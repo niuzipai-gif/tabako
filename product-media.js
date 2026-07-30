@@ -643,11 +643,27 @@ const MEDIA_OVERRIDES = new Map([
         "Cigaronne 官网 Imperial Collection Big Boss 图；用于补齐卡比龙高端 Imperial 系列。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/imperial-collection",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-big-boss-rozetka-open-carton.jpg",
+      cartonSource: "https://rozetka.com.ua/ua/cigaronne-4850008002720/p573345649/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          title: "闭盒正面",
+          image: "./images/cartons/cigaronne-big-boss-rozetka-closed-carton.jpg",
+          source: "https://rozetka.com.ua/ua/cigaronne-4850008002720/p573345649/",
+          note: "同一 Rozetka 页面闭合外盒图，图面清楚可读 Cigaronne / Big Boss XL FILTER；用于确认不是 Exclusive Brown。",
+        },
+        {
+          title: "外盒侧面",
+          image: "./images/cartons/cigaronne-big-boss-rozetka-side.jpg",
+          source: "https://rozetka.com.ua/ua/cigaronne-4850008002720/p573345649/",
+          note: "同一页面局部图，侧面可读 Big Boss XL FILTER，可辅助核对 SKU 名称。",
+        },
+      ],
       cartonNote:
-        "Cigaronne 官网确认 Big Boss 属于 Imperial Collection；当前只取得官网产品图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Rozetka 页面标题为“Блок сигарет Cigaronne Big Boss XL Filter х 10 пачок”，规格写明 Пачок в блоці 10、Цигарок в пачці 20、Комплектація 10 пачок у блоці。主图展示打开的一条外盒，图面可读 Cigaronne / Big Boss XL FILTER，并能看到多包排列；闭盒和侧面图同样可读 Big Boss XL FILTER，用于纠正此前误把 Exclusive Brown 图当作 Big Boss 的风险。",
     },
   ],
   [
