@@ -1063,7 +1063,7 @@ async function runAiRecommendation() {
   }
 
   const steps = aiClient.configured
-    ? ["理解你的描述", "匹配本地目录", "等待安全代理返回", "整理结果"]
+    ? ["理解你的描述", "匹配本地目录", "等待安全代理返回", "库外联网补充", "整理结果"]
     : ["理解你的描述", "匹配本地目录", "确认在线增强状态", "完成"];
   setButtonBusy(elements.aiRecommendSubmit, true, "正在理解你的描述…");
   setAiProgress({ value: 8, label: "已收到，正在理解你的描述", steps, current: 0 });
@@ -1100,14 +1100,49 @@ async function runAiRecommendation() {
     const resultPromise = aiClient.ask({ mode: "recommend", query, catalog });
     setAiProgress({ value: 70, label: "请求已发送，正在等待安全代理返回", steps, current: 2 });
     const result = await resultPromise;
-    setAiProgress({ value: 94, label: "已收到返回，正在整理 AI 与本地目录结果", steps, current: 3 });
+    let finalResult = result;
+    if ((result.matches ?? []).length === 0) {
+      const fallbackQuery = [query, result.answer, "日本 たばこ パッケージ 価格 販売店"]
+        .filter(Boolean)
+        .join(" ");
+      setAiProgress({
+        value: 84,
+        label: "目录未命中；正在自动联网补充库外线索",
+        steps,
+        current: 3,
+      });
+      try {
+        const online = await aiClient.ask({ mode: "search", query: fallbackQuery });
+        finalResult = {
+          ...result,
+          answer:
+            `${result.answer || "本地目录没有命中。"} 已自动联网查找库外资料；下方来源仅作核对线索，未自动写入目录。`,
+          matches: [],
+          sources: online.sources ?? [],
+        };
+      } catch (fallbackError) {
+        finalResult = {
+          ...result,
+          answer:
+            `${result.answer || "本地目录没有命中。"} 自动联网补充未完成：${fallbackError.message || "请稍后重试"}。`,
+          matches: [],
+        };
+      }
+    }
+    setAiProgress({ value: 94, label: "已收到返回，正在整理 AI 与本地目录结果", steps, current: 4 });
     await nextPaint();
-    renderAiResult(result, "MiniMax + 本地目录");
+    renderAiResult(
+      finalResult,
+      (result.matches ?? []).length === 0 ? "MiniMax + 联网补充" : "MiniMax + 本地目录",
+    );
     setAiProgress({
       value: 100,
-      label: "匹配完成",
+      label:
+        (finalResult.matches ?? []).length === 0 && (finalResult.sources ?? []).length
+          ? `匹配完成；已补充 ${(finalResult.sources ?? []).length} 条联网线索`
+          : "匹配完成",
       steps,
-      current: 3,
+      current: steps.length - 1,
       state: "complete",
     });
   } catch (error) {

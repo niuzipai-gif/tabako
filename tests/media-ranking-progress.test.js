@@ -259,11 +259,17 @@ test("AI dialog exposes live progress, stages, and terminal states", () => {
   );
   assert.match(source, /请求已发送，正在等待安全代理返回/);
   assert.match(source, /图片请求已发送；正在等待安全代理返回/);
+  assert.match(source, /目录未命中；正在自动联网补充库外线索/);
+  assert.match(source, /MiniMax \+ 联网补充/);
+  assert.match(source, /已自动联网查找库外资料/);
+  assert.match(source, /mode: "search", query: fallbackQuery/);
 
   const received = source.indexOf("已收到，正在理解你的描述");
   const localMatch = source.indexOf("本地目录已匹配");
+  const onlineFallback = source.indexOf("目录未命中；正在自动联网补充库外线索");
   const terminal = source.indexOf("本地匹配已完成；在线增强未启用");
   assert.ok(received > -1 && received < localMatch && localMatch < terminal);
+  assert.ok(localMatch > -1 && localMatch < onlineFallback);
 
   const proxyCheck = source.indexOf("正在检查安全代理是否可用");
   const noUpload = source.indexOf("在线识别未启用；图片没有上传");
