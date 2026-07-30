@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 27);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 27);
+  assert.equal(manifest.items.length, 32);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 32);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -297,22 +297,64 @@ test("TEREA Fusion uses the official Japanese Menthol SKU name instead of the fa
   assert.match(product.imageNote, /来源页参考|World Tobacco|FUSION MENTHOL/);
 });
 
-test("TEREA single-pack photos use matching World Tobacco SKU pages while non-verified cartons stay hidden", () => {
+test("TEREA single-pack photos use matching World Tobacco SKU pages and verified cartons stay exact", () => {
   const expected = new Map([
-    ["IQOS テリア レギュラー", /000000001829/],
-    ["IQOS テリア スムース レギュラー", /000000001891/],
-    ["IQOS テリア ルビー レギュラー", /000000001887/],
-    ["IQOS テリア フュージョン メンソール", /000000001897/],
-    ["IQOS テリア ウォーム レギュラー", /000000001898/],
+    [
+      "IQOS テリア レギュラー",
+      {
+        pack: /000000001829/,
+        carton: /terea-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-regular-japan-dubai-uae/,
+        note: /TEREA Regular|10 Packs|200 Heatsticks|水印/,
+      },
+    ],
+    [
+      "IQOS テリア スムース レギュラー",
+      {
+        pack: /000000001891/,
+        carton: /terea-smooth-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-smooth-regular-japan-dubai-uae/,
+        note: /SMOOTH|10 Packs|200 Heatsticks|水印/,
+      },
+    ],
+    [
+      "IQOS テリア ルビー レギュラー",
+      {
+        pack: /000000001887/,
+        carton: /terea-ruby-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-ruby-regular-japan-dubai-uae/,
+        note: /Ruby|10 Packs|200 Heatsticks|水印/,
+      },
+    ],
+    [
+      "IQOS テリア フュージョン メンソール",
+      {
+        pack: /000000001897/,
+        carton: /terea-fusion-menthol-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-fusion-menthol-japan-dubai-uae/,
+        note: /Fusion|10 Packs|200 Heatsticks|水印/,
+      },
+    ],
+    [
+      "IQOS テリア ウォーム レギュラー",
+      {
+        pack: /000000001898/,
+        carton: /terea-warm-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-warm-regular-japan-dubai-uae/,
+        note: /Warm|10 Packs|200 Heatsticks|水印/,
+      },
+    ],
   ]);
 
-  for (const [jp, sourcePattern] of expected) {
+  for (const [jp, expectation] of expected) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.imageStatus, "reference", jp);
-    assert.match(item.imageSource, sourcePattern, jp);
+    assert.match(item.imageSource, expectation.pack, jp);
     assert.match(item.imageNote, /World Tobacco|SKU|来源页/, jp);
-    assert.equal(item.cartonStatus, "source-only", jp);
-    assert.equal(item.cartonImage, "", jp);
+    assert.equal(item.cartonStatus, "verified", jp);
+    assert.match(item.cartonImage, expectation.carton, jp);
+    assert.match(item.cartonSource, expectation.source, jp);
+    assert.match(item.cartonNote, expectation.note, jp);
   }
 
   const menthol = enrichProduct(
@@ -336,10 +378,60 @@ test("TEREA single-pack photos use matching World Tobacco SKU pages while non-ve
   assert.match(blackMenthol.cartonNote, /BLACK MENTHOL|10 Packs|200 Heatsticks|水印/);
 });
 
-test("TEREA overseas carton photos stay hidden unless the SKU and carton quantity are visible", () => {
+test("TEREA overseas carton photos publish only after SKU and carton quantity are visible", () => {
   const tereaItems = rawProducts
     .filter((item) => /IQOS テリア/.test(item.jp))
     .map((item) => enrichProduct(item));
+  const verifiedOverseas = new Map([
+    [
+      "IQOS テリア ブラックメンソール",
+      {
+        image: /terea-black-menthol-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-black-menthol-japan-dubai-uae/,
+        note: /BLACK MENTHOL|10 Packs|200 Heatsticks/,
+      },
+    ],
+    [
+      "IQOS テリア レギュラー",
+      {
+        image: /terea-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-regular-japan-dubai-uae/,
+        note: /TEREA Regular|10 Packs|200 Heatsticks/,
+      },
+    ],
+    [
+      "IQOS テリア スムース レギュラー",
+      {
+        image: /terea-smooth-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-smooth-regular-japan-dubai-uae/,
+        note: /SMOOTH|10 Packs|200 Heatsticks/,
+      },
+    ],
+    [
+      "IQOS テリア ルビー レギュラー",
+      {
+        image: /terea-ruby-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-ruby-regular-japan-dubai-uae/,
+        note: /Ruby|10 Packs|200 Heatsticks/,
+      },
+    ],
+    [
+      "IQOS テリア フュージョン メンソール",
+      {
+        image: /terea-fusion-menthol-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-fusion-menthol-japan-dubai-uae/,
+        note: /Fusion|10 Packs|200 Heatsticks/,
+      },
+    ],
+    [
+      "IQOS テリア ウォーム レギュラー",
+      {
+        image: /terea-warm-regular-iqosheets-carton\.webp/,
+        source: /iqosheets-uae\.ae\/products\/iqos-terea-warm-regular-japan-dubai-uae/,
+        note: /Warm|10 Packs|200 Heatsticks/,
+      },
+    ],
+  ]);
 
   assert.ok(tereaItems.length >= 7);
   for (const item of tereaItems) {
@@ -348,11 +440,12 @@ test("TEREA overseas carton photos stay hidden unless the SKU and carton quantit
       assert.match(item.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z302147694/);
       continue;
     }
-    if (item.jp === "IQOS テリア ブラックメンソール") {
+    const expectation = verifiedOverseas.get(item.jp);
+    if (expectation) {
       assert.equal(item.cartonStatus, "verified");
-      assert.match(item.cartonImage, /terea-black-menthol-iqosheets-carton\.webp/);
-      assert.match(item.cartonSource, /iqosheets-uae\.ae/);
-      assert.match(item.cartonNote, /BLACK MENTHOL|10 Packs|200 Heatsticks/);
+      assert.match(item.cartonImage, expectation.image, item.jp);
+      assert.match(item.cartonSource, expectation.source, item.jp);
+      assert.match(item.cartonNote, expectation.note, item.jp);
       continue;
     }
     assert.equal(item.cartonStatus, "source-only");

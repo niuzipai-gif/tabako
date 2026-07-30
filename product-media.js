@@ -481,12 +481,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001829",
       imageNote:
         "World Tobacco 对应 SKU 页面图；图面为日本警示版 TEREA 单盒，部分页面商品图不在正面印完整口味名，购买时仍按页面标题与实物色系核对。",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-regular-iqosheets-carton.webp",
       cartonSource:
-        "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-regular/",
+        "https://iqosheets-uae.ae/products/iqos-terea-regular-japan-dubai-uae",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "海外电商页面文字确认 TEREA Regular 日本版通常按 1 carton = 10 packs = 200 sticks 销售，但原外箱图无法从图面直接读出 REGULAR 口味。为避免一包和一条错配，本站暂不展示该整条图，只保留数量来源和检索入口。",
+        "IQOSHeets UAE 商品页标题为“TEREA Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为蓝色 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和蓝色 Regular 色系共同核对；机场/便利店实时库存仍以门店为准。",
     },
   ],
   [
@@ -537,12 +539,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001891",
       imageNote:
         "World Tobacco 对应 Smooth Regular SKU 页面图；图面为浅蓝色 TEREA 日本警示版，正面不完整显示口味名时按来源页标题核对。",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-smooth-regular-iqosheets-carton.webp",
       cartonSource:
-        "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-smooth-regular/",
+        "https://iqosheets-uae.ae/products/iqos-terea-smooth-regular-japan-dubai-uae",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "海外电商页面文字确认 Smooth Regular 与 1 carton 数量，但外箱图片图面无法直接核对完整口味名。本站暂不展示该整条图，防止用近似色外箱误导购买。",
+        "IQOSHeets UAE 商品页标题为“TEREA Smooth Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为银色 TEREA 日本警示版整条外盒，图面警示区可读 SMOOTH，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，只用于核对整条外观与数量，实时库存以门店为准。",
     },
   ],
   [
@@ -552,11 +556,13 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001887?category_page_id=ct304",
       imageNote:
         "World Tobacco 对应 Ruby Regular SKU 页面图；图面为蓝红色 TEREA 日本警示版，作为单盒辨认参考，不等同整条外箱核验。",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://heetsiqosuae.ae/products/terea-ruby-regular/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-ruby-regular-iqosheets-carton.webp",
+      cartonSource: "https://iqosheets-uae.ae/products/iqos-terea-ruby-regular-japan-dubai-uae",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "海外电商页面文字指向 Ruby Regular，但该类图源不属于日本官方或可直接读出完整 SKU 的整条图。本站暂不展示整条图，仅保留 10 包 / 200 支数量参考与来源。",
+        "IQOSHeets UAE 商品页标题为“TEREA Ruby Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为蓝红渐变 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和 Ruby 色系共同核对；实时库存以门店为准。",
     },
   ],
   [
@@ -566,12 +572,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001897",
       imageNote:
         "World Tobacco 对应 Fusion Menthol SKU 页面图；图面为紫粉色 TEREA 日本警示版，但正面不直接写完整 FUSION MENTHOL，因此标为来源页参考。",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-fusion-menthol-iqosheets-carton.webp",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "原图为海外水印图，图面未清晰显示 FUSION MENTHOL 完整口味名；用户已反馈类似 TEREA 口味出现一包/一条错配。本站改为不展示该整条图，只保留数量来源。",
+        "IQOSHeets UAE 商品页标题为“TEREA Fusion Menthol for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为紫粉渐变 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和 Fusion 色系共同核对；实时库存以门店为准。",
     },
   ],
   [
@@ -581,12 +589,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001898?category_page_id=ct304",
       imageNote:
         "World Tobacco 对应 Warm Regular SKU 页面图；图面为暖棕色 TEREA 日本警示版，按来源页标题与实物色系共同核对。",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-warm-regular-iqosheets-carton.webp",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "海外电商页面文字指向 Warm Regular，但图片带水印且不能从图面直接核对完整 SKU。为避免错配，暂不展示整条图；一条数量按 10 包 / 200 支参考。",
+        "IQOSHeets UAE 商品页标题为“TEREA Warm Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为暖棕色 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和 Warm 色系共同核对；实时库存以门店为准。",
     },
   ],
   [

@@ -237,6 +237,51 @@
       "sha256": "ea279a8523bac8e4227781e0cdf9dc0b18756ec8c0f94fd25ca30abb752e4650"
     },
     {
+      "productId": "p-5814d907",
+      "jp": "IQOS テリア レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/terea-regular-iqosheets-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-regular-japan-dubai-uae",
+      "sha256": "9c03f979970958197d902e943d6e1cf2ae59e125c2589c635318bdd30cf46c63"
+    },
+    {
+      "productId": "p-1b6407ab",
+      "jp": "IQOS テリア スムース レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/terea-smooth-regular-iqosheets-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-smooth-regular-japan-dubai-uae",
+      "sha256": "3e5548e605d0f88d862bc844e90c01371ff52e823c13c59792b4e25448b9f28f"
+    },
+    {
+      "productId": "p-ae6a1a1c",
+      "jp": "IQOS テリア フュージョン メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/terea-fusion-menthol-iqosheets-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
+      "sha256": "c6fdb4c37ce5148a2adf6af9ebf63ad10c9959a1715bd17b18db51a9bba76d5b"
+    },
+    {
+      "productId": "p-496b84df",
+      "jp": "IQOS テリア ルビー レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/terea-ruby-regular-iqosheets-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-ruby-regular-japan-dubai-uae",
+      "sha256": "d439f25749e6af78fd0a40e6c6b01e8bb00dea604b68c6af8ae7a932d281c133"
+    },
+    {
+      "productId": "p-5d9f5770",
+      "jp": "IQOS テリア ウォーム レギュラー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/terea-warm-regular-iqosheets-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
+      "sha256": "2e9936356cd6ea364d0e4a4e8f9ef70126caedcea8659a5b663a50be8e91828c"
+    },
+    {
       "productId": "p-0f8b545b",
       "jp": "ホープ",
       "status": "verified",
