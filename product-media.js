@@ -525,10 +525,16 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス コールド メンソール|Ploom X 冷感薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/ploom-mevius-menthol-cold-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2030100079",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/ploom-mevius-cold-menthol-mercari-9-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m42729362406",
       cartonGallery: [
+        {
+          label: "ANA 1カートン数量参考",
+          image: "./images/cartons/ploom-mevius-menthol-cold-pack-content.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=2030100079",
+          note: "ANA 免税店页面确认旧名“メビウス・メンソール・コールド・フォー・プルーム・エックス・プルーム・エス”销售规格为 20本×10箱 / 1カートン；图片为官方单盒正面图。",
+        },
         {
           label: "KIX 官方当前包装",
           image: "./images/cartons/ploom-mevius-cold-menthol-kix-official-pack.jpg",
@@ -538,7 +544,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ANA 免税店页面确认旧名“メビウス・メンソール・コールド・フォー・プルーム・エックス・プルーム・エス”销售规格为 20本×10箱 / 1カートン。图片为官方单盒正面图，不是整条外箱；KIX 官方页另提供当前包装和免税店购买信息。",
+        "Mercari 标题与说明为“Ploom x メビウス コールドメンソール 空箱 9個”，图片可见 9 个 MEVIUS Cold Menthol for ploom X 空盒排列，能核对多盒外观；因不足 10 盒且为二手空盒图，仅作多盒参考。一条数量仍按 ANA / KIX 的 10 包 / 200 支。",
     },
   ],
   [
