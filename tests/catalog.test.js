@@ -113,8 +113,8 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 156-product source set", () => {
-  assert.equal(rawProducts.length, 156);
+test("catalog keeps the expanded 158-product source set", () => {
+  assert.equal(rawProducts.length, 158);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),

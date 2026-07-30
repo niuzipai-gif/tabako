@@ -790,9 +790,11 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
     ["ラーク メンソール 5", /Select\/100s|历史变体|10 包整条外箱/],
     ["IQOS センティア バランスド イエロー", /Placer|Bigliquy|Cigars of Dubai/],
     ["glo hyper ネオ トロピカル スワール", /Cigars of Dubai|RELAZO|リニューアル/],
-    ["lil HYBRID ミックス レギュラー", /カートン\(10個入り\)|専用リキッド/],
-    ["lil HYBRID ミックス アイス", /カートン\(10個入り\)|新设计/],
-    ["lil HYBRID ミックス ベルベット", /カートン\(10個入り\)|Velvet/],
+    ["lil HYBRID ミックス レギュラー", /終卖|カートン单位|専用リキッド/],
+    ["lil HYBRID ミックス アイス", /Sirius Tobacco|カートン单位|MIIX ICE/],
+    ["lil HYBRID ミックス ミックス", /Sirius Tobacco|カートン单位|MIIX MIX/],
+    ["lil HYBRID ミックス アイス プラス", /Sirius Tobacco|カートン单位|MIIX ICE PLUS/],
+    ["lil HYBRID ミックス ベルベット", /Sirius Tobacco|Velvet|カートン单位/],
   ]);
 
   for (const [jp, note] of expectations) {
@@ -800,6 +802,28 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
     assert.notEqual(item.cartonStatus, "verified", jp);
     assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, note, jp);
+  }
+});
+
+test("lil HYBRID MIIX lineup includes Mix and Ice Plus with exact pack media but no carton claim", () => {
+  const expectations = new Map([
+    ["lil HYBRID ミックス アイス", /lil-miix-ice-sirius-pack\.jpg/],
+    ["lil HYBRID ミックス ミックス", /lil-miix-mix-sirius-pack\.jpg/],
+    ["lil HYBRID ミックス アイス プラス", /lil-miix-ice-plus-sirius-pack\.jpg/],
+    ["lil HYBRID ミックス ベルベット", /lil-miix-velvet-sirius-pack\.jpg/],
+  ]);
+
+  for (const [jp, imagePattern] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.brand, "lil HYBRID", jp);
+    assert.equal(item.imageStatus, "verified", jp);
+    assert.match(item.image, imagePattern, jp);
+    assert.equal(item.cartonStatus, "contents-reference", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, /不是已核对的一カートン外箱/, jp);
+
+    const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, jp);
   }
 });
 

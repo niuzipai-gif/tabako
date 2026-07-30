@@ -1664,31 +1664,75 @@ const MEDIA_OVERRIDES = new Map([
   [
     "lil HYBRID ミックス レギュラー|lil HYBRID 混合经典",
     {
+      imageStatus: "reference",
+      imageSource: "https://ameblo.jp/tobacco-kodama/entry-12838717652.html",
+      imageNote:
+        "こだま页面说明ミックス レギュラー已终卖后短暂再入荷，属于稀少/历史款；当前主图仅作旧款识别。",
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/lil-miix-regular-kodama-content.png",
       cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12838717652.html",
       cartonNote:
-        "大阪京橋たばこセンターこだま页面说明“ミックス レギュラー 20本入”，并提示需搭配 lil HYBRID 专用设备与リキッドカートリッジ。日本评测资料说明 lil HYBRID 专用カートリッジ在官方线上常按カートン(10個入り)单位销售，但该资料不是该 SKU 整条外箱图。图片为 Regular 单盒与 cartridge 对照图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "大阪京橋たばこセンターこだま页面说明“ミックス レギュラー”已终卖后短暂再入荷，并写明 20本入、需搭配 lil HYBRID 专用设备与リキッドカートリッジ；同页列出 MIIX 家族含 Ice、Ice Plus、Mix、Regular、Velvet。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但该资料不是 Regular 同 SKU 整条外箱图。图片为 Regular 单盒与 cartridge 对照图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
     "lil HYBRID ミックス アイス|lil HYBRID 混合冰薄荷",
     {
+      image: "./images/verified/lil-miix-ice-sirius-pack.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      imageNote:
+        "Sirius Tobacco 对应 MIIX Ice 单包图，图面可读 MIIX ICE 与日文警示；Relazo 另确认 2023 年后绿色新设计。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-ice-relazo-content.webp",
-      cartonSource: "https://relazo.net/lil_miix_ice/",
+      cartonImage: "./images/verified/lil-miix-ice-sirius-pack.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
       cartonNote:
-        "Relazo 评测页确认 MIIX Ice 为 lil HYBRID 对应口味，内容量 20本入，2023 年 7 月后为绿色新设计。日本评测资料说明 lil HYBRID 专用カートリッジ在官方线上常按カートン(10個入り)单位销售，但未给出该口味整条外箱图。图片为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "Sirius Tobacco 类目页列出ミックス アイス（リルハイブリッド専用）并提供可读单包图，Relazo 评测页确认内容量 20本入、价格 560円、对应リルハイブリッド。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但未给出该口味 10 包整条外箱图。当前图为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+    },
+  ],
+  [
+    "lil HYBRID ミックス ミックス|lil HYBRID 混合果香",
+    {
+      image: "./images/verified/lil-miix-mix-sirius-pack.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      imageNote:
+        "Sirius Tobacco 对应 MIIX Mix 单包图；Oricon 将其列为 MIIX 现行全 4 口味之一，定位为柑橘/果香方向。",
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/verified/lil-miix-mix-sirius-pack.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonNote:
+        "Sirius Tobacco 类目页列出ミックス ミックス（リルハイブリッド専用）并提供可读单包图；Oricon 资料确认 MIIX 系列现行口味含ミックス ミックス，定位为柑橘系フルーティー。Oricon 同页说明官方线上专用たばこ按カートン单位销售，但未给出该口味 10 包整条外箱图。当前图为 MIIX MIX 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+    },
+  ],
+  [
+    "lil HYBRID ミックス アイス プラス|lil HYBRID 混合冰薄荷 Plus",
+    {
+      image: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      imageNote:
+        "Sirius Tobacco 对应 MIIX Ice Plus 单包图；PR TIMES 资料确认该口味由 Philip Morris Japan 发布。",
+      cartonStatus: "contents-reference",
+      cartonImage: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonNote:
+        "Sirius Tobacco 类目页列出ミックス アイス プラス（リルハイブリッド専用）并提供可读单包图；PR TIMES 资料确认 MIIX Ice Plus 为 lil HYBRID 专用たばこ产品。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但未给出该口味 10 包整条外箱图。当前图为 MIIX ICE PLUS 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
     "lil HYBRID ミックス ベルベット|lil HYBRID 混合莓果",
     {
+      image: "./images/verified/lil-miix-velvet-sirius-pack.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      imageNote:
+        "Sirius Tobacco 对应 MIIX Velvet 单包图；こだま与 PR TIMES 均确认 Velvet 是 2023 年新增口味。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-velvet-kishida-content.jpg",
-      cartonSource: "https://kishida.ocnk.net/product/2839",
+      cartonImage: "./images/verified/lil-miix-velvet-sirius-pack.jpg",
+      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
       cartonNote:
-        "キシダサービス页面标题为“リル・ミックスベルベット”，说明为リル ハイブリッド专用 MIIX ベルベット；该口味是莓果香强冷薄荷方向。日本评测资料说明 lil HYBRID 专用カートリッジ在官方线上常按カートン(10個入り)单位销售，但未找到 Velvet 可读同 SKU 10 包整条图。图片为 Velvet 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "Sirius Tobacco 类目页列出ミックス ベルベット（リルハイブリッド専用）并提供可读单包图；こだま页面说明 Velvet 为 2023 年 11 月下旬発売、20本入り，PR TIMES 也确认其为 Philip Morris Japan 发布的新口味。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但未找到 Velvet 可读同 SKU 10 包整条图。当前图为 Velvet 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
 ]);
