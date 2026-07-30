@@ -288,10 +288,19 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ アイスブラスト 8|万宝路 冰爆 8",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/marlboro-iceblast-mega8-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200068",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/marlboro-iceblast-box-10p-monolog-carton.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4930941000738",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
+        {
+          label: "ANA 官方 Mega 8 单包 / 1カートン规格",
+          image: "./images/cartons/marlboro-iceblast-mega8-pack-content.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200068",
+          note: "ANA 免税店页面确认 Marlboro Ice Blast Mega 8 Box 销售规格为 20本×10箱 / 1カートン；主图为官方单包正面图。",
+        },
         {
           label: "JAL 官方当前包装",
           image: "./images/cartons/marlboro-iceblast-mega8-jal-official-pack.jpg",
@@ -300,7 +309,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ANA 免税店页面确认 Marlboro Ice Blast Mega 8 Box 销售规格为 20本×10箱 / 1カートン，主图为官方单包正面图，不是整条外箱。目录项为 Ice Blast 8；本站另补充 JAL 官方当前单包图，购买时请核对是否为 Mega 8 当前包装。",
+        "ものログ商品名为“PM マールボロ アイスブラストボックス 10P”，主图可见 10 包整条实拍，按 20 本×10 包 / 200 支核验。ANA / JAL 官方页另补充 Mega 8 当前单包图和免税规格；购买时请核对是否为 Ice Blast Mega 8 当前包装。",
     },
   ],
   [
