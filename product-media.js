@@ -728,11 +728,11 @@ const MEDIA_OVERRIDES = new Map([
         "World Tobacco 对应 Magnet 页面图，图面可读 Cigaronne Magnet，用于区分蓝色 Magnet 款；DAIYOSTORE 同款页确认 1カートン10箱。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://daiyostore.com/shopdetail/000000001174/Cigaronne/page1/order/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-magnet-kix-carton.jpg",
+      cartonSource: "https://www.kixdutyfree.jp/en/cigaronne-magnet-2407000017.html",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・マグネット 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 页面确认 20本入り、タール5mg。Rakuten/堀商事另列 10packs シガローネ・マグネット，并注明箱なしセロハン包装。未展示未经核验的整条外箱。",
+        "KIX DUTY FREE 官方页标题为“CIGARONNE MAGNET”，规格写明 1 carton contains 10 packs、1 pack contains 20 sticks；主图为日文警示版蓝色横向整条外盒，图面可读 Cigaronne MAGNET。DAIYOSTORE 与 Rakuten/堀商事另确认日本渠道按 1カートン(10箱) / 10packs 销售。",
     },
   ],
   [
@@ -1404,6 +1404,13 @@ const MEDIA_OVERRIDES = new Map([
         "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
       cartonGallery: [
         {
+          label: "j-Cigarette 1 carton 页面多盒参考",
+          image: "./images/cartons/glo-neo-tropical-swirl-jcigarette-multipack-reference.jpg",
+          source:
+            "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
+          note: "同页标题确认 1 carton / 200 heatsticks，附图可见同一 Tropical Swirl SKU 多盒排列；但画面不是完整 10 盒外箱，因此仍作为内容参考。",
+        },
+        {
           label: "KIX 官方当前包装",
           image: "./images/cartons/glo-neo-tropical-swirl-kix-official-pack.jpg",
           source:
@@ -1412,7 +1419,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”。图片为准确 SKU 单盒图，不是外箱实拍；KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，附图可见同 SKU 多盒排列；但画面不是外箱实拍，也不是完整 10 盒，因此不升为 verified。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
     },
   ],
   [

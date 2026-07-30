@@ -57,6 +57,15 @@
       "sha256": "b1078a9363229d9c0c4631eb298de1a27eedd7bc5aed645dc1d35d700dab9732"
     },
     {
+      "productId": "p-08349137",
+      "jp": "シガローネ・マグネット",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-magnet-kix-carton.jpg",
+      "sourcePage": "https://www.kixdutyfree.jp/en/cigaronne-magnet-2407000017.html",
+      "sha256": "ede15b037fd339b716d9166fbd84967f1ca2bf10e03e487422fb190973330c38"
+    },
+    {
       "productId": "p-0c3cf525",
       "jp": "glo hyper ラッキー ストライク メンソール",
       "status": "verified",

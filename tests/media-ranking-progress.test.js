@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 42);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 42);
+  assert.equal(manifest.items.length, 43);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 43);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -145,7 +145,11 @@ test("source-only and generated reference states still show a labeled source ima
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
   );
   assert.equal(tropical.cartonStatus, "contents-reference");
-  assert.match(tropical.cartonGallery[0].label, /KIX 官方当前包装/);
+  assert.match(tropical.cartonGallery[0].label, /j-Cigarette 1 carton 页面多盒参考/);
+  assert.match(
+    tropical.cartonGallery[0].image,
+    /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/,
+  );
   assert.match(tropical.cartonNote, /不是外箱实拍/);
 });
 
@@ -600,7 +604,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 11);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 5);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 6);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -626,6 +630,10 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/, item.jp);
       assert.match(item.cartonNote, /Super Slims Black x 10|Пачок в блоці 10/, item.jp);
+    } else if (item.jp === "シガローネ・マグネット") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-magnet-kix-carton\.jpg/, item.jp);
+      assert.match(item.cartonNote, /CIGARONNE MAGNET|1 carton contains 10 packs|20 sticks/, item.jp);
     } else {
       assert.equal(item.cartonStatus, "source-only", item.jp);
       assert.equal(item.cartonImage, "", item.jp);
@@ -661,13 +669,6 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
       "シガローネ・タトゥー・バニラ",
       {
         source: /daiyostore\.com\/shopdetail\/000000001180/,
-        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
-      },
-    ],
-    [
-      "シガローネ・マグネット",
-      {
-        source: /daiyostore\.com\/shopdetail\/000000001174/,
         note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
       },
     ],
@@ -739,7 +740,6 @@ test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing u
     "シガローネ・タトゥー・チェリー",
     "シガローネ・タトゥー・チョコレート",
     "シガローネ・タトゥー・バニラ",
-    "シガローネ・マグネット",
     "シガローネ・ウルトラスリム・ブラック",
   ];
 
@@ -768,6 +768,9 @@ test("Cigaronne pack media uses exact local images while American Spirit generic
     if (jp === "シガローネ・ロイヤルスリム・メンソール") {
       assert.equal(item.cartonStatus, "verified", jp);
       assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, jp);
+    } else if (jp === "シガローネ・マグネット") {
+      assert.equal(item.cartonStatus, "verified", jp);
+      assert.match(item.cartonImage, /cigaronne-magnet-kix-carton\.jpg/, jp);
     } else {
       assert.equal(item.cartonStatus, "source-only", jp);
       assert.equal(item.cartonImage, "", jp);
