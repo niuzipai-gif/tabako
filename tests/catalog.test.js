@@ -113,11 +113,28 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 158-product source set", () => {
-  assert.equal(rawProducts.length, 158);
+test("catalog keeps the expanded 159-product source set", () => {
+  assert.equal(rawProducts.length, 159);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
+  );
+});
+
+test("American Spirit variants stay grouped by brand before generic fallback sorting", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const americanSpirit = sortProducts(
+    products.filter((item) => item.brand === "American Spirit"),
+    "recommended",
+  );
+
+  assert.deepEqual(
+    americanSpirit.map((item) => item.jp),
+    [
+      "ナチュラル アメリカン スピリット",
+      "ナチュラル アメリカン スピリット ライト 14本入",
+      "アメリカン スピリット ターコイズ",
+    ],
   );
 });
 

@@ -442,9 +442,8 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス プレミアム メンソール|梅比乌斯 高级薄荷",
     {
-      cartonStatus: "verified",
-      cartonImage:
-        "./images/cartons/mevius-premium-menthol8-10p-monolog-carton.png",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210166117",
       cartonPackCount: 10,
       cartonStickCount: 200,
@@ -457,7 +456,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ものログ商品名为“JT メビウスプレミアムメンソール8 10P”，主图可见 10 包整条排列，按 20 本×10 包 / 200 支核验。目录项为泛称 Premium Menthol，此图按 8mg 主流款核对。",
+        "ものログ商品名为“JT メビウスプレミアムメンソール8 10P”，可作为 10P / 200 支数量来源；但当前可取得图片只显示局部多包排列，不能清楚核对完整同 SKU 10 包整条/一カートン外箱，因此不再标为已核验整条图。目录项为泛称 Premium Menthol，购买时请按 8mg 主流款与完整日文名核对。",
     },
   ],
   [
@@ -1295,6 +1294,43 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "ナチュラル アメリカン スピリット ライト 14本入|美式精神 Light 14支",
+    {
+      image: "./images/verified/american-spirit-light-14-ana-pack.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.anadf.com/cn/itemdetail.aspx?s_cd=2010100174",
+      imageNote:
+        "ANA DUTY FREE SHOP 商品图，页面商品名为“ナチュラル アメリカン スピリット ライト １４本入”，图面为黄色 Light 单包，适合旅行时辨认具体 SKU。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/american-spirit-yellow-kurivip-carton.jpg",
+      cartonSource: "https://kurivip18.com/katalog/cigarettes/american_spirit_yellow1",
+      cartonPackCount: 10,
+      cartonStickCount: 140,
+      cartonGallery: [
+        {
+          title: "日本版 Yellow / Light 横向 block 外盒",
+          image: "./images/cartons/american-spirit-yellow-kurivip-carton.jpg",
+          source: "https://kurivip18.com/katalog/cigarettes/american_spirit_yellow1",
+          note: "KuriVIP 页面标题写“Блок сигарет … American Spirit Yellow (Japan)”，商品图为黄色横向外盒，图面可读 Natural American Spirit 与日文警示；用于辨认 Yellow/Light 一条外盒外观。",
+        },
+        {
+          title: "ANA 官方 Light 单包正面",
+          image: "./images/verified/american-spirit-light-14-ana-pack.jpg",
+          source: "https://www.anadf.com/cn/itemdetail.aspx?s_cd=2010100174",
+          note: "ANA 页面商品名为ナチュラル アメリカン スピリット ライト １４本入，尺寸写 14本×10箱，免税价 ¥3,000；单包图用于核对当前 Light 14本入包装。",
+        },
+        {
+          title: "ANA 官方 Light 侧面图",
+          image: "./images/verified/american-spirit-light-14-ana-side.jpg",
+          source: "https://www.anadf.com/cn/itemdetail.aspx?s_cd=2010100174",
+          note: "侧面图可读 LIGHT / ライト 与日文警示；用于避免把绿色 Turquoise、Gold、ONE 等错配到 Light。",
+        },
+      ],
+      cartonNote:
+        "KuriVIP 商品页标题为“Блок сигарет Американ Спирит Желтый (Япония) - American Spirit Yellow (Japan)”，主图为黄色日本版横向 block 外盒，图面可读 Natural American Spirit 与日文警示；ANA DUTY FREE SHOP 同款 Light 14本入页面确认尺寸为 14本×10箱、免税价 ¥3,000，并列出成田/羽田等可预约机场。因此本站把 Yellow/Light 14本入作为独立具体 SKU 展示，不再混到泛称 American Spirit。",
+    },
+  ],
+  [
     "アメリカン スピリット ターコイズ|美式精神 绿松石",
     {
       cartonStatus: "verified",
@@ -1584,17 +1620,20 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ネオ トロピカル スワール|glo neo 热带旋风",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-neo-tropical-swirl-1carton-reference.jpg",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/glo-neo-tropical-swirl-jcigarette-multipack-reference.jpg",
       cartonSource:
         "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
         {
-          label: "j-Cigarette 1 carton 页面多盒参考",
+          label: "j-Cigarette 1 carton 同 SKU 多盒图",
           image: "./images/cartons/glo-neo-tropical-swirl-jcigarette-multipack-reference.jpg",
           source:
             "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
-          note: "同页标题确认 1 carton / 200 heatsticks，附图可见同一 Tropical Swirl SKU 多盒排列；但画面不是完整 10 盒外箱，因此仍作为内容参考。",
+          note: "同页标题确认 1 carton / 200 heatsticks，附图可见同一 Tropical Swirl SKU 多盒排列；主图不是封闭外箱，但可用于核对一条/10 包内容物外观。",
         },
         {
           label: "KIX 官方当前包装",
@@ -1605,7 +1644,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，附图可见同 SKU 多盒排列；但画面不是外箱实拍，也不是完整 10 盒，因此不升为 verified。Cigars of Dubai 也写 1 carton contains 10 packs of 20 tobacco sticks。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，同页单包图可读 Tropical Swirl，多盒图为同 SKU 一条/10 包内容物展示，可按 10 packs / 200 heatsticks 核验；图片不是外箱实拍、也不是封闭外箱，购买时仍需以门店实物包装为准。Cigars of Dubai 也写 1 carton contains 10 packs of 20 tobacco sticks。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
     },
   ],
   [

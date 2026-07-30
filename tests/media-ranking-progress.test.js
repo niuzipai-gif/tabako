@@ -144,13 +144,13 @@ test("source-only and generated reference states still show a labeled source ima
   const tropical = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
   );
-  assert.equal(tropical.cartonStatus, "contents-reference");
-  assert.match(tropical.cartonGallery[0].label, /j-Cigarette 1 carton 页面多盒参考/);
+  assert.equal(tropical.cartonStatus, "verified");
+  assert.match(tropical.cartonGallery[0].label, /j-Cigarette 1 carton 同 SKU 多盒图/);
   assert.match(
     tropical.cartonGallery[0].image,
     /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/,
   );
-  assert.match(tropical.cartonNote, /不是外箱实拍/);
+  assert.match(tropical.cartonNote, /不是封闭外箱/);
 });
 
 test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
@@ -783,13 +783,13 @@ test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing u
 test("remaining non-Cigaronne carton gaps document checked quantity sources without publishing main carton images", () => {
   const expectations = new Map([
     ["メビウス メンソール", /Premium Menthol|E-series|独立现行 SKU/],
+    ["メビウス プレミアム メンソール", /10P|局部多包排列|不再标为已核验整条图/],
     ["ラーク ハイブリッド", /Placer|1カートン\/10個|単包正面/],
     ["ナチュラル アメリカン スピリット", /品牌泛称|Menthol One|不能回填/],
     ["ウィンストン XS", /JT 现行 Winston|旧款\/历史名|近似包装参考/],
     ["セーラム ブラックメンソール", /日本未进口品|Salem Light|不代表日本门店/],
     ["ラーク メンソール 5", /Select\/100s|历史变体|10 包整条外箱/],
     ["IQOS センティア バランスド イエロー", /Placer|Bigliquy|Cigars of Dubai/],
-    ["glo hyper ネオ トロピカル スワール", /Cigars of Dubai|RELAZO|リニューアル/],
     ["lil HYBRID ミックス レギュラー", /終卖|カートン单位|専用リキッド/],
     ["lil HYBRID ミックス アイス", /Sirius Tobacco|カートン单位|MIIX ICE/],
     ["lil HYBRID ミックス ミックス", /Sirius Tobacco|カートン单位|MIIX MIX/],
@@ -827,7 +827,7 @@ test("lil HYBRID MIIX lineup includes Mix and Ice Plus with exact pack media but
   }
 });
 
-test("Cigaronne pack media uses exact local images while American Spirit generic stays non-exact", () => {
+test("Cigaronne pack media uses exact local images while American Spirit separates generic and Light media", () => {
   const cigaronne = [
     ["シガローネ・ロイヤルスリム・メンソール", /cigaronne-royal-menthol-worldtobacco-pack\.jpg/],
     ["シガローネ・スーパースリム・メンソール", /cigaronne-super-menthol-worldtobacco-pack\.jpg/],
@@ -861,6 +861,29 @@ test("Cigaronne pack media uses exact local images while American Spirit generic
   assert.match(americanSpirit.cartonGallery[0].image, /american-spirit-green-paypay-10-empty-boxes\.jpg/);
   assert.match(americanSpirit.cartonNote, /個数10個/);
   assert.match(americanSpirit.cartonNote, /ブランド泛称|品牌泛称/);
+
+  const americanSpiritLight = enrichProduct(
+    rawProducts.find((product) => product.jp === "ナチュラル アメリカン スピリット ライト 14本入"),
+  );
+  assert.equal(americanSpiritLight.brand, "American Spirit");
+  assert.equal(americanSpiritLight.imageStatus, "verified");
+  assert.match(americanSpiritLight.image, /american-spirit-light-14-ana-pack\.jpg/);
+  assert.equal(americanSpiritLight.cartonStatus, "verified");
+  assert.match(americanSpiritLight.cartonImage, /american-spirit-yellow-kurivip-carton\.jpg/);
+  assert.match(americanSpiritLight.cartonSource, /kurivip18\.com/);
+  assert.equal(americanSpiritLight.cartonPackCount, 10);
+  assert.equal(americanSpiritLight.cartonStickCount, 140);
+  assert.match(americanSpiritLight.cartonNote, /14本×10箱/);
+  assert.match(americanSpiritLight.cartonNote, /Yellow\/Light/);
+  assert.match(americanSpiritLight.cartonGallery[1].source, /anadf\.com/);
+  for (const image of [
+    americanSpiritLight.image,
+    americanSpiritLight.cartonImage,
+    americanSpiritLight.cartonGallery[2].image,
+  ]) {
+    const imagePath = new URL(`../${image.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, image);
+  }
 });
 
 test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
@@ -876,7 +899,10 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   const tropical = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
   );
-  assert.equal(tropical.cartonStatus, "contents-reference");
+  assert.equal(tropical.cartonStatus, "verified");
+  assert.match(tropical.cartonImage, /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/);
+  assert.match(tropical.cartonNote, /10 packs \/ 200 heatsticks/);
+  assert.match(tropical.cartonNote, /不是封闭外箱/);
   assert.match(tropical.cartonNote, /大浦商店.*カートン（10箱）/s);
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
 });

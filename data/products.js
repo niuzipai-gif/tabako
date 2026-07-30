@@ -27,6 +27,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "ラーク メンソール 5", cn: "乐富门 薄荷 5", jpy: 560, img: "https://picsum.photos/seed/lark-menthol-5/640/420" },
   { type: "cigarette", jp: "キャスター 5", cn: "卡斯特 5mg", jpy: 540, img: "https://picsum.photos/seed/caster5/640/420" },
   { type: "cigarette", jp: "キャメル クラフト 14", cn: "骆驼 Craft 14", jpy: 500, img: "https://picsum.photos/seed/camel-craft14/640/420" },
+  { type: "cigarette", jp: "ナチュラル アメリカン スピリット ライト 14本入", cn: "美式精神 Light 14支", jpy: 300, img: "https://picsum.photos/seed/american-spirit-light-14/640/420" },
   { type: "cigarette", jp: "アメリカン スピリット ターコイズ", cn: "美式精神 绿松石", jpy: 640, img: "https://picsum.photos/seed/american-spirit-turquoise/640/420" },
   { type: "cigarette", jp: "ピース スーパーライト", cn: "和平 超淡", jpy: 600, img: "https://picsum.photos/seed/peace-super-lights/640/420" },
   { type: "cigarette", jp: "ピアニッシモ アリア メンソール", cn: "百乐门细支 薄荷", jpy: 570, img: "https://picsum.photos/seed/pianissimo-aria-menthol/640/420" },
