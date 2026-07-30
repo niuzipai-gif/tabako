@@ -865,8 +865,8 @@ test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing u
 test("remaining non-Cigaronne carton gaps document checked quantity sources without publishing main carton images", () => {
   const expectations = new Map([
     ["メビウス メンソール", /Premium Menthol|E-series|独立现行 SKU/],
-    ["メビウス プレミアム メンソール", /10P|局部多包排列|不再标为已核验整条图/],
-    ["ラーク ハイブリッド", /Placer|1カートン\/10個|単包正面/],
+    ["メビウス・プレミアムメンソール・オプション・パープル・8", /2010100049|20本×10箱|10P|局部多包排列|不再标为已核验整条图/],
+    ["ラーク ハイブリッド", /Placer|TABACO EXPRESS|１カートン（10個入）|在庫数 48点|単包正面/],
     ["ナチュラル アメリカン スピリット", /品牌泛称|Menthol One|不能回填/],
     ["ウィンストン XS", /JT 现行 Winston|旧款\/历史名|近似包装参考/],
     ["セーラム ブラックメンソール", /日本未进口品|Salem Light|不代表日本门店/],

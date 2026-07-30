@@ -199,7 +199,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/lark-hybrid-pack-content.jpg",
       cartonSource: "https://www.placer-tabaco.com/product/2965",
       cartonNote:
-        "Placer 页面标题为“ラーク ハイブリッドKS ボックス ... カートン（10個）単位で取り寄せ商品”，正文写 20本入り、1カートン/10個，并显示在庫あり；主图是单包，另外两张附图是口味说明图，不是整条外箱。ANA 免税店页面另确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片同样为官方单包正面图。当前仅用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
+        "Placer 页面标题为“ラーク ハイブリッドKS ボックス ... カートン（10個）単位で取り寄せ商品”，正文写 20本入り、1カートン/10個，并显示在庫あり；TABACO EXPRESS 同 SKU 页面写明“１カートン（10個入）”、入数/1個 20本、在庫数 48点。两站主图仍是单包/商品图，不是整条外箱。ANA 免税店页面另确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片同样为官方单包正面图。当前仅用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
     },
   ],
   [
@@ -440,7 +440,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "メビウス プレミアム メンソール|梅比乌斯 高级薄荷",
+    "メビウス・プレミアムメンソール・オプション・パープル・8|梅比乌斯 高级薄荷 紫莓爆珠 8",
     {
       cartonStatus: "contents-reference",
       cartonImage: "",
@@ -451,12 +451,12 @@ const MEDIA_OVERRIDES = new Map([
         {
           label: "ANA 官方单包 / 1カートン规格",
           image: "./images/cartons/mevius-premium-menthol-pack-content.jpg",
-          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083790",
-          note: "ANA 免税店页面确认 MEVIUS Premium Menthol 8 销售规格为 20本×10箱 / 1カートン；图片为官方单包正面图。",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100049",
+          note: "ANA 免税店页面确认“メビウス・プレミアムメンソール・オプション・パープル・8”销售规格为 20本×10箱 / 1カートン；图片为官方单包正面图。",
         },
       ],
       cartonNote:
-        "ものログ商品名为“JT メビウスプレミアムメンソール8 10P”，可作为 10P / 200 支数量来源；但当前可取得图片只显示局部多包排列，不能清楚核对完整同 SKU 10 包整条/一カートン外箱，因此不再标为已核验整条图。目录项为泛称 Premium Menthol，购买时请按 8mg 主流款与完整日文名核对。",
+        "ものログ商品名为“JT メビウスプレミアムメンソール8 10P”，ANA 免税店商品页（商品番号 2010100049）写明完整 SKU“メビウス・プレミアムメンソール・オプション・パープル・8”为 20本×10箱 / 1カートン，可作为 10P / 200 支数量来源；但当前可取得图片只显示单包或局部多包排列，不能清楚核对完整同 SKU 10 包整条/一カートン外箱，因此不再标为已核验整条图。目录项已经改为完整 SKU，购买时仍请按店内实物和完整日文名核对。",
     },
   ],
   [

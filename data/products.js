@@ -18,7 +18,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "ウィンストン キャスター ホワイト", cn: "温斯顿 白", jpy: 560, img: "https://picsum.photos/seed/winston-white/640/420" },
   { type: "cigarette", jp: "クール ブースト", cn: "KOOL 爆珠", jpy: 580, img: "https://picsum.photos/seed/kool-boost/640/420" },
   { type: "cigarette", jp: "メビウス ゴールド オリジナル", cn: "梅比乌斯 金装原味", jpy: 640, img: "https://picsum.photos/seed/mevius-gold-original/640/420" },
-  { type: "cigarette", jp: "メビウス プレミアム メンソール", cn: "梅比乌斯 高级薄荷", jpy: 640, img: "https://picsum.photos/seed/mevius-premium-menthol/640/420" },
+  { type: "cigarette", jp: "メビウス・プレミアムメンソール・オプション・パープル・8", cn: "梅比乌斯 高级薄荷 紫莓爆珠 8", jpy: 580, img: "https://picsum.photos/seed/mevius-premium-menthol-option-purple-8/640/420" },
   { type: "cigarette", jp: "セーラム ライト", cn: "沙龙 淡味", jpy: 600, img: "https://picsum.photos/seed/salem-lights/640/420" },
   { type: "cigarette", jp: "セーラム ブラックメンソール", cn: "沙龙 黑薄荷", jpy: 620, img: "https://picsum.photos/seed/salem-black-menthol/640/420" },
   { type: "cigarette", jp: "マールボロ ゴールド", cn: "万宝路 金", jpy: 600, img: "https://picsum.photos/seed/marlboro-gold/640/420" },
