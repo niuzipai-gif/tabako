@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "ai:local": "node scripts/local-ai-proxy.mjs",
     "test": "node --test",
     "check": "node --test"
   }

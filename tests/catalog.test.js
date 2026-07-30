@@ -144,11 +144,16 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
 
 test("public config supports a runtime AI proxy URL without storing secrets", () => {
   const config = readFileSync(new URL("../config.js", import.meta.url), "utf8");
+  const packageJson = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
   const workflowPath = new URL("../.github/workflows/deploy-ai-worker.yml", import.meta.url);
+  const localProxyPath = new URL("../scripts/local-ai-proxy.mjs", import.meta.url);
 
   assert.match(config, /TABAKO_AI_PROXY_URL/);
   assert.match(config, /URLSearchParams/);
+  assert.match(config, /qx-20230328ddry\.tail74d566\.ts\.net\/tabako-ai/);
+  assert.equal(packageJson.scripts["ai:local"], "node scripts/local-ai-proxy.mjs");
   assert.equal(existsSync(workflowPath), true);
+  assert.equal(existsSync(localProxyPath), true);
 });
 
 test("device sorting groups by brand and then machine generation", () => {

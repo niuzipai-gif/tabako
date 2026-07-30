@@ -1,5 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const queryProxyUrl = params.get("aiProxyUrl") || "";
+const defaultProxyUrl = "https://qx-20230328ddry.tail74d566.ts.net/tabako-ai";
 
 function storedProxyUrl(nextValue = "") {
   try {
@@ -13,5 +14,5 @@ function storedProxyUrl(nextValue = "") {
 const savedProxyUrl = storedProxyUrl(queryProxyUrl);
 
 window.TABAKO_CONFIG = Object.freeze({
-  aiProxyUrl: queryProxyUrl || savedProxyUrl,
+  aiProxyUrl: queryProxyUrl || savedProxyUrl || defaultProxyUrl,
 });

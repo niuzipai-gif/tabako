@@ -61,6 +61,7 @@
 - `wrangler.toml`：公开 Worker 配置，默认仅允许 `https://niuzipai-gif.github.io`。Cloudflare Rate Limiting 绑定是生产保护项；没有绑定时 Worker 仍可调用 MiniMax，便于先把 AI 跑通。
 - `.github/workflows/deploy-ai-worker.yml`：仓库配置 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`、`MINIMAX_API_KEY` 三个 GitHub Actions secrets 后，可手动或随 `main` 分支变更自动部署代理。
 - `config.js`：公开页面只保存部署后的代理 URL，不放密钥；也支持用 `?aiProxyUrl=https://你的-worker地址/` 临时写入本机浏览器，便于上线前测试。
+- `scripts/local-ai-proxy.mjs`：本机临时代理，默认监听 `127.0.0.1:8789`，可配合 Tailscale Funnel 暴露公网 HTTPS。
 
 部署时必须先撤销任何曾在聊天、截图或日志中出现的旧 Key，然后创建新 Key：
 
@@ -83,6 +84,25 @@ https://niuzipai-gif.github.io/tabako/?aiProxyUrl=https%3A%2F%2F你的-worker地
 - [MiniMax `web_search` 服务端工具](https://platform.minimaxi.com/docs/guides/server-tools)
 
 如果代理为空或服务暂时不可用，站点仍保留本地推荐、外部搜索链接、完整目录、地图和日语沟通卡。
+
+### Tailscale Funnel 临时公网代理
+
+当前 GitHub Pages 默认 AI 地址可以指向 Tailscale Funnel：
+
+```text
+https://qx-20230328ddry.tail74d566.ts.net/tabako-ai
+```
+
+本机启动方式：
+
+```powershell
+# .dev.vars 只保存在本机，不提交 Git
+# MINIMAX_API_KEY=你的服务端密钥
+npm run ai:local
+tailscale funnel --bg --set-path=/tabako-ai 8789
+```
+
+这个方案能快速接通公网，但依赖当前电脑在线、Tailscale 在线、本机代理进程持续运行。长期稳定上线仍建议迁移到 Cloudflare Worker、Vercel 或其它 serverless 代理。
 
 ## 本地运行与验证
 
