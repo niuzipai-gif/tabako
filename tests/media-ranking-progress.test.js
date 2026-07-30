@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 36);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 36);
+  assert.equal(manifest.items.length, 37);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 37);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -207,6 +207,21 @@ test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton refere
   assert.ok(
     item.cartonGallery.some((entry) => /2カートンセット/.test(entry.note)),
     "ANA 2-carton reference should remain only as gallery context",
+  );
+});
+
+test("Lark 1 uses visible LARK SELECT 1 multi-box evidence", () => {
+  const item = enrichProduct(rawProducts.find((product) => product.jp === "ラーク 1"));
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /lark-select1-mercari-72-empty-boxes\.jpg/);
+  assert.equal(item.cartonSource, "https://jp.mercari.com/item/m67407962256");
+  assert.equal(item.cartonPackCount, 10);
+  assert.equal(item.cartonStickCount, 200);
+  assert.match(item.cartonNote, /LARK SELECT 1|72箱/);
+  assert.ok(
+    item.cartonGallery.some((entry) => /1カートン\/10個/.test(entry.note)),
+    "Placer 1-carton quantity reference should remain as gallery context",
   );
 });
 

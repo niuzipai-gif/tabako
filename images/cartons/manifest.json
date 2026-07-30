@@ -57,6 +57,15 @@
       "sha256": "31906be477735f2f542281db50cf54cc4a9f026baf88f74560210aa96253251d"
     },
     {
+      "productId": "p-5897c66d",
+      "jp": "ラーク 1",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
+      "sourcePage": "https://jp.mercari.com/item/m67407962256",
+      "sha256": "3aeacb876493b1f7a58f038a33020338672bae9e4ddb5d868847e1f5bcd6492f"
+    },
+    {
       "productId": "p-0706b155",
       "jp": "マールボロ メンソール",
       "status": "verified",

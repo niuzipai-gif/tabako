@@ -391,11 +391,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ラーク 1|乐富门 1mg",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lark-ultra-1-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/1022",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m67407962256",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "日本店铺 1カートン数量来源",
+          image: "./images/cartons/lark-ultra-1-placer-carton-reference.jpg",
+          source: "https://www.placer-tabaco.com/product/1022",
+          note: "プラセール页面标题确认“ラーク ウルトラ 1mg 100 ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为 1mg 系列单包图，不是外箱实拍。"
+        },
+      ],
       cartonNote:
-        "プラセール页面标题确认“ラーク ウルトラ 1mg 100 ボックス”按カートン（10個）单位销售，并写明20本入り、1カートン/10個。图片为 1mg 系列单包图，不是外箱实拍；购买时请核对 Ultra/100s 名称。",
+        "Mercari 标题为“煙草空箱 LARK SELECT 1 ★72箱”，说明写明 72 個の空箱；主图可见大量 LARK SELECT 1 白色空盒，足以核验 1mg/100s 系列多盒外观。该图为空盒参考，不代表实时库存；购买时请核对 Select 1 / Ultra 1 等 1mg 具体名称。",
     },
   ],
   [
