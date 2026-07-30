@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 39);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 39);
+  assert.equal(manifest.items.length, 40);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 40);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -777,14 +777,15 @@ test("Cigaronne pack media uses exact local images while American Spirit generic
   assert.match(americanSpirit.cartonNote, /ブランド泛称|品牌泛称/);
 });
 
-test("glo unresolved carton leads stay recorded without being promoted", () => {
+test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   const lucky = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク メンソール"),
   );
-  assert.equal(lucky.cartonStatus, "multi-carton-reference");
-  assert.match(lucky.cartonNote, /z642652020/);
-  assert.match(lucky.cartonNote, /空箱 10個セット/);
-  assert.match(lucky.cartonNote, /无法取到可核对图片/);
+  assert.equal(lucky.cartonStatus, "verified");
+  assert.match(lucky.cartonImage, /glo-lucky-strike-menthol-mercari-10-empty-boxes\.jpg/);
+  assert.match(lucky.cartonSource, /jp\.mercari\.com\/item\/m27415415655/);
+  assert.match(lucky.cartonNote, /空箱 10箱/);
+  assert.match(lucky.cartonNote, /10 boxes|200 sticks/);
 
   const tropical = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),

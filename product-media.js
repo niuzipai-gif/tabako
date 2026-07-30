@@ -1328,10 +1328,17 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ラッキー ストライク メンソール|glo 幸运击 薄荷",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-menthol-paypay-mixed-9-empty-boxes.jpg",
-      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z583034152",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/glo-lucky-strike-menthol-mercari-10-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m27415415655",
+      cartonPackCount: 10,
       cartonGallery: [
+        {
+          label: "旧混合多盒参考",
+          image: "./images/cartons/glo-lucky-strike-menthol-paypay-mixed-9-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z583034152",
+          note: "Yahoo!フリマ旧候选图混有 Berry Menthol，不再作为主图；仅保留用于解释此前未核验状态。",
+        },
         {
           label: "1 Carton 数量参考",
           image: "./images/cartons/glo-lucky-strike-menthol-1carton-reference.jpg",
@@ -1348,7 +1355,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“glo hyper LUCKY STRIKE MENTHOL BERRY MENTHOL 空箱 9個セット”，说明文字写 MENTHOL 8 箱、BERRY MENTHOL 2 箱；实图可见多枚 LUCKY STRIKE MENTHOL for glo hyper 绿盒及 Berry Menthol 混入。另有 Yahoo!フリマ z642652020 搜索结果标题为“glo HYPER用 LUCKY STRIKE MENTHOL 空箱 10個セット”，但页面当前无法取到可核对图片，因此只记录为精确文字线索。该图用于核对多盒包装比例，不作为纯 10 盒同 SKU 已核验整条图；一条数量仍按 KIX / j-Cigarette 的 10 包 / 200 支。",
+        "Mercari 商品标题为“glohyper グローハイパーラッキーストライク空箱 10箱”，主图可见 10 个同款 LUCKY STRIKE MENTHOL for glo hyper 紫色空盒排列，按同 SKU 10 盒实拍核验。该来源为空盒/收藏图，不代表实时库存；KIX 官方页和 j-Cigarette 页面另确认 1 carton / 10 boxes / 200 sticks。",
     },
   ],
   [
