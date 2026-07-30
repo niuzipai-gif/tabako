@@ -834,9 +834,9 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
     ["セーラム ブラックメンソール", /日本未进口品|Salem Light|不代表日本门店/],
     ["ラーク メンソール 5", /Select\/100s|历史变体|10 包整条外箱/],
     ["lil HYBRID ミックス レギュラー", /終卖|カートン单位|専用リキッド/],
-    ["lil HYBRID ミックス アイス", /Sirius Tobacco|カートン单位|MIIX ICE/],
-    ["lil HYBRID ミックス ミックス", /Sirius Tobacco|カートン单位|MIIX MIX/],
-    ["lil HYBRID ミックス アイス プラス", /Sirius Tobacco|カートン单位|MIIX ICE PLUS/],
+    ["lil HYBRID ミックス アイス", /AMANOYA SETAGAYA|ミックス・アイス（10個）|MIIX ICE/],
+    ["lil HYBRID ミックス ミックス", /AMANOYA SETAGAYA|ミックス・ミックス（10個）|MIIX MIX/],
+    ["lil HYBRID ミックス アイス プラス", /AMANOYA SETAGAYA|ミックス・アイスプラス（10個）|MIIX ICE PLUS/],
     ["lil HYBRID ミックス ベルベット", /Sirius Tobacco|Velvet|カートン单位/],
   ]);
 
@@ -845,6 +845,22 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
     assert.notEqual(item.cartonStatus, "verified", jp);
     assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, note, jp);
+  }
+});
+
+test("lil HYBRID source-only carton references use exact AMANOYA ten-unit pages where available", () => {
+  const expectations = new Map([
+    ["lil HYBRID ミックス アイス", /e-amanoya\.jp\/view\/item\/000000003194/],
+    ["lil HYBRID ミックス ミックス", /e-amanoya\.jp\/view\/item\/000000003193/],
+    ["lil HYBRID ミックス アイス プラス", /e-amanoya\.jp\/view\/item\/000000003192/],
+  ]);
+
+  for (const [jp, source] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "contents-reference", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonSource, source, jp);
+    assert.match(item.cartonNote, /10個|不是已核对的一カートン外箱/, jp);
   }
 });
 

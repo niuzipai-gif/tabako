@@ -1762,9 +1762,9 @@ const MEDIA_OVERRIDES = new Map([
         "Sirius Tobacco 对应 MIIX Ice 单包图，图面可读 MIIX ICE 与日文警示；Relazo 另确认 2023 年后绿色新设计。",
       cartonStatus: "contents-reference",
       cartonImage: "./images/verified/lil-miix-ice-sirius-pack.jpg",
-      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonSource: "https://www.e-amanoya.jp/view/item/000000003194?category_page_id=ct391",
       cartonNote:
-        "Sirius Tobacco 类目页列出ミックス アイス（リルハイブリッド専用）并提供可读单包图，Relazo 评测页确认内容量 20本入、价格 560円、对应リルハイブリッド。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但未给出该口味 10 包整条外箱图。当前图为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・アイス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；Sirius Tobacco 类目页提供可读 MIIX ICE 单包图，Relazo 评测页确认内容量 20本入、价格 560円、对应リルハイブリッド。当前图为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
@@ -1777,9 +1777,9 @@ const MEDIA_OVERRIDES = new Map([
         "Sirius Tobacco 对应 MIIX Mix 单包图；Oricon 将其列为 MIIX 现行全 4 口味之一，定位为柑橘/果香方向。",
       cartonStatus: "contents-reference",
       cartonImage: "./images/verified/lil-miix-mix-sirius-pack.jpg",
-      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonSource: "https://www.e-amanoya.jp/view/item/000000003193?category_page_id=ct391",
       cartonNote:
-        "Sirius Tobacco 类目页列出ミックス ミックス（リルハイブリッド専用）并提供可读单包图；Oricon 资料确认 MIIX 系列现行口味含ミックス ミックス，定位为柑橘系フルーティー。Oricon 同页说明官方线上专用たばこ按カートン单位销售，但未给出该口味 10 包整条外箱图。当前图为 MIIX MIX 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・ミックス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；Sirius Tobacco 类目页提供可读 MIIX MIX 单包图；Oricon 资料确认 MIIX 系列现行口味含ミックス ミックス，定位为柑橘系フルーティー。当前图为 MIIX MIX 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
@@ -1792,9 +1792,9 @@ const MEDIA_OVERRIDES = new Map([
         "Sirius Tobacco 对应 MIIX Ice Plus 单包图；PR TIMES 资料确认该口味由 Philip Morris Japan 发布。",
       cartonStatus: "contents-reference",
       cartonImage: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg",
-      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonSource: "https://www.e-amanoya.jp/view/item/000000003192?category_page_id=ct391",
       cartonNote:
-        "Sirius Tobacco 类目页列出ミックス アイス プラス（リルハイブリッド専用）并提供可读单包图；PR TIMES 资料确认 MIIX Ice Plus 为 lil HYBRID 专用たばこ产品。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但未给出该口味 10 包整条外箱图。当前图为 MIIX ICE PLUS 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・アイスプラス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；Sirius Tobacco 类目页提供可读 MIIX ICE PLUS 单包图；PR TIMES 资料确认 MIIX Ice Plus 为 lil HYBRID 专用たばこ产品。当前图为 MIIX ICE PLUS 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
