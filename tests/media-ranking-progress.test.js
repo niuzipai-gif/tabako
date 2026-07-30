@@ -137,9 +137,14 @@ test("source-only and generated reference states still show a labeled source ima
   );
   assert.equal(superSlimsMenthol.cartonStatus, "source-only");
   assert.equal(superSlimsMenthol.cartonImage, "");
-  assert.equal(superSlimsMenthol.cartonGallery.length, 1);
+  assert.ok(superSlimsMenthol.cartonGallery.length >= 2);
   assert.match(superSlimsMenthol.cartonGallery[0].title, /来源商品图参考/);
   assert.match(superSlimsMenthol.cartonGallery[0].note, /整条外箱仍待核验/);
+  assert.ok(
+    superSlimsMenthol.cartonGallery.some((entry) =>
+      /cigaronne-super-slims-menthol-rakuten-10packs\.jpg/.test(entry.image),
+    ),
+  );
 
   const tropical = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
@@ -846,19 +851,36 @@ test("Ploom X Sharp Cold records the exact 10-box image and keeps 1-carton quant
 });
 
 test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing unverified cartons", () => {
-  const jpNames = [
-    "シガローネ・スーパースリム・メンソール",
-    "シガローネ・タトゥー・チェリー",
-    "シガローネ・タトゥー・チョコレート",
-    "シガローネ・タトゥー・バニラ",
-    "シガローネ・ウルトラスリム・ブラック",
-  ];
+  const expectations = new Map([
+    [
+      "シガローネ・スーパースリム・メンソール",
+      /cigaronne-super-slims-menthol-rakuten-10packs\.jpg/,
+    ],
+    ["シガローネ・タトゥー・チェリー", /cigaronne-tattoo-cherry-rakuten-10packs\.jpg/],
+    [
+      "シガローネ・タトゥー・チョコレート",
+      /cigaronne-tattoo-chocolate-rakuten-10packs\.jpg/,
+    ],
+    ["シガローネ・タトゥー・バニラ", /cigaronne-tattoo-vanilla-rakuten-10packs\.jpg/],
+    [
+      "シガローネ・ウルトラスリム・ブラック",
+      /cigaronne-ultra-slims-black-rakuten-10packs\.jpg/,
+    ],
+  ]);
 
-  for (const jp of jpNames) {
+  for (const [jp, imagePattern] of expectations) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, "source-only", jp);
     assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, /Rakuten\/堀商事.*10packs/s, jp);
+    assert.ok(item.cartonGallery.some((entry) => imagePattern.test(entry.image)), jp);
+    for (const entry of item.cartonGallery.filter((galleryEntry) =>
+      imagePattern.test(galleryEntry.image),
+    )) {
+      assert.match(entry.note, /単包|開包|正面|箱なし|不是.*整条外箱/, jp);
+      const imagePath = new URL(`../${entry.image.replace(/^\.\//, "")}`, import.meta.url);
+      assert.equal(existsSync(imagePath), true, entry.image);
+    }
   }
 });
 
