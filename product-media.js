@@ -628,9 +628,10 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/imperial-collection",
+      cartonSource:
+        "https://mostabaktorg.moscow/sigareti/cigaronne/cigaronne-legend-xl-filter",
       cartonNote:
-        "Cigaronne 官网确认 Imperial Collection 包含 Legend；当前只取得官网产品图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Imperial Collection 包含 Legend；MostabakTorg 对应页面标题为“Cigaronne Legend XL Filter”，规格写明 Количество пачек в блоке 10、Количество сигарет в пачке 20，并说明 Цена указана за один блок / В упаковке 10 пачек。该页图片为单包/开盒商品图，未取得可读完整 SKU 的 10 包整条外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [

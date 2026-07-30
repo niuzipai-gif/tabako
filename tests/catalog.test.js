@@ -392,7 +392,7 @@ test("catalog renderer inserts visible brand section headers", () => {
   const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
 
   assert.match(source, /brand-section-card/);
-  assert.match(source, /按品牌归组/);
+  assert.match(source, /按品牌\/型号排序/);
   assert.equal(source.includes("const brandKey = `${item.type}:${item.brand}`;"), true);
   assert.match(styles, /\.brand-section-card\s*\{/);
   assert.match(styles, /grid-column:\s*1\s*\/\s*-1/);

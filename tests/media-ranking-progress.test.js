@@ -711,6 +711,13 @@ test("Cigaronne Classic source-only gaps use wholesaler carton-quantity evidence
 test("source-only Cigaronne carton gaps point to exact 1-carton product sources", () => {
   const expectations = new Map([
     [
+      "シガローネ・レジェンド",
+      {
+        source: /mostabaktorg\.moscow\/sigareti\/cigaronne\/cigaronne-legend-xl-filter/,
+        note: /Cigaronne Legend XL Filter|Количество пачек в блоке 10|В упаковке 10 пачек/,
+      },
+    ],
+    [
       "シガローネ・スーパースリム・メンソール",
       {
         source: /kixdutyfree\.jp\/en\/cigaronne-super-slims-menthol-2407000022/,

@@ -315,7 +315,7 @@ function renderCatalog() {
       heading.innerHTML = `
         <span>${escapeHtml(item.categoryLabel)}</span>
         <strong>${escapeHtml(item.brand)}</strong>
-        <small>${brandCount} 款 · 按品牌归组</small>
+        <small>${brandCount} 款 · 按品牌/型号排序</small>
       `;
       fragment.appendChild(heading);
     }
