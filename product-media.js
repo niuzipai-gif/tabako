@@ -199,7 +199,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/lark-hybrid-pack-content.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200052",
       cartonNote:
-        "ANA 免税店页面确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
+        "ANA 免税店页面确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。Placer 另有同名/同系产品页写 20本入り、1カートン/10個。用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
     },
   ],
   [
@@ -228,7 +228,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ANA 免税店页面确认“ウィンストン XS キャスターホワイト 1 ボックス”销售规格为 20本×10箱 / 1カートン，主图为官方单包正面图，不是整条外箱。本站另补充 ANA 现行 Winston Caster White One 100's Box 的官方一条外箱侧面图，作为 1mg Caster 系后继/近似包装参考；购买时仍需核对完整日文名。",
+        "ANA 免税店页面确认“ウィンストン XS キャスターホワイト 1 ボックス”销售规格为 20本×10箱 / 1カートン，主图为官方单包正面图，不是整条外箱。JT 现行 Winston 列表以 Cabin / Caster White 等名称为主；旧烟草店资料可见 Winston XS 作为旧款/历史名出现。本站另补充 ANA 现行 Winston Caster White One 100's Box 的官方一条外箱侧面图，作为 1mg Caster 系后继/近似包装参考；购买时仍需核对完整日文名。",
     },
   ],
   [
@@ -358,7 +358,7 @@ const MEDIA_OVERRIDES = new Map([
         "./images/cartons/mevius-premium-menthol8-10p-monolog-reference.png",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210166117",
       cartonNote:
-        "未找到现行普通“メビウス メンソール”的稳定一カートン外箱图源；JT 当前纸烟列表也未列出该独立名称。旧烟草店资料曾以“メビウス メンソール8”为标题介绍“メビウス：プレミアムメンソール8”（2013年3月中旬全国発売、20本入）。ものログ页面标题为“JT メビウスプレミアムメンソール8 10P”，购买者图片展示 10 包排列实物，可帮助理解一条/10P 内容物；但它不是封闭外箱，也不是普通 Menthol 独立 SKU。购买时请按 Premium Menthol 8 核对。",
+        "未找到现行普通“メビウス メンソール”的稳定一カートン外箱图源；JT 现行 Mevius 纸烟列表主要列 Premium Menthol / E-series 等细分名，并未把普通“メビウス メンソール”作为独立现行 SKU。JDF/Ginza 与 Placer 可确认 Premium Menthol 系为 1カートン 200本 / 1カートン10個，ものログ页面标题为“JT メビウスプレミアムメンソール8 10P”，购买者图片展示 10 包排列实物，可帮助理解一条/10P 内容物；但它不是封闭外箱，也不是普通 Menthol 独立 SKU。购买时请按 Premium Menthol 8 或 E-series 的完整日文名核对。",
     },
   ],
   [
@@ -416,7 +416,7 @@ const MEDIA_OVERRIDES = new Map([
         "./images/cartons/lark-select-menthol5-placer-carton-reference.jpg",
       cartonSource: "https://www.placer-tabaco.com/product/5764",
       cartonNote:
-        "プラセール页面标题确认“ラーク・セレクト・メンソール・5・100sボックス”按カートン（10個）单位销售。图片为 5mg Menthol 系列单包图，不是外箱实拍；购买时请核对 Select/100s 名称。",
+        "プラセール页面标题确认“ラーク・セレクト・メンソール・5・100sボックス”按カートン（10個）单位销售，并写明 20本入り、1カートン/10個。检索到的 Lark Ice Mint / Select Menthol 相关图多为单包或历史变体，未发现可读完整同 SKU 10 包整条外箱。图片为 5mg Menthol 系列单包图，不是外箱实拍；购买时请核对 Select/100s 名称。",
     },
   ],
   [
@@ -672,7 +672,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
+        "KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装；PARMA / Cigars of Dubai / HitCigars 等海外页只提供单盒或通用商品图。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
     },
   ],
   [
@@ -689,7 +689,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001178/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チェリー 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チェリー。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チェリー 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チェリー，大浦商店也列 1カートン(10箱)；Cigaronne 官方和 Tabimperia 页面只见单包/开盒图。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
     },
   ],
   [
@@ -706,7 +706,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001179/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チョコレート 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チョコレート。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チョコレート 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チョコレート；Tabimperia 页面写明 10 packs/block，但图片仍是单包。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
     },
   ],
   [
@@ -723,7 +723,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001180/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・バニラ 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー バニラ。暂未取得可核对整条外箱图片。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・バニラ 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー バニラ；Cigaronne 官方页只见双包/单包展示。暂未取得可核对整条外箱图片，因此不发布为已核验整条。",
     },
   ],
   [
@@ -824,7 +824,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "KIX DUTY FREE 官方英文页确认 Cigaronne Ultra Slims Black 商品号 2407000016，タール6mg、ニコチン0.5mg，免税价 ¥6,000；商品图为单盒正面和开盒内容物图，不是 10 盒整条外箱。World Tobacco 单包价约 ¥700。Rakuten/堀商事另列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装。未取得可核对整条外箱图，因此不展示整条主图。",
+        "KIX DUTY FREE 官方英文页确认 Cigaronne Ultra Slims Black 商品号 2407000016，タール6mg、ニコチン0.5mg，免税价 ¥6,000；商品图为单盒正面和开盒内容物图，不是 10 盒整条外箱。World Tobacco 单包价约 ¥700。Rakuten/堀商事另列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装；Cigars of Dubai / TobaccoAsh 页面写 1 Carton / 10 packs / 200 cigarettes，但图也不是完整同 SKU 整条外箱。未取得可核对整条外箱图，因此不展示整条主图。",
     },
   ],
   [
@@ -1121,7 +1121,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“AMERICAN SPIRIT アメリカンスピリット 空箱 10個セット”，商品说明写 AMERICAN SPIRIT、グリーン系、個数10個；图片可见 10 个同色 Natural American Spirit 空盒。当前目录项仍是品牌泛称，不是 Turquoise / Gold / ONE / Mint / Light 等具体 SKU，因此只作为多盒/一条参考，不标记为精确整条外箱已核验。",
+        "Yahoo!フリマ标题为“AMERICAN SPIRIT アメリカンスピリット 空箱 10個セット”，商品说明写 AMERICAN SPIRIT、グリーン系、個数10個；图片可见 10 个同色 Natural American Spirit 空盒。当前目录项仍是品牌泛称，不是 Turquoise / Gold / ONE / Menthol One / Light 等具体 SKU；虽然 ANA 能找到个别 American Spirit 具体款的 20本×10箱免税图源，但不能回填到这个泛称条目。因此只作为多盒/一条参考，不标记为精确整条外箱已核验。",
     },
   ],
   [
@@ -1162,7 +1162,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource:
         "https://www.cigarettespedia.com/index.php/Salem_%28Black_Label_Full_Flavor_%27_Menthol%29_L-20-H_-_USA",
       cartonNote:
-        "未找到日本在售“セーラム ブラックメンソール”的稳定商品页或一カートン外箱图。CigarettesPedia 收录的图为美国 Salem Black Label Full Flavor Menthol 100's 包装，可作为“黑薄荷/Black Label”方向的外观线索；日本烟草店旧问答曾把“セーラムブラックラベル(アメリカ)”列为日本未进口品，因此此图不代表日本门店在库，也不是整条外箱。",
+        "未找到日本在售“セーラム ブラックメンソール”的稳定商品页或一カートン外箱图。CigarettesPedia 收录的图为美国 Salem Black Label Full Flavor Menthol 100's 包装，可作为“黑薄荷/Black Label”方向的外观线索；日本烟草店旧问答曾把“セーラムブラックラベル(アメリカ)”列为日本未进口品，因此此图不代表日本门店在库，也不是整条外箱。若旅途中要找 Salem，优先核对仍在售的 Salem Light 等日本渠道名。",
     },
   ],
   [
@@ -1294,7 +1294,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/sentia-balanced-yellow-content.png",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003311",
       cartonNote:
-        "AMANOYA 页面标题确认“センティア バランスド イエロー（1カートン10個入）”，图片为单盒渲染图，不是整条外箱。用于辨认黄色 Balanced Yellow 包装。",
+        "AMANOYA 页面标题确认“センティア バランスド イエロー（1カートン10個入）”；Placer 和 Bigliquy 也列出 カートン（10個）/ 5,700円级别，日本渠道可作为数量来源。Cigars of Dubai 页面写明 1 carton contains 10 packs of 20 tobacco sticks，但图片仍是单盒/商品图。当前图片为单盒渲染图，不是整条外箱，用于辨认黄色 Balanced Yellow 包装。",
     },
   ],
   [
@@ -1435,7 +1435,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，附图可见同 SKU 多盒排列；但画面不是外箱实拍，也不是完整 10 盒，因此不升为 verified。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，附图可见同 SKU 多盒排列；但画面不是外箱实拍，也不是完整 10 盒，因此不升为 verified。Cigars of Dubai 也写 1 carton contains 10 packs of 20 tobacco sticks。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
     },
   ],
   [
@@ -1498,7 +1498,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/lil-miix-regular-kodama-content.png",
       cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12838717652.html",
       cartonNote:
-        "大阪京橋たばこセンターこだま页面说明“ミックス レギュラー 20本入”，并提示需搭配 lil HYBRID 专用设备与リキッドカートリッジ。图片为 Regular 单盒与 cartridge 对照图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "大阪京橋たばこセンターこだま页面说明“ミックス レギュラー 20本入”，并提示需搭配 lil HYBRID 专用设备与リキッドカートリッジ。日本评测资料说明 lil HYBRID 专用カートリッジ在官方线上常按カートン(10個入り)单位销售，但该资料不是该 SKU 整条外箱图。图片为 Regular 单盒与 cartridge 对照图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
@@ -1508,7 +1508,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/lil-miix-ice-relazo-content.webp",
       cartonSource: "https://relazo.net/lil_miix_ice/",
       cartonNote:
-        "Relazo 评测页确认 MIIX Ice 为 lil HYBRID 对应口味，内容量 20本入，2023 年 7 月后为绿色新设计。图片为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "Relazo 评测页确认 MIIX Ice 为 lil HYBRID 对应口味，内容量 20本入，2023 年 7 月后为绿色新设计。日本评测资料说明 lil HYBRID 专用カートリッジ在官方线上常按カートン(10個入り)单位销售，但未给出该口味整条外箱图。图片为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
@@ -1518,7 +1518,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "./images/cartons/lil-miix-velvet-kishida-content.jpg",
       cartonSource: "https://kishida.ocnk.net/product/2839",
       cartonNote:
-        "キシダサービス页面标题为“リル・ミックスベルベット”，说明为リル ハイブリッド专用 MIIX ベルベット；该口味是莓果香强冷薄荷方向。图片为 Velvet 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "キシダサービス页面标题为“リル・ミックスベルベット”，说明为リル ハイブリッド专用 MIIX ベルベット；该口味是莓果香强冷薄荷方向。日本评测资料说明 lil HYBRID 专用カートリッジ在官方线上常按カートン(10個入り)单位销售，但未找到 Velvet 可读同 SKU 10 包整条图。图片为 Velvet 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
 ]);

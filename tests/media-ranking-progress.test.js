@@ -648,35 +648,35 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
       "シガローネ・スーパースリム・メンソール",
       {
         source: /kixdutyfree\.jp\/en\/cigaronne-super-slims-menthol-2407000022/,
-        note: /1 carton contains 10 packs|1カートン10箱|JAL/,
+        note: /1 carton contains 10 packs|1カートン10箱|PARMA|HitCigars/,
       },
     ],
     [
       "シガローネ・タトゥー・チェリー",
       {
         source: /daiyostore\.com\/shopdetail\/000000001178/,
-        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+        note: /商品内容：1カートン\(10箱\)|大浦商店|Tabimperia/,
       },
     ],
     [
       "シガローネ・タトゥー・チョコレート",
       {
         source: /daiyostore\.com\/shopdetail\/000000001179/,
-        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+        note: /商品内容：1カートン\(10箱\)|Tabimperia|単包/,
       },
     ],
     [
       "シガローネ・タトゥー・バニラ",
       {
         source: /daiyostore\.com\/shopdetail\/000000001180/,
-        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+        note: /商品内容：1カートン\(10箱\)|Cigaronne 官方|双包/,
       },
     ],
     [
       "シガローネ・ウルトラスリム・ブラック",
       {
         source: /kixdutyfree\.jp\/en\/cigaronne-ultra-slims-black-2407000016/,
-        note: /商品号 2407000016|単盒正面|10packs/,
+        note: /商品号 2407000016|Cigars of Dubai|TobaccoAsh/,
       },
     ],
   ]);
@@ -748,6 +748,29 @@ test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing u
     assert.equal(item.cartonStatus, "source-only", jp);
     assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, /Rakuten\/堀商事.*10packs/s, jp);
+  }
+});
+
+test("remaining non-Cigaronne carton gaps document checked quantity sources without publishing main carton images", () => {
+  const expectations = new Map([
+    ["メビウス メンソール", /Premium Menthol|E-series|独立现行 SKU/],
+    ["ラーク ハイブリッド", /Placer|1カートン\/10個|単包正面/],
+    ["ナチュラル アメリカン スピリット", /品牌泛称|Menthol One|不能回填/],
+    ["ウィンストン XS", /JT 现行 Winston|旧款\/历史名|近似包装参考/],
+    ["セーラム ブラックメンソール", /日本未进口品|Salem Light|不代表日本门店/],
+    ["ラーク メンソール 5", /Select\/100s|历史变体|10 包整条外箱/],
+    ["IQOS センティア バランスド イエロー", /Placer|Bigliquy|Cigars of Dubai/],
+    ["glo hyper ネオ トロピカル スワール", /Cigars of Dubai|RELAZO|リニューアル/],
+    ["lil HYBRID ミックス レギュラー", /カートン\(10個入り\)|専用リキッド/],
+    ["lil HYBRID ミックス アイス", /カートン\(10個入り\)|新设计/],
+    ["lil HYBRID ミックス ベルベット", /カートン\(10個入り\)|Velvet/],
+  ]);
+
+  for (const [jp, note] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.notEqual(item.cartonStatus, "verified", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, note, jp);
   }
 });
 

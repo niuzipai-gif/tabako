@@ -312,6 +312,15 @@ test("pod sorting keeps brand families together and orders cartridge resistance 
   );
 });
 
+test("device and pod category pages ignore score sorts and keep brand-model order", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+
+  assert.match(
+    source,
+    /state\.category === "device" \|\| state\.category === "pod" \? "device" : state\.sort/,
+  );
+});
+
 test("recommended sorting groups every catalog type by brand before individual ranking", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const sorted = sortProducts(products, "recommended");
