@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 35);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 35);
+  assert.equal(manifest.items.length, 36);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 36);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -141,13 +141,13 @@ test("source-only and generated reference states still show a labeled source ima
   assert.match(royalSlimsMenthol.cartonGallery[0].title, /来源商品图参考/);
   assert.match(royalSlimsMenthol.cartonGallery[0].note, /整条外箱仍待核验/);
 
-  const larkClassic = enrichProduct(
-    rawProducts.find((product) => product.jp === "ラーク クラシック"),
+  const sharpCold = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
   );
-  assert.equal(larkClassic.cartonStatus, "multi-carton-reference");
-  assert.equal(larkClassic.cartonImage, "");
-  assert.match(larkClassic.cartonGallery[0].title, /多盒/);
-  assert.match(larkClassic.cartonGallery[0].note, /不会当作纯单 SKU 一条主图/);
+  assert.equal(sharpCold.cartonStatus, "multi-carton-reference");
+  assert.equal(sharpCold.cartonImage, "");
+  assert.match(sharpCold.cartonGallery[0].title, /Sharp Cold 10 盒混合实拍/);
+  assert.match(sharpCold.cartonGallery[0].note, /不是纯单 SKU 一カートン/);
 });
 
 test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
@@ -192,6 +192,21 @@ test("Marlboro Menthol uses exact 20x10 artwork instead of the ANA 2-carton imag
     item.cartonGallery.some((entry) =>
       /marlboro-menthol8-box-ana-2carton\.jpg/.test(entry.image),
     ),
+  );
+});
+
+test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton reference", () => {
+  const item = enrichProduct(rawProducts.find((product) => product.jp === "ラーク クラシック"));
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /lark-classic-milds-mercari-10-empty-boxes\.jpg/);
+  assert.equal(item.cartonSource, "https://jp.mercari.com/item/m34271529006");
+  assert.equal(item.cartonPackCount, 10);
+  assert.equal(item.cartonStickCount, 200);
+  assert.match(item.cartonNote, /LARK CLASSIC MILDS|空き箱10個/);
+  assert.ok(
+    item.cartonGallery.some((entry) => /2カートンセット/.test(entry.note)),
+    "ANA 2-carton reference should remain only as gallery context",
   );
 });
 

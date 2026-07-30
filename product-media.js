@@ -175,13 +175,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ラーク クラシック|乐富门 经典",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/lark-classic-mild-ks-ana-2carton.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200053",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/lark-classic-milds-mercari-10-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m34271529006",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "ANA 免税 2カートン参考",
+          image: "./images/cartons/lark-classic-mild-ks-ana-2carton.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200053",
+          note: "ANA 免税店商品页为“ラーク マイルド KS ボックス 400S”，规格写明 (20本×10箱)×2，并说明是 2カートンセット；用于补充免税购买场景。"
+        },
+      ],
       cartonNote:
-        "ANA 免税店商品页为“ラーク マイルド KS ボックス 400S”，规格写明 (20本×10箱)×2，并说明是2カートンセット；图片可见 2 CARTON SPECIAL 外箱。Placer 对应品名为“ラーク クラシック マイルド KS ボックス”。它是两条装参考，购买单条时按 10 包 / 200 支理解。",
+        "Mercari 标题为“LARK空き箱 10個 パックコード付き JK045”，说明写明“ラーク クラシックマイルドの空き箱10個”。主图可见 10 个 LARK CLASSIC MILDS 空盒，足以核验同 SKU 10 盒外观；该图为空盒参考，不代表实时库存。ANA 免税页另有 2カートンセット参考，Placer 对应品名为“ラーク クラシック マイルド KS ボックス”。",
     },
   ],
   [

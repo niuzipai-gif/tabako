@@ -48,6 +48,15 @@
       "sha256": "3ec81074f51b1e9c3a2ed062127bab92f2c8e7dd919455e0e2e6f05b498e741c"
     },
     {
+      "productId": "p-93b9e6ad",
+      "jp": "ラーク クラシック",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/lark-classic-milds-mercari-10-empty-boxes.jpg",
+      "sourcePage": "https://jp.mercari.com/item/m34271529006",
+      "sha256": "31906be477735f2f542281db50cf54cc4a9f026baf88f74560210aa96253251d"
+    },
+    {
       "productId": "p-0706b155",
       "jp": "マールボロ メンソール",
       "status": "verified",
