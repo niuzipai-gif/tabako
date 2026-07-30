@@ -720,9 +720,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonSource: "https://neutrinoinvest.co.za/wholesale-distribution/tobacco-products/cigaronne/",
       cartonNote:
-        "Cigaronne 官网确认 Classic King Size 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Classic King Size 为 Classic Collection 完整系列之一；Neutrino Invest 批发资料把 King Size 列为 Number of Packs/Carton = 10、Number of cartons/case = 50，并配有 King Size 黑/白单盒展示图。该图不是完整同 SKU 10 包整条外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -737,9 +737,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonSource: "https://neutrinoinvest.co.za/wholesale-distribution/tobacco-products/cigaronne/",
       cartonNote:
-        "Cigaronne 官网确认 Classic Compatto 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Classic Compatto 为 Classic Collection 完整系列之一；Neutrino Invest 批发资料把 Compatto 列为 Number of Packs/Carton = 10、Number of cartons/case = 50，并配有 Compatto 单盒展示图。该图不是完整同 SKU 10 包整条外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -754,9 +754,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ウルトラスリム",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonSource: "https://neutrinoinvest.co.za/wholesale-distribution/tobacco-products/cigaronne/",
       cartonNote:
-        "Cigaronne 官网确认 Classic Ultra Slims 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Classic Ultra Slims 为 Classic Collection 完整系列之一；Neutrino Invest 批发资料把 Ultra Slims 列为 Number of Packs/Carton = 10、Number of cartons/case = 50。当前仅有官网/批发页包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -771,9 +771,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "スーパースリム",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonSource: "https://neutrinoinvest.co.za/wholesale-distribution/tobacco-products/cigaronne/",
       cartonNote:
-        "Cigaronne 官网确认 Classic Super Slims 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Classic Super Slims 为 Classic Collection 完整系列之一；Neutrino Invest 批发资料把 Super Slims 列为 Number of Packs/Carton = 10、Number of cartons/case = 50。当前仅有官网/批发页包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [

@@ -671,6 +671,24 @@ test("Cigaronne official collection additions use local official media but no un
   }
 });
 
+test("Cigaronne Classic source-only gaps use wholesaler carton-quantity evidence without publishing display images", () => {
+  const expectations = new Map([
+    ["シガローネ・クラシック・キングサイズ", /King Size.*Number of Packs\/Carton = 10/s],
+    ["シガローネ・クラシック・コンパット", /Compatto.*Number of Packs\/Carton = 10/s],
+    ["シガローネ・クラシック・ウルトラスリム", /Ultra Slims.*Number of Packs\/Carton = 10/s],
+    ["シガローネ・クラシック・スーパースリム", /Super Slims.*Number of Packs\/Carton = 10/s],
+  ]);
+
+  for (const [jp, notePattern] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonSource, /neutrinoinvest\.co\.za\/wholesale-distribution\/tobacco-products\/cigaronne/, jp);
+    assert.match(item.cartonNote, notePattern, jp);
+    assert.match(item.cartonNote, /不是完整同 SKU 10 包整条外箱实拍|未取得同 SKU 10 包整条/, jp);
+  }
+});
+
 test("source-only Cigaronne carton gaps point to exact 1-carton product sources", () => {
   const expectations = new Map([
     [
