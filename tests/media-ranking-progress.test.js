@@ -720,36 +720,36 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
     [
       "シガローネ・スーパースリム・メンソール",
       {
-        source: /kixdutyfree\.jp\/en\/cigaronne-super-slims-menthol-2407000022/,
-        note: /1 carton contains 10 packs|1カートン10箱|PARMA|HitCigars/,
+        source: /item\.rakuten\.co\.jp\/snus\/2759/,
+        note: /10packs シガローネ スーパースリム メンソール|箱なしセロハン包装|1 carton contains 10 packs/,
       },
     ],
     [
       "シガローネ・タトゥー・チェリー",
       {
-        source: /daiyostore\.com\/shopdetail\/000000001178/,
-        note: /商品内容：1カートン\(10箱\)|大浦商店|Tabimperia/,
+        source: /item\.rakuten\.co\.jp\/snus\/2538/,
+        note: /10packs シガローネ タトゥー チェリー|商品内容：1カートン\(10箱\)|大浦商店/,
       },
     ],
     [
       "シガローネ・タトゥー・チョコレート",
       {
-        source: /daiyostore\.com\/shopdetail\/000000001179/,
-        note: /商品内容：1カートン\(10箱\)|Tabimperia|単包/,
+        source: /item\.rakuten\.co\.jp\/snus\/2539/,
+        note: /10packs シガローネ タトゥー チョコレート|商品内容：1カートン\(10箱\)|Tabimperia/,
       },
     ],
     [
       "シガローネ・タトゥー・バニラ",
       {
-        source: /daiyostore\.com\/shopdetail\/000000001180/,
-        note: /商品内容：1カートン\(10箱\)|Cigaronne 官方|双包/,
+        source: /item\.rakuten\.co\.jp\/snus\/2540/,
+        note: /10packs シガローネ タトゥー バニラ|商品内容：1カートン\(10箱\)|Cigaronne 官方/,
       },
     ],
     [
       "シガローネ・ウルトラスリム・ブラック",
       {
-        source: /kixdutyfree\.jp\/en\/cigaronne-ultra-slims-black-2407000016/,
-        note: /商品号 2407000016|Cigars of Dubai|TobaccoAsh/,
+        source: /item\.rakuten\.co\.jp\/snus\/2608/,
+        note: /10packs シガローネ ウルトラスリム ブラック|箱なしセロハン包装|商品号 2407000016/,
       },
     ],
   ]);

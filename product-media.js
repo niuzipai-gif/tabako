@@ -712,7 +712,7 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/en/cigaronne-super-slims-menthol-2407000022.html",
+      cartonSource: "https://item.rakuten.co.jp/snus/2759/",
       cartonGallery: [
         {
           title: "来源商品图参考：JAL 官方单盒 / 1カートン规格",
@@ -722,7 +722,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装；PARMA / Cigars of Dubai / HitCigars 等海外页只提供单盒或通用商品图。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装，可作为 10 包数量来源但不是外箱图；KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。PARMA / Cigars of Dubai / HitCigars 等海外页只提供单盒或通用商品图。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
     },
   ],
   [
@@ -805,9 +805,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "リトルシガー",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://daiyostore.com/shopdetail/000000001178/Cigaronne/page1/order/",
+      cartonSource: "https://item.rakuten.co.jp/snus/2538/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チェリー 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チェリー，大浦商店也列 1カートン(10箱)；Cigaronne 官方和 Tabimperia 页面只见单包/开盒图。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー チェリー；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー，大浦商店也列 1カートン(10箱)。Cigaronne 官方和 Tabimperia 页面只见单包/开盒图。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
     },
   ],
   [
@@ -822,9 +822,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "リトルシガー",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://daiyostore.com/shopdetail/000000001179/Cigaronne/page1/order/",
+      cartonSource: "https://item.rakuten.co.jp/snus/2539/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チョコレート 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チョコレート；Tabimperia 页面写明 10 packs/block，但图片仍是单包。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー チョコレート；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Tabimperia 页面写明 10 packs/block，但图片仍是单包。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
     },
   ],
   [
@@ -839,9 +839,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "リトルシガー",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://daiyostore.com/shopdetail/000000001180/Cigaronne/page1/order/",
+      cartonSource: "https://item.rakuten.co.jp/snus/2540/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・バニラ 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー バニラ；Cigaronne 官方页只见双包/单包展示。暂未取得可核对整条外箱图片，因此不发布为已核验整条。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー バニラ；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Cigaronne 官方页只见双包/单包展示。暂未取得可核对整条外箱图片，因此不发布为已核验整条。",
     },
   ],
   [
@@ -932,7 +932,7 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/en/cigaronne-ultra-slims-black-2407000016.html",
+      cartonSource: "https://item.rakuten.co.jp/snus/2608/",
       cartonGallery: [
         {
           title: "来源商品图参考：KIX 官方单盒正面",
@@ -942,7 +942,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "KIX DUTY FREE 官方英文页确认 Cigaronne Ultra Slims Black 商品号 2407000016，タール6mg、ニコチン0.5mg，免税价 ¥6,000；商品图为单盒正面和开盒内容物图，不是 10 盒整条外箱。World Tobacco 单包价约 ¥700。Rakuten/堀商事另列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装；Cigars of Dubai / TobaccoAsh 页面写 1 Carton / 10 packs / 200 cigarettes，但图也不是完整同 SKU 整条外箱。未取得可核对整条外箱图，因此不展示整条主图。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装，可作为 10 包数量来源但不是外箱图；KIX DUTY FREE 官方英文页确认 Cigaronne Ultra Slims Black 商品号 2407000016，タール6mg、ニコチン0.5mg，免税价 ¥6,000；商品图为单盒正面和开盒内容物图，不是 10 盒整条外箱。World Tobacco 单包价约 ¥700。Cigars of Dubai / TobaccoAsh 页面写 1 Carton / 10 packs / 200 cigarettes，但图也不是完整同 SKU 整条外箱。未取得可核对整条外箱图，因此不展示整条主图。",
     },
   ],
   [
