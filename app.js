@@ -36,6 +36,7 @@ const elements = {
   aiJapaneseQuantity: document.querySelector("#aiJapaneseQuantity"),
   aiJapaneseText: document.querySelector("#aiJapaneseText"),
   aiMatchList: document.querySelector("#aiMatchList"),
+  aiEntryStatus: document.querySelector("#aiEntryStatus"),
   aiOpenButton: document.querySelector("#aiOpenButton"),
   aiProgress: document.querySelector("#aiProgress"),
   aiProgressBar: document.querySelector("#aiProgressBar"),
@@ -151,6 +152,13 @@ const state = {
   aiMode: "recommend",
   jpyToCny: 0.0415,
 };
+
+function updateAiEntryStatus() {
+  if (!elements.aiEntryStatus) return;
+  elements.aiEntryStatus.textContent = aiClient.configured
+    ? "MiniMax 已接入 · 本地先匹配"
+    : "本地先匹配 · 在线代理未连接";
+}
 
 let lastProductTrigger = null;
 let toastTimer = null;
@@ -1047,7 +1055,7 @@ async function runAiRecommendation() {
     renderAiResult(
       {
         answer: matches.length
-          ? "先按名称、口味、强度、预算和热度，从本地 91 款目录里筛出了这些候选。"
+          ? `先按名称、口味、强度、预算和热度，从本地 ${catalog.length} 款目录里筛出了这些候选。`
           : "本地目录暂时没有足够接近的候选，可以继续联网核对。",
         matches,
         sources: [],
@@ -1503,6 +1511,7 @@ if ("serviceWorker" in navigator) {
   );
 }
 
+updateAiEntryStatus();
 renderAll();
 hydrateIcons();
 loadRate();
