@@ -291,12 +291,24 @@
         "status": "exists"
     },
     {
+        "type": "cigarette",
+        "jp": "シガローネ ファントム シルバー",
+        "cn": "卡比龙 Phantom Silver",
+        "key": "cc594f71",
+        "query": "シガローネ ファントム シルバー cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.kixdutyfree.jp/en/cigaronne-phantom-silver-2407000018.html",
+        "title": "Cigaronne Phantom Silver - KIX DUTY FREE"
+    },
+    {
         "type": "heated",
         "jp": "IQOS テリア レギュラー",
         "cn": "IQOS TEREA 经典",
         "key": "5814d907",
         "query": "IQOS テリア レギュラー heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001829",
+        "title": "TEREA Regular - World Tobacco"
     },
     {
         "type": "heated",
@@ -304,7 +316,9 @@
         "cn": "IQOS TEREA 薄荷",
         "key": "0e9b32fb",
         "query": "IQOS テリア メンソール heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001828",
+        "title": "TEREA Menthol - World Tobacco"
     },
     {
         "type": "heated",
@@ -312,7 +326,9 @@
         "cn": "IQOS TEREA 黑薄荷",
         "key": "8e0ca7db",
         "query": "IQOS テリア ブラックメンソール heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001830",
+        "title": "TEREA Black Menthol - World Tobacco"
     },
     {
         "type": "heated",
@@ -320,7 +336,9 @@
         "cn": "IQOS TEREA 柔和经典",
         "key": "1b6407ab",
         "query": "IQOS テリア スムース レギュラー heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001891",
+        "title": "TEREA Smooth Regular - World Tobacco"
     },
     {
         "type": "heated",
@@ -328,7 +346,9 @@
         "cn": "IQOS TEREA 融合薄荷",
         "key": "ae6a1a1c",
         "query": "IQOS テリア フュージョン メンソール heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001897",
+        "title": "TEREA Fusion Menthol - World Tobacco"
     },
     {
         "type": "heated",
@@ -472,7 +492,9 @@
         "cn": "IQOS TEREA 红宝石经典",
         "key": "496b84df",
         "query": "IQOS テリア ルビー レギュラー heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001887?category_page_id=ct304",
+        "title": "TEREA Ruby Regular - World Tobacco"
     },
     {
         "type": "heated",
@@ -480,7 +502,9 @@
         "cn": "IQOS TEREA 温感经典",
         "key": "5d9f5770",
         "query": "IQOS テリア ウォーム レギュラー heated tobacco pack",
-        "status": "exists"
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001898?category_page_id=ct304",
+        "title": "TEREA Warm Regular - World Tobacco"
     },
     {
         "type": "heated",

@@ -35,6 +35,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "ホープ", cn: "Hope", jpy: 330, img: "https://picsum.photos/seed/hope/640/420" },
   { type: "cigarette", jp: "わかば", cn: "若叶", jpy: 250, img: "https://picsum.photos/seed/wakaba/640/420" },
   { type: "cigarette", jp: "エコー", cn: "Echo", jpy: 450, img: "https://picsum.photos/seed/echo/640/420" },
+  { type: "cigarette", jp: "シガローネ ファントム シルバー", cn: "卡比龙 Phantom Silver", jpy: 1100, img: "https://picsum.photos/seed/cigaronne-phantom-silver/640/420" },
 
   { type: "heated", jp: "IQOS テリア レギュラー", cn: "IQOS TEREA 经典", jpy: 580, img: "https://picsum.photos/seed/terea-regular/640/420" },
   { type: "heated", jp: "IQOS テリア メンソール", cn: "IQOS TEREA 薄荷", jpy: 580, img: "https://picsum.photos/seed/terea-menthol/640/420" },

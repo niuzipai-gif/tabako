@@ -415,77 +415,139 @@ const MEDIA_OVERRIDES = new Map([
   [
     "IQOS テリア レギュラー|IQOS TEREA 经典",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-regular-carton.webp",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001829",
+      imageNote:
+        "World Tobacco 对应 SKU 页面图；图面为日本警示版 TEREA 单盒，部分页面商品图不在正面印完整口味名，购买时仍按页面标题与实物色系核对。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-regular/",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。外箱警示文字和印刷批次可能更新。",
+        "海外电商页面文字确认 TEREA Regular 日本版通常按 1 carton = 10 packs = 200 sticks 销售，但原外箱图无法从图面直接读出 REGULAR 口味。为避免一包和一条错配，本站暂不展示该整条图，只保留数量来源和检索入口。",
     },
   ],
   [
     "IQOS テリア メンソール|IQOS TEREA 薄荷",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-menthol-carton.webp",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001828",
+      imageNote:
+        "World Tobacco 对应 Menthol SKU 页面图；单盒图为青绿色 TEREA 日本警示版，用于辨认，不把它当作整条外箱证明。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-menthol/",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。青绿色外箱对应 MENTHOL，购买时仍要核对完整名称。",
+        "原海外电商外箱图只可见青绿色 TEREA 外盒，图面没有清晰 MENTHOL 字样，不能证明与该 SKU 完全对应。本站已移除该整条图，避免把其他 TEREA 口味当作薄荷整条；一条数量仍按 10 包 / 200 支参考。",
     },
   ],
   [
     "IQOS テリア ブラックメンソール|IQOS TEREA 黑薄荷",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-black-menthol-carton.webp",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001830",
+      imageNote:
+        "World Tobacco 对应 Black Menthol SKU 页面图；图面为深色 TEREA 日本警示版，按来源页标题确认口味。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。黑绿外箱对应 BLACK MENTHOL，右上角为零售商水印。",
+        "海外电商页面文字指向 BLACK MENTHOL，但外箱图带水印且图面未能稳定核对完整 SKU。为避免错配，暂不展示整条图；购买时按完整英文/日文名核对，数量按 10 包 / 200 支参考。",
     },
   ],
   [
     "IQOS テリア スムース レギュラー|IQOS TEREA 柔和经典",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-smooth-regular-carton.webp",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001891",
+      imageNote:
+        "World Tobacco 对应 Smooth Regular SKU 页面图；图面为浅蓝色 TEREA 日本警示版，正面不完整显示口味名时按来源页标题核对。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-smooth-regular/",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。灰色外箱对应 SMOOTH REGULAR。",
+        "海外电商页面文字确认 Smooth Regular 与 1 carton 数量，但外箱图片图面无法直接核对完整口味名。本站暂不展示该整条图，防止用近似色外箱误导购买。",
     },
   ],
   [
     "IQOS テリア ルビー レギュラー|IQOS TEREA 红宝石经典",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-ruby-regular-carton.jpg",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001887?category_page_id=ct304",
+      imageNote:
+        "World Tobacco 对应 Ruby Regular SKU 页面图；图面为蓝红色 TEREA 日本警示版，作为单盒辨认参考，不等同整条外箱核验。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://heetsiqosuae.ae/products/terea-ruby-regular/",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。蓝红渐变外箱对应 RUBY REGULAR。",
+        "海外电商页面文字指向 Ruby Regular，但该类图源不属于日本官方或可直接读出完整 SKU 的整条图。本站暂不展示整条图，仅保留 10 包 / 200 支数量参考与来源。",
     },
   ],
   [
     "IQOS テリア フュージョン メンソール|IQOS TEREA 融合薄荷",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-fusion-menthol-carton.webp",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001897",
+      imageNote:
+        "World Tobacco 对应 Fusion Menthol SKU 页面图；图面为紫粉色 TEREA 日本警示版，但正面不直接写完整 FUSION MENTHOL，因此标为来源页参考。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。紫粉渐变外箱对应 FUSION MENTHOL，右上角为零售商水印。",
+        "原图为海外水印图，图面未清晰显示 FUSION MENTHOL 完整口味名；用户已反馈类似 TEREA 口味出现一包/一条错配。本站改为不展示该整条图，只保留数量来源。",
     },
   ],
   [
     "IQOS テリア ウォーム レギュラー|IQOS TEREA 温感经典",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-warm-regular-carton.webp",
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001898?category_page_id=ct304",
+      imageNote:
+        "World Tobacco 对应 Warm Regular SKU 页面图；图面为暖棕色 TEREA 日本警示版，按来源页标题与实物色系共同核对。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
       cartonNote:
-        "日本版真一カートン外箱实拍：10 包 × 20 支，共 200 支。红橙渐变外箱对应 WARM REGULAR，右上角为零售商水印。",
+        "海外电商页面文字指向 Warm Regular，但图片带水印且不能从图面直接核对完整 SKU。为避免错配，暂不展示整条图；一条数量按 10 包 / 200 支参考。",
+    },
+  ],
+  [
+    "シガローネ ファントム シルバー|卡比龙 Phantom Silver",
+    {
+      image: "./images/cartons/cigaronne-phantom-silver-kix-pack.jpg",
+      imageStatus: "verified",
+      imageSource:
+        "https://www.kixdutyfree.jp/en/cigaronne-phantom-silver-2407000018.html",
+      imageNote:
+        "KIX DUTY FREE 官方商品图，正面可读 Cigaronne Phantom Silver / Imperial Collection / The slimmest XL Filter，用于识别用户常说的“卡比龙”。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource:
+        "https://cigarsofdubai.com/product/cigaronne-phantom-slims-silver-jp/",
+      cartonGallery: [
+        {
+          title: "KIX 官方打开后内容物",
+          image: "./images/cartons/cigaronne-phantom-silver-kix-detail.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/cigaronne-phantom-silver-2407000018.html",
+          note: "KIX 第二张官方图展示打开后的 Phantom Silver 单包内容物，不是 10 包整条外箱。",
+        },
+        {
+          title: "日本烟草店单包参考",
+          image: "./images/cartons/cigaronne-phantom-silver-worldtobacco-pack.jpg",
+          source: "https://www.world-tobacco.jp/view/item/000000001846",
+          note: "世界のたばこ通販页面确认 20本入り、タール5mg、ニコチン0.5mg、アルメニア产。",
+        },
+      ],
+      cartonNote:
+        "Cigars of Dubai 页面说明 1 Carton = 10 packs = 200 cigarettes；KIX 官方免税页显示 duty free price ¥10,000，普通日本烟草店单包价约 ¥1,100。当前未找到能核对完整 SKU 的 10 包整条外箱实拍，因此不展示未核验整条图。",
     },
   ],
   [

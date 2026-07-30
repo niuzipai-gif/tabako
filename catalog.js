@@ -110,6 +110,16 @@ const BRAND_PROFILES = [
     source: "https://www.jti.co.jp/tobacco/products/camel/",
   },
   {
+    test: /シガローネ|Cigaronne|卡比龙/i,
+    brand: "Cigaronne",
+    jpScore: 3.8,
+    cnScore: 4.0,
+    availability: "specialist",
+    jpImpression: "日本评价常集中在横向高级包装、115mm 超长极细规格和礼品感；一般便利店能见度低，更偏烟草专门店或机场免税。",
+    cnImpression: "中国游客常把它叫“卡比龙”，容易被灰黑色长盒和高端外观吸引；购买前要核对 Phantom/Royal/Super Slims 等具体系列。",
+    source: "https://www.kixdutyfree.jp/en/cigaronne-phantom-silver-2407000018.html",
+  },
+  {
     test: /ラーク|乐富门|Lark/i,
     brand: "Lark",
     jpScore: 4.0,
@@ -152,6 +162,11 @@ const BRAND_PROFILES = [
 ];
 
 const PRICE_RULES = [
+  {
+    test: (item) => /シガローネ|Cigaronne|卡比龙/i.test(`${item.jp} ${item.cn}`),
+    value: 1100,
+    source: "official",
+  },
   { test: (item) => /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
   { test: (item) => /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
   { test: (item) => /lil HYBRID|ミックス/i.test(item.jp), value: 560, source: "official" },

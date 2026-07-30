@@ -1141,7 +1141,7 @@ async function runAiVision() {
     showToast("请先选择一张烟盒图片");
     return;
   }
-  const steps = ["检查图片", "检查安全代理", "等待安全代理返回", "匹配本地目录"];
+  const steps = ["检查图片", "检查安全代理", "等待安全代理返回", "匹配本地目录", "库外联网补充"];
   setButtonBusy(elements.aiVisionSubmit, true, "正在检查图片…");
   setAiProgress({ value: 10, label: "正在检查图片格式和大小", steps, current: 0 });
   await nextPaint();
@@ -1178,14 +1178,48 @@ async function runAiVision() {
     });
     setAiProgress({ value: 70, label: "图片请求已发送；正在等待安全代理返回", steps, current: 2 });
     const result = await resultPromise;
-    setAiProgress({ value: 92, label: "已收到识别结果；正在匹配本地目录", steps, current: 3 });
+    setAiProgress({ value: 82, label: "已收到识别结果；正在匹配本地目录", steps, current: 3 });
     await nextPaint();
-    renderAiResult(result, "MiniMax 图片理解");
+    let finalResult = result;
+    let badge = "MiniMax 图片理解";
+    if ((result.matches ?? []).length === 0) {
+      const fallbackQuery = [result.answer, "日本 たばこ パッケージ 価格"]
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .slice(0, AI_LIMITS.query);
+      setAiProgress({
+        value: 90,
+        label: "目录未命中；正在自动联网补充库外线索",
+        steps,
+        current: 4,
+      });
+      try {
+        const online = await aiClient.ask({ mode: "search", query: fallbackQuery });
+        finalResult = {
+          answer:
+            `${result.answer || "图片识别没有命中本地目录。"} 已自动联网查找库外资料；下方来源仅作核对线索，未自动写入目录。`,
+          matches: [],
+          sources: online.sources ?? [],
+        };
+        badge = "MiniMax 图片理解 + 联网补充";
+      } catch (fallbackError) {
+        finalResult = {
+          answer:
+            `${result.answer || "图片识别没有命中本地目录。"} 自动联网补充未完成：${fallbackError.message || "请稍后重试"}。`,
+          matches: [],
+          sources: [],
+        };
+        badge = "MiniMax 图片理解 · 库外未补全";
+      }
+    }
+    renderAiResult(finalResult, badge);
     setAiProgress({
       value: 100,
-      label: "图片识别完成",
+      label: (finalResult.sources ?? []).length
+        ? `图片识别完成；已补充 ${(finalResult.sources ?? []).length} 条联网线索`
+        : "图片识别完成",
       steps,
-      current: 3,
+      current: (result.matches ?? []).length === 0 ? 4 : 3,
       state: "complete",
     });
   } catch (error) {

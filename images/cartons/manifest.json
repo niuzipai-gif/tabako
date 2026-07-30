@@ -21,69 +21,6 @@
       "sha256": "25d5da7ef9995a4822a7c0470139d154c3f96955c93d1f74a56765f60ab44760"
     },
     {
-      "productId": "p-5814d907",
-      "jp": "IQOS テリア レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-regular-carton.webp",
-      "sourcePage": "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-regular/",
-      "sha256": "3a1bc566e2ad07b50ed21b79bfc199b6798ab4b5b8165c28e5698c756ee7b457"
-    },
-    {
-      "productId": "p-0e9b32fb",
-      "jp": "IQOS テリア メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-menthol-carton.webp",
-      "sourcePage": "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-menthol/",
-      "sha256": "26538019f892a6e2fd00c7653f4d00c1724170e3ae9d9da98d887ccb35df2311"
-    },
-    {
-      "productId": "p-8e0ca7db",
-      "jp": "IQOS テリア ブラックメンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-black-menthol-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
-      "sha256": "ea279a8523bac8e4227781e0cdf9dc0b18756ec8c0f94fd25ca30abb752e4650"
-    },
-    {
-      "productId": "p-1b6407ab",
-      "jp": "IQOS テリア スムース レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-smooth-regular-carton.webp",
-      "sourcePage": "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-smooth-regular/",
-      "sha256": "894667b035dc103751a0eedf8b195578e3c5f197f854fa25db0259eb311c6d5d"
-    },
-    {
-      "productId": "p-496b84df",
-      "jp": "IQOS テリア ルビー レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-ruby-regular-carton.jpg",
-      "sourcePage": "https://heetsiqosuae.ae/products/terea-ruby-regular/",
-      "sha256": "dc7080badb0f5cefc580709b3a5af2d850af9d0d2095e463827b2cac45f75e01"
-    },
-    {
-      "productId": "p-ae6a1a1c",
-      "jp": "IQOS テリア フュージョン メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-fusion-menthol-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
-      "sha256": "c6fdb4c37ce5148a2adf6af9ebf63ad10c9959a1715bd17b18db51a9bba76d5b"
-    },
-    {
-      "productId": "p-5d9f5770",
-      "jp": "IQOS テリア ウォーム レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/terea-warm-regular-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
-      "sha256": "2e9936356cd6ea364d0e4a4e8f9ef70126caedcea8659a5b663a50be8e91828c"
-    },
-    {
       "productId": "p-fb4c1e4f",
       "jp": "Ploom X メビウス リッチ",
       "status": "verified",

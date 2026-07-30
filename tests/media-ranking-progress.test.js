@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 26);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 26);
+  assert.equal(manifest.items.length, 19);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 19);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -205,8 +205,58 @@ test("TEREA Fusion uses the official Japanese Menthol SKU name instead of the fa
   const product = enrichProduct(fusion);
   const imagePath = new URL(`../${product.originalImage.replace(/^\.\//, "")}`, import.meta.url);
   assert.equal(existsSync(imagePath), true);
-  assert.equal(product.imageStatus, "review-required");
-  assert.equal(product.imageSource, "");
+  assert.equal(product.imageStatus, "reference");
+  assert.match(product.imageSource, /world-tobacco\.jp\/view\/item\/000000001897/);
+  assert.match(product.imageNote, /来源页参考|World Tobacco|FUSION MENTHOL/);
+});
+
+test("TEREA single-pack photos use matching World Tobacco SKU pages while cartons stay hidden", () => {
+  const expected = new Map([
+    ["IQOS テリア レギュラー", /000000001829/],
+    ["IQOS テリア メンソール", /000000001828/],
+    ["IQOS テリア ブラックメンソール", /000000001830/],
+    ["IQOS テリア スムース レギュラー", /000000001891/],
+    ["IQOS テリア ルビー レギュラー", /000000001887/],
+    ["IQOS テリア フュージョン メンソール", /000000001897/],
+    ["IQOS テリア ウォーム レギュラー", /000000001898/],
+  ]);
+
+  for (const [jp, sourcePattern] of expected) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.match(item.imageSource, sourcePattern, jp);
+    assert.match(item.imageNote, /World Tobacco|SKU|来源页/, jp);
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+  }
+});
+
+test("TEREA overseas carton photos are not presented as verified exact cartons", () => {
+  const tereaItems = rawProducts
+    .filter((item) => /IQOS テリア/.test(item.jp))
+    .map((item) => enrichProduct(item));
+
+  assert.ok(tereaItems.length >= 7);
+  for (const item of tereaItems) {
+    assert.equal(item.cartonStatus, "source-only");
+    assert.equal(item.cartonImage, "");
+    assert.match(item.cartonNote, /不展示|避免|无法|不能/);
+  }
+});
+
+test("Cigaronne Phantom Silver is searchable as 卡比龙 and uses verified KIX pack media", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "シガローネ ファントム シルバー"),
+  );
+
+  assert.equal(item.brand, "Cigaronne");
+  assert.equal(item.cn, "卡比龙 Phantom Silver");
+  assert.match(`${item.jp} ${item.cn} ${item.brand}`, /卡比龙|Cigaronne|シガローネ/i);
+  assert.equal(item.imageStatus, "verified");
+  assert.match(item.image, /cigaronne-phantom-silver-kix-pack\.jpg/);
+  assert.equal(item.cartonStatus, "source-only");
+  assert.equal(item.cartonImage, "");
+  assert.match(item.cartonNote, /1 Carton = 10 packs = 200 cigarettes|未找到/);
 });
 
 test("ranking is a separate vertical feed page linked from home", () => {
