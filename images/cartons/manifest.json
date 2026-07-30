@@ -228,6 +228,15 @@
       "sha256": "f398f767aa70eb803dbbdea05fc33b4abcdc288012d45cd8c667441f0f242ae6"
     },
     {
+      "productId": "p-8e0ca7db",
+      "jp": "IQOS テリア ブラックメンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/terea-black-menthol-iqosheets-carton.webp",
+      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
+      "sha256": "ea279a8523bac8e4227781e0cdf9dc0b18756ec8c0f94fd25ca30abb752e4650"
+    },
+    {
       "productId": "p-0f8b545b",
       "jp": "ホープ",
       "status": "verified",

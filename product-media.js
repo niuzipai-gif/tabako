@@ -520,12 +520,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001830",
       imageNote:
         "World Tobacco 对应 Black Menthol SKU 页面图；图面为深色 TEREA 日本警示版，按来源页标题确认口味。",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-black-menthol-iqosheets-carton.webp",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "海外电商页面文字指向 BLACK MENTHOL，但外箱图带水印且图面未能稳定核对完整 SKU。为避免错配，暂不展示整条图；购买时按完整英文/日文名核对，数量按 10 包 / 200 支参考。",
+        "IQOSHeets UAE 商品页标题为“Terea Black Menthol for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为黑绿 TEREA 日本警示版整条外盒，左侧可读 BLACK MENTHOL，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，只用于核对整条外观与数量，机场/便利店实时库存仍以门店为准。",
     },
   ],
   [
