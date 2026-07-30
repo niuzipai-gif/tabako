@@ -274,6 +274,22 @@ test("IQOS remix devices are not misclassified as lil HYBRID MIIX products", () 
   assert.equal(miix.brand, "lil HYBRID");
 });
 
+test("legacy Japanese cigarette names normalize to searchable brand groups", () => {
+  const samples = [
+    ["クール ブースト フレッシュ 8", "KOOL"],
+    ["セーラム ブラックメンソール", "Salem"],
+    ["ピアニッシモ アリア メンソール", "Pianissimo"],
+    ["バージニア エス ロゼ メンソール", "Virginia S"],
+    ["ホープ", "Hope"],
+    ["わかば", "Wakaba"],
+    ["エコー", "Echo"],
+  ];
+
+  for (const [jp, brand] of samples) {
+    assert.equal(enrichProduct({ type: "cigarette", jp, cn: jp, jpy: 500 }).brand, brand);
+  }
+});
+
 test("pod sorting keeps brand families together and orders cartridge resistance logically", () => {
   const sorted = sortProducts(
     [

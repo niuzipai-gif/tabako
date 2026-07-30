@@ -647,8 +647,8 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
     [
       "シガローネ・スーパースリム・メンソール",
       {
-        source: /jaldutyfree\.com\/shop\/g\/g5319990198/,
-        note: /1カートン10箱|1箱20本入|JAL/,
+        source: /kixdutyfree\.jp\/en\/cigaronne-super-slims-menthol-2407000022/,
+        note: /1 carton contains 10 packs|1カートン10箱|JAL/,
       },
     ],
     [
@@ -675,8 +675,8 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
     [
       "シガローネ・ウルトラスリム・ブラック",
       {
-        source: /kixdutyfree\.jp/,
-        note: /1カートン10箱|1箱20本入|KIX/,
+        source: /kixdutyfree\.jp\/en\/cigaronne-ultra-slims-black-2407000016/,
+        note: /商品号 2407000016|単盒正面|10packs/,
       },
     ],
   ]);

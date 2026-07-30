@@ -662,9 +662,17 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990198/",
+      cartonSource: "https://www.kixdutyfree.jp/en/cigaronne-super-slims-menthol-2407000022.html",
+      cartonGallery: [
+        {
+          title: "来源商品图参考：JAL 官方单盒 / 1カートン规格",
+          image: "./images/verified/cigaronne-super-menthol-worldtobacco-pack.jpg",
+          source: "https://www.jaldutyfree.com/shop/g/g5319990198/",
+          note: "JAL DUTYFREE 页面确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入；图为单盒/商品图，不是整条外箱，整条外箱仍待核验。",
+        },
+      ],
       cartonNote:
-        "JAL DUTYFREE 商品页确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥6,800；World Tobacco 页面列出 20本入り、タール8mg。JAL 另有同款商品号 89439402 页面；Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
+        "KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
     },
   ],
   [
@@ -806,9 +814,17 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/%E3%82%B7%E3%82%AC%E3%83%AD%E3%83%BC%E3%83%8D-%E3%82%A6%E3%83%AB%E3%83%88%E3%83%A9%E3%82%B9%E3%83%AA%E3%83%A0-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF-2407000016.html",
+      cartonSource: "https://www.kixdutyfree.jp/en/cigaronne-ultra-slims-black-2407000016.html",
+      cartonGallery: [
+        {
+          title: "来源商品图参考：KIX 官方单盒正面",
+          image: "./images/d84cbbb1.jpg",
+          source: "https://www.kixdutyfree.jp/en/cigaronne-ultra-slims-black-2407000016.html",
+          note: "KIX 官方页商品图为单盒正面；另有开盒内容物图，但都不是 10 盒整条外箱，整条外箱仍待核验。",
+        },
+      ],
       cartonNote:
-        "KIX 官方页确认 1カートン10箱(1箱20本入)、タール6mg、ニコチン0.5mg，免税价 ¥6,000；World Tobacco 单包价约 ¥700。Rakuten/堀商事另列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装。未展示整条外箱图。",
+        "KIX DUTY FREE 官方英文页确认 Cigaronne Ultra Slims Black 商品号 2407000016，タール6mg、ニコチン0.5mg，免税价 ¥6,000；商品图为单盒正面和开盒内容物图，不是 10 盒整条外箱。World Tobacco 单包价约 ¥700。Rakuten/堀商事另列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装。未取得可核对整条外箱图，因此不展示整条主图。",
     },
   ],
   [
