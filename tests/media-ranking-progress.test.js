@@ -131,6 +131,25 @@ test("non-verified carton reference galleries are explicit and source-backed", (
   }
 });
 
+test("source-only and generated reference states still show a labeled source image", () => {
+  const royalSlimsMenthol = enrichProduct(
+    rawProducts.find((product) => product.jp === "シガローネ・ロイヤルスリム・メンソール"),
+  );
+  assert.equal(royalSlimsMenthol.cartonStatus, "source-only");
+  assert.equal(royalSlimsMenthol.cartonImage, "");
+  assert.equal(royalSlimsMenthol.cartonGallery.length, 1);
+  assert.match(royalSlimsMenthol.cartonGallery[0].title, /来源商品图参考/);
+  assert.match(royalSlimsMenthol.cartonGallery[0].note, /整条外箱仍待核验/);
+
+  const larkClassic = enrichProduct(
+    rawProducts.find((product) => product.jp === "ラーク クラシック"),
+  );
+  assert.equal(larkClassic.cartonStatus, "multi-carton-reference");
+  assert.equal(larkClassic.cartonImage, "");
+  assert.match(larkClassic.cartonGallery[0].title, /多盒/);
+  assert.match(larkClassic.cartonGallery[0].note, /不会当作纯单 SKU 一条主图/);
+});
+
 test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
   const peace = enrichProduct(rawProducts.find((item) => item.jp === "ピース スーパーライト"));
 
@@ -566,6 +585,75 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonImage, "", item.jp);
       assert.match(item.cartonNote, /未|不展示|整条|カートン/, item.jp);
     }
+  }
+});
+
+test("source-only Cigaronne carton gaps point to exact 1-carton product sources", () => {
+  const expectations = new Map([
+    [
+      "シガローネ・ロイヤルスリム・メンソール",
+      {
+        source: /jaldutyfree\.com\/shop\/g\/g5319990197/,
+        note: /1カートン10箱|1箱20本入|JAL/,
+      },
+    ],
+    [
+      "シガローネ・スーパースリム・メンソール",
+      {
+        source: /jaldutyfree\.com\/shop\/g\/g5319990198/,
+        note: /1カートン10箱|1箱20本入|JAL/,
+      },
+    ],
+    [
+      "シガローネ・タトゥー・チェリー",
+      {
+        source: /daiyostore\.com\/shopdetail\/000000001178/,
+        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+      },
+    ],
+    [
+      "シガローネ・タトゥー・チョコレート",
+      {
+        source: /daiyostore\.com\/shopdetail\/000000001179/,
+        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+      },
+    ],
+    [
+      "シガローネ・タトゥー・バニラ",
+      {
+        source: /daiyostore\.com\/shopdetail\/000000001180/,
+        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+      },
+    ],
+    [
+      "シガローネ・マグネット",
+      {
+        source: /daiyostore\.com\/shopdetail\/000000001174/,
+        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+      },
+    ],
+    [
+      "シガローネ・ウルトラスリム・ブラック",
+      {
+        source: /kixdutyfree\.jp/,
+        note: /1カートン10箱|1箱20本入|KIX/,
+      },
+    ],
+    [
+      "シガローネ・スーパースリム・ブラック",
+      {
+        source: /daiyostore\.com\/shopdetail\/000000001172/,
+        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
+      },
+    ],
+  ]);
+
+  for (const [jp, expectation] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonSource, expectation.source, jp);
+    assert.match(item.cartonNote, expectation.note, jp);
   }
 });
 

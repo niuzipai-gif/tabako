@@ -610,9 +610,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990197/",
       cartonNote:
-        "World Tobacco 单包页确认 20本入り、タール6mg、ニコチン0.6mg；KIX Cigaronne 分类列出 Royal Slims Menthol 免税价 ¥11,000。当前未找到可图面核对完整 SKU 的 10 包整条外箱，因此不展示未核验整条图。",
+        "JAL DUTYFREE 商品页确认 シガローネ ロイヤルスリム メンソール 为 1カートン10箱・1箱20本入，当前显示在庫あり、免税价 ¥11,000；World Tobacco 单包页另确认 20本入り、タール6mg、ニコチン0.6mg。官方页图片仍是商品图，不是可核对外箱实拍，因此不展示未核验整条图。",
     },
   ],
   [
@@ -626,9 +626,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990198/",
       cartonNote:
-        "World Tobacco 页面列出 20本入り、タール8mg、ニコチン0.7mg；KIX Cigaronne 分类列出 Super Slims Menthol 免税价 ¥6,800。整条外箱未取得可核对图片，暂不展示。",
+        "JAL DUTYFREE 商品页确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥6,800，并标记予約不可；World Tobacco 页面列出 20本入り、タール8mg。官方页图片仍不是可核对外箱实拍，因此暂不展示整条外箱。",
     },
   ],
   [
@@ -642,9 +642,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "リトルシガー",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.world-tobacco.jp/view/category/ct122",
+      cartonSource: "https://daiyostore.com/shopdetail/000000001178/Cigaronne/page1/order/",
       cartonNote:
-        "World Tobacco シガローネ分类确认该款为 20本入りリトルシガー；未找到机场免税或品牌页的整条外箱图，本站仅保留单盒/展示图与来源。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チェリー 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
     },
   ],
   [
@@ -658,9 +658,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "リトルシガー",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.world-tobacco.jp/view/category/ct122",
+      cartonSource: "https://daiyostore.com/shopdetail/000000001179/Cigaronne/page1/order/",
       cartonNote:
-        "World Tobacco 分类确认该款为 20本入りリトルシガー；无可核对完整 SKU 的整条图，因此不展示整条外箱。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チョコレート 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
     },
   ],
   [
@@ -674,9 +674,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "リトルシガー",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.world-tobacco.jp/view/category/ct122",
+      cartonSource: "https://daiyostore.com/shopdetail/000000001180/Cigaronne/page1/order/",
       cartonNote:
-        "World Tobacco 分类确认该款为 20本入りリトルシガー；暂未取得可核对整条外箱图片。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・バニラ 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。暂未取得可核对整条外箱图片。",
     },
   ],
   [
@@ -690,9 +690,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonSource: "https://daiyostore.com/shopdetail/000000001174/Cigaronne/page1/order/",
       cartonNote:
-        "World Tobacco 页面确认 20本入り、タール5mg、ニコチン0.4mg；KIX Cigaronne 分类列出 Magnet 免税价 ¥7,000。未展示未经核验的整条外箱。",
+        "DAIYOSTORE 商品页确认 シガローネ・マグネット 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 页面确认 20本入り、タール5mg。未展示未经核验的整条外箱。",
     },
   ],
   [
@@ -782,9 +782,9 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonSource: "https://daiyostore.com/shopdetail/000000001172/Cigaronne/page1/order/",
       cartonNote:
-        "World Tobacco 单包页确认 20本入り、タール8mg、ニコチン0.7mg；KIX Cigaronne 分类列出 Super Slims Black 免税价 ¥6,800。整条外箱未取得可核对图。",
+        "DAIYOSTORE 商品页确认 シガローネ・スーパースリム・ＢＫ 为 入数：20本/箱、商品内容：1カートン(10箱)，并显示残りあと10個；World Tobacco 单包页确认 20本入り、タール8mg、ニコチン0.7mg。整条外箱未取得可核对图。",
     },
   ],
   [
@@ -1512,6 +1512,43 @@ function identityLabels(item) {
   };
 }
 
+function generatedReferenceTitle(status) {
+  return {
+    "contents-reference": "单包 / 内容图参考",
+    "multi-carton-reference": "多盒 / 数量参考",
+    "variant-reference": "近似变体参考",
+    "source-only": "来源商品图参考",
+  }[status] ?? "补充参考图";
+}
+
+function generatedReferenceNote(status, cartonNote) {
+  const statusNote = {
+    "contents-reference": "这张图用于辨认单包或来源页内容，不是完整一条外箱。",
+    "multi-carton-reference": "这张图用于辨认多盒或多条参考，不会当作纯单 SKU 一条主图。",
+    "variant-reference": "这张图只用于辨认近似变体或历史包装，不代表当前同 SKU 一条。",
+    "source-only": "这张图来自已记录来源，只作商品外观线索；整条外箱仍待核验。",
+  }[status] ?? "这张图只作补充参考，不当作已核验整条外箱。";
+  return cartonNote ? `${statusNote} ${cartonNote}` : statusNote;
+}
+
+function resolveCartonGallery(override, originalImage, status, allowed) {
+  if (!allowed) return [];
+  if (Array.isArray(override.cartonGallery) && override.cartonGallery.length) {
+    return override.cartonGallery;
+  }
+  const image = override.cartonImage || override.image || originalImage;
+  const source = override.cartonSource || override.imageSource || "";
+  if (!image || !source) return [];
+  return [
+    {
+      title: generatedReferenceTitle(status),
+      image,
+      source,
+      note: generatedReferenceNote(status, override.cartonNote),
+    },
+  ];
+}
+
 export function resolveProductMedia(item, originalImage) {
   const override = MEDIA_OVERRIDES.get(keyFor(item)) ?? {};
   const applicable = item.type === "cigarette" || item.type === "heated";
@@ -1529,7 +1566,14 @@ export function resolveProductMedia(item, originalImage) {
     "contents-reference",
     "multi-carton-reference",
     "variant-reference",
+    "source-only",
   ].includes(rawCartonStatus);
+  const cartonGallery = resolveCartonGallery(
+    override,
+    originalImage,
+    rawCartonStatus,
+    applicable && referenceGalleryAllowed,
+  );
 
   return {
     originalImage,
@@ -1550,7 +1594,7 @@ export function resolveProductMedia(item, originalImage) {
     cartonStatus: rawCartonStatus,
     cartonImage: applicable && exactCartonImageAllowed ? (override.cartonImage ?? "") : "",
     cartonSource: applicable ? (override.cartonSource ?? "") : "",
-    cartonGallery: applicable && referenceGalleryAllowed ? (override.cartonGallery ?? []) : [],
+    cartonGallery,
     cartonPackCount: applicable ? (override.cartonPackCount ?? 10) : 0,
     cartonStickCount: applicable ? (override.cartonStickCount ?? 200) : 0,
     cartonNote: applicable

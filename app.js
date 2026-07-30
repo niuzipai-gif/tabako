@@ -521,7 +521,7 @@ function renderProductDetail(item) {
       <div class="carton-reference-gallery" aria-label="补充包装参考图">
         ${item.cartonGallery
           .map((entry) => {
-            const title = entry.title || "补充参考图";
+            const title = entry.title || entry.label || "补充参考图";
             const note = entry.note || "";
             const source = entry.source
               ? `<a href="${escapeHtml(entry.source)}" target="_blank" rel="noopener noreferrer">来源</a>`
