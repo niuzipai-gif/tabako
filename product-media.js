@@ -517,7 +517,103 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "シガローネ ファントム シルバー|卡比龙 Phantom Silver",
+    "シガローネ・ロイヤルスリム・メンソール|卡比龙 Royal Slims Menthol",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000002256",
+      imageNote:
+        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Royal slims，用于区分绿色 Royal Slims Menthol。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonNote:
+        "World Tobacco 单包页确认 20本入り、タール6mg、ニコチン0.6mg；KIX Cigaronne 分类列出 Royal Slims Menthol 免税价 ¥11,000。当前未找到可图面核对完整 SKU 的 10 包整条外箱，因此不展示未核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・スーパースリム・メンソール|卡比龙 Super Slims Menthol",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000002255",
+      imageNote:
+        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Super Slims，绿色包装对应薄荷款。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonNote:
+        "World Tobacco 页面列出 20本入り、タール8mg、ニコチン0.7mg；KIX Cigaronne 分类列出 Super Slims Menthol 免税价 ¥6,800。整条外箱未取得可核对图片，暂不展示。",
+    },
+  ],
+  [
+    "シガローネ・タトゥー・チェリー|卡比龙 Tattoo Cherry",
+    {
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000002096",
+      imageNote:
+        "World Tobacco 对应 Tattoo Cherry 页面图；图中可见 Cherry 标识与纸盒/抽屉式陈列，用于辨认此类小雪茄风格包装。",
+      packageFormat: "盒装小雪茄",
+      packageFormatJp: "リトルシガー",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.world-tobacco.jp/view/category/ct122",
+      cartonNote:
+        "World Tobacco シガローネ分类确认该款为 20本入りリトルシガー；未找到机场免税或品牌页的整条外箱图，本站仅保留单盒/展示图与来源。",
+    },
+  ],
+  [
+    "シガローネ・タトゥー・チョコレート|卡比龙 Tattoo Chocolate",
+    {
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000002095",
+      imageNote:
+        "World Tobacco 对应 Tattoo Chocolate 页面图；用于区分巧克力风味 Tattoo 系列，包装与普通 Phantom/Royal 横盒不同。",
+      packageFormat: "盒装小雪茄",
+      packageFormatJp: "リトルシガー",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.world-tobacco.jp/view/category/ct122",
+      cartonNote:
+        "World Tobacco 分类确认该款为 20本入りリトルシガー；无可核对完整 SKU 的整条图，因此不展示整条外箱。",
+    },
+  ],
+  [
+    "シガローネ・タトゥー・バニラ|卡比龙 Tattoo Vanilla",
+    {
+      imageStatus: "reference",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000002094",
+      imageNote:
+        "World Tobacco 对应 Tattoo Vanilla 页面图；用于区分香草风味 Tattoo 系列。",
+      packageFormat: "盒装小雪茄",
+      packageFormatJp: "リトルシガー",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.world-tobacco.jp/view/category/ct122",
+      cartonNote:
+        "World Tobacco 分类确认该款为 20本入りリトルシガー；暂未取得可核对整条外箱图片。",
+    },
+  ],
+  [
+    "シガローネ・マグネット|卡比龙 Magnet",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000001978",
+      imageNote:
+        "World Tobacco 对应 Magnet 页面图，图面可读 Cigaronne Magnet，用于区分银灰色 Magnet 款。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonNote:
+        "World Tobacco 页面确认 20本入り、タール5mg、ニコチン0.4mg；KIX Cigaronne 分类列出 Magnet 免税价 ¥7,000。未展示未经核验的整条外箱。",
+    },
+  ],
+  [
+    "シガローネ・ファントム・シルバー|卡比龙 Phantom Silver",
     {
       image: "./images/cartons/cigaronne-phantom-silver-kix-pack.jpg",
       imageStatus: "verified",
@@ -530,7 +626,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:
-        "https://cigarsofdubai.com/product/cigaronne-phantom-slims-silver-jp/",
+        "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210002",
       cartonGallery: [
         {
           title: "KIX 官方打开后内容物",
@@ -547,7 +643,71 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Cigars of Dubai 页面说明 1 Carton = 10 packs = 200 cigarettes；KIX 官方免税页显示 duty free price ¥10,000，普通日本烟草店单包价约 ¥1,100。当前未找到能核对完整 SKU 的 10 包整条外箱实拍，因此不展示未核验整条图。",
+        "Fa-So-La / KIX 官方免税页确认该 SKU 以 1カートン10箱・1箱20本入销售，KIX 免税价 ¥10,000；World Tobacco 单包价约 ¥1,100。当前未找到能核对完整 SKU 的 10 包整条外箱实拍，因此不展示未核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・エクスクルーシブ・ブラウン|卡比龙 Exclusive Brown",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/shopdetail/000000001845/",
+      imageNote:
+        "World Tobacco 对应 Exclusive Brown 页面图，棕色横盒，叶巻葉ブレンド说明对应该 SKU。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210001",
+      cartonNote:
+        "Fa-So-La 页面确认 115mm ロングサイズ、1カートン10箱、1箱20本入；World Tobacco 单包页确认 20本入り、タール7mg、ニコチン0.7mg。未取得整条外箱实拍，暂不展示。",
+    },
+  ],
+  [
+    "シガローネ・ウルトラスリム・ブラック|卡比龙 Ultra Slims Black",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/shopdetail/000000000915/",
+      imageNote:
+        "World Tobacco 对应 Ultra Slims Black 页面图；黑色短横盒，用于区分 Royal / Super / Ultra 三个黑色细支层级。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.kixdutyfree.jp/%E3%82%B7%E3%82%AC%E3%83%AD%E3%83%BC%E3%83%8D-%E3%82%A6%E3%83%AB%E3%83%88%E3%83%A9%E3%82%B9%E3%83%AA%E3%83%A0-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF-2407000016.html",
+      cartonNote:
+        "KIX 官方页确认 1カートン10箱(1箱20本入)、タール6mg、ニコチン0.5mg，免税价 ¥6,000；World Tobacco 单包价约 ¥700。未展示整条外箱图。",
+    },
+  ],
+  [
+    "シガローネ・スーパースリム・ブラック|卡比龙 Super Slims Black",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/shopdetail/000000000916/",
+      imageNote:
+        "World Tobacco 对应 Super Slims Black 页面图；黑色横盒，图面尺寸与 Ultra/Royal 接近，需按完整日文名核对。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.kixdutyfree.jp/on/demandware.store/Sites-KixDutyFree-Site/en_US/Search-UpdateGrid?cgid=cigaronne&srule=brand&start=0&sz=8",
+      cartonNote:
+        "World Tobacco 单包页确认 20本入り、タール8mg、ニコチン0.7mg；KIX Cigaronne 分类列出 Super Slims Black 免税价 ¥6,800。整条外箱未取得可核对图。",
+    },
+  ],
+  [
+    "シガローネ・ロイヤルスリム・ブラック|卡比龙 Royal Slims Black",
+    {
+      imageStatus: "verified",
+      imageSource: "https://www.world-tobacco.jp/view/item/000000000917?category_page_id=ct122",
+      imageNote:
+        "World Tobacco 对应 Royal Slims Black 页面图，图面可读 Cigaronne / Royal slims XL FILTER。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210003",
+      cartonNote:
+        "Fa-So-La 与 KIX 均列出 Royal Slims Black 免税价约 ¥11,000；World Tobacco 单包页确认 20本入り、タール4mg、ニコチン0.4mg。当前不展示未核验整条图。",
     },
   ],
   [

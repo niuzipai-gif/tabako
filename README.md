@@ -6,7 +6,7 @@
 
 ## 核心能力
 
-- 136 款传统香烟、加热烟弹、主流加热设备与电子烟/烟弹的日中双语目录
+- 146 款传统香烟、加热烟弹、主流加热设备与电子烟/烟弹的日中双语目录
 - 中文、日文、品牌、价格与口味搜索
 - 图片优先的双列移动端陈列，包装保持完整比例、不裁切
 - 类别、口味筛选，价格、双人群热度与设备品牌/型号排序
@@ -57,7 +57,7 @@
 
 本站部署在静态 GitHub Pages 上，浏览器下载得到所有前端代码，因此不能直接保存 MiniMax 密钥。仓库提供了一个 Cloudflare Worker 兼容的安全代理模板：
 
-- `worker.js`：校验来源、请求模式、查询长度和图片大小；AI 匹配只使用服务端随版本发布的 136 款目录，并过滤购买权限受限条目；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
+- `worker.js`：校验来源、请求模式、查询长度和图片大小；AI 匹配只使用服务端随版本发布的 146 款目录，并过滤购买权限受限条目；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
 - `wrangler.toml`：公开 Worker 配置，默认仅允许 `https://niuzipai-gif.github.io`。Cloudflare Rate Limiting 绑定是生产保护项；没有绑定时 Worker 仍可调用 MiniMax，便于先把 AI 跑通。
 - `.github/workflows/deploy-ai-worker.yml`：仓库配置 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`、`MINIMAX_API_KEY` 三个 GitHub Actions secrets 后，可手动或随 `main` 分支变更自动部署代理。
 - `config.js`：公开页面只保存部署后的代理 URL，不放密钥；也支持用 `?aiProxyUrl=https://你的-worker地址/` 临时写入本机浏览器，便于上线前测试。
@@ -126,7 +126,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\download-search-images.ps1
 
 ## 目录结构
 
-- `data/products.js`：原始 136 款产品数据
+- `data/products.js`：原始 146 款产品数据
 - `catalog.js`：数据规范化、价格规则、筛选、排行与地图链接
 - `product-media.js`：单包/一カートン媒体状态、包装变体与重复图核验规则
 - `ranking.html` / `ranking.js`：日本人气与中国游客人气纵向排行页

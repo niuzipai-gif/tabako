@@ -162,11 +162,6 @@ const BRAND_PROFILES = [
 ];
 
 const PRICE_RULES = [
-  {
-    test: (item) => /シガローネ|Cigaronne|卡比龙/i.test(`${item.jp} ${item.cn}`),
-    value: 1100,
-    source: "official",
-  },
   { test: (item) => /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
   { test: (item) => /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
   { test: (item) => /lil HYBRID|ミックス/i.test(item.jp), value: 560, source: "official" },
@@ -398,7 +393,12 @@ export function filterProducts(products, filters = {}) {
   const favoriteIds = favorites instanceof Set ? favorites : new Set(favorites);
 
   return products.filter((item) => {
-    if (category !== "all" && item.type !== category) return false;
+    if (category.startsWith("brand:")) {
+      const brand = category.slice("brand:".length).trim().toLocaleLowerCase();
+      if (item.brand.toLocaleLowerCase() !== brand) return false;
+    } else if (category !== "all" && item.type !== category) {
+      return false;
+    }
     if (flavor !== "all" && item.flavor !== flavor) return false;
     if (favoritesOnly && !favoriteIds.has(item.id)) return false;
     if (!normalizedQuery) return true;

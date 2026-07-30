@@ -246,7 +246,7 @@ test("TEREA overseas carton photos are not presented as verified exact cartons",
 
 test("Cigaronne Phantom Silver is searchable as 卡比龙 and uses verified KIX pack media", () => {
   const item = enrichProduct(
-    rawProducts.find((product) => product.jp === "シガローネ ファントム シルバー"),
+    rawProducts.find((product) => product.jp === "シガローネ・ファントム・シルバー"),
   );
 
   assert.equal(item.brand, "Cigaronne");
@@ -256,7 +256,24 @@ test("Cigaronne Phantom Silver is searchable as 卡比龙 and uses verified KIX 
   assert.match(item.image, /cigaronne-phantom-silver-kix-pack\.jpg/);
   assert.equal(item.cartonStatus, "source-only");
   assert.equal(item.cartonImage, "");
-  assert.match(item.cartonNote, /1 Carton = 10 packs = 200 cigarettes|未找到/);
+  assert.match(item.cartonNote, /1カートン10箱|未找到|未找到能核对|未找到能核對|未找到/);
+});
+
+test("all Cigaronne catalog entries have sourced pack media and hide unverified carton photos", () => {
+  const items = rawProducts
+    .map((product) => enrichProduct(product))
+    .filter((product) => product.brand === "Cigaronne");
+
+  assert.equal(items.length, 11);
+  for (const item of items) {
+    const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, item.jp);
+    assert.ok(["verified", "reference"].includes(item.imageStatus), item.jp);
+    assert.match(item.imageSource, /^https:\/\//, item.jp);
+    assert.equal(item.cartonStatus, "source-only", item.jp);
+    assert.equal(item.cartonImage, "", item.jp);
+    assert.match(item.cartonNote, /未|不展示|整条|カートン/, item.jp);
+  }
 });
 
 test("ranking is a separate vertical feed page linked from home", () => {

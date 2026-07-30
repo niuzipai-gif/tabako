@@ -292,13 +292,113 @@
     },
     {
         "type": "cigarette",
-        "jp": "シガローネ ファントム シルバー",
+        "jp": "シガローネ・ロイヤルスリム・メンソール",
+        "cn": "卡比龙 Royal Slims Menthol",
+        "key": "99c99283",
+        "query": "シガローネ・ロイヤルスリム・メンソール cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000002256",
+        "title": "Cigaronne Royal Slims Menthol - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・スーパースリム・メンソール",
+        "cn": "卡比龙 Super Slims Menthol",
+        "key": "710cf0f7",
+        "query": "シガローネ・スーパースリム・メンソール cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000002255",
+        "title": "Cigaronne Super Slims Menthol - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・タトゥー・チェリー",
+        "cn": "卡比龙 Tattoo Cherry",
+        "key": "ed4fa11e",
+        "query": "シガローネ・タトゥー・チェリー little cigar pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000002096",
+        "title": "Cigaronne Tattoo Cherry - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・タトゥー・チョコレート",
+        "cn": "卡比龙 Tattoo Chocolate",
+        "key": "17e173b8",
+        "query": "シガローネ・タトゥー・チョコレート little cigar pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000002095",
+        "title": "Cigaronne Tattoo Chocolate - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・タトゥー・バニラ",
+        "cn": "卡比龙 Tattoo Vanilla",
+        "key": "e27f2390",
+        "query": "シガローネ・タトゥー・バニラ little cigar pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000002094",
+        "title": "Cigaronne Tattoo Vanilla - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・マグネット",
+        "cn": "卡比龙 Magnet",
+        "key": "08349137",
+        "query": "シガローネ・マグネット cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000001978",
+        "title": "Cigaronne Magnet - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・ファントム・シルバー",
         "cn": "卡比龙 Phantom Silver",
-        "key": "cc594f71",
-        "query": "シガローネ ファントム シルバー cigarette pack",
+        "key": "304aa8ed",
+        "query": "シガローネ・ファントム・シルバー cigarette pack",
         "status": "exists",
         "sourcePage": "https://www.kixdutyfree.jp/en/cigaronne-phantom-silver-2407000018.html",
         "title": "Cigaronne Phantom Silver - KIX DUTY FREE"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・エクスクルーシブ・ブラウン",
+        "cn": "卡比龙 Exclusive Brown",
+        "key": "b93d270f",
+        "query": "シガローネ・エクスクルーシブ・ブラウン cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/shopdetail/000000001845/",
+        "title": "Cigaronne Exclusive Brown - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・ウルトラスリム・ブラック",
+        "cn": "卡比龙 Ultra Slims Black",
+        "key": "d84cbbb1",
+        "query": "シガローネ・ウルトラスリム・ブラック cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/shopdetail/000000000915/",
+        "title": "Cigaronne Ultra Slims Black - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・スーパースリム・ブラック",
+        "cn": "卡比龙 Super Slims Black",
+        "key": "dcf57654",
+        "query": "シガローネ・スーパースリム・ブラック cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/shopdetail/000000000916/",
+        "title": "Cigaronne Super Slims Black - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・ロイヤルスリム・ブラック",
+        "cn": "卡比龙 Royal Slims Black",
+        "key": "3f3af994",
+        "query": "シガローネ・ロイヤルスリム・ブラック cigarette pack",
+        "status": "exists",
+        "sourcePage": "https://www.world-tobacco.jp/view/item/000000000917?category_page_id=ct122",
+        "title": "Cigaronne Royal Slims Black - World Tobacco"
     },
     {
         "type": "heated",

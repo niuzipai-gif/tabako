@@ -113,12 +113,41 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 136-product source set", () => {
-  assert.equal(rawProducts.length, 136);
+test("catalog keeps the expanded 146-product source set", () => {
+  assert.equal(rawProducts.length, 146);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
   );
+});
+
+test("Cigaronne has a dedicated brand category with the full World Tobacco series", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const products = rawProducts.map((item) => enrichProduct(item));
+  const cigaronne = filterProducts(products, {
+    category: "brand:cigaronne",
+  });
+
+  assert.match(html, /data-category="brand:cigaronne"/);
+  assert.equal(cigaronne.length, 11);
+  assert.deepEqual(
+    cigaronne.map((item) => item.jp).sort((a, b) => a.localeCompare(b, "ja")),
+    [
+      "シガローネ・エクスクルーシブ・ブラウン",
+      "シガローネ・スーパースリム・ブラック",
+      "シガローネ・スーパースリム・メンソール",
+      "シガローネ・タトゥー・チェリー",
+      "シガローネ・タトゥー・チョコレート",
+      "シガローネ・タトゥー・バニラ",
+      "シガローネ・ファントム・シルバー",
+      "シガローネ・マグネット",
+      "シガローネ・ロイヤルスリム・ブラック",
+      "シガローネ・ロイヤルスリム・メンソール",
+      "シガローネ・ウルトラスリム・ブラック",
+    ].sort((a, b) => a.localeCompare(b, "ja")),
+  );
+  assert.ok(cigaronne.every((item) => item.type === "cigarette"));
+  assert.ok(cigaronne.every((item) => item.brand === "Cigaronne"));
 });
 
 test("device catalog covers mainstream heated and vapor hardware families", () => {
