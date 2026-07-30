@@ -682,3 +682,23 @@ test("Ploom X Sharp Cold records the exact 15-box text lead without promoting li
   assert.match(item.cartonNote, /上盖\/QR|完整盒身/);
   assert.equal(item.cartonImage, "");
 });
+
+test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing unverified cartons", () => {
+  const jpNames = [
+    "シガローネ・ロイヤルスリム・メンソール",
+    "シガローネ・スーパースリム・メンソール",
+    "シガローネ・タトゥー・チェリー",
+    "シガローネ・タトゥー・チョコレート",
+    "シガローネ・タトゥー・バニラ",
+    "シガローネ・マグネット",
+    "シガローネ・ウルトラスリム・ブラック",
+    "シガローネ・スーパースリム・ブラック",
+  ];
+
+  for (const jp of jpNames) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, /Rakuten\/堀商事.*10packs/s, jp);
+  }
+});

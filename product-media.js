@@ -612,7 +612,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990197/",
       cartonNote:
-        "JAL DUTYFREE 商品页确认 シガローネ ロイヤルスリム メンソール 为 1カートン10箱・1箱20本入，当前显示在庫あり、免税价 ¥11,000；World Tobacco 单包页另确认 20本入り、タール6mg、ニコチン0.6mg。Jirorinmura 对应页进一步说明宅配便购买时 10 个ごとにカートン箱付属，但页面图片仍是商品图，不是可核对外箱实拍，因此不展示未核验整条图。",
+        "JAL DUTYFREE 商品页确认 シガローネ ロイヤルスリム メンソール 为 1カートン10箱・1箱20本入，当前显示在庫あり、免税价 ¥11,000；World Tobacco 单包页另确认 20本入り、タール6mg、ニコチン0.6mg。Jirorinmura 对应页进一步说明宅配便购买时 10 个ごとにカートン箱付属；Rakuten/堀商事另列 10packs シガローネ・ロイヤルスリム・メンソール、国内配送ゆうパック 箱入り。上述页面图片仍是商品图或未开放可核对大图，不是完整外箱实拍，因此不展示未核验整条图。",
     },
   ],
   [
@@ -628,7 +628,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990198/",
       cartonNote:
-        "JAL DUTYFREE 商品页确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥6,800，并标记予約不可；World Tobacco 页面列出 20本入り、タール8mg。官方页图片仍不是可核对外箱实拍，因此暂不展示整条外箱。",
+        "JAL DUTYFREE 商品页确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥6,800，并标记予約不可；World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装。官方/电商页图片仍不是可核对外箱实拍，因此暂不展示整条外箱。",
     },
   ],
   [
@@ -644,7 +644,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001178/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チェリー 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チェリー 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チェリー。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
     },
   ],
   [
@@ -660,7 +660,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001179/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チョコレート 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・チョコレート 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー チョコレート。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
     },
   ],
   [
@@ -676,7 +676,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001180/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・バニラ 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。暂未取得可核对整条外箱图片。",
+        "DAIYOSTORE 商品页确认 シガローネ・タトゥー・バニラ 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Rakuten/堀商事另列 10packs シガローネ タトゥー バニラ。暂未取得可核对整条外箱图片。",
     },
   ],
   [
@@ -692,7 +692,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001174/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・マグネット 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 页面确认 20本入り、タール5mg。未展示未经核验的整条外箱。",
+        "DAIYOSTORE 商品页确认 シガローネ・マグネット 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 页面确认 20本入り、タール5mg。Rakuten/堀商事另列 10packs シガローネ・マグネット，并注明箱なしセロハン包装。未展示未经核验的整条外箱。",
     },
   ],
   [
@@ -768,7 +768,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://www.kixdutyfree.jp/%E3%82%B7%E3%82%AC%E3%83%AD%E3%83%BC%E3%83%8D-%E3%82%A6%E3%83%AB%E3%83%88%E3%83%A9%E3%82%B9%E3%83%AA%E3%83%A0-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF-2407000016.html",
       cartonNote:
-        "KIX 官方页确认 1カートン10箱(1箱20本入)、タール6mg、ニコチン0.5mg，免税价 ¥6,000；World Tobacco 单包价约 ¥700。未展示整条外箱图。",
+        "KIX 官方页确认 1カートン10箱(1箱20本入)、タール6mg、ニコチン0.5mg，免税价 ¥6,000；World Tobacco 单包价约 ¥700。Rakuten/堀商事另列 10packs シガローネ ウルトラスリム ブラック，并注明箱なしセロハン包装。未展示整条外箱图。",
     },
   ],
   [
@@ -784,7 +784,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://daiyostore.com/shopdetail/000000001172/Cigaronne/page1/order/",
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・スーパースリム・ＢＫ 为 入数：20本/箱、商品内容：1カートン(10箱)，并显示残りあと10個；World Tobacco 单包页确认 20本入り、タール8mg、ニコチン0.7mg。整条外箱未取得可核对图。",
+        "DAIYOSTORE 商品页确认 シガローネ・スーパースリム・ＢＫ 为 入数：20本/箱、商品内容：1カートン(10箱)，并显示残りあと10個；World Tobacco 单包页确认 20本入り、タール8mg、ニコチン0.7mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム ブラック，并注明箱なしセロハン包装。整条外箱未取得可核对图。",
     },
   ],
   [
