@@ -1079,9 +1079,10 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonSource:
+        "https://mostabaktorg.moscow/sigareti/armyanskie-sigarety/center-king-size-blue",
       cartonNote:
-        "Cigaronne 官网确认 Center King Size 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Center King Size 覆盖 Red、Blue、Black；MostabakTorg 的 Center King Size Blue/Red 页面写明 Формат King Size、Количество пачек в блоке 10、Количество сигарет в пачке 20、Производитель ООО “SPS Cigaronne”，并按 блок 标价/库存展示。页面图仍是单盒/商品图，不是可读完整同 SKU 10 包整条外箱；当前仅有官网多口味包装参考图，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -1096,9 +1097,10 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonSource:
+        "https://mostabaktorg.moscow/sigareti/center/center-compatto-blue",
       cartonNote:
-        "Cigaronne 官网确认 Center Compatto 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Center Compatto 覆盖 Red、Blue、Black；MostabakTorg 的 Center Compatto Blue / Center Compact Red 页面按 блок 销售，检索页和商品页均把 Center Compatto/Compact 归入 Center 系列，并列出 10 包整条数量线索。公开图仍为单盒/商品图，不是可读完整同 SKU 10 包整条外箱；当前仅保留官网多口味包装参考图，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -1113,9 +1115,10 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "ウルトラスリム",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonSource:
+        "https://mostabaktorg.moscow/sigareti/center/center-ultra-slims-blue",
       cartonNote:
-        "Cigaronne 官网确认 Center Ultra Slims 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Center Ultra Slims 覆盖 Red、Blue、Black；MostabakTorg Center Ultra Slims Blue 页面写明 Формат Ultra Slims、Количество пачек в блоке 10、Количество сигарет в пачке 20、Производитель ООО “SPS Cigaronne”，并按 блок 销售；Center Ultra Slims Red 页面有同样数量字段。公开图仍为单盒/商品图，不是可读完整同 SKU 10 包整条外箱，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -1130,9 +1133,10 @@ const MEDIA_OVERRIDES = new Map([
       packageFormatJp: "スーパースリム",
       cartonStatus: "source-only",
       cartonImage: "",
-      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonSource:
+        "https://mostabaktorg.moscow/sigareti/armyanskie-sigarety/center-super-slims-blue",
       cartonNote:
-        "Cigaronne 官网确认 Center Super Slims 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+        "Cigaronne 官网确认 Center Super Slims 覆盖 Red、Blue、Black；MostabakTorg Center Super Slims Blue/Red 页面写明 Формат Super Slims、Количество пачек в блоке 10、Количество сигарет в пачке 20、Производитель ООО “SPS Cigaronne”，并按 блок 标价/库存展示。公开图仍为单盒/商品图，不是可读完整同 SKU 10 包整条外箱，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -1738,7 +1742,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ネオ トロピカル スワール|glo neo 热带旋风",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage:
         "./images/cartons/glo-neo-tropical-swirl-jcigarette-multipack-reference.jpg",
       cartonSource:
@@ -1751,7 +1755,7 @@ const MEDIA_OVERRIDES = new Map([
           image: "./images/cartons/glo-neo-tropical-swirl-jcigarette-multipack-reference.jpg",
           source:
             "https://j-cigarette.com/glo-neo-tm-tropical-swirl-stick-for-glo-hyper-heat-sticks-1-carton-200-heatsticks/",
-          note: "同页标题确认 1 carton / 200 heatsticks，附图可见同一 Tropical Swirl SKU 多盒排列；主图不是封闭外箱，但可用于核对一条/10 包内容物外观。",
+          note: "同页标题确认 1 carton / 200 heatsticks，附图可见同一 Tropical Swirl SKU 多盒排列；但画面只有 5+1 盒，不是完整 10 盒，也不是封闭外箱，因此只能作为内容图参考。",
         },
         {
           label: "KIX 官方当前包装",
@@ -1762,7 +1766,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，同页单包图可读 Tropical Swirl，多盒图为同 SKU 一条/10 包内容物展示，可按 10 packs / 200 heatsticks 核验；图片不是外箱实拍、也不是封闭外箱，购买时仍需以门店实物包装为准。Cigars of Dubai 也写 1 carton contains 10 packs of 20 tobacco sticks。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”，同页单包图可读 Tropical Swirl，多盒图为同 SKU 5+1 盒排列；但图片不是完整 10 盒、不是外箱实拍，也不是封闭外箱，因此不能按严格一条图核验。Cigars of Dubai 也写 1 carton contains 10 packs of 20 tobacco sticks。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
     },
   ],
   [
@@ -1841,10 +1845,18 @@ const MEDIA_OVERRIDES = new Map([
       imageNote:
         "Sirius Tobacco 对应 MIIX Ice 单包图，图面可读 MIIX ICE 与日文警示；Relazo 另确认 2023 年后绿色新设计。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/verified/lil-miix-ice-sirius-pack.jpg",
+      cartonImage: "./images/cartons/lil-miix-ice-amanoya-10unit.png",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003194?category_page_id=ct391",
+      cartonGallery: [
+        {
+          title: "Sirius Tobacco 单包参考",
+          image: "./images/verified/lil-miix-ice-sirius-pack.jpg",
+          source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+          note: "Sirius Tobacco 类目页提供可读 MIIX ICE 单包图；它不是 10 個整条外箱。",
+        },
+      ],
       cartonNote:
-        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・アイス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；Sirius Tobacco 类目页提供可读 MIIX ICE 单包图，Relazo 评测页确认内容量 20本入、价格 560円、对应リルハイブリッド。当前图为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・アイス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；页面商品图为可读 MIIX ICE 单包正面，不是 10 個整条外箱。Sirius Tobacco 与 Relazo 另确认内容量 20本入、价格 560円、对应リルハイブリッド。当前图不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
@@ -1856,10 +1868,18 @@ const MEDIA_OVERRIDES = new Map([
       imageNote:
         "Sirius Tobacco 对应 MIIX Mix 单包图；Oricon 将其列为 MIIX 现行全 4 口味之一，定位为柑橘/果香方向。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/verified/lil-miix-mix-sirius-pack.jpg",
+      cartonImage: "./images/cartons/lil-miix-mix-amanoya-10unit.png",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003193?category_page_id=ct391",
+      cartonGallery: [
+        {
+          title: "Sirius Tobacco 单包参考",
+          image: "./images/verified/lil-miix-mix-sirius-pack.jpg",
+          source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+          note: "Sirius Tobacco 类目页提供可读 MIIX MIX 单包图；它不是 10 個整条外箱。",
+        },
+      ],
       cartonNote:
-        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・ミックス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；Sirius Tobacco 类目页提供可读 MIIX MIX 单包图；Oricon 资料确认 MIIX 系列现行口味含ミックス ミックス，定位为柑橘系フルーティー。当前图为 MIIX MIX 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・ミックス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；页面商品图为可读 MIIX MIX 单包正面，不是 10 個整条外箱。Sirius Tobacco 与 Oricon 另确认 MIIX 系列现行口味含ミックス ミックス，定位为柑橘系フルーティー。当前图不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
@@ -1871,10 +1891,18 @@ const MEDIA_OVERRIDES = new Map([
       imageNote:
         "Sirius Tobacco 对应 MIIX Ice Plus 单包图；PR TIMES 资料确认该口味由 Philip Morris Japan 发布。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg",
+      cartonImage: "./images/cartons/lil-miix-ice-plus-amanoya-10unit.png",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003192?category_page_id=ct391",
+      cartonGallery: [
+        {
+          title: "Sirius Tobacco 单包参考",
+          image: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg",
+          source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+          note: "Sirius Tobacco 类目页提供可读 MIIX ICE PLUS 单包图；它不是 10 個整条外箱。",
+        },
+      ],
       cartonNote:
-        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・アイスプラス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；Sirius Tobacco 类目页提供可读 MIIX ICE PLUS 单包图；PR TIMES 资料确认 MIIX Ice Plus 为 lil HYBRID 专用たばこ产品。当前图为 MIIX ICE PLUS 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "AMANOYA SETAGAYA 具体商品页标题为“ミックス・アイスプラス（10個）”，价格 5,600 円，可作为同口味 10 个单位来源；页面商品图为可读 MIIX ICE PLUS 单包正面，不是 10 個整条外箱。Sirius Tobacco 与 PR TIMES 另确认 MIIX Ice Plus 为 lil HYBRID 专用たばこ产品。当前图不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [

@@ -149,13 +149,14 @@ test("source-only and generated reference states still show a labeled source ima
   const tropical = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
   );
-  assert.equal(tropical.cartonStatus, "verified");
+  assert.equal(tropical.cartonStatus, "contents-reference");
+  assert.equal(tropical.cartonImage, "");
   assert.match(tropical.cartonGallery[0].label, /j-Cigarette 1 carton 同 SKU 多盒图/);
   assert.match(
     tropical.cartonGallery[0].image,
     /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/,
   );
-  assert.match(tropical.cartonNote, /不是封闭外箱/);
+  assert.match(tropical.cartonNote, /不是完整 10 盒/);
 });
 
 test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
@@ -914,17 +915,37 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
 
 test("lil HYBRID source-only carton references use exact AMANOYA ten-unit pages where available", () => {
   const expectations = new Map([
-    ["lil HYBRID ミックス アイス", /e-amanoya\.jp\/view\/item\/000000003194/],
-    ["lil HYBRID ミックス ミックス", /e-amanoya\.jp\/view\/item\/000000003193/],
-    ["lil HYBRID ミックス アイス プラス", /e-amanoya\.jp\/view\/item\/000000003192/],
+    [
+      "lil HYBRID ミックス アイス",
+      {
+        source: /e-amanoya\.jp\/view\/item\/000000003194/,
+        image: /lil-miix-ice-amanoya-10unit\.png/,
+      },
+    ],
+    [
+      "lil HYBRID ミックス ミックス",
+      {
+        source: /e-amanoya\.jp\/view\/item\/000000003193/,
+        image: /lil-miix-mix-amanoya-10unit\.png/,
+      },
+    ],
+    [
+      "lil HYBRID ミックス アイス プラス",
+      {
+        source: /e-amanoya\.jp\/view\/item\/000000003192/,
+        image: /lil-miix-ice-plus-amanoya-10unit\.png/,
+      },
+    ],
   ]);
 
-  for (const [jp, source] of expectations) {
+  for (const [jp, expectation] of expectations) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, "contents-reference", jp);
-    assert.equal(item.cartonImage, "", jp);
-    assert.match(item.cartonSource, source, jp);
-    assert.match(item.cartonNote, /10個|不是已核对的一カートン外箱/, jp);
+    assert.match(item.cartonImage, expectation.image, jp);
+    assert.match(item.cartonSource, expectation.source, jp);
+    assert.match(item.cartonNote, /10個|単包正面|不是.*一カートン外箱/, jp);
+    const imagePath = new URL(`../${item.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, jp);
   }
 });
 
@@ -942,7 +963,6 @@ test("lil HYBRID MIIX lineup includes Mix and Ice Plus with exact pack media but
     assert.equal(item.imageStatus, "verified", jp);
     assert.match(item.image, imagePattern, jp);
     assert.equal(item.cartonStatus, "contents-reference", jp);
-    assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, /不是已核对的一カートン外箱/, jp);
 
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
@@ -1022,10 +1042,13 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   const tropical = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
   );
-  assert.equal(tropical.cartonStatus, "verified");
-  assert.match(tropical.cartonImage, /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/);
-  assert.match(tropical.cartonNote, /10 packs \/ 200 heatsticks/);
-  assert.match(tropical.cartonNote, /不是封闭外箱/);
+  assert.equal(tropical.cartonStatus, "contents-reference");
+  assert.equal(tropical.cartonImage, "");
+  assert.match(
+    tropical.cartonGallery[0].image,
+    /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/,
+  );
+  assert.match(tropical.cartonNote, /不是完整 10 盒/);
   assert.match(tropical.cartonNote, /大浦商店.*カートン（10箱）/s);
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
 });
