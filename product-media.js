@@ -356,11 +356,22 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス プレミアム メンソール|梅比乌斯 高级薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/mevius-premium-menthol-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083790",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/mevius-premium-menthol8-10p-monolog-carton.png",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210166117",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "ANA 官方单包 / 1カートン规格",
+          image: "./images/cartons/mevius-premium-menthol-pack-content.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000083790",
+          note: "ANA 免税店页面确认 MEVIUS Premium Menthol 8 销售规格为 20本×10箱 / 1カートン；图片为官方单包正面图。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店页面确认 MEVIUS Premium Menthol 8 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。目录项为泛称 Premium Menthol，此图按 8mg 主流款作内容物参考。",
+        "ものログ商品名为“JT メビウスプレミアムメンソール8 10P”，主图可见 10 包整条排列，按 20 本×10 包 / 200 支核验。目录项为泛称 Premium Menthol，此图按 8mg 主流款核对。",
     },
   ],
   [
@@ -684,11 +695,23 @@ const MEDIA_OVERRIDES = new Map([
   [
     "バージニア エス ロゼ メンソール|Virginia S 粉薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/virginia-s-rose-content.jpg",
-      cartonSource: "https://www.world-tobacco.jp/view/item/000000001119?category_page_id=ct110",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/virginia-rose-menthol-10p-monolog-carton.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4930941000004",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "World Tobacco 单包辨认图",
+          image: "./images/cartons/virginia-s-rose-content.jpg",
+          source:
+            "https://www.world-tobacco.jp/view/item/000000001119?category_page_id=ct110",
+          note: "世界のたばこ通販商品页提供 Virginia S Rosé Menthol 当前单包图与 20本入り规格；不是整条外箱。",
+        },
+      ],
       cartonNote:
-        "世界のたばこ通販商品页提供 Virginia S Rosé Menthol 当前单包图与 20本入り规格。图片不是整条外箱；用于辨认粉色 Rosé Menthol 包装，整条长盒仍待实图核对。",
+        "ものログ商品名为“PM バージニアスリムロゼメンソール 10P”，主图可见 Rosé Menthol 10 包整条排列，按 20 本×10 包 / 200 支核验；单包图另放入图库辅助辨认。",
     },
   ],
   [
