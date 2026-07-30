@@ -690,21 +690,46 @@ test("Cigaronne official collection additions use local official media but no un
   }
 });
 
-test("Cigaronne Classic source-only gaps use wholesaler carton-quantity evidence without publishing display images", () => {
+test("Cigaronne Classic source-only gaps use exact SAS ten-piece SKU leads without publishing display images", () => {
   const expectations = new Map([
-    ["シガローネ・クラシック・キングサイズ", /King Size.*Number of Packs\/Carton = 10/s],
-    ["シガローネ・クラシック・コンパット", /Compatto.*Number of Packs\/Carton = 10/s],
-    ["シガローネ・クラシック・ウルトラスリム", /Ultra Slims.*Number of Packs\/Carton = 10/s],
-    ["シガローネ・クラシック・スーパースリム", /Super Slims.*Number of Packs\/Carton = 10/s],
+    [
+      "シガローネ・クラシック・キングサイズ",
+      {
+        source: /sas\.am\/en\/catalog\/armyanskaya_sigareta\/163104/,
+        note: /SAS Armenia.*King Size.*163104.*163105.*10 pcs/s,
+      },
+    ],
+    [
+      "シガローネ・クラシック・コンパット",
+      {
+        source: /sas\.am\/en\/catalog\/armyanskaya_sigareta\/4116/,
+        note: /SAS Armenia.*Compatto.*4116.*163100.*10 pcs/s,
+      },
+    ],
+    [
+      "シガローネ・クラシック・ウルトラスリム",
+      {
+        source: /sas\.am\/en\/catalog\/armyanskaya_sigareta\/163111/,
+        note: /SAS Armenia.*Ultra Slims.*163111.*163110.*10 pcs/s,
+      },
+    ],
+    [
+      "シガローネ・クラシック・スーパースリム",
+      {
+        source: /sas\.am\/en\/catalog\/armyanskaya_sigareta\/163109/,
+        note: /SAS Armenia.*Super Slims.*163109.*163108.*10 pcs/s,
+      },
+    ],
   ]);
 
-  for (const [jp, notePattern] of expectations) {
+  for (const [jp, expectation] of expectations) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, "source-only", jp);
     assert.equal(item.cartonImage, "", jp);
-    assert.match(item.cartonSource, /neutrinoinvest\.co\.za\/wholesale-distribution\/tobacco-products\/cigaronne/, jp);
-    assert.match(item.cartonNote, notePattern, jp);
-    assert.match(item.cartonNote, /不是完整同 SKU 10 包整条外箱实拍|未取得同 SKU 10 包整条/, jp);
+    assert.match(item.cartonSource, expectation.source, jp);
+    assert.match(item.cartonNote, expectation.note, jp);
+    assert.match(item.cartonNote, /Neutrino Invest.*Number of Packs\/Carton = 10/s, jp);
+    assert.match(item.cartonNote, /不是完整同 SKU 10 包整条外箱实拍|未取得(?:完整)?同 SKU 10 包整条/, jp);
   }
 });
 
