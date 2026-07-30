@@ -2151,6 +2151,18 @@ img {
   padding: 10px 10px 10px 0;
 }
 
+.carton-reference-gallery em {
+  display: inline-flex;
+  width: fit-content;
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: var(--red-soft);
+  color: var(--red);
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 800;
+}
+
 .carton-reference-gallery strong,
 .carton-reference-gallery span,
 .carton-reference-gallery a {
@@ -2202,6 +2214,39 @@ img {
 
 .package-media-review.is-not-applicable svg {
   color: var(--ink-faint);
+}
+
+.carton-integrity-warning {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  margin: 12px 14px 0;
+  padding: 11px;
+  border: 1px solid rgba(154, 73, 66, 0.22);
+  border-radius: 14px;
+  background: rgba(154, 73, 66, 0.07);
+  color: var(--red);
+}
+
+.carton-integrity-warning svg {
+  width: 20px;
+  margin-top: 1px;
+}
+
+.carton-integrity-warning strong,
+.carton-integrity-warning span {
+  display: block;
+}
+
+.carton-integrity-warning strong {
+  font-size: 11px;
+}
+
+.carton-integrity-warning span {
+  margin-top: 3px;
+  color: var(--ink-soft);
+  font-size: 9px;
+  line-height: 1.55;
 }
 
 .package-media-card > p {

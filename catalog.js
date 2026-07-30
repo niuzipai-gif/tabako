@@ -150,7 +150,7 @@ const BRAND_PROFILES = [
     source: "https://www.batj.com/",
   },
   {
-    test: /lil HYBRID|ミックス/i,
+    test: /lil HYBRID|MIIX|(?:^|[\s・])ミックス(?:[\s・]|$)/i,
     brand: "lil HYBRID",
     jpScore: 3.8,
     cnScore: 3.7,
@@ -365,9 +365,10 @@ function brandSortOrder(item) {
 function deviceModelOrder(item) {
   if (Number.isFinite(Number(item.deviceOrder))) return Number(item.deviceOrder);
   const text = `${item.jp} ${item.cn}`;
-  if (/REMIX/i.test(text)) return 5;
+  if (/Ploom AURA/i.test(text)) return 12;
   if (/PRIME/i.test(text)) return 10;
   if (/ADVANCED/i.test(text)) return 15;
+  if (/Ploom X\b/i.test(text)) return 16;
   if (/XROS 5|ARGUS G3|XLIM Pro 2|Wenax Q Pro/i.test(text)) return 18;
   if (/PRO|XROS Pro|HYPER pro/i.test(text)) return 20;
   if (/\bG4\b|XROS 4|ARGUS G2|XLIM SQ Pro 2/i.test(text)) return 25;

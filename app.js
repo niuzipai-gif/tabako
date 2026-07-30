@@ -516,6 +516,19 @@ function renderProductDetail(item) {
           <span>${escapeHtml(item.cartonNote)}</span>
         </div>
       `;
+  const isExactCarton = ["verified", "archive-reference"].includes(item.cartonStatus);
+  const cartonIntegrityNotice =
+    item.cartonApplicable && !isExactCarton
+      ? `
+        <div class="carton-integrity-warning" role="note">
+          <i data-lucide="shield-alert" aria-hidden="true"></i>
+          <div>
+            <strong>这里还不是同 SKU 整条实拍</strong>
+            <span>下方图片只作单包、多盒、近似 SKU 或来源页参考；没有 10 个同款外盒/一カートン文字证据前，不会标为“整条实拍已核对”。</span>
+          </div>
+        </div>
+      `
+      : "";
   const cartonGallery = Array.isArray(item.cartonGallery) && item.cartonGallery.length
     ? `
       <div class="carton-reference-gallery" aria-label="补充包装参考图">
@@ -530,6 +543,7 @@ function renderProductDetail(item) {
               <figure>
                 <img src="${escapeHtml(entry.image)}" alt="${escapeHtml(`${item.jp} ${title}`)}" loading="lazy" />
                 <figcaption>
+                  ${!isExactCarton ? `<em>非整条实拍</em>` : ""}
                   <strong>${escapeHtml(title)}</strong>
                   ${note ? `<span>${escapeHtml(note)}</span>` : ""}
                   ${source}
@@ -666,6 +680,7 @@ function renderProductDetail(item) {
             <span data-status="${escapeHtml(item.cartonStatus)}">${escapeHtml(cartonStatus)}</span>
           </header>
           ${cartonVisual}
+          ${cartonIntegrityNotice}
           ${cartonGallery}
           <p>${escapeHtml(item.cartonNote)}</p>
           <div class="package-media-links">

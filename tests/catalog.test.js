@@ -198,7 +198,11 @@ test("device sorting groups by brand and then machine generation", () => {
     [
       enrichProduct({ type: "device", jp: "glo HYPER pro", cn: "glo HYPER pro", jpy: 3980 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i ワン", cn: "IQOS ILUMA i ONE", jpy: 3980 }),
+      enrichProduct({ type: "device", jp: "IQOS イルマ i リミックスモデル", cn: "IQOS ILUMA i REMIX 限定款", jpy: 6980 }),
+      enrichProduct({ type: "device", jp: "Ploom AURA", cn: "Ploom AURA", jpy: 2980 }),
       enrichProduct({ type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980 }),
+      enrichProduct({ type: "device", jp: "Ploom X", cn: "Ploom X", jpy: 1980 }),
+      enrichProduct({ type: "device", jp: "Ploom S 2.0", cn: "Ploom S 2.0", jpy: 3480 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i プライム", cn: "IQOS ILUMA i PRIME", jpy: 9980 }),
       enrichProduct({ type: "device", jp: "glo HYPER air", cn: "glo HYPER air", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "VAPORESSO XROS 4", cn: "VAPORESSO XROS 4 主机", jpy: 4200 }),
@@ -211,14 +215,36 @@ test("device sorting groups by brand and then machine generation", () => {
     sorted.map((item) => item.cn),
     [
       "IQOS ILUMA i PRIME",
+      "IQOS ILUMA i REMIX 限定款",
       "IQOS ILUMA i ONE",
+      "Ploom AURA",
       "Ploom X ADVANCED",
+      "Ploom X",
+      "Ploom S 2.0",
       "glo HYPER pro",
       "glo HYPER air",
       "VAPORESSO XROS 5 主机",
       "VAPORESSO XROS 4 主机",
     ],
   );
+});
+
+test("IQOS remix devices are not misclassified as lil HYBRID MIIX products", () => {
+  const remix = enrichProduct({
+    type: "device",
+    jp: "IQOS イルマ i プライム リミックスモデル",
+    cn: "IQOS ILUMA i PRIME REMIX 限定款",
+    jpy: 9980,
+  });
+  const miix = enrichProduct({
+    type: "heated",
+    jp: "lil HYBRID ミックス アイス",
+    cn: "lil HYBRID 混合冰薄荷",
+    jpy: 520,
+  });
+
+  assert.equal(remix.brand, "IQOS");
+  assert.equal(miix.brand, "lil HYBRID");
 });
 
 test("pod sorting keeps brand families together and orders cartridge resistance logically", () => {
@@ -281,6 +307,17 @@ test("catalog renderer inserts visible brand section headers", () => {
   assert.equal(source.includes("const brandKey = `${item.type}:${item.brand}`;"), true);
   assert.match(styles, /\.brand-section-card\s*\{/);
   assert.match(styles, /grid-column:\s*1\s*\/\s*-1/);
+});
+
+test("detail renderer labels non-verified reference images as not exact cartons", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(source, /这里还不是同 SKU 整条实拍/);
+  assert.match(source, /非整条实拍/);
+  assert.match(source, /没有 10 个同款外盒\/一カートン文字证据前/);
+  assert.match(styles, /\.carton-integrity-warning\s*\{/);
+  assert.match(styles, /\.carton-reference-gallery em\s*\{/);
 });
 
 test("Mevius reference price is corrected to 580 yen", () => {
