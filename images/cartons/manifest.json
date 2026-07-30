@@ -363,6 +363,15 @@
       "sha256": "dc84761e8725a6f22116c2eb7a95d96f33d07681ebf57c4550ac8f59ad648627"
     },
     {
+      "productId": "p-c14eaf04",
+      "jp": "Ploom X キャメル メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
+      "sourcePage": "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
+      "sha256": "5e3666b0c9942c537eacec61448500621f77da5f8adced89763a03b7a73d0c97"
+    },
+    {
       "productId": "p-0f8b545b",
       "jp": "ホープ",
       "status": "verified",

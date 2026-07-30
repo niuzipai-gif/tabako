@@ -965,10 +965,12 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
     {
-      cartonStatus: "multi-carton-reference",
+      cartonStatus: "verified",
       cartonImage:
-        "./images/cartons/ploom-camel-menthol-fresh-paypay-7-empty-boxes.jpg",
-      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z545895006",
+        "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
+      cartonSource: "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
         {
           label: "1 Carton 数量参考",
@@ -977,9 +979,16 @@ const MEDIA_OVERRIDES = new Map([
           source: "https://www.placer-tabaco.com/product/5991",
           note: "プラセール页面标题确认“キャメル・メンソール・フレッシュ・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個；图片为单盒图。",
         },
+        {
+          label: "7盒旧实拍参考",
+          image:
+            "./images/cartons/ploom-camel-menthol-fresh-paypay-7-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z545895006",
+          note: "旧 PayPay フリマ来源为 7 个 CAMEL ploom X MENTHOL FRESH 空盒，只保留为多盒外观参考，不再作为主一条图。",
+        },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“ploomX キャメル メンソールフレッシュ 7箱 空箱”，实拍可见 7 个 CAMEL ploom X MENTHOL FRESH 空盒。数量不是完整 10 盒一条，因此只作为多盒外观参考；一条数量仍按 10 包 / 200 支核对，购买时请区分 Fresh/Cold/Yellow 等具体口味。",
+        "Yahoo!オークション标题为“電子タバコ キャメル メンソールフレッシュ 10個 新品未開封品”，实拍可见 10 个同款 CAMEL ploom X MENTHOL FRESH 盒。该目录项按 Camel Menthol Fresh 线核对为 1カートン = 10包 / 200支；购买时仍请区分 Fresh/Cold/Yellow 等具体口味。",
     },
   ],
   [

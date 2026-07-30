@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 41);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 41);
+  assert.equal(manifest.items.length, 42);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 42);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -240,7 +240,23 @@ test("Mevius Original uses exact 20x10 carton artwork instead of the JDF 2-carto
   );
 });
 
-test("Ploom X Cold and Sharp Cold use exact multi-box evidence", () => {
+test("Ploom X Camel Menthol Fresh, Cold and Sharp Cold use exact multi-box evidence", () => {
+  const camel = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール"),
+  );
+  assert.equal(camel.cartonStatus, "verified");
+  assert.match(
+    camel.cartonImage,
+    /ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes\.jpg/,
+  );
+  assert.match(camel.cartonSource, /auctions\.yahoo\.co\.jp\/jp\/auction\/n1206003967/);
+  assert.match(camel.cartonNote, /MENTHOL FRESH|10 个同款|10包 \/ 200支/);
+  assert.ok(
+    camel.cartonGallery.some((entry) =>
+      /ploom-camel-menthol-fresh-paypay-7-empty-boxes\.jpg/.test(entry.image),
+    ),
+  );
+
   const cold = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス コールド メンソール"),
   );
