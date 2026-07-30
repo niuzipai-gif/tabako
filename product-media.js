@@ -586,12 +586,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
     {
-      cartonStatus: "contents-reference",
+      cartonStatus: "multi-carton-reference",
       cartonImage:
-        "./images/cartons/ploom-camel-menthol-fresh-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/5991",
+        "./images/cartons/ploom-camel-menthol-fresh-paypay-7-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z545895006",
+      cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image:
+            "./images/cartons/ploom-camel-menthol-fresh-placer-carton-reference.jpg",
+          source: "https://www.placer-tabaco.com/product/5991",
+          note: "プラセール页面标题确认“キャメル・メンソール・フレッシュ・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個；图片为单盒图。",
+        },
+      ],
       cartonNote:
-        "プラセール页面标题确认“キャメル・メンソール・フレッシュ・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为 Menthol Fresh 单包图，不是外箱实拍；购买时请核对 Fresh/Cold 具体名称。",
+        "Yahoo!フリマ标题为“ploomX キャメル メンソールフレッシュ 7箱 空箱”，实拍可见 7 个 CAMEL ploom X MENTHOL FRESH 空盒。数量不是完整 10 盒一条，因此只作为多盒外观参考；一条数量仍按 10 包 / 200 支核对，购买时请区分 Fresh/Cold/Yellow 等具体口味。",
     },
   ],
   [
