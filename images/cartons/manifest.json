@@ -39,6 +39,15 @@
       "sha256": "3ec81074f51b1e9c3a2ed062127bab92f2c8e7dd919455e0e2e6f05b498e741c"
     },
     {
+      "productId": "p-3b302223",
+      "jp": "マールボロ ゴールド",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/marlboro-gold-rakuma-10-empty-boxes.jpg",
+      "sourcePage": "https://item.fril.jp/2bea202c31ee48d9c9a5e8e2dd17ecd4",
+      "sha256": "22d8560366e3cfb6c1f604a0dbba7efa02a5b7bda88083ee7dd22902ea698807"
+    },
+    {
       "productId": "p-738718e3",
       "jp": "セブンスター ボックス",
       "status": "verified",
@@ -82,24 +91,6 @@
       "localPath": "images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
       "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
       "sha256": "6327aad23ecc446f2aa1c040f94d81e8e5724ae3c6f6c2a6b25049931881d73c"
-    },
-    {
-      "productId": "p-617f6c70",
-      "jp": "Ploom X メビウス コールド メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/ploom-mevius-cold-menthol-ana-carton-front.jpg",
-      "sourcePage": "https://www.anadf.com/en/itemdetail.aspx?s_cd=2030100079",
-      "sha256": "04a586d7c0b9dcada9d684be4c33dc37f233e3fc52a6f3a5a301b82d085cd208"
-    },
-    {
-      "productId": "p-919f9270",
-      "jp": "Ploom X メビウス シャープ コールド",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/ploom-mevius-sharp-cold-ana-carton-front.jpg",
-      "sourcePage": "https://www.anadf.com/en/itemdetail.aspx?s_cd=2030100166",
-      "sha256": "61f85fd17d488e8ccf4f8684a41285ccddf0cbd5f7b7eadf6d240bb1a5d27ae2"
     },
     {
       "productId": "p-4a18c9e6",

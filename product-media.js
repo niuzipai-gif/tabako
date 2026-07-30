@@ -417,13 +417,33 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ ゴールド|万宝路 金",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/marlboro-gold-box-ana-2carton.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=8000002097",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/marlboro-gold-rakuma-10-empty-boxes.jpg",
+      cartonSource: "https://item.fril.jp/2bea202c31ee48d9c9a5e8e2dd17ecd4",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "10 空盒近景",
+          image: "./images/cartons/marlboro-gold-rakuma-10-empty-boxes-detail.jpg",
+          source: "https://item.fril.jp/2bea202c31ee48d9c9a5e8e2dd17ecd4",
+          note: "同一 Rakuma 出品的第二张图，能看清 Marlboro gold 正面与日本警示文字；用于辅助核对，不代表当前库存。",
+        },
+        {
+          label: "ANA 官方 1カートン规格 / 单包图",
+          image: "./images/cartons/marlboro-gold-ana-1ct-pack.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=8000002095",
+          note: "ANA 免税店页面确认“マールボロ ゴールド ボックス”销售规格为 20本×10箱 / 1カートン；商品图为官方单包正面，不是整条外箱。",
+        },
+        {
+          label: "ANA 官方 2カートン参考",
+          image: "./images/cartons/marlboro-gold-box-ana-2carton.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=8000002097",
+          note: "旧图为“マールボロ ゴールド ボックス 400s 2カートン(20パック)”，规格为 (20本×10箱)×2；用于区分免税 2CT 包装，不作为本站主一条图。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店商品页为“マールボロ ゴールド ボックス 400s 2カートン(20パック)”，规格写明 (20本×10箱)×2；图片可见官方 2 CARTONS 金色外箱。它是两条装参考，不是单独一条拆分图；购买单条时按 10 包 / 200 支理解。",
+        "Rakuma 出品标题为“たばこ タバコ 空き箱 マルボロ ゴールド 10箱”，说明写明“マルボロゴールド 10箱”；主图可见 10 个 Marlboro gold 日本警示版空盒排列，可作为一条 10 包/200 支的实拍辨认参考。它不是未开封外箱，且不代表实时库存；ANA 官方页另确认该 SKU 规格为 20本×10箱 / 1カートン。",
     },
   ],
   [

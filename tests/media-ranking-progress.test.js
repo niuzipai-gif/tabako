@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 25);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 25);
+  assert.equal(manifest.items.length, 24);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 24);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -128,36 +128,30 @@ test("Peace Super Lights uses the official ANA carton-side artwork instead of a 
   assert.notEqual(sha256(cartonPath), sha256(packPath));
 });
 
-test("Ploom X Mevius Cold and Sharp Cold use ANA exact one-carton artwork", () => {
+test("Ploom X Cold and Sharp Cold do not promote single-pack photos as exact cartons", () => {
   const expected = new Map([
     [
       "Ploom X メビウス コールド メンソール",
       {
-        image: /ploom-mevius-cold-menthol-ana-carton-front\.jpg/,
-        source: /anadf\.com\/en\/itemdetail\.aspx\?s_cd=2030100079/,
-        note: /MEVIUS MENTHOL COLD|20本×10箱|ANA/,
+        status: "multi-carton-reference",
+        note: /9 個|不足 10 盒|多盒参考/,
       },
     ],
     [
       "Ploom X メビウス シャープ コールド",
       {
-        image: /ploom-mevius-sharp-cold-ana-carton-front\.jpg/,
-        source: /anadf\.com\/en\/itemdetail\.aspx\?s_cd=2030100166/,
-        note: /MEVIUS SHARP COLD MENTHOL|20本×10箱|ANA/,
+        status: "contents-reference",
+        note: /单盒图，不是整条外箱|10 包\/200 支/,
       },
     ],
   ]);
 
   for (const [jp, expectation] of expected) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
-    assert.equal(item.cartonStatus, "verified", jp);
-    assert.match(item.cartonImage, expectation.image, jp);
-    assert.match(item.cartonSource, expectation.source, jp);
+    assert.equal(item.cartonStatus, expectation.status, jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.deepEqual(item.cartonGallery, [], jp);
     assert.match(item.cartonNote, expectation.note, jp);
-    const cartonPath = new URL(`../${item.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
-    const packPath = new URL(`../${item.originalImage.replace(/^\.\//, "")}`, import.meta.url);
-    assert.equal(existsSync(cartonPath), true, jp);
-    assert.notEqual(sha256(cartonPath), sha256(packPath), jp);
   }
 });
 
