@@ -323,6 +323,45 @@ function deviceBrandOrder(item) {
   return 900;
 }
 
+const BRAND_SORT_ORDER = new Map(
+  [
+    "Mevius",
+    "Seven Stars",
+    "Marlboro",
+    "Cigaronne",
+    "Lark",
+    "Winston",
+    "Camel",
+    "Peace",
+    "American Spirit",
+    "KOOL",
+    "Salem",
+    "Pianissimo",
+    "Virginia S",
+    "Hope",
+    "Wakaba",
+    "Echo",
+    "TEREA",
+    "SENTIA",
+    "IQOS",
+    "Ploom",
+    "glo",
+    "lil HYBRID",
+    "RELX",
+    "MOTI",
+    "VAPORESSO",
+    "Uwell",
+    "Voopoo",
+    "ELFBAR",
+    "OXVA",
+    "Geekvape",
+  ].map((brand, index) => [brand.toLocaleLowerCase(), index * 10]),
+);
+
+function brandSortOrder(item) {
+  return BRAND_SORT_ORDER.get(String(item.brand ?? "").toLocaleLowerCase()) ?? 900;
+}
+
 function deviceModelOrder(item) {
   if (Number.isFinite(Number(item.deviceOrder))) return Number(item.deviceOrder);
   const text = `${item.jp} ${item.cn}`;
@@ -425,6 +464,10 @@ export function filterProducts(products, filters = {}) {
 export function sortProducts(products, sort = "recommended") {
   const result = [...products];
   const compareName = (a, b) => a.jp.localeCompare(b.jp, "ja");
+  const compareBrand = (a, b) =>
+    brandSortOrder(a) - brandSortOrder(b) ||
+    String(a.brand ?? "").localeCompare(String(b.brand ?? ""), "ja") ||
+    String(a.type ?? "").localeCompare(String(b.type ?? ""), "en");
   const compareDevice = (a, b) =>
     deviceBrandOrder(a) - deviceBrandOrder(b) ||
     deviceModelOrder(a) - deviceModelOrder(b) ||
@@ -462,9 +505,10 @@ export function sortProducts(products, sort = "recommended") {
 
   return result.sort(
     (a, b) =>
+      compareBrand(a, b) ||
       (a.type === "device" && b.type === "device" ? compareDevice(a, b) : 0) ||
-      b.jpScore + b.cnScore - (a.jpScore + a.cnScore) ||
-      a.originalIndex - b.originalIndex,
+      (a.originalIndex ?? 0) - (b.originalIndex ?? 0) ||
+      compareName(a, b),
   );
 }
 

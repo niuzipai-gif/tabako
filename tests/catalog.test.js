@@ -216,6 +216,35 @@ test("device sorting groups by brand and then machine generation", () => {
   );
 });
 
+test("recommended sorting groups every catalog type by brand before individual ranking", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const sorted = sortProducts(products, "recommended");
+  const brandRanges = new Map();
+
+  sorted.forEach((item, index) => {
+    const range = brandRanges.get(item.brand) ?? { first: index, last: index };
+    range.last = index;
+    brandRanges.set(item.brand, range);
+  });
+
+  for (const [brand, range] of brandRanges) {
+    const brandsInside = new Set(sorted.slice(range.first, range.last + 1).map((item) => item.brand));
+    assert.deepEqual([...brandsInside], [brand]);
+  }
+
+  const devices = sorted.filter((item) => item.type === "device");
+  assert.deepEqual(
+    [...new Set(devices.map((item) => item.brand))].slice(0, 4),
+    ["IQOS", "Ploom", "glo", "lil HYBRID"],
+  );
+
+  const pods = sorted.filter((item) => item.type === "pod");
+  assert.deepEqual(
+    [...new Set(pods.map((item) => item.brand))],
+    ["RELX", "MOTI", "VAPORESSO", "Uwell", "Voopoo", "ELFBAR"],
+  );
+});
+
 test("Mevius reference price is corrected to 580 yen", () => {
   const result = enrichProduct({
     type: "cigarette",

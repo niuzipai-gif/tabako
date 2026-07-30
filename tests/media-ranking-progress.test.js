@@ -103,6 +103,18 @@ test("production carton manifest only publishes exact verified or visibly histor
   }
 });
 
+test("non-verified carton states never expose a main or gallery carton image", () => {
+  for (const raw of rawProducts) {
+    const product = enrichProduct(raw);
+    if (product.cartonStatus === "verified" || product.cartonStatus === "not-applicable") {
+      continue;
+    }
+
+    assert.equal(product.cartonImage, "", product.jp);
+    assert.deepEqual(product.cartonGallery, [], product.jp);
+  }
+});
+
 test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
   const peace = enrichProduct(rawProducts.find((item) => item.jp === "ピース スーパーライト"));
 

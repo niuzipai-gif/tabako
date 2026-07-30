@@ -1392,6 +1392,8 @@ export function resolveProductMedia(item, originalImage) {
   const query = `${item.jp} 一カートン 外箱 10包`;
   const defaultImageNote =
     "该包装图尚未逐款人工核验，仅作旅行辨认线索；警示文字、印刷批次和外包装可能变化，请以门店实物为准。";
+  const rawCartonStatus = applicable ? (override.cartonStatus ?? "needs-review") : "not-applicable";
+  const exactCartonImageAllowed = rawCartonStatus === "verified";
 
   return {
     originalImage,
@@ -1409,10 +1411,10 @@ export function resolveProductMedia(item, originalImage) {
     identityNote: identity.identityNote,
     variantNote: override.variantNote ?? reviewNote,
     cartonApplicable: applicable,
-    cartonStatus: applicable ? (override.cartonStatus ?? "needs-review") : "not-applicable",
-    cartonImage: applicable ? (override.cartonImage ?? "") : "",
+    cartonStatus: rawCartonStatus,
+    cartonImage: applicable && exactCartonImageAllowed ? (override.cartonImage ?? "") : "",
     cartonSource: applicable ? (override.cartonSource ?? "") : "",
-    cartonGallery: applicable ? (override.cartonGallery ?? []) : [],
+    cartonGallery: applicable && exactCartonImageAllowed ? (override.cartonGallery ?? []) : [],
     cartonPackCount: applicable ? (override.cartonPackCount ?? 10) : 0,
     cartonStickCount: applicable ? (override.cartonStickCount ?? 200) : 0,
     cartonNote: applicable
