@@ -40,14 +40,28 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス オリジナル|梅比乌斯 原味",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/mevius-original-jdf-2carton.jpg",
-      cartonSource:
-        "https://duty-free-japan.jp/narita/en/goodsDetail.aspx?sCD=5302030459",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/mevius-box-monolog-20x10.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210128603",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "单包侧面辅助",
+          image: "./images/cartons/mevius-box-monolog-pack-side.jpg",
+          source: "https://monolog.r-n-i.jp/item/4902210128603",
+          note: "同一 monolog 页面购买者图片，能看到 MEVIUS ORIGINAL 10 单包侧面和 JAN；用于辅助确认不是 Light / Super Lights。"
+        },
+        {
+          label: "Japan Duty Free 官方 2CT 参考",
+          image: "./images/cartons/mevius-original-jdf-2carton.jpg",
+          source:
+            "https://duty-free-japan.jp/narita/en/goodsDetail.aspx?sCD=5302030459",
+          note: "JDF 成田页标题为 MEVIUS BOX 2CT SET，图面写有 2 CARTONS SPECIAL OFFER / 200×2 400 CIGARETTES；作为免税两条装参考，不作为主一条图。"
+        }
+      ],
       cartonNote:
-        "Japan Duty Free 成田机场免税预约页标题为“MEVIUS BOX 2CT SET”，商品图正面明确写有“2 CARTONS SPECIAL OFFER / 200×2 400 CIGARETTES”。这是官方两条装外箱图，可用于辨认 MEVIUS Original 免税整条组合外观；若只买 1 カートン，仍以门店实际包装为准。",
+        "monolog 商品名为“JT メビウス BOX カートン 20本×10”，主图可见 10 个 MEVIUS ORIGINAL 10 日本警示版盒装排列，按 1カートン / 10包 / 200支核验。JDF 2CT 官方图只保留为两条装辅助参考。",
     },
   ],
   [
@@ -92,13 +106,27 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ メンソール|万宝路 薄荷",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/marlboro-menthol8-monolog-20x10.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210129006",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "10 包排列辅助",
+          image: "./images/cartons/marlboro-menthol8-monolog-20x10-alt.jpg",
+          source: "https://monolog.r-n-i.jp/item/4902210129006",
+          note: "同一 monolog 页面购买者图片，显示 10 个 Marlboro Menthol 8 日本警示版盒装排列；用于辅助核对一条数量。"
+        },
+        {
+          label: "ANA 官方 2カートン参考",
+          image: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
+          note: "ANA 免税店商品页为“マールボロ メンソール 8 ボックス 2カートンセット”，规格为 (20本×10箱)×2；作为两条装参考，不作为本站主一条图。"
+        }
+      ],
       cartonNote:
-        "ANA 免税店商品页为“マールボロ メンソール 8 ボックス 2カートンセット”，规格写明 (20本×10箱)×2；图片可见官方 2 CARTONS 外箱。它是两条装参考，不是单独一条拆分图；购买单条时按 10 包 / 200 支理解。",
+        "monolog 商品名为“マールボロ・メンソール・8・ボックス 20本×10”，主图可见 10 个 Marlboro Menthol 8 日本警示版盒装排列，按 1カートン / 10包 / 200支核验。ANA 2CT 官方图只保留为免税两条装辅助参考。",
     },
   ],
   [

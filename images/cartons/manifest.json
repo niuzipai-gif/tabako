@@ -39,6 +39,15 @@
       "sha256": "3ec81074f51b1e9c3a2ed062127bab92f2c8e7dd919455e0e2e6f05b498e741c"
     },
     {
+      "productId": "p-0706b155",
+      "jp": "マールボロ メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/marlboro-menthol8-monolog-20x10.jpg",
+      "sourcePage": "https://monolog.r-n-i.jp/item/4902210129006",
+      "sha256": "6a4602a3cc499606f5e8349046c02c845ec3de6cd8a8cfc487035b2909aca32e"
+    },
+    {
       "productId": "p-3b302223",
       "jp": "マールボロ ゴールド",
       "status": "verified",
@@ -46,6 +55,15 @@
       "localPath": "images/cartons/marlboro-gold-rakuma-10-empty-boxes.jpg",
       "sourcePage": "https://item.fril.jp/2bea202c31ee48d9c9a5e8e2dd17ecd4",
       "sha256": "22d8560366e3cfb6c1f604a0dbba7efa02a5b7bda88083ee7dd22902ea698807"
+    },
+    {
+      "productId": "p-d9140d39",
+      "jp": "メビウス オリジナル",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/mevius-box-monolog-20x10.jpg",
+      "sourcePage": "https://monolog.r-n-i.jp/item/4902210128603",
+      "sha256": "2f60bccdc761f54ba6aad6e25e228ca20ffae2ad355ce5ceaacc680b0ac23c77"
     },
     {
       "productId": "p-738718e3",

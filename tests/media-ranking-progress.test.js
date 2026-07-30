@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 24);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 24);
+  assert.equal(manifest.items.length, 26);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 26);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -140,6 +140,38 @@ test("Marlboro Gold uses exact 10-box artwork instead of the ANA single pack or 
   assert.ok(
     item.cartonGallery.some((entry) =>
       /marlboro-gold-box-ana-2carton\.jpg/.test(entry.image),
+    ),
+  );
+});
+
+test("Marlboro Menthol uses exact 20x10 artwork instead of the ANA 2-carton image", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "マールボロ メンソール"),
+  );
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /marlboro-menthol8-monolog-20x10\.jpg/);
+  assert.match(item.cartonSource, /monolog\.r-n-i\.jp\/item\/4902210129006/);
+  assert.match(item.cartonNote, /マールボロ・メンソール・8・ボックス 20本×10|10包|ANA 2CT/);
+  assert.ok(
+    item.cartonGallery.some((entry) =>
+      /marlboro-menthol8-box-ana-2carton\.jpg/.test(entry.image),
+    ),
+  );
+});
+
+test("Mevius Original uses exact 20x10 carton artwork instead of the JDF 2-carton image", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "メビウス オリジナル"),
+  );
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /mevius-box-monolog-20x10\.jpg/);
+  assert.match(item.cartonSource, /monolog\.r-n-i\.jp\/item\/4902210128603/);
+  assert.match(item.cartonNote, /メビウス BOX カートン 20本×10|10包|JDF 2CT/);
+  assert.ok(
+    item.cartonGallery.some((entry) =>
+      /mevius-original-jdf-2carton\.jpg/.test(entry.image),
     ),
   );
 });
