@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 37);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 37);
+  assert.equal(manifest.items.length, 39);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 39);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -132,14 +132,14 @@ test("non-verified carton reference galleries are explicit and source-backed", (
 });
 
 test("source-only and generated reference states still show a labeled source image", () => {
-  const royalSlimsMenthol = enrichProduct(
-    rawProducts.find((product) => product.jp === "シガローネ・ロイヤルスリム・メンソール"),
+  const superSlimsMenthol = enrichProduct(
+    rawProducts.find((product) => product.jp === "シガローネ・スーパースリム・メンソール"),
   );
-  assert.equal(royalSlimsMenthol.cartonStatus, "source-only");
-  assert.equal(royalSlimsMenthol.cartonImage, "");
-  assert.equal(royalSlimsMenthol.cartonGallery.length, 1);
-  assert.match(royalSlimsMenthol.cartonGallery[0].title, /来源商品图参考/);
-  assert.match(royalSlimsMenthol.cartonGallery[0].note, /整条外箱仍待核验/);
+  assert.equal(superSlimsMenthol.cartonStatus, "source-only");
+  assert.equal(superSlimsMenthol.cartonImage, "");
+  assert.equal(superSlimsMenthol.cartonGallery.length, 1);
+  assert.match(superSlimsMenthol.cartonGallery[0].title, /来源商品图参考/);
+  assert.match(superSlimsMenthol.cartonGallery[0].note, /整条外箱仍待核验/);
 
   const sharpCold = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
@@ -592,7 +592,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 11);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 3);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 5);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -610,6 +610,14 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-exclusive-brown-mercari-carton-box\.jpg/, item.jp);
       assert.match(item.cartonNote, /Exclusive Brown|XL FILTER|カートン|10箱/, item.jp);
+    } else if (item.jp === "シガローネ・ロイヤルスリム・メンソール") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, item.jp);
+      assert.match(item.cartonNote, /Royal Slims XL Filter|10 пачек|200 сигарет/, item.jp);
+    } else if (item.jp === "シガローネ・スーパースリム・ブラック") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/, item.jp);
+      assert.match(item.cartonNote, /Super Slims Black x 10|Пачок в блоці 10/, item.jp);
     } else {
       assert.equal(item.cartonStatus, "source-only", item.jp);
       assert.equal(item.cartonImage, "", item.jp);
@@ -620,13 +628,6 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
 
 test("source-only Cigaronne carton gaps point to exact 1-carton product sources", () => {
   const expectations = new Map([
-    [
-      "シガローネ・ロイヤルスリム・メンソール",
-      {
-        source: /jaldutyfree\.com\/shop\/g\/g5319990197/,
-        note: /JAL DUTYFREE.*1カートン10箱.*Jirorinmura.*カートン箱付属/s,
-      },
-    ],
     [
       "シガローネ・スーパースリム・メンソール",
       {
@@ -669,13 +670,6 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
         note: /1カートン10箱|1箱20本入|KIX/,
       },
     ],
-    [
-      "シガローネ・スーパースリム・ブラック",
-      {
-        source: /daiyostore\.com\/shopdetail\/000000001172/,
-        note: /商品内容：1カートン\(10箱\)|20本\/箱|DAIYOSTORE/,
-      },
-    ],
   ]);
 
   for (const [jp, expectation] of expectations) {
@@ -685,6 +679,25 @@ test("source-only Cigaronne carton gaps point to exact 1-carton product sources"
     assert.match(item.cartonSource, expectation.source, jp);
     assert.match(item.cartonNote, expectation.note, jp);
   }
+});
+
+test("Cigaronne Royal Menthol and Super Slims Black use exact verified carton images", () => {
+  const royal = enrichProduct(
+    rawProducts.find((product) => product.jp === "シガローネ・ロイヤルスリム・メンソール"),
+  );
+  assert.equal(royal.cartonStatus, "verified");
+  assert.match(royal.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/);
+  assert.match(royal.cartonSource, /cigarpro\.ru/);
+  assert.match(royal.cartonNote, /Royal Slims XL Filter|10 пачек|200 сигарет/);
+  assert.match(royal.cartonGallery[0].image, /cigaronne-royal-menthol-cigarpro-carton-open\.webp/);
+
+  const superBlack = enrichProduct(
+    rawProducts.find((product) => product.jp === "シガローネ・スーパースリム・ブラック"),
+  );
+  assert.equal(superBlack.cartonStatus, "verified");
+  assert.match(superBlack.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/);
+  assert.match(superBlack.cartonSource, /rozetka\.com\.ua/);
+  assert.match(superBlack.cartonNote, /Super Slims Black x 10|Пачок в блоці 10|SUPER SLIMS/);
 });
 
 test("ranking is a separate vertical feed page linked from home", () => {
@@ -715,14 +728,12 @@ test("Ploom X Sharp Cold records the exact 15-box text lead without promoting li
 
 test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing unverified cartons", () => {
   const jpNames = [
-    "シガローネ・ロイヤルスリム・メンソール",
     "シガローネ・スーパースリム・メンソール",
     "シガローネ・タトゥー・チェリー",
     "シガローネ・タトゥー・チョコレート",
     "シガローネ・タトゥー・バニラ",
     "シガローネ・マグネット",
     "シガローネ・ウルトラスリム・ブラック",
-    "シガローネ・スーパースリム・ブラック",
   ];
 
   for (const jp of jpNames) {
@@ -747,8 +758,13 @@ test("Cigaronne pack media uses exact local images while American Spirit generic
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.imageStatus, "verified", jp);
     assert.match(item.image, imagePattern, jp);
-    assert.equal(item.cartonStatus, "source-only", jp);
-    assert.equal(item.cartonImage, "", jp);
+    if (jp === "シガローネ・ロイヤルスリム・メンソール") {
+      assert.equal(item.cartonStatus, "verified", jp);
+      assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, jp);
+    } else {
+      assert.equal(item.cartonStatus, "source-only", jp);
+      assert.equal(item.cartonImage, "", jp);
+    }
   }
 
   const americanSpirit = enrichProduct(

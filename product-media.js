@@ -627,11 +627,27 @@ const MEDIA_OVERRIDES = new Map([
         "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Royal slims，用于区分绿色 Royal Slims Menthol；JAL 同款页另确认 1カートン10箱。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990197/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-royal-menthol-cigarpro-carton.webp",
+      cartonSource:
+        "https://www.cigarpro.ru/sigarety/cigaronne/sigarety-cigaronne-menthol-royal-slims-xl-filter/",
+      cartonGallery: [
+        {
+          title: "整条开箱图",
+          image: "./images/cartons/cigaronne-royal-menthol-cigarpro-carton-open.webp",
+          source:
+            "https://www.cigarpro.ru/sigarety/cigaronne/sigarety-cigaronne-menthol-royal-slims-xl-filter/",
+          note: "同一 Cigarpro 页面第二张图，打开后可见成排同款绿色 Royal Slims Menthol 单盒；用于辅助确认不是普通 Super Slims Menthol。",
+        },
+        {
+          title: "日本官方单盒 / 数量来源",
+          image: "./images/verified/cigaronne-royal-menthol-worldtobacco-pack.jpg",
+          source: "https://www.jaldutyfree.com/shop/g/g5319990197/",
+          note: "JAL DUTYFREE 页面确认日本免税同款按 1カートン10箱・1箱20本入 销售；图为单盒辨认参考。",
+        },
+      ],
       cartonNote:
-        "JAL DUTYFREE 商品页确认 シガローネ ロイヤルスリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥11,000；World Tobacco 单包页另确认 20本入り、タール6mg、ニコチン0.6mg。JAL 另有同款商品号 89439394 页面；Jirorinmura 对应页进一步说明宅配便购买时 10 个ごとにカートン箱付属；Rakuten/堀商事另列 10packs シガローネ・ロイヤルスリム・メンソール、国内配送ゆうパック 箱入り。当前接入的图为对应 SKU 单盒/展示盒图，不是 10 盒整条外箱实拍，因此整条仍标记为待核验。",
+        "Cigarpro 页面标题为“Cigaronne Menthol Royal Slims XL Filter”，规格写明 10 пачек（10 包），整条正面图可读 Cigaronne MENTHOL / Royal slims XL FILTER，底部标注 200 сигарет；同页开箱图可见成排同款绿色单盒。JAL DUTYFREE 另确认日本免税销售规格为 1カートン10箱・1箱20本入。",
     },
   ],
   [
@@ -804,11 +820,19 @@ const MEDIA_OVERRIDES = new Map([
         "World Tobacco 对应 Super Slims Black 页面图；黑色横盒，图面尺寸与 Ultra/Royal 接近，需按完整日文名核对。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://daiyostore.com/shopdetail/000000001172/Cigaronne/page1/order/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-super-slims-black-rozetka-carton.jpg",
+      cartonSource: "https://rozetka.com.ua/ua/cigaronne-4850008001013/p452668382/",
+      cartonGallery: [
+        {
+          title: "整条近景",
+          image: "./images/cartons/cigaronne-super-slims-black-rozetka-detail.jpg",
+          source: "https://rozetka.com.ua/ua/cigaronne-4850008001013/p452668382/",
+          note: "同一 Rozetka 页面备查图；页面标题和规格确认 Black x 10 пачок，图面用于辅助识别黑色 Super Slims 外盒。",
+        },
+      ],
       cartonNote:
-        "DAIYOSTORE 商品页确认 シガローネ・スーパースリム・ＢＫ 为 入数：20本/箱、商品内容：1カートン(10箱)，并显示残りあと10個；World Tobacco 单包页确认 20本入り、タール8mg、ニコチン0.7mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム ブラック，并注明箱なしセロハン包装。整条外箱未取得可核对图。",
+        "Rozetka 页面标题为“Блок сигарет Cigaronne Super Slims Black x 10 пачок”，规格写明 Пачок в блоці 10、Цигарок в пачці 20、EAN 4850008001013；主图为黑色密封整条外盒，图面可读 Cigaronne SUPER SLIMS。DAIYOSTORE 与 Rakuten/堀商事另确认日本侧同款按 1カートン10箱 / 10packs 记录。",
     },
   ],
   [

@@ -39,6 +39,24 @@
       "sha256": "0571a10fa9cec264228d0cade770cef3e40835d00ad32bc52b50a096fb463eee"
     },
     {
+      "productId": "p-99c99283",
+      "jp": "シガローネ・ロイヤルスリム・メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-royal-menthol-cigarpro-carton.webp",
+      "sourcePage": "https://www.cigarpro.ru/sigarety/cigaronne/sigarety-cigaronne-menthol-royal-slims-xl-filter/",
+      "sha256": "3886d9cd576210dc4c59debbea53f8bdc71d5c754f5eaf276daec50fd5840073"
+    },
+    {
+      "productId": "p-dcf57654",
+      "jp": "シガローネ・スーパースリム・ブラック",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-super-slims-black-rozetka-carton.jpg",
+      "sourcePage": "https://rozetka.com.ua/ua/cigaronne-4850008001013/p452668382/",
+      "sha256": "b1078a9363229d9c0c4631eb298de1a27eedd7bc5aed645dc1d35d700dab9732"
+    },
+    {
       "productId": "p-ddfd4f94",
       "jp": "マールボロ レッド",
       "status": "verified",
