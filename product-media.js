@@ -815,11 +815,19 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ネオ ブリリアント ベリー|glo neo 闪耀莓果",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-neo-brilliant-berry-1carton-reference.jpg",
-      cartonSource:
-        "https://j-cigarette.com/glo-neo-for-hyper-brilliant-berry-sticks-bursting-with-freshness-berry-blend/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/glo-neo-brilliant-berry-paypay-15-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z486874470",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image: "./images/cartons/glo-neo-brilliant-berry-1carton-reference.jpg",
+          source:
+            "https://j-cigarette.com/glo-neo-for-hyper-brilliant-berry-sticks-bursting-with-freshness-berry-blend/",
+          note: "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)BrilliantBerry，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍。",
+        },
         {
           label: "KIX 官方当前包装",
           image: "./images/cartons/glo-neo-brilliant-berry-kix-official-pack.jpg",
@@ -829,7 +837,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)BrilliantBerry，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍；KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
+        "Yahoo!フリマ标题为“glo hyper neo・ブリリアント ベリー☆タバコ 空き箱 15箱”，图片可见 15 个 neo Brilliant Berry for glo hyper 空盒排列，能核对多包外观。该来源为售出空盒/收藏图，不代表当前库存；一条仍按 10 包 / 200 支估算。",
     },
   ],
   [
@@ -845,11 +853,19 @@ const MEDIA_OVERRIDES = new Map([
   [
     "IQOS センティア フロスト グリーン|IQOS SENTIA 冰绿薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/sentia-frost-green-content.png",
-      cartonSource: "https://www.placer-tabaco.com/product/5885",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/sentia-frost-green-paypay-9-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z618983782",
+      cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image: "./images/cartons/sentia-frost-green-content.png",
+          source: "https://www.placer-tabaco.com/product/5885",
+          note: "プラセール页面确认“センティア・フロスト・グリーン E”按 1カートン/10個 销售；图片为单盒参考。",
+        },
+      ],
       cartonNote:
-        "プラセール页面确认“センティア・フロスト・グリーン E”按 1カートン/10個 销售；图片为 AMANOYA/SENTIA 单盒参考，不是整条外箱。用于辨认 Frost Green 包装色。",
+        "Yahoo!フリマ标题为“IQOS ILUMA SENTIA センティア フロストグリーン 空箱 9箱セット”，图片可见 9 个 SENTIA for IQOS ILUMA 绿色空盒排列。图片正面未露出 FROST GREEN 风味侧标，因此仅作为准确标题支撑的多盒参考，不标为纯 10 盒已核验整条；一条数量仍按 10 包 / 200 支估算。",
     },
   ],
   [
