@@ -201,6 +201,8 @@ test("device sorting groups by brand and then machine generation", () => {
       enrichProduct({ type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i プライム", cn: "IQOS ILUMA i PRIME", jpy: 9980 }),
       enrichProduct({ type: "device", jp: "glo HYPER air", cn: "glo HYPER air", jpy: 1980 }),
+      enrichProduct({ type: "device", jp: "VAPORESSO XROS 4", cn: "VAPORESSO XROS 4 主机", jpy: 4200 }),
+      enrichProduct({ type: "device", jp: "VAPORESSO XROS 5", cn: "VAPORESSO XROS 5 主机", jpy: 5200 }),
     ],
     "device",
   );
@@ -213,6 +215,30 @@ test("device sorting groups by brand and then machine generation", () => {
       "Ploom X ADVANCED",
       "glo HYPER pro",
       "glo HYPER air",
+      "VAPORESSO XROS 5 主机",
+      "VAPORESSO XROS 4 主机",
+    ],
+  );
+});
+
+test("pod sorting keeps brand families together and orders cartridge resistance logically", () => {
+  const sorted = sortProducts(
+    [
+      enrichProduct({ type: "pod", jp: "Uwell Caliburn G3 ポッド 1.2Ω", cn: "Uwell Caliburn G3 烟弹 1.2Ω", jpy: 1400 }),
+      enrichProduct({ type: "pod", jp: "VAPORESSO XROS メッシュポッド 1.0Ω", cn: "VAPORESSO XROS 网芯烟弹 1.0Ω", jpy: 1500 }),
+      enrichProduct({ type: "pod", jp: "VAPORESSO XROS メッシュポッド 0.6Ω", cn: "VAPORESSO XROS 网芯烟弹 0.6Ω", jpy: 1500 }),
+      enrichProduct({ type: "pod", jp: "Uwell Caliburn G3 ポッド 0.6Ω", cn: "Uwell Caliburn G3 烟弹 0.6Ω", jpy: 1400 }),
+    ],
+    "device",
+  );
+
+  assert.deepEqual(
+    sorted.map((item) => item.cn),
+    [
+      "VAPORESSO XROS 网芯烟弹 0.6Ω",
+      "VAPORESSO XROS 网芯烟弹 1.0Ω",
+      "Uwell Caliburn G3 烟弹 0.6Ω",
+      "Uwell Caliburn G3 烟弹 1.2Ω",
     ],
   );
 });

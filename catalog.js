@@ -368,15 +368,22 @@ function deviceModelOrder(item) {
   if (/REMIX/i.test(text)) return 5;
   if (/PRIME/i.test(text)) return 10;
   if (/ADVANCED/i.test(text)) return 15;
-  if (/PRO/i.test(text)) return 20;
-  if (/\bG4\b|XROS 4/i.test(text)) return 25;
-  if (/\bG3\b|3\.0|XROS 3/i.test(text)) return 30;
+  if (/XROS 5|ARGUS G3|XLIM Pro 2|Wenax Q Pro/i.test(text)) return 18;
+  if (/PRO|XROS Pro|HYPER pro/i.test(text)) return 20;
+  if (/\bG4\b|XROS 4|ARGUS G2|XLIM SQ Pro 2/i.test(text)) return 25;
+  if (/\bG3\b|3\.0|XROS 3|ARGUS P2/i.test(text)) return 30;
   if (/イルマ i(?!.*ワン)|ILUMA i(?!.*ONE)/i.test(text)) return 35;
   if (/ONE|ワン/i.test(text)) return 40;
   if (/air/i.test(text)) return 45;
   if (/\b2\.0\b|S 2\.0/i.test(text)) return 50;
   if (/\bX2\b/i.test(text)) return 55;
   if (/nano|mini|Lite/i.test(text)) return 60;
+  if (/0\.6Ω|0\.6ohm/i.test(text)) return 110;
+  if (/0\.7Ω|0\.7ohm/i.test(text)) return 120;
+  if (/0\.8Ω|0\.8ohm/i.test(text)) return 130;
+  if (/0\.9Ω|0\.9ohm/i.test(text)) return 140;
+  if (/1\.0Ω|1\.0ohm/i.test(text)) return 150;
+  if (/1\.2Ω|1\.2ohm/i.test(text)) return 160;
   return 500;
 }
 

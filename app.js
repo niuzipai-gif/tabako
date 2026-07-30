@@ -217,7 +217,10 @@ function activeFilterCount() {
 }
 
 function currentProducts() {
-  const sort = state.category === "device" && state.sort === "recommended" ? "device" : state.sort;
+  const sort =
+    (state.category === "device" || state.category === "pod") && state.sort === "recommended"
+      ? "device"
+      : state.sort;
   return sortProducts(
     filterProducts(products, {
       query: state.query,
