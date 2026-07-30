@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 33);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 33);
+  assert.equal(manifest.items.length, 34);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 34);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -231,6 +231,22 @@ test("Ploom X Sharp Cold shows a source-backed mixed 20-box reference without pr
     ),
   );
   assert.match(item.cartonSource, /placer-tabaco\.com\/product\/5668/);
+});
+
+test("SENTIA Frost Green uses exact visible Frost Green multi-box evidence", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "IQOS センティア フロスト グリーン"),
+  );
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /sentia-frost-green-mercari-50-empty-boxes\.jpg/);
+  assert.match(item.cartonSource, /jp\.mercari\.com\/item\/m31568595622/);
+  assert.match(item.cartonNote, /FROST GREEN|空箱50個|10 包|200 支/);
+  assert.ok(
+    item.cartonGallery.some((entry) =>
+      /sentia-frost-green-paypay-9-empty-boxes\.jpg/.test(entry.image),
+    ),
+  );
 });
 
 test("all duplicate image payloads are explicitly registered in the media audit", () => {

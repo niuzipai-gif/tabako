@@ -1201,10 +1201,24 @@ const MEDIA_OVERRIDES = new Map([
   [
     "IQOS センティア フロスト グリーン|IQOS SENTIA 冰绿薄荷",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/sentia-frost-green-paypay-9-empty-boxes.jpg",
-      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z618983782",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/sentia-frost-green-mercari-50-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m31568595622",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
+        {
+          label: "50 空箱实拍",
+          image: "./images/cartons/sentia-frost-green-mercari-50-empty-boxes.jpg",
+          source: "https://jp.mercari.com/item/m31568595622",
+          note: "Mercari 标题/描述为“アイコス センティアフロストグリーン空箱50個”。图片可见 SENTIA、for IQOS ILUMA、FROST GREEN，属于同款多盒实拍。",
+        },
+        {
+          label: "9 空箱参考",
+          image: "./images/cartons/sentia-frost-green-paypay-9-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z618983782",
+          note: "Yahoo!フリマ标题为“IQOS ILUMA SENTIA センティア フロストグリーン 空箱 9箱セット”；作为辅助来源，不作为完整一条主图。",
+        },
         {
           label: "1 Carton 数量参考",
           image: "./images/cartons/sentia-frost-green-content.png",
@@ -1213,7 +1227,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“IQOS ILUMA SENTIA センティア フロストグリーン 空箱 9箱セット”，图片可见 9 个 SENTIA for IQOS ILUMA 绿色空盒排列。图片正面未露出 FROST GREEN 风味侧标，因此仅作为准确标题支撑的多盒参考，不标为纯 10 盒已核验整条；一条数量仍按 10 包 / 200 支估算。",
+        "Mercari 标题/描述确认“アイコス センティアフロストグリーン空箱50個”，主图可见 SENTIA / for IQOS ILUMA / FROST GREEN，足以核验为同 SKU 多盒实拍；一条数量按 プラセール 1カートン/10個 计算为 10 包 / 200 支。PayPay 9 空箱图保留为辅助参考，不替代主核验图。",
     },
   ],
   [

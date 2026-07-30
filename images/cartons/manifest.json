@@ -291,6 +291,15 @@
       "sha256": "2e9936356cd6ea364d0e4a4e8f9ef70126caedcea8659a5b663a50be8e91828c"
     },
     {
+      "productId": "p-67412a06",
+      "jp": "IQOS センティア フロスト グリーン",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/sentia-frost-green-mercari-50-empty-boxes.jpg",
+      "sourcePage": "https://jp.mercari.com/item/m31568595622",
+      "sha256": "dc84761e8725a6f22116c2eb7a95d96f33d07681ebf57c4550ac8f59ad648627"
+    },
+    {
       "productId": "p-0f8b545b",
       "jp": "ホープ",
       "status": "verified",
