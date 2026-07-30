@@ -722,7 +722,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Rakuten/堀商事商品名直接列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装，可作为 10 包数量来源但不是外箱图；KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。PARMA / Cigars of Dubai / HitCigars 等海外页只提供单盒或通用商品图。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装，可作为 10 包数量来源但不是外箱图；KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。MostabakTorg 页面写明一块/блок、В упаковке 10 пачек，但 3 张商品图均为绿色 Menthol 单包/开盒/烟支图；Cigars of Dubai 页面写 1 Carton = 10 packs = 200 cigarettes total，但结构化图片仍是单包正面。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
     },
   ],
   [
@@ -851,7 +851,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://item.rakuten.co.jp/snus/2538/",
       cartonNote:
-        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー チェリー；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー，大浦商店也列 1カートン(10箱)。Cigaronne 官方和 Tabimperia 页面只见单包/开盒图。当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー チェリー；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类另确认该款为 20本入りリトルシガー，大浦商店也列 1カートン(10箱)。Tabimperia 的 Cherry Super Slims 页写 Количество пачек в блоке: 10、20 支/包，TRT457 的 Cherry King Size 页写 Цена указана за 1 блок / В блоке 10 пачек；Cigars of Dubai 写 1 Carton = 10 packs = 200 cigarillos total。但这些页面图片均为单包/开盒/宣传图，或不是当前 King Size 目标 SKU，当前未找到可读完整 SKU 的整条外箱图，本站仅保留单盒/展示图与来源。",
     },
   ],
   [
@@ -868,7 +868,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://item.rakuten.co.jp/snus/2539/",
       cartonNote:
-        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー チョコレート；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Tabimperia 页面写明 10 packs/block，但图片仍是单包。无可核对完整 SKU 的整条图，因此不展示整条外箱。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー チョコレート；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Tabimperia 页面写明 В блоке 10 пачек，但图片仍是单包/站内推荐图；尚未找到可核对完整 SKU 的 10 包整条图，因此不展示整条外箱。",
     },
   ],
   [
@@ -885,7 +885,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonImage: "",
       cartonSource: "https://item.rakuten.co.jp/snus/2540/",
       cartonNote:
-        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー バニラ；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。Cigaronne 官方页只见双包/单包展示。暂未取得可核对整条外箱图片，因此不发布为已核验整条。",
+        "Rakuten/堀商事商品名直接列 10packs シガローネ タトゥー バニラ；DAIYOSTORE 商品页确认该 SKU 为 入数：20本/箱、商品内容：1カートン(10箱)；World Tobacco 分类确认该款为 20本入りリトルシガー。SAS Armenia 的 Tattoo King Size Vanilla 页可确认 20 cigarillos 与单包图，Cigars of Dubai 写 1 Carton = 10 packs = 200 cigarillos total；Cigaronne 官方页只见双包/单包展示。暂未取得可核对整条外箱图片，因此不发布为已核验整条。",
     },
   ],
   [

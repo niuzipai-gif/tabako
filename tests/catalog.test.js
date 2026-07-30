@@ -360,6 +360,26 @@ test("device and pod category pages ignore score sorts and keep brand-model orde
   );
 });
 
+test("all device and pod catalog pages keep each brand in one contiguous block", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+
+  for (const type of ["device", "pod"]) {
+    const sorted = sortProducts(products.filter((item) => item.type === type), "device");
+    const ranges = new Map();
+
+    sorted.forEach((item, index) => {
+      const range = ranges.get(item.brand) ?? { first: index, last: index };
+      range.last = index;
+      ranges.set(item.brand, range);
+    });
+
+    for (const [brand, range] of ranges) {
+      const brandsInside = new Set(sorted.slice(range.first, range.last + 1).map((item) => item.brand));
+      assert.deepEqual([...brandsInside], [brand], `${type}:${brand}`);
+    }
+  }
+});
+
 test("recommended sorting groups every catalog type by brand before individual ranking", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const sorted = sortProducts(products, "recommended");
