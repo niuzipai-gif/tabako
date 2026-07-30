@@ -620,10 +620,16 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ナチュラル アメリカン スピリット|美式精神",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/american-spirit-regular-box-reference.jpg",
-      cartonSource: "https://www.tirakita.com/fl_tabacco/fl_tabacco_22.shtml",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/american-spirit-yellowgreen-paypay-66-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z348982180",
       cartonGallery: [
+        {
+          title: "旧 Regular Box 单包参考",
+          image: "./images/cartons/american-spirit-regular-box-reference.jpg",
+          source: "https://www.tirakita.com/fl_tabacco/fl_tabacco_22.shtml",
+          note: "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ；不是整条外箱。",
+        },
         {
           title: "旧系列包装参考",
           image: "./images/cartons/american-spirit-lineup-piazza-reference.png",
@@ -674,7 +680,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "TIRAKITA 页面明确为“ナチュラル・アメリカン・スピリット レギュラーボックス”，商品详情写明20本入り、タール12mg/ニコチン1.5mg，页面状态为売切れ。Tabacco Piazza 旧资料也记录 Regular Box 为20本入；但 Placer 当前日本页显示常见在售款已是 Organic Leaf / Light / Organic Mint 等14本入具体 SKU，且多款以1カートン/10個、在庫あり销售。这里用 Regular Box 作泛称主辨认图，并补当前变体单包图辅助识别颜色；仍不是一カートン外箱，购买时请按具体变体名确认。",
+        "Yahoo!フリマ标题为“アメリカン・スピリット空箱 101+1=102個”，说明文字写“アメリカンスピリットの空箱 66箱+1箱(デザイン違い) 色は黄緑色”，图片可见大量 Natural American Spirit 黄绿色空盒。当前目录项是品牌泛称，因此该图作为品牌/黄绿色变体多盒参考，不代表所有 American Spirit SKU；购买时仍需按 Turquoise / Gold / ONE / Mint 等具体变体确认。",
     },
   ],
   [
