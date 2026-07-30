@@ -755,11 +755,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャメル クラフト 14|骆驼 Craft 14",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/camel-craft14-kikuya-content.gif",
-      cartonSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/camel-craft14-ebay-12-empty-boxes.jpg",
+      cartonSource: "https://www.ebay.com/itm/127067591681",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "单包识别图",
+          image: "./images/cartons/camel-craft14-kikuya-content.gif",
+          source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+          note: "きくや商品页列出“キャメル・クラフト14・ボックス”，并说明 1カートン为10箱；该图为单包参考。",
+        },
+      ],
       cartonNote:
-        "きくや商品页列出“キャメル・クラフト14・ボックス”，并说明该店按カートン（ケース）单位销售，1カートン为10箱。图片为单包图，不是整条外箱；用于先补精确 SKU 识别。",
+        "eBay 商品标题为“CAMEL 1913 CRAFT 14 Cigarettes Empty Box 12 Boxes Lot”，图片可见 12 个 Camel Craft 14 空盒叠放，足以核对 14mg 多包外观。该来源为收藏/空盒图，不代表当前库存；通常一条按 10 包 / 200 支估算，购买时仍以门店实物为准。",
     },
   ],
   [
