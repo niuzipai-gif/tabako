@@ -733,6 +733,34 @@ test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing u
   }
 });
 
+test("Cigaronne pack media uses exact local images while American Spirit generic stays non-exact", () => {
+  const cigaronne = [
+    ["シガローネ・ロイヤルスリム・メンソール", /cigaronne-royal-menthol-worldtobacco-pack\.jpg/],
+    ["シガローネ・スーパースリム・メンソール", /cigaronne-super-menthol-worldtobacco-pack\.jpg/],
+    ["シガローネ・タトゥー・チェリー", /cigaronne-tattoo-cherry-worldtobacco-pack\.jpg/],
+    ["シガローネ・タトゥー・チョコレート", /cigaronne-tattoo-chocolate-worldtobacco-pack\.jpg/],
+    ["シガローネ・タトゥー・バニラ", /cigaronne-tattoo-vanilla-worldtobacco-pack\.jpg/],
+    ["シガローネ・マグネット", /cigaronne-magnet-worldtobacco-pack\.jpg/],
+  ];
+
+  for (const [jp, imagePattern] of cigaronne) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.imageStatus, "verified", jp);
+    assert.match(item.image, imagePattern, jp);
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+  }
+
+  const americanSpirit = enrichProduct(
+    rawProducts.find((product) => product.jp === "ナチュラル アメリカン スピリット"),
+  );
+  assert.equal(americanSpirit.cartonStatus, "multi-carton-reference");
+  assert.equal(americanSpirit.cartonImage, "");
+  assert.match(americanSpirit.cartonGallery[0].image, /american-spirit-green-paypay-10-empty-boxes\.jpg/);
+  assert.match(americanSpirit.cartonNote, /個数10個/);
+  assert.match(americanSpirit.cartonNote, /ブランド泛称|品牌泛称/);
+});
+
 test("glo unresolved carton leads stay recorded without being promoted", () => {
   const lucky = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク メンソール"),

@@ -620,39 +620,42 @@ const MEDIA_OVERRIDES = new Map([
   [
     "シガローネ・ロイヤルスリム・メンソール|卡比龙 Royal Slims Menthol",
     {
+      image: "./images/verified/cigaronne-royal-menthol-worldtobacco-pack.jpg",
       imageStatus: "verified",
       imageSource: "https://www.world-tobacco.jp/view/item/000000002256",
       imageNote:
-        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Royal slims，用于区分绿色 Royal Slims Menthol。",
+        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Royal slims，用于区分绿色 Royal Slims Menthol；JAL 同款页另确认 1カートン10箱。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990197/",
       cartonNote:
-        "JAL DUTYFREE 商品页确认 シガローネ ロイヤルスリム メンソール 为 1カートン10箱・1箱20本入，当前显示在庫あり、免税价 ¥11,000；World Tobacco 单包页另确认 20本入り、タール6mg、ニコチン0.6mg。Jirorinmura 对应页进一步说明宅配便购买时 10 个ごとにカートン箱付属；Rakuten/堀商事另列 10packs シガローネ・ロイヤルスリム・メンソール、国内配送ゆうパック 箱入り。上述页面图片仍是商品图或未开放可核对大图，不是完整外箱实拍，因此不展示未核验整条图。",
+        "JAL DUTYFREE 商品页确认 シガローネ ロイヤルスリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥11,000；World Tobacco 单包页另确认 20本入り、タール6mg、ニコチン0.6mg。JAL 另有同款商品号 89439394 页面；Jirorinmura 对应页进一步说明宅配便购买时 10 个ごとにカートン箱付属；Rakuten/堀商事另列 10packs シガローネ・ロイヤルスリム・メンソール、国内配送ゆうパック 箱入り。当前接入的图为对应 SKU 单盒/展示盒图，不是 10 盒整条外箱实拍，因此整条仍标记为待核验。",
     },
   ],
   [
     "シガローネ・スーパースリム・メンソール|卡比龙 Super Slims Menthol",
     {
+      image: "./images/verified/cigaronne-super-menthol-worldtobacco-pack.jpg",
       imageStatus: "verified",
       imageSource: "https://www.world-tobacco.jp/view/item/000000002255",
       imageNote:
-        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Super Slims，绿色包装对应薄荷款。",
+        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Super Slims，绿色包装对应薄荷款；JAL 同款页另确认 1カートン10箱。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource: "https://www.jaldutyfree.com/shop/g/g5319990198/",
       cartonNote:
-        "JAL DUTYFREE 商品页确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥6,800，并标记予約不可；World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装。官方/电商页图片仍不是可核对外箱实拍，因此暂不展示整条外箱。",
+        "JAL DUTYFREE 商品页确认 シガローネ スーパースリム メンソール 为 1カートン10箱・1箱20本入，免税价 ¥6,800；World Tobacco 页面列出 20本入り、タール8mg。JAL 另有同款商品号 89439402 页面；Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
     },
   ],
   [
     "シガローネ・タトゥー・チェリー|卡比龙 Tattoo Cherry",
     {
-      imageStatus: "reference",
+      image: "./images/verified/cigaronne-tattoo-cherry-worldtobacco-pack.jpg",
+      imageStatus: "verified",
       imageSource: "https://www.world-tobacco.jp/view/item/000000002096",
       imageNote:
         "World Tobacco 对应 Tattoo Cherry 页面图；图中可见 Cherry 标识与纸盒/抽屉式陈列，用于辨认此类小雪茄风格包装。",
@@ -668,7 +671,8 @@ const MEDIA_OVERRIDES = new Map([
   [
     "シガローネ・タトゥー・チョコレート|卡比龙 Tattoo Chocolate",
     {
-      imageStatus: "reference",
+      image: "./images/verified/cigaronne-tattoo-chocolate-worldtobacco-pack.jpg",
+      imageStatus: "verified",
       imageSource: "https://www.world-tobacco.jp/view/item/000000002095",
       imageNote:
         "World Tobacco 对应 Tattoo Chocolate 页面图；用于区分巧克力风味 Tattoo 系列，包装与普通 Phantom/Royal 横盒不同。",
@@ -684,7 +688,8 @@ const MEDIA_OVERRIDES = new Map([
   [
     "シガローネ・タトゥー・バニラ|卡比龙 Tattoo Vanilla",
     {
-      imageStatus: "reference",
+      image: "./images/verified/cigaronne-tattoo-vanilla-worldtobacco-pack.jpg",
+      imageStatus: "verified",
       imageSource: "https://www.world-tobacco.jp/view/item/000000002094",
       imageNote:
         "World Tobacco 对应 Tattoo Vanilla 页面图；用于区分香草风味 Tattoo 系列。",
@@ -700,10 +705,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "シガローネ・マグネット|卡比龙 Magnet",
     {
+      image: "./images/verified/cigaronne-magnet-worldtobacco-pack.jpg",
       imageStatus: "verified",
       imageSource: "https://www.world-tobacco.jp/view/item/000000001978",
       imageNote:
-        "World Tobacco 对应 Magnet 页面图，图面可读 Cigaronne Magnet，用于区分银灰色 Magnet 款。",
+        "World Tobacco 对应 Magnet 页面图，图面可读 Cigaronne Magnet，用于区分蓝色 Magnet 款；DAIYOSTORE 同款页确认 1カートン10箱。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",
@@ -995,9 +1001,21 @@ const MEDIA_OVERRIDES = new Map([
     "ナチュラル アメリカン スピリット|美式精神",
     {
       cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/american-spirit-yellowgreen-paypay-66-empty-boxes.jpg",
-      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z348982180",
+      cartonImage: "./images/cartons/american-spirit-green-paypay-10-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z613084698",
       cartonGallery: [
+        {
+          title: "10 个绿色系空盒参考",
+          image: "./images/cartons/american-spirit-green-paypay-10-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z613084698",
+          note: "Yahoo!フリマ页面标题与说明均写 AMERICAN SPIRIT 空箱10個セット；用于多盒外观参考，因目录为品牌泛称，仍不标记为精确现行 SKU。",
+        },
+        {
+          title: "黄绿色多盒参考",
+          image: "./images/cartons/american-spirit-yellowgreen-paypay-66-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z348982180",
+          note: "Yahoo!フリマ标题为“アメリカン・スピリット空箱 101+1=102個”，说明文字写“66箱+1箱(デザイン違い)”；用于理解 American Spirit 多盒外观，不当作单一现行 SKU。",
+        },
         {
           title: "旧 Regular Box 单包参考",
           image: "./images/cartons/american-spirit-regular-box-reference.jpg",
@@ -1054,7 +1072,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“アメリカン・スピリット空箱 101+1=102個”，说明文字写“アメリカンスピリットの空箱 66箱+1箱(デザイン違い) 色は黄緑色”，图片可见大量 Natural American Spirit 黄绿色空盒。当前目录项是品牌泛称，因此该图作为品牌/黄绿色变体多盒参考，不代表所有 American Spirit SKU；购买时仍需按 Turquoise / Gold / ONE / Mint 等具体变体确认。",
+        "Yahoo!フリマ标题为“AMERICAN SPIRIT アメリカンスピリット 空箱 10個セット”，商品说明写 AMERICAN SPIRIT、グリーン系、個数10個；图片可见 10 个同色 Natural American Spirit 空盒。当前目录项仍是品牌泛称，不是 Turquoise / Gold / ONE / Mint / Light 等具体 SKU，因此只作为多盒/一条参考，不标记为精确整条外箱已核验。",
     },
   ],
   [
