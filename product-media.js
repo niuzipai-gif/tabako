@@ -855,12 +855,22 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ラッキー ストライク リッチ|glo 幸运击 浓郁",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-rich-1carton-reference.jpg",
-      cartonSource:
-        "https://j-cigarette.com/1-carton-glohyper-lucky-strike-rich-tobacco-recommended-for-paper-roll-medium-tar-about-6mg-mellow-and-thick-you-can-taste-the-clear-vapor-without-any-peculiarities-a-stick-that-is-one-step-different-from-previous/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/glo-lucky-strike-rich-paypay-27-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z501925796",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image: "./images/cartons/glo-lucky-strike-rich-1carton-reference.jpg",
+          source:
+            "https://j-cigarette.com/1-carton-glohyper-lucky-strike-rich-tobacco-recommended-for-paper-roll-medium-tar-about-6mg-mellow-and-thick-you-can-taste-the-clear-vapor-without-any-peculiarities-a-stick-that-is-one-step-different-from-previous/",
+          note: "j-Cigarette 对应商品页确认 1 Carton = 10 pack = 200 pieces。",
+        },
+      ],
       cartonNote:
-        "j-Cigarette 对应商品页确认“1 Carton = 10 pack = 200 pieces”，图片自身带 1 Carton 标识；仍不是外箱实拍，所以作为整条数量参考图使用。",
+        "Yahoo!フリマ标题为“glo グロー ラッキーストライク リッチ 空箱 27個”，图片可见 27 个 Lucky Strike Rich Tobacco for glo hyper 空盒排列，能核对多包外观。该来源为售出空盒/收藏图，不代表当前库存；一条仍按 10 包 / 200 支估算。",
     },
   ],
   [
