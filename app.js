@@ -299,9 +299,27 @@ function updateEmptyRecovery() {
 function renderCatalog() {
   const visibleProducts = currentProducts();
   const fragment = document.createDocumentFragment();
+  let currentBrandKey = "";
   elements.cards.replaceChildren();
 
   visibleProducts.forEach((item) => {
+    const brandKey = `${item.type}:${item.brand}`;
+    if (brandKey !== currentBrandKey) {
+      currentBrandKey = brandKey;
+      const brandCount = visibleProducts.filter(
+        (product) => product.type === item.type && product.brand === item.brand,
+      ).length;
+      const heading = document.createElement("section");
+      heading.className = "brand-section-card";
+      heading.setAttribute("aria-label", `${item.brand} 分组`);
+      heading.innerHTML = `
+        <span>${escapeHtml(item.categoryLabel)}</span>
+        <strong>${escapeHtml(item.brand)}</strong>
+        <small>${brandCount} 款 · 按品牌归组</small>
+      `;
+      fragment.appendChild(heading);
+    }
+
     const card = elements.cardTemplate.content.firstElementChild.cloneNode(true);
     const openButton = card.querySelector(".product-open");
     const favoriteButton = card.querySelector(".favorite-toggle");

@@ -675,6 +675,45 @@ img {
   gap: 10px;
 }
 
+.brand-section-card {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 3px 10px;
+  margin: 6px 2px -2px;
+  padding: 10px 12px;
+  border: 1px solid rgba(39, 34, 28, 0.08);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 254, 250, 0.92), rgba(239, 232, 219, 0.7)),
+    radial-gradient(circle at 12% 0%, rgba(169, 97, 8, 0.16), transparent 34%);
+  box-shadow: 0 10px 26px rgba(48, 41, 31, 0.045);
+}
+
+.brand-section-card span {
+  grid-column: 1 / -1;
+  color: var(--accent-strong);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brand-section-card strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 20px;
+  letter-spacing: -0.04em;
+}
+
+.brand-section-card small {
+  color: var(--ink-faint);
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .product-card {
   position: relative;
   min-width: 0;

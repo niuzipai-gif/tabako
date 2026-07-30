@@ -3,6 +3,15 @@
   "acceptanceRule": "verified means the exact SKU and a visible one-carton outer package; archive-reference is visibly labelled historical and is never presented as current artwork.",
   "items": [
     {
+      "productId": "p-3f3af994",
+      "jp": "シガローネ・ロイヤルスリム・ブラック",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-royal-slims-black-mercari-carton-box.jpg",
+      "sourcePage": "https://jp.mercari.com/en/item/m83941507410",
+      "sha256": "1778ce3c4787ba9cd858a8af9a6e2decc5e72cbcc37db886eb9309f2e9a5ac97"
+    },
+    {
       "productId": "p-738718e3",
       "jp": "セブンスター ボックス",
       "status": "verified",

@@ -129,6 +129,7 @@ test("Cigaronne has a dedicated brand category with the full World Tobacco serie
   });
 
   assert.match(html, /data-category="brand:cigaronne"/);
+  assert.match(html, />卡比龙全系列</);
   assert.equal(cigaronne.length, 11);
   assert.deepEqual(
     cigaronne.map((item) => item.jp).sort((a, b) => a.localeCompare(b, "ja")),
@@ -243,6 +244,17 @@ test("recommended sorting groups every catalog type by brand before individual r
     [...new Set(pods.map((item) => item.brand))],
     ["RELX", "MOTI", "VAPORESSO", "Uwell", "Voopoo", "ELFBAR"],
   );
+});
+
+test("catalog renderer inserts visible brand section headers", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(source, /brand-section-card/);
+  assert.match(source, /按品牌归组/);
+  assert.equal(source.includes("const brandKey = `${item.type}:${item.brand}`;"), true);
+  assert.match(styles, /\.brand-section-card\s*\{/);
+  assert.match(styles, /grid-column:\s*1\s*\/\s*-1/);
 });
 
 test("Mevius reference price is corrected to 580 yen", () => {

@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 19);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 19);
+  assert.equal(manifest.items.length, 20);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 20);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -268,7 +268,7 @@ test("Cigaronne Phantom Silver is searchable as 卡比龙 and uses verified KIX 
   assert.match(item.image, /cigaronne-phantom-silver-kix-pack\.jpg/);
   assert.equal(item.cartonStatus, "source-only");
   assert.equal(item.cartonImage, "");
-  assert.match(item.cartonNote, /1カートン10箱|未找到|未找到能核对|未找到能核對|未找到/);
+  assert.match(item.cartonNote, /1カートン10箱|COD|10 packs|単包|未核验/);
 });
 
 test("all Cigaronne catalog entries have sourced pack media and hide unverified carton photos", () => {
@@ -277,14 +277,21 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 11);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 1);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
     assert.ok(["verified", "reference"].includes(item.imageStatus), item.jp);
     assert.match(item.imageSource, /^https:\/\//, item.jp);
-    assert.equal(item.cartonStatus, "source-only", item.jp);
-    assert.equal(item.cartonImage, "", item.jp);
-    assert.match(item.cartonNote, /未|不展示|整条|カートン/, item.jp);
+    if (item.jp === "シガローネ・ロイヤルスリム・ブラック") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-royal-slims-black-mercari-carton-box\.jpg/, item.jp);
+      assert.match(item.cartonNote, /Royal slims XL FILTER|カートン空箱|1カートン10箱/, item.jp);
+    } else {
+      assert.equal(item.cartonStatus, "source-only", item.jp);
+      assert.equal(item.cartonImage, "", item.jp);
+      assert.match(item.cartonNote, /未|不展示|整条|カートン/, item.jp);
+    }
   }
 });
 

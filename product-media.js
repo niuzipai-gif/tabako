@@ -643,7 +643,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Fa-So-La / KIX 官方免税页确认该 SKU 以 1カートン10箱・1箱20本入销售，KIX 免税价 ¥10,000；World Tobacco 单包价约 ¥1,100。当前未找到能核对完整 SKU 的 10 包整条外箱实拍，因此不展示未核验整条图。",
+        "Fa-So-La / KIX 官方免税页确认该 SKU 以 1カートン10箱・1箱20本入销售，KIX 免税价 ¥10,000；World Tobacco 单包价约 ¥1,100。COD 页面也写明 1 Carton = 10 packs，但其商品图与 Royal Slims 打开图同属 20 支装横向单包硬盒视觉，不能当 10 包整条外箱图；因此暂不展示未核验整条图。",
     },
   ],
   [
@@ -703,11 +703,13 @@ const MEDIA_OVERRIDES = new Map([
         "World Tobacco 对应 Royal Slims Black 页面图，图面可读 Cigaronne / Royal slims XL FILTER。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource: "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210003",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-royal-slims-black-mercari-carton-box.jpg",
+      cartonSource: "https://jp.mercari.com/en/item/m83941507410",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonNote:
-        "Fa-So-La 与 KIX 均列出 Royal Slims Black 免税价约 ¥11,000；World Tobacco 单包页确认 20本入り、タール4mg、ニコチン0.4mg。当前不展示未核验整条图。",
+        "Mercari 出品标题写明 Cigaronne Royal Slims シガローネ カートン空箱，实拍图面清楚可读 Royal slims XL FILTER 与日文警示，用于辨认整条外箱外观；图为二手空箱参考，不代表实时库存。Fa-So-La 与 KIX 均列出 Royal Slims Black 免税价约 ¥11,000；World Tobacco 单包页确认 20本入り、タール4mg、ニコチン0.4mg，按 1カートン10箱 / 200支理解。",
     },
   ],
   [
