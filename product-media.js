@@ -674,11 +674,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "セーラム ライト|沙龙 淡味",
     {
-      cartonStatus: "archive-reference",
-      cartonImage: "./images/cartons/salem-lightbox-archive.webp",
-      cartonSource: "https://conveni-now.com/column/conveni-salem/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/salem-light-box10-monolog-carton.png",
+      cartonSource: "https://monolog.r-n-i.jp/item/0012300197137",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "历史包装说明图",
+          image: "./images/cartons/salem-lightbox-archive.webp",
+          source: "https://conveni-now.com/column/conveni-salem/",
+          note: "便利店烟草资料页说明 Salem Light 已终售；该图只作历史包装线索。",
+        },
+      ],
       cartonNote:
-        "该图来自便利店烟草资料页的 Salem Light 历史包装说明。页面明确说明 Salem Light 早已终售，因此这里只作历史包装线索，不代表当前日本机场或便利店仍有库存，也不是整条外箱图。",
+        "ものログ商品名为“セーラム・ライト・ボックス 10個”，主图可见 Salem Light 10 个盒装整条实拍，按 10 包 / 200 支核验。该 SKU 属历史/终售方向，不代表当前日本机场或便利店仍有库存。",
     },
   ],
   [
