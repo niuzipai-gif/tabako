@@ -876,11 +876,17 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ラッキー ストライク メンソール|glo 幸运击 薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-menthol-1carton-reference.jpg",
-      cartonSource:
-        "https://j-cigarette.com/1-carton-glo-hyper-menthol-lucky-strike-menthol-x-menthol-flavor-refreshing-menthol-flavor/",
+      cartonStatus: "multi-carton-reference",
+      cartonImage: "./images/cartons/glo-lucky-strike-menthol-paypay-mixed-9-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z583034152",
       cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image: "./images/cartons/glo-lucky-strike-menthol-1carton-reference.jpg",
+          source:
+            "https://j-cigarette.com/1-carton-glo-hyper-menthol-lucky-strike-menthol-x-menthol-flavor-refreshing-menthol-flavor/",
+          note: "j-Cigarette 对应商品页确认 1 Carton = 10 packs = 200 sticks。图片自身带 1 carton / 10 pack / 200 piece 标识，但不是外箱实拍。",
+        },
         {
           label: "KIX 官方当前包装",
           image: "./images/cartons/glo-lucky-strike-menthol-kix-official-pack.jpg",
@@ -890,17 +896,25 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页确认“1Carton = 10 packs = 200 sticks”，图片自身带 1 carton / 10 pack / 200 piece 标识；仍不是外箱实拍。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
+        "Yahoo!フリマ标题为“glo hyper LUCKY STRIKE MENTHOL BERRY MENTHOL 空箱 9個セット”，说明文字写 MENTHOL 8 箱、BERRY MENTHOL 2 箱；实图可见多枚 LUCKY STRIKE MENTHOL for glo hyper 绿盒及 Berry Menthol 混入。该图用于核对多盒包装比例，不作为纯 10 盒同 SKU 已核验整条图；一条数量仍按 KIX / j-Cigarette 的 10 包 / 200 支。",
     },
   ],
   [
     "glo hyper ラッキー ストライク ダーク|glo 幸运击 深色款",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-dark-1carton-reference.jpg",
-      cartonSource:
-        "https://j-cigarette.com/1-carton-glo-hyper-lucky-strike-dark-tobacco-smoky-flavor-like-aromatic-wood/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image: "./images/cartons/glo-lucky-strike-dark-1carton-reference.jpg",
+          source:
+            "https://j-cigarette.com/1-carton-glo-hyper-lucky-strike-dark-tobacco-smoky-flavor-like-aromatic-wood/",
+          note: "j-Cigarette 对应商品页确认 1 Carton = 10 pack = 200 pieces。图片自身带 1 Carton 标识，但不是外箱实拍。",
+        },
         {
           label: "KIX 官方当前包装",
           image: "./images/cartons/glo-lucky-strike-dark-kix-official-pack.jpg",
@@ -910,7 +924,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页确认“1 Carton = 10 pack = 200 pieces”，图片自身带 1 Carton 标识；仍不是外箱实拍。KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
+        "Yahoo!フリマ标题为“glo hyper用 LUCKY STRIKE DARK MENTHOL 空箱 52箱セット”，图片可见大量 LUCKY STRIKE DARK MENTHOL for glo hyper 空盒排列，能核对多包外观。该来源为售出空盒/收藏图，不代表当前库存；一条仍按 10 包 / 200 支估算。",
     },
   ],
   [

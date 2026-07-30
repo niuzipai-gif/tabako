@@ -1,8 +1,8 @@
-const CACHE_VERSION = "tabako-compass-v64-20260730";
+const CACHE_VERSION = "tabako-compass-v65-20260730";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=20260730-18",
+  "./styles.css?v=20260730-19",
   "./app.js",
   "./ranking.html",
   "./ranking.js",
