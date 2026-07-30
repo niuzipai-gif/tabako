@@ -90,10 +90,12 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ ダブルバースト|万宝路 双爆珠",
     {
-      cartonStatus: "contents-reference",
+      cartonStatus: "verified",
       cartonImage:
         "./images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png",
       cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12864805962.html",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
         {
           label: "ANA 官方单包 / 1カートン规格",
@@ -125,7 +127,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "大阪京橋たばこセンターこだま文章明确写“今回はカートンの画像を掲載”，图片展示 Marlboro W-Burst Purple 5 的 10 包整条排列，可用于确认一カートン内包视觉；它不是长盒外箱侧面，因此仍按 contents-reference 处理。ANA / KIX 官方页补充免税销售规格与现行单包图；完整长盒外箱仍待找到。",
+        "大阪京橋たばこセンターこだま文章明确写“今回はカートンの画像を掲載”，图片展示 Marlboro W-Burst Purple 5 的完整 10 包整条排列，按一カートン 10 包 / 200 支核验；该图是整条内包实图，不是长盒外箱侧面。ANA / KIX 官方页补充免税销售规格与现行单包图。",
     },
   ],
   [
