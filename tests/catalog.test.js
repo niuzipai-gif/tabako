@@ -151,6 +151,33 @@ test("Cigaronne has a dedicated brand category with the full World Tobacco serie
   assert.ok(cigaronne.every((item) => item.brand === "Cigaronne"));
 });
 
+test("Cigaronne brand page follows a stable series order", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const cigaronne = sortProducts(
+    filterProducts(products, {
+      category: "brand:cigaronne",
+    }),
+    "recommended",
+  );
+
+  assert.deepEqual(
+    cigaronne.map((item) => item.jp),
+    [
+      "シガローネ・ロイヤルスリム・ブラック",
+      "シガローネ・ロイヤルスリム・メンソール",
+      "シガローネ・ファントム・シルバー",
+      "シガローネ・エクスクルーシブ・ブラウン",
+      "シガローネ・スーパースリム・ブラック",
+      "シガローネ・スーパースリム・メンソール",
+      "シガローネ・ウルトラスリム・ブラック",
+      "シガローネ・タトゥー・チェリー",
+      "シガローネ・タトゥー・チョコレート",
+      "シガローネ・タトゥー・バニラ",
+      "シガローネ・マグネット",
+    ],
+  );
+});
+
 test("device catalog covers mainstream heated and vapor hardware families", () => {
   const devices = rawProducts.filter((item) => item.type === "device");
   const deviceNames = devices.map((item) => `${item.jp} ${item.cn}`).join("\n");
