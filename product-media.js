@@ -955,12 +955,22 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ネオ アイスド メンソール|glo neo 冰感薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/glo-neo-iced-menthol-1carton-reference.jpg",
-      cartonSource:
-        "https://j-cigarette.com/glo-neo-for-hyper-iced-menthol-sticks-peppermint-and-cooling-capsule-menthol/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/glo-neo-iced-menthol-paypay-24-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z462331094",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "1 Carton 数量参考",
+          image: "./images/cartons/glo-neo-iced-menthol-1carton-reference.jpg",
+          source:
+            "https://j-cigarette.com/glo-neo-for-hyper-iced-menthol-sticks-peppermint-and-cooling-capsule-menthol/",
+          note: "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)IcedMenthol，并确认可选 1 Carton (= 10 pack)。",
+        },
+      ],
       cartonNote:
-        "j-Cigarette 对应商品页 SKU 为 1CartonGloneo(forHyper)IcedMenthol，并确认可选 1 Carton (= 10 pack)。图片为准确 SKU 单盒图，不是外箱实拍，所以作为整条数量参考图使用。",
+        "Yahoo!フリマ标题为“【空箱】グロー アイスド メンソール 24個”，说明写有“glo neo Iced Menthol”；图片可见 24 个 neo Iced Menthol for glo hyper 空盒排列，能核对多包外观。该来源为售出空盒图，不代表当前库存；一条仍按 10 包 / 200 支估算。",
     },
   ],
   [
