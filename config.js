@@ -1,6 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const queryProxyUrl = params.get("aiProxyUrl") || "";
-const defaultProxyUrl = "https://qx-20230328ddry.tail74d566.ts.net/tabako-ai";
+const defaultProxyUrl = "https://tabako.tail74d566.ts.net/tabako-ai";
 
 function storedProxyUrl(nextValue = "") {
   try {

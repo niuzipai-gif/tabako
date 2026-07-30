@@ -90,7 +90,7 @@ https://niuzipai-gif.github.io/tabako/?aiProxyUrl=https%3A%2F%2F你的-worker地
 当前 GitHub Pages 默认 AI 地址可以指向 Tailscale Funnel：
 
 ```text
-https://qx-20230328ddry.tail74d566.ts.net/tabako-ai
+https://tabako.tail74d566.ts.net/tabako-ai
 ```
 
 本机启动方式：
