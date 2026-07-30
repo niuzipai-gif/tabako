@@ -807,7 +807,6 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
     ["ウィンストン XS", /JT 现行 Winston|旧款\/历史名|近似包装参考/],
     ["セーラム ブラックメンソール", /日本未进口品|Salem Light|不代表日本门店/],
     ["ラーク メンソール 5", /Select\/100s|历史变体|10 包整条外箱/],
-    ["IQOS センティア バランスド イエロー", /Placer|Bigliquy|Cigars of Dubai/],
     ["lil HYBRID ミックス レギュラー", /終卖|カートン单位|専用リキッド/],
     ["lil HYBRID ミックス アイス", /Sirius Tobacco|カートン单位|MIIX ICE/],
     ["lil HYBRID ミックス ミックス", /Sirius Tobacco|カートン单位|MIIX MIX/],
@@ -923,4 +922,25 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   assert.match(tropical.cartonNote, /不是封闭外箱/);
   assert.match(tropical.cartonNote, /大浦商店.*カートン（10箱）/s);
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
+});
+
+test("SENTIA Balanced Yellow uses the Box of 200 carton variant instead of the old single-pack reference", () => {
+  const sentia = enrichProduct(
+    rawProducts.find((product) => product.jp === "IQOS センティア バランスド イエロー"),
+  );
+
+  assert.equal(sentia.cartonStatus, "verified");
+  assert.equal(sentia.imageStatus, "verified");
+  assert.match(sentia.image, /sentia-balanced-yellow-hrt-pack\.jpg/);
+  assert.match(sentia.cartonImage, /sentia-balanced-yellow-hrt-box200\.jpg/);
+  assert.match(sentia.cartonSource, /handrollingtobacco\.co\.uk/);
+  assert.equal(sentia.cartonPackCount, 10);
+  assert.equal(sentia.cartonStickCount, 200);
+  assert.match(sentia.cartonNote, /Box of 200/);
+  assert.match(sentia.cartonNote, /10 packs of 20 tobacco sticks/);
+  assert.match(sentia.cartonGallery[0].label, /Box of 200/);
+  for (const image of [sentia.image, sentia.cartonImage]) {
+    const imagePath = new URL(`../${image.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, image);
+  }
 });

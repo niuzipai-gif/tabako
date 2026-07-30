@@ -1496,11 +1496,32 @@ const MEDIA_OVERRIDES = new Map([
   [
     "IQOS センティア バランスド イエロー|IQOS SENTIA 均衡黄",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/sentia-balanced-yellow-content.png",
-      cartonSource: "https://www.e-amanoya.jp/view/item/000000003311",
+      image: "./images/verified/sentia-balanced-yellow-hrt-pack.jpg",
+      imageStatus: "verified",
+      imageSource: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
+      imageNote:
+        "Hand Rolling Tobacco UK / HRT 商品页 Pack of 20 变体图，图面可读 SENTIA、for IQOS ILUMA，用于核对黄色 Balanced Yellow 单包包装。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/sentia-balanced-yellow-hrt-box200.jpg",
+      cartonSource: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "HRT Box of 200 变体图",
+          image: "./images/cartons/sentia-balanced-yellow-hrt-box200.jpg",
+          source: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
+          note: "HRT 页面将该图绑定到 Box of 200 变体；图面可读 SENTIA、for IQOS ILUMA、黄色 Balanced Yellow 外盒与日文警示。",
+        },
+        {
+          label: "HRT Pack of 20 单包图",
+          image: "./images/verified/sentia-balanced-yellow-hrt-pack.jpg",
+          source: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
+          note: "同页 Pack of 20 变体图，用于与 Box of 200 外盒做同 SKU 核对。",
+        },
+      ],
       cartonNote:
-        "AMANOYA 页面标题确认“センティア バランスド イエロー（1カートン10個入）”；Placer 和 Bigliquy 也列出 カートン（10個）/ 5,700円级别，日本渠道可作为数量来源。Cigars of Dubai 页面写明 1 carton contains 10 packs of 20 tobacco sticks，但图片仍是单盒/商品图。当前图片为单盒渲染图，不是整条外箱，用于辨认黄色 Balanced Yellow 包装。",
+        "Hand Rolling Tobacco UK / HRT 页面为 SENTIA Balanced Yellow 提供 Pack of 20 与 Box of 200 两个变体；Box of 200 变体图展示黄色横向外盒，图面可读 SENTIA 与 for IQOS ILUMA，页面说明 1 carton contains 10 packs of 20 tobacco sticks / Total 200 tobacco sticks。AMANOYA、Placer 另确认日本渠道按 1カートン10個 / 5,700円级别销售。",
     },
   ],
   [
