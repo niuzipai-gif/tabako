@@ -103,7 +103,7 @@ test("production carton manifest only publishes exact verified or visibly histor
   }
 });
 
-test("non-verified carton states never expose a main or gallery carton image", () => {
+test("non-verified carton states never expose a main carton image", () => {
   for (const raw of rawProducts) {
     const product = enrichProduct(raw);
     if (product.cartonStatus === "verified" || product.cartonStatus === "not-applicable") {
@@ -111,7 +111,23 @@ test("non-verified carton states never expose a main or gallery carton image", (
     }
 
     assert.equal(product.cartonImage, "", product.jp);
-    assert.deepEqual(product.cartonGallery, [], product.jp);
+  }
+});
+
+test("non-verified carton reference galleries are explicit and source-backed", () => {
+  for (const raw of rawProducts) {
+    const product = enrichProduct(raw);
+    if (product.cartonStatus === "verified" || product.cartonStatus === "not-applicable") {
+      continue;
+    }
+
+    for (const entry of product.cartonGallery) {
+      assert.ok(entry.image, product.jp);
+      assert.ok(entry.source, product.jp);
+      assert.ok(entry.note, product.jp);
+      const path = new URL(`../${entry.image.replace(/^\.\//, "")}`, import.meta.url);
+      assert.equal(existsSync(path), true, `${product.jp} ${entry.image}`);
+    }
   }
 });
 
@@ -188,8 +204,8 @@ test("Ploom X Cold and Sharp Cold do not promote single-pack photos as exact car
     [
       "Ploom X メビウス シャープ コールド",
       {
-        status: "contents-reference",
-        note: /单盒图，不是整条外箱|10 包\/200 支/,
+        status: "multi-carton-reference",
+        note: /混合 20 盒实拍|SHARP COLD MENTHOL|不是纯单 SKU/,
       },
     ],
   ]);
@@ -198,9 +214,23 @@ test("Ploom X Cold and Sharp Cold do not promote single-pack photos as exact car
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, expectation.status, jp);
     assert.equal(item.cartonImage, "", jp);
-    assert.deepEqual(item.cartonGallery, [], jp);
     assert.match(item.cartonNote, expectation.note, jp);
   }
+});
+
+test("Ploom X Sharp Cold shows a source-backed mixed 20-box reference without promoting it as exact", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+  );
+
+  assert.equal(item.cartonStatus, "multi-carton-reference");
+  assert.equal(item.cartonImage, "");
+  assert.ok(
+    item.cartonGallery.some((entry) =>
+      /ploom-mevius-sharp-cold-paypay-20-mixed-empty-boxes\.jpg/.test(entry.image),
+    ),
+  );
+  assert.match(item.cartonSource, /placer-tabaco\.com\/product\/5668/);
 });
 
 test("all duplicate image payloads are explicitly registered in the media audit", () => {

@@ -502,7 +502,11 @@ function renderProductDetail(item) {
         <div class="package-media-review">
           <i data-lucide="scan-search" aria-hidden="true"></i>
           <strong>不展示未经核对的整条图</strong>
-          <span>已生成精确检索词：${escapeHtml(item.cartonSearchQuery)}</span>
+          <span>${
+            Array.isArray(item.cartonGallery) && item.cartonGallery.length
+              ? "下方有已标注来源的参考图；它们不会被当作完整一条核验图。"
+              : `已生成精确检索词：${escapeHtml(item.cartonSearchQuery)}`
+          }</span>
         </div>
       `
       : `

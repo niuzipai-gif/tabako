@@ -1314,10 +1314,16 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス シャープ コールド|Ploom X 锐冷薄荷",
     {
-      cartonStatus: "contents-reference",
+      cartonStatus: "multi-carton-reference",
       cartonImage: "./images/cartons/ploom-mevius-sharp-cold-content.jpg",
       cartonSource: "https://www.placer-tabaco.com/product/5668",
       cartonGallery: [
+        {
+          title: "Sharp Cold 10 盒混合实拍",
+          image: "./images/cartons/ploom-mevius-sharp-cold-paypay-20-mixed-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z606359296",
+          note: "Yahoo!フリマ说明为 Ploom MEVIUS 空箱20箱，其中 ブラックメンソール10箱、シャープコールド10箱；图面可读 10 个 SHARP COLD MENTHOL 与 10 个 BLACK COLD MENTHOL。它是混合 20 盒参考，不是纯单 SKU 一カートン。"
+        },
         {
           label: "清晰单盒参考",
           image: "./images/cartons/ploom-mevius-sharp-cold-cod-pack-reference.jpg",
@@ -1327,7 +1333,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "プラセール页面确认“メビウス・シャープ・コールド・メンソール・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。图片为单盒图，不是整条外箱；本站另补充清晰单盒参考和 10 包/200 支文字来源。",
+        "プラセール页面确认“メビウス・シャープ・コールド・メンソール・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。Yahoo!フリマ z606359296 为混合 20 盒实拍，说明写明 Black Menthol 10 箱与 Sharp Cold 10 箱；图面可读 SHARP COLD MENTHOL，但不是纯单 SKU 一条外箱，因此标为多盒参考。",
     },
   ],
   [
@@ -1489,6 +1495,13 @@ export function resolveProductMedia(item, originalImage) {
     "该包装图尚未逐款人工核验，仅作旅行辨认线索；警示文字、印刷批次和外包装可能变化，请以门店实物为准。";
   const rawCartonStatus = applicable ? (override.cartonStatus ?? "needs-review") : "not-applicable";
   const exactCartonImageAllowed = rawCartonStatus === "verified";
+  const referenceGalleryAllowed = [
+    "verified",
+    "archive-reference",
+    "contents-reference",
+    "multi-carton-reference",
+    "variant-reference",
+  ].includes(rawCartonStatus);
 
   return {
     originalImage,
@@ -1509,7 +1522,7 @@ export function resolveProductMedia(item, originalImage) {
     cartonStatus: rawCartonStatus,
     cartonImage: applicable && exactCartonImageAllowed ? (override.cartonImage ?? "") : "",
     cartonSource: applicable ? (override.cartonSource ?? "") : "",
-    cartonGallery: applicable && exactCartonImageAllowed ? (override.cartonGallery ?? []) : [],
+    cartonGallery: applicable && referenceGalleryAllowed ? (override.cartonGallery ?? []) : [],
     cartonPackCount: applicable ? (override.cartonPackCount ?? 10) : 0,
     cartonStickCount: applicable ? (override.cartonStickCount ?? 200) : 0,
     cartonNote: applicable
