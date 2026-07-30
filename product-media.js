@@ -1038,43 +1038,35 @@ const MEDIA_OVERRIDES = new Map([
     "lil HYBRID ミックス レギュラー|lil HYBRID 混合经典",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-regular-content.jpg",
-      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonImage: "./images/cartons/lil-miix-regular-kodama-content.png",
+      cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12838717652.html",
       cartonNote:
-        "シリウスタバコ lil HYBRID 页面提供 MIIX Mix 包装图与 20本入り说明。图片为盒装外观/内容物参考，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "大阪京橋たばこセンターこだま页面说明“ミックス レギュラー 20本入”，并提示需搭配 lil HYBRID 专用设备与リキッドカートリッジ。图片为 Regular 单盒与 cartridge 对照图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
-    "lil HYBRID ミックス メンソール|lil HYBRID 混合薄荷",
+    "lil HYBRID ミックス アイス|lil HYBRID 混合冰薄荷",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-menthol-content.jpg",
-      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonImage: "./images/cartons/lil-miix-ice-relazo-content.webp",
+      cartonSource: "https://relazo.net/lil_miix_ice/",
       cartonNote:
-        "シリウスタバコ lil HYBRID 页面提供 MIIX Ice/Menthol 系包装图与 20本入り说明。图片为盒装外观/内容物参考，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "Relazo 评测页确认 MIIX Ice 为 lil HYBRID 对应口味，内容量 20本入，2023 年 7 月后为绿色新设计。图片为 MIIX ICE 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
   [
-    "lil HYBRID ミックス ベリー|lil HYBRID 混合莓果",
+    "lil HYBRID ミックス ベルベット|lil HYBRID 混合莓果",
     {
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-berry-content.jpg",
-      cartonSource: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/",
+      cartonImage: "./images/cartons/lil-miix-velvet-kishida-content.jpg",
+      cartonSource: "https://kishida.ocnk.net/product/2839",
       cartonNote:
-        "シリウスタバコ lil HYBRID 页面提供 MIIX Velvet/Berry 系包装图与 20本入り说明。图片为盒装外观/内容物参考，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
+        "キシダサービス页面标题为“リル・ミックスベルベット”，说明为リル ハイブリッド专用 MIIX ベルベット；该口味是莓果香强冷薄荷方向。图片为 Velvet 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
 ]);
 
 const REVIEW_NOTES = new Map([
-  [
-    "lil HYBRID ミックス レギュラー",
-    "当前图片与薄荷版重复，不能据此确认口味包装；请按完整日文名联网核对。",
-  ],
-  [
-    "lil HYBRID ミックス メンソール",
-    "当前图片与原味版重复，不能据此确认口味包装；请按完整日文名联网核对。",
-  ],
   [
     "IQOS イルマ i ワン ミネラ モデル",
     "当前设备图与另一款 Minera 型号重复；购买前请核对机身形态与完整型号。",

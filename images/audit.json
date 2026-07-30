@@ -14,18 +14,6 @@
       "explanation": "两个真实 SKU 的旧下载图内容相同。页面已分别改用软包实拍和机场免税店硬盒商品图，并明确解释包装结构差异。"
     },
     {
-      "status": "review-required",
-      "files": [
-        "./images/87a6e2f9.jpg",
-        "./images/6b6d64c1.jpg"
-      ],
-      "products": [
-        "lil HYBRID ミックス レギュラー",
-        "lil HYBRID ミックス メンソール"
-      ],
-      "explanation": "原味与薄荷是不同变体，但当前本地图相同；详情页明确标记待核对，不把图片当成精确口味包装。"
-    },
-    {
       "status": "non-product-variant",
       "files": [
         "./images/6d527191.jpg",

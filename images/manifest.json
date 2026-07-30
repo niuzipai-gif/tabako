@@ -452,18 +452,18 @@
     },
     {
         "type": "heated",
-        "jp": "lil HYBRID ミックス メンソール",
-        "cn": "lil HYBRID 混合薄荷",
-        "key": "6b6d64c1",
-        "query": "lil HYBRID ミックス メンソール heated tobacco pack",
+        "jp": "lil HYBRID ミックス アイス",
+        "cn": "lil HYBRID 混合冰薄荷",
+        "key": "39151e34",
+        "query": "lil HYBRID ミックス アイス heated tobacco pack",
         "status": "exists"
     },
     {
         "type": "heated",
-        "jp": "lil HYBRID ミックス ベリー",
+        "jp": "lil HYBRID ミックス ベルベット",
         "cn": "lil HYBRID 混合莓果",
-        "key": "42eb84b0",
-        "query": "lil HYBRID ミックス ベリー heated tobacco pack",
+        "key": "d4836189",
+        "query": "lil HYBRID ミックス ベルベット heated tobacco pack",
         "status": "exists"
     },
     {
