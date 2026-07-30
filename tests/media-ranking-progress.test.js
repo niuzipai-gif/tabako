@@ -941,11 +941,15 @@ test("lil HYBRID source-only carton references use exact AMANOYA ten-unit pages 
   for (const [jp, expectation] of expectations) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, "contents-reference", jp);
-    assert.match(item.cartonImage, expectation.image, jp);
+    assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonSource, expectation.source, jp);
     assert.match(item.cartonNote, /10個|単包正面|不是.*一カートン外箱/, jp);
-    const imagePath = new URL(`../${item.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
-    assert.equal(existsSync(imagePath), true, jp);
+    const amanoyaEntry = item.cartonGallery.find((entry) => expectation.image.test(entry.image));
+    assert.ok(amanoyaEntry, jp);
+    assert.match(amanoyaEntry.source, expectation.source, jp);
+    assert.match(amanoyaEntry.note, /10個.*単包图|10個来源页的单包图|不是整条外箱/, jp);
+    const imagePath = new URL(`../${amanoyaEntry.image.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, amanoyaEntry.image);
   }
 });
 
