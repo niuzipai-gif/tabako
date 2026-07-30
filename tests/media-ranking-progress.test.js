@@ -870,6 +870,10 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
     assert.notEqual(item.cartonStatus, "verified", jp);
     assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, note, jp);
+    if (jp === "ラーク ハイブリッド") {
+      assert.match(item.cartonSource, /placer-tabaco\.com\/product\/2965/, jp);
+      assert.match(item.cartonNote, /在庫あり|不是整条外箱/, jp);
+    }
   }
 });
 

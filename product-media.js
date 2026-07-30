@@ -197,9 +197,9 @@ const MEDIA_OVERRIDES = new Map([
     {
       cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/lark-hybrid-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010200052",
+      cartonSource: "https://www.placer-tabaco.com/product/2965",
       cartonNote:
-        "ANA 免税店页面确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。Placer 另有同名/同系产品页写 20本入り、1カートン/10個。用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
+        "Placer 页面标题为“ラーク ハイブリッドKS ボックス ... カートン（10個）単位で取り寄せ商品”，正文写 20本入り、1カートン/10個，并显示在庫あり；主图是单包，另外两张附图是口味说明图，不是整条外箱。ANA 免税店页面另确认 LARK HYBRID KS BOX 销售规格为 20本×10箱 / 1カートン，图片同样为官方单包正面图。当前仅用于辨认 Hybrid Natural Mint Capsule 包装，整条长盒仍待实图核对。",
     },
   ],
   [
