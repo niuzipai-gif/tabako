@@ -128,6 +128,22 @@ test("Peace Super Lights uses the official ANA carton-side artwork instead of a 
   assert.notEqual(sha256(cartonPath), sha256(packPath));
 });
 
+test("Marlboro Gold uses exact 10-box artwork instead of the ANA single pack or 2-carton image", () => {
+  const item = enrichProduct(
+    rawProducts.find((product) => product.jp === "マールボロ ゴールド"),
+  );
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /marlboro-gold-rakuma-10-empty-boxes\.jpg/);
+  assert.match(item.cartonSource, /item\.fril\.jp\/2bea202c31ee48d9c9a5e8e2dd17ecd4/);
+  assert.match(item.cartonNote, /マルボロゴールド 10箱|10 包|ANA/);
+  assert.ok(
+    item.cartonGallery.some((entry) =>
+      /marlboro-gold-box-ana-2carton\.jpg/.test(entry.image),
+    ),
+  );
+});
+
 test("Ploom X Cold and Sharp Cold do not promote single-pack photos as exact cartons", () => {
   const expected = new Map([
     [
