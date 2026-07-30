@@ -444,11 +444,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス ディープ レギュラー|Ploom X 深度经典",
     {
-      cartonStatus: "contents-reference",
+      cartonStatus: "verified",
       cartonImage:
-        "./images/cartons/ploom-mevius-deep-regular-placer-carton-reference.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/5665",
+        "./images/cartons/ploom-mevius-deep-regular-mikey-carton-side.jpeg",
+      cartonSource:
+        "https://mikeymcq1.com/product/%E3%80%90mevius-deep-regular-%E6%BF%83%E5%8E%9F%E5%91%B3%E3%80%91-%E6%97%A5%E6%9C%AC%E4%B8%83%E6%98%9F-ploom-%E5%8A%A0%E7%86%B1%E8%8F%B8%E5%BD%88%EF%BD%9C%E5%8F%B0%E7%81%A3%E7%8F%BE%E8%B2%A8%EF%BD%9C/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
       cartonGallery: [
+        {
+          label: "日本店铺カートン单位单盒参考",
+          image:
+            "./images/cartons/ploom-mevius-deep-regular-placer-carton-reference.jpg",
+          source: "https://www.placer-tabaco.com/product/5665",
+          note: "プラセール页面标题确认“メビウス・ディープ・レギュラー・プルーム用”按カートン（10個）单位销售，并写明 1カートン/10個；主图为准确 SKU 单盒图。",
+        },
         {
           label: "清晰单盒参考",
           image:
@@ -459,7 +469,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "プラセール页面标题确认“メビウス・ディープ・レギュラー・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。主图为准确 SKU 单包图，不是外箱实拍；本站另补充清晰单盒参考和 10 包/200 支文字来源。",
+        "台湾糖巢商品页标题与规格写明“整條 10 包裝 / 20 支/盒，10 盒/條”，并提供 MEVIUS ploom X Deep Regular 横向条形外包装图；用于辨认一条外包装侧面。プラセール与 Cigars of Dubai 页面补充 1カートン/10個、10 packs / 200 sticks 文字来源和单盒参考。",
     },
   ],
   [
