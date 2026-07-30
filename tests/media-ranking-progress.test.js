@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 40);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 40);
+  assert.equal(manifest.items.length, 41);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 41);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -141,13 +141,12 @@ test("source-only and generated reference states still show a labeled source ima
   assert.match(superSlimsMenthol.cartonGallery[0].title, /来源商品图参考/);
   assert.match(superSlimsMenthol.cartonGallery[0].note, /整条外箱仍待核验/);
 
-  const sharpCold = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+  const tropical = enrichProduct(
+    rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
   );
-  assert.equal(sharpCold.cartonStatus, "multi-carton-reference");
-  assert.equal(sharpCold.cartonImage, "");
-  assert.match(sharpCold.cartonGallery[0].title, /Sharp Cold 10 盒混合实拍/);
-  assert.match(sharpCold.cartonGallery[0].note, /不是纯单 SKU 一カートン/);
+  assert.equal(tropical.cartonStatus, "contents-reference");
+  assert.match(tropical.cartonGallery[0].label, /KIX 官方当前包装/);
+  assert.match(tropical.cartonNote, /不是外箱实拍/);
 });
 
 test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
@@ -241,7 +240,7 @@ test("Mevius Original uses exact 20x10 carton artwork instead of the JDF 2-carto
   );
 });
 
-test("Ploom X Cold uses exact multi-box evidence while Sharp Cold stays clearly non-exact", () => {
+test("Ploom X Cold and Sharp Cold use exact multi-box evidence", () => {
   const cold = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス コールド メンソール"),
   );
@@ -250,37 +249,30 @@ test("Ploom X Cold uses exact multi-box evidence while Sharp Cold stays clearly 
   assert.match(cold.cartonSource, /jp\.mercari\.com\/item\/m76398758136/);
   assert.match(cold.cartonNote, /空箱 28個|COLD MENTHOL|10 包|200 支/);
 
-  const expected = new Map([
-    [
-      "Ploom X メビウス シャープ コールド",
-      {
-        status: "multi-carton-reference",
-        note: /混合 20 盒实拍|SHARP COLD MENTHOL|不是纯单 SKU/,
-      },
-    ],
-  ]);
-
-  for (const [jp, expectation] of expected) {
-    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
-    assert.equal(item.cartonStatus, expectation.status, jp);
-    assert.equal(item.cartonImage, "", jp);
-    assert.match(item.cartonNote, expectation.note, jp);
-  }
+  const sharpCold = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+  );
+  assert.equal(sharpCold.cartonStatus, "verified");
+  assert.match(sharpCold.cartonImage, /ploom-mevius-sharp-cold-mercari-10-empty-boxes\.jpg/);
+  assert.match(sharpCold.cartonSource, /jp\.mercari\.com\/item\/m78489316130/);
+  assert.match(sharpCold.cartonNote, /SHARP COLD MENTHOL|10 个同款/);
 });
 
-test("Ploom X Sharp Cold shows a source-backed mixed 20-box reference without promoting it as exact", () => {
+test("Ploom X Sharp Cold keeps older mixed references as gallery context", () => {
   const item = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
   );
 
-  assert.equal(item.cartonStatus, "multi-carton-reference");
-  assert.equal(item.cartonImage, "");
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /ploom-mevius-sharp-cold-mercari-10-empty-boxes\.jpg/);
   assert.ok(
     item.cartonGallery.some((entry) =>
       /ploom-mevius-sharp-cold-paypay-20-mixed-empty-boxes\.jpg/.test(entry.image),
     ),
   );
-  assert.match(item.cartonSource, /placer-tabaco\.com\/product\/5668/);
+  assert.ok(
+    item.cartonGallery.some((entry) => /placer-tabaco\.com\/product\/5668/.test(entry.source)),
+  );
 });
 
 test("SENTIA Frost Green uses exact visible Frost Green multi-box evidence", () => {
@@ -713,17 +705,16 @@ test("ranking is a separate vertical feed page linked from home", () => {
   assert.match(source, /index\.html\?product=/);
 });
 
-test("Ploom X Sharp Cold records the exact 15-box text lead without promoting lid photos", () => {
+test("Ploom X Sharp Cold records the exact 10-box image and keeps 1-carton quantity evidence", () => {
   const item = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
   );
 
-  assert.equal(item.cartonStatus, "multi-carton-reference");
-  assert.equal(item.cartonSource, "https://www.placer-tabaco.com/product/5668");
-  assert.match(item.cartonNote, /z635262692/);
-  assert.match(item.cartonNote, /空箱15個/);
-  assert.match(item.cartonNote, /上盖\/QR|完整盒身/);
-  assert.equal(item.cartonImage, "");
+  assert.equal(item.cartonStatus, "verified");
+  assert.equal(item.cartonSource, "https://jp.mercari.com/item/m78489316130");
+  assert.match(item.cartonNote, /10 个同款 MEVIUS ploom X SHARP COLD MENTHOL/);
+  assert.match(item.cartonNote, /1カートン\/10個/);
+  assert.match(item.cartonImage, /ploom-mevius-sharp-cold-mercari-10-empty-boxes\.jpg/);
 });
 
 test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing unverified cartons", () => {

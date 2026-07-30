@@ -1409,10 +1409,17 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス シャープ コールド|Ploom X 锐冷薄荷",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/ploom-mevius-sharp-cold-content.jpg",
-      cartonSource: "https://www.placer-tabaco.com/product/5668",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-mevius-sharp-cold-mercari-10-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m78489316130",
+      cartonPackCount: 10,
       cartonGallery: [
+        {
+          label: "カートン数量来源",
+          image: "./images/cartons/ploom-mevius-sharp-cold-content.jpg",
+          source: "https://www.placer-tabaco.com/product/5668",
+          note: "プラセール页面确认该 SKU 按カートン（10個）单位销售，たばこスティック20本入り、1カートン/10個。",
+        },
         {
           title: "Sharp Cold 10 盒混合实拍",
           image: "./images/cartons/ploom-mevius-sharp-cold-paypay-20-mixed-empty-boxes.jpg",
@@ -1428,7 +1435,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "プラセール页面确认“メビウス・シャープ・コールド・メンソール・プルーム用”按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。Yahoo!フリマ z606359296 为混合 20 盒实拍，说明写明 Black Menthol 10 箱与 Sharp Cold 10 箱；图面可读 SHARP COLD MENTHOL，但不是纯单 SKU 一条外箱。另有 Yahoo!フリマ z635262692 文字说明“空箱15個（QR未使用）”可按空箱希望提供，但主图是上盖/QR 部分，不是完整盒身，因此仍标为多盒参考。",
+        "Mercari 图片可见 10 个同款 MEVIUS ploom X SHARP COLD MENTHOL 空盒，图面能读出 SHARP COLD MENTHOL；按同 SKU 10 盒实拍核验。プラセール页面另确认该 SKU 按カートン（10個）单位销售，并写明たばこスティック20本入り、1カートン/10個。该来源为空盒/收藏图，不代表实时库存。",
     },
   ],
   [
