@@ -66,13 +66,27 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ レッド|万宝路 红",
     {
-      cartonStatus: "multi-carton-reference",
-      cartonImage: "./images/cartons/marlboro-red-box-ana-2carton.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098239",
-      cartonPackCount: 20,
-      cartonStickCount: 400,
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/marlboro-red-box-monolog-20x10.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210122205",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "ANA 官方 1カートン规格 / 单包图",
+          image: "./images/cartons/ana-marlboro-red-1ct.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098238",
+          note: "ANA 免税店页面确认“マールボロ ボックス”销售规格为 20本×10箱 / 1カートン；商品图为官方单包正面，不是整条外箱。",
+        },
+        {
+          label: "ANA 官方 2カートン参考",
+          image: "./images/cartons/marlboro-red-box-ana-2carton.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098239",
+          note: "旧图为“マールボロ 400's”两条装外箱，规格为 (20本×10箱)×2；用于区分免税 2CT 包装，不作为本站主一条图。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店商品页为“マールボロ 400's”，规格写明 (20本×10箱)×2；图片可见官方 2 CARTONS 红色外箱。它是两条装参考，不是单独一条拆分图；购买单条时按 10 包 / 200 支理解。",
+        "ものログ商品名为“JT マールボロ・ボックス 20本×10”，主图可见 Marlboro Red 一条侧面实拍和日本警示文字，按 10 包 / 200 支核验。ANA 另有“マールボロ ボックス”官方 1カートン页面确认 20本×10箱规格；旧 2CT 图仅保留为免税两条装参考。",
     },
   ],
   [
@@ -434,12 +448,21 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001828",
       imageNote:
         "World Tobacco 对应 Menthol SKU 页面图；单盒图为青绿色 TEREA 日本警示版，用于辨认，不把它当作整条外箱证明。",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource:
-        "https://www.heetsiqosabudhabi.ae/terea-sticks/iqos-terea-menthol/",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/terea-menthol-paypay-39-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z302147694",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "单盒空盒结构参考",
+          image: "./images/cartons/terea-menthol-empty-box-structure.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z302147694",
+          note: "同一 PayPay 出品的第二张图，展示 TEREA for IQOS ILUMA 青绿色空盒打开后的结构；用于辅助辨认，不代表实时库存。",
+        },
+      ],
       cartonNote:
-        "原海外电商外箱图只可见青绿色 TEREA 外盒，图面没有清晰 MENTHOL 字样，不能证明与该 SKU 完全对应。本站已移除该整条图，避免把其他 TEREA 口味当作薄荷整条；一条数量仍按 10 包 / 200 支参考。",
+        "Yahoo!フリマ标题为“アイコス テリア メンソール 空箱 39個 登録未使用”，主图可见超过 10 个 TEREA for IQOS ILUMA 青绿色空盒排列，前排侧面能读 MENTHOL，足以核对 TEREA Menthol 多盒/一条外观。该来源为售出空盒/收藏图，不代表当前库存；一条仍按 10 包 / 200 支。",
     },
   ],
   [
@@ -623,11 +646,18 @@ const MEDIA_OVERRIDES = new Map([
         "KIX DUTY FREE 官方商品图，正面可读 Cigaronne Phantom Silver / Imperial Collection / The slimmest XL Filter，用于识别用户常说的“卡比龙”。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-phantom-silver-mercari-shops-carton-set.jpg",
       cartonSource:
-        "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210002",
+        "https://jp.mercari.com/shops/product/nJwssrPaCwbVrYQDiJdCcE",
       cartonGallery: [
+        {
+          title: "Fa-So-La 官方 1カートン数量来源",
+          image: "./images/cartons/cigaronne-phantom-silver-kix-pack.jpg",
+          source:
+            "https://www.fasola-shop.com/goodsDetail.aspx?sCD=5312210002",
+          note: "Fa-So-La 页面确认シガローネ・ファントム・シルバー按 1カートン10箱・1箱20本入销售；图为单包辨认参考。",
+        },
         {
           title: "KIX 官方打开后内容物",
           image: "./images/cartons/cigaronne-phantom-silver-kix-detail.jpg",
@@ -643,7 +673,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Fa-So-La / KIX 官方免税页确认该 SKU 以 1カートン10箱・1箱20本入销售，KIX 免税价 ¥10,000；World Tobacco 单包价约 ¥1,100。COD 页面也写明 1 Carton = 10 packs，但其商品图与 Royal Slims 打开图同属 20 支装横向单包硬盒视觉，不能当 10 包整条外箱图；因此暂不展示未核验整条图。",
+        "Mercari Shops 页面标题为“シガローネ カートン空箱 各2個セット”，说明写明ブラウン×2、ブラック×2、シルバー×2，且为輸送用の外箱（カートン）。主图前排正面清楚可读 Cigaronne PHANTOM SILVER / IMPERIAL COLLECTION，可用于核对 Phantom Silver 整条外箱；该图为空箱参考，不代表实时库存。Fa-So-La / KIX 官方免税页另确认该 SKU 以 1カートン10箱・1箱20本入销售。",
     },
   ],
   [

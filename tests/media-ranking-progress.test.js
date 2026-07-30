@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 20);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 20);
+  assert.equal(manifest.items.length, 25);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 25);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -126,6 +126,39 @@ test("Peace Super Lights uses the official ANA carton-side artwork instead of a 
   const packPath = new URL(`../${peace.image.replace(/^\.\//, "")}`, import.meta.url);
   assert.equal(existsSync(cartonPath), true);
   assert.notEqual(sha256(cartonPath), sha256(packPath));
+});
+
+test("Ploom X Mevius Cold and Sharp Cold use ANA exact one-carton artwork", () => {
+  const expected = new Map([
+    [
+      "Ploom X メビウス コールド メンソール",
+      {
+        image: /ploom-mevius-cold-menthol-ana-carton-front\.jpg/,
+        source: /anadf\.com\/en\/itemdetail\.aspx\?s_cd=2030100079/,
+        note: /MEVIUS MENTHOL COLD|20本×10箱|ANA/,
+      },
+    ],
+    [
+      "Ploom X メビウス シャープ コールド",
+      {
+        image: /ploom-mevius-sharp-cold-ana-carton-front\.jpg/,
+        source: /anadf\.com\/en\/itemdetail\.aspx\?s_cd=2030100166/,
+        note: /MEVIUS SHARP COLD MENTHOL|20本×10箱|ANA/,
+      },
+    ],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "verified", jp);
+    assert.match(item.cartonImage, expectation.image, jp);
+    assert.match(item.cartonSource, expectation.source, jp);
+    assert.match(item.cartonNote, expectation.note, jp);
+    const cartonPath = new URL(`../${item.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
+    const packPath = new URL(`../${item.originalImage.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(cartonPath), true, jp);
+    assert.notEqual(sha256(cartonPath), sha256(packPath), jp);
+  }
 });
 
 test("all duplicate image payloads are explicitly registered in the media audit", () => {
@@ -225,7 +258,6 @@ test("TEREA Fusion uses the official Japanese Menthol SKU name instead of the fa
 test("TEREA single-pack photos use matching World Tobacco SKU pages while cartons stay hidden", () => {
   const expected = new Map([
     ["IQOS テリア レギュラー", /000000001829/],
-    ["IQOS テリア メンソール", /000000001828/],
     ["IQOS テリア ブラックメンソール", /000000001830/],
     ["IQOS テリア スムース レギュラー", /000000001891/],
     ["IQOS テリア ルビー レギュラー", /000000001887/],
@@ -241,15 +273,30 @@ test("TEREA single-pack photos use matching World Tobacco SKU pages while carton
     assert.equal(item.cartonStatus, "source-only", jp);
     assert.equal(item.cartonImage, "", jp);
   }
+
+  const menthol = enrichProduct(
+    rawProducts.find((product) => product.jp === "IQOS テリア メンソール"),
+  );
+  assert.equal(menthol.imageStatus, "reference");
+  assert.match(menthol.imageSource, /world-tobacco\.jp\/view\/item\/000000001828/);
+  assert.equal(menthol.cartonStatus, "verified");
+  assert.match(menthol.cartonImage, /terea-menthol-paypay-39-empty-boxes\.jpg/);
+  assert.match(menthol.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z302147694/);
+  assert.match(menthol.cartonNote, /MENTHOL|39個|10 包|200 支/);
 });
 
-test("TEREA overseas carton photos are not presented as verified exact cartons", () => {
+test("TEREA overseas carton photos are not presented as verified exact cartons unless an exact domestic multi-box photo exists", () => {
   const tereaItems = rawProducts
     .filter((item) => /IQOS テリア/.test(item.jp))
     .map((item) => enrichProduct(item));
 
   assert.ok(tereaItems.length >= 7);
   for (const item of tereaItems) {
+    if (item.jp === "IQOS テリア メンソール") {
+      assert.equal(item.cartonStatus, "verified");
+      assert.match(item.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z302147694/);
+      continue;
+    }
     assert.equal(item.cartonStatus, "source-only");
     assert.equal(item.cartonImage, "");
     assert.match(item.cartonNote, /不展示|避免|无法|不能/);
@@ -266,9 +313,10 @@ test("Cigaronne Phantom Silver is searchable as 卡比龙 and uses verified KIX 
   assert.match(`${item.jp} ${item.cn} ${item.brand}`, /卡比龙|Cigaronne|シガローネ/i);
   assert.equal(item.imageStatus, "verified");
   assert.match(item.image, /cigaronne-phantom-silver-kix-pack\.jpg/);
-  assert.equal(item.cartonStatus, "source-only");
-  assert.equal(item.cartonImage, "");
-  assert.match(item.cartonNote, /1カートン10箱|COD|10 packs|単包|未核验/);
+  assert.equal(item.cartonStatus, "verified");
+  assert.match(item.cartonImage, /cigaronne-phantom-silver-mercari-shops-carton-set\.jpg/);
+  assert.match(item.cartonSource, /jp\.mercari\.com\/shops\/product\/nJwssrPaCwbVrYQDiJdCcE/);
+  assert.match(item.cartonNote, /PHANTOM SILVER|カートン空箱|1カートン10箱/);
 });
 
 test("all Cigaronne catalog entries have sourced pack media and hide unverified carton photos", () => {
@@ -277,7 +325,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 11);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 1);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 2);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -287,6 +335,10 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-royal-slims-black-mercari-carton-box\.jpg/, item.jp);
       assert.match(item.cartonNote, /Royal slims XL FILTER|カートン空箱|1カートン10箱/, item.jp);
+    } else if (item.jp === "シガローネ・ファントム・シルバー") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-phantom-silver-mercari-shops-carton-set\.jpg/, item.jp);
+      assert.match(item.cartonNote, /PHANTOM SILVER|カートン空箱|1カートン10箱/, item.jp);
     } else {
       assert.equal(item.cartonStatus, "source-only", item.jp);
       assert.equal(item.cartonImage, "", item.jp);

@@ -3,6 +3,15 @@
   "acceptanceRule": "verified means the exact SKU and a visible one-carton outer package; archive-reference is visibly labelled historical and is never presented as current artwork.",
   "items": [
     {
+      "productId": "p-0e9b32fb",
+      "jp": "IQOS テリア メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/terea-menthol-paypay-39-empty-boxes.jpg",
+      "sourcePage": "https://paypayfleamarket.yahoo.co.jp/item/z302147694",
+      "sha256": "8d14c4339a759224fa7284cc385d6461c150c290da87e990779b142ee2af4182"
+    },
+    {
       "productId": "p-3f3af994",
       "jp": "シガローネ・ロイヤルスリム・ブラック",
       "status": "verified",
@@ -10,6 +19,24 @@
       "localPath": "images/cartons/cigaronne-royal-slims-black-mercari-carton-box.jpg",
       "sourcePage": "https://jp.mercari.com/en/item/m83941507410",
       "sha256": "1778ce3c4787ba9cd858a8af9a6e2decc5e72cbcc37db886eb9309f2e9a5ac97"
+    },
+    {
+      "productId": "p-304aa8ed",
+      "jp": "シガローネ・ファントム・シルバー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-phantom-silver-mercari-shops-carton-set.jpg",
+      "sourcePage": "https://jp.mercari.com/shops/product/nJwssrPaCwbVrYQDiJdCcE",
+      "sha256": "c83779a46cca01b8949adf55c7495331fac145654b7c964a01029c24728c1f84"
+    },
+    {
+      "productId": "p-ddfd4f94",
+      "jp": "マールボロ レッド",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/marlboro-red-box-monolog-20x10.jpg",
+      "sourcePage": "https://monolog.r-n-i.jp/item/4902210122205",
+      "sha256": "3ec81074f51b1e9c3a2ed062127bab92f2c8e7dd919455e0e2e6f05b498e741c"
     },
     {
       "productId": "p-738718e3",
@@ -55,6 +82,24 @@
       "localPath": "images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
       "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
       "sha256": "6327aad23ecc446f2aa1c040f94d81e8e5724ae3c6f6c2a6b25049931881d73c"
+    },
+    {
+      "productId": "p-617f6c70",
+      "jp": "Ploom X メビウス コールド メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/ploom-mevius-cold-menthol-ana-carton-front.jpg",
+      "sourcePage": "https://www.anadf.com/en/itemdetail.aspx?s_cd=2030100079",
+      "sha256": "04a586d7c0b9dcada9d684be4c33dc37f233e3fc52a6f3a5a301b82d085cd208"
+    },
+    {
+      "productId": "p-919f9270",
+      "jp": "Ploom X メビウス シャープ コールド",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/ploom-mevius-sharp-cold-ana-carton-front.jpg",
+      "sourcePage": "https://www.anadf.com/en/itemdetail.aspx?s_cd=2030100166",
+      "sha256": "61f85fd17d488e8ccf4f8684a41285ccddf0cbd5f7b7eadf6d240bb1a5d27ae2"
     },
     {
       "productId": "p-4a18c9e6",
