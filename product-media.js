@@ -1288,7 +1288,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“glo hyper LUCKY STRIKE MENTHOL BERRY MENTHOL 空箱 9個セット”，说明文字写 MENTHOL 8 箱、BERRY MENTHOL 2 箱；实图可见多枚 LUCKY STRIKE MENTHOL for glo hyper 绿盒及 Berry Menthol 混入。该图用于核对多盒包装比例，不作为纯 10 盒同 SKU 已核验整条图；一条数量仍按 KIX / j-Cigarette 的 10 包 / 200 支。",
+        "Yahoo!フリマ标题为“glo hyper LUCKY STRIKE MENTHOL BERRY MENTHOL 空箱 9個セット”，说明文字写 MENTHOL 8 箱、BERRY MENTHOL 2 箱；实图可见多枚 LUCKY STRIKE MENTHOL for glo hyper 绿盒及 Berry Menthol 混入。另有 Yahoo!フリマ z642652020 搜索结果标题为“glo HYPER用 LUCKY STRIKE MENTHOL 空箱 10個セット”，但页面当前无法取到可核对图片，因此只记录为精确文字线索。该图用于核对多盒包装比例，不作为纯 10 盒同 SKU 已核验整条图；一条数量仍按 KIX / j-Cigarette 的 10 包 / 200 支。",
     },
   ],
   [
@@ -1336,7 +1336,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”。图片为准确 SKU 单盒图，不是外箱实拍；KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。",
+        "j-Cigarette 对应商品页标题确认“glo neo TM Tropical Swirl Stick for glo hyper Heat Sticks 1 carton 200 Heatsticks”。图片为准确 SKU 单盒图，不是外箱实拍；KIX 官方页补充当前单盒包装和 10 boxes per carton 信息。大浦商店页面也列出旧名 ネオ･トロピカル・スワール・スティック・glo hyper用，20本、カートン（10箱）；RELAZO 说明该旧款已リニューアル为ネオ・ブリリアント・トロピカル。",
     },
   ],
   [

@@ -702,3 +702,20 @@ test("source-only Cigaronne gaps keep Rakuten 10packs leads without publishing u
     assert.match(item.cartonNote, /Rakuten\/堀商事.*10packs/s, jp);
   }
 });
+
+test("glo unresolved carton leads stay recorded without being promoted", () => {
+  const lucky = enrichProduct(
+    rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク メンソール"),
+  );
+  assert.equal(lucky.cartonStatus, "multi-carton-reference");
+  assert.match(lucky.cartonNote, /z642652020/);
+  assert.match(lucky.cartonNote, /空箱 10個セット/);
+  assert.match(lucky.cartonNote, /无法取到可核对图片/);
+
+  const tropical = enrichProduct(
+    rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
+  );
+  assert.equal(tropical.cartonStatus, "contents-reference");
+  assert.match(tropical.cartonNote, /大浦商店.*カートン（10箱）/s);
+  assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
+});
