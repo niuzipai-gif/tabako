@@ -214,11 +214,23 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピース インフィニティ|和平 无限",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/peace-infinity-content.jpg",
-      cartonSource: "https://to-world.com/index.php?main_page=product_info&products_id=86",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/peace-infinity-monolog-20px10-carton.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210141015",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "单包正面辨认图",
+          image: "./images/cartons/peace-infinity-content.jpg",
+          source:
+            "https://to-world.com/index.php?main_page=product_info&products_id=86",
+          note: "TO-WORLD 商品页提供 Peace Infinity 单包正面/斜视图，用于辨认深蓝包装；不是整条外箱。",
+        },
+      ],
       cartonNote:
-        "TO-WORLD 商品页显示 Peace Infinity 的日本定价按 1カートン列示，并提供该 SKU 包装图；图片为单包正面/斜视图，不是整条外箱。用于辨认 Infinity 深蓝包装，整条长盒仍待实图核对。",
+        "ものログ商品名为“JT ピースインフィニティ 20PX10”，主图可见 10 包整条塑封实拍，按 20 本×10 包 / 200 支核验；单包正面图另放入图库辅助辨认。",
     },
   ],
   [
@@ -695,11 +707,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "わかば|若叶",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/wakaba-kikuya-content.gif",
-      cartonSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210153810",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "旧 Wakaba 单包辨认图",
+          image: "./images/cartons/wakaba-kikuya-content.gif",
+          source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+          note: "きくや页面列出旧 わかば，并说明该店按カートン（ケース）单位销售，1カートン为 10 箱；图片为旧单包图，不是外箱。",
+        },
+      ],
       cartonNote:
-        "きくや商品页列出 わかば，并说明该店按カートン（ケース）单位销售，1カートン为10箱。图片为单包图，不是整条外箱；用于辨认 Wakaba 绿白包装。",
+        "ものログ商品名为“JT わかば・シガー 10P”，主图可见 10P 外箱照片，按 10 包 / 200 支核验。旧紙巻き Wakaba 与现行 Wakaba Cigar 名称有差异，购买时应按店铺现行 SKU 再确认。",
     },
   ],
   [
