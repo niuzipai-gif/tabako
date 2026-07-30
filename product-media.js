@@ -194,11 +194,27 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャメル クラフト 6|骆驼 Craft 6",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/camel-craft6-pack-content.jpg",
-      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100180",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/camel-craft6-paypay-84-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z441431200",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "35 个空盒近景",
+          image: "./images/cartons/camel-craft6-paypay-35-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z529831112",
+          note: "Yahoo!フリマ页面标题为“CAMEL 6mg 空箱 35個”，图片可见 Camel Craft 6 多个空盒近景；用于确认多包外观，不代表可购买库存。",
+        },
+        {
+          label: "ANA 官方单包 / 1カートン规格",
+          image: "./images/cartons/camel-craft6-pack-content.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100180",
+          note: "ANA 免税店页面确认“キャメル・クラフト 6・ボックス”销售规格为 20本×10箱 / 1カートン；主图为官方单包正面图。",
+        },
+      ],
       cartonNote:
-        "ANA 免税店页面确认“キャメル・クラフト 6・ボックス”销售规格为 20本×10箱 / 1カートン，图片为官方单包正面图，不是整条外箱。用于辨认浅蓝 Craft 6 包装，整条长盒仍待实图核对。",
+        "Yahoo!フリマ页面标题为“タバコの空箱 84個 CAMEL キャメル 6ミリ 水色”，主图展示大量 Camel Craft 6 浅蓝盒整齐排列，可确认一条/多包外观；该来源为空盒收藏/手工材料，不代表现行库存。ANA 官方页补充 20本×10箱 / 1カートン规格。",
     },
   ],
   [
