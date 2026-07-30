@@ -603,7 +603,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .map((product) => enrichProduct(product))
     .filter((product) => product.brand === "Cigaronne");
 
-  assert.equal(items.length, 11);
+  assert.equal(items.length, 21);
   assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 6);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
@@ -639,6 +639,35 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonImage, "", item.jp);
       assert.match(item.cartonNote, /未|不展示|整条|カートン/, item.jp);
     }
+  }
+});
+
+test("Cigaronne official collection additions use local official media but no unverified carton image", () => {
+  const expectations = new Map([
+    ["シガローネ・レジェンド", /cigaronne-imperial-legend-official\.png/],
+    ["シガローネ・ビッグボス", /cigaronne-imperial-big-boss-official\.png/],
+    ["シガローネ・クラシック・キングサイズ", /cigaronne-classic-king-size-official\.png/],
+    ["シガローネ・クラシック・コンパット", /cigaronne-classic-compatto-official\.png/],
+    ["シガローネ・クラシック・ウルトラスリム", /cigaronne-classic-ultra-slims-official\.png/],
+    ["シガローネ・クラシック・スーパースリム", /cigaronne-classic-super-slims-official\.png/],
+    ["シガローネ・センター・キングサイズ", /cigaronne-center-king-size-official\.png/],
+    ["シガローネ・センター・コンパット", /cigaronne-center-compatto-official\.png/],
+    ["シガローネ・センター・ウルトラスリム", /cigaronne-center-ultra-slims-official\.png/],
+    ["シガローネ・センター・スーパースリム", /cigaronne-center-super-slims-official\.png/],
+  ]);
+
+  for (const [jp, imagePattern] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.brand, "Cigaronne", jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.match(item.image, imagePattern, jp);
+    assert.match(item.imageSource, /cigaronne\.com\/our-collection/, jp);
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, /官网确认|未取得.*整条|不展示/, jp);
+
+    const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
+    assert.equal(existsSync(imagePath), true, jp);
   }
 });
 

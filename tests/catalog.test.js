@@ -113,15 +113,15 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 146-product source set", () => {
-  assert.equal(rawProducts.length, 146);
+test("catalog keeps the expanded 156-product source set", () => {
+  assert.equal(rawProducts.length, 156);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
   );
 });
 
-test("Cigaronne has a dedicated brand category with the full World Tobacco series", () => {
+test("Cigaronne has a dedicated brand category with the full official series", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   const products = rawProducts.map((item) => enrichProduct(item));
   const cigaronne = filterProducts(products, {
@@ -130,18 +130,28 @@ test("Cigaronne has a dedicated brand category with the full World Tobacco serie
 
   assert.match(html, /data-category="brand:cigaronne"/);
   assert.match(html, />卡比龙全系列</);
-  assert.equal(cigaronne.length, 11);
+  assert.equal(cigaronne.length, 21);
   assert.deepEqual(
     cigaronne.map((item) => item.jp).sort((a, b) => a.localeCompare(b, "ja")),
     [
+      "シガローネ・クラシック・ウルトラスリム",
+      "シガローネ・クラシック・キングサイズ",
+      "シガローネ・クラシック・コンパット",
+      "シガローネ・クラシック・スーパースリム",
       "シガローネ・エクスクルーシブ・ブラウン",
+      "シガローネ・センター・ウルトラスリム",
+      "シガローネ・センター・キングサイズ",
+      "シガローネ・センター・コンパット",
+      "シガローネ・センター・スーパースリム",
       "シガローネ・スーパースリム・ブラック",
       "シガローネ・スーパースリム・メンソール",
       "シガローネ・タトゥー・チェリー",
       "シガローネ・タトゥー・チョコレート",
       "シガローネ・タトゥー・バニラ",
+      "シガローネ・ビッグボス",
       "シガローネ・ファントム・シルバー",
       "シガローネ・マグネット",
+      "シガローネ・レジェンド",
       "シガローネ・ロイヤルスリム・ブラック",
       "シガローネ・ロイヤルスリム・メンソール",
       "シガローネ・ウルトラスリム・ブラック",
@@ -163,16 +173,26 @@ test("Cigaronne brand page follows a stable series order", () => {
   assert.deepEqual(
     cigaronne.map((item) => item.jp),
     [
+      "シガローネ・レジェンド",
+      "シガローネ・ビッグボス",
       "シガローネ・ロイヤルスリム・ブラック",
       "シガローネ・ロイヤルスリム・メンソール",
       "シガローネ・ファントム・シルバー",
       "シガローネ・エクスクルーシブ・ブラウン",
+      "シガローネ・クラシック・キングサイズ",
+      "シガローネ・クラシック・コンパット",
+      "シガローネ・クラシック・ウルトラスリム",
+      "シガローネ・クラシック・スーパースリム",
       "シガローネ・スーパースリム・ブラック",
       "シガローネ・スーパースリム・メンソール",
       "シガローネ・ウルトラスリム・ブラック",
       "シガローネ・タトゥー・チェリー",
       "シガローネ・タトゥー・チョコレート",
       "シガローネ・タトゥー・バニラ",
+      "シガローネ・センター・キングサイズ",
+      "シガローネ・センター・コンパット",
+      "シガローネ・センター・ウルトラスリム",
+      "シガローネ・センター・スーパースリム",
       "シガローネ・マグネット",
     ],
   );

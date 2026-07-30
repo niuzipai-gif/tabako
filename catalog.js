@@ -461,17 +461,27 @@ function deviceModelOrder(item) {
 function brandSeriesOrder(item) {
   const text = `${item.jp} ${item.cn}`;
   if (/シガローネ|Cigaronne|卡比龙/i.test(text)) {
-    if (/ロイヤルスリム.*ブラック|Royal Slims Black/i.test(text)) return 10;
-    if (/ロイヤルスリム.*メンソール|Royal Slims Menthol/i.test(text)) return 20;
-    if (/ファントム|Phantom/i.test(text)) return 30;
-    if (/エクスクルーシブ|Exclusive/i.test(text)) return 40;
-    if (/スーパースリム.*ブラック|Super Slims Black/i.test(text)) return 50;
-    if (/スーパースリム.*メンソール|Super Slims Menthol/i.test(text)) return 60;
-    if (/ウルトラスリム|Ultra Slims/i.test(text)) return 70;
-    if (/タトゥー.*チェリー|Tattoo Cherry/i.test(text)) return 80;
-    if (/タトゥー.*チョコレート|Tattoo Chocolate/i.test(text)) return 90;
-    if (/タトゥー.*バニラ|Tattoo Vanilla/i.test(text)) return 100;
-    if (/マグネット|Magnet/i.test(text)) return 110;
+    if (/レジェンド|Legend/i.test(text)) return 10;
+    if (/ビッグボス|Big Boss/i.test(text)) return 20;
+    if (/ロイヤルスリム.*ブラック|Royal Slims Black/i.test(text)) return 30;
+    if (/ロイヤルスリム.*メンソール|Royal Slims Menthol/i.test(text)) return 40;
+    if (/ファントム|Phantom/i.test(text)) return 50;
+    if (/エクスクルーシブ|Exclusive/i.test(text)) return 60;
+    if (/クラシック.*キング|Classic King Size/i.test(text)) return 70;
+    if (/クラシック.*コンパット|Classic Compatto/i.test(text)) return 80;
+    if (/クラシック.*ウルトラ|Classic Ultra Slims/i.test(text)) return 90;
+    if (/クラシック.*スーパー|Classic Super Slims/i.test(text)) return 100;
+    if (/スーパースリム.*ブラック|Super Slims Black/i.test(text)) return 110;
+    if (/スーパースリム.*メンソール|Super Slims Menthol/i.test(text)) return 120;
+    if (/ウルトラスリム.*ブラック|Ultra Slims Black/i.test(text)) return 130;
+    if (/タトゥー.*チェリー|Tattoo Cherry/i.test(text)) return 140;
+    if (/タトゥー.*チョコレート|Tattoo Chocolate/i.test(text)) return 150;
+    if (/タトゥー.*バニラ|Tattoo Vanilla/i.test(text)) return 160;
+    if (/センター.*キング|Center King Size/i.test(text)) return 170;
+    if (/センター.*コンパット|Center Compatto/i.test(text)) return 180;
+    if (/センター.*ウルトラ|Center Ultra Slims/i.test(text)) return 190;
+    if (/センター.*スーパー|Center Super Slims/i.test(text)) return 200;
+    if (/マグネット|Magnet/i.test(text)) return 210;
   }
   return item.type === "device" || item.type === "pod" ? deviceModelOrder(item) : 500;
 }

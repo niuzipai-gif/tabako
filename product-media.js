@@ -618,6 +618,40 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "シガローネ・レジェンド|卡比龙 Imperial Legend",
+    {
+      image: "./images/verified/cigaronne-imperial-legend-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/imperial-collection",
+      imageNote:
+        "Cigaronne 官网 Imperial Collection 图；官网列 Legend、Big Boss、Royal Slims、Phantom 四个代表款，此图用于补齐卡比龙官网全系列识别。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/imperial-collection",
+      cartonNote:
+        "Cigaronne 官网确认 Imperial Collection 包含 Legend；当前只取得官网产品图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・ビッグボス|卡比龙 Imperial Big Boss",
+    {
+      image: "./images/verified/cigaronne-imperial-big-boss-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/imperial-collection",
+      imageNote:
+        "Cigaronne 官网 Imperial Collection Big Boss 图；用于补齐卡比龙高端 Imperial 系列。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/imperial-collection",
+      cartonNote:
+        "Cigaronne 官网确认 Big Boss 属于 Imperial Collection；当前只取得官网产品图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
     "シガローネ・ロイヤルスリム・メンソール|卡比龙 Royal Slims Menthol",
     {
       image: "./images/verified/cigaronne-royal-menthol-worldtobacco-pack.jpg",
@@ -673,6 +707,74 @@ const MEDIA_OVERRIDES = new Map([
       ],
       cartonNote:
         "KIX DUTY FREE 官方英文页确认 CIGARONNE SUPER SLIMS MENTHOL 为 1 carton contains 10 packs、20 cigarettes per pack，免税价 ¥6,800；JAL DUTYFREE 同款页写明 1カートン10箱・1箱20本入。World Tobacco 页面列出 20本入り、タール8mg。Rakuten/堀商事另列 10packs シガローネ スーパースリム メンソール，并注明箱なしセロハン包装；PARMA / Cigars of Dubai / HitCigars 等海外页只提供单盒或通用商品图。当前接入的图为对应 SKU 单盒/展示盒图，不是完整 10 盒整条外箱实拍，因此暂不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・クラシック・キングサイズ|卡比龙 Classic King Size",
+    {
+      image: "./images/verified/cigaronne-classic-king-size-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/classic-collection",
+      imageNote:
+        "Cigaronne 官网 Classic Collection King Size 图；官网说明 Classic 覆盖 King Size、Compatto、Ultra Slim、Super Slims。",
+      packageFormat: "硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonNote:
+        "Cigaronne 官网确认 Classic King Size 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・クラシック・コンパット|卡比龙 Classic Compatto",
+    {
+      image: "./images/verified/cigaronne-classic-compatto-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/classic-collection",
+      imageNote:
+        "Cigaronne 官网 Classic Collection Compatto 图；用于区分短细盒 Compatto 与 King Size / Ultra Slims。",
+      packageFormat: "硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonNote:
+        "Cigaronne 官网确认 Classic Compatto 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・クラシック・ウルトラスリム|卡比龙 Classic Ultra Slims",
+    {
+      image: "./images/verified/cigaronne-classic-ultra-slims-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/classic-collection",
+      imageNote:
+        "Cigaronne 官网 Classic Collection Ultra Slims 图；用于补齐卡比龙超细支系列。",
+      packageFormat: "超细硬盒",
+      packageFormatJp: "ウルトラスリム",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonNote:
+        "Cigaronne 官网确认 Classic Ultra Slims 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・クラシック・スーパースリム|卡比龙 Classic Super Slims",
+    {
+      image: "./images/verified/cigaronne-classic-super-slims-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/classic-collection",
+      imageNote:
+        "Cigaronne 官网 Classic Collection Super Slims 图；官网说明 Super Slims 有 White、Black、Menthol 版本。",
+      packageFormat: "细支硬盒",
+      packageFormatJp: "スーパースリム",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/classic-collection",
+      cartonNote:
+        "Cigaronne 官网确认 Classic Super Slims 为 Classic Collection 完整系列之一；当前仅有官网包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [
@@ -867,6 +969,74 @@ const MEDIA_OVERRIDES = new Map([
       cartonStickCount: 200,
       cartonNote:
         "Mercari 出品标题写明 Cigaronne Royal Slims シガローネ カートン空箱，实拍图面清楚可读 Royal slims XL FILTER 与日文警示，用于辨认整条外箱外观；图为二手空箱参考，不代表实时库存。Fa-So-La 与 KIX 均列出 Royal Slims Black 免税价约 ¥11,000；World Tobacco 单包页确认 20本入り、タール4mg、ニコチン0.4mg，按 1カートン10箱 / 200支理解。",
+    },
+  ],
+  [
+    "シガローネ・センター・キングサイズ|卡比龙 Center King Size",
+    {
+      image: "./images/verified/cigaronne-center-king-size-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/center",
+      imageNote:
+        "Cigaronne 官网 Center King Size 图；官网列 Red/Blue/Black 多强度参数，用于补齐 Center 系列。",
+      packageFormat: "硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonNote:
+        "Cigaronne 官网确认 Center King Size 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・センター・コンパット|卡比龙 Center Compatto",
+    {
+      image: "./images/verified/cigaronne-center-compatto-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/center",
+      imageNote:
+        "Cigaronne 官网 Center Compatto 图；用于区分 Center 系列短细盒。",
+      packageFormat: "硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonNote:
+        "Cigaronne 官网确认 Center Compatto 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・センター・ウルトラスリム|卡比龙 Center Ultra Slims",
+    {
+      image: "./images/verified/cigaronne-center-ultra-slims-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/center",
+      imageNote:
+        "Cigaronne 官网 Center Ultra Slims 图；官网列 Red/Blue/Black 与对应焦油/尼古丁参数。",
+      packageFormat: "超细硬盒",
+      packageFormatJp: "ウルトラスリム",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonNote:
+        "Cigaronne 官网确认 Center Ultra Slims 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
+    },
+  ],
+  [
+    "シガローネ・センター・スーパースリム|卡比龙 Center Super Slims",
+    {
+      image: "./images/verified/cigaronne-center-super-slims-official.png",
+      imageStatus: "reference",
+      imageSource: "https://cigaronne.com/our-collection/center",
+      imageNote:
+        "Cigaronne 官网 Center Super Slims 图；用于补齐 Center 细支系列。",
+      packageFormat: "细支硬盒",
+      packageFormatJp: "スーパースリム",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://cigaronne.com/our-collection/center",
+      cartonNote:
+        "Cigaronne 官网确认 Center Super Slims 覆盖 Red、Blue、Black；当前仅有官网多口味包装参考图，未取得同 SKU 10 包整条/一カートン外箱实拍，因此不展示为已核验整条图。",
     },
   ],
   [
