@@ -705,11 +705,21 @@ const MEDIA_OVERRIDES = new Map([
   [
     "エコー|Echo",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/echo-kikuya-content.gif",
-      cartonSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210153919",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "旧 Echo 单包辨认图",
+          image: "./images/cartons/echo-kikuya-content.gif",
+          source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+          note: "きくや页面列出旧 Echo，并说明该店按カートン（ケース）单位销售，1カートン为 10 箱；图片为旧单包图，不是外箱。",
+        },
+      ],
       cartonNote:
-        "きくや商品页列出 エコー，并说明该店按カートン（ケース）单位销售，1カートン为10箱。图片为单包图，不是整条外箱；用于辨认 Echo 包装。",
+        "ものログ商品名为“JT エコー・シガー 10P”，主图可见 echo CIGARS 长条外箱侧面，按 10 包 / 200 支核验。旧紙巻き Echo 与现行 Echo Cigar 名称有差异，购买时应按店铺现行 SKU 再确认。",
     },
   ],
   [
