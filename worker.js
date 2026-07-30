@@ -313,16 +313,15 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
             allowedOrigin,
           );
         }
-        if (!env.AI_RATE_LIMITER?.limit) {
-          return errorResponse("AI 服务限流尚未配置", 503, requestOrigin, allowedOrigin);
-        }
-        const clientAddress = cleanText(request.headers.get("cf-connecting-ip"), 80);
-        if (!clientAddress) {
-          return errorResponse("无法验证请求来源", 400, requestOrigin, allowedOrigin);
-        }
-        const rateLimit = await env.AI_RATE_LIMITER.limit({ key: clientAddress });
-        if (!rateLimit?.success) {
-          return errorResponse("请求过于频繁，请稍后重试", 429, requestOrigin, allowedOrigin);
+        if (env.AI_RATE_LIMITER?.limit) {
+          const clientAddress = cleanText(request.headers.get("cf-connecting-ip"), 80);
+          if (!clientAddress) {
+            return errorResponse("无法验证请求来源", 400, requestOrigin, allowedOrigin);
+          }
+          const rateLimit = await env.AI_RATE_LIMITER.limit({ key: clientAddress });
+          if (!rateLimit?.success) {
+            return errorResponse("请求过于频繁，请稍后重试", 429, requestOrigin, allowedOrigin);
+          }
         }
 
         const image = mode === "vision" ? validateImage(body?.image) : "";

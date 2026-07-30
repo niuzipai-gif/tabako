@@ -1,0 +1,13 @@
+name = "tabako-minimax-proxy"
+main = "worker.js"
+compatibility_date = "2026-07-30"
+
+[vars]
+ALLOWED_ORIGIN = "https://niuzipai-gif.github.io"
+
+# Required secret, configured outside Git:
+# npx wrangler secret put MINIMAX_API_KEY
+#
+# Optional production protection:
+# add an AI_RATE_LIMITER binding in Cloudflare, or keep the Worker callable
+# without the binding while the site is being brought online.

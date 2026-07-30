@@ -1,3 +1,17 @@
+const params = new URLSearchParams(window.location.search);
+const queryProxyUrl = params.get("aiProxyUrl") || "";
+
+function storedProxyUrl(nextValue = "") {
+  try {
+    if (nextValue) window.localStorage?.setItem("TABAKO_AI_PROXY_URL", nextValue);
+    return window.localStorage?.getItem("TABAKO_AI_PROXY_URL") || "";
+  } catch {
+    return "";
+  }
+}
+
+const savedProxyUrl = storedProxyUrl(queryProxyUrl);
+
 window.TABAKO_CONFIG = Object.freeze({
-  aiProxyUrl: "",
+  aiProxyUrl: queryProxyUrl || savedProxyUrl,
 });

@@ -113,11 +113,65 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the complete 95-product source set", () => {
-  assert.equal(rawProducts.length, 95);
+test("catalog keeps the expanded 125-product source set", () => {
+  assert.equal(rawProducts.length, 125);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
+  );
+});
+
+test("device catalog covers mainstream heated and vapor hardware families", () => {
+  const devices = rawProducts.filter((item) => item.type === "device");
+  const deviceNames = devices.map((item) => `${item.jp} ${item.cn}`).join("\n");
+
+  assert.equal(devices.length >= 24, true);
+  for (const family of [
+    /IQOS ILUMA i PRIME/i,
+    /IQOS ILUMA i ONE/i,
+    /Ploom X ADVANCED/i,
+    /glo HYPER pro/i,
+    /glo HYPER air/i,
+    /lil HYBRID 3\.0/i,
+    /RELX Infinity/i,
+    /VAPORESSO XROS 4/i,
+    /Uwell Caliburn G4/i,
+    /Voopoo Argus G3/i,
+  ]) {
+    assert.match(deviceNames, family);
+  }
+});
+
+test("public config supports a runtime AI proxy URL without storing secrets", () => {
+  const config = readFileSync(new URL("../config.js", import.meta.url), "utf8");
+  const workflowPath = new URL("../.github/workflows/deploy-ai-worker.yml", import.meta.url);
+
+  assert.match(config, /TABAKO_AI_PROXY_URL/);
+  assert.match(config, /URLSearchParams/);
+  assert.equal(existsSync(workflowPath), true);
+});
+
+test("device sorting groups by brand and then machine generation", () => {
+  const sorted = sortProducts(
+    [
+      enrichProduct({ type: "device", jp: "glo HYPER pro", cn: "glo HYPER pro", jpy: 3980 }),
+      enrichProduct({ type: "device", jp: "IQOS イルマ i ワン", cn: "IQOS ILUMA i ONE", jpy: 3980 }),
+      enrichProduct({ type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980 }),
+      enrichProduct({ type: "device", jp: "IQOS イルマ i プライム", cn: "IQOS ILUMA i PRIME", jpy: 9980 }),
+      enrichProduct({ type: "device", jp: "glo HYPER air", cn: "glo HYPER air", jpy: 1980 }),
+    ],
+    "device",
+  );
+
+  assert.deepEqual(
+    sorted.map((item) => item.cn),
+    [
+      "IQOS ILUMA i PRIME",
+      "IQOS ILUMA i ONE",
+      "Ploom X ADVANCED",
+      "glo HYPER pro",
+      "glo HYPER air",
+    ],
   );
 });
 

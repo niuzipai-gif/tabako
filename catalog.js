@@ -297,6 +297,40 @@ function compatibility(item) {
   return "纸卷香烟，无设备兼容要求";
 }
 
+function deviceBrandOrder(item) {
+  const text = `${item.jp} ${item.cn}`;
+  if (/IQOS/i.test(text)) return 10;
+  if (/Ploom/i.test(text)) return 20;
+  if (/glo/i.test(text)) return 30;
+  if (/lil HYBRID/i.test(text)) return 40;
+  if (/RELX/i.test(text)) return 50;
+  if (/MOTI/i.test(text)) return 55;
+  if (/VAPORESSO|XROS/i.test(text)) return 60;
+  if (/Uwell|Caliburn/i.test(text)) return 70;
+  if (/Voopoo|Argus/i.test(text)) return 80;
+  if (/OXVA|XLIM/i.test(text)) return 90;
+  if (/Geekvape|Wenax/i.test(text)) return 100;
+  return 900;
+}
+
+function deviceModelOrder(item) {
+  if (Number.isFinite(Number(item.deviceOrder))) return Number(item.deviceOrder);
+  const text = `${item.jp} ${item.cn}`;
+  if (/REMIX/i.test(text)) return 5;
+  if (/PRIME/i.test(text)) return 10;
+  if (/ADVANCED/i.test(text)) return 15;
+  if (/PRO/i.test(text)) return 20;
+  if (/\bG4\b|XROS 4/i.test(text)) return 25;
+  if (/\bG3\b|3\.0|XROS 3/i.test(text)) return 30;
+  if (/イルマ i(?!.*ワン)|ILUMA i(?!.*ONE)/i.test(text)) return 35;
+  if (/ONE|ワン/i.test(text)) return 40;
+  if (/air/i.test(text)) return 45;
+  if (/\b2\.0\b|S 2\.0/i.test(text)) return 50;
+  if (/\bX2\b/i.test(text)) return 55;
+  if (/nano|mini|Lite/i.test(text)) return 60;
+  return 500;
+}
+
 export function enrichProduct(item, index = 0) {
   const key = `${item.jp}|${item.cn}`;
   const hash = fnv1a(key);
@@ -376,6 +410,15 @@ export function filterProducts(products, filters = {}) {
 export function sortProducts(products, sort = "recommended") {
   const result = [...products];
   const compareName = (a, b) => a.jp.localeCompare(b.jp, "ja");
+  const compareDevice = (a, b) =>
+    deviceBrandOrder(a) - deviceBrandOrder(b) ||
+    deviceModelOrder(a) - deviceModelOrder(b) ||
+    (a.originalIndex ?? 0) - (b.originalIndex ?? 0) ||
+    compareName(a, b);
+
+  if (sort === "device") {
+    return result.sort(compareDevice);
+  }
 
   if (sort === "jp") {
     return result.sort(
@@ -404,6 +447,7 @@ export function sortProducts(products, sort = "recommended") {
 
   return result.sort(
     (a, b) =>
+      (a.type === "device" && b.type === "device" ? compareDevice(a, b) : 0) ||
       b.jpScore + b.cnScore - (a.jpScore + a.cnScore) ||
       a.originalIndex - b.originalIndex,
   );

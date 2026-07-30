@@ -6,10 +6,10 @@
 
 ## 核心能力
 
-- 91 款传统香烟、加热烟弹、设备与电子烟/烟弹的日中双语目录
+- 125 款传统香烟、加热烟弹、主流加热设备与电子烟/烟弹的日中双语目录
 - 中文、日文、品牌、价格与口味搜索
 - 图片优先的双列移动端陈列，包装保持完整比例、不裁切
-- 类别、口味筛选，价格与双人群热度排序
+- 类别、口味筛选，价格、双人群热度与设备品牌/型号排序
 - 日本人气、中国游客人气两个品牌级编辑指数榜单，并提供独立的纵向排行信息流
 - 每款产品的包装参考图、风格、强度、兼容性和渠道可得性说明
 - 详情页分开呈现单包与“一カートン”；当前已核验 4 款 TEREA 真整条外箱，并提供 1 款明确标注年份的七星历史外箱参考
@@ -57,26 +57,24 @@
 
 本站部署在静态 GitHub Pages 上，浏览器下载得到所有前端代码，因此不能直接保存 MiniMax 密钥。仓库提供了一个 Cloudflare Worker 兼容的安全代理模板：
 
-- `worker.js`：校验来源、请求模式、查询长度和图片大小；AI 匹配只使用服务端随版本发布的 91 款目录，并过滤购买权限受限条目；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
-- `wrangler.toml.example`：只包含公开配置示例，默认仅允许 `https://niuzipai-gif.github.io`，并要求 Cloudflare Rate Limiting 绑定。示例阈值为每个来源每分钟 600 次，正常用户不会遇到次数限制，只拦截自动化滥用。
-- `config.js`：公开页面只填写部署后的代理 URL，不放密钥。
+- `worker.js`：校验来源、请求模式、查询长度和图片大小；AI 匹配只使用服务端随版本发布的 125 款目录，并过滤购买权限受限条目；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
+- `wrangler.toml`：公开 Worker 配置，默认仅允许 `https://niuzipai-gif.github.io`。Cloudflare Rate Limiting 绑定是生产保护项；没有绑定时 Worker 仍可调用 MiniMax，便于先把 AI 跑通。
+- `.github/workflows/deploy-ai-worker.yml`：仓库配置 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`、`MINIMAX_API_KEY` 三个 GitHub Actions secrets 后，可手动或随 `main` 分支变更自动部署代理。
+- `config.js`：公开页面只保存部署后的代理 URL，不放密钥；也支持用 `?aiProxyUrl=https://你的-worker地址/` 临时写入本机浏览器，便于上线前测试。
 
 部署时必须先撤销任何曾在聊天、截图或日志中出现的旧 Key，然后创建新 Key：
 
 ```powershell
-Copy-Item .\wrangler.toml.example .\wrangler.toml
 npx wrangler secret put MINIMAX_API_KEY
 npx wrangler deploy
 ```
 
-代理缺少 `AI_RATE_LIMITER` 绑定时会安全地拒绝请求，不会直接消耗 MiniMax 额度。Cloudflare 会在入口处提供真实来源地址，Worker 以此执行匿名访问限流。
+建议生产环境补 Cloudflare Rate Limiting 绑定；没配时代理也会运行，但不会做匿名访问频率保护。
 
 把部署结果的 HTTPS 地址写入 `config.js`：
 
-```js
-window.TABAKO_CONFIG = Object.freeze({
-  aiProxyUrl: "https://你的-worker地址/",
-});
+```text
+https://niuzipai-gif.github.io/tabako/?aiProxyUrl=https%3A%2F%2F你的-worker地址%2F
 ```
 
 代理按官方当前接口接线：
@@ -108,7 +106,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\download-search-images.ps1
 
 ## 目录结构
 
-- `data/products.js`：原始 91 款产品数据
+- `data/products.js`：原始 125 款产品数据
 - `catalog.js`：数据规范化、价格规则、筛选、排行与地图链接
 - `product-media.js`：单包/一カートン媒体状态、包装变体与重复图核验规则
 - `ranking.html` / `ranking.js`：日本人气与中国游客人气纵向排行页

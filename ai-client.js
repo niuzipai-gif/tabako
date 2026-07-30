@@ -1,7 +1,7 @@
 export const AI_LIMITS = Object.freeze({
   query: 240,
   imageBytes: 4 * 1024 * 1024,
-  catalogItems: 120,
+  catalogItems: 160,
   answer: 6000,
   sources: 8,
 });

@@ -79,14 +79,15 @@ test("proxy requires a server-side key and an allow-listed mode", async () => {
   assert.equal(unknownMode.status, 400);
 });
 
-test("proxy fails closed without rate limiting and returns 429 when exhausted", async () => {
+test("proxy treats rate limiting as optional and returns 429 only when exhausted", async () => {
+  let called = false;
   const worker = createWorker({ fetchImpl: async () => new Response("{}") });
 
   const missingLimiter = await worker.fetch(
     post({ mode: "recommend", query: "七星" }),
     { MINIMAX_API_KEY: "test-secret", ALLOWED_ORIGIN },
   );
-  assert.equal(missingLimiter.status, 503);
+  assert.equal(missingLimiter.status, 502);
 
   const limited = await worker.fetch(
     post({ mode: "recommend", query: "七星" }),
@@ -98,6 +99,24 @@ test("proxy fails closed without rate limiting and returns 429 when exhausted", 
     },
   );
   assert.equal(limited.status, 429);
+
+  const callable = createWorker({
+    fetchImpl: async () => {
+      called = true;
+      return new Response(
+        JSON.stringify({
+          choices: [{ message: { content: JSON.stringify({ answer: "ok", matches: [] }) } }],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      );
+    },
+  });
+  const withoutLimiter = await callable.fetch(
+    post({ mode: "recommend", query: "七星" }),
+    { MINIMAX_API_KEY: "test-secret", ALLOWED_ORIGIN },
+  );
+  assert.equal(withoutLimiter.status, 200);
+  assert.equal(called, true);
 });
 
 test("proxy rejects the Japanese purchase mode instead of trusting arbitrary client text", async () => {
