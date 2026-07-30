@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 34);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 34);
+  assert.equal(manifest.items.length, 35);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 35);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -192,15 +192,16 @@ test("Mevius Original uses exact 20x10 carton artwork instead of the JDF 2-carto
   );
 });
 
-test("Ploom X Cold and Sharp Cold do not promote single-pack photos as exact cartons", () => {
+test("Ploom X Cold uses exact multi-box evidence while Sharp Cold stays clearly non-exact", () => {
+  const cold = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス コールド メンソール"),
+  );
+  assert.equal(cold.cartonStatus, "verified");
+  assert.match(cold.cartonImage, /ploom-mevius-cold-menthol-mercari-28-empty-boxes\.jpg/);
+  assert.match(cold.cartonSource, /jp\.mercari\.com\/item\/m76398758136/);
+  assert.match(cold.cartonNote, /空箱 28個|COLD MENTHOL|10 包|200 支/);
+
   const expected = new Map([
-    [
-      "Ploom X メビウス コールド メンソール",
-      {
-        status: "multi-carton-reference",
-        note: /9 個|不足 10 盒|多盒参考/,
-      },
-    ],
     [
       "Ploom X メビウス シャープ コールド",
       {
