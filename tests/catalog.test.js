@@ -113,8 +113,8 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 125-product source set", () => {
-  assert.equal(rawProducts.length, 125);
+test("catalog keeps the expanded 135-product source set", () => {
+  assert.equal(rawProducts.length, 135);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
@@ -129,14 +129,19 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
   for (const family of [
     /IQOS ILUMA i PRIME/i,
     /IQOS ILUMA i ONE/i,
+    /Ploom AURA/i,
     /Ploom X ADVANCED/i,
+    /glo HYPER pro\+/i,
     /glo HYPER pro/i,
     /glo HYPER air/i,
+    /glo Hilo/i,
     /lil HYBRID 3\.0/i,
     /RELX Infinity/i,
+    /VAPORESSO XROS 5/i,
     /VAPORESSO XROS 4/i,
     /Uwell Caliburn G4/i,
     /Voopoo Argus G3/i,
+    /OXVA XLIM SQ Pro 2/i,
   ]) {
     assert.match(deviceNames, family);
   }

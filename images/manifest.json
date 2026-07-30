@@ -605,7 +605,7 @@
         "cn": "IQOS ILUMA i PRIME REMIX 限定款",
         "key": "8c85c71e",
         "query": "IQOS イルマ i プライム リミックスモデル IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.Qz0uvo8CE-t_LMcOe0AO-gHaGP?r=0&pid=Api",
         "sourcePage": "https://jp.iqos.com/products/iluma/iluma-i-prime-remix-limited-edition",
         "title": "IQOS イルマ i プライムリミックス モデル | IQOS（アイコス）公式サイト"
@@ -616,7 +616,7 @@
         "cn": "IQOS ILUMA i REMIX 限定款",
         "key": "18b617f7",
         "query": "IQOS イルマ i リミックスモデル IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.x8lOZUUaf9-xZmaYDdoxrgHaGP?r=0&pid=Api",
         "sourcePage": "https://jp.iqos.com/shop/catalogue/iluma/devices",
         "title": "アイコス イルマ i（IQOS ILUMA i）のデバイス本体の購入 | IQOS（アイコス）公式サイト"
@@ -627,10 +627,32 @@
         "cn": "IQOS ILUMA i ONE REMIX 限定款",
         "key": "a3db1b7b",
         "query": "IQOS イルマ i ワン リミックスモデル IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.1qMSCWFxjZTrpDeXPSD7KgAAAA?r=0&pid=Api",
         "sourcePage": "https://store.shopping.yahoo.co.jp/iqos-official/7891-7897.html",
         "title": "アイコス（IQOS） IQOS公式 数量限定 イルマ i ワン (リミックス) 自動製品登録 加熱式たばこ デバイス 本体 : IQOS ..."
+    },
+    {
+        "type": "device",
+        "jp": "IQOS イルマ i プライム WE モデル",
+        "cn": "IQOS ILUMA i PRIME WE 限定款",
+        "key": "19c36f61",
+        "query": "IQOS イルマ i プライム WE モデル IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.4Kj10na7ZgWEH8OTUFSWAAHaHa?r=0&pid=Api",
+        "sourcePage": "https://store.shopping.yahoo.co.jp/nekogoro2021/iqos-iluma-prime-we-1.html",
+        "title": "アイコス（IQOS） 【新品未開封】IQOS イルマ プライム WE 2023 限定モデル登録不可 IQOS ILUMA PRIME WE電子 ..."
+    },
+    {
+        "type": "device",
+        "jp": "IQOS イルマ i ワン WE モデル",
+        "cn": "IQOS ILUMA i ONE WE 限定款",
+        "key": "26d2fcf6",
+        "query": "IQOS イルマ i ワン WE モデル IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.M69a-8yCQXoO-Udt3urlhwHaG2?r=0&pid=Api",
+        "sourcePage": "https://item.rakuten.co.jp/nekogoroshop/iqos-iluma-one-we-1/",
+        "title": "【楽天市場】【製品登録不可】アイコス イルマ ワン we 2023 モデル iqos iluma one we イルマ 本体キット terea ..."
     },
     {
         "type": "device",
@@ -638,7 +660,7 @@
         "cn": "IQOS ILUMA PRIME",
         "key": "7d780e25",
         "query": "IQOS イルマ プライム IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.vJWMUzotPqDK-8A0kWFhqQHaHa?r=0&pid=Api",
         "sourcePage": "https://store.shopping.yahoo.co.jp/iqos-official/7097-7050.html",
         "title": "アイコス（IQOS） IQOS公式 イルマ i プライム (ミッドナイトブラック) はじめて割対象商品 自動製品登録 加熱式たばこ デバイス ..."
@@ -649,7 +671,7 @@
         "cn": "IQOS ILUMA",
         "key": "0f76e0da",
         "query": "IQOS イルマ IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.cma45K5aMuhnDRCGAlx9wAHaF7?r=0&pid=Api",
         "sourcePage": "https://www.intandemly.com/2174123031",
         "title": "アイコス IQOS ILUMA ONE イルマ ワン"
@@ -660,7 +682,7 @@
         "cn": "IQOS ILUMA ONE",
         "key": "2f88bd44",
         "query": "IQOS イルマ ワン IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIF.LPQlQGJPp0DOiWAmLMcjKw?r=0&pid=Api",
         "sourcePage": "https://auctions.yahoo.co.jp/jp/auction/c1238419858",
         "title": "Yahoo!オークション - アイコス イルマ i ワン ケース iqos iluma one ..."
@@ -671,10 +693,21 @@
         "cn": "IQOS 3 DUO",
         "key": "a568b03d",
         "query": "IQOS 3 DUO IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.k6OVeLrW_VXoSdHavFuIGwHaHa?r=0&pid=Api",
         "sourcePage": "https://sa.iqos.com/en/shop/devices/iqos-3-duo/7622100766124.html",
         "title": "Shop IQOS 3 DUO Systems | IQOS KSA"
+    },
+    {
+        "type": "device",
+        "jp": "Ploom AURA",
+        "cn": "Ploom AURA",
+        "key": "b6dc9bbf",
+        "query": "Ploom AURA IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.KSk-9SNxFgr3yXlYc7NOAwHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.ploom.it/it/shop/prodotti/dispositivi/ploom-aura-upgrade-gratuito-navy-blue",
+        "title": "Acquista Ploom AURA Navy Blu: Dispositivo per Tabacco Riscaldato più ..."
     },
     {
         "type": "device",
@@ -682,7 +715,7 @@
         "cn": "Ploom X ADVANCED",
         "key": "0a3f4365",
         "query": "Ploom X ADVANCED IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.cFEPkyS_vcsBgboKxqXMwAHaHa?r=0&pid=Api",
         "sourcePage": "https://www.mycigara.com/blogs/comparisons/iqos-3-duo-vs-ploom-x",
         "title": "IQOS ILUMA i vs Ploom X UK 2025: TEREA vs EVO, Real-World Picks"
@@ -693,7 +726,7 @@
         "cn": "Ploom X",
         "key": "3ebd085f",
         "query": "Ploom X IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.IIEGNPY8bNGHII1HvzJhkAHaE8?r=0&pid=Api",
         "sourcePage": "https://www.raucherpause.de/blog/ploom-aura-vs.-iqos-iluma-i-die-zwei-innovativsten-tabakerhitzer-im-vergleich",
         "title": "Tabakerhitzer im Vergleich: Ploom Aura vs. IQOS Iluma i"
@@ -704,7 +737,7 @@
         "cn": "Ploom S 2.0",
         "key": "9ff817e3",
         "query": "Ploom S 2.0 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.11Pfw_-T5rmp_x4PWkQYpAHaHa?r=0&pid=Api",
         "sourcePage": "https://www.manualslib.com/manual/2142655/Ploom-S-2-0.html",
         "title": "PLOOM S 2.0 USER MANUAL Pdf Download | ManualsLib"
@@ -715,10 +748,21 @@
         "cn": "Ploom TECH+",
         "key": "3fa727bb",
         "query": "Ploom TECH+ IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.8jhjWyPrbm_VybIUO657KgHaHa?r=0&pid=Api",
         "sourcePage": "https://auctions.yahoo.co.jp/jp/auction/f1048364675",
         "title": "Yahoo!オークション - C04383/IQOS アイコス/Ploom TECH+ プルームテ..."
+    },
+    {
+        "type": "device",
+        "jp": "glo HYPER pro+",
+        "cn": "glo HYPER pro+",
+        "key": "93afaffb",
+        "query": "glo HYPER pro+ IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.-z2Y2tjIe_GooDvDWVA3dgHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.tabak-brucker.de/glo-hyper-pro-device-kit-tabakerhitzer-lapis-blue",
+        "title": "Tabakerhitzer glo Hyper pro Lapis Blue jetzt online kaufen"
     },
     {
         "type": "device",
@@ -726,7 +770,7 @@
         "cn": "glo HYPER pro",
         "key": "827f84a7",
         "query": "glo HYPER pro IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.q1AX3ri6RRJ5n8F4ODhhJgHaHa?r=0&pid=Api",
         "sourcePage": "https://manuals.plus/asin/B0CPJGF87H",
         "title": "glo HYPER PRO Device User Manual"
@@ -737,10 +781,21 @@
         "cn": "glo HYPER air",
         "key": "c0a4c347",
         "query": "glo HYPER air IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.Q34WUtMAZgHR03fOD48M9gHaDZ?r=0&pid=Api",
         "sourcePage": "https://onlinetabakshop.de/blog/glo-hyper-air-das-ultimative-erlebnis-fuer-tabakliebhaber-n30",
         "title": "glo Hyper Air - Das Gegenstück zur IQOS ILUMA"
+    },
+    {
+        "type": "device",
+        "jp": "glo Hilo",
+        "cn": "glo Hilo",
+        "key": "b6ec083b",
+        "query": "glo Hilo IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.VyA7eB2XDdI8reghX4VADgAAAA?r=0&pid=Api",
+        "sourcePage": "https://i-setu.com/glo/glo-hilo-iqos/",
+        "title": "【グローヒーロとアイコスを比較】吸いごたえ、使い勝手など比べてみた"
     },
     {
         "type": "device",
@@ -748,7 +803,7 @@
         "cn": "glo HYPER X2",
         "key": "004310a3",
         "query": "glo HYPER X2 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.C_XQAbD-rKEWVUVJOrJ1mwHaHa?r=0&pid=Api",
         "sourcePage": "https://jp.mercari.com/item/m83485757268",
         "title": "ジャンク品 gloグロー HYPER X2本体 加熱式タバコ IQOS アイコス - メルカリ"
@@ -759,7 +814,7 @@
         "cn": "glo HYPER+",
         "key": "ae9f12b1",
         "query": "glo HYPER+ IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.Q0JQS7aLEcDWoFM-W7P1pQHaHa?r=0&pid=Api",
         "sourcePage": "https://picclick.de/glo-Hyper-Device-Kit-bis-zu-120-Neo-203032843549.html",
         "title": "GLO HYPER+ DEVICE Kit bis zu 120 Neo Sticks NUR nach Registrierung ..."
@@ -770,7 +825,7 @@
         "cn": "lil HYBRID 3.0",
         "key": "6fc0d0e3",
         "query": "lil HYBRID 3.0 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.nDGaE70RNq38MR7oRMGuNQHaHa?r=0&pid=Api",
         "sourcePage": "https://news.kakaku.com/prdnews/cd=other/ctcd=6598/id=148226/",
         "title": "価格.com - 専用タバコとリキッドカートリッジを使用する「lil HYBRID 3.0」本日4月15日発売"
@@ -781,7 +836,7 @@
         "cn": "lil HYBRID 2.0",
         "key": "48f1e2c1",
         "query": "lil HYBRID 2.0 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP._cP3eGtIrCPEW9M9_S-ekAHaEK?r=0&pid=Api",
         "sourcePage": "https://root-nation.com/en/other-en/e-cigarettes-en/en-lil-hybrid-2-0-review/",
         "title": "lil Hybrid 2.0 review. Two in one! - Root-Nation.com"
@@ -792,7 +847,7 @@
         "cn": "lil HYBRID 初代",
         "key": "ff627437",
         "query": "lil HYBRID IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.BPB2P9j4YuUNP0R1AD13JAHaEK?r=0&pid=Api",
         "sourcePage": "https://jp.iqos.com/news/discount-lil-2023",
         "title": "【1,000円OFF】リキッドを使う加熱式たばこデバイス「リル ハイブリッド™」 | IQOS（アイコス）公式サイト"
@@ -803,7 +858,7 @@
         "cn": "RELX Infinity 主机",
         "key": "862d4e1a",
         "query": "RELX Infinity Device IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.OmmZQFD1Tq98XhgSvPJITwHaHt?r=0&pid=Api",
         "sourcePage": "https://relxnow.co.uk/products/infinity-device?variant=41136641081441",
         "title": "RELX Infinity 2 Plus Device | RELX UK Official"
@@ -814,10 +869,32 @@
         "cn": "MOTI PLAY 主机",
         "key": "d9e9f57e",
         "query": "MOTI PLAY Device IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.3ET1ArPC1phtsbuD8UNDpwHaDt?r=0&pid=Api",
         "sourcePage": "https://motiplanet.com/products/moti-play-bar",
         "title": "MOTI PLAY BAR"
+    },
+    {
+        "type": "device",
+        "jp": "VAPORESSO XROS 5",
+        "cn": "VAPORESSO XROS 5 主机",
+        "key": "69f6ad9a",
+        "query": "VAPORESSO XROS 5 IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.KOq5gSIXtqp5twCtdUtBCgHaHa?r=0&pid=Api",
+        "sourcePage": "https://nosmoke.ba/proizvod/vaporesso-xros-5-pod-kit/",
+        "title": "Vaporesso XROS 5 POD Kit | Nosmoke - E-Cigarete"
+    },
+    {
+        "type": "device",
+        "jp": "VAPORESSO XROS 5 Mini",
+        "cn": "VAPORESSO XROS 5 Mini 主机",
+        "key": "47953d68",
+        "query": "VAPORESSO XROS 5 Mini IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.u4nog9cCftI6BXY_DYR8FwHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.thevapour-hut.com/product-tag/vaporesso-xros-5-mini/",
+        "title": "Vaporesso XROS 5 Mini @ The Vapour Hut"
     },
     {
         "type": "device",
@@ -825,7 +902,7 @@
         "cn": "VAPORESSO XROS 4 主机",
         "key": "53316618",
         "query": "VAPORESSO XROS 4 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.Ngi0QQksNCPJH-pT5jtQnQHaEp?r=0&pid=Api",
         "sourcePage": "https://www.vaporesso.com/vape-kits/xros4",
         "title": "XROS 4 Flavor Blast That Lasts | VAPORESSO"
@@ -836,7 +913,7 @@
         "cn": "VAPORESSO XROS 4 Mini 主机",
         "key": "385b1ac0",
         "query": "VAPORESSO XROS 4 Mini IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.-Nts8mMjPLRa17xUc0w4mwHaHa?r=0&pid=Api",
         "sourcePage": "https://supersmoke.ru/product/nabor-vaporesso-xros-mini-4-pod/",
         "title": "Купить Набор Vaporesso XROS Mini 4 в Интернет-магазине"
@@ -847,7 +924,7 @@
         "cn": "VAPORESSO XROS Pro 主机",
         "key": "2034e1fe",
         "query": "VAPORESSO XROS Pro IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.xW1o5giYZ10O8F3uMZxcbwHaHa?r=0&pid=Api",
         "sourcePage": "https://demandvape.com/vaporesso-xros-pro-kit",
         "title": "Vaporesso XROS Pro Kit, xros series pods, xros pods, xros family"
@@ -858,10 +935,21 @@
         "cn": "Uwell Caliburn G4 主机",
         "key": "9879eb20",
         "query": "Uwell Caliburn G4 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.x3dh-zFmm6ax8fFRxz0n5AHaHa?r=0&pid=Api",
         "sourcePage": "https://www.ezigaretten-discount.de/uwell-caliburn-g4-pod-kit/",
         "title": "UWELL - Caliburn G4 Pod Kit - Farbe: gunmetal grey"
+    },
+    {
+        "type": "device",
+        "jp": "Uwell Caliburn G4 Mini",
+        "cn": "Uwell Caliburn G4 Mini 主机",
+        "key": "65781916",
+        "query": "Uwell Caliburn G4 Mini IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.sBpMPiTdN4zVunlj3LKk-QHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.gfc-provap.com/fr/kits-complet/31422-pack-pod-caliburn-g4-mini-uwell.html",
+        "title": "Pod Caliburn G4 Mini Uwell"
     },
     {
         "type": "device",
@@ -869,7 +957,7 @@
         "cn": "Uwell Caliburn G3 主机",
         "key": "6f439ee4",
         "query": "Uwell Caliburn G3 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.bVcHepcUiL3054guXCX9BAHaIB?r=0&pid=Api",
         "sourcePage": "https://dubaivapesmoke.com/products/caliburn-g3-device-with-pod",
         "title": "Caliburn G3 device with pod - Dubai Vape Smoke"
@@ -880,7 +968,7 @@
         "cn": "Uwell Caliburn AK3 主机",
         "key": "871ffcd4",
         "query": "Uwell Caliburn AK3 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.TJ23_i4n8NedGpbmu9SEMwHaHa?r=0&pid=Api",
         "sourcePage": "https://demandvape.com/uwell-caliburn-ak3-pod-kit",
         "title": "Uwell Caliburn AK3 Pod Kit, caliburn a3 refillable pods"
@@ -891,7 +979,7 @@
         "cn": "Voopoo Argus G3 主机",
         "key": "22096cfc",
         "query": "Voopoo Argus G3 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.SJP83YYs-dwGCXkjMmy8TAHaHa?r=0&pid=Api",
         "sourcePage": "https://www.ecmvape.com/kits-devices/",
         "title": "Vape Kits & Devices | Premium Vape Kits & Devices Online"
@@ -902,10 +990,21 @@
         "cn": "Voopoo Argus G2 主机",
         "key": "6a5364c0",
         "query": "Voopoo Argus G2 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.cKwR93UqxJ1ciqykUQ4wpgHaML?r=0&pid=Api",
         "sourcePage": "https://shop.voopoo.com/products/argus-g2",
         "title": "Argus G2 Pod Kit 30W - shop.voopoo"
+    },
+    {
+        "type": "device",
+        "jp": "Voopoo Argus P2",
+        "cn": "Voopoo Argus P2 主机",
+        "key": "2978085c",
+        "query": "Voopoo Argus P2 IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.SkV8ENvb8ELSHvQovi-1wwHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.neovapo.com/kits-cigarettes-electroniques/kit-argus-p2-voopoo.html",
+        "title": "Kit Argus P2 Voopoo dès 31,90"
     },
     {
         "type": "device",
@@ -913,10 +1012,21 @@
         "cn": "OXVA XLIM Pro 2 主机",
         "key": "73c84a60",
         "query": "OXVA XLIM Pro 2 IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.Lxo3u2BQnMHKLP2SwVsuwwHaHa?r=0&pid=Api",
         "sourcePage": "https://demandvape.com/oxva-xlim-pro-2-kit",
         "title": "OXVA XLIM Pro 2 Kit, xlim top fill version cartridges, xlim v2 ..."
+    },
+    {
+        "type": "device",
+        "jp": "OXVA XLIM SQ Pro 2",
+        "cn": "OXVA XLIM SQ Pro 2 主机",
+        "key": "1c961ce6",
+        "query": "OXVA XLIM SQ Pro 2 IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.-NXucvQGhTGwP2x8GtX4QQHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.oxva.id/products/oxva-xlim-sq-pro-2-kit",
+        "title": "OXVA Xlim SQ Pro 2 Kit - OXVA.ID"
     },
     {
         "type": "device",
@@ -924,7 +1034,7 @@
         "cn": "Geekvape Wenax Q Pro 主机",
         "key": "cdb93c4a",
         "query": "Geekvape Wenax Q Pro IQOS device",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.xEMrlYh8YWLKI4yUYAhpSgHaHa?r=0&pid=Api",
         "sourcePage": "https://demandvape.com/geekvape-wenax-q-pro-kit",
         "title": "GeekVape Wenax Q Pro Kit, q series cartridges, q series kits"
