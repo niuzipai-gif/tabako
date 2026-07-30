@@ -726,6 +726,46 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "シガローネ・スーパースリム・ホワイト|卡比龙 Super Slims White",
+    {
+      image: "./images/cartons/cigaronne-super-slims-white-rozetka-open-carton.jpg",
+      imageStatus: "verified",
+      imageSource:
+        "https://rozetka.com.ua/cigaronne-4850008001020/p452670179/",
+      imageNote:
+        "Rozetka 对应商品标题为“Блок сигарет Cigaronne Super Slims White x 10 пачек (4850008001020)”，主图为白色 Super Slims 一条开盒实拍，可见多包同款排列；用于新增白色具体 SKU，避免把白色一条图误套到泛 Classic Super Slims 系列。",
+      packageFormat: "细支硬盒",
+      packageFormatJp: "スーパースリム",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/cigaronne-super-slims-white-rozetka-open-carton.jpg",
+      cartonSource:
+        "https://rozetka.com.ua/cigaronne-4850008001020/p452670179/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          title: "闭盒侧面 / EAN",
+          image:
+            "./images/cartons/cigaronne-super-slims-white-rozetka-closed-carton.jpg",
+          source:
+            "https://rozetka.com.ua/cigaronne-4850008001020/p452670179/",
+          note: "同一 Rozetka 页面闭盒图，条码侧可见 EAN 4850008001020 与 200/20s 标识，辅助确认是白色 Super Slims 一条包装。",
+        },
+        {
+          title: "盒体 200 支说明",
+          image:
+            "./images/cartons/cigaronne-super-slims-white-rozetka-side-carton.jpg",
+          source:
+            "https://rozetka.com.ua/cigaronne-4850008001020/p452670179/",
+          note: "同一页面整条侧面图，白色外盒可见 Cigaronne 与乌克兰警示；页面规格另写 Пачек в блоке 10、Сигарет в пачке 20、Упаковка Блок。",
+        },
+      ],
+      cartonNote:
+        "Rozetka 页面标题为“Блок сигарет Cigaronne Super Slims White x 10 пачек (4850008001020)”，价格行写 2 394₴ за 10 шт，规格写明 Пачек в блоке 10、Сигарет в пачке 20、Упаковка Блок、Цвет упаковки Белый、EAN 4850008001020。主图展示白色 Cigaronne Super Slims 一条开盒实拍，闭盒图和侧面图进一步确认 200/20s 与条码，因此按 Super Slims White 具体 SKU 的 1 carton / 10 packs / 200 cigarettes 核验。",
+    },
+  ],
+  [
     "シガローネ・クラシック・キングサイズ|卡比龙 Classic King Size",
     {
       image: "./images/verified/cigaronne-classic-king-size-official.png",

@@ -473,6 +473,7 @@ function brandSeriesOrder(item) {
     if (/クラシック.*スーパー|Classic Super Slims/i.test(text)) return 100;
     if (/スーパースリム.*ブラック|Super Slims Black/i.test(text)) return 110;
     if (/スーパースリム.*メンソール|Super Slims Menthol/i.test(text)) return 120;
+    if (/スーパースリム.*ホワイト|Super Slims White/i.test(text)) return 125;
     if (/ウルトラスリム.*ブラック|Ultra Slims Black/i.test(text)) return 130;
     if (/タトゥー.*チェリー|Tattoo Cherry/i.test(text)) return 140;
     if (/タトゥー.*チョコレート|Tattoo Chocolate/i.test(text)) return 150;
@@ -490,7 +491,10 @@ export function enrichProduct(item, index = 0) {
   const key = `${item.jp}|${item.cn}`;
   const hash = fnv1a(key);
   const imageKey = hash.toString(16).padStart(8, "0");
-  const originalImage = `./images/${imageKey}.jpg`;
+  const originalImage =
+    typeof item.img === "string" && item.img.startsWith("./")
+      ? item.img
+      : `./images/${imageKey}.jpg`;
   const profile = resolveProfile(item);
   const flavor = resolveFlavor(item);
   const strength = resolveStrength(item, flavor);

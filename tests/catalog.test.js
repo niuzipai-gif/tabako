@@ -113,8 +113,8 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 159-product source set", () => {
-  assert.equal(rawProducts.length, 159);
+test("catalog keeps the expanded 160-product source set", () => {
+  assert.equal(rawProducts.length, 160);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
@@ -147,7 +147,7 @@ test("Cigaronne has a dedicated brand category with the full official series", (
 
   assert.match(html, /data-category="brand:cigaronne"/);
   assert.match(html, />卡比龙全系列</);
-  assert.equal(cigaronne.length, 21);
+  assert.equal(cigaronne.length, 22);
   assert.deepEqual(
     cigaronne.map((item) => item.jp).sort((a, b) => a.localeCompare(b, "ja")),
     [
@@ -162,6 +162,7 @@ test("Cigaronne has a dedicated brand category with the full official series", (
       "シガローネ・センター・スーパースリム",
       "シガローネ・スーパースリム・ブラック",
       "シガローネ・スーパースリム・メンソール",
+      "シガローネ・スーパースリム・ホワイト",
       "シガローネ・タトゥー・チェリー",
       "シガローネ・タトゥー・チョコレート",
       "シガローネ・タトゥー・バニラ",
@@ -202,6 +203,7 @@ test("Cigaronne brand page follows a stable series order", () => {
       "シガローネ・クラシック・スーパースリム",
       "シガローネ・スーパースリム・ブラック",
       "シガローネ・スーパースリム・メンソール",
+      "シガローネ・スーパースリム・ホワイト",
       "シガローネ・ウルトラスリム・ブラック",
       "シガローネ・タトゥー・チェリー",
       "シガローネ・タトゥー・チョコレート",

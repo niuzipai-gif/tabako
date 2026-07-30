@@ -619,8 +619,8 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .map((product) => enrichProduct(product))
     .filter((product) => product.brand === "Cigaronne");
 
-  assert.equal(items.length, 21);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 7);
+  assert.equal(items.length, 22);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 8);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -650,6 +650,19 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/, item.jp);
       assert.match(item.cartonNote, /Super Slims Black x 10|Пачок в блоці 10/, item.jp);
+    } else if (item.jp === "シガローネ・スーパースリム・ホワイト") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-super-slims-white-rozetka-open-carton\.jpg/, item.jp);
+      assert.match(
+        item.cartonSource,
+        /rozetka\.com\.ua\/cigaronne-4850008001020\/p452670179/,
+        item.jp,
+      );
+      assert.match(
+        item.cartonNote,
+        /Super Slims White x 10|Пачек в блоке 10|Сигарет в пачке 20|EAN 4850008001020/,
+        item.jp,
+      );
     } else if (item.jp === "シガローネ・マグネット") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-magnet-kix-carton\.jpg/, item.jp);

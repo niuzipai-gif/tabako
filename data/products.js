@@ -38,6 +38,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "エコー", cn: "Echo", jpy: 450, img: "https://picsum.photos/seed/echo/640/420" },
   { type: "cigarette", jp: "シガローネ・ロイヤルスリム・メンソール", cn: "卡比龙 Royal Slims Menthol", jpy: 1200, img: "https://picsum.photos/seed/cigaronne-royal-slims-menthol/640/420" },
   { type: "cigarette", jp: "シガローネ・スーパースリム・メンソール", cn: "卡比龙 Super Slims Menthol", jpy: 780, img: "https://picsum.photos/seed/cigaronne-super-slims-menthol/640/420" },
+  { type: "cigarette", jp: "シガローネ・スーパースリム・ホワイト", cn: "卡比龙 Super Slims White", jpy: 780, img: "./images/cartons/cigaronne-super-slims-white-rozetka-open-carton.jpg" },
   { type: "cigarette", jp: "シガローネ・タトゥー・チェリー", cn: "卡比龙 Tattoo Cherry", jpy: 800, img: "https://picsum.photos/seed/cigaronne-tattoo-cherry/640/420" },
   { type: "cigarette", jp: "シガローネ・タトゥー・チョコレート", cn: "卡比龙 Tattoo Chocolate", jpy: 800, img: "https://picsum.photos/seed/cigaronne-tattoo-chocolate/640/420" },
   { type: "cigarette", jp: "シガローネ・タトゥー・バニラ", cn: "卡比龙 Tattoo Vanilla", jpy: 800, img: "https://picsum.photos/seed/cigaronne-tattoo-vanilla/640/420" },
