@@ -1845,9 +1845,15 @@ const MEDIA_OVERRIDES = new Map([
       imageNote:
         "Sirius Tobacco 对应 MIIX Ice 单包图，图面可读 MIIX ICE 与日文警示；Relazo 另确认 2023 年后绿色新设计。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-ice-amanoya-10unit.png",
+      cartonImage: "",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003194?category_page_id=ct391",
       cartonGallery: [
+        {
+          title: "AMANOYA 10個页面商品图",
+          image: "./images/cartons/lil-miix-ice-amanoya-10unit.png",
+          source: "https://www.e-amanoya.jp/view/item/000000003194?category_page_id=ct391",
+          note: "AMANOYA 页面标题写“ミックス・アイス（10個）”，商品图为 MIIX ICE 单包正面；这是 10個来源页的单包图，不是整条外箱。",
+        },
         {
           title: "Sirius Tobacco 单包参考",
           image: "./images/verified/lil-miix-ice-sirius-pack.jpg",
@@ -1868,9 +1874,15 @@ const MEDIA_OVERRIDES = new Map([
       imageNote:
         "Sirius Tobacco 对应 MIIX Mix 单包图；Oricon 将其列为 MIIX 现行全 4 口味之一，定位为柑橘/果香方向。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-mix-amanoya-10unit.png",
+      cartonImage: "",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003193?category_page_id=ct391",
       cartonGallery: [
+        {
+          title: "AMANOYA 10個页面商品图",
+          image: "./images/cartons/lil-miix-mix-amanoya-10unit.png",
+          source: "https://www.e-amanoya.jp/view/item/000000003193?category_page_id=ct391",
+          note: "AMANOYA 页面标题写“ミックス・ミックス（10個）”，商品图为 MIIX MIX 单包正面；这是 10個来源页的单包图，不是整条外箱。",
+        },
         {
           title: "Sirius Tobacco 单包参考",
           image: "./images/verified/lil-miix-mix-sirius-pack.jpg",
@@ -1891,9 +1903,15 @@ const MEDIA_OVERRIDES = new Map([
       imageNote:
         "Sirius Tobacco 对应 MIIX Ice Plus 单包图；PR TIMES 资料确认该口味由 Philip Morris Japan 发布。",
       cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/lil-miix-ice-plus-amanoya-10unit.png",
+      cartonImage: "",
       cartonSource: "https://www.e-amanoya.jp/view/item/000000003192?category_page_id=ct391",
       cartonGallery: [
+        {
+          title: "AMANOYA 10個页面商品图",
+          image: "./images/cartons/lil-miix-ice-plus-amanoya-10unit.png",
+          source: "https://www.e-amanoya.jp/view/item/000000003192?category_page_id=ct391",
+          note: "AMANOYA 页面标题写“ミックス・アイスプラス（10個）”，商品图为 MIIX ICE PLUS 单包正面；这是 10個来源页的单包图，不是整条外箱。",
+        },
         {
           title: "Sirius Tobacco 单包参考",
           image: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg",
