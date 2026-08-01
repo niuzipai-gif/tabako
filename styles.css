@@ -903,6 +903,40 @@ img {
   font-size: 11px;
 }
 
+.market-status-badge {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 22px;
+  align-items: center;
+  margin-top: 8px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(50, 104, 75, 0.1);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.market-status-badge[hidden] {
+  display: none;
+}
+
+.market-status-badge[data-status="limited"] {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.market-status-badge[data-status="legacy"],
+.market-status-badge[data-status="overseas"] {
+  background: var(--surface-muted);
+  color: var(--ink-soft);
+}
+
+.market-status-badge[data-status="discontinued"] {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
 .product-traits {
   margin-top: 7px;
   overflow: hidden;
@@ -1379,6 +1413,60 @@ img {
 .verified-label[data-status="guide"] {
   background: var(--accent-soft);
   color: var(--accent-strong);
+}
+
+.detail-market-status {
+  display: inline-grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 2px 8px;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 9px 11px;
+  border: 1px solid rgba(50, 104, 75, 0.16);
+  border-radius: 14px;
+  background: rgba(50, 104, 75, 0.08);
+  color: var(--green);
+}
+
+.detail-market-status svg {
+  grid-row: 1 / span 2;
+  width: 16px;
+}
+
+.detail-market-status strong,
+.detail-market-status small {
+  display: block;
+}
+
+.detail-market-status strong {
+  font-size: 12px;
+}
+
+.detail-market-status small {
+  color: var(--ink-soft);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.detail-market-status[data-status="limited"] {
+  border-color: rgba(169, 97, 8, 0.2);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.detail-market-status[data-status="legacy"],
+.detail-market-status[data-status="overseas"] {
+  border-color: var(--line);
+  background: var(--surface-muted);
+  color: var(--ink-soft);
+}
+
+.detail-market-status[data-status="discontinued"] {
+  border-color: rgba(164, 67, 55, 0.2);
+  background: var(--red-soft);
+  color: var(--red);
 }
 
 .detail-block {

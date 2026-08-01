@@ -473,6 +473,23 @@ test("catalog renderer inserts visible brand section headers", () => {
   assert.match(styles, /grid-column:\s*1\s*\/\s*-1/);
 });
 
+test("device catalog and detail views expose readable market status badges", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(html, /class="market-status-badge"/);
+  assert.match(source, /function marketStatusMeta/);
+  assert.match(source, /现行主流/);
+  assert.match(source, /限定在售/);
+  assert.match(source, /旧款识别/);
+  assert.match(source, /已停产/);
+  assert.match(source, /海外参考/);
+  assert.match(source, /detail-market-status/);
+  assert.match(styles, /\.market-status-badge\s*\{/);
+  assert.match(styles, /\.detail-market-status\s*\{/);
+});
+
 test("detail renderer labels non-verified reference images as not exact cartons", () => {
   const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
   const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
@@ -539,6 +556,26 @@ test("ranking preview keeps one leading product per brand", () => {
   );
 
   assert.deepEqual(result.map((item) => item.id), ["m1", "s1"]);
+});
+
+test("dedicated ranking page renders a full SKU feed while home preview stays brand-only", () => {
+  const rankingSource = readFileSync(new URL("../ranking.js", import.meta.url), "utf8");
+  const appSource = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const rankingPoolSize = rawProducts
+    .map((item, index) => enrichProduct(item, index))
+    .filter(
+      (item) =>
+        item.type !== "device" &&
+        item.type !== "pod" &&
+        item.availability !== "discontinued",
+    ).length;
+
+  assert.equal(rankingPoolSize > 20, true);
+  assert.doesNotMatch(rankingSource, /distinctBrandRanking/);
+  assert.match(rankingSource, /sortProducts\(rankingPool\(\), audience\)/);
+  assert.match(rankingSource, /完整 SKU 信息流/);
+  assert.match(rankingSource, /ranked\.length\} 款商品/);
+  assert.match(appSource, /topDistinctBrands\(rankingPool\(\), sort, 4\)/);
 });
 
 test("variants inherit transparent brand-level popularity instead of name-hash scores", () => {

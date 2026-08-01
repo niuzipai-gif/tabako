@@ -33,16 +33,6 @@ function rankingPool() {
   );
 }
 
-function distinctBrandRanking() {
-  const sorted = sortProducts(rankingPool(), audience);
-  const brands = new Set();
-  return sorted.filter((item) => {
-    if (brands.has(item.brand)) return false;
-    brands.add(item.brand);
-    return true;
-  });
-}
-
 function createRankItem(item, index) {
   const score = audience === "jp" ? item.jpScore : item.cnScore;
   const reason = audience === "jp" ? item.jpImpression : item.cnImpression;
@@ -109,12 +99,12 @@ function updateAudienceControls() {
 }
 
 function renderRanking() {
-  const ranked = distinctBrandRanking();
+  const ranked = sortProducts(rankingPool(), audience);
   const fragment = document.createDocumentFragment();
   ranked.forEach((item, index) => fragment.appendChild(createRankItem(item, index)));
   feed.replaceChildren(fragment);
   const audienceName = audience === "jp" ? "日本人气" : "中国游客人气";
-  context.textContent = `${audienceName} · ${ranked.length} 个品牌代表款 · 满分 5 分`;
+  context.textContent = `${audienceName} · 完整 SKU 信息流 · ${ranked.length} 款商品 · 满分 5 分`;
   updateAudienceControls();
   hydrateIcons(feed);
 }

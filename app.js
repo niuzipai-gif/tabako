@@ -214,12 +214,95 @@ function showToast(message) {
   }, 1800);
 }
 
+function describeAiFailure(error, { localPreserved = false } = {}) {
+  const fallback = error?.message || "在线 AI 暂不可用";
+  if (error?.code === "minimax_quota_or_rate_limited") {
+    const preserved = localPreserved
+      ? "本地匹配结果已保留，可先按本地候选继续查看。"
+      : "当前在线增强未完成，可先改用描述偏好做本地匹配。";
+    return {
+      title: "MiniMax 额度/限流",
+      progress:
+        "代理已接通，但 MiniMax 上游返回额度不足或请求过于频繁；本地匹配已保留",
+      detail:
+        `代理已接通，但 MiniMax 上游返回额度不足或请求过于频繁（Token Plan、余额或限流）。${preserved}下一步：检查 MiniMax 控制台 Token Plan/余额，充值后重试，或稍后再试。`,
+      toast: "MiniMax 额度或限流失败，本地结果已保留",
+      service: "代理已接通；MiniMax 上游额度不足或请求过于频繁",
+    };
+  }
+  if (error?.code === "minimax_auth_failed") {
+    return {
+      title: "MiniMax 密钥异常",
+      progress: "代理已接通，但 MiniMax 密钥无效或没有接口权限",
+      detail: "代理已接通，但 MiniMax 密钥无效或没有接口权限。下一步：检查服务端密钥与模型/API 权限。",
+      toast: "MiniMax 密钥或权限异常",
+      service: "代理已接通；MiniMax 密钥或权限异常",
+    };
+  }
+  return {
+    title: "在线未完成",
+    progress: fallback,
+    detail: fallback,
+    toast: fallback,
+    service: fallback,
+  };
+}
+
+function showAiServiceFailure(feedback) {
+  if (!elements.aiServiceNote || !elements.aiServiceStatus || !feedback?.service) return;
+  elements.aiServiceNote.dataset.state = "local";
+  elements.aiServiceStatus.textContent = feedback.service;
+}
+
 function flavorLabel(item) {
   return FLAVOR_LABELS[item.flavor] ?? FLAVOR_LABELS.tobacco;
 }
 
 function availabilityMeta(item) {
   return AVAILABILITY[item.availability] ?? AVAILABILITY.likely;
+}
+
+function marketStatusMeta(item) {
+  if (item.type !== "device") return null;
+
+  const meta = {
+    "current-mainstream": {
+      label: "现行主流",
+      copy: "当前主力设备，优先按这个型号核对烟弹兼容。",
+      tone: "current",
+    },
+    "current-limited": {
+      label: "限定在售",
+      copy: "限定或阶段性在售，遇到现货再核对颜色/套装。",
+      tone: "limited",
+    },
+    legacy: {
+      label: "旧款识别",
+      copy: "适合认旧设备或存量用户，购买前确认是否仍有售。",
+      tone: "legacy",
+    },
+    "discontinued-stock-only": {
+      label: "旧款识别",
+      copy: "通常只作旧款/库存识别，不按现行主推购买。",
+      tone: "legacy",
+    },
+    discontinued: {
+      label: "已停产",
+      copy: "已停产或官方不再主推，只建议作为旅行认款参考。",
+      tone: "discontinued",
+    },
+    "overseas-reference": {
+      label: "海外参考",
+      copy: "开放式电子烟设备，日本购买与尼古丁合规需另行确认。",
+      tone: "overseas",
+    },
+  };
+
+  return meta[item.marketStatus] ?? {
+    label: "海外参考",
+    copy: "设备状态仍需按官方来源核对。",
+    tone: "overseas",
+  };
 }
 
 function filtersActive() {
@@ -348,6 +431,7 @@ function renderCatalog() {
     const favoriteButton = card.querySelector(".favorite-toggle");
     const image = card.querySelector(".product-image");
     const availability = availabilityMeta(item);
+    const marketStatus = marketStatusMeta(item);
 
     card.dataset.productId = item.id;
     card.dataset.category = item.type;
@@ -368,6 +452,18 @@ function renderCatalog() {
     card.querySelector(".cn-name").textContent = item.cn;
     card.querySelector(".jpy-price").textContent = yen(item.jpy);
     card.querySelector(".cny-price").textContent = `约 ${yuan(item.jpy, state.jpyToCny)}`;
+    const marketBadge = card.querySelector(".market-status-badge");
+    if (marketStatus) {
+      marketBadge.hidden = false;
+      marketBadge.dataset.status = marketStatus.tone;
+      marketBadge.textContent = marketStatus.label;
+      marketBadge.setAttribute("aria-label", `设备状态：${marketStatus.label}`);
+    } else {
+      marketBadge.hidden = true;
+      marketBadge.textContent = "";
+      marketBadge.removeAttribute("data-status");
+      marketBadge.removeAttribute("aria-label");
+    }
     card.querySelector(".product-traits").textContent =
       `${flavorLabel(item)} · ${STRENGTH_LABELS[item.strength]}`;
     card.querySelector(".jp-score").textContent = `${item.jpScore.toFixed(1)} / 5`;
@@ -476,6 +572,16 @@ function renderProductDetail(item) {
   const availability = availabilityMeta(item);
   const officialLabel = item.priceStatus === "official" ? "官方参考价" : "指导价";
   const sourceLabel = item.purchaseAllowed ? "查看厂商/品牌来源" : "查看日本官方法规说明";
+  const marketStatus = marketStatusMeta(item);
+  const detailMarketStatus = marketStatus
+    ? `
+      <span class="detail-market-status" data-status="${escapeHtml(marketStatus.tone)}">
+        <i data-lucide="radio-tower" aria-hidden="true"></i>
+        <strong>${escapeHtml(marketStatus.label)}</strong>
+        <small>${escapeHtml(marketStatus.copy)}</small>
+      </span>
+    `
+    : "";
   const sourceLink = item.source
     ? `<a href="${escapeHtml(item.source)}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a>`
     : `<button class="footer-link" type="button" data-open-method>查看数据说明</button>`;
@@ -670,6 +776,7 @@ function renderProductDetail(item) {
           <i data-lucide="${item.priceStatus === "official" ? "badge-check" : "badge-info"}" aria-hidden="true"></i>
           ${officialLabel} · ${item.priceChecked}
         </span>
+        ${detailMarketStatus}
         ${variantNote}
       </div>
     </section>
@@ -1217,10 +1324,11 @@ async function runAiRecommendation() {
       state: "complete",
     });
   } catch (error) {
-    const message = error.message || "在线 AI 暂不可用";
+    const feedback = describeAiFailure(error, { localPreserved: true });
+    showAiServiceFailure(feedback);
     setAiProgress({
       value: 70,
-      label: `在线增强失败：${message}；已保留本地结果`,
+      label: `在线增强失败：${feedback.progress}`,
       steps,
       current: Math.max(2, steps.length - 2),
       state: "failed",
@@ -1229,11 +1337,11 @@ async function runAiRecommendation() {
     renderAiResult(
       {
         ...(localResult ?? { matches: [], sources: [] }),
-        answer: `${localResult?.answer || "本地匹配已保留。"} 在线增强未完成：${message}。`,
+        answer: `${localResult?.answer || "本地匹配已保留。"} ${feedback.detail}`,
       },
-      "本地匹配 · 在线未完成",
+      `本地匹配 · ${feedback.title}`,
     );
-    showToast(`${message}，已保留本地结果`);
+    showToast(feedback.toast);
   } finally {
     setButtonBusy(elements.aiRecommendSubmit, false);
   }
@@ -1359,17 +1467,19 @@ async function runAiVision() {
       state: "complete",
     });
   } catch (error) {
+    const feedback = describeAiFailure(error);
+    showAiServiceFailure(feedback);
     setAiProgress({
       value: 70,
-      label: "图片识别未完成",
+      label: `图片识别未完成：${feedback.progress}`,
       steps,
       current: 2,
       state: "failed",
       percentLabel: "失败",
     });
     renderAiResult(
-      { answer: error.message || "图片识别暂不可用，请稍后重试。", matches: [], sources: [] },
-      "识别未完成",
+      { answer: feedback.detail || "图片识别暂不可用，请稍后重试。", matches: [], sources: [] },
+      `识别未完成 · ${feedback.title}`,
     );
   } finally {
     setButtonBusy(elements.aiVisionSubmit, false);
@@ -1433,8 +1543,10 @@ async function openOnlineSearch() {
         : "没有找到可靠来源，建议使用下方直接搜索";
     renderOnlineResults(result);
   } catch (error) {
+    const feedback = describeAiFailure(error);
+    showAiServiceFailure(feedback);
     elements.onlineSearchStatus.textContent =
-      `${error.message || "联网 AI 暂不可用"}。仍可使用下方直接搜索。`;
+      `${feedback.detail || "联网 AI 暂不可用"} 仍可使用下方直接搜索。`;
   }
 }
 
