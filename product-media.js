@@ -1151,7 +1151,7 @@ const MEDIA_OVERRIDES = new Map([
     "Ploom X メビウス リッチ|Ploom X 浓郁经典",
     {
       cartonStatus: "verified",
-      cartonImage: "./images/cartons/ploom-mevius-deep-regular-carton.jpg",
+      cartonImage: "./images/cartons/ploom-mevius-rich-jcigarette-6pack-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
       cartonPackCount: 6,
