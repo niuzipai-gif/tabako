@@ -229,6 +229,27 @@ test("recommendations use MiniMax-M3 chat completions and normalize JSON", async
   assert.equal(JSON.stringify(payload).includes("test-secret"), false);
 });
 
+test("recommendations do not call MiniMax or hallucinate matches when the catalog has no evidence", async () => {
+  let called = false;
+  const worker = createWorker({
+    fetchImpl: async () => {
+      called = true;
+      return new Response("{}");
+    },
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "recommend", query: "Neutrino Invest" }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(called, false);
+  assert.deepEqual(payload.matches, []);
+  assert.match(payload.answer, /本地目录没有足够接近的候选|联网补充/);
+});
+
 test("recommendations promote exact verified SKUs when MiniMax returns a generic alias", async () => {
   const generic = canonicalCatalog.find((item) => item.jp === "Ploom X キャメル スムース");
   const exact = canonicalCatalog.find((item) => item.jp === "キャメル・スムース・プルーム用");

@@ -1,4 +1,4 @@
-import { AI_LIMITS, normalizeAiPayload } from "./ai-client.js";
+import { AI_LIMITS, localRecommend, normalizeAiPayload } from "./ai-client.js";
 import { enrichProducts } from "./catalog.js";
 import { rawProducts } from "./data/products.js";
 
@@ -30,6 +30,23 @@ const CANONICAL_CATALOG = Object.freeze(
         jpy: Number.isFinite(Number(item.jpy)) ? Number(item.jpy) : null,
         availability: cleanText(item.availability, 40),
         purchaseAllowed: true,
+        searchText: cleanText(
+          [
+            item.searchText,
+            item.jp,
+            item.cn,
+            item.brand,
+            item.relatedExactJp?.join(" "),
+            item.cartonSearchQuery,
+            item.cartonNote,
+            item.variantNote,
+          ].join(" "),
+          1200,
+        ),
+        cartonStatus: cleanText(item.cartonStatus, 40),
+        cartonSearchQuery: cleanText(item.cartonSearchQuery, 240),
+        cartonNote: cleanText(item.cartonNote, 500),
+        variantNote: cleanText(item.variantNote, 360),
         relatedExactJp: Array.isArray(item.relatedExactJp)
           ? item.relatedExactJp.map((jp) => cleanText(jp, 160)).filter(Boolean).slice(0, 8)
           : [],
@@ -37,6 +54,26 @@ const CANONICAL_CATALOG = Object.freeze(
     ),
 );
 const ALLOWED_PRODUCT_IDS = new Set(CANONICAL_CATALOG.map((item) => item.id));
+const RECOMMEND_GATE_CATALOG = Object.freeze(
+  CANONICAL_CATALOG.map((item) =>
+    Object.freeze({
+      ...item,
+      searchText: cleanText(
+        [
+          item.jp,
+          item.cn,
+          item.brand,
+          item.flavor,
+          item.strength,
+          item.relatedExactJp?.join(" "),
+          item.cartonSearchQuery,
+          item.variantNote,
+        ].join(" "),
+        900,
+      ),
+    }),
+  ),
+);
 const RESTRICTED_QUERY_MARKERS = Object.freeze([
   "电子烟",
   "電子煙",
@@ -424,6 +461,18 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
         }
 
         const image = mode === "vision" ? validateImage(body?.image) : "";
+        if (mode === "recommend" && localRecommend(query, RECOMMEND_GATE_CATALOG, 1).length === 0) {
+          return jsonResponse(
+            normalizeAiPayload({
+              answer: "本地目录没有足够接近的候选；已准备进入联网补充。联网结果只作为核对线索，不会自动写入目录或宣称库存。",
+              matches: [],
+              sources: [],
+            }),
+            200,
+            requestOrigin,
+            allowedOrigin,
+          );
+        }
         const result =
           mode === "search"
             ? await callSearch(fetchImpl, env.MINIMAX_API_KEY, query)
