@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 36);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 36);
+  assert.equal(manifest.items.length, 35);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 35);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -188,20 +188,36 @@ test("Marlboro Gold uses exact 10-box artwork instead of the ANA single pack or 
   );
 });
 
-test("Marlboro Menthol uses exact 20x10 artwork instead of the ANA 2-carton image", () => {
+test("Marlboro Menthol stays below verified until exact Menthol 8 evidence is split", () => {
   const item = enrichProduct(
     rawProducts.find((product) => product.jp === "マールボロ メンソール"),
   );
 
-  assert.equal(item.cartonStatus, "verified");
-  assert.match(item.cartonImage, /marlboro-menthol8-monolog-20x10\.jpg/);
+  assert.equal(item.cartonStatus, "variant-reference");
+  assert.equal(item.cartonImage, "");
   assert.match(item.cartonSource, /monolog\.r-n-i\.jp\/item\/4902210129006/);
-  assert.match(item.cartonNote, /マールボロ・メンソール・8・ボックス 20本×10|10包|ANA 2CT/);
+  assert.match(item.cartonNote, /exact SKU|精确 SKU|降级为变体参考/);
   assert.ok(
     item.cartonGallery.some((entry) =>
       /marlboro-menthol8-box-ana-2carton\.jpg/.test(entry.image),
     ),
   );
+});
+
+test("Marlboro Double Burst and Camel Craft 6 do not publish weak carton images as verified", () => {
+  const doubleBurst = enrichProduct(
+    rawProducts.find((product) => product.jp === "マールボロ ダブルバースト"),
+  );
+  assert.equal(doubleBurst.cartonStatus, "variant-reference");
+  assert.equal(doubleBurst.cartonImage, "");
+  assert.match(doubleBurst.cartonNote, /Purple 5 .*不能混用|降级为变体参考/);
+
+  const camel = enrichProduct(
+    rawProducts.find((product) => product.jp === "キャメル クラフト 6"),
+  );
+  assert.equal(camel.cartonStatus, "contents-reference");
+  assert.equal(camel.cartonImage, "");
+  assert.match(camel.cartonNote, /主来源已无法稳定访问|降级为数量\/参考线索/);
 });
 
 test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton reference", () => {

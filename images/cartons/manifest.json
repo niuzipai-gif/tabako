@@ -102,15 +102,6 @@
       "sha256": "31906be477735f2f542281db50cf54cc4a9f026baf88f74560210aa96253251d"
     },
     {
-      "productId": "p-0706b155",
-      "jp": "マールボロ メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/marlboro-menthol8-monolog-20x10.jpg",
-      "sourcePage": "https://monolog.r-n-i.jp/item/4902210129006",
-      "sha256": "6a4602a3cc499606f5e8349046c02c845ec3de6cd8a8cfc487035b2909aca32e"
-    },
-    {
       "productId": "p-3b302223",
       "jp": "マールボロ ゴールド",
       "status": "verified",

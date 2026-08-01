@@ -106,7 +106,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "マールボロ メンソール|万宝路 薄荷",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/marlboro-menthol8-monolog-20x10.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210129006",
       cartonPackCount: 10,
@@ -126,13 +126,13 @@ const MEDIA_OVERRIDES = new Map([
         }
       ],
       cartonNote:
-        "monolog 商品名为“マールボロ・メンソール・8・ボックス 20本×10”，主图可见 10 个 Marlboro Menthol 8 日本警示版盒装排列，按 1カートン / 10包 / 200支核验。ANA 2CT 官方图只保留为免税两条装辅助参考。",
+        "monolog 标题回读为“マールボロライトメンソール BOX 20本×10”，本地图可见 10 个绿色 Marlboro 包装，但无法完全闭合到当前目录泛称“マールボロ メンソール”或 Menthol 8 精确 SKU。按严格核验门槛降级为变体参考；若后续拆分/改名为精确 live SKU，再重新核验。",
     },
   ],
   [
     "マールボロ ダブルバースト|万宝路 双爆珠",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage:
         "./images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png",
       cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12864805962.html",
@@ -169,7 +169,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "大阪京橋たばこセンターこだま文章明确写“今回はカートンの画像を掲載”，图片展示 Marlboro W-Burst Purple 5 的完整 10 包整条排列，按一カートン 10 包 / 200 支核验；该图是整条内包实图，不是长盒外箱侧面。ANA / KIX 官方页补充免税销售规格与现行单包图。",
+        "大阪京橋たばこセンターこだま文章和图片能支持 Marlboro W-Burst Purple 5 精确 SKU 的 10 包整条排列，但当前目录项是泛称“マールボロ ダブルバースト”。Purple 5 / W-Burst 5 不能混用为同一已核验整条，因此降级为变体参考；如后续拆分为 Purple 5，可再升回 verified。",
     },
   ],
   [
@@ -244,7 +244,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャメル クラフト 6|骆驼 Craft 6",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/camel-craft6-paypay-84-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z441431200",
       cartonPackCount: 10,
@@ -264,7 +264,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ页面标题为“タバコの空箱 84個 CAMEL キャメル 6ミリ 水色”，主图展示大量 Camel Craft 6 浅蓝盒整齐排列，可确认一条/多包外观；该来源为空盒收藏/手工材料，不代表现行库存。ANA 官方页补充 20本×10箱 / 1カートン规格。",
+        "原 Yahoo!フリマ 主来源已无法稳定访问；替代来源只能提供规格、单包图或空盒参考，未找到可访问且满足 sealed carton/10 同 SKU 视觉门槛的证据。ANA 官方页可补充 20本×10箱 / 1カートン规格，但主图仍是单包，因此降级为数量/参考线索。",
     },
   ],
   [
