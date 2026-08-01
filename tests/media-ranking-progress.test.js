@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 46);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 46);
+  assert.equal(manifest.items.length, 47);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 47);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -402,6 +402,22 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
       /ploom-camel-menthol-fresh-paypay-7-empty-boxes\.jpg/.test(entry.image),
     ),
   );
+
+  const camelCold = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール コールド"),
+  );
+  assert.equal(camelCold.cartonStatus, "verified");
+  assert.match(
+    camelCold.cartonImage,
+    /ploom-camel-menthol-cold-paypay-12-empty-boxes\.jpg/,
+  );
+  assert.match(
+    camelCold.cartonSource,
+    /paypayfleamarket\.yahoo\.co\.jp\/item\/z650557490/,
+  );
+  assert.equal(camelCold.cartonPackCount, 12);
+  assert.equal(camelCold.cartonStickCount, 240);
+  assert.match(camelCold.cartonNote, /CAMEL MENTHOL COLD|10箱セット\＋2箱|12箱/);
 
   const cold = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス コールド メンソール"),

@@ -1443,14 +1443,24 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X キャメル メンソール コールド|Ploom X 骆驼强冷薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/ploom-camel-menthol-cold-carton.jpg",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-camel-menthol-cold-paypay-12-empty-boxes.jpg",
       cartonSource:
-        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
-      cartonPackCount: 6,
-      cartonStickCount: 120,
+        "https://paypayfleamarket.yahoo.co.jp/item/z650557490",
+      cartonPackCount: 12,
+      cartonStickCount: 240,
+      cartonGallery: [
+        {
+          label: "旧 1 carton 数量参考",
+          image: "./images/cartons/ploom-camel-menthol-cold-carton.jpg",
+          source:
+            "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
+          note: "j-Cigarette 页面写明 1 Carton = 6 pack = 120 pieces，但图片不是整条外箱或 10+ 同 SKU 实拍，仅保留为数量参考。",
+        },
+      ],
       cartonNote:
-        "该来源页面写明 1 Carton = 6 pack = 120 pieces，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考。",
+        "PayPay フリマ z650557490 标题/描述写明 Ploom CAMEL MENTHOL COLD 空箱 10箱セット＋2箱，图片可见 12 个同款 CAMEL 绿色 Ploom 盒；按 20 sticks/box 记录为 12箱/240 sticks 的 carton-equivalent proof。旧 j-Cigarette 6-pack 数量页仅保留为 gallery 参考。",
     },
   ],
   [
