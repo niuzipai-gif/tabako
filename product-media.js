@@ -1415,6 +1415,43 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "メビウス・アップル・オプション・プルーム用|Ploom X 梅比乌斯 Apple Option",
+    {
+      image:
+        "./images/cartons/ploom-mevius-apple-option-paypay-24-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z629229784",
+      imageNote:
+        "Yahoo!フリマ页面标题/说明写明 MEVIUS Ploom APPLE OPTION 加熱式たばこ 空箱 24箱；主图可见至少 15 个 MEVIUS / for ploom / APPLE OPTION 同款空盒。",
+      packageFormat: "加热式烟弹盒",
+      packageFormatJp: "たばこスティック",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-mevius-apple-option-paypay-24-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z629229784",
+      cartonPackCount: 24,
+      cartonStickCount: 480,
+      cartonGallery: [
+        {
+          label: "大浦商店 10 箱规格参考",
+          image:
+            "./images/cartons/ploom-mevius-apple-option-paypay-24-empty-boxes.jpg",
+          source: "https://tabaccoshop-ooura.com/?page_id=709",
+          note: "大浦商店页面列出“メビウス・アップル・オプション・プルーム用”，规格为 20本、カートン（10箱）；该 gallery 复用主图，仅作为数量来源链接入口。",
+        },
+        {
+          label: "JAL DUTYFREE 10 箱规格参考",
+          image:
+            "./images/cartons/ploom-mevius-apple-option-paypay-24-empty-boxes.jpg",
+          source: "https://duty-free-japan.jp/narita/ta/goodsDetail.aspx?sCD=5302030506",
+          note: "Japan Duty Free/JAL 系商品页列出 MEVIUS Apple Option Ploom X，商品号 5302030506，并在香烟列表中说明 1 carton / 10 packs / 200 pieces。",
+        },
+      ],
+      cartonNote:
+        "Yahoo!フリマ页面标题为“MEVIUS Ploom APPLE OPTION 加熱式たばこ 空箱 24箱”，说明写明 APPLE OPTION 空箱24個セット；主图可见 3列多排同款红色 MEVIUS / for ploom / APPLE OPTION 空盒，至少 15 个正面/顶面可读，满足 10+ same-SKU packs proof。大浦商店另列“メビウス・アップル・オプション・プルーム用”，规格为 20本、カートン（10箱）；JAL/Japan Duty Free 商品号 5302030506 补充 1 carton / 10 packs / 200 pieces。该 exact 行按 24箱 / 480 sticks 记录，不回填其他 Ploom X メビウス 短名或 Option 系列。",
+    },
+  ],
+  [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
       cartonStatus: "verified",

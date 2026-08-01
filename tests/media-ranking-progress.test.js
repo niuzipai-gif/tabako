@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 54);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 54);
+  assert.equal(manifest.items.length, 55);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 55);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -473,6 +473,19 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.equal(aromaRich.cartonPackCount, 15);
   assert.equal(aromaRich.cartonStickCount, 300);
   assert.match(aromaRich.cartonNote, /AROMARICH REGULAR|15箱|カートン（10箱）/);
+
+  const appleOption = enrichProduct(
+    rawProducts.find((product) => product.jp === "メビウス・アップル・オプション・プルーム用"),
+  );
+  assert.equal(appleOption.cartonStatus, "verified");
+  assert.match(
+    appleOption.cartonImage,
+    /ploom-mevius-apple-option-paypay-24-empty-boxes\.jpg/,
+  );
+  assert.match(appleOption.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z629229784/);
+  assert.equal(appleOption.cartonPackCount, 24);
+  assert.equal(appleOption.cartonStickCount, 480);
+  assert.match(appleOption.cartonNote, /APPLE OPTION|24箱|カートン（10箱）/);
 });
 
 test("Ploom X Mevius Smooth publishes the exact 6-pack carton outer-box image", () => {
