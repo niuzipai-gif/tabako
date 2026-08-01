@@ -1116,7 +1116,7 @@
         "cn": "lil HYBRID 专用液体烟弹",
         "key": "d3c3bf16",
         "query": "lil HYBRID リキッド カートリッジ heated tobacco pack",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.N0QK-j0K2Ap3fmC_nlBQygHaJW?r=0&pid=Api",
         "sourcePage": "https://www.walkerplus.com/article/1009120/",
         "title": "韓国製の加熱式たばこ「lil HYBRID」を、「IQOS」のフィリップ モリスがあえて発売する理由とは？｜ウォーカープラス"
@@ -1251,6 +1251,72 @@
         "key": "29a0aa51",
         "query": "テリア ブラック ルビー メンソール heated tobacco pack",
         "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブラック フューシャ メンソール",
+        "cn": "IQOS TEREA Black Fuchsia Menthol 黑桃花薄荷",
+        "key": "2c417650",
+        "query": "テリア ブラック フューシャ メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.RyHNwejYkKLe4Jh3ZuEoQgHaFj?r=0&pid=Api",
+        "sourcePage": "https://www.msn.com/ja-jp/shopping/%E5%85%A8%E8%88%AC/iqos%E3%81%8B%E3%82%89%E6%96%B0%E7%99%BB%E5%A0%B4-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF-%E3%83%95%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A3-%E3%83%A1%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB-%E3%81%AF%E7%88%BD%E3%82%84%E3%81%8B%E5%BC%B7%E5%86%B7%E3%83%A1%E3%83%B3%E3%82%BD%E3%83%BC%E3%83%AB%E3%81%8C%E5%A4%8F%E3%81%AB%E3%81%B4%E3%81%A3%E3%81%9F%E3%82%8A/ar-AA1JExYx",
+        "title": "IQOSから新登場! 「ブラック フューシャ メンソール」は爽やか強冷メンソールが夏にぴったり"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブラック サンシャイン メンソール",
+        "cn": "IQOS TEREA Black Sunshine Menthol 黑阳光薄荷",
+        "key": "97f781af",
+        "query": "テリア ブラック サンシャイン メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.4NGBJUZTx5iNCtxXXlDiVAHaE1?r=0&pid=Api",
+        "sourcePage": "https://www.daily.co.jp/gossip/2024/10/10/0018212470.shtml",
+        "title": "「IQOS ILUMA」シリーズに新製品 「テリア ブラック サンシャイン メンソール」日本限定で28日から順次発売/芸能/デイリースポーツ ..."
+    },
+    {
+        "type": "heated",
+        "jp": "テリア イエロー メンソール",
+        "cn": "IQOS TEREA Yellow Menthol 黄薄荷",
+        "key": "800dd379",
+        "query": "テリア イエロー メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.lBf6GGO7POZyx_xb69bDUAHaFj?r=0&pid=Api",
+        "sourcePage": "https://relazo.net/iqos_nicotine/",
+        "title": "IQOSイルマテリアのニコチン・タール量は何ミリ？グローやプルームXとどっちが高いか比較!－RELAZO"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア トロピカル メンソール",
+        "cn": "IQOS TEREA Tropical Menthol 热带薄荷",
+        "key": "5178816e",
+        "query": "テリア トロピカル メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.0E88N9YlhYLgqPvqUYtfWwHaEK?r=0&pid=Api",
+        "sourcePage": "https://jp.iqos.com/products/terea-tropical-menthol",
+        "title": "IQOS イルマ専用たばこ テリア トロピカル メンソール | IQOS（アイコス）公式サイト"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブライト メンソール",
+        "cn": "IQOS TEREA Bright Menthol 清亮薄荷",
+        "key": "7d02d35a",
+        "query": "テリア ブライト メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP._Ua99Y-XAMKwrGjQIZQ4bgHaEJ?r=0&pid=Api",
+        "sourcePage": "https://iqossan.com/teria-bright-menthol/",
+        "title": "【IQOSILUMAアイ】テリア ブライトメンソールを実際に吸ってみた!ほどよいメンソールとコクのある味わい | アイコスさん"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブラック イエロー メンソール",
+        "cn": "IQOS TEREA Black Yellow Menthol 黑黄柑橘薄荷",
+        "key": "4431e293",
+        "query": "テリア ブラック イエロー メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.-PrYPpeN0JgysMvBldxKnwAAAA?r=0&pid=Api",
+        "sourcePage": "https://tabako-sakuranbo.co.jp/goods/goods-3227.php",
+        "title": "加熱式たばこ / IQOS テリア・ブラック・イエロー・メンソール通販・販売 / 大阪 梅田"
     },
     {
         "type": "heated",

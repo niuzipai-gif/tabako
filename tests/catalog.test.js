@@ -423,6 +423,12 @@ test("current official TEREA and SENTIA lineups are represented without carton c
   for (const jp of [
     "テリア クリア レギュラー",
     "テリア リッチ レギュラー",
+    "テリア ブラック フューシャ メンソール",
+    "テリア ブラック サンシャイン メンソール",
+    "テリア イエロー メンソール",
+    "テリア トロピカル メンソール",
+    "テリア ブライト メンソール",
+    "テリア ブラック イエロー メンソール",
     "テリア ブロッサム パール",
     "テリア シャイン パール",
     "センティア コバルト ブルー",
@@ -433,10 +439,10 @@ test("current official TEREA and SENTIA lineups are represented without carton c
     assert.ok(products.some((item) => item.jp === jp), jp);
   }
 
-  assert.ok(terea.length >= 21);
+  assert.ok(terea.length >= 27);
   assert.ok(sentia.length >= 19);
   for (const item of [...terea, ...sentia]) {
-    assert.match(item.source, /jp\.iqos\.com\/discover\/iluma\/(terea|sentia)/, item.jp);
+    assert.match(item.source, /jp\.iqos\.com\/(discover\/iluma\/(terea|sentia)|products\/terea-)/, item.jp);
     assert.equal(item.jpy, /センティア/.test(item.jp) ? 570 : 620, item.jp);
     if (item.cartonStatus !== "verified") {
       assert.equal(item.cartonImage, "", item.jp);
