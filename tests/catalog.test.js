@@ -251,6 +251,7 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
     /glo HYPER pro\+/i,
     /glo HYPER pro/i,
     /glo HYPER air/i,
+    /glo Hilo Plus/i,
     /glo Hilo/i,
     /lil HYBRID 3\.0/i,
     /RELX Infinity/i,
@@ -287,6 +288,33 @@ test("heated device entries carry source, status, and explicit sort metadata", (
       `${item.jp} marketStatus`,
     );
   }
+});
+
+test("glo Hilo Plus and virto Hilo-only sticks are grouped under glo with official sources", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const hiloPlus = products.find((item) => item.jp === "glo Hilo Plus");
+  const hilo = products.find((item) => item.jp === "glo Hilo");
+  const virto = products.filter((item) => /ヴァルト・/.test(item.jp));
+
+  assert.ok(hiloPlus);
+  assert.ok(hilo);
+  assert.equal(hiloPlus.brand, "glo");
+  assert.equal(hiloPlus.marketStatus, "current-mainstream");
+  assert.equal(hiloPlus.deviceOrder < hilo.deviceOrder, true);
+  assert.match(hiloPlus.source, /prtimes\.jp\/main\/html\/rd\/p\/000000134/);
+
+  assert.equal(virto.length, 10);
+  for (const item of virto) {
+    assert.equal(item.brand, "glo", item.jp);
+    assert.equal(item.type, "heated", item.jp);
+    assert.equal(item.jpy, 580, item.jp);
+    assert.equal(item.cartonStatus === "verified", false, item.jp);
+    assert.equal(item.cartonImage, "", item.jp);
+    assert.match(item.source, /prtimes\.jp\/main\/html\/rd\/p\/0000001(34|82)/, item.jp);
+  }
+
+  assert.ok(virto.some((item) => /ブライト・ピーチ/.test(item.jp)));
+  assert.ok(virto.some((item) => /ダーク・タバコ/.test(item.jp)));
 });
 
 test("all device entries carry explicit brand, source, status, and sort metadata", () => {
@@ -342,6 +370,7 @@ test("device sorting groups by brand and then machine generation", () => {
       enrichProduct({ type: "device", jp: "Ploom X", cn: "Ploom X", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom S 2.0", cn: "Ploom S 2.0", jpy: 3480 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i プライム", cn: "IQOS ILUMA i PRIME", jpy: 9980 }),
+      enrichProduct({ type: "device", jp: "glo Hilo Plus", cn: "glo Hilo Plus", jpy: 6980 }),
       enrichProduct({ type: "device", jp: "glo Hilo", cn: "glo Hilo", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "glo HYPER air", cn: "glo HYPER air", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "VAPORESSO XROS 4", cn: "VAPORESSO XROS 4 主机", jpy: 4200 }),
@@ -363,6 +392,7 @@ test("device sorting groups by brand and then machine generation", () => {
       "Ploom X",
       "Ploom S 2.0",
       "glo HYPER pro",
+      "glo Hilo Plus",
       "glo Hilo",
       "glo HYPER air",
       "VAPORESSO XROS 5 主机",

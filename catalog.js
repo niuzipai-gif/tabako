@@ -210,7 +210,7 @@ const BRAND_PROFILES = [
     source: "https://www.jti.co.jp/tobacco/products/",
   },
   {
-    test: /glo|ラッキー|幸运击|neo/i,
+    test: /glo|ラッキー|幸运击|neo|virto|ヴァルト/i,
     brand: "glo",
     jpScore: 4.0,
     cnScore: 3.7,
@@ -450,6 +450,7 @@ function deviceModelOrder(item) {
   if (/Ploom S 2\.0/i.test(text)) return 2700;
   if (/Ploom TECH\+/i.test(text)) return 2900;
   if (/HYPER pro\+/i.test(text)) return 18;
+  if (/Hilo Plus/i.test(text)) return 21;
   if (/Hilo/i.test(text)) return 22;
   if (/HYPER air/i.test(text)) return 30;
   if (/XROS 5|ARGUS G3|XLIM Pro 2|Wenax Q Pro/i.test(text)) return 18;
