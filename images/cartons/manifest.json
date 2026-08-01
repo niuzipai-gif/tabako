@@ -147,6 +147,15 @@
       "sha256": "0384dbd7b47109d76aca3eeeb1e1070cff9639e74abae06da0ab38e98913db07"
     },
     {
+      "productId": "p-267dfca2",
+      "jp": "Ploom X メビウス メンソール フレッシュ",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/ploom-mevius-menthol-fresh-ana-10box-carton.jpg",
+      "sourcePage": "https://www.anadf.com/en/itemdetail.aspx?s_cd=2030100077",
+      "sha256": "6d1ff055e253267056f9694f9d3b1fd61d4a82c533aeae331214dd646cc5e571"
+    },
+    {
       "productId": "p-617f6c70",
       "jp": "Ploom X メビウス コールド メンソール",
       "status": "verified",

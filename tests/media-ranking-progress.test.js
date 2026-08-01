@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 50);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 50);
+  assert.equal(manifest.items.length, 51);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 51);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -484,6 +484,22 @@ test("Ploom X Mevius Smooth does not publish a quantity-only render as verified"
   assert.equal(smooth.cartonImage, "");
   assert.match(smooth.cartonSource, /j-cigarette\.com\/1carton-ploom-x-ploom-s-mevius-smooth/);
   assert.match(smooth.cartonNote, /不是 sealed carton\/outer box|降级为数量参考/);
+});
+
+test("Ploom X Mevius Menthol Fresh publishes the exact ANA 10-box carton image", () => {
+  const fresh = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス メンソール フレッシュ"),
+  );
+
+  assert.equal(fresh.cartonStatus, "verified");
+  assert.match(
+    fresh.cartonImage,
+    /ploom-mevius-menthol-fresh-ana-10box-carton\.jpg/,
+  );
+  assert.match(fresh.cartonSource, /anadf\.com\/en\/itemdetail\.aspx\?s_cd=2030100077/);
+  assert.equal(fresh.cartonPackCount, 10);
+  assert.equal(fresh.cartonStickCount, 200);
+  assert.match(fresh.cartonNote, /MENTHOL FRESH|20cigarettes×10boxes|整条外装/);
 });
 
 test("split Ploom X Mevius Smooth Regular publishes the exact 12-box evidence only", () => {

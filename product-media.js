@@ -1433,14 +1433,24 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス メンソール フレッシュ|Ploom X 清新薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-mevius-menthol-fresh-ana-10box-carton.jpg",
       cartonSource:
-        "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
-      cartonPackCount: 6,
-      cartonStickCount: 120,
+        "https://www.anadf.com/en/itemdetail.aspx?s_cd=2030100077",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "旧 1 carton 数量参考",
+          image: "./images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
+          source:
+            "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
+          note: "j-Cigarette 页面写明 1 Carton = 6 pack = 120 pieces，但图片更像单包/渲染图叠加数量文案，不作为主图证据。",
+        },
+      ],
       cartonNote:
-        "该来源页面写明 1 Carton = 6 pack = 120 pieces，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考，不替代 Cold Menthol。",
+        "ANA DUTY FREE 2030100077 页面为 Ploom X MEVIUS MENTHOL FRESH，商品图可见 MEVIUS / ploom X / MENTHOL FRESH 的整条外装正面，同页 quantity 写明 20cigarettes×10boxes；按 exact SKU 的 10包/200 sticks verified carton 记录。旧 j-Cigarette 6-pack 数量页仅保留为 gallery 参考，不替代 Cold Menthol。",
     },
   ],
   [

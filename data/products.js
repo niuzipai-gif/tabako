@@ -75,7 +75,7 @@ export const rawProducts = [
   { type: "heated", jp: "Ploom X メビウス リッチ", cn: "Ploom X 浓郁经典", jpy: 550, img: "https://picsum.photos/seed/ploom-mevius-rich/640/420" },
   { type: "heated", jp: "Ploom X メビウス スムース", cn: "Ploom X 柔和", jpy: 570, img: "https://picsum.photos/seed/ploom-smooth/640/420" },
   { type: "heated", jp: "Ploom X メビウス スムース レギュラー", cn: "Ploom X 梅比乌斯 柔和经典", jpy: 550, img: "./images/cartons/ploom-mevius-smooth-regular-paypay-12-empty-boxes.jpg" },
-  { type: "heated", jp: "Ploom X メビウス メンソール フレッシュ", cn: "Ploom X 清新薄荷", jpy: 550, img: "https://picsum.photos/seed/ploom-mevius-menthol-fresh/640/420" },
+  { type: "heated", jp: "Ploom X メビウス メンソール フレッシュ", cn: "Ploom X 清新薄荷", jpy: 550, img: "./images/cartons/ploom-mevius-menthol-fresh-ana-10box-carton.jpg" },
   { type: "heated", jp: "Ploom X メビウス コールド メンソール", cn: "Ploom X 冷感薄荷", jpy: 570, img: "https://picsum.photos/seed/ploom-cold/640/420" },
   { type: "heated", jp: "Ploom X メビウス ブラック コールド メンソール", cn: "Ploom X 梅比乌斯 黑冷薄荷", jpy: 550, img: "./images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg" },
   { type: "heated", jp: "Ploom X メビウス アロマリッチ レギュラー", cn: "Ploom X 梅比乌斯 醇香经典", jpy: 550, img: "./images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg" },
