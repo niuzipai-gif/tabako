@@ -327,7 +327,14 @@ function cartonAuditStatus(item) {
   if (!item.cartonApplicable || item.cartonStatus === "not-applicable") {
     return { label: "不适用", tone: "reference" };
   }
-  return { label: "未作为准确整条", tone: "review" };
+  const nuanced = {
+    "contents-reference": { label: "数量参考", tone: "reference" },
+    "multi-carton-reference": { label: "多盒参考", tone: "reference" },
+    "variant-reference": { label: "已拆分变体", tone: "reference" },
+    "source-only": { label: "来源已记录", tone: "reference" },
+    "needs-review": { label: "待找整条", tone: "review" },
+  };
+  return nuanced[item.cartonStatus] ?? { label: "待找整条", tone: "review" };
 }
 
 function mediaStatusStrip(item) {
