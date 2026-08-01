@@ -1533,14 +1533,31 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X キャメル メンソール イエロー|Ploom X 骆驼柑橘薄荷",
     {
-      cartonStatus: "contents-reference",
-      cartonImage: "./images/cartons/ploom-camel-menthol-yellow-carton.jpg",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-camel-menthol-yellow-mercari-20-empty-boxes.jpg",
       cartonSource:
-        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-yellow-citrus-peel-strong-menthol-stick-1-carton-120pcs-citrus-flavor-with-a-refreshing-scent/",
-      cartonPackCount: 6,
-      cartonStickCount: 120,
+        "https://jp.mercari.com/item/m90240906087",
+      cartonPackCount: 20,
+      cartonStickCount: 400,
+      cartonGallery: [
+        {
+          label: "旧 1 carton 数量参考",
+          image: "./images/cartons/ploom-camel-menthol-yellow-carton.jpg",
+          source:
+            "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-yellow-citrus-peel-strong-menthol-stick-1-carton-120pcs-citrus-flavor-with-a-refreshing-scent/",
+          note: "j-Cigarette 页面写明 1 Carton = 6 pack = 120 pieces，但图片不是整条外箱或 10+ 同 SKU 实拍，仅保留为数量参考。",
+        },
+        {
+          label: "20 本单包内容参考",
+          image: "",
+          source:
+            "https://vapelog.jp/archives/55846",
+          note: "Vapelog 商品信息写明 キャメル・メンソール・イエロー，プルームX/プルームS 用，1 箱 20 本入り；用于支数换算，不作为图片证据。",
+        },
+      ],
       cartonNote:
-        "该来源页面写明 1 Carton = 6 pack = 120 pieces，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考。",
+        "Mercari m90240906087 标题/页面写明 タバコ空箱20個 プルームX CAMELメンソールイエローの空箱，主图可见 4×5 共 20 个同款 CAMEL / ploom X / MENTHOL YELLOW 盒；Vapelog 写明该 SKU 为 20本入り，故按 20箱/400 sticks 的 carton-equivalent proof 记录。旧 j-Cigarette 6-pack 数量页仅保留为 gallery 参考。",
     },
   ],
   [
