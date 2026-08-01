@@ -6,6 +6,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "セブンスター ボックス", cn: "七星 盒装", jpy: 620, img: "https://picsum.photos/seed/sevenstars-box/640/420" },
   { type: "cigarette", jp: "マールボロ レッド", cn: "万宝路 红", jpy: 600, img: "https://picsum.photos/seed/marlboro-red/640/420" },
   { type: "cigarette", jp: "マールボロ メンソール", cn: "万宝路 薄荷", jpy: 600, img: "https://picsum.photos/seed/marlboro-menthol/640/420" },
+  { type: "cigarette", jp: "マールボロ・メンソール・8・ボックス", cn: "万宝路 薄荷 8mg 盒装", jpy: 620, img: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg" },
   { type: "cigarette", jp: "マールボロ ダブルバースト", cn: "万宝路 双爆珠", jpy: 620, img: "https://picsum.photos/seed/marlboro-burst/640/420" },
   { type: "cigarette", jp: "マールボロ・ダブルバースト・パープル・5・ボックス", cn: "万宝路 双爆珠 紫 5mg 盒装", jpy: 600, img: "./images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png" },
   { type: "cigarette", jp: "ラーク クラシック", cn: "乐富门 经典", jpy: 540, img: "https://picsum.photos/seed/lark-classic/640/420" },

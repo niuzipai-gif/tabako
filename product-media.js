@@ -130,6 +130,40 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "マールボロ・メンソール・8・ボックス|万宝路 薄荷 8mg 盒装",
+    {
+      image: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
+      imageNote:
+        "ANA DUTY FREE 官方 2カートンセット图，可读 Marlboro menthol 8 与日本警示；用于 exact Menthol 8 Box 行的外箱识别。",
+      packageFormat: "硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "Centrair 同款 2カートン图",
+          image: "./images/cartons/marlboro-menthol-8-2ct-reference.jpg",
+          source:
+            "https://duty-free.centrair.jp/ko/product/detail.aspx?scd=1041010125",
+          note: "Centrair Duty Free 页面图同样展示 Marlboro Lights Menthol 8mg 2-carton 外箱；作为跨机场同款包装辅助。",
+        },
+        {
+          label: "monolog 10 包排列辅助",
+          image: "./images/cartons/marlboro-menthol8-monolog-20x10.jpg",
+          source: "https://monolog.r-n-i.jp/item/4902210129006",
+          note: "monolog 页面标题回读为マールボロライトメンソール BOX 20本×10，图片可见 10 个绿色 Marlboro Menthol 8 包；作为 10 包排列辅助。",
+        },
+      ],
+      cartonNote:
+        "ANA DUTY FREE 商品页标题为“マールボロ メンソール 8 ボックス 2カートンセット”，页面规格写明 (20本×10箱)×2；主图可见两条 Marlboro menthol 8 外箱/2 cartons 标识与日本警示。按 exact マールボロ・メンソール・8・ボックス 的 1 carton / 10 packs / 200 cigarettes 核验；generic マールボロ メンソール 仍不升级。",
+    },
+  ],
+  [
     "マールボロ ダブルバースト|万宝路 双爆珠",
     {
       cartonStatus: "variant-reference",

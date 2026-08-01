@@ -381,6 +381,15 @@
       "sha256": "94f06c0884896e645f8c661331f4fa5ffd100c34835637608a1319db58840987"
     },
     {
+      "productId": "p-11ef48a0",
+      "jp": "マールボロ・メンソール・8・ボックス",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 cigarettes (visible in 2-carton duty-free set)",
+      "localPath": "images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
+      "sha256": "bdf870200b93f7468dceb0b7711818ece261f79efedf04164e2cde5dd4dc601e"
+    },
+    {
       "productId": "p-94e84e94",
       "jp": "わかば・シガー 10P",
       "status": "verified",

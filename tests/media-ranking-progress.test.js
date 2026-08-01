@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 43);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 43);
+  assert.equal(manifest.items.length, 44);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 44);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -201,6 +201,35 @@ test("Marlboro Menthol stays below verified until exact Menthol 8 evidence is sp
     item.cartonGallery.some((entry) =>
       /marlboro-menthol8-box-ana-2carton\.jpg/.test(entry.image),
     ),
+  );
+});
+
+test("split Marlboro Menthol 8 Box publishes the exact duty-free carton set", () => {
+  const genericMenthol = enrichProduct(
+    rawProducts.find((product) => product.jp === "マールボロ メンソール"),
+  );
+  assert.equal(genericMenthol.cartonStatus, "variant-reference");
+  assert.equal(genericMenthol.cartonImage, "");
+
+  const menthol8 = enrichProduct(
+    rawProducts.find(
+      (product) => product.jp === "マールボロ・メンソール・8・ボックス",
+    ),
+  );
+  assert.equal(menthol8.cartonStatus, "verified");
+  assert.match(
+    menthol8.cartonImage,
+    /marlboro-menthol8-box-ana-2carton\.jpg/,
+  );
+  assert.match(
+    menthol8.cartonSource,
+    /anadf\.com\/itemdetail\.aspx\?s_cd=7000098242/,
+  );
+  assert.equal(menthol8.cartonPackCount, 10);
+  assert.equal(menthol8.cartonStickCount, 200);
+  assert.match(
+    menthol8.cartonNote,
+    /マールボロ メンソール 8 ボックス|2カートン|20本×10箱/,
   );
 });
 
