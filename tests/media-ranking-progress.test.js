@@ -571,7 +571,7 @@ test("split Ploom X Mevius Smooth Regular publishes the exact 12-box evidence on
   assert.match(exact.cartonNote, /SMOOTH REGULAR|空箱（12個）|12箱/);
 });
 
-test("split Camel Smooth Ploom publishes the exact 10-box evidence only", () => {
+test("split Camel Smooth Ploom publishes the exact 33-box evidence only", () => {
   const shortName = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X キャメル スムース"),
   );
@@ -584,15 +584,15 @@ test("split Camel Smooth Ploom publishes the exact 10-box evidence only", () => 
   assert.equal(exact.cartonStatus, "verified");
   assert.match(
     exact.cartonImage,
-    /camel-smooth-ploom-paypay-10-empty-boxes\.jpg/,
+    /camel-smooth-ploom-paypay-33-empty-boxes\.jpg/,
   );
   assert.match(
     exact.cartonSource,
-    /paypayfleamarket\.yahoo\.co\.jp\/item\/z583255814/,
+    /paypayfleamarket\.yahoo\.co\.jp\/item\/z612685972/,
   );
-  assert.equal(exact.cartonPackCount, 10);
-  assert.equal(exact.cartonStickCount, 200);
-  assert.match(exact.cartonNote, /CAMEL SMOOTH|10箱セット|10箱/);
+  assert.equal(exact.cartonPackCount, 33);
+  assert.equal(exact.cartonStickCount, 660);
+  assert.match(exact.cartonNote, /CAMEL ploom SMOOTH|空箱33箱セット|10\+ same-SKU/);
 });
 
 test("Ploom X Sharp Cold keeps older mixed references as gallery context", () => {

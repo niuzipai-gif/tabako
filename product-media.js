@@ -1746,19 +1746,25 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャメル・スムース・プルーム用|Ploom 骆驼 Smooth 柔和",
     {
-      image: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes.jpg",
+      image: "./images/cartons/camel-smooth-ploom-paypay-33-empty-boxes.jpg",
       imageStatus: "verified",
-      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z583255814",
+      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z612685972",
       imageNote:
-        "Yahoo!フリマ页面标题为“【空箱】CAMEL for Ploom smooth 10箱セット”，图片可见 10 个 CAMEL / Ploom / SMOOTH 同款盒。",
+        "Yahoo!フリマ页面说明为“CAMEL ploom SMOOTHの加熱式たばこ 空箱33箱セット”，图片可见远超 10 个 CAMEL / Ploom / SMOOTH 同款盒。",
       packageFormat: "加热式烟弹盒",
       packageFormatJp: "たばこスティック",
       cartonStatus: "verified",
-      cartonImage: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes.jpg",
-      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z583255814",
-      cartonPackCount: 10,
-      cartonStickCount: 200,
+      cartonImage: "./images/cartons/camel-smooth-ploom-paypay-33-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z612685972",
+      cartonPackCount: 33,
+      cartonStickCount: 660,
       cartonGallery: [
+        {
+          label: "PayPay 10箱 旧核验证据",
+          image: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z583255814",
+          note: "旧 Yahoo!フリマ页面标题为“【空箱】CAMEL for Ploom smooth 10箱セット”，用于保留此前 10 箱 exact 核验线索。",
+        },
         {
           label: "PayPay 10箱 detail 2",
           image: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes-detail.jpg",
@@ -1767,7 +1773,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ页面标题为“【空箱】CAMEL for Ploom smooth 10箱セット”，description 写“CAMEL SMOOTHの空箱10箱セット”并列【個数】10箱；主图可见 10 个浅蓝色 CAMEL / Ploom / SMOOTH 同款空盒。按 strict gate 的 10+ same-SKU packs proof 核验 exact キャメル・スムース・プルーム用；短名 Ploom X キャメル スムース 仍保留为 contents-reference，不强升。",
+        "Yahoo!フリマ z612685972 页面说明写“CAMEL ploom SMOOTHの加熱式たばこ 空箱33箱セット”；主图可见远超 10 个浅蓝色 CAMEL / Ploom / SMOOTH 同款空盒，正面和侧面均可读。按 strict gate 的 10+ same-SKU packs proof 核验 exact キャメル・スムース・プルーム用；旧 z583255814 的 10箱セット保留为辅助证据。短名 Ploom X キャメル スムース 仍保留为 contents-reference，不强升。",
     },
   ],
   [
