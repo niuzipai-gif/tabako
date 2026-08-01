@@ -381,12 +381,12 @@ test("AI dialog exposes live progress, stages, and terminal states", () => {
   const received = source.indexOf("已收到，正在理解你的描述");
   const localMatch = source.indexOf("本地目录已匹配");
   const onlineFallback = source.indexOf("目录未命中；正在自动联网补充库外线索");
-  const terminal = source.indexOf("本地匹配已完成；在线增强未启用");
+  const terminal = source.indexOf("本地匹配已完成；");
   assert.ok(received > -1 && received < localMatch && localMatch < terminal);
   assert.ok(localMatch > -1 && localMatch < onlineFallback);
 
   const proxyCheck = source.indexOf("正在检查安全代理是否可用");
-  const noUpload = source.indexOf("在线识别未启用；图片没有上传");
+  const noUpload = source.indexOf("图片没有上传");
   const visionCall = source.indexOf('mode: "vision"');
   assert.ok(proxyCheck > -1 && proxyCheck < noUpload && noUpload < visionCall);
 });

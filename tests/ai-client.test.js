@@ -121,6 +121,48 @@ test("unconfigured AI client reports offline without fetching", async () => {
   assert.equal(called, false);
 });
 
+test("AI client health distinguishes ready, missing-key, and unreachable proxies", async () => {
+  const ready = createAiClient({
+    endpoint: "https://ai.example.test/api",
+    fetchImpl: async () =>
+      new Response(JSON.stringify({ ok: true, keyConfigured: true }), {
+        status: 200,
+        headers: { "content-type": "application/json" },
+      }),
+  });
+  assert.deepEqual(await ready.health(), {
+    state: "proxy-ready",
+    ready: true,
+    keyConfigured: true,
+  });
+
+  const missingKey = createAiClient({
+    endpoint: "https://ai.example.test/api",
+    fetchImpl: async () =>
+      new Response(JSON.stringify({ ok: true, keyConfigured: false }), {
+        status: 200,
+        headers: { "content-type": "application/json" },
+      }),
+  });
+  assert.deepEqual(await missingKey.health(), {
+    state: "proxy-missing-key",
+    ready: false,
+    keyConfigured: false,
+  });
+
+  const unreachable = createAiClient({
+    endpoint: "https://ai.example.test/api",
+    fetchImpl: async () => {
+      throw new TypeError("network");
+    },
+  });
+  assert.deepEqual(await unreachable.health(), {
+    state: "proxy-unreachable",
+    ready: false,
+    keyConfigured: false,
+  });
+});
+
 test("configured AI client sends bounded requests and normalizes output", async () => {
   let request;
   const client = createAiClient({

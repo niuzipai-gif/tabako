@@ -110,7 +110,7 @@ function corsHeaders(requestOrigin, allowedOrigin) {
   };
   if (requestOrigin && requestOrigin === allowedOrigin) {
     headers["access-control-allow-origin"] = requestOrigin;
-    headers["access-control-allow-methods"] = "POST, OPTIONS";
+    headers["access-control-allow-methods"] = "GET, POST, OPTIONS";
     headers["access-control-allow-headers"] = "Content-Type";
     headers["access-control-max-age"] = "86400";
   }
@@ -271,6 +271,18 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
           status: 204,
           headers: corsHeaders(requestOrigin, allowedOrigin),
         });
+      }
+      if (request.method === "GET") {
+        return jsonResponse(
+          {
+            ok: true,
+            service: "tabako-ai",
+            keyConfigured: Boolean(env.MINIMAX_API_KEY),
+          },
+          200,
+          requestOrigin,
+          allowedOrigin,
+        );
       }
       if (request.method !== "POST") {
         return errorResponse("只支持 POST", 405, requestOrigin, allowedOrigin);

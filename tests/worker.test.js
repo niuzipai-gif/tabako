@@ -61,6 +61,34 @@ test("proxy exposes a bounded CORS preflight only to the allowed origin", async 
   assert.equal(response.status, 204);
   assert.equal(response.headers.get("access-control-allow-origin"), ALLOWED_ORIGIN);
   assert.match(response.headers.get("access-control-allow-methods"), /POST/);
+  assert.match(response.headers.get("access-control-allow-methods"), /GET/);
+});
+
+test("proxy health check is no-cost and does not leak the server-side key", async () => {
+  let called = false;
+  const worker = createWorker({
+    fetchImpl: async () => {
+      called = true;
+      return new Response("{}");
+    },
+  });
+
+  const response = await worker.fetch(
+    new Request("https://proxy.example.test/health", {
+      method: "GET",
+      headers: { origin: ALLOWED_ORIGIN },
+    }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get("access-control-allow-origin"), ALLOWED_ORIGIN);
+  assert.equal(payload.ok, true);
+  assert.equal(payload.service, "tabako-ai");
+  assert.equal(payload.keyConfigured, true);
+  assert.equal(JSON.stringify(payload).includes(ENV.MINIMAX_API_KEY), false);
+  assert.equal(called, false);
 });
 
 test("proxy requires a server-side key and an allow-listed mode", async () => {

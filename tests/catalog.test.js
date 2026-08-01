@@ -113,8 +113,8 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 160-product source set", () => {
-  assert.equal(rawProducts.length, 160);
+test("catalog keeps the expanded 162-product source set", () => {
+  assert.equal(rawProducts.length, 162);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
@@ -226,6 +226,7 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
     /IQOS ILUMA i PRIME/i,
     /IQOS ILUMA i ONE/i,
     /Ploom AURA/i,
+    /with2/i,
     /Ploom X ADVANCED/i,
     /glo HYPER pro\+/i,
     /glo HYPER pro/i,
@@ -266,10 +267,12 @@ test("device sorting groups by brand and then machine generation", () => {
       enrichProduct({ type: "device", jp: "IQOS イルマ i ワン", cn: "IQOS ILUMA i ONE", jpy: 3980 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i リミックスモデル", cn: "IQOS ILUMA i REMIX 限定款", jpy: 6980 }),
       enrichProduct({ type: "device", jp: "Ploom AURA", cn: "Ploom AURA", jpy: 2980 }),
+      enrichProduct({ type: "device", jp: "with2", cn: "with2 加热设备", jpy: 1980, deviceBrand: "Ploom", deviceOrder: 13 }),
       enrichProduct({ type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom X", cn: "Ploom X", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom S 2.0", cn: "Ploom S 2.0", jpy: 3480 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i プライム", cn: "IQOS ILUMA i PRIME", jpy: 9980 }),
+      enrichProduct({ type: "device", jp: "glo Hilo", cn: "glo Hilo", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "glo HYPER air", cn: "glo HYPER air", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "VAPORESSO XROS 4", cn: "VAPORESSO XROS 4 主机", jpy: 4200 }),
       enrichProduct({ type: "device", jp: "VAPORESSO XROS 5", cn: "VAPORESSO XROS 5 主机", jpy: 5200 }),
@@ -284,10 +287,12 @@ test("device sorting groups by brand and then machine generation", () => {
       "IQOS ILUMA i REMIX 限定款",
       "IQOS ILUMA i ONE",
       "Ploom AURA",
+      "with2 加热设备",
       "Ploom X ADVANCED",
       "Ploom X",
       "Ploom S 2.0",
       "glo HYPER pro",
+      "glo Hilo",
       "glo HYPER air",
       "VAPORESSO XROS 5 主机",
       "VAPORESSO XROS 4 主机",
@@ -310,7 +315,9 @@ test("IQOS remix devices are not misclassified as lil HYBRID MIIX products", () 
   });
 
   assert.equal(remix.brand, "IQOS");
+  assert.equal(remix.jpy, 9980);
   assert.equal(miix.brand, "lil HYBRID");
+  assert.equal(miix.jpy, 560);
 });
 
 test("legacy Japanese cigarette names normalize to searchable brand groups", () => {

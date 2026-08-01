@@ -20,7 +20,7 @@ const TYPE_LABELS_JP = {
 
 const BRAND_PROFILES = [
   {
-    test: /Ploom/i,
+    test: /Ploom|with2/i,
     brand: "Ploom",
     jpScore: 4.2,
     cnScore: 3.8,
@@ -232,9 +232,9 @@ const BRAND_PROFILES = [
 ];
 
 const PRICE_RULES = [
-  { test: (item) => /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
-  { test: (item) => /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
-  { test: (item) => /lil HYBRID|ミックス/i.test(item.jp), value: 560, source: "official" },
+  { test: (item) => item.type === "heated" && /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
+  { test: (item) => item.type === "heated" && /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
+  { test: (item) => item.type === "heated" && /lil HYBRID|MIIX|ミックス/i.test(item.jp), value: 560, source: "official" },
   {
     test: (item) => item.type === "heated" && /Ploom X.*メビウス/i.test(item.jp),
     value: 550,
@@ -338,6 +338,7 @@ function resolveProfile(item) {
 function resolveAvailability(item, profile) {
   const text = `${item.jp} ${item.cn}`;
   if (item.type === "pod") return "restricted";
+  if (item.type === "device" && /discontinued/i.test(String(item.marketStatus ?? ""))) return "discontinued";
   if (/わかば|若叶|エコー|Echo|セーラム|沙龙|RELX|MOTI|ELFBAR|VAPORESSO|Uwell|Voopoo/i.test(text)) {
     return /わかば|若叶|エコー|Echo|セーラム|沙龙/i.test(text) ? "discontinued" : "specialist";
   }
@@ -378,9 +379,9 @@ function compatibility(item) {
 }
 
 function deviceBrandOrder(item) {
-  const text = `${item.jp} ${item.cn}`;
+  const text = `${item.deviceBrand ?? ""} ${item.brand ?? ""} ${item.jp} ${item.cn}`;
   if (/IQOS/i.test(text)) return 10;
-  if (/Ploom/i.test(text)) return 20;
+  if (/Ploom|with2/i.test(text)) return 20;
   if (/glo/i.test(text)) return 30;
   if (/lil HYBRID/i.test(text)) return 40;
   if (/RELX/i.test(text)) return 50;
@@ -436,9 +437,13 @@ function deviceModelOrder(item) {
   if (Number.isFinite(Number(item.deviceOrder))) return Number(item.deviceOrder);
   const text = `${item.jp} ${item.cn}`;
   if (/Ploom AURA/i.test(text)) return 12;
+  if (/with2/i.test(text)) return /Special|スペシャル/i.test(text) ? 14 : 13;
   if (/PRIME/i.test(text)) return 10;
   if (/ADVANCED/i.test(text)) return 15;
   if (/Ploom X\b/i.test(text)) return 16;
+  if (/HYPER pro\+/i.test(text)) return 18;
+  if (/Hilo/i.test(text)) return 22;
+  if (/HYPER air/i.test(text)) return 30;
   if (/XROS 5|ARGUS G3|XLIM Pro 2|Wenax Q Pro/i.test(text)) return 18;
   if (/PRO|XROS Pro|HYPER pro/i.test(text)) return 20;
   if (/\bG4\b|XROS 4|ARGUS G2|XLIM SQ Pro 2/i.test(text)) return 25;
@@ -520,7 +525,7 @@ export function enrichProduct(item, index = 0) {
     description: describeProduct(item, flavor, strength, profile),
     jpImpression: profile.jpImpression,
     cnImpression: profile.cnImpression,
-    source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : profile.source,
+    source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : (item.source ?? profile.source),
     priceChecked: PRICE_CHECKED,
     originalIndex: index,
   };

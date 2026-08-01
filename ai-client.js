@@ -210,6 +210,35 @@ export function createAiClient({
 
   return Object.freeze({
     configured: Boolean(publicEndpoint),
+    endpoint: publicEndpoint,
+    async health() {
+      if (!publicEndpoint) return { state: "local-only", ready: false, keyConfigured: false };
+
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), Math.min(timeoutMs, 8_000));
+      try {
+        const response = await fetchImpl(publicEndpoint, {
+          method: "GET",
+          headers: { accept: "application/json" },
+          signal: controller.signal,
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (response.ok && payload?.ok && payload?.keyConfigured) {
+          return { state: "proxy-ready", ready: true, keyConfigured: true };
+        }
+        if (response.ok && payload?.ok && !payload?.keyConfigured) {
+          return { state: "proxy-missing-key", ready: false, keyConfigured: false };
+        }
+        return { state: "proxy-unreachable", ready: false, keyConfigured: false };
+      } catch (error) {
+        if (error?.name === "AbortError") {
+          return { state: "proxy-timeout", ready: false, keyConfigured: false };
+        }
+        return { state: "proxy-unreachable", ready: false, keyConfigured: false };
+      } finally {
+        clearTimeout(timer);
+      }
+    },
     async ask({ mode, query = "", image = "" } = {}) {
       if (!publicEndpoint) throw new Error("AI 服务尚未配置安全代理");
       if (!AI_MODES.has(mode)) throw new Error("不支持的 AI 模式");

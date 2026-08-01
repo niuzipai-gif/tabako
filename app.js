@@ -150,14 +150,37 @@ const state = {
   activeProductId: null,
   aiImageData: "",
   aiMode: "recommend",
+  aiHealth: aiClient.configured
+    ? { state: "unknown", ready: false, keyConfigured: false }
+    : { state: "local-only", ready: false, keyConfigured: false },
   jpyToCny: 0.0415,
 };
 
+function aiHealthLabel(health = state.aiHealth) {
+  if (!aiClient.configured || health.state === "local-only") {
+    return "本地先匹配 · 在线代理未连接";
+  }
+  if (health.state === "proxy-ready") return "MiniMax 代理已验证 · 本地先匹配";
+  if (health.state === "proxy-missing-key") return "在线代理缺少服务端密钥";
+  if (health.state === "proxy-timeout") return "在线代理检查超时 · 本地先匹配";
+  if (health.state === "proxy-unreachable") return "在线代理暂不可达 · 本地先匹配";
+  return "正在检查 MiniMax 安全代理…";
+}
+
+function aiHealthDetail(health = state.aiHealth) {
+  if (!aiClient.configured || health.state === "local-only") {
+    return "本地匹配可用 · 在线 MiniMax 未连接，照片不会上传";
+  }
+  if (health.state === "proxy-ready") return "在线 MiniMax 代理已验证可用";
+  if (health.state === "proxy-missing-key") return "在线代理未配置服务端密钥，照片不会上传";
+  if (health.state === "proxy-timeout") return "在线代理检查超时，已切换本地匹配";
+  if (health.state === "proxy-unreachable") return "在线代理暂不可达，已切换本地匹配";
+  return "正在检查在线代理是否可用…";
+}
+
 function updateAiEntryStatus() {
   if (!elements.aiEntryStatus) return;
-  elements.aiEntryStatus.textContent = aiClient.configured
-    ? "MiniMax 已接入 · 本地先匹配"
-    : "本地先匹配 · 在线代理未连接";
+  elements.aiEntryStatus.textContent = aiHealthLabel();
 }
 
 let lastProductTrigger = null;
@@ -899,10 +922,9 @@ function resetAiImage() {
 
 function openAiDialog(mode = "recommend", { query = "", productId = "" } = {}) {
   setAiMode(mode);
-  elements.aiServiceNote.dataset.state = aiClient.configured ? "online" : "local";
-  elements.aiServiceStatus.textContent = aiClient.configured
-    ? "在线 MiniMax 已通过安全代理接入"
-    : "本地匹配可用 · 在线 MiniMax 未连接，照片不会上传";
+  elements.aiServiceNote.dataset.state = state.aiHealth.ready ? "online" : "local";
+  elements.aiServiceStatus.textContent = aiHealthDetail();
+  refreshAiHealth();
 
   if (query) elements.aiPrompt.value = query.slice(0, AI_LIMITS.query);
   if (mode === "japanese") {
@@ -1070,6 +1092,39 @@ function nextPaint() {
   });
 }
 
+async function refreshAiHealth() {
+  if (!aiClient.configured) {
+    state.aiHealth = { state: "local-only", ready: false, keyConfigured: false };
+    updateAiEntryStatus();
+    if (elements.aiServiceNote && elements.aiServiceStatus) {
+      elements.aiServiceNote.dataset.state = "local";
+      elements.aiServiceStatus.textContent = aiHealthDetail();
+    }
+    return state.aiHealth;
+  }
+
+  state.aiHealth = { state: "checking", ready: false, keyConfigured: false };
+  updateAiEntryStatus();
+  if (elements.aiServiceNote && elements.aiServiceStatus) {
+    elements.aiServiceNote.dataset.state = "checking";
+    elements.aiServiceStatus.textContent = aiHealthDetail();
+  }
+
+  state.aiHealth = await aiClient.health();
+  updateAiEntryStatus();
+  if (elements.aiServiceNote && elements.aiServiceStatus) {
+    elements.aiServiceNote.dataset.state = state.aiHealth.ready ? "online" : "local";
+    elements.aiServiceStatus.textContent = aiHealthDetail();
+  }
+  return state.aiHealth;
+}
+
+async function ensureAiReady() {
+  if (!aiClient.configured) return state.aiHealth;
+  if (state.aiHealth.ready) return state.aiHealth;
+  return refreshAiHealth();
+}
+
 async function runAiRecommendation() {
   const query = elements.aiPrompt.value.trim();
   if (!query) {
@@ -1101,10 +1156,11 @@ async function runAiRecommendation() {
     );
     await nextPaint();
 
-    if (!aiClient.configured) {
+    const health = await ensureAiReady();
+    if (!health.ready) {
       setAiProgress({
         value: 100,
-        label: "本地匹配已完成；在线增强未启用",
+        label: `本地匹配已完成；${aiHealthDetail(health)}`,
         steps,
         current: 3,
         state: "complete",
@@ -1220,10 +1276,11 @@ async function runAiVision() {
   try {
     setAiProgress({ value: 28, label: "正在检查安全代理是否可用", steps, current: 1 });
     await nextPaint();
-    if (!aiClient.configured) {
+    const health = await ensureAiReady();
+    if (!health.ready) {
       setAiProgress({
         value: 28,
-        label: "连接检查未通过；在线识别未启用；图片没有上传",
+        label: `连接检查未通过；${aiHealthDetail(health)}；图片没有上传`,
         steps,
         current: 1,
         state: "blocked",
@@ -1232,7 +1289,7 @@ async function runAiVision() {
       renderAiResult(
         {
           answer:
-            "在线识别未启用。为避免把密钥暴露在网页里，拍照识烟只会在安全代理配置完成后发送图片；当前图片没有上传。你仍可用“描述偏好”进行本地匹配。",
+            "在线识别未启用或代理健康检查未通过。为避免把密钥暴露在网页里，拍照识烟只会在安全代理确认可用后发送图片；当前图片没有上传。你仍可用“描述偏好”进行本地匹配。",
           matches: [],
           sources: [],
         },
@@ -1353,9 +1410,10 @@ async function openOnlineSearch() {
   });
   openSimpleDialog(elements.onlineSearchDialog);
 
-  if (!aiClient.configured) {
+  const health = await ensureAiReady();
+  if (!health.ready) {
     elements.onlineSearchStatus.textContent =
-      "在线 AI 代理尚未配置。下方三个入口仍可直接联网搜索，不需要本站保存密钥。";
+      `${aiHealthDetail(health)}。下方三个入口仍可直接联网搜索，不需要本站保存密钥。`;
     return;
   }
 

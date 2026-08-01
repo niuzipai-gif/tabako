@@ -108,6 +108,8 @@ export const rawProducts = [
   { type: "device", jp: "IQOS イルマ ワン", cn: "IQOS ILUMA ONE", jpy: 3980, img: "https://picsum.photos/seed/iqos-iluma-one/640/420" },
   { type: "device", jp: "IQOS 3 DUO", cn: "IQOS 3 DUO", jpy: 6980, img: "https://picsum.photos/seed/iqos-3-duo/640/420" },
   { type: "device", jp: "Ploom AURA", cn: "Ploom AURA", jpy: 2980, img: "https://picsum.photos/seed/ploom-aura-device/640/420" },
+  { type: "device", jp: "with2", cn: "with2 加热设备", jpy: 1980, img: "https://picsum.photos/seed/with2-device/640/420", deviceBrand: "Ploom", deviceOrder: 13, marketStatus: "current-mainstream", source: "https://shop.clubjt.jp/online/ProductDetail.aspx?pcd=P500493" },
+  { type: "device", jp: "with2 スペシャルエディション", cn: "with2 Special Edition 限定设备", jpy: 3980, img: "https://picsum.photos/seed/with2-special-device/640/420", deviceBrand: "Ploom", deviceOrder: 14, marketStatus: "current-limited", source: "https://shop.clubjt.jp/online/CategoryList.aspx?ccd=CG000184" },
   { type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980, img: "https://picsum.photos/seed/ploom-x-advanced-device/640/420" },
   { type: "device", jp: "Ploom X", cn: "Ploom X", jpy: 1980, img: "https://picsum.photos/seed/ploom-x-device/640/420" },
   { type: "device", jp: "Ploom S 2.0", cn: "Ploom S 2.0", jpy: 3480, img: "https://picsum.photos/seed/ploom-s-2-device/640/420" },
