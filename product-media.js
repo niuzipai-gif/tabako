@@ -1323,6 +1323,35 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "Ploom X メビウス ブラック コールド メンソール|Ploom X 梅比乌斯 黑冷薄荷",
+    {
+      image:
+        "./images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://jp.mercari.com/item/m51545192101",
+      imageNote:
+        "Mercari 页面标题/说明写明 MEVIUS for Ploom BLACK COLD MENTHOL 空箱16箱，第 4 张商品图可见 16 个 MEVIUS / for ploom / BLACK COLD MENTHOL 同款空盒。",
+      packageFormat: "加热式烟弹盒",
+      packageFormatJp: "たばこスティック",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m51545192101",
+      cartonPackCount: 16,
+      cartonStickCount: 320,
+      cartonGallery: [
+        {
+          label: "ANA 官方 10 箱规格参考",
+          image: "./images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg",
+          source: "https://www.anadf.com/ItemDetail.aspx?s_cd=2030100202",
+          note: "ANA 免税店页面确认“メビウス・ブラック・コールド・メンソール・プルーム用”规格为 20本×10箱；该 gallery 复用主图，仅作为数量来源链接入口。",
+        },
+      ],
+      cartonNote:
+        "Mercari 页面标题为“MEVIUS for Ploom BLACK COLD MENTHOL空箱16箱”，说明写明 Ploom専用の加熱式たばこスティック、BLACK COLD MENTHOL フレーバーの空箱16箱；第 4 张商品图可见 4×4 共 16 个 MEVIUS / for ploom / BLACK COLD MENTHOL 同款空盒，满足 10+ same-SKU packs proof。ANA 官方页另确认“メビウス・ブラック・コールド・メンソール・プルーム用”サイズ为 20本×10箱；本 exact 行按 16箱 / 320 sticks 记录，且不回填 Menthol Fresh、Cold Menthol 或其他短名行。",
+    },
+  ],
+  [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
       cartonStatus: "contents-reference",

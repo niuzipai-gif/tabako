@@ -77,6 +77,7 @@ export const rawProducts = [
   { type: "heated", jp: "Ploom X メビウス スムース レギュラー", cn: "Ploom X 梅比乌斯 柔和经典", jpy: 550, img: "./images/cartons/ploom-mevius-smooth-regular-paypay-12-empty-boxes.jpg" },
   { type: "heated", jp: "Ploom X メビウス メンソール フレッシュ", cn: "Ploom X 清新薄荷", jpy: 550, img: "https://picsum.photos/seed/ploom-mevius-menthol-fresh/640/420" },
   { type: "heated", jp: "Ploom X メビウス コールド メンソール", cn: "Ploom X 冷感薄荷", jpy: 570, img: "https://picsum.photos/seed/ploom-cold/640/420" },
+  { type: "heated", jp: "Ploom X メビウス ブラック コールド メンソール", cn: "Ploom X 梅比乌斯 黑冷薄荷", jpy: 550, img: "./images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg" },
   { type: "heated", jp: "Ploom X キャメル メンソール", cn: "Ploom X 骆驼薄荷", jpy: 500, img: "https://picsum.photos/seed/ploom-camel-menthol/640/420" },
   { type: "heated", jp: "Ploom X キャメル メンソール フレッシュ", cn: "Ploom X 骆驼清新薄荷", jpy: 530, img: "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg" },
   { type: "heated", jp: "Ploom X キャメル メンソール コールド", cn: "Ploom X 骆驼强冷薄荷", jpy: 530, img: "https://picsum.photos/seed/ploom-camel-menthol-cold/640/420" },

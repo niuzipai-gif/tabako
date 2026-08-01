@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 47);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 47);
+  assert.equal(manifest.items.length, 48);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 48);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -434,6 +434,19 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(sharpCold.cartonImage, /ploom-mevius-sharp-cold-mercari-10-empty-boxes\.jpg/);
   assert.match(sharpCold.cartonSource, /jp\.mercari\.com\/item\/m78489316130/);
   assert.match(sharpCold.cartonNote, /SHARP COLD MENTHOL|10 个同款/);
+
+  const blackCold = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス ブラック コールド メンソール"),
+  );
+  assert.equal(blackCold.cartonStatus, "verified");
+  assert.match(
+    blackCold.cartonImage,
+    /ploom-mevius-black-cold-menthol-mercari-16-empty-boxes\.jpg/,
+  );
+  assert.match(blackCold.cartonSource, /jp\.mercari\.com\/item\/m51545192101/);
+  assert.equal(blackCold.cartonPackCount, 16);
+  assert.equal(blackCold.cartonStickCount, 320);
+  assert.match(blackCold.cartonNote, /BLACK COLD MENTHOL|16箱|20本×10箱/);
 });
 
 test("Ploom X Mevius Smooth does not publish a quantity-only render as verified", () => {
