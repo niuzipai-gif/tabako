@@ -2139,7 +2139,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ネオ ブリリアント ベリー|glo neo 闪耀莓果",
+    "ネオ・ブリリアント・ベリー・hyper用|glo neo 闪耀莓果",
     {
       cartonStatus: "verified",
       cartonImage: "./images/cartons/glo-neo-brilliant-berry-paypay-15-empty-boxes.jpg",
@@ -2230,7 +2230,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ラッキー ストライク リッチ|glo 幸运击 浓郁",
+    "ラッキー・ストライク・リッチ・タバコ・glo hyper用|glo 幸运击 浓郁烟草",
     {
       cartonStatus: "verified",
       cartonImage: "./images/cartons/glo-lucky-strike-rich-paypay-27-empty-boxes.jpg",
@@ -2251,7 +2251,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ラッキー ストライク メンソール|glo 幸运击 薄荷",
+    "ラッキー・ストライク・メンソール・glo hyper用|glo 幸运击 薄荷",
     {
       cartonStatus: "verified",
       cartonImage: "./images/cartons/glo-lucky-strike-menthol-mercari-10-empty-boxes.jpg",
@@ -2284,7 +2284,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ラッキー ストライク ダーク|glo 幸运击 深色款",
+    "ラッキー・ストライク・ダーク・タバコ・glo hyper用|glo 幸运击 深色烟草",
     {
       image: "./images/cartons/glo-lucky-strike-dark-tobacco-paypay-14-empty-boxes.jpg",
       imageStatus: "verified",
@@ -2324,7 +2324,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ラッキー ストライク ダーク メンソール|glo 幸运击 深薄荷",
+    "ラッキー・ストライク・ダーク・メンソール・glo hyper用|glo 幸运击 深薄荷",
     {
       image:
         "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
@@ -2352,7 +2352,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ネオ トロピカル スワール|glo neo 热带旋风",
+    "ネオ・ブリリアント・トロピカル・hyper用|glo neo 闪耀热带",
     {
       cartonStatus: "contents-reference",
       cartonImage:
@@ -2414,7 +2414,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "glo hyper ネオ アイスド メンソール|glo neo 冰感薄荷",
+    "ネオ・アイスド・メンソール・hyper用|glo neo 冰感薄荷",
     {
       cartonStatus: "verified",
       cartonImage: "./images/cartons/glo-neo-iced-menthol-paypay-24-empty-boxes.jpg",

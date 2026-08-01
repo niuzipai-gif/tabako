@@ -532,34 +532,34 @@
     },
     {
         "type": "heated",
-        "jp": "glo hyper ラッキー ストライク リッチ",
-        "cn": "glo 幸运击 浓郁",
-        "key": "4be0bfb8",
-        "query": "glo hyper ラッキー ストライク リッチ heated tobacco pack",
+        "jp": "ラッキー・ストライク・リッチ・タバコ・glo hyper用",
+        "cn": "glo 幸运击 浓郁烟草",
+        "key": "fa59fdd2",
+        "query": "ラッキー・ストライク・リッチ・タバコ・glo hyper用 heated tobacco pack",
         "status": "exists"
     },
     {
         "type": "heated",
-        "jp": "glo hyper ラッキー ストライク メンソール",
+        "jp": "ラッキー・ストライク・メンソール・glo hyper用",
         "cn": "glo 幸运击 薄荷",
-        "key": "0c3cf525",
-        "query": "glo hyper ラッキー ストライク メンソール heated tobacco pack",
+        "key": "04287860",
+        "query": "ラッキー・ストライク・メンソール・glo hyper用 heated tobacco pack",
         "status": "exists"
     },
     {
         "type": "heated",
-        "jp": "glo hyper ネオ ブリリアント ベリー",
+        "jp": "ネオ・ブリリアント・ベリー・hyper用",
         "cn": "glo neo 闪耀莓果",
-        "key": "828f0c99",
-        "query": "glo hyper ネオ ブリリアント ベリー heated tobacco pack",
+        "key": "daefedd4",
+        "query": "ネオ・ブリリアント・ベリー・hyper用 heated tobacco pack",
         "status": "exists"
     },
     {
         "type": "heated",
-        "jp": "glo hyper ネオ トロピカル スワール",
-        "cn": "glo neo 热带旋风",
-        "key": "02d15250",
-        "query": "glo hyper ネオ トロピカル スワール heated tobacco pack",
+        "jp": "ネオ・ブリリアント・トロピカル・hyper用",
+        "cn": "glo neo 闪耀热带",
+        "key": "695bc58e",
+        "query": "ネオ・ブリリアント・トロピカル・hyper用 heated tobacco pack",
         "status": "exists"
     },
     {
@@ -624,18 +624,18 @@
     },
     {
         "type": "heated",
-        "jp": "glo hyper ネオ アイスド メンソール",
+        "jp": "ネオ・アイスド・メンソール・hyper用",
         "cn": "glo neo 冰感薄荷",
-        "key": "99949260",
-        "query": "glo hyper ネオ アイスド メンソール heated tobacco pack",
+        "key": "77c0bbf5",
+        "query": "ネオ・アイスド・メンソール・hyper用 heated tobacco pack",
         "status": "exists"
     },
     {
         "type": "heated",
-        "jp": "glo hyper ラッキー ストライク ダーク",
-        "cn": "glo 幸运击 深色款",
-        "key": "bde8ff84",
-        "query": "glo hyper ラッキー ストライク ダーク heated tobacco pack",
+        "jp": "ラッキー・ストライク・ダーク・タバコ・glo hyper用",
+        "cn": "glo 幸运击 深色烟草",
+        "key": "0f72b376",
+        "query": "ラッキー・ストライク・ダーク・タバコ・glo hyper用 heated tobacco pack",
         "status": "exists"
     },
     {

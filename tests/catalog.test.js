@@ -317,6 +317,39 @@ test("glo Hilo Plus and virto Hilo-only sticks are grouped under glo with offici
   assert.ok(virto.some((item) => /ダーク・タバコ/.test(item.jp)));
 });
 
+test("glo HYPER current sticks follow the 2026 BAT price notice", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const sourcePattern = /prtimes\.jp\/a\/\?c=51859&f=d51859-175/;
+  const neo = products.filter((item) => /ネオ・/.test(item.jp));
+  const lucky = products.filter((item) => /ラッキー・ストライク/.test(item.jp));
+  const kentTrue = products.filter((item) => /ケント・トゥルー/.test(item.jp));
+
+  assert.ok(neo.length >= 9);
+  assert.ok(lucky.length >= 9);
+  assert.equal(kentTrue.length, 5);
+
+  for (const item of neo) {
+    assert.equal(item.brand, "glo", item.jp);
+    assert.equal(item.jpy, 530, item.jp);
+    assert.match(item.source, sourcePattern, item.jp);
+    if (!/マスカット|レッドフルーツ/.test(item.jp)) {
+      assert.notEqual(item.marketStatus, "discontinued-stock-only", item.jp);
+    }
+  }
+  for (const item of lucky) {
+    assert.equal(item.brand, "glo", item.jp);
+    assert.equal(item.jpy, 480, item.jp);
+    assert.match(item.source, sourcePattern, item.jp);
+  }
+  for (const item of kentTrue) {
+    assert.equal(item.brand, "glo", item.jp);
+    assert.equal(item.jpy, 520, item.jp);
+    assert.match(item.source, sourcePattern, item.jp);
+    assert.equal(item.cartonStatus === "verified", false, item.jp);
+    assert.equal(item.cartonImage, "", item.jp);
+  }
+});
+
 test("current official TEREA and SENTIA lineups are represented without carton claims", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const terea = products.filter((item) => item.type === "heated" && /テリア/.test(item.jp));

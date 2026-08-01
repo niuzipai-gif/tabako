@@ -234,6 +234,14 @@ const BRAND_PROFILES = [
 const PRICE_RULES = [
   { test: (item) => item.type === "heated" && /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
   { test: (item) => item.type === "heated" && /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
+  { test: (item) => item.type === "heated" && /ネオ・|glo hyper ネオ/i.test(item.jp), value: 530, source: "official" },
+  {
+    test: (item) => item.type === "heated" && /ラッキー・ストライク|glo hyper ラッキー ストライク/i.test(item.jp),
+    value: 480,
+    source: "official",
+  },
+  { test: (item) => item.type === "heated" && /ケント・トゥルー/i.test(item.jp), value: 520, source: "official" },
+  { test: (item) => item.type === "heated" && /ケント・ネオスティック/i.test(item.jp), value: 580, source: "official" },
   { test: (item) => item.type === "heated" && /lil HYBRID|MIIX|ミックス/i.test(item.jp), value: 560, source: "official" },
   {
     test: (item) => item.type === "heated" && /Ploom X.*メビウス/i.test(item.jp),

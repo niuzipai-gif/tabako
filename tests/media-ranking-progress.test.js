@@ -147,7 +147,7 @@ test("source-only and generated reference states still show a labeled source ima
   );
 
   const tropical = enrichProduct(
-    rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
+    rawProducts.find((product) => product.jp === "ネオ・ブリリアント・トロピカル・hyper用"),
   );
   assert.equal(tropical.cartonStatus, "contents-reference");
   assert.equal(tropical.cartonImage, "");
@@ -1450,7 +1450,7 @@ test("Cigaronne pack media uses exact local images while American Spirit separat
 
 test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   const lucky = enrichProduct(
-    rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク メンソール"),
+    rawProducts.find((product) => product.jp === "ラッキー・ストライク・メンソール・glo hyper用"),
   );
   assert.equal(lucky.cartonStatus, "verified");
   assert.match(lucky.cartonImage, /glo-lucky-strike-menthol-mercari-10-empty-boxes\.jpg/);
@@ -1459,7 +1459,7 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   assert.match(lucky.cartonNote, /10 boxes|200 sticks/);
 
   const tropical = enrichProduct(
-    rawProducts.find((product) => product.jp === "glo hyper ネオ トロピカル スワール"),
+    rawProducts.find((product) => product.jp === "ネオ・ブリリアント・トロピカル・hyper用"),
   );
   assert.equal(tropical.cartonStatus, "contents-reference");
   assert.equal(tropical.cartonImage, "");
@@ -1487,7 +1487,7 @@ test("KOOL Boost 5 BOX publishes the exact ANA 10-box carton outer image", () =>
 
 test("glo Lucky Strike Dark publishes exact Dark Tobacco multi-box evidence", () => {
   const dark = enrichProduct(
-    rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク ダーク"),
+    rawProducts.find((product) => product.jp === "ラッキー・ストライク・ダーク・タバコ・glo hyper用"),
   );
 
   assert.equal(dark.cartonStatus, "verified");
@@ -1500,7 +1500,7 @@ test("glo Lucky Strike Dark publishes exact Dark Tobacco multi-box evidence", ()
 
 test("glo Brilliant Berry, Dark Tobacco, and split Dark Menthol publish only exact verified cartons", () => {
   const berry = enrichProduct(
-    rawProducts.find((product) => product.jp === "glo hyper ネオ ブリリアント ベリー"),
+    rawProducts.find((product) => product.jp === "ネオ・ブリリアント・ベリー・hyper用"),
   );
   assert.equal(berry.cartonStatus, "verified");
   assert.match(berry.cartonImage, /glo-neo-brilliant-berry-paypay-15-empty-boxes\.jpg/);
@@ -1509,7 +1509,7 @@ test("glo Brilliant Berry, Dark Tobacco, and split Dark Menthol publish only exa
   assert.match(berry.cartonNote, /Brilliant Berry|15 个|10 boxes per carton/);
 
   const genericDark = enrichProduct(
-    rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク ダーク"),
+    rawProducts.find((product) => product.jp === "ラッキー・ストライク・ダーク・タバコ・glo hyper用"),
   );
   assert.equal(genericDark.cartonStatus, "verified");
   assert.match(
@@ -1519,7 +1519,7 @@ test("glo Brilliant Berry, Dark Tobacco, and split Dark Menthol publish only exa
 
   const darkMenthol = enrichProduct(
     rawProducts.find(
-      (product) => product.jp === "glo hyper ラッキー ストライク ダーク メンソール",
+      (product) => product.jp === "ラッキー・ストライク・ダーク・メンソール・glo hyper用",
     ),
   );
   assert.equal(darkMenthol.cartonStatus, "verified");
