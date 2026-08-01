@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 51);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 51);
+  assert.equal(manifest.items.length, 52);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 52);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -1397,18 +1397,20 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
 });
 
-test("glo Lucky Strike Dark stays below verified while evidence points to Dark Menthol", () => {
+test("glo Lucky Strike Dark publishes exact Dark Tobacco multi-box evidence", () => {
   const dark = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク ダーク"),
   );
 
-  assert.equal(dark.cartonStatus, "variant-reference");
-  assert.equal(dark.cartonImage, "");
-  assert.match(dark.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z562041458/);
-  assert.match(dark.cartonNote, /DARK MENTHOL|Dark Menthol \/ Dark Tobacco 不能混用/);
+  assert.equal(dark.cartonStatus, "verified");
+  assert.match(dark.cartonImage, /glo-lucky-strike-dark-tobacco-paypay-14-empty-boxes\.jpg/);
+  assert.match(dark.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z584991492/);
+  assert.equal(dark.cartonPackCount, 10);
+  assert.equal(dark.cartonStickCount, 200);
+  assert.match(dark.cartonNote, /DARK TOBACCO.*空箱14個/s);
 });
 
-test("glo Brilliant Berry and split Dark Menthol publish only exact verified cartons", () => {
+test("glo Brilliant Berry, Dark Tobacco, and split Dark Menthol publish only exact verified cartons", () => {
   const berry = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ネオ ブリリアント ベリー"),
   );
@@ -1421,8 +1423,11 @@ test("glo Brilliant Berry and split Dark Menthol publish only exact verified car
   const genericDark = enrichProduct(
     rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク ダーク"),
   );
-  assert.equal(genericDark.cartonStatus, "variant-reference");
-  assert.equal(genericDark.cartonImage, "");
+  assert.equal(genericDark.cartonStatus, "verified");
+  assert.match(
+    genericDark.cartonImage,
+    /glo-lucky-strike-dark-tobacco-paypay-14-empty-boxes\.jpg/,
+  );
 
   const darkMenthol = enrichProduct(
     rawProducts.find(

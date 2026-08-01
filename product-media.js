@@ -2058,12 +2058,24 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ラッキー ストライク ダーク|glo 幸运击 深色款",
     {
-      cartonStatus: "variant-reference",
-      cartonImage: "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
-      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
+      image: "./images/cartons/glo-lucky-strike-dark-tobacco-paypay-14-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z584991492",
+      imageNote:
+        "Yahoo!フリマ图可见同一画面内 12 个 LUCKY STRIKE DARK TOBACCO for glo HYPER 空盒，右侧另有 10 枚同 SKU 裁切盖片；商品说明为“空箱14個 切り取った蓋部分10枚”。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/glo-lucky-strike-dark-tobacco-paypay-14-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z584991492",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonGallery: [
+        {
+          label: "Yahoo!フリマ 14 空箱实拍",
+          image:
+            "./images/cartons/glo-lucky-strike-dark-tobacco-paypay-14-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z584991492",
+          note: "页面标题/说明为 LUCKY STRIKE glo HYPER DARK TOBACCO 空箱14個；主图可见 12 个同 SKU 空盒加 10 枚同 SKU 盖片。",
+        },
         {
           label: "1 Carton 数量参考",
           image: "./images/cartons/glo-lucky-strike-dark-1carton-reference.jpg",
@@ -2072,15 +2084,15 @@ const MEDIA_OVERRIDES = new Map([
           note: "j-Cigarette 对应商品页确认 1 Carton = 10 pack = 200 pieces。图片自身带 1 Carton 标识，但不是外箱实拍。",
         },
         {
-          label: "KIX 官方当前包装",
-          image: "./images/cartons/glo-lucky-strike-dark-kix-official-pack.jpg",
-          source:
-            "https://www.kixdutyfree.jp/en/lucky-strike-dark-menthol-for-glo-hyper-2406300043.html",
-          note: "KIX 官方页展示 LUCKY STRIKE DARK MENTHOL FOR GLO HYPER 当前单盒图，并明确 10 boxes per carton (20 sticks per box)。",
+          label: "Amanoya 当前包装/数量参考",
+          image:
+            "./images/cartons/glo-lucky-strike-dark-tobacco-amanoya-pack.png",
+          source: "https://www.e-amanoya.jp/view/category/ct349",
+          note: "Amanoya glo hyper 分类页列出“ラッキーストライク・ダーク・タバコ・glo hyper用（1カートン10個入）”，图片为 exact Dark Tobacco 单包参考。",
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题和图片均为 LUCKY STRIKE DARK MENTHOL，而目录项是“ラッキー ストライク ダーク”；图库数量参考又指向 Dark Tobacco。Dark Menthol / Dark Tobacco 不能混用为同一已核验整条，因此降级为变体参考，后续需拆分或改名后再核验。",
+        "Yahoo!フリマ exact SKU 页面标题/说明为“LUCKY STRIKE glo HYPER DARK TOBACCO 空箱14個 切り取った蓋部分10枚”，主图可见 12 个 LUCKY STRIKE DARK TOBACCO for glo HYPER 同款空盒，右侧另有 10 枚同 SKU 盖片；j-Cigarette 对应 Dark Tobacco 页作为 1 carton = 10 packs = 200 pieces 数量参考。Dark Menthol 证据仅保留在独立“glo hyper ラッキー ストライク ダーク メンソール”行，二者不再混用。",
     },
   ],
   [
