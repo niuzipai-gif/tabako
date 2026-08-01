@@ -23,6 +23,20 @@ test("application shell exposes the complete discovery and detail structure", ()
   assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
 });
 
+test("mobile first screen emphasizes search, filters, AI, and ranking without crowding maps", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(html, /class="[^"]*\bprimary-mobile-actions\b[^"]*"/);
+  assert.match(html, /class="ranking-quick-link"/);
+  assert.match(html, /完整排行/);
+  assert.match(html, /class="mobile-nearby is-subtle"/);
+  assert.match(styles, /\.primary-mobile-actions\s*\{/);
+  assert.match(styles, /\.ranking-quick-link\s*\{/);
+  assert.match(styles, /\.mobile-nearby\.is-subtle\s*\{/);
+  assert.match(styles, /@media\s*\(max-width:\s*720px\)[\s\S]*\.ranking-section\s*\{[\s\S]*margin-top:\s*10px/);
+});
+
 test("AI shell exposes text, image, Japanese card, and online fallback", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   const appSource = readFileSync(new URL("../app.js", import.meta.url), "utf8");

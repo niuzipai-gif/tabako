@@ -1233,7 +1233,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-mevius-smooth-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
@@ -1722,7 +1722,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ラッキー ストライク ダーク|glo 幸运击 深色款",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
       cartonPackCount: 10,

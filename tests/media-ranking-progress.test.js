@@ -311,6 +311,17 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(sharpCold.cartonNote, /SHARP COLD MENTHOL|10 个同款/);
 });
 
+test("Ploom X Mevius Smooth does not publish a quantity-only render as verified", () => {
+  const smooth = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス スムース"),
+  );
+
+  assert.equal(smooth.cartonStatus, "contents-reference");
+  assert.equal(smooth.cartonImage, "");
+  assert.match(smooth.cartonSource, /j-cigarette\.com\/1carton-ploom-x-ploom-s-mevius-smooth/);
+  assert.match(smooth.cartonNote, /不是 sealed carton\/outer box|降级为数量参考/);
+});
+
 test("Ploom X Sharp Cold keeps older mixed references as gallery context", () => {
   const item = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
@@ -1085,6 +1096,17 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   assert.match(tropical.cartonNote, /不是完整 10 盒/);
   assert.match(tropical.cartonNote, /大浦商店.*カートン（10箱）/s);
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
+});
+
+test("glo Lucky Strike Dark stays below verified while evidence points to Dark Menthol", () => {
+  const dark = enrichProduct(
+    rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク ダーク"),
+  );
+
+  assert.equal(dark.cartonStatus, "variant-reference");
+  assert.equal(dark.cartonImage, "");
+  assert.match(dark.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z562041458/);
+  assert.match(dark.cartonNote, /DARK MENTHOL|Dark Menthol \/ Dark Tobacco 不能混用/);
 });
 
 test("SENTIA Balanced Yellow uses the Box of 200 carton variant instead of the old single-pack reference", () => {

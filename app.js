@@ -1185,7 +1185,12 @@ function setButtonBusy(button, busy, busyText) {
 function renderAiRecoveryActions(payload) {
   if (!payload.recovery) return;
 
-  const links = buildExternalSearchLinks(currentSearchPhrase());
+  const recoveryQuery = currentSearchPhrase();
+  const links = buildExternalSearchLinks(recoveryQuery);
+  const queryHint = document.createElement("p");
+  queryHint.className = "ai-recovery-query";
+  queryHint.textContent = `将搜索：${recoveryQuery}`;
+
   const localButton = document.createElement("button");
   localButton.type = "button";
   localButton.className = "secondary-button";
@@ -1203,8 +1208,9 @@ function renderAiRecoveryActions(payload) {
   webLink.target = "_blank";
   webLink.rel = "noopener noreferrer";
   webLink.textContent = "打开联网搜索关键词";
+  webLink.setAttribute("aria-label", `打开联网搜索关键词：${recoveryQuery}`);
 
-  elements.aiResultActions.append(localButton, webLink);
+  elements.aiResultActions.append(queryHint, localButton, webLink);
   elements.aiResultActions.hidden = false;
 }
 

@@ -37,7 +37,11 @@ test("AI failure result cards expose local-only and web-search recovery actions"
   assert.match(appSource, /function renderAiRecoveryActions/);
   assert.match(appSource, /只看本地匹配/);
   assert.match(appSource, /打开联网搜索关键词/);
-  assert.match(appSource, /buildExternalSearchLinks\(currentSearchPhrase\(\)\)/);
+  assert.match(appSource, /const recoveryQuery = currentSearchPhrase\(\)/);
+  assert.match(appSource, /buildExternalSearchLinks\(recoveryQuery\)/);
+  assert.match(appSource, /将搜索：/);
+  assert.match(appSource, /webLink\.setAttribute\("aria-label", `打开联网搜索关键词：\$\{recoveryQuery\}`\)/);
   assert.match(styles, /\.ai-result-actions\s*\{/);
+  assert.match(styles, /\.ai-recovery-query\s*\{/);
   assert.doesNotMatch(styles, /ai-result-actions[\s\S]{0,240}var\(--red\)/);
 });
