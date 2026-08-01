@@ -311,10 +311,28 @@ test("glo Hilo Plus and virto Hilo-only sticks are grouped under glo with offici
     assert.equal(item.cartonStatus === "verified", false, item.jp);
     assert.equal(item.cartonImage, "", item.jp);
     assert.match(item.source, /prtimes\.jp\/main\/html\/rd\/p\/0000001(34|82)/, item.jp);
+    assert.match(item.compatibility, /glo Hilo \/ glo Hilo Plus/, item.jp);
+    assert.match(item.compatibility, /不适配 glo HYPER/, item.jp);
   }
 
   assert.ok(virto.some((item) => /ブライト・ピーチ/.test(item.jp)));
   assert.ok(virto.some((item) => /ダーク・タバコ/.test(item.jp)));
+});
+
+test("lil HYBRID liquid cartridge is represented as a separate required consumable", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const cartridge = products.find((item) => item.jp === "lil HYBRID リキッド カートリッジ");
+  const regular = products.find((item) => item.jp === "lil HYBRID ミックス レギュラー");
+
+  assert.ok(cartridge);
+  assert.equal(cartridge.brand, "lil HYBRID");
+  assert.equal(cartridge.jpy, 110);
+  assert.equal(cartridge.productSubtype, "liquid-cartridge");
+  assert.match(cartridge.compatibility, /lil HYBRID 3\.0/);
+  assert.match(cartridge.compatibility, /MIIX/);
+  assert.match(cartridge.source, /tabako\.co\.jp\/category\/item\/tvp-all\/tvp-lilhybrid/);
+  assert.equal(regular.jpy, 560);
+  assert.match(regular.source, /iqos\.com\/discover\/lil-hybrid/);
 });
 
 test("glo HYPER current sticks follow the 2026 BAT price notice", () => {

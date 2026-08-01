@@ -266,6 +266,7 @@ const PRICE_RULES = [
   },
   { test: (item) => item.type === "heated" && /ケント・トゥルー/i.test(item.jp), value: 520, source: "official" },
   { test: (item) => item.type === "heated" && /ケント・ネオスティック/i.test(item.jp), value: 580, source: "official" },
+  { test: (item) => item.type === "heated" && /lil HYBRID.*リキッド|リキッド.*カートリッジ/i.test(item.jp), value: 110, source: "source" },
   { test: (item) => item.type === "heated" && /lil HYBRID|MIIX|ミックス/i.test(item.jp), value: 560, source: "official" },
   {
     test: (item) => item.type === "heated" && /Ploom X.*メビウス/i.test(item.jp),
@@ -405,8 +406,9 @@ function compatibility(item) {
   if (/ウィズ用/i.test(item.jp)) return "仅适配 with2 / Ploom TECH+ with / Ploom TECH+，不适配 Ploom AURA/X 烟弹设备";
   if (/エボ|EVO|プルーム用/i.test(item.jp)) return "适配 Ploom AURA、Ploom CUBE、Ploom X ADVANCED、Ploom X、Ploom S；不适配 with2";
   if (/Ploom/i.test(item.jp)) return "适配对应 Ploom 设备";
+  if (/ヴァルト|virto/i.test(`${item.jp} ${item.cn}`)) return "仅适配 glo Hilo / glo Hilo Plus；不适配 glo HYPER";
   if (/glo/i.test(item.jp)) return "适配 glo HYPER 系列";
-  if (/lil HYBRID/i.test(item.jp)) return "仅适配 lil HYBRID";
+  if (/lil HYBRID/i.test(`${item.jp} ${item.cn}`)) return "仅适配 lil HYBRID 3.0；需要 MIIX 专用烟草棒与专用リキッド配套使用";
   if (item.type === "device") return "设备本体，请查看商品名称确认型号";
   if (item.type === "pod") return "请严格核对烟弹/雾化芯型号";
   return "纸卷香烟，无设备兼容要求";
