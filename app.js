@@ -65,6 +65,7 @@ const elements = {
   filterCount: document.querySelector("#filterCount"),
   filterDialog: document.querySelector("#filterDialog"),
   filterReset: document.querySelector("#filterReset"),
+  mapComplianceNotice: document.querySelector("#mapComplianceNotice"),
   methodDialog: document.querySelector("#methodDialog"),
   onlineImagesLink: document.querySelector("#onlineImagesLink"),
   onlineOfficialLink: document.querySelector("#onlineOfficialLink"),
@@ -306,6 +307,12 @@ function marketStatusMeta(item) {
   };
 }
 
+function imageSourceLabel(item) {
+  if (item.type === "device") return "查看设备图片来源";
+  if (item.type === "pod") return "查看图片来源";
+  return "查看单包图片来源";
+}
+
 function imageAuditStatus(status) {
   if (status === "verified") return { label: "已核验", tone: "verified" };
   if (status === "archive-reference") return { label: "旧版实拍", tone: "reference" };
@@ -397,6 +404,15 @@ function updateFilterUi() {
   const count = activeFilterCount();
   elements.filterCount.hidden = count === 0;
   elements.filterCount.textContent = String(count);
+}
+
+function updateComplianceNotice() {
+  if (!elements.mapComplianceNotice) return;
+  const electronicSelected = state.category === "device" || state.category === "pod";
+  elements.mapComplianceNotice.dataset.tone = electronicSelected ? "caution" : "default";
+  elements.mapComplianceNotice.textContent = electronicSelected
+    ? "设备/烟弹需先确认日本法规、尼古丁状态和门店实际销售；这里不提供误导性购买指引。"
+    : "传统烟可用 Google 地图找烟草店；电子烟/烟弹需确认日本法规和门店实际销售，不把地图结果当作购买承诺。";
 }
 
 function setImageFallback(image) {
@@ -561,6 +577,7 @@ function renderRankings() {
 
 function renderAll() {
   updateFilterUi();
+  updateComplianceNotice();
   renderRankings();
   renderCatalog();
 }
@@ -640,7 +657,7 @@ function renderProductDetail(item) {
     "not-applicable": "不适用",
   }[item.cartonStatus] ?? "整条图片待核对";
   const packageSource = item.imageSource
-    ? `<a href="${escapeHtml(item.imageSource)}" target="_blank" rel="noopener noreferrer">查看单包图片来源</a>`
+    ? `<a href="${escapeHtml(item.imageSource)}" target="_blank" rel="noopener noreferrer">${imageSourceLabel(item)}</a>`
     : "";
   const cartonSource = item.cartonSource
     ? `<a href="${escapeHtml(item.cartonSource)}" target="_blank" rel="noopener noreferrer">查看一カートン来源</a>`

@@ -1,11 +1,13 @@
 import { rawProducts } from "./data/products.js";
-import { enrichProducts, sortProducts, yen } from "./catalog.js";
+import { enrichProducts, sortProducts, topDistinctBrands, yen } from "./catalog.js";
 
 const products = enrichProducts(rawProducts);
 const feed = document.querySelector("#rankingFeed");
 const context = document.querySelector("#rankingContext");
 const initialAudience = new URLSearchParams(window.location.search).get("audience");
+const initialMode = new URLSearchParams(window.location.search).get("mode");
 let audience = initialAudience === "cn" ? "cn" : "jp";
+let rankingMode = initialMode === "brand" ? "brand" : "sku";
 
 const AVAILABILITY = {
   "widely-available": "常见渠道覆盖较高",
@@ -98,14 +100,32 @@ function updateAudienceControls() {
   });
 }
 
+function updateModeControls() {
+  document.querySelectorAll("[data-ranking-mode]").forEach((button) => {
+    const active = button.dataset.rankingMode === rankingMode;
+    button.classList.toggle("is-active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+}
+
 function renderRanking() {
-  const ranked = sortProducts(rankingPool(), audience);
+  const pool = rankingPool();
+  const fullSkuRanking = sortProducts(pool, audience);
+  const ranked =
+    rankingMode === "brand"
+      ? topDistinctBrands(pool, audience, pool.length)
+      : fullSkuRanking;
   const fragment = document.createDocumentFragment();
   ranked.forEach((item, index) => fragment.appendChild(createRankItem(item, index)));
   feed.replaceChildren(fragment);
   const audienceName = audience === "jp" ? "日本人气" : "中国游客人气";
-  context.textContent = `${audienceName} · 完整 SKU 信息流 · ${ranked.length} 款商品 · 满分 5 分`;
+  const modeName = rankingMode === "brand" ? "品牌代表榜" : "完整 SKU 榜 · 完整 SKU 信息流";
+  context.textContent =
+    rankingMode === "brand"
+      ? `${audienceName} · ${modeName} · ${ranked.length} 个品牌代表 · 满分 5 分`
+      : `${audienceName} · ${modeName} · ${ranked.length} 款商品 · 满分 5 分`;
   updateAudienceControls();
+  updateModeControls();
   hydrateIcons(feed);
 }
 
@@ -114,6 +134,22 @@ document.querySelectorAll("[data-ranking-audience]").forEach((button) => {
     audience = button.dataset.rankingAudience;
     const url = new URL(window.location.href);
     url.searchParams.set("audience", audience);
+    url.searchParams.set("mode", rankingMode);
+    history.replaceState(null, "", url);
+    renderRanking();
+    window.scrollTo({
+      top: 0,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    });
+  });
+});
+
+document.querySelectorAll("[data-ranking-mode]").forEach((button) => {
+  button.addEventListener("click", () => {
+    rankingMode = button.dataset.rankingMode === "brand" ? "brand" : "sku";
+    const url = new URL(window.location.href);
+    url.searchParams.set("audience", audience);
+    url.searchParams.set("mode", rankingMode);
     history.replaceState(null, "", url);
     renderRanking();
     window.scrollTo({

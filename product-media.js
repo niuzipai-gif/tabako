@@ -2109,10 +2109,11 @@ export function resolveProductMedia(item, originalImage) {
   return {
     originalImage,
     image: override.image ?? originalImage,
-    imageStatus: override.imageStatus ?? "review-required",
-    imageSource: override.imageSource ?? "",
+    imageStatus: override.imageStatus ?? item.imageStatus ?? "review-required",
+    imageSource: override.imageSource ?? item.imageSource ?? "",
     imageNote:
       override.imageNote ??
+      item.imageNote ??
       (reviewNote || defaultImageNote),
     packageFormat: override.packageFormat ?? format.packageFormat,
     packageFormatJp: override.packageFormatJp ?? format.packageFormatJp,

@@ -37,12 +37,12 @@
       <p class="section-kicker">Popularity stream</p>
       <h1 id="rankingPageTitle">从第一名，<br />一路往下看。</h1>
       <p>
-        每个品牌只取当前分数最高的代表款，避免同品牌变体挤满榜单。分数是编辑指数，不是实时销量。
+        默认展示完整 SKU 榜；也可以切到品牌代表榜，避免同品牌变体挤满榜单。分数是编辑指数，不是实时销量。
       </p>
     </section>
 
-    <section class="ranking-toolbar" aria-label="切换排行人群">
-      <div class="segmented-control ranking-page-tabs" role="group">
+    <section class="ranking-toolbar" aria-label="切换排行视图">
+      <div class="segmented-control ranking-page-tabs" role="group" aria-label="切换排行人群">
         <button
           class="is-active"
           type="button"
@@ -57,6 +57,23 @@
           aria-pressed="false"
         >
           中国游客
+        </button>
+      </div>
+      <div class="segmented-control ranking-mode-tabs" role="group" aria-label="切换榜单粒度">
+        <button
+          class="is-active"
+          type="button"
+          data-ranking-mode="sku"
+          aria-pressed="true"
+        >
+          完整 SKU 榜
+        </button>
+        <button
+          type="button"
+          data-ranking-mode="brand"
+          aria-pressed="false"
+        >
+          品牌代表榜
         </button>
       </div>
       <p id="rankingContext" aria-live="polite">正在生成日本人气排行…</p>

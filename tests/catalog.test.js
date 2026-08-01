@@ -427,6 +427,18 @@ test("device and pod category pages ignore score sorts and keep brand-model orde
   );
 });
 
+test("detail image source link labels match product media type", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+
+  assert.match(source, /function imageSourceLabel\(item\)/);
+  assert.match(source, /item\.type === "device"/);
+  assert.match(source, /查看设备图片来源/);
+  assert.match(source, /item\.type === "pod"/);
+  assert.match(source, /查看图片来源/);
+  assert.match(source, /查看单包图片来源/);
+  assert.match(source, /imageSourceLabel\(item\)/);
+});
+
 test("all device and pod catalog pages keep each brand in one contiguous block", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
 
@@ -445,6 +457,53 @@ test("all device and pod catalog pages keep each brand in one contiguous block",
       assert.deepEqual([...brandsInside], [brand], `${type}:${brand}`);
     }
   }
+});
+
+test("device and pod category feeds stay separated while device brands follow the hardware family order", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const deviceFeed = sortProducts(filterProducts(products, { category: "device" }), "device");
+  const podFeed = sortProducts(filterProducts(products, { category: "pod" }), "device");
+
+  assert.ok(deviceFeed.every((item) => item.type === "device"));
+  assert.ok(podFeed.every((item) => item.type === "pod"));
+  assert.deepEqual(
+    [...new Set(deviceFeed.map((item) => item.brand))],
+    [
+      "IQOS",
+      "Ploom",
+      "glo",
+      "lil HYBRID",
+      "RELX",
+      "MOTI",
+      "VAPORESSO",
+      "Uwell",
+      "Voopoo",
+      "OXVA",
+      "Geekvape",
+    ],
+  );
+  assert.deepEqual(
+    deviceFeed
+      .filter((item) => item.brand === "VAPORESSO")
+      .slice(0, 4)
+      .map((item) => item.cn),
+    [
+      "VAPORESSO XROS 5 主机",
+      "VAPORESSO XROS 5 Mini 主机",
+      "VAPORESSO XROS 5 Nano 主机",
+      "VAPORESSO XROS 4 主机",
+    ],
+  );
+  assert.deepEqual(
+    podFeed
+      .filter((item) => item.brand === "VAPORESSO")
+      .map((item) => item.cn),
+    [
+      "VAPORESSO XROS 网芯烟弹 0.6Ω",
+      "VAPORESSO XROS 网芯烟弹 0.8Ω",
+      "VAPORESSO XROS 网芯烟弹 1.0Ω",
+    ],
+  );
 });
 
 test("recommended sorting groups every catalog type by brand before individual ranking", () => {
@@ -602,10 +661,47 @@ test("dedicated ranking page renders a full SKU feed while home preview stays br
 
   assert.equal(rankingPoolSize > 20, true);
   assert.doesNotMatch(rankingSource, /distinctBrandRanking/);
-  assert.match(rankingSource, /sortProducts\(rankingPool\(\), audience\)/);
+  assert.match(rankingSource, /const pool = rankingPool\(\)/);
+  assert.match(rankingSource, /sortProducts\(pool, audience\)/);
   assert.match(rankingSource, /完整 SKU 信息流/);
   assert.match(rankingSource, /ranked\.length\} 款商品/);
   assert.match(appSource, /topDistinctBrands\(rankingPool\(\), sort, 4\)/);
+});
+
+test("dedicated ranking page can switch between full SKU and brand representative feeds", () => {
+  const rankingHtml = readFileSync(new URL("../ranking.html", import.meta.url), "utf8");
+  const rankingSource = readFileSync(new URL("../ranking.js", import.meta.url), "utf8");
+
+  assert.match(rankingHtml, /data-ranking-mode="sku"/);
+  assert.match(rankingHtml, /完整 SKU 榜/);
+  assert.match(rankingHtml, /data-ranking-mode="brand"/);
+  assert.match(rankingHtml, /品牌代表榜/);
+  assert.match(rankingSource, /topDistinctBrands/);
+  assert.match(rankingSource, /let rankingMode = initialMode === "brand" \? "brand" : "sku"/);
+  assert.match(rankingSource, /rankingMode === "brand"/);
+  assert.match(rankingSource, /品牌代表榜/);
+  assert.match(rankingSource, /完整 SKU 榜/);
+  assert.match(rankingSource, /url\.searchParams\.set\("mode", rankingMode\)/);
+});
+
+test("maps and electronic product entry points expose lightweight Japanese compliance guidance", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+
+  assert.match(html, /id="mapComplianceNotice"/);
+  assert.match(html, /传统烟可用 Google 地图找烟草店/);
+  assert.match(html, /电子烟\/烟弹需确认日本法规和门店实际销售/);
+  assert.match(source, /function updateComplianceNotice/);
+  assert.match(source, /state\.category === "device" \|\| state\.category === "pod"/);
+  assert.match(source, /mapComplianceNotice/);
+});
+
+test("ranking page uses a slightly wider but bounded desktop feed", () => {
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(styles, /\.ranking-main\s*\{[\s\S]*width:\s*min\(100%,\s*960px\)/);
+  assert.match(styles, /@media\s*\(min-width:\s*1080px\)[\s\S]*\.ranking-main\s*\{[\s\S]*width:\s*min\(100%,\s*1040px\)/);
+  assert.match(styles, /@media\s*\(min-width:\s*1080px\)[\s\S]*\.ranking-feed-card\s*\{[\s\S]*grid-template-columns:\s*66px 122px minmax\(0,\s*1fr\) 78px/);
 });
 
 test("variants inherit transparent brand-level popularity instead of name-hash scores", () => {

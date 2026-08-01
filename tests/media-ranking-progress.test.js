@@ -447,6 +447,74 @@ test("device and pod media identities are not mislabeled as a single cigarette p
   assert.equal(heated.cartonApplicable, true);
 });
 
+test("item-level media metadata passes through for device images without carton claims", () => {
+  const item = enrichProduct({
+    type: "device",
+    jp: "测试设备",
+    cn: "测试设备",
+    jpy: 1000,
+    img: "https://example.com/device.jpg",
+    imageStatus: "reference",
+    imageSource: "https://example.com/device-source",
+    imageNote: "官方营销图，仅用于辨认设备外观。",
+  });
+
+  assert.equal(item.imageStatus, "reference");
+  assert.equal(item.imageSource, "https://example.com/device-source");
+  assert.equal(item.imageNote, "官方营销图，仅用于辨认设备外观。");
+  assert.equal(item.cartonApplicable, false);
+  assert.equal(item.cartonStatus, "not-applicable");
+});
+
+test("recent real-image device replacements carry explicit image source and note", () => {
+  const expectedDevices = [
+    "Ploom CUBE",
+    "VAPORESSO XROS 5 Nano",
+    "Uwell Caliburn G4 Pro",
+    "Uwell Caliburn G4 Classic",
+    "Voopoo Argus P3",
+    "Voopoo Argus G2 Mini",
+    "OXVA XLIM PRO 2 DNA",
+    "OXVA XLIM GO 2",
+    "Geekvape Wenax Q Ultra",
+    "Geekvape Wenax Q2",
+  ];
+  const products = rawProducts.map((product) => enrichProduct(product));
+
+  for (const name of expectedDevices) {
+    const item = products.find((product) => `${product.jp} ${product.cn}`.includes(name));
+    assert.ok(item, `${name} exists`);
+    assert.equal(item.type, "device", `${name} type`);
+    assert.match(item.imageSource, /^https:\/\//, `${name} imageSource`);
+    assert.match(item.imageNote, /营销图|组合图|官方|来源|设备外观/, `${name} imageNote`);
+    assert.doesNotMatch(item.image, /picsum\.photos/, `${name} image`);
+    assert.equal(item.cartonApplicable, false, `${name} cartonApplicable`);
+    assert.equal(item.cartonStatus, "not-applicable", `${name} cartonStatus`);
+  }
+});
+
+test("cigarette and heated products do not turn ordinary product source into imageSource automatically", () => {
+  const cigarette = enrichProduct({
+    type: "cigarette",
+    jp: "テスト シガレット",
+    cn: "测试香烟",
+    jpy: 500,
+    source: "https://example.com/product-source",
+  });
+  const heated = enrichProduct({
+    type: "heated",
+    jp: "テスト ヒートスティック",
+    cn: "测试加热烟弹",
+    jpy: 580,
+    source: "https://example.com/heated-product-source",
+  });
+
+  assert.equal(cigarette.imageSource, "");
+  assert.equal(heated.imageSource, "");
+  assert.equal(cigarette.source, "https://example.com/product-source");
+  assert.equal(heated.source, "https://example.com/heated-product-source");
+});
+
 test("TEREA Fusion uses the official Japanese Menthol SKU name instead of the false Mint variant", () => {
   const fusion = rawProducts.find((item) => item.cn === "IQOS TEREA 融合薄荷");
   assert.equal(fusion.jp, "IQOS テリア フュージョン メンソール");
