@@ -1011,7 +1011,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "source-only", item.jp);
       assert.equal(item.cartonImage, "", item.jp);
       assert.match(item.image, /cigaronne-royal-slims-white-dougenzaka-pack\.jpg/, item.jp);
-      assert.match(item.cartonNote, /Royal Slims.*三选项|1 Carton = 10 packs = 200 cigarettes|source-only/, item.jp);
+      assert.match(item.cartonNote, /Royal Slims.*三选项|Пачок в блоці 10|EAN 4850008001785|source-only/, item.jp);
     } else if (item.jp === "シガローネ・スーパースリム・ブラック") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/, item.jp);

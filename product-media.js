@@ -839,7 +839,7 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:
-        "https://cigarsofdubai.com/product/cigaronne-royal-slims-white-idf/",
+        "https://rozetka.com.ua/ua/cigaronne-4850008001785/p430594658/",
       cartonGallery: [
         {
           title: "日本店铺白款实拍 / 20 本信息",
@@ -850,7 +850,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Cigaronne 官方 Collection 说明 Royal Slims 是 Imperial Collection 的三选项之一；道玄坂のたばこ屋页面确认日本流通名为 シガローネ・ロイヤル・スリム・ホワイト、900円/一箱、20本入、3mg/0.3mg。Cigars of Dubai 页面补充 Royal Slims White 的 1 Carton = 10 packs = 200 cigarettes total，但目前未找到可见密封一条外箱或 10+ 同款白盒实拍，所以保持 source-only，不标 verified。",
+        "Cigaronne 官方 Collection 说明 Royal Slims 是 Imperial Collection 的三选项之一；道玄坂のたばこ屋页面确认日本流通名为 シガローネ・ロイヤル・スリム・ホワイト、900円/一箱、20本入、3mg/0.3mg。Rozetka exact 页面标题为 Cigaronne Royal Slims White х 10 пачок，规格写 Пачок в блоці 10、Цигарок в пачці 20、EAN 4850008001785；但当前未取得可本地复核的密封一条外箱或 10+ 同款白盒实拍，所以保持 source-only，不标 verified。",
     },
   ],
   [
