@@ -91,6 +91,7 @@ export const rawProducts = [
   { type: "heated", jp: "Ploom X キャメル スムース", cn: "Ploom X 骆驼柔和", jpy: 500, img: "https://picsum.photos/seed/ploom-camel-smooth/640/420" },
   { type: "heated", jp: "glo hyper ネオ アイスド メンソール", cn: "glo neo 冰感薄荷", jpy: 500, img: "https://picsum.photos/seed/glo-iced-menthol/640/420" },
   { type: "heated", jp: "glo hyper ラッキー ストライク ダーク", cn: "glo 幸运击 深色款", jpy: 500, img: "https://picsum.photos/seed/glo-dark/640/420" },
+  { type: "heated", jp: "glo hyper ラッキー ストライク ダーク メンソール", cn: "glo 幸运击 深薄荷", jpy: 500, img: "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg" },
 
   { type: "device", jp: "IQOS イルマ i ワン", cn: "IQOS ILUMA i ONE", jpy: 3980, img: "https://picsum.photos/seed/iqos-iluma-i-one/640/420", deviceBrand: "IQOS", deviceOrder: 1210, marketStatus: "current-mainstream", source: "https://jp.iqos.com/products/iluma/iluma-i-one" },
   { type: "device", jp: "IQOS イルマ i ワン ミネラ モデル", cn: "IQOS ILUMA i ONE Minera 限定款", jpy: 3980, img: "https://picsum.photos/seed/iqos-iluma-i-one-minera/640/420", deviceBrand: "IQOS", deviceOrder: 1230, marketStatus: "legacy", source: "https://jp.iqos.com/shop/catalogue/iluma/devices" },

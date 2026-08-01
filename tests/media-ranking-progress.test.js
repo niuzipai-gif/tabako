@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 37);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 37);
+  assert.equal(manifest.items.length, 39);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 39);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -1214,6 +1214,37 @@ test("glo Lucky Strike Dark stays below verified while evidence points to Dark M
   assert.equal(dark.cartonImage, "");
   assert.match(dark.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z562041458/);
   assert.match(dark.cartonNote, /DARK MENTHOL|Dark Menthol \/ Dark Tobacco 不能混用/);
+});
+
+test("glo Brilliant Berry and split Dark Menthol publish only exact verified cartons", () => {
+  const berry = enrichProduct(
+    rawProducts.find((product) => product.jp === "glo hyper ネオ ブリリアント ベリー"),
+  );
+  assert.equal(berry.cartonStatus, "verified");
+  assert.match(berry.cartonImage, /glo-neo-brilliant-berry-paypay-15-empty-boxes\.jpg/);
+  assert.equal(berry.cartonPackCount, 10);
+  assert.equal(berry.cartonStickCount, 200);
+  assert.match(berry.cartonNote, /Brilliant Berry|15 个|10 boxes per carton/);
+
+  const genericDark = enrichProduct(
+    rawProducts.find((product) => product.jp === "glo hyper ラッキー ストライク ダーク"),
+  );
+  assert.equal(genericDark.cartonStatus, "variant-reference");
+  assert.equal(genericDark.cartonImage, "");
+
+  const darkMenthol = enrichProduct(
+    rawProducts.find(
+      (product) => product.jp === "glo hyper ラッキー ストライク ダーク メンソール",
+    ),
+  );
+  assert.equal(darkMenthol.cartonStatus, "verified");
+  assert.match(
+    darkMenthol.cartonImage,
+    /glo-lucky-strike-dark-menthol-paypay-52-empty-boxes\.jpg/,
+  );
+  assert.equal(darkMenthol.cartonPackCount, 10);
+  assert.equal(darkMenthol.cartonStickCount, 200);
+  assert.match(darkMenthol.cartonNote, /DARK MENTHOL|52 个|10 boxes per carton/);
 });
 
 test("SENTIA Balanced Yellow uses the Box of 200 carton variant instead of the old single-pack reference", () => {

@@ -1645,7 +1645,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "glo hyper ネオ ブリリアント ベリー|glo neo 闪耀莓果",
     {
-      cartonStatus: "variant-reference",
+      cartonStatus: "verified",
       cartonImage: "./images/cartons/glo-neo-brilliant-berry-paypay-15-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z486874470",
       cartonPackCount: 10,
@@ -1667,7 +1667,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“glo hyper neo・ブリリアント ベリー☆タバコ 空き箱 15箱”，图片可见 15 个 neo Brilliant Berry for glo hyper 空盒排列，能核对多包外观。该来源为售出空盒/收藏图，不代表当前库存；一条仍按 10 包 / 200 支估算。",
+        "Yahoo!フリマ标题为“glo hyper neo・ブリリアント ベリー☆タバコ 空き箱 15箱”，图片可见 15 个 neo Brilliant Berry for glo hyper 空盒排列，能核对同 SKU 多包外观。KIX 官方页展示 neo Brilliant Berry for glo hyper 当前单盒图，并明确 10 boxes per carton (20 sticks per box)；因此按 10 包 / 200 支核验为精确整条/足量同 SKU 参考。该来源为售出空盒/收藏图，不代表当前库存。",
     },
   ],
   [
@@ -1813,6 +1813,34 @@ const MEDIA_OVERRIDES = new Map([
       ],
       cartonNote:
         "Yahoo!フリマ标题和图片均为 LUCKY STRIKE DARK MENTHOL，而目录项是“ラッキー ストライク ダーク”；图库数量参考又指向 Dark Tobacco。Dark Menthol / Dark Tobacco 不能混用为同一已核验整条，因此降级为变体参考，后续需拆分或改名后再核验。",
+    },
+  ],
+  [
+    "glo hyper ラッキー ストライク ダーク メンソール|glo 幸运击 深薄荷",
+    {
+      image:
+        "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
+      imageNote:
+        "Yahoo!フリマ图可见大量 LUCKY STRIKE DARK MENTHOL for glo hyper 同款盒；用于精确 Dark Menthol 多盒视觉核验。",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "KIX 官方 Dark Menthol 单包/数量参考",
+          image: "./images/cartons/glo-lucky-strike-dark-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/lucky-strike-dark-menthol-for-glo-hyper-2406300043.html",
+          note: "KIX 官方页展示 LUCKY STRIKE DARK MENTHOL FOR GLO HYPER 当前单盒图，并明确 10 boxes per carton (20 sticks per box)。",
+        },
+      ],
+      cartonNote:
+        "Yahoo!フリマ标题和主图均指向 LUCKY STRIKE DARK MENTHOL，图片可见远超 10 个同款 DARK MENTHOL for glo hyper 盒。KIX 官方页补充 exact Dark Menthol 当前单包图和 10 boxes per carton (20 sticks per box) 数量信息，按 10 包 / 200 支核验；该 verified 只绑定精确 Dark Menthol 行，不回填泛称 Dark Tobacco 行。",
     },
   ],
   [

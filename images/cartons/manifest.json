@@ -334,6 +334,24 @@
       "localPath": "images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
       "sourcePage": "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
       "sha256": "5e3666b0c9942c537eacec61448500621f77da5f8adced89763a03b7a73d0c97"
+    },
+    {
+      "productId": "p-828f0c99",
+      "jp": "glo hyper ネオ ブリリアント ベリー",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/glo-neo-brilliant-berry-paypay-15-empty-boxes.jpg",
+      "sourcePage": "https://paypayfleamarket.yahoo.co.jp/item/z486874470",
+      "sha256": "df19e484c1908a71ed129911355611a8645d3f2e7007f918839cc71ae5b51634"
+    },
+    {
+      "productId": "p-718a741b",
+      "jp": "glo hyper ラッキー ストライク ダーク メンソール",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
+      "sourcePage": "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
+      "sha256": "1afdde2f88ac7e65b36eb7079685cfe87a76949bf9bef358664da9f68c4e67a5"
     }
   ]
 }
