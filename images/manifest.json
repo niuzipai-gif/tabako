@@ -57,11 +57,33 @@
     },
     {
         "type": "cigarette",
+        "jp": "マールボロ・メンソール・8・ボックス",
+        "cn": "万宝路 薄荷 8mg 盒装",
+        "key": "11ef48a0",
+        "query": "マールボロ・メンソール・8・ボックス cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.j6O6w5w--OFScXq8fgQkXgHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.daiichi-tabacco.com/product/220",
+        "title": "マールボロ・メンソール・8・100's・ボックス - たばこ通販の第一商事"
+    },
+    {
+        "type": "cigarette",
         "jp": "マールボロ ダブルバースト",
         "cn": "万宝路 双爆珠",
         "key": "a9f9f8de",
         "query": "マールボロ ダブルバースト cigarette pack",
         "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "マールボロ・ダブルバースト・パープル・5・ボックス",
+        "cn": "万宝路 双爆珠 紫 5mg 盒装",
+        "key": "f5d04592",
+        "query": "マールボロ・ダブルバースト・パープル・5・ボックス cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.9zJRT5wi2Gr7cb3ilcBkzwHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.anadf.com/ItemDetail.aspx?S_CD=2010200017",
+        "title": "マールボロ ダブル バースト パープル 5 ボックス | ANA DUTY FREE SHOP"
     },
     {
         "type": "cigarette",
@@ -129,6 +151,17 @@
     },
     {
         "type": "cigarette",
+        "jp": "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス",
+        "cn": "Winston Caster White One 100s 盒装",
+        "key": "f56a7e8b",
+        "query": "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.ZSwZRySVHKWXSVVHBUoT-wHaHa?r=0&pid=Api",
+        "sourcePage": "https://duty-free.centrair.jp/product/detail.aspx?scd=2021010259",
+        "title": "ウィンストン キャスター ホワイト 100S ボックス-Winston- | 中部国際空港セントレア 免税店 公式 予約サイト"
+    },
+    {
+        "type": "cigarette",
         "jp": "ウィンストン キャスター ホワイト",
         "cn": "温斯顿 白",
         "key": "84898a7d",
@@ -145,6 +178,17 @@
     },
     {
         "type": "cigarette",
+        "jp": "クール ブースト 5 ボックス",
+        "cn": "KOOL Boost Fresh 5",
+        "key": "2c66f9db",
+        "query": "クール ブースト 5 ボックス cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.fQjVOcNcH3ppwpWIGAdciAAAAA?r=0&pid=Api",
+        "sourcePage": "https://kishida.ocnk.net/product/1840",
+        "title": "クール・ブースト・フレッシュ・5・ボックス - キシダサービス・ネットショップ"
+    },
+    {
+        "type": "cigarette",
         "jp": "メビウス ゴールド オリジナル",
         "cn": "梅比乌斯 金装原味",
         "key": "91298bb7",
@@ -153,10 +197,10 @@
     },
     {
         "type": "cigarette",
-        "jp": "メビウス プレミアム メンソール",
-        "cn": "梅比乌斯 高级薄荷",
-        "key": "ede9d6fc",
-        "query": "メビウス プレミアム メンソール cigarette pack",
+        "jp": "メビウス・プレミアムメンソール・オプション・パープル・8",
+        "cn": "梅比乌斯 高级薄荷 紫莓爆珠 8",
+        "key": "86a9b2e7",
+        "query": "メビウス・プレミアムメンソール・オプション・パープル・8 cigarette pack",
         "status": "exists"
     },
     {
@@ -201,6 +245,17 @@
     },
     {
         "type": "cigarette",
+        "jp": "ラーク・セレクト・1・100sボックス",
+        "cn": "乐富门 Select 1 100s 盒装",
+        "key": "a1a6ecb0",
+        "query": "ラーク・セレクト・1・100sボックス cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.yujPxFhynOY2p3SYgVL2XAAAAA?r=0&pid=Api",
+        "sourcePage": "https://www.yuusou.co.jp/product/%E3%83%A9%E3%83%BC%E3%82%AF-%E3%82%BB%E3%83%AC%E3%82%AF%E3%83%88-1-100s%E3%83%9C%E3%83%83%E3%82%AF%E3%82%B9-tkm-lark_select_1_100/",
+        "title": "ラーク セレクト 1 100sボックス (tkm-lark_select_1_100) - 優創株式会社"
+    },
+    {
+        "type": "cigarette",
         "jp": "ラーク メンソール 5",
         "cn": "乐富门 薄荷 5",
         "key": "ecc24bee",
@@ -221,6 +276,14 @@
         "cn": "骆驼 Craft 14",
         "key": "34076d6e",
         "query": "キャメル クラフト 14 cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "ナチュラル アメリカン スピリット ライト 14本入",
+        "cn": "美式精神 Light 14支",
+        "key": "998a91ae",
+        "query": "ナチュラル アメリカン スピリット ライト 14本入 cigarette pack",
         "status": "exists"
     },
     {
@@ -261,7 +324,7 @@
         "cn": "KOOL Boost Fresh 8",
         "key": "da62e662",
         "query": "クール ブースト フレッシュ 8 cigarette pack",
-        "status": "downloaded",
+        "status": "exists",
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.Kw0jwLZmuJk3qFkIQdZXBwHaHa?r=0&pid=Api",
         "sourcePage": "https://www.world-tobacco.jp/view/category/sample3?page=2",
         "title": "紙巻たばこ（シガレット）｜世界のたばこ通販"
@@ -284,11 +347,33 @@
     },
     {
         "type": "cigarette",
+        "jp": "わかば・シガー 10P",
+        "cn": "Wakaba Cigar 10P",
+        "key": "94e84e94",
+        "query": "わかば・シガー 10P cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.we5hV8IMwzZAHoAI0uROXAAAAA?r=0&pid=Api",
+        "sourcePage": "https://monolog.r-n-i.jp/item/4902210153810",
+        "title": "JT わかば・シガー 10Pの口コミ・レビュー・評判、評価点数 | ものログ"
+    },
+    {
+        "type": "cigarette",
         "jp": "エコー",
         "cn": "Echo",
         "key": "704c4225",
         "query": "エコー cigarette pack",
         "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "エコー・シガー 10P",
+        "cn": "Echo Cigar 10P",
+        "key": "887ffafb",
+        "query": "エコー・シガー 10P cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.bBdDxdynVkT62EssA0gu8gHaHa?r=0&pid=Api",
+        "sourcePage": "https://enjoy-tabaco.jp/products/list?category_id=560",
+        "title": "Enjoyたばこ｜手巻き＆世界のたばこの通販SHOP / エコー"
     },
     {
         "type": "cigarette",
@@ -302,6 +387,17 @@
     },
     {
         "type": "cigarette",
+        "jp": "シガローネ・ロイヤルスリム・ホワイト",
+        "cn": "卡比龙 Royal Slims White",
+        "key": "5da7f3bb",
+        "query": "シガローネ・ロイヤルスリム・ホワイト cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.cZ1eKXYfhqa74txfI1_AfwHaFJ?r=0&pid=Api",
+        "sourcePage": "https://cinnamoroll.blog.jp/archives/52534211.html",
+        "title": "森 康哲のブログ : シガローネ・ロイヤルスリム・ホワイト"
+    },
+    {
+        "type": "cigarette",
         "jp": "シガローネ・スーパースリム・メンソール",
         "cn": "卡比龙 Super Slims Menthol",
         "key": "710cf0f7",
@@ -312,10 +408,21 @@
     },
     {
         "type": "cigarette",
+        "jp": "シガローネ・スーパースリム・ホワイト",
+        "cn": "卡比龙 Super Slims White",
+        "key": "ed93c257",
+        "query": "シガローネ・スーパースリム・ホワイト cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.QprtnuIqnXhYfoH_45gTfAHaJ4?r=0&pid=Api",
+        "sourcePage": "https://ameblo.jp/dougenzaka-tabaco-shop/entry-12210946896.html",
+        "title": "cigaronne シガローネ エクストラロング ホワイト、シガローネロイヤルスリム ホワイト | 道玄坂のたばこ屋、煙草販売専門店のブログ"
+    },
+    {
+        "type": "cigarette",
         "jp": "シガローネ・タトゥー・チェリー",
         "cn": "卡比龙 Tattoo Cherry",
         "key": "ed4fa11e",
-        "query": "シガローネ・タトゥー・チェリー little cigar pack",
+        "query": "シガローネ・タトゥー・チェリー cigarette pack",
         "status": "exists",
         "sourcePage": "https://www.world-tobacco.jp/view/item/000000002096",
         "title": "Cigaronne Tattoo Cherry - World Tobacco"
@@ -325,7 +432,7 @@
         "jp": "シガローネ・タトゥー・チョコレート",
         "cn": "卡比龙 Tattoo Chocolate",
         "key": "17e173b8",
-        "query": "シガローネ・タトゥー・チョコレート little cigar pack",
+        "query": "シガローネ・タトゥー・チョコレート cigarette pack",
         "status": "exists",
         "sourcePage": "https://www.world-tobacco.jp/view/item/000000002095",
         "title": "Cigaronne Tattoo Chocolate - World Tobacco"
@@ -335,7 +442,7 @@
         "jp": "シガローネ・タトゥー・バニラ",
         "cn": "卡比龙 Tattoo Vanilla",
         "key": "e27f2390",
-        "query": "シガローネ・タトゥー・バニラ little cigar pack",
+        "query": "シガローネ・タトゥー・バニラ cigarette pack",
         "status": "exists",
         "sourcePage": "https://www.world-tobacco.jp/view/item/000000002094",
         "title": "Cigaronne Tattoo Vanilla - World Tobacco"
@@ -349,6 +456,65 @@
         "status": "exists",
         "sourcePage": "https://www.world-tobacco.jp/view/item/000000001978",
         "title": "Cigaronne Magnet - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・クラシック・キングサイズ",
+        "cn": "卡比龙 Classic King Size",
+        "key": "0928f89a",
+        "query": "シガローネ・クラシック・キングサイズ cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・クラシック・コンパット",
+        "cn": "卡比龙 Classic Compatto",
+        "key": "7e0e375e",
+        "query": "シガローネ・クラシック・コンパット cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・クラシック・ウルトラスリム",
+        "cn": "卡比龙 Classic Ultra Slims",
+        "key": "6c372a78",
+        "query": "シガローネ・クラシック・ウルトラスリム cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・クラシック・スーパースリム",
+        "cn": "卡比龙 Classic Super Slims",
+        "key": "e6be7761",
+        "query": "シガローネ・クラシック・スーパースリム cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・レジェンド",
+        "cn": "卡比龙 Imperial Legend",
+        "key": "68c8ef22",
+        "query": "シガローネ・レジェンド cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・ビッグボス",
+        "cn": "卡比龙 Imperial Big Boss",
+        "key": "9591155c",
+        "query": "シガローネ・ビッグボス cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・ファントム",
+        "cn": "卡比龙 Phantom",
+        "key": "7257af17",
+        "query": "シガローネ・ファントム cigarette pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.-2rT5XrEfa40yUvonUAQAgAAAA?r=0&pid=Api",
+        "sourcePage": "https://www.jptobacco.com/more.asp?s=20",
+        "title": "たばこ通販サイト ｜ 向陽産業株式会社"
     },
     {
         "type": "cigarette",
@@ -399,6 +565,38 @@
         "status": "exists",
         "sourcePage": "https://www.world-tobacco.jp/view/item/000000000917?category_page_id=ct122",
         "title": "Cigaronne Royal Slims Black - World Tobacco"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・センター・キングサイズ",
+        "cn": "卡比龙 Center King Size",
+        "key": "0bf6ce57",
+        "query": "シガローネ・センター・キングサイズ cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・センター・コンパット",
+        "cn": "卡比龙 Center Compatto",
+        "key": "10532b73",
+        "query": "シガローネ・センター・コンパット cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・センター・ウルトラスリム",
+        "cn": "卡比龙 Center Ultra Slims",
+        "key": "47f5dfed",
+        "query": "シガローネ・センター・ウルトラスリム cigarette pack",
+        "status": "exists"
+    },
+    {
+        "type": "cigarette",
+        "jp": "シガローネ・センター・スーパースリム",
+        "cn": "卡比龙 Center Super Slims",
+        "key": "1135c090",
+        "query": "シガローネ・センター・スーパースリム cigarette pack",
+        "status": "exists"
     },
     {
         "type": "heated",
@@ -492,6 +690,17 @@
     },
     {
         "type": "heated",
+        "jp": "Ploom X メビウス スムース レギュラー",
+        "cn": "Ploom X 梅比乌斯 柔和经典",
+        "key": "31c54175",
+        "query": "Ploom X メビウス スムース レギュラー heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.LCxy6QnAI5YlMHwveWWjUAHaJP?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000002703/",
+        "title": "メビウス スムース レギュラー プルーム用 | 加熱式たばこ,Ploom (プルーム),メビウス 【いづみや】送料が安い世界のたばこ公式通販サイト"
+    },
+    {
+        "type": "heated",
         "jp": "Ploom X メビウス メンソール フレッシュ",
         "cn": "Ploom X 清新薄荷",
         "key": "267dfca2",
@@ -508,11 +717,55 @@
     },
     {
         "type": "heated",
+        "jp": "Ploom X メビウス ブラック コールド メンソール",
+        "cn": "Ploom X 梅比乌斯 黑冷薄荷",
+        "key": "96b9c1bb",
+        "query": "Ploom X メビウス ブラック コールド メンソール heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.2ZXW0eO2PlckjtAOzH79JAHaMU?r=0&pid=Api",
+        "sourcePage": "https://weekly.ascii.jp/elem/000/004/165/4165991/",
+        "title": "Ploom X、\"史上最強\"の極冷メンソール 「メビウス・ブラック・コールド・メンソール」 - 週刊アスキー"
+    },
+    {
+        "type": "heated",
+        "jp": "Ploom X メビウス アロマリッチ レギュラー",
+        "cn": "Ploom X 梅比乌斯 醇香经典",
+        "key": "9c6d5dd2",
+        "query": "Ploom X メビウス アロマリッチ レギュラー heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.fpsJsNrMKdOR2t1r_C7TGQHaEK?r=0&pid=Api",
+        "sourcePage": "https://iqossan.com/ploomx-mevius-aroma-rich-regular/",
+        "title": "【Ploom X】メビウス・アロマリッチ・レギュラー新発売!上品でリッチな味わいを | アイコスさん"
+    },
+    {
+        "type": "heated",
+        "jp": "メビウス・アップル・オプション・プルーム用",
+        "cn": "Ploom X 梅比乌斯 Apple Option",
+        "key": "ef0ab360",
+        "query": "メビウス・アップル・オプション・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.VOnG5nG-NgIN_izvKWJZQQHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.briquetonline.com/products/detail/6265",
+        "title": "加熱式たばこ メビウス アップル オプション プルーム用 / たばこ通販や喫煙具などタバコに関する通販サイト/ブリケオンライン"
+    },
+    {
+        "type": "heated",
         "jp": "Ploom X キャメル メンソール",
         "cn": "Ploom X 骆驼薄荷",
         "key": "c14eaf04",
         "query": "Ploom X キャメル メンソール heated tobacco pack",
         "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "Ploom X キャメル メンソール フレッシュ",
+        "cn": "Ploom X 骆驼清新薄荷",
+        "key": "7925e187",
+        "query": "Ploom X キャメル メンソール フレッシュ heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.mOhL_F08mXQJxk9Nn5nM6AHaMU?r=0&pid=Api",
+        "sourcePage": "https://www.fasola-shop.com/en/goodsDetail.aspx?sCD=5302180104",
+        "title": "CAMEL Menthol Fresh for Ploom - 【Official】Fa-So-La Duty Free Pre-Order ..."
     },
     {
         "type": "heated",
@@ -529,6 +782,149 @@
         "key": "a1c7765a",
         "query": "Ploom X キャメル メンソール イエロー heated tobacco pack",
         "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "キャメル・メンソール・マスカット・プルーム用",
+        "cn": "Ploom 骆驼 Muscat 葡萄薄荷",
+        "key": "25406e8f",
+        "query": "キャメル・メンソール・マスカット・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.FyCxBxFq0KftkWe6MeeIGQHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.briquetonline.com/products/detail/3007",
+        "title": "加熱式たばこ キャメル・メンソール・マスカット・プルーム用 / たばこ通販や喫煙具などタバコに関する通販サイト/ブリケオンライン"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・ディープ・レギュラー・プルーム用",
+        "cn": "Ploom EVO 深度经典",
+        "key": "41c0ca5e",
+        "query": "エボ・ディープ・レギュラー・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.tfUyhdb-6DR6LJ2qY5Mp2gAAAA?r=0&pid=Api",
+        "sourcePage": "https://kishida.ocnk.net/product/3158",
+        "title": "エボ・ディープ・レギュラー・プルーム用 - キシダサービス・ネットショップ"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・サクラ・レギュラー・プルーム用",
+        "cn": "Ploom EVO 樱花经典",
+        "key": "9c46faeb",
+        "query": "エボ・サクラ・レギュラー・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.XB3l_K1nacJWIfCFtAt8XQHaJg?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000003185/",
+        "title": "エボ サクラ レギュラー プルーム用 | 加熱式たばこ,Ploom (プルーム),エボ 【いづみや】送料が安い世界のたばこ公式通販サイト"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・コールド・メンソール・プルーム用",
+        "cn": "Ploom EVO 冷感薄荷",
+        "key": "810af443",
+        "query": "エボ・コールド・メンソール・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.gYg7auwtUZ-iaxuz1PrxigHaMU?r=0&pid=Api",
+        "sourcePage": "https://en.otokomaeken.com/news/332610",
+        "title": "Ploom Aura, the new heated tobacco device in the Ploom series, and Evo ..."
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・フレッシュ・ミント・プルーム用",
+        "cn": "Ploom EVO 清新薄荷",
+        "key": "85c04483",
+        "query": "エボ・フレッシュ・ミント・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.7nm7vDqy7zUV2Yo8jc29bgHaJO?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000002992/",
+        "title": "エボ フレッシュ ミント プルーム用 | Ploom プルーム,専用たばこ 【いづみや】送料が安い世界のたばこ公式通販サイト"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・ブラック・メンソール・プルーム用",
+        "cn": "Ploom EVO 黑薄荷",
+        "key": "ab0028d6",
+        "query": "エボ・ブラック・メンソール・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.jC3sjgItvM4HBcRIvxWkuAAAAA?r=0&pid=Api",
+        "sourcePage": "https://tabako-sakuranbo.co.jp/goods/goods-1920.php",
+        "title": "加熱式たばこ / プルーム エボ・ブラック・メンソール・プルーム用通販・販売 / 大阪 梅田"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・グリーン・ミント・プルーム用",
+        "cn": "Ploom EVO 绿薄荷",
+        "key": "fd1cdafc",
+        "query": "エボ・グリーン・ミント・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.FrMqX91UI3Yeyr67nMgJ_AHaEK?r=0&pid=Api",
+        "sourcePage": "https://yosk8.com/ploom-x-all-flavor-review/",
+        "title": "プルームのたばこスティック全31種類一覧!メビウス、キャメル、エボの特徴を紹介 | NEOSMO（ネオスモ）"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・ベリー・クリスタル・プルーム用",
+        "cn": "Ploom EVO 莓果爆珠",
+        "key": "53bcee83",
+        "query": "エボ・ベリー・クリスタル・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.7U-DXl6NEovBnV5dtG_uEwHaJG?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000002828/",
+        "title": "エボ ベリー クリスタル プルーム用 | 加熱式たばこ,Ploom (プルーム),エボ 【いづみや】送料が安い世界のたばこ公式通販サイト"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・トロピカル・ベリー・クリスタル・プルーム用",
+        "cn": "Ploom EVO 热带莓果爆珠",
+        "key": "244c4098",
+        "query": "エボ・トロピカル・ベリー・クリスタル・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.2t7eIOtMZXi5hCw7dWqGUQHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.anadf.com/cn/ItemDetail.aspx?S_CD=2030100234",
+        "title": "エボ・トロピカル・ベリー・クリスタル・プルーム用 | ANA DUTY FREE SHOP"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・トロピカル・バナナ・クリスタル・プルーム用",
+        "cn": "Ploom EVO 热带香蕉爆珠",
+        "key": "350e4556",
+        "query": "エボ・トロピカル・バナナ・クリスタル・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.qHQ1eSPHwDWAlKnBkwxsawAAAA?r=0&pid=Api",
+        "sourcePage": "https://5511.jp/2025/06/16/%E3%82%A8%E3%83%9C%E3%83%BB%E3%83%88%E3%83%AD%E3%83%94%E3%82%AB%E3%83%AB%E3%83%BB%E3%83%BB%E3%83%90%E3%83%8A%E3%83%8A%E3%83%BB%E3%82%AF%E3%83%AA%E3%82%B9%E3%82%BF%E3%83%AB%E3%83%BB%E3%83%97%E3%83%AB/",
+        "title": "エボ・トロピカル・・バナナ・クリスタル・プルーム用 - たばこ専門店 森岡商店"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・ハチミツ・レモン・クリスタル・プルーム用",
+        "cn": "Ploom EVO 蜂蜜柠檬爆珠",
+        "key": "60e1de98",
+        "query": "エボ・ハチミツ・レモン・クリスタル・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.bqAb9FVbenqFUn1raQgE4AHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.anadf.com/ItemDetail.aspx?S_CD=2030100237",
+        "title": "エボ・ハチミツ・レモン・クリスタル・プルーム用 | ANA DUTY FREE SHOP"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・カカオ・ミント・クリスタル・プルーム用",
+        "cn": "Ploom EVO 可可薄荷爆珠",
+        "key": "1ab11fb3",
+        "query": "エボ・カカオ・ミント・クリスタル・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.2SeXGponaECUfjaaxOGY8QHaEK?r=0&pid=Api",
+        "sourcePage": "https://yosk8.com/ploom-aura-purple-dusk-review/",
+        "title": "プルームオーラ パープルダスクが新発売!リミテッドカラーシリーズ第4弾は人気の紫色 | NEOSMO（ネオスモ）"
+    },
+    {
+        "type": "heated",
+        "jp": "エボ・トロピカル・ライム・クリスタル・プルーム用",
+        "cn": "Ploom EVO 热带青柠爆珠",
+        "key": "f88e06c3",
+        "query": "エボ・トロピカル・ライム・クリスタル・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.E4rbe9mQSntwH_UindLlvgHaFS?r=0&pid=Api",
+        "sourcePage": "https://safarilounge.jp/online/lifestyle/detail.php?id=18096",
+        "title": "Ploom専用たばこスティック\"EVO\"から、人気の\"トロピカル\"フレーバー2銘柄発売! | Lifestyle | Safari Online"
     },
     {
         "type": "heated",
@@ -580,6 +976,22 @@
     },
     {
         "type": "heated",
+        "jp": "lil HYBRID ミックス ミックス",
+        "cn": "lil HYBRID 混合果香",
+        "key": "e218a893",
+        "query": "lil HYBRID ミックス ミックス heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "lil HYBRID ミックス アイス プラス",
+        "cn": "lil HYBRID 混合冰薄荷 Plus",
+        "key": "90a38e5f",
+        "query": "lil HYBRID ミックス アイス プラス heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
         "jp": "lil HYBRID ミックス ベルベット",
         "cn": "lil HYBRID 混合莓果",
         "key": "d4836189",
@@ -608,6 +1020,254 @@
     },
     {
         "type": "heated",
+        "jp": "テリア クリア レギュラー",
+        "cn": "IQOS TEREA Clear Regular 清透经典",
+        "key": "f27c5b0f",
+        "query": "テリア クリア レギュラー heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア リッチ レギュラー",
+        "cn": "IQOS TEREA Rich Regular 浓郁经典",
+        "key": "0fde17e5",
+        "query": "テリア リッチ レギュラー heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア バランスド レギュラー",
+        "cn": "IQOS TEREA Balanced Regular 均衡经典",
+        "key": "2812dc6b",
+        "query": "テリア バランスド レギュラー heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ミント",
+        "cn": "IQOS TEREA Mint 薄荷",
+        "key": "91238f9d",
+        "query": "テリア ミント heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブラック パープル メンソール",
+        "cn": "IQOS TEREA Black Purple Menthol 黑紫薄荷",
+        "key": "780e471f",
+        "query": "テリア ブラック パープル メンソール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア パープル メンソール",
+        "cn": "IQOS TEREA Purple Menthol 紫薄荷",
+        "key": "50e53a30",
+        "query": "テリア パープル メンソール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブラック ルビー メンソール",
+        "cn": "IQOS TEREA Black Ruby Menthol 黑红宝石薄荷",
+        "key": "29a0aa51",
+        "query": "テリア ブラック ルビー メンソール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ブロッサム パール",
+        "cn": "IQOS TEREA Blossom Pearl 花香爆珠",
+        "key": "96603094",
+        "query": "テリア ブロッサム パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ステラー パール",
+        "cn": "IQOS TEREA Stellar Pearl 星光爆珠",
+        "key": "4fe8263d",
+        "query": "テリア ステラー パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア サン パール",
+        "cn": "IQOS TEREA Sun Pearl 阳光爆珠",
+        "key": "4cc3f46a",
+        "query": "テリア サン パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア オアシス パール",
+        "cn": "IQOS TEREA Oasis Pearl 绿洲爆珠",
+        "key": "560e9ad6",
+        "query": "テリア オアシス パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア リビエラ パール",
+        "cn": "IQOS TEREA Riviera Pearl 里维埃拉爆珠",
+        "key": "251b2162",
+        "query": "テリア リビエラ パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア シャイン パール",
+        "cn": "IQOS TEREA Shine Pearl 麝香葡萄爆珠",
+        "key": "f4c17f71",
+        "query": "テリア シャイン パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "テリア ベルベット パール",
+        "cn": "IQOS TEREA Velvet Pearl 蓝莓爆珠",
+        "key": "490c9d60",
+        "query": "テリア ベルベット パール heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア コバルト ブルー",
+        "cn": "IQOS SENTIA Cobalt Blue 钴蓝",
+        "key": "e8349bc5",
+        "query": "センティア コバルト ブルー heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア ディープ ブロンズ",
+        "cn": "IQOS SENTIA Deep Bronze 深铜",
+        "key": "89915c72",
+        "query": "センティア ディープ ブロンズ heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア ピュア ティーク",
+        "cn": "IQOS SENTIA Pure Teak 纯柚木",
+        "key": "f1237c13",
+        "query": "センティア ピュア ティーク heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア スムース ゴールド",
+        "cn": "IQOS SENTIA Smooth Gold 柔金",
+        "key": "dad9aabf",
+        "query": "センティア スムース ゴールド heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア クリア シルバー",
+        "cn": "IQOS SENTIA Clear Silver 清银",
+        "key": "51b427a2",
+        "query": "センティア クリア シルバー heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア スムース バイオレット",
+        "cn": "IQOS SENTIA Smooth Violet 柔紫",
+        "key": "9765e8f9",
+        "query": "センティア スムース バイオレット heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア アイシー ブラック",
+        "cn": "IQOS SENTIA Icy Black 冰黑",
+        "key": "6e7911e5",
+        "query": "センティア アイシー ブラック heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア クール ジェイド",
+        "cn": "IQOS SENTIA Cool Jade 冷翠",
+        "key": "c6f4dfcc",
+        "query": "センティア クール ジェイド heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア フレッシュ エメラルド",
+        "cn": "IQOS SENTIA Fresh Emerald 鲜绿",
+        "key": "614b5443",
+        "query": "センティア フレッシュ エメラルド heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア アイシー レッド",
+        "cn": "IQOS SENTIA Icy Red 冰红",
+        "key": "38171167",
+        "query": "センティア アイシー レッド heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア アイシー パープル",
+        "cn": "IQOS SENTIA Icy Purple 冰紫",
+        "key": "1c60950a",
+        "query": "センティア アイシー パープル heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア フレッシュ パープル",
+        "cn": "IQOS SENTIA Fresh Purple 鲜紫",
+        "key": "3287a998",
+        "query": "センティア フレッシュ パープル heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア シトラス グリーン",
+        "cn": "IQOS SENTIA Citrus Green 柑橘绿",
+        "key": "72ed9ab1",
+        "query": "センティア シトラス グリーン heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア トロピカル イエロー",
+        "cn": "IQOS SENTIA Tropical Yellow 热带黄",
+        "key": "ec4036e3",
+        "query": "センティア トロピカル イエロー heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア ジューシー レッド",
+        "cn": "IQOS SENTIA Juicy Red 多汁红",
+        "key": "85bf1c4e",
+        "query": "センティア ジューシー レッド heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア フレッシュ コーラル",
+        "cn": "IQOS SENTIA Fresh Coral 鲜珊瑚",
+        "key": "eb5eb196",
+        "query": "センティア フレッシュ コーラル heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "センティア パープル カプセル",
+        "cn": "IQOS SENTIA Purple Capsule 紫爆珠",
+        "key": "7710b0a7",
+        "query": "センティア パープル カプセル heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
         "jp": "Ploom X メビウス シャープ コールド",
         "cn": "Ploom X 锐冷薄荷",
         "key": "919f9270",
@@ -624,6 +1284,25 @@
     },
     {
         "type": "heated",
+        "jp": "キャメル・スムース・プルーム用",
+        "cn": "Ploom 骆驼 Smooth 柔和",
+        "key": "03945d80",
+        "query": "キャメル・スムース・プルーム用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.PiX6ZbvducOK9YVY1UBD0wHaKm?r=0&pid=Api",
+        "sourcePage": "https://ameblo.jp/tobacco-kodama/entry-12893841839.html",
+        "title": "Ploom X ADVANCED「キャメル・スムース・プルーム用」が入荷しました。 | 大阪 京橋たばこセンターこだま 新着情報"
+    },
+    {
+        "type": "heated",
+        "jp": "ネオ・クラシック・タバコ・hyper用",
+        "cn": "glo neo 经典烟草",
+        "key": "59992745",
+        "query": "ネオ・クラシック・タバコ・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
         "jp": "ネオ・アイスド・メンソール・hyper用",
         "cn": "glo neo 冰感薄荷",
         "key": "77c0bbf5",
@@ -632,11 +1311,255 @@
     },
     {
         "type": "heated",
+        "jp": "ネオ・アークティック・メンソール・hyper用",
+        "cn": "glo neo 极寒薄荷",
+        "key": "4fec08cf",
+        "query": "ネオ・アークティック・メンソール・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ネオ・チルド・メンソール・hyper用",
+        "cn": "glo neo 冷感薄荷",
+        "key": "2924efb7",
+        "query": "ネオ・チルド・メンソール・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ネオ・ブリリアント・ワイルドベリー・hyper用",
+        "cn": "glo neo 闪耀野莓",
+        "key": "bb985b61",
+        "query": "ネオ・ブリリアント・ワイルドベリー・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ネオ・ブリリアント・マスカット・hyper用",
+        "cn": "glo neo 闪耀麝香葡萄",
+        "key": "12d77ef4",
+        "query": "ネオ・ブリリアント・マスカット・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ネオ・ブリリアント・レッドフルーツ・hyper用",
+        "cn": "glo neo 闪耀红果",
+        "key": "ce2e399c",
+        "query": "ネオ・ブリリアント・レッドフルーツ・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
         "jp": "ラッキー・ストライク・ダーク・タバコ・glo hyper用",
         "cn": "glo 幸运击 深色烟草",
         "key": "0f72b376",
         "query": "ラッキー・ストライク・ダーク・タバコ・glo hyper用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.fPafqiKvR6DjsG1nKW6dBwHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.briquetonline.com/products/detail/7638",
+        "title": "加熱式たばこ ラッキーストライク ダーク タバコ glo hyper用 / たばこ通販や喫煙具などタバコに関する通販サイト/ブリケオンライン"
+    },
+    {
+        "type": "heated",
+        "jp": "ラッキー・ストライク・ダーク・メンソール・glo hyper用",
+        "cn": "glo 幸运击 深薄荷",
+        "key": "01b2d75f",
+        "query": "ラッキー・ストライク・ダーク・メンソール・glo hyper用 heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.lXQ3ybHsFLCBWtsg_WUovQHaIv?r=0&pid=Api",
+        "sourcePage": "https://news.mynavi.jp/article/20230220-2597761/",
+        "title": "glo hyper用「ラッキー・ストライク」に新メンソール2銘柄 2月27日発売 | マイナビニュース"
+    },
+    {
+        "type": "heated",
+        "jp": "ラッキー・ストライク・ベリー・メンソール・glo hyper用",
+        "cn": "glo 幸运击莓果薄荷",
+        "key": "0f59192f",
+        "query": "ラッキー・ストライク・ベリー・メンソール・glo hyper用 heated tobacco pack",
         "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ラッキー・ストライク・ベリー・ブースト・glo hyper用",
+        "cn": "glo 幸运击莓果爆珠",
+        "key": "2c313a41",
+        "query": "ラッキー・ストライク・ベリー・ブースト・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ラッキー・ストライク・トロピカル・ブースト・glo hyper用",
+        "cn": "glo 幸运击热带爆珠",
+        "key": "3b2deec7",
+        "query": "ラッキー・ストライク・トロピカル・ブースト・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ラッキー・ストライク・ベリー・スイッチ・hyper用",
+        "cn": "glo 幸运击莓果切换",
+        "key": "163732e8",
+        "query": "ラッキー・ストライク・ベリー・スイッチ・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ラッキー・ストライク・トロピカル・スイッチ・hyper用",
+        "cn": "glo 幸运击热带切换",
+        "key": "ed150cea",
+        "query": "ラッキー・ストライク・トロピカル・スイッチ・hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ケント・トゥルー・タバコ・glo hyper用",
+        "cn": "glo KENT 真烟草",
+        "key": "7165efa9",
+        "query": "ケント・トゥルー・タバコ・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ケント・トゥルー・リッチ・タバコ・glo hyper用",
+        "cn": "glo KENT 真浓郁烟草",
+        "key": "091b15a0",
+        "query": "ケント・トゥルー・リッチ・タバコ・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ケント・トゥルー・メンソール・glo hyper用",
+        "cn": "glo KENT 真薄荷",
+        "key": "9cd88bc2",
+        "query": "ケント・トゥルー・メンソール・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ケント・トゥルー・リッチ・メンソール・glo hyper用",
+        "cn": "glo KENT 真浓郁薄荷",
+        "key": "f883f6ab",
+        "query": "ケント・トゥルー・リッチ・メンソール・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ケント・トゥルー・ベリー・ブースト・glo hyper用",
+        "cn": "glo KENT 真莓果爆珠",
+        "key": "0f9bf32b",
+        "query": "ケント・トゥルー・ベリー・ブースト・glo hyper用 heated tobacco pack",
+        "status": "exists"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・ダーク・タバコ",
+        "cn": "virto Dark Tobacco",
+        "key": "5b825377",
+        "query": "ヴァルト・ダーク・タバコ heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.aDa9vhnbif6oSw-BqbOXwAHaEK?r=0&pid=Api",
+        "sourcePage": "https://yosk8.com/glo-hilo-all-virto-review/",
+        "title": "グローヒーロ専用タバコのヴァルト全8銘柄を吸ってみた!味わいや吸い心地を紹介 | NEOSMO（ネオスモ）"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・バランスド・タバコ",
+        "cn": "virto Balanced Tobacco",
+        "key": "ba5f8ea2",
+        "query": "ヴァルト・バランスド・タバコ heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.YlsnUF_gvmmVl7dA2wHSjwHaFj?r=0&pid=Api",
+        "sourcePage": "https://iqossan.com/glo-hilo-virto-balanced-tabacco-review/",
+        "title": "【glo Hilo】ヴァルト・バランスド・タバコを正直レビュー!乗り換えはできる？ | アイコスさん"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・アイスド・メンソール・クリック",
+        "cn": "virto Iced Menthol Click",
+        "key": "8ac6dbb7",
+        "query": "ヴァルト・アイスド・メンソール・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.cYpk6lkzi-F2y1Tbc0SoLgAAAA?r=0&pid=Api",
+        "sourcePage": "https://www.932.co.jp/ec/products/detail/2696",
+        "title": "ヴァルト・アイスド・メンソール・クリック glo HILO専用タバコ | 崎村商店オンラインストア - 滋賀県草津市"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・メンソール・クリック",
+        "cn": "virto Menthol Click",
+        "key": "289d34c1",
+        "query": "ヴァルト・メンソール・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.cJBjswv4PYg7kbtM_earswHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000002849/",
+        "title": "ヴァルト メンソール クリック | 加熱式たばこ,glo Hilo (グロー ヒーロ),ヴァルト 【いづみや】送料が安い世界のたばこ公式通販サイト"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・ミント・クリック",
+        "cn": "virto Mint Click",
+        "key": "cf041c6a",
+        "query": "ヴァルト・ミント・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.0t6BGjIptAKFIwAWgy6TawAAAA?r=0&pid=Api",
+        "sourcePage": "https://tabako-sakuranbo.co.jp/goods/goods-2785.php",
+        "title": "加熱式たばこ / glo ヴァルト・ミント・クリック通販・販売 / 大阪 梅田"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・ベリー・クリック",
+        "cn": "virto Berry Click",
+        "key": "ab18f04b",
+        "query": "ヴァルト・ベリー・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.4Z6NxpKNz2BqkWamitqk2gHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000002851/",
+        "title": "ヴァルト アイスド ベリー クリック | 加熱式たばこ,glo Hilo (グロー ヒーロ),ヴァルト 【いづみや】送料が安い世界のたばこ公式 ..."
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・アイスド・ベリー・クリック",
+        "cn": "virto Iced Berry Click",
+        "key": "82b5606b",
+        "query": "ヴァルト・アイスド・ベリー・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.4Z6NxpKNz2BqkWamitqk2gHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.izumiya-tobacco.com/shopdetail/000000002851/",
+        "title": "ヴァルト アイスド ベリー クリック | 加熱式たばこ,glo Hilo (グロー ヒーロ),ヴァルト 【いづみや】送料が安い世界のたばこ公式 ..."
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・メロン・クリック",
+        "cn": "virto Melon Click",
+        "key": "bc565cfe",
+        "query": "ヴァルト・メロン・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.BM2zLTDLCpl-jnUFVatn9QHaFj?r=0&pid=Api",
+        "sourcePage": "https://relazo.net/virto_melon/",
+        "title": "再現度高し!ヴァルト・メロン・クリックを吸ってみたレビュー!うまいかまずいか徹底評価!－RELAZO"
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・ブライト・チェリー・クリック",
+        "cn": "virto Bright Cherry Click",
+        "key": "0d5d57a5",
+        "query": "ヴァルト・ブライト・チェリー・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.qgyCgB18cUElE1-XS7b5WwHaEJ?r=0&pid=Api",
+        "sourcePage": "https://x.com/izumiya_tobacco/status/2018178315845247003",
+        "title": "グローヒーロ専用たばこ新銘柄 「ヴァルト ブライト チェリー クリック」 が入荷しました。 軽やかなローストたばこにゆたかでバランスの取れた ..."
+    },
+    {
+        "type": "heated",
+        "jp": "ヴァルト・ブライト・ピーチ・クリック",
+        "cn": "virto Bright Peach Click",
+        "key": "e40a0540",
+        "query": "ヴァルト・ブライト・ピーチ・クリック heated tobacco pack",
+        "status": "downloaded",
+        "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.qgyCgB18cUElE1-XS7b5WwHaEJ?r=0&pid=Api",
+        "sourcePage": "https://x.com/izumiya_tobacco/status/2018178315845247003",
+        "title": "グローヒーロ専用たばこ新銘柄 「ヴァルト ブライト チェリー クリック」 が入荷しました。 軽やかなローストたばこにゆたかでバランスの取れた ..."
     },
     {
         "type": "device",
@@ -827,6 +1750,14 @@
     },
     {
         "type": "device",
+        "jp": "IQOS 3 MULTI",
+        "cn": "IQOS 3 MULTI",
+        "key": "67aa62b7",
+        "query": "IQOS 3 MULTI IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
         "jp": "Ploom AURA",
         "cn": "Ploom AURA",
         "key": "b6dc9bbf",
@@ -835,6 +1766,30 @@
         "imageUrl": "https://tse4.mm.bing.net/th/id/OIP.KSk-9SNxFgr3yXlYc7NOAwHaHa?r=0&pid=Api",
         "sourcePage": "https://www.ploom.it/it/shop/prodotti/dispositivi/ploom-aura-upgrade-gratuito-navy-blue",
         "title": "Acquista Ploom AURA Navy Blu: Dispositivo per Tabacco Riscaldato più ..."
+    },
+    {
+        "type": "device",
+        "jp": "Ploom CUBE",
+        "cn": "Ploom CUBE",
+        "key": "132cce73",
+        "query": "Ploom CUBE IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
+        "jp": "with2",
+        "cn": "with2 加热设备",
+        "key": "f5a093ad",
+        "query": "with2 IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
+        "jp": "with2 スペシャルエディション",
+        "cn": "with2 Special Edition 限定设备",
+        "key": "6afa9526",
+        "query": "with2 スペシャルエディション IQOS device",
+        "status": "exists"
     },
     {
         "type": "device",
@@ -912,6 +1867,17 @@
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.Q34WUtMAZgHR03fOD48M9gHaDZ?r=0&pid=Api",
         "sourcePage": "https://onlinetabakshop.de/blog/glo-hyper-air-das-ultimative-erlebnis-fuer-tabakliebhaber-n30",
         "title": "glo Hyper Air - Das Gegenstück zur IQOS ILUMA"
+    },
+    {
+        "type": "device",
+        "jp": "glo Hilo Plus",
+        "cn": "glo Hilo Plus",
+        "key": "62d3690f",
+        "query": "glo Hilo Plus IQOS device",
+        "status": "downloaded",
+        "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.MC5U0nIAJ2T5jVn0dID0gAHaHa?r=0&pid=Api",
+        "sourcePage": "https://www.myglo.com/rs/rs/shop/hilo-plus",
+        "title": "glo™ Hilo™ Plus uređaj za zagrevanje duvana | glo™"
     },
     {
         "type": "device",
@@ -1025,6 +1991,14 @@
     },
     {
         "type": "device",
+        "jp": "VAPORESSO XROS 5 Nano",
+        "cn": "VAPORESSO XROS 5 Nano 主机",
+        "key": "5bdc720c",
+        "query": "VAPORESSO XROS 5 Nano IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
         "jp": "VAPORESSO XROS 4",
         "cn": "VAPORESSO XROS 4 主机",
         "key": "53316618",
@@ -1058,6 +2032,14 @@
     },
     {
         "type": "device",
+        "jp": "Uwell Caliburn G4 Pro",
+        "cn": "Uwell Caliburn G4 Pro 主机",
+        "key": "13af4c8c",
+        "query": "Uwell Caliburn G4 Pro IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
         "jp": "Uwell Caliburn G4",
         "cn": "Uwell Caliburn G4 主机",
         "key": "9879eb20",
@@ -1066,6 +2048,14 @@
         "imageUrl": "https://tse2.mm.bing.net/th/id/OIP.x3dh-zFmm6ax8fFRxz0n5AHaHa?r=0&pid=Api",
         "sourcePage": "https://www.ezigaretten-discount.de/uwell-caliburn-g4-pod-kit/",
         "title": "UWELL - Caliburn G4 Pod Kit - Farbe: gunmetal grey"
+    },
+    {
+        "type": "device",
+        "jp": "Uwell Caliburn G4 Classic",
+        "cn": "Uwell Caliburn G4 Classic 主机",
+        "key": "eaea69d0",
+        "query": "Uwell Caliburn G4 Classic IQOS device",
+        "status": "exists"
     },
     {
         "type": "device",
@@ -1102,6 +2092,14 @@
     },
     {
         "type": "device",
+        "jp": "Voopoo Argus P3",
+        "cn": "Voopoo Argus P3 主机",
+        "key": "04f50248",
+        "query": "Voopoo Argus P3 IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
         "jp": "Voopoo Argus G3",
         "cn": "Voopoo Argus G3 主机",
         "key": "22096cfc",
@@ -1124,6 +2122,14 @@
     },
     {
         "type": "device",
+        "jp": "Voopoo Argus G2 Mini",
+        "cn": "Voopoo Argus G2 Mini 主机",
+        "key": "21670294",
+        "query": "Voopoo Argus G2 Mini IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
         "jp": "Voopoo Argus P2",
         "cn": "Voopoo Argus P2 主机",
         "key": "2978085c",
@@ -1132,6 +2138,14 @@
         "imageUrl": "https://tse3.mm.bing.net/th/id/OIP.SkV8ENvb8ELSHvQovi-1wwHaHa?r=0&pid=Api",
         "sourcePage": "https://www.neovapo.com/kits-cigarettes-electroniques/kit-argus-p2-voopoo.html",
         "title": "Kit Argus P2 Voopoo dès 31,90"
+    },
+    {
+        "type": "device",
+        "jp": "OXVA XLIM PRO 2 DNA",
+        "cn": "OXVA XLIM PRO 2 DNA 主机",
+        "key": "b077f744",
+        "query": "OXVA XLIM PRO 2 DNA IQOS device",
+        "status": "exists"
     },
     {
         "type": "device",
@@ -1146,6 +2160,14 @@
     },
     {
         "type": "device",
+        "jp": "OXVA XLIM GO 2",
+        "cn": "OXVA XLIM GO 2 主机",
+        "key": "d38cf608",
+        "query": "OXVA XLIM GO 2 IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
         "jp": "OXVA XLIM SQ Pro 2",
         "cn": "OXVA XLIM SQ Pro 2 主机",
         "key": "1c961ce6",
@@ -1154,6 +2176,22 @@
         "imageUrl": "https://tse1.mm.bing.net/th/id/OIP.-NXucvQGhTGwP2x8GtX4QQHaHa?r=0&pid=Api",
         "sourcePage": "https://www.oxva.id/products/oxva-xlim-sq-pro-2-kit",
         "title": "OXVA Xlim SQ Pro 2 Kit - OXVA.ID"
+    },
+    {
+        "type": "device",
+        "jp": "Geekvape Wenax Q Ultra",
+        "cn": "Geekvape Wenax Q Ultra 主机",
+        "key": "a36683fc",
+        "query": "Geekvape Wenax Q Ultra IQOS device",
+        "status": "exists"
+    },
+    {
+        "type": "device",
+        "jp": "Geekvape Wenax Q2",
+        "cn": "Geekvape Wenax Q2 主机",
+        "key": "ea085adc",
+        "query": "Geekvape Wenax Q2 IQOS device",
+        "status": "exists"
     },
     {
         "type": "device",

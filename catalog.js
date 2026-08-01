@@ -1,6 +1,6 @@
 import { resolveProductMedia } from "./product-media.js";
 
-const PRICE_CHECKED = "2026-07-29";
+const PRICE_CHECKED = "2026-08-02";
 const MHLW_E_CIGARETTE_GUIDANCE =
   "https://kennet.mhlw.go.jp/information/information/dictionary/tobacco/yt-059.html";
 
@@ -19,6 +19,16 @@ const TYPE_LABELS_JP = {
 };
 
 const BRAND_PROFILES = [
+  {
+    test: /エボ|EVO/i,
+    brand: "Ploom EVO",
+    jpScore: 4.3,
+    cnScore: 3.9,
+    availability: "likely",
+    jpImpression: "Ploom AURA/X 向けのプレミアムラインとして、濃い蒸気・香りの持続・上質感を重視するユーザーに注目されています。",
+    cnImpression: "中国游客对 EVO 认知还在上升，购买时最关键是确认只能给 Ploom AURA / CUBE / X 系列使用，不是 IQOS/glo 烟弹。",
+    source: "https://www.jti.co.jp/investors/library/press_releases/20260310_J01.html",
+  },
   {
     test: /Ploom|with2/i,
     brand: "Ploom",
@@ -234,6 +244,7 @@ const BRAND_PROFILES = [
 const PRICE_RULES = [
   { test: (item) => item.type === "heated" && /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
   { test: (item) => item.type === "heated" && /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
+  { test: (item) => item.type === "heated" && /エボ|EVO/i.test(item.jp), value: 580, source: "official" },
   { test: (item) => item.type === "heated" && /ネオ・|glo hyper ネオ/i.test(item.jp), value: 530, source: "official" },
   {
     test: (item) => item.type === "heated" && /ラッキー・ストライク|glo hyper ラッキー ストライク/i.test(item.jp),
@@ -378,6 +389,7 @@ function describeProduct(item, flavor, strength, profile) {
 
 function compatibility(item) {
   if (/テリア|センティア/i.test(item.jp)) return "仅适配 IQOS ILUMA 系列";
+  if (/エボ|EVO/i.test(item.jp)) return "仅适配 Ploom AURA / Ploom CUBE / Ploom X 系列";
   if (/Ploom/i.test(item.jp)) return "适配对应 Ploom 设备";
   if (/glo/i.test(item.jp)) return "适配 glo HYPER 系列";
   if (/lil HYBRID/i.test(item.jp)) return "仅适配 lil HYBRID";
@@ -428,6 +440,7 @@ const BRAND_SORT_ORDER = new Map(
     "TEREA",
     "SENTIA",
     "IQOS",
+    "Ploom EVO",
     "Ploom",
     "glo",
     "lil HYBRID",

@@ -350,6 +350,41 @@ test("glo HYPER current sticks follow the 2026 BAT price notice", () => {
   }
 });
 
+test("Ploom EVO current full lineup follows the 2026 JT price notice", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const evo = products.filter((item) => item.type === "heated" && /エボ・/.test(item.jp));
+  const expectedNames = [
+    "エボ・ディープ・レギュラー・プルーム用",
+    "エボ・サクラ・レギュラー・プルーム用",
+    "エボ・コールド・メンソール・プルーム用",
+    "エボ・フレッシュ・ミント・プルーム用",
+    "エボ・ブラック・メンソール・プルーム用",
+    "エボ・グリーン・ミント・プルーム用",
+    "エボ・ベリー・クリスタル・プルーム用",
+    "エボ・トロピカル・ベリー・クリスタル・プルーム用",
+    "エボ・トロピカル・バナナ・クリスタル・プルーム用",
+    "エボ・ハチミツ・レモン・クリスタル・プルーム用",
+    "エボ・カカオ・ミント・クリスタル・プルーム用",
+    "エボ・トロピカル・ライム・クリスタル・プルーム用",
+  ];
+
+  assert.equal(evo.length, expectedNames.length);
+  assert.deepEqual(
+    evo.map((item) => item.jp).sort((a, b) => a.localeCompare(b, "ja")),
+    expectedNames.sort((a, b) => a.localeCompare(b, "ja")),
+  );
+
+  for (const item of evo) {
+    assert.equal(item.brand, "Ploom EVO", item.jp);
+    assert.equal(item.jpy, 580, item.jp);
+    assert.equal(item.priceStatus, "official", item.jp);
+    assert.match(item.source, /jti\.co\.jp\/investors\/library\/press_releases\/20260310_J01/, item.jp);
+    assert.match(item.compatibility, /Ploom AURA \/ Ploom CUBE \/ Ploom X/, item.jp);
+    assert.equal(item.cartonStatus === "verified", false, item.jp);
+    assert.equal(item.cartonImage, "", item.jp);
+  }
+});
+
 test("current official TEREA and SENTIA lineups are represented without carton claims", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const terea = products.filter((item) => item.type === "heated" && /テリア/.test(item.jp));
