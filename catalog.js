@@ -561,6 +561,13 @@ const SEARCH_ALIAS_REPLACEMENTS = [
   [/レモン/gi, "Lemon"],
   [/カカオ/gi, "Cacao"],
   [/ライム/gi, "Lime"],
+  [/ウィズ/gi, "with2"],
+  [/パープル/gi, "Purple"],
+  [/レッド/gi, "Red"],
+  [/フローズン/gi, "Frozen"],
+  [/フレーバー/gi, "Flavor"],
+  [/リキッド/gi, "Liquid"],
+  [/カートリッジ/gi, "Cartridge"],
 ];
 
 function searchAliases(item) {
@@ -576,12 +583,23 @@ function searchAliases(item) {
         .replace(/\s+/g, " ")
         .trim()
     : "";
+  const with2Alias = /ウィズ用|with2/i.test(`${item.jp} ${item.cn}`)
+    ? romanized
+        .replace(/メビウス/gi, "")
+        .replace(/\bFlavor\b/gi, "")
+        .replace(/\bwith2用\b/gi, "")
+        .replace(/\b用\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim()
+    : "";
   return [
     `${item.jp} ${item.cn}`,
     romanized,
     romanized.replace(/\s+/g, ""),
     ploomEvoAlias ? `Ploom ${ploomEvoAlias}` : "",
     ploomEvoAlias ? `Ploom${ploomEvoAlias.replace(/\s+/g, "")}` : "",
+    with2Alias ? `with2 ${with2Alias}` : "",
+    with2Alias ? `with2${with2Alias.replace(/\s+/g, "")}` : "",
   ].join(" ");
 }
 

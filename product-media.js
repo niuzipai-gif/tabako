@@ -2596,6 +2596,9 @@ function searchUrl(query) {
 
 function baseFormat(item) {
   const name = `${item.jp} ${item.cn}`;
+  if (item.productSubtype === "liquid-cartridge") {
+    return { packageFormat: "专用液体烟弹", packageFormatJp: "リキッドカートリッジ" };
+  }
   if (item.type === "device") {
     return { packageFormat: "设备本体", packageFormatJp: "デバイス" };
   }
@@ -2615,6 +2618,14 @@ function baseFormat(item) {
 }
 
 function identityLabels(item) {
+  if (item.productSubtype === "liquid-cartridge") {
+    return {
+      unitLabel: "液体烟弹",
+      bulkLabel: "购买规格",
+      identityHeading: "先认准专用リキッド与适配设备",
+      identityNote: "lil HYBRID 专用リキッドカートリッジ不是 20 支烟草棒，也不按传统香烟“一カートン”展示；购买时要和 MIIX 专用烟草棒、lil HYBRID 设备一起核对。",
+    };
+  }
   if (item.type === "device") {
     return {
       unitLabel: "设备本体",
@@ -2686,7 +2697,8 @@ function resolveCartonGallery(override, originalImage, status, allowed) {
 
 export function resolveProductMedia(item, originalImage) {
   const override = MEDIA_OVERRIDES.get(keyFor(item)) ?? {};
-  const applicable = item.type === "cigarette" || item.type === "heated";
+  const liquidCartridge = item.productSubtype === "liquid-cartridge";
+  const applicable = !liquidCartridge && (item.type === "cigarette" || item.type === "heated");
   const format = baseFormat(item);
   const identity = identityLabels(item);
   const reviewNote = REVIEW_NOTES.get(item.jp) ?? "";
@@ -2735,7 +2747,9 @@ export function resolveProductMedia(item, originalImage) {
     cartonStickCount: applicable ? (override.cartonStickCount ?? 200) : 0,
     cartonNote: applicable
       ? (override.cartonNote ?? "整条外箱尚未人工核对；为避免认错，暂不展示不确定图片。")
-      : "设备本体和电子烟配件不按传统香烟“一カートン”展示。",
+      : liquidCartridge
+        ? "液体烟弹不按传统香烟 10包/200支 一カートン展示；请以店头实际销售规格和专用设备说明为准。"
+        : "设备本体和电子烟配件不按传统香烟“一カートン”展示。",
     relatedExactJp: Array.isArray(override.relatedExactJp) ? override.relatedExactJp : [],
     cartonSearchUrl: searchUrl(query),
     cartonSearchQuery: query,

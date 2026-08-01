@@ -415,6 +415,17 @@ test("English Ploom EVO flavor aliases search exact Japanese rows", () => {
   assert.ok(cacao.some((item) => item.jp === "エボ・カカオ・ミント・クリスタル・プルーム用"));
 });
 
+test("English with2 flavor aliases search exact capsule-cartridge rows", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const purpleMint = filterProducts(products, { query: "with2 purple mint" });
+  const liquid = filterProducts(products, { query: "lil hybrid liquid cartridge" });
+
+  assert.ok(
+    purpleMint.some((item) => item.jp === "メビウス・パープル・ミント・フレーバー・ウィズ用"),
+  );
+  assert.ok(liquid.some((item) => item.jp === "lil HYBRID リキッド カートリッジ"));
+});
+
 test("current official TEREA and SENTIA lineups are represented without carton claims", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const terea = products.filter((item) => item.type === "heated" && /テリア/.test(item.jp));

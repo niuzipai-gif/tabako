@@ -775,6 +775,9 @@ test("device and pod media identities are not mislabeled as a single cigarette p
   const device = enrichProduct(rawProducts.find((item) => item.type === "device"));
   const pod = enrichProduct(rawProducts.find((item) => item.type === "pod"));
   const heated = enrichProduct(rawProducts.find((item) => item.type === "heated"));
+  const liquid = enrichProduct(
+    rawProducts.find((item) => item.jp === "lil HYBRID リキッド カートリッジ"),
+  );
 
   assert.equal(device.unitLabel, "设备本体");
   assert.equal(device.identityHeading, "先认准设备本体与型号");
@@ -784,6 +787,15 @@ test("device and pod media identities are not mislabeled as a single cigarette p
   assert.equal(pod.cartonApplicable, false);
   assert.equal(heated.unitLabel, "单盒");
   assert.equal(heated.cartonApplicable, true);
+  assert.equal(liquid.packageFormat, "专用液体烟弹");
+  assert.equal(liquid.packageFormatJp, "リキッドカートリッジ");
+  assert.equal(liquid.unitLabel, "液体烟弹");
+  assert.equal(liquid.bulkLabel, "购买规格");
+  assert.equal(liquid.cartonApplicable, false);
+  assert.equal(liquid.cartonStatus, "not-applicable");
+  assert.equal(liquid.cartonPackCount, 0);
+  assert.equal(liquid.cartonStickCount, 0);
+  assert.match(liquid.cartonNote, /不按传统香烟 10包\/200支/);
 });
 
 test("item-level media metadata passes through for device images without carton claims", () => {
