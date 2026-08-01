@@ -102,15 +102,6 @@
       "sha256": "31906be477735f2f542281db50cf54cc4a9f026baf88f74560210aa96253251d"
     },
     {
-      "productId": "p-5897c66d",
-      "jp": "ラーク 1",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
-      "sourcePage": "https://jp.mercari.com/item/m67407962256",
-      "sha256": "3aeacb876493b1f7a58f038a33020338672bae9e4ddb5d868847e1f5bcd6492f"
-    },
-    {
       "productId": "p-0706b155",
       "jp": "マールボロ メンソール",
       "status": "verified",
@@ -163,51 +154,6 @@
       "localPath": "images/cartons/ploom-mevius-rich-jcigarette-6pack-carton.jpg",
       "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
       "sha256": "0384dbd7b47109d76aca3eeeb1e1070cff9639e74abae06da0ab38e98913db07"
-    },
-    {
-      "productId": "p-dde44cf6",
-      "jp": "Ploom X メビウス スムース",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-mevius-smooth-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
-      "sha256": "a1b3c0212951bf0dbc63ae68459ff9b0ef489a10ef1a3548da7b0aab787bd987"
-    },
-    {
-      "productId": "p-267dfca2",
-      "jp": "Ploom X メビウス メンソール フレッシュ",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
-      "sha256": "21e316287a13e2e73329ed83b01ec923b92917d17a9b0db02708f4dd12f6ba8b"
-    },
-    {
-      "productId": "p-4a18c9e6",
-      "jp": "Ploom X キャメル メンソール コールド",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-camel-menthol-cold-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
-      "sha256": "ce69dba652edd89fb26c99d747647796af28e7f7582947a9362146b5ea836831"
-    },
-    {
-      "productId": "p-a1c7765a",
-      "jp": "Ploom X キャメル メンソール イエロー",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-camel-menthol-yellow-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-yellow-citrus-peel-strong-menthol-stick-1-carton-120pcs-citrus-flavor-with-a-refreshing-scent/",
-      "sha256": "487c0a143277decadf5bc11e604934e259011bf5f10e16f63e81161adac1177f"
-    },
-    {
-      "productId": "p-73a772c5",
-      "jp": "Ploom X キャメル スムース",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-camel-smooth-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-smooth-stick-1-carton-120pcs-palatable-smooth-taste/",
-      "sha256": "55736d03b8ec488c2c3a30a4d13835f006a961ac7662a8fb40cffbf18b94226f"
     },
     {
       "productId": "p-617f6c70",
@@ -370,15 +316,6 @@
       "localPath": "images/cartons/sentia-frost-green-mercari-50-empty-boxes.jpg",
       "sourcePage": "https://jp.mercari.com/item/m31568595622",
       "sha256": "dc84761e8725a6f22116c2eb7a95d96f33d07681ebf57c4550ac8f59ad648627"
-    },
-    {
-      "productId": "p-c14eaf04",
-      "jp": "Ploom X キャメル メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
-      "sourcePage": "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
-      "sha256": "5e3666b0c9942c537eacec61448500621f77da5f8adced89763a03b7a73d0c97"
     },
     {
       "productId": "p-0f8b545b",

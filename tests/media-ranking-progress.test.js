@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 43);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 43);
+  assert.equal(manifest.items.length, 36);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 36);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -219,15 +219,15 @@ test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton refere
   );
 });
 
-test("Lark 1 uses visible LARK SELECT 1 multi-box evidence", () => {
+test("Lark 1 keeps Select 1 and Ultra 1 evidence below verified until SKU is split", () => {
   const item = enrichProduct(rawProducts.find((product) => product.jp === "ラーク 1"));
 
-  assert.equal(item.cartonStatus, "verified");
-  assert.match(item.cartonImage, /lark-select1-mercari-72-empty-boxes\.jpg/);
+  assert.equal(item.cartonStatus, "variant-reference");
+  assert.equal(item.cartonImage, "");
   assert.equal(item.cartonSource, "https://jp.mercari.com/item/m67407962256");
   assert.equal(item.cartonPackCount, 10);
   assert.equal(item.cartonStickCount, 200);
-  assert.match(item.cartonNote, /LARK SELECT 1|72箱/);
+  assert.match(item.cartonNote, /Select 1 \/ Ultra 1 不能混用/);
   assert.ok(
     item.cartonGallery.some((entry) => /1カートン\/10個/.test(entry.note)),
     "Placer 1-carton quantity reference should remain as gallery context",
@@ -250,17 +250,14 @@ test("Mevius Original uses exact 20x10 carton artwork instead of the JDF 2-carto
   );
 });
 
-test("Ploom X Camel Menthol Fresh, Cold and Sharp Cold use exact multi-box evidence", () => {
+test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sharp Cold remain verified", () => {
   const camel = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール"),
   );
-  assert.equal(camel.cartonStatus, "verified");
-  assert.match(
-    camel.cartonImage,
-    /ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes\.jpg/,
-  );
+  assert.equal(camel.cartonStatus, "variant-reference");
+  assert.equal(camel.cartonImage, "");
   assert.match(camel.cartonSource, /auctions\.yahoo\.co\.jp\/jp\/auction\/n1206003967/);
-  assert.match(camel.cartonNote, /MENTHOL FRESH|10 个同款|10包 \/ 200支/);
+  assert.match(camel.cartonNote, /Fresh 不能直接替代/);
   assert.ok(
     camel.cartonGallery.some((entry) =>
       /ploom-camel-menthol-fresh-paypay-7-empty-boxes\.jpg/.test(entry.image),

@@ -399,7 +399,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ラーク 1|乐富门 1mg",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
       cartonSource: "https://jp.mercari.com/item/m67407962256",
       cartonPackCount: 10,
@@ -413,7 +413,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Mercari 标题为“煙草空箱 LARK SELECT 1 ★72箱”，说明写明 72 個の空箱；主图可见大量 LARK SELECT 1 白色空盒，足以核验 1mg/100s 系列多盒外观。该图为空盒参考，不代表实时库存；购买时请核对 Select 1 / Ultra 1 等 1mg 具体名称。",
+        "Mercari 标题为“煙草空箱 LARK SELECT 1 ★72箱”，图片可见大量 LARK SELECT 1 空盒；但目录名为泛称“ラーク 1”，图库数量来源又指向“ラーク ウルトラ 1mg 100 ボックス”单包。Select 1 / Ultra 1 不能混用为同一已核验整条，因此降级为变体参考，购买时必须核对具体 1mg SKU。",
     },
   ],
   [
@@ -1240,26 +1240,26 @@ const MEDIA_OVERRIDES = new Map([
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "日本版 MEVIUS SMOOTH 整条外箱图：该销售规格为 6 包 × 20 支，共 120 支。不是常见的 10 包规格，购买时请按页面数量复核。",
+        "该来源页面写明 1 Carton = 120 pcs，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考，继续等待可见 6 包或外箱图。",
     },
   ],
   [
     "Ploom X メビウス メンソール フレッシュ|Ploom X 清新薄荷",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-mevius-menthol-fresh-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-menthol-fresh-1-carton-120pcs-clear-exhilarating-menthol/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "日本版 MEVIUS Menthol Fresh 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。绿色外箱对应 Menthol Fresh，不替代 Cold Menthol。",
+        "该来源页面写明 1 Carton = 6 pack = 120 pieces，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考，不替代 Cold Menthol。",
     },
   ],
   [
     "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage:
         "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
       cartonSource: "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
@@ -1282,46 +1282,46 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!オークション标题为“電子タバコ キャメル メンソールフレッシュ 10個 新品未開封品”，实拍可见 10 个同款 CAMEL ploom X MENTHOL FRESH 盒。该目录项按 Camel Menthol Fresh 线核对为 1カートン = 10包 / 200支；购买时仍请区分 Fresh/Cold/Yellow 等具体口味。",
+        "Yahoo!オークション标题和图片均为 CAMEL MENTHOL FRESH 10 個，但目录项是“Ploom X キャメル メンソール”。Fresh 不能直接替代非 Fresh/泛称 Menthol，因此降级为变体参考；若后续把目录明确改为 Menthol Fresh，需要重新配套核验。",
     },
   ],
   [
     "Ploom X キャメル メンソール コールド|Ploom X 骆驼强冷薄荷",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-camel-menthol-cold-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-cold-strong-menthol-stick-1-carton-120-pcs-intense-menthol-that-penetrates/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "日本版 CAMEL Menthol Cold 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。绿色外箱对应 Cold 强薄荷。",
+        "该来源页面写明 1 Carton = 6 pack = 120 pieces，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考。",
     },
   ],
   [
     "Ploom X キャメル メンソール イエロー|Ploom X 骆驼柑橘薄荷",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-camel-menthol-yellow-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-yellow-citrus-peel-strong-menthol-stick-1-carton-120pcs-citrus-flavor-with-a-refreshing-scent/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "日本版 CAMEL Menthol Yellow 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。黄色外箱对应柑橘薄荷。",
+        "该来源页面写明 1 Carton = 6 pack = 120 pieces，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考。",
     },
   ],
   [
     "Ploom X キャメル スムース|Ploom X 骆驼柔和",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage: "./images/cartons/ploom-camel-smooth-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-smooth-stick-1-carton-120pcs-palatable-smooth-taste/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "日本版 CAMEL SMOOTH 整条外箱图：该销售规格为 6 包 × 20 支，共 120 支。不是常见的 10 包规格，购买时请按页面数量复核。",
+        "该来源页面写明 1 Carton = 120 pcs，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考。",
     },
   ],
   [
@@ -1499,7 +1499,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ものログ商品名为“PM バージニアスリムロゼメンソール 10P”，主图可见 Rosé Menthol 10 包整条排列，按 20 本×10 包 / 200 支核验；单包图另放入图库辅助辨认。",
+        "ものログ商品名为“PM バージニアスリムロゼメンソール 10P”，可证明 10P/数量线索；但当前主图视觉只能确认约 5 个 Rosé Menthol 包装，不是 sealed carton，也不足以视觉确认完整 10 个同 SKU 包。按严格核验门槛降级为数量参考。",
     },
   ],
   [
@@ -1551,13 +1551,13 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ものログ商品名为“JT わかば・シガー 10P”，主图可见 10P 外箱照片，按 10 包 / 200 支核验。旧紙巻き Wakaba 与现行 Wakaba Cigar 名称有差异，购买时应按店铺现行 SKU 再确认。",
+        "ものログ商品名和可见图均指向“JT わかば・シガー 10P”，不是旧紙巻き/泛称“わかば”。在目录未拆分或改名为“わかば・シガー”前，不能作为泛称 わかば 的已核验整条图，降级为变体参考。",
     },
   ],
   [
     "エコー|Echo",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210153919",
       cartonPackCount: 10,
@@ -1571,13 +1571,13 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ものログ商品名为“JT エコー・シガー 10P”，主图可见 echo CIGARS 长条外箱侧面，按 10 包 / 200 支核验。旧紙巻き Echo 与现行 Echo Cigar 名称有差异，购买时应按店铺现行 SKU 再确认。",
+        "ものログ商品名和可见图均指向“JT エコー・シガー 10P”，不是旧紙巻き/泛称“エコー”。在目录未拆分或改名为“エコー・シガー”前，不能作为泛称 Echo 的已核验整条图，降级为变体参考。",
     },
   ],
   [
     "glo hyper ネオ ブリリアント ベリー|glo neo 闪耀莓果",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/glo-neo-brilliant-berry-paypay-15-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z486874470",
       cartonPackCount: 10,
@@ -1744,7 +1744,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Yahoo!フリマ标题为“glo hyper用 LUCKY STRIKE DARK MENTHOL 空箱 52箱セット”，图片可见大量 LUCKY STRIKE DARK MENTHOL for glo hyper 空盒排列，能核对多包外观。该来源为售出空盒/收藏图，不代表当前库存；一条仍按 10 包 / 200 支估算。",
+        "Yahoo!フリマ标题和图片均为 LUCKY STRIKE DARK MENTHOL，而目录项是“ラッキー ストライク ダーク”；图库数量参考又指向 Dark Tobacco。Dark Menthol / Dark Tobacco 不能混用为同一已核验整条，因此降级为变体参考，后续需拆分或改名后再核验。",
     },
   ],
   [
