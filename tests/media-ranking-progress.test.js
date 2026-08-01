@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 42);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 42);
+  assert.equal(manifest.items.length, 43);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 43);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -252,18 +252,29 @@ test("split Marlboro Purple 5 and Ploom Camel Menthol Fresh rows publish only ex
   assert.match(camelFresh.cartonNote, /CAMEL MENTHOL FRESH|10 包|200/);
 });
 
-test("Virginia S Rose Menthol and Wakaba do not publish weak carton references as verified", () => {
+test("Virginia S Rose Menthol does not publish incomplete carton references as verified", () => {
   const virginia = enrichProduct(
     rawProducts.find((product) => product.jp === "バージニア エス ロゼ メンソール"),
   );
   assert.equal(virginia.cartonStatus, "contents-reference");
   assert.equal(virginia.cartonImage, "");
   assert.match(virginia.cartonNote, /不足以视觉确认完整 10 个同 SKU|降级为数量参考/);
+});
 
-  const wakaba = enrichProduct(rawProducts.find((product) => product.jp === "わかば"));
-  assert.equal(wakaba.cartonStatus, "variant-reference");
-  assert.equal(wakaba.cartonImage, "");
-  assert.match(wakaba.cartonNote, /わかば・シガー|降级为变体参考/);
+test("Wakaba generic stays downgraded while Wakaba Cigar 10P is verified exactly", () => {
+  const genericWakaba = enrichProduct(rawProducts.find((product) => product.jp === "わかば"));
+  assert.equal(genericWakaba.cartonStatus, "variant-reference");
+  assert.equal(genericWakaba.cartonImage, "");
+  assert.match(genericWakaba.cartonNote, /わかば・シガー|降级为变体参考/);
+
+  const wakabaCigar = enrichProduct(
+    rawProducts.find((product) => product.jp === "わかば・シガー 10P"),
+  );
+  assert.equal(wakabaCigar.cartonStatus, "verified");
+  assert.match(wakabaCigar.cartonImage, /wakaba-cigar-10p-monolog-carton\.jpg/);
+  assert.equal(wakabaCigar.cartonPackCount, 10);
+  assert.equal(wakabaCigar.cartonStickCount, 200);
+  assert.match(wakabaCigar.cartonNote, /わかば・シガー 10P|10P|外箱/);
 });
 
 test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton reference", () => {

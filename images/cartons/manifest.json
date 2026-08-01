@@ -379,6 +379,15 @@
       "localPath": "images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
       "sourcePage": "https://monolog.r-n-i.jp/item/4902210153919",
       "sha256": "94f06c0884896e645f8c661331f4fa5ffd100c34835637608a1319db58840987"
+    },
+    {
+      "productId": "p-94e84e94",
+      "jp": "わかば・シガー 10P",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
+      "sourcePage": "https://monolog.r-n-i.jp/item/4902210153810",
+      "sha256": "09c157e4a7739a7a79ae8032fc3e98d53ac04a4f8abfa803d705c7df1e010069"
     }
   ]
 }

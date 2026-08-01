@@ -37,6 +37,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "クール ブースト フレッシュ 8", cn: "KOOL Boost Fresh 8", jpy: 580, img: "https://picsum.photos/seed/kool-boost-fresh-8/640/420" },
   { type: "cigarette", jp: "ホープ", cn: "Hope", jpy: 330, img: "https://picsum.photos/seed/hope/640/420" },
   { type: "cigarette", jp: "わかば", cn: "若叶", jpy: 250, img: "https://picsum.photos/seed/wakaba/640/420" },
+  { type: "cigarette", jp: "わかば・シガー 10P", cn: "Wakaba Cigar 10P", jpy: 500, img: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg" },
   { type: "cigarette", jp: "エコー", cn: "Echo", jpy: 450, img: "https://picsum.photos/seed/echo/640/420" },
   { type: "cigarette", jp: "エコー・シガー 10P", cn: "Echo Cigar 10P", jpy: 500, img: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg" },
   { type: "cigarette", jp: "シガローネ・ロイヤルスリム・メンソール", cn: "卡比龙 Royal Slims Menthol", jpy: 1200, img: "https://picsum.photos/seed/cigaronne-royal-slims-menthol/640/420" },

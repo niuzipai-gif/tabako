@@ -1648,6 +1648,31 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "わかば・シガー 10P|Wakaba Cigar 10P",
+    {
+      image: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
+      imageStatus: "verified",
+      imageSource: "https://monolog.r-n-i.jp/item/4902210153810",
+      imageNote:
+        "ものログ图可见 わかば CIGARS 横向外箱；商品名为 JT わかば・シガー 10P。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210153810",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "旧 Wakaba 单包辨认图",
+          image: "./images/cartons/wakaba-kikuya-content.gif",
+          source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+          note: "きくや页面列出旧 わかば，并说明该店按カートン（ケース）单位销售，1カートン为 10 箱；用于区分旧紙巻き泛称 Wakaba。",
+        },
+      ],
+      cartonNote:
+        "ものログ商品名为“JT わかば・シガー 10P”，主图可见 わかば CIGARS 横向外箱；10P 指向 10 包/一条规格，按 10 包 / 200 支核验。该 verified 只绑定精确 わかば・シガー 10P 行，不回填旧紙巻き/泛称 Wakaba 行。",
+    },
+  ],
+  [
     "エコー|Echo",
     {
       cartonStatus: "variant-reference",
