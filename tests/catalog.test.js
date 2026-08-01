@@ -317,6 +317,35 @@ test("glo Hilo Plus and virto Hilo-only sticks are grouped under glo with offici
   assert.ok(virto.some((item) => /ダーク・タバコ/.test(item.jp)));
 });
 
+test("current official TEREA and SENTIA lineups are represented without carton claims", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const terea = products.filter((item) => item.type === "heated" && /テリア/.test(item.jp));
+  const sentia = products.filter((item) => item.type === "heated" && /センティア/.test(item.jp));
+
+  for (const jp of [
+    "テリア クリア レギュラー",
+    "テリア リッチ レギュラー",
+    "テリア ブロッサム パール",
+    "テリア シャイン パール",
+    "センティア コバルト ブルー",
+    "センティア スムース バイオレット",
+    "センティア フレッシュ コーラル",
+    "センティア パープル カプセル",
+  ]) {
+    assert.ok(products.some((item) => item.jp === jp), jp);
+  }
+
+  assert.ok(terea.length >= 21);
+  assert.ok(sentia.length >= 19);
+  for (const item of [...terea, ...sentia]) {
+    assert.match(item.source, /jp\.iqos\.com\/discover\/iluma\/(terea|sentia)/, item.jp);
+    assert.equal(item.jpy, /センティア/.test(item.jp) ? 570 : 620, item.jp);
+    if (item.cartonStatus !== "verified") {
+      assert.equal(item.cartonImage, "", item.jp);
+    }
+  }
+});
+
 test("all device entries carry explicit brand, source, status, and sort metadata", () => {
   const devices = rawProducts
     .map((item) => enrichProduct(item))
