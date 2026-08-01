@@ -248,6 +248,11 @@ test("generic variant rows expose exact SKU shortcuts instead of pretending veri
     ["マールボロ ダブルバースト", ["マールボロ・ダブルバースト・パープル・5・ボックス"]],
     ["クール ブースト", ["クール ブースト 5 ボックス", "クール ブースト フレッシュ 8"]],
     ["ラーク 1", ["ラーク・セレクト・1・100sボックス"]],
+    ["ウィンストン XS", ["ウィンストン・キャスター・ホワイト・ワン・100s・ボックス"]],
+    [
+      "ナチュラル アメリカン スピリット",
+      ["ナチュラル アメリカン スピリット ライト 14本入", "アメリカン スピリット ターコイズ"],
+    ],
     ["わかば", ["わかば・シガー 10P"]],
     ["エコー", ["エコー・シガー 10P"]],
     [
@@ -265,7 +270,9 @@ test("generic variant rows expose exact SKU shortcuts instead of pretending veri
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.deepEqual(item.relatedExactJp, exactNames, jp);
     assert.notEqual(item.cartonStatus, "verified", jp);
-    assert.equal(item.cartonImage, "", jp);
+    if (item.cartonStatus === "variant-reference") {
+      assert.equal(item.cartonImage, "", jp);
+    }
   }
 });
 

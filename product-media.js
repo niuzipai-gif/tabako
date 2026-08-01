@@ -285,6 +285,7 @@ const MEDIA_OVERRIDES = new Map([
     "ウィンストン XS|温斯顿 XS",
     {
       cartonStatus: "contents-reference",
+      relatedExactJp: ["ウィンストン・キャスター・ホワイト・ワン・100s・ボックス"],
       cartonImage: "./images/cartons/winston-xs-caster-white1-pack-content.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100123",
       cartonGallery: [
@@ -1780,6 +1781,10 @@ const MEDIA_OVERRIDES = new Map([
     "ナチュラル アメリカン スピリット|美式精神",
     {
       cartonStatus: "multi-carton-reference",
+      relatedExactJp: [
+        "ナチュラル アメリカン スピリット ライト 14本入",
+        "アメリカン スピリット ターコイズ",
+      ],
       cartonImage: "./images/cartons/american-spirit-green-paypay-10-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z613084698",
       cartonGallery: [
