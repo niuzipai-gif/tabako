@@ -72,6 +72,56 @@ npx wrangler deploy
 
 建议生产环境补 Cloudflare Rate Limiting 绑定；没配时代理也会运行，但不会做匿名访问频率保护。
 
+### Cloudflare Worker 长期化部署步骤
+
+Tailscale Funnel 适合临时接通；长期公开使用建议部署 Cloudflare Worker，并把 Worker HTTPS 地址灰度验证后再写入 `config.js`。不要把任何密钥写进 Git、GitHub Pages、URL、截图或命令历史。
+
+1. 在 Cloudflare 获取部署凭据：
+
+   - `CLOUDFLARE_ACCOUNT_ID`：登录 Cloudflare Dashboard，在目标账号 / zone 的 Overview 页面右侧 API 区域复制 Account ID；如果使用 Workers CI/CD，Cloudflare 官方也要求 CI 同时提供 account ID。
+   - `CLOUDFLARE_API_TOKEN`：Cloudflare Dashboard → Manage Account / My Profile → API Tokens → Create Token；Workers 部署使用自定义 token，权限选择 Cloudflare Workers 的编辑权限（官方 CI/CD 文档示例为 “Edit Cloudflare Workers”），作用域限制到本项目所在账号。
+
+   官方参考：
+
+   - Cloudflare Workers GitHub Actions：<https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/>
+   - Cloudflare 创建 API Token：<https://developers.cloudflare.com/fundamentals/api/get-started/create-token/>
+
+2. 在 GitHub 仓库配置 Actions secrets：
+
+   打开 `niuzipai-gif/tabako` → Settings → Secrets and variables → Actions → New repository secret，分别添加：
+
+   ```text
+   CLOUDFLARE_API_TOKEN
+   CLOUDFLARE_ACCOUNT_ID
+   MINIMAX_API_KEY
+   ```
+
+   如果使用 `gh`，建议不要把值写进命令行参数；让 `gh` 交互式读取，或从安全的密码管理器/本地文件通过 stdin 输入：
+
+   ```powershell
+   gh secret set CLOUDFLARE_API_TOKEN --repo niuzipai-gif/tabako
+   gh secret set CLOUDFLARE_ACCOUNT_ID --repo niuzipai-gif/tabako
+   gh secret set MINIMAX_API_KEY --repo niuzipai-gif/tabako
+   gh secret list --repo niuzipai-gif/tabako
+   ```
+
+3. 触发并确认 Worker 部署：
+
+   ```powershell
+   gh workflow run deploy-ai-worker.yml --repo niuzipai-gif/tabako --ref main
+   gh run list --repo niuzipai-gif/tabako --workflow deploy-ai-worker.yml --limit 3
+   ```
+
+   成功部署的日志应出现 `npm test`、`wrangler secret put MINIMAX_API_KEY` 和 `wrangler deploy`。如果只看到 `Skipping AI Worker deploy because ... is not configured`，说明 secrets 仍缺失，Worker 没有真正部署。
+
+4. 用 Worker URL 灰度验证：
+
+   ```text
+   https://niuzipai-gif.github.io/tabako/?aiProxyUrl=https%3A%2F%2F你的-worker地址%2F
+   ```
+
+   验证推荐、联网搜索和拍照识别均可用后，再把 `config.js` 的默认代理从 Tailscale Funnel 改为 Cloudflare Worker HTTPS 地址。
+
 把部署结果的 HTTPS 地址写入 `config.js`：
 
 ```text
