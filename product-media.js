@@ -1480,6 +1480,33 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "キャメル・スムース・プルーム用|Ploom 骆驼 Smooth 柔和",
+    {
+      image: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z583255814",
+      imageNote:
+        "Yahoo!フリマ页面标题为“【空箱】CAMEL for Ploom smooth 10箱セット”，图片可见 10 个 CAMEL / Ploom / SMOOTH 同款盒。",
+      packageFormat: "加热式烟弹盒",
+      packageFormatJp: "たばこスティック",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z583255814",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "PayPay 10箱 detail 2",
+          image: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes-detail.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z583255814",
+          note: "同一 Yahoo!フリマ页面第二张图，用于辅助确认 CAMEL SMOOTH 盒身细节。",
+        },
+      ],
+      cartonNote:
+        "Yahoo!フリマ页面标题为“【空箱】CAMEL for Ploom smooth 10箱セット”，description 写“CAMEL SMOOTHの空箱10箱セット”并列【個数】10箱；主图可见 10 个浅蓝色 CAMEL / Ploom / SMOOTH 同款空盒。按 strict gate 的 10+ same-SKU packs proof 核验 exact キャメル・スムース・プルーム用；短名 Ploom X キャメル スムース 仍保留为 contents-reference，不强升。",
+    },
+  ],
+  [
     "ナチュラル アメリカン スピリット|美式精神",
     {
       cartonStatus: "multi-carton-reference",

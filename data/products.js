@@ -94,6 +94,7 @@ export const rawProducts = [
   { type: "heated", jp: "IQOS テリア ウォーム レギュラー", cn: "IQOS TEREA 温感经典", jpy: 580, img: "https://picsum.photos/seed/terea-warm/640/420" },
   { type: "heated", jp: "Ploom X メビウス シャープ コールド", cn: "Ploom X 锐冷薄荷", jpy: 570, img: "https://picsum.photos/seed/ploom-sharp-cold/640/420" },
   { type: "heated", jp: "Ploom X キャメル スムース", cn: "Ploom X 骆驼柔和", jpy: 500, img: "https://picsum.photos/seed/ploom-camel-smooth/640/420" },
+  { type: "heated", jp: "キャメル・スムース・プルーム用", cn: "Ploom 骆驼 Smooth 柔和", jpy: 500, img: "./images/cartons/camel-smooth-ploom-paypay-10-empty-boxes.jpg" },
   { type: "heated", jp: "glo hyper ネオ アイスド メンソール", cn: "glo neo 冰感薄荷", jpy: 500, img: "https://picsum.photos/seed/glo-iced-menthol/640/420" },
   { type: "heated", jp: "glo hyper ラッキー ストライク ダーク", cn: "glo 幸运击 深色款", jpy: 500, img: "https://picsum.photos/seed/glo-dark/640/420" },
   { type: "heated", jp: "glo hyper ラッキー ストライク ダーク メンソール", cn: "glo 幸运击 深薄荷", jpy: 500, img: "./images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg" },

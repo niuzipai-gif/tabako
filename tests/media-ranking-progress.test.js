@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 45);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 45);
+  assert.equal(manifest.items.length, 46);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 46);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -456,6 +456,30 @@ test("split Ploom X Mevius Smooth Regular publishes the exact 12-box evidence on
   assert.equal(exact.cartonPackCount, 12);
   assert.equal(exact.cartonStickCount, 240);
   assert.match(exact.cartonNote, /SMOOTH REGULAR|空箱（12個）|12箱/);
+});
+
+test("split Camel Smooth Ploom publishes the exact 10-box evidence only", () => {
+  const shortName = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X キャメル スムース"),
+  );
+  assert.equal(shortName.cartonStatus, "contents-reference");
+  assert.equal(shortName.cartonImage, "");
+
+  const exact = enrichProduct(
+    rawProducts.find((product) => product.jp === "キャメル・スムース・プルーム用"),
+  );
+  assert.equal(exact.cartonStatus, "verified");
+  assert.match(
+    exact.cartonImage,
+    /camel-smooth-ploom-paypay-10-empty-boxes\.jpg/,
+  );
+  assert.match(
+    exact.cartonSource,
+    /paypayfleamarket\.yahoo\.co\.jp\/item\/z583255814/,
+  );
+  assert.equal(exact.cartonPackCount, 10);
+  assert.equal(exact.cartonStickCount, 200);
+  assert.match(exact.cartonNote, /CAMEL SMOOTH|10箱セット|10箱/);
 });
 
 test("Ploom X Sharp Cold keeps older mixed references as gallery context", () => {
