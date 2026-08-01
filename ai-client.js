@@ -262,7 +262,13 @@ export function createAiClient({
         });
         if (!response.ok) {
           const payload = await response.json().catch(() => ({}));
-          throw new Error(cleanText(payload?.error, 240) || `AI 服务暂不可用（${response.status}）`);
+          const requestError = new Error(
+            cleanText(payload?.error, 240) || `AI 服务暂不可用（${response.status}）`,
+          );
+          requestError.status = response.status;
+          requestError.code = cleanText(payload?.code, 80);
+          requestError.upstreamStatus = Number(payload?.upstreamStatus) || 0;
+          throw requestError;
         }
         return normalizeAiPayload(await response.json());
       } catch (error) {

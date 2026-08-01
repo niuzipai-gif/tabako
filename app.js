@@ -1140,20 +1140,19 @@ async function runAiRecommendation() {
   setAiProgress({ value: 8, label: "已收到，正在理解你的描述", steps, current: 0 });
   await nextPaint();
 
+  let localResult = null;
   try {
     const catalog = compactCatalogForAi();
     const matches = localRecommend(query, catalog);
+    localResult = {
+      answer: matches.length
+        ? `先按名称、口味、强度、预算和热度，从本地 ${catalog.length} 款目录里筛出了这些候选。`
+        : "本地目录暂时没有足够接近的候选，可以继续联网核对。",
+      matches,
+      sources: [],
+    };
     setAiProgress({ value: 48, label: `本地目录已匹配 ${matches.length} 个候选`, steps, current: 1 });
-    renderAiResult(
-      {
-        answer: matches.length
-          ? `先按名称、口味、强度、预算和热度，从本地 ${catalog.length} 款目录里筛出了这些候选。`
-          : "本地目录暂时没有足够接近的候选，可以继续联网核对。",
-        matches,
-        sources: [],
-      },
-      "本地即时匹配",
-    );
+    renderAiResult(localResult, "本地即时匹配");
     await nextPaint();
 
     const health = await ensureAiReady();
@@ -1218,15 +1217,23 @@ async function runAiRecommendation() {
       state: "complete",
     });
   } catch (error) {
+    const message = error.message || "在线 AI 暂不可用";
     setAiProgress({
       value: 70,
-      label: "在线增强失败，已保留本地结果",
+      label: `在线增强失败：${message}；已保留本地结果`,
       steps,
       current: Math.max(2, steps.length - 2),
       state: "failed",
       percentLabel: "失败",
     });
-    showToast(error.message || "在线 AI 暂不可用，已保留本地结果");
+    renderAiResult(
+      {
+        ...(localResult ?? { matches: [], sources: [] }),
+        answer: `${localResult?.answer || "本地匹配已保留。"} 在线增强未完成：${message}。`,
+      },
+      "本地匹配 · 在线未完成",
+    );
+    showToast(`${message}，已保留本地结果`);
   } finally {
     setButtonBusy(elements.aiRecommendSubmit, false);
   }

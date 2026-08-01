@@ -113,8 +113,8 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 162-product source set", () => {
-  assert.equal(rawProducts.length, 162);
+test("catalog keeps the expanded 163-product source set", () => {
+  assert.equal(rawProducts.length, 163);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
@@ -225,6 +225,7 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
   for (const family of [
     /IQOS ILUMA i PRIME/i,
     /IQOS ILUMA i ONE/i,
+    /IQOS 3 MULTI/i,
     /Ploom AURA/i,
     /with2/i,
     /Ploom X ADVANCED/i,
@@ -241,6 +242,24 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
     /OXVA XLIM SQ Pro 2/i,
   ]) {
     assert.match(deviceNames, family);
+  }
+});
+
+test("heated device entries carry source, status, and explicit sort metadata", () => {
+  const heatedDeviceBrands = new Set(["IQOS", "Ploom", "glo", "lil HYBRID"]);
+  const heatedDevices = rawProducts
+    .map((item) => enrichProduct(item))
+    .filter((item) => item.type === "device" && heatedDeviceBrands.has(item.brand));
+
+  assert.equal(heatedDevices.length >= 30, true);
+  for (const item of heatedDevices) {
+    assert.match(item.source, /^https?:\/\//, `${item.jp} source`);
+    assert.equal(Number.isFinite(Number(item.deviceOrder)), true, `${item.jp} deviceOrder`);
+    assert.match(
+      item.marketStatus,
+      /^(current-mainstream|current-limited|legacy|discontinued-stock-only|discontinued)$/i,
+      `${item.jp} marketStatus`,
+    );
   }
 });
 
@@ -305,7 +324,7 @@ test("IQOS remix devices are not misclassified as lil HYBRID MIIX products", () 
     type: "device",
     jp: "IQOS イルマ i プライム リミックスモデル",
     cn: "IQOS ILUMA i PRIME REMIX 限定款",
-    jpy: 9980,
+    jpy: 11980,
   });
   const miix = enrichProduct({
     type: "heated",
@@ -315,7 +334,7 @@ test("IQOS remix devices are not misclassified as lil HYBRID MIIX products", () 
   });
 
   assert.equal(remix.brand, "IQOS");
-  assert.equal(remix.jpy, 9980);
+  assert.equal(remix.jpy, 11980);
   assert.equal(miix.brand, "lil HYBRID");
   assert.equal(miix.jpy, 560);
 });

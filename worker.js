@@ -124,8 +124,56 @@ function jsonResponse(payload, status, requestOrigin, allowedOrigin) {
   });
 }
 
-function errorResponse(message, status, requestOrigin, allowedOrigin) {
-  return jsonResponse({ error: message }, status, requestOrigin, allowedOrigin);
+function errorResponse(message, status, requestOrigin, allowedOrigin, extra = {}) {
+  return jsonResponse({ error: message, ...extra }, status, requestOrigin, allowedOrigin);
+}
+
+class UpstreamError extends Error {
+  constructor(message, { code, upstreamStatus, clientStatus = 502 } = {}) {
+    super(message);
+    this.name = "UpstreamError";
+    this.code = code;
+    this.upstreamStatus = upstreamStatus;
+    this.clientStatus = clientStatus;
+  }
+}
+
+async function throwUpstreamError(upstream) {
+  const upstreamStatus = upstream.status;
+  const rawBody = await upstream.text().catch(() => "");
+  const hint = cleanText(rawBody, 1200).toLocaleLowerCase();
+
+  if (upstreamStatus === 401 || upstreamStatus === 403) {
+    throw new UpstreamError("MiniMax 密钥无效或没有接口权限，请检查服务端密钥", {
+      code: "minimax_auth_failed",
+      upstreamStatus,
+      clientStatus: 502,
+    });
+  }
+  if (
+    upstreamStatus === 402 ||
+    upstreamStatus === 429 ||
+    /token\s*plan|quota|insufficient|balance|余额|额度|套餐/.test(hint)
+  ) {
+    throw new UpstreamError("MiniMax 额度不足或请求过于频繁，请检查 Token Plan、余额或稍后重试", {
+      code: "minimax_quota_or_rate_limited",
+      upstreamStatus,
+      clientStatus: 429,
+    });
+  }
+  if (upstreamStatus >= 500) {
+    throw new UpstreamError("MiniMax 上游服务暂不可用，请稍后重试", {
+      code: "minimax_upstream_unavailable",
+      upstreamStatus,
+      clientStatus: 502,
+    });
+  }
+
+  throw new UpstreamError("MiniMax 上游返回异常，请检查代理配置后重试", {
+    code: "minimax_upstream_error",
+    upstreamStatus,
+    clientStatus: 502,
+  });
 }
 
 function normalizeQuery(value, { required = true } = {}) {
@@ -197,7 +245,7 @@ async function callChat(fetchImpl, key, input) {
     },
     body: JSON.stringify(buildChatRequest(input)),
   });
-  if (!upstream.ok) throw new Error("upstream");
+  if (!upstream.ok) await throwUpstreamError(upstream);
 
   const payload = await upstream.json();
   const content = payload?.choices?.[0]?.message?.content;
@@ -230,7 +278,7 @@ async function callSearch(fetchImpl, key, query) {
       tools: [{ type: "web_search_20250305", name: "web_search" }],
     }),
   });
-  if (!upstream.ok) throw new Error("upstream");
+  if (!upstream.ok) await throwUpstreamError(upstream);
 
   const payload = await upstream.json();
   const textBlocks = [];
@@ -351,7 +399,15 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
         if (error instanceof TypeError || error instanceof RangeError) {
           return errorResponse(error.message, 400, requestOrigin, allowedOrigin);
         }
-        return errorResponse("AI 服务暂不可用，请稍后重试", 502, requestOrigin, allowedOrigin);
+        if (error instanceof UpstreamError) {
+          return errorResponse(error.message, error.clientStatus, requestOrigin, allowedOrigin, {
+            code: error.code,
+            upstreamStatus: error.upstreamStatus,
+          });
+        }
+        return errorResponse("AI 服务暂不可用，请稍后重试", 502, requestOrigin, allowedOrigin, {
+          code: "proxy_internal_error",
+        });
       }
     },
   });

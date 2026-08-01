@@ -372,6 +372,8 @@ test("AI dialog exposes live progress, stages, and terminal states", () => {
     /请求已交给安全代理|MiniMax 正在分析候选|正通过安全代理上传图片|MiniMax 正在识别包装线索/,
   );
   assert.match(source, /请求已发送，正在等待安全代理返回/);
+  assert.match(source, /在线增强未完成/);
+  assert.match(source, /本地匹配 · 在线未完成/);
   assert.match(source, /图片请求已发送；正在等待安全代理返回/);
   assert.match(source, /目录未命中；正在自动联网补充库外线索/);
   assert.match(source, /MiniMax \+ 联网补充/);

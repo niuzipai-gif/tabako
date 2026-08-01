@@ -356,7 +356,7 @@ test("online search blocks restricted electronic-product queries before calling 
   assert.equal(called, false);
 });
 
-test("upstream failures become generic errors without credential leakage", async () => {
+test("upstream auth failures are explained without credential leakage", async () => {
   const worker = createWorker({
     fetchImpl: async () =>
       new Response(JSON.stringify({ error: { message: "key test-secret rejected" } }), {
@@ -373,5 +373,29 @@ test("upstream failures become generic errors without credential leakage", async
 
   assert.equal(response.status, 502);
   assert.equal(JSON.stringify(payload).includes("test-secret"), false);
-  assert.match(payload.error, /AI 服务/);
+  assert.equal(payload.code, "minimax_auth_failed");
+  assert.equal(payload.upstreamStatus, 401);
+  assert.match(payload.error, /密钥|权限/);
+});
+
+test("upstream quota and Token Plan failures are surfaced as actionable 429", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(JSON.stringify({ error: { message: "Token Plan quota exhausted" } }), {
+        status: 429,
+        headers: { "content-type": "application/json" },
+      }),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "recommend", query: "七星", catalog: [] }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 429);
+  assert.equal(payload.code, "minimax_quota_or_rate_limited");
+  assert.equal(payload.upstreamStatus, 429);
+  assert.match(payload.error, /额度|Token Plan|稍后/);
+  assert.equal(JSON.stringify(payload).includes("test-secret"), false);
 });

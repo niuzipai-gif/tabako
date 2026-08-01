@@ -200,6 +200,32 @@ test("configured AI client sends bounded requests and normalizes output", async 
   ]);
 });
 
+test("AI client preserves safe proxy error codes for UI feedback", async () => {
+  const client = createAiClient({
+    endpoint: "https://ai.example.test/api",
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          error: "MiniMax 额度不足或请求过于频繁，请检查 Token Plan、余额或稍后重试",
+          code: "minimax_quota_or_rate_limited",
+          upstreamStatus: 429,
+        }),
+        { status: 429, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  await assert.rejects(
+    async () => client.ask({ mode: "recommend", query: "七星" }),
+    (error) => {
+      assert.equal(error.message.includes("Token Plan"), true);
+      assert.equal(error.status, 429);
+      assert.equal(error.code, "minimax_quota_or_rate_limited");
+      assert.equal(error.upstreamStatus, 429);
+      return true;
+    },
+  );
+});
+
 test("AI client blocks unsupported modes and oversized input", async () => {
   const client = createAiClient({
     endpoint: "https://ai.example.test/api",
