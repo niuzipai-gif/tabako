@@ -478,6 +478,15 @@
       "localPath": "images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
       "sourcePage": "https://monolog.r-n-i.jp/item/4902210153810",
       "sha256": "09c157e4a7739a7a79ae8032fc3e98d53ac04a4f8abfa803d705c7df1e010069"
+    },
+    {
+      "productId": "p-dde44cf6",
+      "jp": "Ploom X メビウス スムース",
+      "status": "verified",
+      "quantity": "1 carton / heated-tobacco 6 packs / 120 sticks",
+      "localPath": "images/cartons/ploom-mevius-smooth-carton.jpg",
+      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
+      "sha256": "a1b3c0212951bf0dbc63ae68459ff9b0ef489a10ef1a3548da7b0aab787bd987"
     }
   ]
 }

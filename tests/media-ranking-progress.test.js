@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 53);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 53);
+  assert.equal(manifest.items.length, 54);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 54);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -475,15 +475,17 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(aromaRich.cartonNote, /AROMARICH REGULAR|15箱|カートン（10箱）/);
 });
 
-test("Ploom X Mevius Smooth does not publish a quantity-only render as verified", () => {
+test("Ploom X Mevius Smooth publishes the exact 6-pack carton outer-box image", () => {
   const smooth = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス スムース"),
   );
 
-  assert.equal(smooth.cartonStatus, "contents-reference");
-  assert.equal(smooth.cartonImage, "");
+  assert.equal(smooth.cartonStatus, "verified");
+  assert.match(smooth.cartonImage, /ploom-mevius-smooth-carton\.jpg/);
   assert.match(smooth.cartonSource, /j-cigarette\.com\/1carton-ploom-x-ploom-s-mevius-smooth/);
-  assert.match(smooth.cartonNote, /不是 sealed carton\/outer box|降级为数量参考/);
+  assert.equal(smooth.cartonPackCount, 6);
+  assert.equal(smooth.cartonStickCount, 120);
+  assert.match(smooth.cartonNote, /MEVIUS \/ ploom X \/ SMOOTH|1 Carton = 6 pack = 120 pieces|外箱折线/);
 });
 
 test("Ploom X Mevius Menthol Fresh publishes the exact ANA 10-box carton image", () => {
@@ -506,8 +508,8 @@ test("split Ploom X Mevius Smooth Regular publishes the exact 12-box evidence on
   const shortName = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス スムース"),
   );
-  assert.equal(shortName.cartonStatus, "contents-reference");
-  assert.equal(shortName.cartonImage, "");
+  assert.equal(shortName.cartonStatus, "verified");
+  assert.match(shortName.cartonImage, /ploom-mevius-smooth-carton\.jpg/);
 
   const exact = enrichProduct(
     rawProducts.find(

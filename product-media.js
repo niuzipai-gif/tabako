@@ -1417,14 +1417,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
-      cartonStatus: "contents-reference",
+      cartonStatus: "verified",
       cartonImage: "./images/cartons/ploom-mevius-smooth-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "该来源页面写明 1 Carton = 120 pcs，但当前图片更像单包/渲染图叠加数量文案，不是 sealed carton/outer box，也不是 6 个同 SKU 包实拍。按严格核验门槛降级为数量参考，继续等待可见 6 包或外箱图。",
+        "j-Cigarette 页面标题和 SKU 均指向 [1Carton] Ploom X / Ploom S Mevius Smooth；商品正文写明 1 Carton = 6 pack = 120 pieces。商品图正面可读 MEVIUS / ploom X / SMOOTH，图面上方标注 1 Carton = 120 pcs，且画面展示完整一カートン外装/外箱折线，因此按 exact heated-tobacco 6-pack carton / 120 sticks 核验；该旧短名 Smooth 与后续 Smooth Regular 分开，不回填后继款。",
     },
   ],
   [
