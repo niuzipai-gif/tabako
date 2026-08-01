@@ -84,8 +84,8 @@
       "sha256": "0d7a962ae3a85d1aaa2389c97cac4b238c566cbcfdef2d3b78c79ef2f301128f"
     },
     {
-      "productId": "p-919f9270",
-      "jp": "Ploom X メビウス シャープ コールド",
+      "productId": "p-4d550795",
+      "jp": "メビウス・シャープ・コールド・メンソール・プルーム用",
       "status": "verified",
       "quantity": "1 carton / 10 packs / 200 sticks",
       "localPath": "images/cartons/ploom-mevius-sharp-cold-mercari-10-empty-boxes.jpg",
@@ -147,7 +147,7 @@
       "sha256": "25d5da7ef9995a4822a7c0470139d154c3f96955c93d1f74a56765f60ab44760"
     },
     {
-      "productId": "p-267dfca2",
+      "productId": "p-8431a3e6",
       "jp": "Ploom X メビウス メンソール フレッシュ",
       "status": "verified",
       "quantity": "1 carton / 10 packs / 200 sticks",
@@ -156,76 +156,13 @@
       "sha256": "6d1ff055e253267056f9694f9d3b1fd61d4a82c533aeae331214dd646cc5e571"
     },
     {
-      "productId": "p-617f6c70",
-      "jp": "Ploom X メビウス コールド メンソール",
+      "productId": "p-2c6fe624",
+      "jp": "メビウス・コールド・メンソール・プルーム用",
       "status": "verified",
       "quantity": "1 carton / 10 packs / 200 heatsticks",
       "localPath": "images/cartons/ploom-mevius-cold-menthol-mercari-28-empty-boxes.jpg",
       "sourcePage": "https://jp.mercari.com/item/m76398758136",
       "sha256": "9ee342dfadb50b568e118638424786c2b57cf366d2d52f7159f0e851debd669e"
-    },
-    {
-      "productId": "p-8e4b3e3a",
-      "jp": "ピース スーパーライト",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/peace-superlights-box-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051034",
-      "sha256": "dd535bb9b66ba244bb661aee1a33ef8d805ac4639d83c68a38d79a79fed1ce01"
-    },
-    {
-      "productId": "p-4c84898a",
-      "jp": "ピース ライト",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/peace-light-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051018",
-      "sha256": "5323a2a0cf43d2805cff329e9da212a706012d6ae7ee669daa71b3a93837e623"
-    },
-    {
-      "productId": "p-9671c132",
-      "jp": "ピアニッシモ アリア メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/pianissimo-aria-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000076238",
-      "sha256": "96cdbdb222c46bf6271ba59a0be35f3062dc7aebad5f31696641a65b055578a3"
-    },
-    {
-      "productId": "p-da62e662",
-      "jp": "クール ブースト フレッシュ 8",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/kool-boost-fresh-8-ana-carton.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
-      "sha256": "93f4b304777d754b795d562742d198ea63f907e70c7067899af95e99a8b4bf71"
-    },
-    {
-      "productId": "p-84898a7d",
-      "jp": "ウィンストン キャスター ホワイト",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/winston-caster-white5-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
-      "sha256": "0b9337e53d0493d0c41b244b0739ad6d6cc50ed8c533b8ff90911f07f0c5954a"
-    },
-    {
-      "productId": "p-964f4640",
-      "jp": "キャスター 5",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/winston-caster-white5-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
-      "sha256": "0b9337e53d0493d0c41b244b0739ad6d6cc50ed8c533b8ff90911f07f0c5954a"
-    },
-    {
-      "productId": "p-bcf9d061",
-      "jp": "アメリカン スピリット ターコイズ",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/american-spirit-turquoise-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
-      "sha256": "f398f767aa70eb803dbbdea05fc33b4abcdc288012d45cd8c667441f0f242ae6"
     },
     {
       "productId": "p-67412a06",
@@ -237,15 +174,6 @@
       "sha256": "dc84761e8725a6f22116c2eb7a95d96f33d07681ebf57c4550ac8f59ad648627"
     },
     {
-      "productId": "p-0f8b545b",
-      "jp": "ホープ",
-      "status": "verified",
-      "quantity": "1 carton / 20 packs / 200 sticks",
-      "localPath": "images/cartons/hope-original-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051019",
-      "sha256": "0f9e4642f09b436cb69d1c7900591dd920c52d5c8de1e0e9876a2dd30e2fe43c"
-    },
-    {
       "productId": "p-f5d04592",
       "jp": "マールボロ・ダブルバースト・パープル・5・ボックス",
       "status": "verified",
@@ -255,8 +183,8 @@
       "sha256": "42b6430c2d14e0616718d6aab2e4f6dbe9f172c053921db40145a708a9a6ba33"
     },
     {
-      "productId": "p-7925e187",
-      "jp": "Ploom X キャメル メンソール フレッシュ",
+      "productId": "p-d4072fb5",
+      "jp": "キャメル・メンソール・フレッシュ・プルーム用",
       "status": "verified",
       "quantity": "1 carton / 10 packs / 200 heatsticks",
       "localPath": "images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
@@ -327,8 +255,8 @@
       "sha256": "bdf870200b93f7468dceb0b7711818ece261f79efedf04164e2cde5dd4dc601e"
     },
     {
-      "productId": "p-31c54175",
-      "jp": "Ploom X メビウス スムース レギュラー",
+      "productId": "p-22ac9207",
+      "jp": "メビウス・スムース・レギュラー・プルーム用",
       "status": "verified",
       "quantity": "1 carton-equivalent proof / 12 same-SKU empty packs / 240 sticks equivalent",
       "localPath": "images/cartons/ploom-mevius-smooth-regular-paypay-12-empty-boxes.jpg",
@@ -345,8 +273,8 @@
       "sha256": "4d00ae58ab886b30bc626b45d387cbf8ecd5d1546eef3f05175e0cedb61af8ab"
     },
     {
-      "productId": "p-4a18c9e6",
-      "jp": "Ploom X キャメル メンソール コールド",
+      "productId": "p-1bbfe3fe",
+      "jp": "キャメル・メンソール・コールド・プルーム用",
       "status": "verified",
       "quantity": "1 carton-equivalent proof / 12 same-SKU empty packs / 240 sticks equivalent",
       "localPath": "images/cartons/ploom-camel-menthol-cold-paypay-12-empty-boxes.jpg",
@@ -354,7 +282,7 @@
       "sha256": "a7a7479d1cade06bf07bc3e948b0cb4517cda37d3eabdf31cbe21df1c8ab5663"
     },
     {
-      "productId": "p-a1c7765a",
+      "productId": "p-811f4eee",
       "jp": "Ploom X キャメル メンソール イエロー",
       "status": "verified",
       "quantity": "1 carton-equivalent proof / 20 same-SKU empty packs / 400 sticks equivalent",
@@ -363,8 +291,8 @@
       "sha256": "0c957df06ba630bba9e324d89ba62d80ae82550ec65c1398b8fdc7878188e81e"
     },
     {
-      "productId": "p-96b9c1bb",
-      "jp": "Ploom X メビウス ブラック コールド メンソール",
+      "productId": "p-720e9cf4",
+      "jp": "メビウス・ブラック・コールド・メンソール・プルーム用",
       "status": "verified",
       "quantity": "1 carton-equivalent proof / 16 same-SKU empty packs / 320 sticks equivalent",
       "localPath": "images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg",
@@ -372,8 +300,8 @@
       "sha256": "6586c3a54d474eee173ce0b51a3041413737cc8e7625bee02dcf8d673dee6ba4"
     },
     {
-      "productId": "p-9c6d5dd2",
-      "jp": "Ploom X メビウス アロマリッチ レギュラー",
+      "productId": "p-1894df68",
+      "jp": "メビウス・アロマリッチ・レギュラー・プルーム用",
       "status": "verified",
       "quantity": "1 carton-equivalent proof / 15 same-SKU empty packs / 300 sticks equivalent",
       "localPath": "images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg",
@@ -381,7 +309,7 @@
       "sha256": "69883d68ea58d9d04d9967e588275e02e3d581df1e0dbc8162b9f953660c295a"
     },
     {
-      "productId": "p-ef0ab360",
+      "productId": "p-14bc10cb",
       "jp": "メビウス・アップル・オプション・プルーム用",
       "status": "verified",
       "quantity": "1 carton-equivalent proof / 24 same-SKU empty packs / 480 sticks equivalent",
@@ -415,15 +343,6 @@
       "localPath": "images/cartons/cigaronne-phantom-rozetka-carton.jpg",
       "sourcePage": "https://rozetka.com.ua/ua/cigaronne-4850008002232/p452660369/",
       "sha256": "abc4b3885ce83c637d55702472538bb66b2eeaa83b982f77807d4eca0fc35493"
-    },
-    {
-      "productId": "p-f56a7e8b",
-      "jp": "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 cigarettes",
-      "localPath": "images/cartons/winston-caster-white-one-100s-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
-      "sha256": "26d1410565efa54094d7ad5557f180c4853e225d48d53d4e59a3f92c9a564aab"
     }
   ]
 }

@@ -382,7 +382,7 @@ test("Ploom EVO current full lineup follows the 2026 JT price notice", () => {
     assert.match(item.image, /images\/evo-/i, item.jp);
     assert.match(item.imageStatus, /reference/, item.jp);
     assert.match(item.imageNote, /单包|不是一カートン/, item.jp);
-    assert.match(item.compatibility, /Ploom AURA \/ Ploom CUBE \/ Ploom X/, item.jp);
+    assert.match(item.compatibility, /Ploom AURA、Ploom CUBE、Ploom X ADVANCED、Ploom X、Ploom S；不适配 with2/, item.jp);
     assert.equal(item.cartonStatus === "verified", false, item.jp);
     assert.equal(item.cartonImage, "", item.jp);
   }
@@ -474,7 +474,7 @@ test("device sorting groups by brand and then machine generation", () => {
       enrichProduct({ type: "device", jp: "IQOS イルマ i リミックスモデル", cn: "IQOS ILUMA i REMIX 限定款", jpy: 6980 }),
       enrichProduct({ type: "device", jp: "Ploom AURA", cn: "Ploom AURA", jpy: 2980 }),
       enrichProduct({ type: "device", jp: "Ploom CUBE", cn: "Ploom CUBE", jpy: 1980, deviceBrand: "Ploom", deviceOrder: 2020 }),
-      enrichProduct({ type: "device", jp: "with2", cn: "with2 加热设备", jpy: 1980, deviceBrand: "Ploom", deviceOrder: 2400 }),
+      enrichProduct({ type: "device", jp: "with2", cn: "with2 加热设备", jpy: 1980, deviceBrand: "with2", deviceOrder: 2400 }),
       enrichProduct({ type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom X", cn: "Ploom X", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom S 2.0", cn: "Ploom S 2.0", jpy: 3480 }),
@@ -496,10 +496,10 @@ test("device sorting groups by brand and then machine generation", () => {
       "IQOS ILUMA i ONE",
       "Ploom AURA",
       "Ploom CUBE",
-      "with2 加热设备",
       "Ploom X ADVANCED",
       "Ploom X",
       "Ploom S 2.0",
+      "with2 加热设备",
       "glo HYPER pro",
       "glo Hilo Plus",
       "glo Hilo",
@@ -621,6 +621,7 @@ test("device and pod category feeds stay separated while device brands follow th
     [
       "IQOS",
       "Ploom",
+      "with2",
       "glo",
       "lil HYBRID",
       "RELX",
@@ -675,7 +676,7 @@ test("recommended sorting groups every catalog type by brand before individual r
   const devices = sorted.filter((item) => item.type === "device");
   assert.deepEqual(
     [...new Set(devices.map((item) => item.brand))].slice(0, 4),
-    ["IQOS", "Ploom", "glo", "lil HYBRID"],
+    ["IQOS", "Ploom", "with2", "glo"],
   );
 
   const pods = sorted.filter((item) => item.type === "pod");

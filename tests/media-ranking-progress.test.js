@@ -25,6 +25,7 @@ test("every catalog item exposes a truthful carton media state", () => {
         "contents-reference",
         "multi-carton-reference",
         "variant-reference",
+        "variant-warning",
         "archive-reference",
         "source-only",
         "needs-review",
@@ -74,8 +75,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 47);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 47);
+  assert.equal(manifest.items.length, 38);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 38);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -161,17 +162,13 @@ test("source-only and generated reference states still show a labeled source ima
   assert.match(tropical.cartonNote, /不是完整 10 盒/);
 });
 
-test("Peace Super Lights uses the official ANA carton-side artwork instead of a single pack", () => {
+test("Peace Super Lights keeps ANA single-pack artwork below verified", () => {
   const peace = enrichProduct(rawProducts.find((item) => item.jp === "ピース スーパーライト"));
 
-  assert.equal(peace.cartonStatus, "verified");
-  assert.match(peace.cartonImage, /peace-superlights-box-ana-carton-side\.jpg/);
+  assert.equal(peace.cartonStatus, "contents-reference");
+  assert.equal(peace.cartonImage, "");
   assert.match(peace.cartonSource, /anadf\.com\/itemdetail\.aspx\?s_cd=3211051034/);
-  assert.match(peace.cartonNote, /20本×10箱|BOX 外包装|ANA/);
-  const cartonPath = new URL(`../${peace.cartonImage.replace(/^\.\//, "")}`, import.meta.url);
-  const packPath = new URL(`../${peace.image.replace(/^\.\//, "")}`, import.meta.url);
-  assert.equal(existsSync(cartonPath), true);
-  assert.notEqual(sha256(cartonPath), sha256(packPath));
+  assert.match(peace.cartonNote, /单包\+警示面板|不是整条外箱|ANA/);
 });
 
 test("Marlboro Gold uses exact 10-box artwork instead of the ANA single pack or 2-carton image", () => {
@@ -258,10 +255,10 @@ test("generic variant rows expose exact SKU shortcuts instead of pretending veri
     ["わかば", ["わかば・シガー 10P"]],
     ["エコー", ["エコー・シガー 10P"]],
     [
-      "Ploom X キャメル メンソール",
-      [
-        "Ploom X キャメル メンソール フレッシュ",
-        "Ploom X キャメル メンソール コールド",
+        "Ploom X キャメル メンソール",
+        [
+        "キャメル・メンソール・フレッシュ・プルーム用",
+        "キャメル・メンソール・コールド・プルーム用",
         "Ploom X キャメル メンソール イエロー",
         "キャメル・メンソール・マスカット・プルーム用",
       ],
@@ -305,7 +302,7 @@ test("split Marlboro Purple 5 and Ploom Camel Menthol Fresh rows publish only ex
   assert.equal(genericCamelMenthol.cartonImage, "");
 
   const camelFresh = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール フレッシュ"),
+    rawProducts.find((product) => product.jp === "キャメル・メンソール・フレッシュ・プルーム用"),
   );
   assert.equal(camelFresh.cartonStatus, "verified");
   assert.match(
@@ -361,14 +358,33 @@ test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton refere
 test("verified alias rows disclose the exact printed SKU behind the carton image", () => {
   const expectations = [
     ["ラーク クラシック", /CLASSIC MILDS|クラシック マイルド/],
-    ["ウィンストン キャスター ホワイト", /ホワイト・5|5mg/],
-    ["キャスター 5", /ホワイト・5|Caster White 5/],
   ];
 
   for (const [jp, pattern] of expectations) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, "verified", jp);
     assert.match(item.variantNote, pattern, jp);
+  }
+});
+
+test("ANA single-pack warning-panel rows stay below verified after pixel audit", () => {
+  const expectations = new Map([
+    ["ピース ライト", "contents-reference"],
+    ["ウィンストン・キャスター・ホワイト・ワン・100s・ボックス", "contents-reference"],
+    ["ウィンストン キャスター ホワイト", "variant-warning"],
+    ["キャスター 5", "contents-reference"],
+    ["アメリカン スピリット ターコイズ", "contents-reference"],
+    ["ピース スーパーライト", "contents-reference"],
+    ["ピアニッシモ アリア メンソール", "contents-reference"],
+    ["クール ブースト フレッシュ 8", "contents-reference"],
+    ["ホープ", "contents-reference"],
+  ]);
+
+  for (const [jp, status] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, status, jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, /单包\+警示面板|不是整条外箱|不是整条外箱或/, jp);
   }
 });
 
@@ -471,7 +487,7 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   );
 
   const camelCold = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール コールド"),
+    rawProducts.find((product) => product.jp === "キャメル・メンソール・コールド・プルーム用"),
   );
   assert.equal(camelCold.cartonStatus, "verified");
   assert.match(
@@ -510,7 +526,7 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(camelMuscat.cartonNote, /MENTHOL MUSCAT GREEN|1 Carton = 6 pack = 120 pieces|不能证明|不能回填/);
 
   const cold = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス コールド メンソール"),
+    rawProducts.find((product) => product.jp === "メビウス・コールド・メンソール・プルーム用"),
   );
   assert.equal(cold.cartonStatus, "verified");
   assert.match(cold.cartonImage, /ploom-mevius-cold-menthol-mercari-28-empty-boxes\.jpg/);
@@ -518,7 +534,7 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(cold.cartonNote, /空箱 28個|COLD MENTHOL|10 包|200 支/);
 
   const sharpCold = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+    rawProducts.find((product) => product.jp === "メビウス・シャープ・コールド・メンソール・プルーム用"),
   );
   assert.equal(sharpCold.cartonStatus, "verified");
   assert.match(sharpCold.cartonImage, /ploom-mevius-sharp-cold-mercari-10-empty-boxes\.jpg/);
@@ -526,7 +542,7 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(sharpCold.cartonNote, /SHARP COLD MENTHOL|10 个同款/);
 
   const blackCold = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス ブラック コールド メンソール"),
+    rawProducts.find((product) => product.jp === "メビウス・ブラック・コールド・メンソール・プルーム用"),
   );
   assert.equal(blackCold.cartonStatus, "verified");
   assert.match(
@@ -539,7 +555,7 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.match(blackCold.cartonNote, /BLACK COLD MENTHOL|16箱|20本×10箱/);
 
   const aromaRich = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス アロマリッチ レギュラー"),
+    rawProducts.find((product) => product.jp === "メビウス・アロマリッチ・レギュラー・プルーム用"),
   );
   assert.equal(aromaRich.cartonStatus, "verified");
   assert.match(
@@ -604,7 +620,7 @@ test("split Ploom X Mevius Smooth Regular publishes the exact 12-box evidence on
   const exact = enrichProduct(
     rawProducts.find(
       (product) =>
-        product.jp === "Ploom X メビウス スムース レギュラー",
+        product.jp === "メビウス・スムース・レギュラー・プルーム用",
     ),
   );
   assert.equal(exact.cartonStatus, "verified");
@@ -647,7 +663,7 @@ test("split Camel Smooth Ploom publishes the exact 33-box evidence only", () => 
 
 test("Ploom X Sharp Cold keeps older mixed references as gallery context", () => {
   const item = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+    rawProducts.find((product) => product.jp === "メビウス・シャープ・コールド・メンソール・プルーム用"),
   );
 
   assert.equal(item.cartonStatus, "verified");
@@ -1249,7 +1265,7 @@ test("ranking is a separate vertical feed page linked from home", () => {
 
 test("Ploom X Sharp Cold records the exact 10-box image and keeps 1-carton quantity evidence", () => {
   const item = enrichProduct(
-    rawProducts.find((product) => product.jp === "Ploom X メビウス シャープ コールド"),
+    rawProducts.find((product) => product.jp === "メビウス・シャープ・コールド・メンソール・プルーム用"),
   );
 
   assert.equal(item.cartonStatus, "verified");
@@ -1321,7 +1337,7 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
   }
 });
 
-test("Winston Caster White One 100s is split from legacy XS and verified exactly", () => {
+test("Winston Caster White One 100s is split from legacy XS but stays below verified without carton pixels", () => {
   const xs = enrichProduct(rawProducts.find((product) => product.jp === "ウィンストン XS"));
   assert.equal(xs.cartonStatus, "contents-reference");
   assert.equal(xs.cartonImage, "");
@@ -1332,12 +1348,12 @@ test("Winston Caster White One 100s is split from legacy XS and verified exactly
       (product) => product.jp === "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス",
     ),
   );
-  assert.equal(one100s.cartonStatus, "verified");
-  assert.match(one100s.cartonImage, /winston-caster-white-one-100s-ana-carton-side\.jpg/);
+  assert.equal(one100s.cartonStatus, "contents-reference");
+  assert.equal(one100s.cartonImage, "");
   assert.match(one100s.cartonSource, /anadf\.com\/itemdetail\.aspx\?s_cd=2010100028/);
   assert.equal(one100s.cartonPackCount, 10);
   assert.equal(one100s.cartonStickCount, 200);
-  assert.match(one100s.cartonNote, /20本×10箱|BOX 100's|旧“ウィンストン XS”仍保持近似参考/);
+  assert.match(one100s.cartonNote, /20本×10箱|单包\+警示面板|旧“ウィンストン XS”仍保持近似参考/);
 });
 
 test("lil HYBRID source-only carton references use exact AMANOYA ten-unit pages where available", () => {

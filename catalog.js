@@ -20,14 +20,24 @@ const TYPE_LABELS_JP = {
 
 const BRAND_PROFILES = [
   {
+    test: /ウィズ用|with2/i,
+    brand: "with2",
+    jpScore: 3.9,
+    cnScore: 3.5,
+    availability: "likely",
+    jpImpression: "with2 はたばこカプセルとカートリッジを組み合わせる別方式で、Ploom スティックとは互換性がありません。",
+    cnImpression: "中国游客容易把 with2 和 Ploom 加热烟弹混淆，购买时要确认是“ウィズ用”胶囊+烟弹组合。",
+    source: "https://www.jti.co.jp/tobacco/products/ploomtechplus/index.html",
+  },
+  {
     test: /エボ|EVO/i,
     brand: "Ploom EVO",
     jpScore: 4.3,
     cnScore: 3.9,
     availability: "likely",
-    jpImpression: "Ploom AURA/X 向けのプレミアムラインとして、濃い蒸気・香りの持続・上質感を重視するユーザーに注目されています。",
-    cnImpression: "中国游客对 EVO 认知还在上升，购买时最关键是确认只能给 Ploom AURA / CUBE / X 系列使用，不是 IQOS/glo 烟弹。",
-    source: "https://www.jti.co.jp/investors/library/press_releases/20260310_J01.html",
+    jpImpression: "Ploom AURA / CUBE / X 系列向けのプレミアムラインとして、濃い蒸気・香りの持続・上質感を重視するユーザーに注目されています。",
+    cnImpression: "中国游客对 EVO 认知还在上升，购买时最关键是确认适配 Ploom AURA / CUBE / X ADVANCED / X / S，不适配 with2、IQOS 或 glo。",
+    source: "https://www.jti.co.jp/tobacco/products/plooms/index.html",
   },
   {
     test: /Ploom|with2/i,
@@ -245,6 +255,9 @@ const PRICE_RULES = [
   { test: (item) => item.type === "heated" && /テリア|TEREA/i.test(item.jp), value: 620, source: "official" },
   { test: (item) => item.type === "heated" && /センティア|SENTIA/i.test(item.jp), value: 570, source: "official" },
   { test: (item) => item.type === "heated" && /エボ|EVO/i.test(item.jp), value: 580, source: "official" },
+  { test: (item) => item.type === "heated" && /ウィズ用/i.test(item.jp), value: 1200, source: "official" },
+  { test: (item) => item.type === "heated" && /メビウス.*プルーム用/i.test(item.jp), value: 550, source: "official" },
+  { test: (item) => item.type === "heated" && /キャメル.*プルーム用/i.test(item.jp), value: 530, source: "official" },
   { test: (item) => item.type === "heated" && /ネオ・|glo hyper ネオ/i.test(item.jp), value: 530, source: "official" },
   {
     test: (item) => item.type === "heated" && /ラッキー・ストライク|glo hyper ラッキー ストライク/i.test(item.jp),
@@ -389,7 +402,8 @@ function describeProduct(item, flavor, strength, profile) {
 
 function compatibility(item) {
   if (/テリア|センティア/i.test(item.jp)) return "仅适配 IQOS ILUMA 系列";
-  if (/エボ|EVO/i.test(item.jp)) return "仅适配 Ploom AURA / Ploom CUBE / Ploom X 系列";
+  if (/ウィズ用/i.test(item.jp)) return "仅适配 with2 / Ploom TECH+ with / Ploom TECH+，不适配 Ploom AURA/X 烟弹设备";
+  if (/エボ|EVO|プルーム用/i.test(item.jp)) return "适配 Ploom AURA、Ploom CUBE、Ploom X ADVANCED、Ploom X、Ploom S；不适配 with2";
   if (/Ploom/i.test(item.jp)) return "适配对应 Ploom 设备";
   if (/glo/i.test(item.jp)) return "适配 glo HYPER 系列";
   if (/lil HYBRID/i.test(item.jp)) return "仅适配 lil HYBRID";
@@ -406,7 +420,8 @@ function podSubtype(item) {
 function deviceBrandOrder(item) {
   const text = `${item.deviceBrand ?? ""} ${item.brand ?? ""} ${item.jp} ${item.cn}`;
   if (/IQOS/i.test(text)) return 10;
-  if (/Ploom|with2/i.test(text)) return 20;
+  if (/with2/i.test(text)) return 25;
+  if (/Ploom/i.test(text)) return 20;
   if (/glo/i.test(text)) return 30;
   if (/lil HYBRID/i.test(text)) return 40;
   if (/RELX/i.test(text)) return 50;
@@ -442,6 +457,7 @@ const BRAND_SORT_ORDER = new Map(
     "IQOS",
     "Ploom EVO",
     "Ploom",
+    "with2",
     "glo",
     "lil HYBRID",
     "RELX",
@@ -603,7 +619,7 @@ export function enrichProduct(item, index = 0) {
     source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : (item.source ?? profile.source),
     searchText: searchAliases(item),
     marketStatus: item.type === "pod" ? "restricted-regulatory-reference" : item.marketStatus,
-    productSubtype: podSubtype(item),
+    productSubtype: item.productSubtype ?? podSubtype(item),
     priceChecked: PRICE_CHECKED,
     originalIndex: index,
   };

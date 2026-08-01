@@ -23,7 +23,7 @@ const MEDIA_OVERRIDES = new Map([
     "セブンスター ボックス|七星 盒装",
     {
       image: "./images/verified/seven-stars-box.jpg",
-      imageStatus: "verified",
+      imageStatus: "reference",
       imageSource:
         "https://dfree.fukuoka-airport.jp/productDetail.php?product_cd=4411000046",
       imageNote: "福冈机场免税店商品图，用于辨认硬盒正面。",
@@ -312,28 +312,28 @@ const MEDIA_OVERRIDES = new Map([
       imageStatus: "verified",
       imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
       imageNote:
-        "ANA DUTY FREE exact 页面第二张图，图面可读 BOX 100's / Winston / CASTER / 1，用于现行 1mg Caster White One 100s 盒装一条辨认。",
+        "ANA DUTY FREE exact 页面第二张图可读 BOX 100's / Winston / CASTER / 1，但本轮像素复核判定为单包+警示面板版式；只作单包辨认，不再当作一カートン外箱。",
       packageFormat: "100s 盒装",
       packageFormatJp: "100's ボックス",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/winston-caster-white-one-100s-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "ANA DUTY FREE 页面商品名为“ウィンストン・キャスター・ホワイト・ワン・100’s・ボックス”，规格写明 20本×10箱；第二张官方图展示横向外箱侧面，可读 BOX 100's / Winston / CASTER / 1。按 exact 现行 1mg Caster White One 100s 一条 / 10 包 / 200 支核验；旧“ウィンストン XS”仍保持近似参考，不覆盖。",
+        "ANA DUTY FREE 页面商品名为“ウィンストン・キャスター・ホワイト・ワン・100’s・ボックス”，规格写明 20本×10箱；但本轮像素复核判定现有图是单包+警示面板，不是 sealed carton 或 10 包实拍。因此只保留数量/包装参考，旧“ウィンストン XS”仍保持近似参考，不覆盖。",
     },
   ],
   [
     "ウィンストン キャスター ホワイト|温斯顿 白",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/winston-caster-white5-ana-carton-side.jpg",
+      cartonStatus: "variant-warning",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
       variantNote:
         "图片印刷 SKU 是 ウィンストン・キャスター・ホワイト・5・ボックス；目录泛称 Winston Caster White 按 5mg Box 核验，不代表 1mg/3mg/软包。",
       cartonNote:
-        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录项“Winston Caster White”按 5mg Box 主流款核验；购买时请同时确认 1mg/3mg/5mg 与 soft/box 差异。",
+        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱。目录项“Winston Caster White”仍只是 5mg Box 近似线索，购买时请同时确认 1mg/3mg/5mg 与 soft/box 差异。",
     },
   ],
   [
@@ -365,11 +365,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピース ライト|和平 轻量",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/peace-light-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051018",
       cartonNote:
-        "ANA 免税店页面确认 Peace Light Box 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。用于辨认 10mg Peace Light 整条外观；当前价格和库存以 ANA 页面为准。",
+        "ANA 免税店页面确认 Peace Light Box 销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 10 包实拍。这里只保留 exact SKU 与数量线索，当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -397,11 +397,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピアニッシモ アリア メンソール|百乐门细支 薄荷",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/pianissimo-aria-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000076238",
       cartonNote:
-        "ANA 免税店页面确认 Pianissimo Aria Menthol 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。用于辨认 Aria Menthol 细支整条外观；当前价格和库存以 ANA 页面为准。",
+        "ANA 免税店页面确认 Pianissimo Aria Menthol 销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 10 包实拍。这里只保留 exact SKU 与数量线索，当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -419,7 +419,7 @@ const MEDIA_OVERRIDES = new Map([
           image: "./images/cartons/kool-boost-fresh-8-ana-carton.jpg",
           source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
           note:
-            "该图为“クール・ブースト・フレッシュ・8・ボックス”的 1カートン外箱，不足以证明泛称“クール ブースト”就是同一 SKU。",
+            "该图为“クール・ブースト・フレッシュ・8・ボックス”的单包+警示面板参考，不足以证明泛称“クール ブースト”就是同一 SKU，也不能证明整条外箱。",
         },
       ],
       cartonNote:
@@ -454,8 +454,8 @@ const MEDIA_OVERRIDES = new Map([
   [
     "クール ブースト フレッシュ 8|KOOL Boost Fresh 8",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/kool-boost-fresh-8-ana-carton.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
       cartonPackCount: 10,
       cartonStickCount: 200,
@@ -469,7 +469,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "原目录名“クール ナノ ブースト 8”无法被公开资料稳定核验；日本免税与烟草店稳定使用“クール・ブースト・フレッシュ・8・ボックス / KOOL BOOST FRESH 8 BOX”。ANA 免税店页面确认销售规格为 20本×10箱 / 1カートン，第二张官方图展示 KOOL BOOST FRESH 8 一条外箱，按 10 包 / 200 支核验。",
+        "原目录名“クール ナノ ブースト 8”无法被公开资料稳定核验；日本免税与烟草店稳定使用“クール・ブースト・フレッシュ・8・ボックス / KOOL BOOST FRESH 8 BOX”。ANA 免税店页面确认销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 10 包实拍，因此只保留数量参考。",
     },
   ],
   [
@@ -586,23 +586,23 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャスター 5|卡斯特 5mg",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/winston-caster-white5-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
       variantNote:
         "图片印刷 SKU 是 ウィンストン・キャスター・ホワイト・5・ボックス；“Caster 5”是中文/口语搜索别名，购买时请说完整现行日文名。",
       cartonNote:
-        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录沿用中国游客常说的 Caster 5，购买时请同时核对 Winston Caster White 5。",
+        "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 10 包实拍。目录沿用中国游客常说的 Caster 5，购买时请同时核对 Winston Caster White 5。",
     },
   ],
   [
     "ピース スーパーライト|和平 超淡",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/peace-superlights-box-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051034",
       cartonNote:
-        "ANA 免税店同一商品页确认该 SKU 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外包装侧面（Peace Super Lights + 警示文字）。这是官方整条外观参考；当前价格、预约机场和库存仍以 ANA 页面为准。",
+        "ANA 免税店同一商品页确认该 SKU 销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 10 包实拍。这里只保留 exact SKU 与数量线索，当前价格、预约机场和库存仍以 ANA 页面为准。",
     },
   ],
   [
@@ -1383,7 +1383,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス リッチ|Ploom X 浓郁经典",
+    "Ploom X メビウス リッチ|Ploom X 浓郁经典 旧称参考",
     {
       cartonStatus: "source-only",
       cartonImage: "",
@@ -1396,7 +1396,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス ディープ レギュラー|Ploom X 深度经典",
+    "メビウス・ディープ・レギュラー・プルーム用|Ploom 梅比乌斯 深度经典",
     {
       cartonStatus: "verified",
       cartonImage:
@@ -1427,7 +1427,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス コールド メンソール|Ploom X 冷感薄荷",
+    "メビウス・コールド・メンソール・プルーム用|Ploom 梅比乌斯 冷感薄荷",
     {
       cartonStatus: "verified",
       cartonImage: "./images/cartons/ploom-mevius-cold-menthol-mercari-28-empty-boxes.jpg",
@@ -1466,7 +1466,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス ブラック コールド メンソール|Ploom X 梅比乌斯 黑冷薄荷",
+    "メビウス・ブラック・コールド・メンソール・プルーム用|Ploom 梅比乌斯 黑冷薄荷",
     {
       image:
         "./images/cartons/ploom-mevius-black-cold-menthol-mercari-16-empty-boxes.jpg",
@@ -1495,7 +1495,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス アロマリッチ レギュラー|Ploom X 梅比乌斯 醇香经典",
+    "メビウス・アロマリッチ・レギュラー・プルーム用|Ploom 梅比乌斯 醇香经典",
     {
       image:
         "./images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg",
@@ -1533,7 +1533,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "メビウス・アップル・オプション・プルーム用|Ploom X 梅比乌斯 Apple Option",
+    "メビウス・アップル・オプション・プルーム用|Ploom 梅比乌斯 Apple Option 苹果爆珠",
     {
       image:
         "./images/cartons/ploom-mevius-apple-option-paypay-24-empty-boxes.jpg",
@@ -1570,7 +1570,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス スムース|Ploom X 柔和",
+    "Ploom X メビウス スムース|Ploom X 柔和 旧称参考",
     {
       cartonStatus: "source-only",
       cartonImage: "",
@@ -1583,7 +1583,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス スムース レギュラー|Ploom X 梅比乌斯 柔和经典",
+    "メビウス・スムース・レギュラー・プルーム用|Ploom 梅比乌斯 柔和经典",
     {
       image: "./images/cartons/ploom-mevius-smooth-regular-paypay-12-empty-boxes.jpg",
       imageStatus: "verified",
@@ -1611,7 +1611,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス メンソール フレッシュ|Ploom X 清新薄荷",
+    "Ploom X メビウス メンソール フレッシュ|Ploom X 清新薄荷 旧称参考",
     {
       cartonStatus: "verified",
       cartonImage:
@@ -1634,12 +1634,12 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
+    "Ploom X キャメル メンソール|Ploom X 骆驼薄荷 旧称参考",
     {
       cartonStatus: "variant-reference",
       relatedExactJp: [
-        "Ploom X キャメル メンソール フレッシュ",
-        "Ploom X キャメル メンソール コールド",
+        "キャメル・メンソール・フレッシュ・プルーム用",
+        "キャメル・メンソール・コールド・プルーム用",
         "Ploom X キャメル メンソール イエロー",
         "キャメル・メンソール・マスカット・プルーム用",
       ],
@@ -1669,7 +1669,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X キャメル メンソール フレッシュ|Ploom X 骆驼清新薄荷",
+    "キャメル・メンソール・フレッシュ・プルーム用|Ploom 骆驼清新薄荷",
     {
       image:
         "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
@@ -1733,7 +1733,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X キャメル メンソール コールド|Ploom X 骆驼强冷薄荷",
+    "キャメル・メンソール・コールド・プルーム用|Ploom 骆驼强冷薄荷",
     {
       cartonStatus: "verified",
       cartonImage:
@@ -1756,7 +1756,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X キャメル メンソール イエロー|Ploom X 骆驼柑橘薄荷",
+    "Ploom X キャメル メンソール イエロー|Ploom X 骆驼柑橘薄荷 旧称参考",
     {
       cartonStatus: "verified",
       cartonImage:
@@ -1786,7 +1786,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X キャメル スムース|Ploom X 骆驼柔和",
+    "Ploom X キャメル スムース|Ploom X 骆驼柔和 旧称参考",
     {
       cartonStatus: "contents-reference",
       relatedExactJp: ["キャメル・スムース・プルーム用"],
@@ -1954,11 +1954,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "アメリカン スピリット ターコイズ|美式精神 绿松石",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/american-spirit-turquoise-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
       cartonNote:
-        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向外箱侧面。用于辨认 Turquoise 整条外观；当前价格和库存以 ANA 页面为准。",
+        "ANA 免税店页面确认 Natural American Spirit Organic Leaf Turquoise 销售规格为 20本×10箱 / 1カートン；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 10 包实拍。这里只保留 exact SKU 与数量线索，当前价格和库存以 ANA 页面为准。",
     },
   ],
   [
@@ -2017,13 +2017,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ホープ|Hope",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/hope-original-ana-carton-side.jpg",
+      cartonStatus: "contents-reference",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051019",
       cartonPackCount: 20,
       cartonStickCount: 200,
       cartonNote:
-        "ANA 免税店页面确认 Hope Original 10本入销售规格为 10本×20箱，合计 200 本；第二张官方图展示横向外箱侧面。Hope 与常规 20本×10箱不同，购买时请核对 10 本小盒规格。",
+        "ANA 免税店页面确认 Hope Original 10本入销售规格为 10本×20箱，合计 200 本；但本轮像素复核判定现有图是单包+警示面板，不是整条外箱或 20 小盒实拍。Hope 与常规 20本×10箱不同，购买时请核对 10 本小盒规格。",
     },
   ],
   [
@@ -2382,7 +2382,7 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
-    "Ploom X メビウス シャープ コールド|Ploom X 锐冷薄荷",
+    "メビウス・シャープ・コールド・メンソール・プルーム用|Ploom 梅比乌斯 锐冷薄荷",
     {
       cartonStatus: "verified",
       cartonImage: "./images/cartons/ploom-mevius-sharp-cold-mercari-10-empty-boxes.jpg",
