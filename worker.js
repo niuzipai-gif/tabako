@@ -109,6 +109,52 @@ const RESTRICTED_PRODUCT_TERMS = Object.freeze(
     .map(compactLookupText)
     .filter((value, index, values) => value.length >= 3 && values.indexOf(value) === index),
 );
+const TOBACCO_SOURCE_DOMAINS = Object.freeze([
+  "jti.co.jp",
+  "clubjt.jp",
+  "iqos.com",
+  "myglo.com",
+  "discoverglo.jp",
+  "prtimes.jp",
+  "mhlw.go.jp",
+  "mof.go.jp",
+  "anadf.com",
+  "kixdutyfree.jp",
+  "rakuten.co.jp",
+  "mercari.com",
+  "paypayfleamarket.yahoo.co.jp",
+  "monolog.r-n-i.jp",
+]);
+const TOBACCO_RELEVANCE_TERMS = Object.freeze([
+  "たばこ",
+  "タバコ",
+  "煙草",
+  "香烟",
+  "烟草",
+  "cigarette",
+  "cigar",
+  "tobacco",
+  "carton",
+  "カートン",
+  "一条",
+  "20本",
+  "10箱",
+  "iqos",
+  "terea",
+  "sentia",
+  "ploom",
+  "mevius",
+  "seven stars",
+  "marlboro",
+  "camel",
+  "lark",
+  "winston",
+  "kool",
+  "cigaronne",
+  "glo",
+  "virto",
+  "ヴァルト",
+]);
 
 function cleanText(value, limit) {
   return String(value ?? "")
@@ -122,6 +168,45 @@ function compactLookupText(value) {
     .normalize("NFKC")
     .toLocaleLowerCase()
     .replace(/[^\p{Letter}\p{Number}]+/gu, "");
+}
+
+function tokenizeSearchQuery(query) {
+  return cleanText(query, 240)
+    .toLocaleLowerCase()
+    .split(/[^\p{Letter}\p{Number}]+/gu)
+    .map((token) => token.trim())
+    .filter((token) => token.length >= 2 && !/^\d+$/.test(token))
+    .slice(0, 12);
+}
+
+function getHostname(url) {
+  try {
+    return new URL(url).hostname.toLocaleLowerCase().replace(/^www\./, "");
+  } catch {
+    return "";
+  }
+}
+
+function isRelevantSearchSource(source, query) {
+  const url = String(source?.url ?? "");
+  const hostname = getHostname(url);
+  const haystack = [source?.title, source?.content, source?.snippet, url]
+    .map((value) => cleanText(value, 1200).toLocaleLowerCase())
+    .join(" ");
+  const compactHaystack = compactLookupText(haystack);
+  const isTrustedDomain = TOBACCO_SOURCE_DOMAINS.some(
+    (domain) => hostname === domain || hostname.endsWith(`.${domain}`),
+  );
+  const hasTobaccoContext = TOBACCO_RELEVANCE_TERMS.some((term) => {
+    const normalized = term.toLocaleLowerCase();
+    return haystack.includes(normalized) || compactHaystack.includes(compactLookupText(normalized));
+  });
+  const hasQueryOverlap = tokenizeSearchQuery(query).some(
+    (token) => haystack.includes(token) || compactHaystack.includes(compactLookupText(token)),
+  );
+
+  if (isTrustedDomain && (hasQueryOverlap || hasTobaccoContext)) return true;
+  return hasQueryOverlap && hasTobaccoContext;
 }
 
 function isRestrictedSearch(query) {
@@ -366,6 +451,7 @@ async function callSearch(fetchImpl, key, query) {
     if (block?.type !== "web_search_tool_result" || !Array.isArray(block.content)) continue;
     for (const result of block.content) {
       if (result?.type !== "web_search_result" || !isSafeUrl(result.url)) continue;
+      if (!isRelevantSearchSource(result, query)) continue;
       sources.push({
         title: cleanText(result.title, 180) || "查看来源",
         url: String(result.url),
@@ -375,7 +461,9 @@ async function callSearch(fetchImpl, key, query) {
   }
 
   return normalizeAiPayload({
-    answer: textBlocks.at(-1) || "已找到一些可能相关的网页线索，请打开来源核对。",
+    answer: sources.length
+      ? textBlocks.at(-1) || "已找到一些可能相关的网页线索，请打开来源核对。"
+      : "联网搜索没有留下足够相关的烟草/包装来源；请换成品牌、日文名或包装文字再试。",
     matches: [],
     sources,
   });

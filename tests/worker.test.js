@@ -390,6 +390,44 @@ test("online search uses MiniMax web_search server tool and returns source leads
   ]);
 });
 
+test("online search drops unrelated web results instead of showing noisy fallback sources", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          content: [
+            { type: "text", text: "搜索完成。" },
+            {
+              type: "web_search_tool_result",
+              content: [
+                {
+                  type: "web_search_result",
+                  title: "Nintendo Switch game listing",
+                  url: "https://example.com/game/qxzvnonexistent987",
+                  content: "A game and candy bundle with no adult product information.",
+                },
+                {
+                  type: "web_search_result",
+                  title: "Market report",
+                  url: "https://example.org/report",
+                  content: "Generic market research with no product evidence.",
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(post({ mode: "search", query: "qxzvnonexistent987" }), ENV);
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(payload.sources, []);
+  assert.match(payload.answer, /没有留下足够相关/);
+});
+
 test("online search blocks restricted electronic-product queries before calling MiniMax", async () => {
   let called = false;
   const worker = createWorker({

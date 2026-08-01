@@ -249,6 +249,8 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://jp.mercari.com/item/m34271529006",
       cartonPackCount: 10,
       cartonStickCount: 200,
+      variantNote:
+        "图片印刷 SKU 是 LARK CLASSIC MILDS / ラーク クラシック マイルド；目录保留“中国游客常搜的 Lark Classic”作为别名，购买时请核对 Milds/KS/Box 字样。",
       cartonGallery: [
         {
           label: "ANA 免税 2カートン参考",
@@ -277,6 +279,8 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "verified",
       cartonImage: "./images/cartons/winston-caster-white3-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100027",
+      variantNote:
+        "图片印刷 SKU 是 ウィンストン・キャスター・ホワイト・3・ボックス；“Caster 3”是中文/口语搜索别名，购买时请说完整现行日文名。",
       cartonNote:
         "ANA 免税店页面确认现行名“ウィンストン・キャスター・ホワイト・3・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录沿用中国游客常说的 Caster 3，购买时请同时核对 Winston Caster White 3。",
     },
@@ -326,6 +330,8 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "verified",
       cartonImage: "./images/cartons/winston-caster-white5-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
+      variantNote:
+        "图片印刷 SKU 是 ウィンストン・キャスター・ホワイト・5・ボックス；目录泛称 Winston Caster White 按 5mg Box 核验，不代表 1mg/3mg/软包。",
       cartonNote:
         "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录项“Winston Caster White”按 5mg Box 主流款核验；购买时请同时确认 1mg/3mg/5mg 与 soft/box 差异。",
     },
@@ -472,6 +478,8 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "verified",
       cartonImage: "./images/cartons/mevius-gold-original-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
+      variantNote:
+        "图片印刷 SKU 是 MEVIUS Gold 6；目录的 Gold Original 是中国游客常用泛称，购买时请核对 6mg/Box 与 Gold 字样。",
       cartonNote:
         "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录项为“Gold Original”泛称，此图按 6mg Gold 主流款作整条外观参考。",
     },
@@ -581,6 +589,8 @@ const MEDIA_OVERRIDES = new Map([
       cartonStatus: "verified",
       cartonImage: "./images/cartons/winston-caster-white5-ana-carton-side.jpg",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100026",
+      variantNote:
+        "图片印刷 SKU 是 ウィンストン・キャスター・ホワイト・5・ボックス；“Caster 5”是中文/口语搜索别名，购买时请说完整现行日文名。",
       cartonNote:
         "ANA 免税店页面确认“ウィンストン・キャスター・ホワイト・5・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录沿用中国游客常说的 Caster 5，购买时请同时核对 Winston Caster White 5。",
     },

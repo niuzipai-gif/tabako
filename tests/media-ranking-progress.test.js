@@ -356,6 +356,22 @@ test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton refere
   );
 });
 
+test("verified alias rows disclose the exact printed SKU behind the carton image", () => {
+  const expectations = [
+    ["ラーク クラシック", /CLASSIC MILDS|クラシック マイルド/],
+    ["メビウス ゴールド オリジナル", /Gold 6|6mg/],
+    ["ウィンストン キャスター ホワイト", /ホワイト・5|5mg/],
+    ["キャスター 3", /ホワイト・3|Caster White 3/],
+    ["キャスター 5", /ホワイト・5|Caster White 5/],
+  ];
+
+  for (const [jp, pattern] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "verified", jp);
+    assert.match(item.variantNote, pattern, jp);
+  }
+});
+
 test("Lark 1 keeps Select 1 and Ultra 1 evidence below verified until SKU is split", () => {
   const item = enrichProduct(rawProducts.find((product) => product.jp === "ラーク 1"));
 
