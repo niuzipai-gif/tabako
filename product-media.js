@@ -1336,6 +1336,34 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "Ploom X メビウス スムース レギュラー|Ploom X 梅比乌斯 柔和经典",
+    {
+      image: "./images/cartons/ploom-mevius-smooth-regular-paypay-12-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://paypayfleamarket.yahoo.co.jp/item/z581238832",
+      imageNote:
+        "Yahoo!フリマ页面标题为“メビウス スムース レギュラー ploom X 空箱（12個）”，图片可见 12 个 MEVIUS ploom X SMOOTH REGULAR 同款盒。",
+      packageFormat: "加热式烟弹盒",
+      packageFormatJp: "たばこスティック",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-mevius-smooth-regular-paypay-12-empty-boxes.jpg",
+      cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z581238832",
+      cartonPackCount: 12,
+      cartonStickCount: 240,
+      cartonGallery: [
+        {
+          label: "J-cigarette 1 carton quantity render",
+          image: "./images/cartons/ploom-mevius-smooth-carton.jpg",
+          source:
+            "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
+          note: "该图仅为 1 Carton = 120 pcs 数量渲染，不能单独作为 verified；本 exact 行的主证据来自 PayPay 12 个同款实拍盒。",
+        },
+      ],
+      cartonNote:
+        "Yahoo!フリマ页面标题和 description 均写“メビウス スムース レギュラー ploom X 空箱（12個）”，description 另列【その他】ploom X、【数量】12箱；og:image 可见 12 个 MEVIUS ploom X SMOOTH REGULAR 同款空盒，其中多盒正面和侧标可读。按 strict gate 的 10+ same-SKU packs proof 核验 exact Ploom X メビウス スムース レギュラー；短名 Ploom X メビウス スムース 仍保留为 contents-reference，不强升。",
+    },
+  ],
+  [
     "Ploom X メビウス メンソール フレッシュ|Ploom X 清新薄荷",
     {
       cartonStatus: "contents-reference",

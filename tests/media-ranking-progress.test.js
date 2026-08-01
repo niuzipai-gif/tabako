@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 44);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 44);
+  assert.equal(manifest.items.length, 45);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 45);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -429,6 +429,33 @@ test("Ploom X Mevius Smooth does not publish a quantity-only render as verified"
   assert.equal(smooth.cartonImage, "");
   assert.match(smooth.cartonSource, /j-cigarette\.com\/1carton-ploom-x-ploom-s-mevius-smooth/);
   assert.match(smooth.cartonNote, /不是 sealed carton\/outer box|降级为数量参考/);
+});
+
+test("split Ploom X Mevius Smooth Regular publishes the exact 12-box evidence only", () => {
+  const shortName = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス スムース"),
+  );
+  assert.equal(shortName.cartonStatus, "contents-reference");
+  assert.equal(shortName.cartonImage, "");
+
+  const exact = enrichProduct(
+    rawProducts.find(
+      (product) =>
+        product.jp === "Ploom X メビウス スムース レギュラー",
+    ),
+  );
+  assert.equal(exact.cartonStatus, "verified");
+  assert.match(
+    exact.cartonImage,
+    /ploom-mevius-smooth-regular-paypay-12-empty-boxes\.jpg/,
+  );
+  assert.match(
+    exact.cartonSource,
+    /paypayfleamarket\.yahoo\.co\.jp\/item\/z581238832/,
+  );
+  assert.equal(exact.cartonPackCount, 12);
+  assert.equal(exact.cartonStickCount, 240);
+  assert.match(exact.cartonNote, /SMOOTH REGULAR|空箱（12個）|12箱/);
 });
 
 test("Ploom X Sharp Cold keeps older mixed references as gallery context", () => {
