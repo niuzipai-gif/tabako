@@ -591,6 +591,15 @@ test("AI dialog default copy reflects online proxy check without implying perman
   assert.doesNotMatch(html, /代理未配置时不会上传/);
 });
 
+test("AI compact catalog carries carton evidence fields for local matching", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+
+  assert.match(source, /cartonApplicable/);
+  assert.match(source, /cartonSearchQuery/);
+  assert.match(source, /cartonNote/);
+  assert.match(source, /variantNote/);
+});
+
 test("device catalog and detail views expose readable market status badges", () => {
   const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
   const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
@@ -670,6 +679,21 @@ test("search matches Chinese flavor aliases", () => {
   });
 
   assert.equal(result.length, 1);
+});
+
+test("search can match related exact names and carton audit notes", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+
+  const winston = filterProducts(products, {
+    query: "Caster White One 100s",
+  }).map((item) => item.jp);
+  assert.ok(winston.includes("ウィンストン XS"));
+  assert.ok(winston.includes("ウィンストン・キャスター・ホワイト・ワン・100s・ボックス"));
+
+  const lark = filterProducts(products, {
+    query: "ラーク・セレクト・メンソール・5・100sボックス",
+  }).map((item) => item.jp);
+  assert.ok(lark.includes("ラーク メンソール 5"));
 });
 
 test("Japan ranking sorts descending", () => {
@@ -854,6 +878,23 @@ test("electronic pods with unknown nicotine status do not expose purchase guidan
   assert.equal(result.availability, "restricted");
   assert.equal(result.purchaseAllowed, false);
   assert.match(result.source, /mhlw\.go\.jp/);
+});
+
+test("pod entries expose explicit regulatory metadata and disposable subtype", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const pods = products.filter((item) => item.type === "pod");
+
+  assert.equal(pods.length > 0, true);
+  for (const item of pods) {
+    assert.equal(item.purchaseAllowed, false, item.jp);
+    assert.equal(item.marketStatus, "restricted-regulatory-reference", item.jp);
+    assert.match(item.source, /kennet\.mhlw\.go\.jp/, item.jp);
+    assert.ok(["replacement-pod", "disposable-vape"].includes(item.productSubtype), item.jp);
+  }
+
+  const elfbar = pods.find((item) => item.jp === "ELFBAR 600 ピーチアイス");
+  assert.equal(elfbar.productSubtype, "disposable-vape");
+  assert.equal(elfbar.categoryLabel, "电子烟弹 / 一次性参考");
 });
 
 test("official reference prices always expose an official source", () => {

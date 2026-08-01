@@ -8,14 +8,14 @@ const TYPE_LABELS = {
   cigarette: "传统香烟",
   heated: "加热烟弹",
   device: "加热设备",
-  pod: "电子烟 / 烟弹",
+  pod: "电子烟弹 / 一次性参考",
 };
 
 const TYPE_LABELS_JP = {
   cigarette: "紙巻きたばこ",
   heated: "加熱式たばこ",
   device: "加熱式デバイス",
-  pod: "電子たばこ・ポッド",
+  pod: "電子たばこポッド・使い捨て参考",
 };
 
 const BRAND_PROFILES = [
@@ -378,6 +378,11 @@ function compatibility(item) {
   return "纸卷香烟，无设备兼容要求";
 }
 
+function podSubtype(item) {
+  if (item.type !== "pod") return "";
+  return /ELFBAR|600/i.test(`${item.jp} ${item.cn}`) ? "disposable-vape" : "replacement-pod";
+}
+
 function deviceBrandOrder(item) {
   const text = `${item.deviceBrand ?? ""} ${item.brand ?? ""} ${item.jp} ${item.cn}`;
   if (/IQOS/i.test(text)) return 10;
@@ -530,6 +535,8 @@ export function enrichProduct(item, index = 0) {
     jpImpression: profile.jpImpression,
     cnImpression: profile.cnImpression,
     source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : (item.source ?? profile.source),
+    marketStatus: item.type === "pod" ? "restricted-regulatory-reference" : item.marketStatus,
+    productSubtype: podSubtype(item),
     priceChecked: PRICE_CHECKED,
     originalIndex: index,
   };
@@ -548,6 +555,9 @@ export function filterProducts(products, filters = {}) {
     favorites = [],
   } = filters;
   const normalizedQuery = query.trim().toLocaleLowerCase();
+  const compactQuery = normalizedQuery
+    .normalize("NFKC")
+    .replace(/[^\p{Letter}\p{Number}]+/gu, "");
   const favoriteIds = favorites instanceof Set ? favorites : new Set(favorites);
 
   return products.filter((item) => {
@@ -569,14 +579,23 @@ export function filterProducts(products, filters = {}) {
       item.categoryLabelJp,
       item.description,
       item.compatibility,
+      ...(Array.isArray(item.relatedExactJp) ? item.relatedExactJp : []),
+      item.cartonSearchQuery,
+      item.cartonNote,
+      item.variantNote,
       item.flavor,
       item.strength,
       String(item.jpy),
     ]
       .join(" ")
+      .normalize("NFKC")
       .toLocaleLowerCase();
 
-    return haystack.includes(normalizedQuery);
+    const normalizedHaystack = haystack.normalize("NFKC");
+    const compactHaystack = normalizedHaystack.replace(/[^\p{Letter}\p{Number}]+/gu, "");
+
+    return normalizedHaystack.includes(normalizedQuery.normalize("NFKC")) ||
+      (compactQuery.length >= 2 && compactHaystack.includes(compactQuery));
   });
 }
 

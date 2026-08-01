@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 59);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 59);
+  assert.equal(manifest.items.length, 60);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 60);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -261,6 +261,7 @@ test("generic variant rows expose exact SKU shortcuts instead of pretending veri
         "Ploom X キャメル メンソール フレッシュ",
         "Ploom X キャメル メンソール コールド",
         "Ploom X キャメル メンソール イエロー",
+        "キャメル・メンソール・マスカット・プルーム用",
       ],
     ],
     ["Ploom X キャメル スムース", ["キャメル・スムース・プルーム用"]],
@@ -465,6 +466,19 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.equal(camelYellow.cartonPackCount, 20);
   assert.equal(camelYellow.cartonStickCount, 400);
   assert.match(camelYellow.cartonNote, /MENTHOL YELLOW|20個|20本/);
+
+  const camelMuscat = enrichProduct(
+    rawProducts.find((product) => product.jp === "キャメル・メンソール・マスカット・プルーム用"),
+  );
+  assert.equal(camelMuscat.cartonStatus, "verified");
+  assert.match(
+    camelMuscat.cartonImage,
+    /ploom-camel-menthol-muscat-jcigarette-120pcs-carton\.jpg/,
+  );
+  assert.match(camelMuscat.cartonSource, /j-cigarette\.com\/1carton-ploom-x-ploom-s-camel-menthol-muscat/);
+  assert.equal(camelMuscat.cartonPackCount, 6);
+  assert.equal(camelMuscat.cartonStickCount, 120);
+  assert.match(camelMuscat.cartonNote, /MENTHOL MUSCAT GREEN|1 Carton = 6 pack = 120 pieces|不能回填/);
 
   const cold = enrichProduct(
     rawProducts.find((product) => product.jp === "Ploom X メビウス コールド メンソール"),

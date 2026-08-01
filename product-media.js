@@ -1631,6 +1631,7 @@ const MEDIA_OVERRIDES = new Map([
         "Ploom X キャメル メンソール フレッシュ",
         "Ploom X キャメル メンソール コールド",
         "Ploom X キャメル メンソール イエロー",
+        "キャメル・メンソール・マスカット・プルーム用",
       ],
       cartonImage:
         "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
@@ -1690,6 +1691,35 @@ const MEDIA_OVERRIDES = new Map([
       ],
       cartonNote:
         "Yahoo!オークション主图可见 10 个 CAMEL / ploom X / MENTHOL FRESH 同款盒，视觉满足 10 包门槛；Cigars of Dubai 页面结构化描述补充 exact Camel Menthol Fresh for Ploom X 的 1 carton = 10 packs × 20 sticks = 200 heatsticks。该 verified 只绑定精确 Menthol Fresh 行，不回填泛称 Camel Menthol 行。",
+    },
+  ],
+  [
+    "キャメル・メンソール・マスカット・プルーム用|Ploom 骆驼 Muscat 葡萄薄荷",
+    {
+      image: "./images/cartons/ploom-camel-menthol-muscat-jcigarette-120pcs-carton.jpg",
+      imageStatus: "verified",
+      imageSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-muscat-green-stick-1-carton-120-pcs-muscat-flavor-with-a-refreshing-scent/",
+      imageNote:
+        "j-Cigarette 来源图可读 CAMEL / ploom X / MENTHOL MUSCAT GREEN，图上标注 1 Carton = 120 pcs，用于 Muscat exact 外箱辨认。",
+      packageFormat: "加热式烟弹盒",
+      packageFormatJp: "たばこスティック",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/ploom-camel-menthol-muscat-jcigarette-120pcs-carton.jpg",
+      cartonSource:
+        "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-muscat-green-stick-1-carton-120-pcs-muscat-flavor-with-a-refreshing-scent/",
+      cartonPackCount: 6,
+      cartonStickCount: 120,
+      cartonGallery: [
+        {
+          label: "AMANOYA 单盒 / 10個数量参考",
+          image: "./images/cartons/ploom-camel-menthol-muscat-amanoya-pack.png",
+          source: "https://www.e-amanoya.jp/view/item/000000002978",
+          note: "AMANOYA exact 商品名为キャメル・メンソール・マスカット・プルーム用，可选カートン（10個）；页面图为单盒，不替代主外箱图。",
+        },
+      ],
+      cartonNote:
+        "j-Cigarette exact 页面标题为 [1Carton] Ploom X / Ploom S Camel Menthol Muscat green stick 1 Carton (120 pcs)，正文写 1 Carton = 6 pack = 120 pieces，图面可读 CAMEL / ploom X / MENTHOL MUSCAT GREEN 与 1 Carton = 120 pcs。按来源定义的 exact Muscat 6 包 / 120 支外箱核验；日本零售页另常见 1カートン/10個 数量线索，仅作参考。该证据不能回填 Ploom X キャメル メンソール泛称或 Fresh/Cold/Yellow 变体。",
     },
   ],
   [

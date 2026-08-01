@@ -118,6 +118,7 @@ test("local recommendation promotes verified exact SKUs behind generic aliases",
       strength: "medium",
       searchText: "ploom x camel smooth 骆驼 柔和",
       relatedExactJp: ["キャメル・スムース・プルーム用"],
+      cartonStatus: "contents-reference",
       purchaseAllowed: true,
     },
     {
@@ -134,7 +135,58 @@ test("local recommendation promotes verified exact SKUs behind generic aliases",
   ]);
 
   assert.equal(matches[0].id, "exact");
-  assert.match(matches[0].reason, /更准确的核验 SKU/);
+  assert.match(matches[0].reason, /更准确的已核验 SKU/);
+  assert.match(matches[1].reason, /泛称|准确款/);
+});
+
+test("local recommendation does not return popularity-only matches", () => {
+  const matches = localRecommend("Neutrino Invest", [
+    {
+      id: "popular",
+      jp: "セブンスター",
+      cn: "七星",
+      brand: "Seven Stars",
+      jpScore: 4.9,
+      cnScore: 4.8,
+      searchText: "seven stars classic",
+      purchaseAllowed: true,
+    },
+  ]);
+
+  assert.deepEqual(matches, []);
+});
+
+test("local recommendation ranks verified related exact before weak related exact", () => {
+  const matches = localRecommend("generic alias", [
+    {
+      id: "generic",
+      jp: "Generic",
+      cn: "泛称",
+      searchText: "generic alias",
+      relatedExactJp: ["Exact Weak", "Exact Verified"],
+      cartonStatus: "variant-reference",
+      purchaseAllowed: true,
+    },
+    {
+      id: "weak",
+      jp: "Exact Weak",
+      cn: "未核验准确款",
+      searchText: "exact weak",
+      cartonStatus: "source-only",
+      purchaseAllowed: true,
+    },
+    {
+      id: "verified",
+      jp: "Exact Verified",
+      cn: "已核验准确款",
+      searchText: "exact verified",
+      cartonStatus: "verified",
+      purchaseAllowed: true,
+    },
+  ], 3);
+
+  assert.equal(matches[0].id, "verified");
+  assert.equal(matches[1].id, "weak");
 });
 
 test("unconfigured AI client reports offline without fetching", async () => {

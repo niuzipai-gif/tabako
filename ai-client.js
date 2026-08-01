@@ -133,17 +133,20 @@ export function localRecommend(query, catalog = [], limit = 3) {
         .toLocaleLowerCase();
       const compactHaystack = haystack.replace(/\s+/g, "");
       let score = 0;
+      let hasEvidenceMatch = false;
       const reasons = [];
 
       for (const token of tokens) {
         if (token.length < 2) continue;
         if (haystack.includes(token) || compactHaystack.includes(token.replace(/\s+/g, ""))) {
           score += token.length >= 4 ? 8 : 5;
+          hasEvidenceMatch = true;
         }
       }
 
       if (flavor && item.flavor === flavor) {
         score += 10;
+        hasEvidenceMatch = true;
         reasons.push(
           flavor === "menthol"
             ? "符合薄荷清凉方向"
@@ -154,26 +157,38 @@ export function localRecommend(query, catalog = [], limit = 3) {
       }
       if (strength && item.strength === strength) {
         score += 7;
+        hasEvidenceMatch = true;
         reasons.push(`强度更接近${strength === "light" ? "轻柔" : strength === "strong" ? "偏强" : "适中"}`);
       }
       if (targetPrice && Number.isFinite(Number(item.jpy))) {
         const difference = Math.abs(Number(item.jpy) - targetPrice);
         if (difference <= 30) {
           score += 6;
+          hasEvidenceMatch = true;
           reasons.push("价格接近你的预算");
         } else if (difference <= 80) {
           score += 3;
+          hasEvidenceMatch = true;
         }
       }
       if (tokens.some((token) => token.length >= 2 && haystack.includes(token))) {
         reasons.unshift("名称或包装线索匹配");
       }
       if (relatedExactBoost.has(item.jp)) {
-        score += 24;
-        reasons.unshift("已拆分到更准确的核验 SKU");
+        const exactVerified = item.cartonStatus === "verified";
+        score += exactVerified ? 28 : 18;
+        hasEvidenceMatch = true;
+        reasons.unshift(exactVerified ? "已拆分到更准确的已核验 SKU" : "已拆分到更准确 SKU，但整条仍待核验");
+      }
+      if (Array.isArray(item.relatedExactJp) && item.relatedExactJp.length && item.cartonStatus !== "verified") {
+        score -= 12;
+        reasons.unshift("这是泛称或近似项，优先查看已拆分准确款");
       }
 
-      score += Math.max(0, Number(item.jpScore ?? 0) + Number(item.cnScore ?? 0) - 7);
+      if (!hasEvidenceMatch) score = 0;
+      if (hasEvidenceMatch) {
+        score += Math.max(0, Number(item.jpScore ?? 0) + Number(item.cnScore ?? 0) - 7);
+      }
       return { item, index, score, reasons };
     })
     .filter((entry) => entry.score > 0)

@@ -1096,6 +1096,11 @@ function compactCatalogForAi() {
     availability: item.availability,
     purchaseAllowed: item.purchaseAllowed,
     relatedExactJp: item.relatedExactJp,
+    cartonApplicable: item.cartonApplicable,
+    cartonStatus: item.cartonStatus,
+    cartonSearchQuery: item.cartonSearchQuery,
+    cartonNote: item.cartonNote,
+    variantNote: item.variantNote,
     jpScore: item.jpScore,
     cnScore: item.cnScore,
     searchText: [
@@ -1105,6 +1110,10 @@ function compactCatalogForAi() {
       item.description,
       item.compatibility,
       item.categoryLabel,
+      ...(Array.isArray(item.relatedExactJp) ? item.relatedExactJp : []),
+      item.cartonSearchQuery,
+      item.cartonNote,
+      item.variantNote,
     ].join(" "),
   }));
 }
