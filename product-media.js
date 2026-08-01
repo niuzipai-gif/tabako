@@ -654,14 +654,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001829",
       imageNote:
         "World Tobacco 对应 SKU 页面图；图面为日本警示版 TEREA 单盒，部分页面商品图不在正面印完整口味名，购买时仍按页面标题与实物色系核对。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-regular-iqosheets-carton.webp",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-regular-japan-dubai-uae",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "IQOSHeets UAE 商品页标题为“TEREA Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为蓝色 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和蓝色 Regular 色系共同核对；机场/便利店实时库存仍以门店为准。",
+        "IQOSHeets UAE 商品页标题为“TEREA Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；但公开图像更像单盒商品渲染并叠加 1 Carton contains 10 Packs / 200 Heatsticks 文案，不能证明实拍整条外箱或 10 个同 SKU 包装，因此降为数量来源线索，机场/便利店实时库存仍以门店为准。",
     },
   ],
   [
@@ -695,14 +695,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001830",
       imageNote:
         "World Tobacco 对应 Black Menthol SKU 页面图；图面为深色 TEREA 日本警示版，按来源页标题确认口味。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-black-menthol-iqosheets-carton.webp",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "IQOSHeets UAE 商品页标题为“Terea Black Menthol for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为黑绿 TEREA 日本警示版整条外盒，左侧可读 BLACK MENTHOL，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，只用于核对整条外观与数量，机场/便利店实时库存仍以门店为准。",
+        "IQOSHeets UAE 商品页标题为“Terea Black Menthol for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；但公开图像更像单盒商品渲染并叠加 1 Carton contains 10 Packs / 200 Heatsticks 文案，不能证明实拍整条外箱或 10 个同 SKU 包装，因此降为数量来源线索，机场/便利店实时库存仍以门店为准。",
     },
   ],
   [
@@ -712,14 +712,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001891",
       imageNote:
         "World Tobacco 对应 Smooth Regular SKU 页面图；图面为浅蓝色 TEREA 日本警示版，正面不完整显示口味名时按来源页标题核对。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-smooth-regular-iqosheets-carton.webp",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-smooth-regular-japan-dubai-uae",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "IQOSHeets UAE 商品页标题为“TEREA Smooth Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为银色 TEREA 日本警示版整条外盒，图面警示区可读 SMOOTH，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，只用于核对整条外观与数量，实时库存以门店为准。",
+        "IQOSHeets UAE 商品页标题为“TEREA Smooth Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；但公开图像更像单盒商品渲染并叠加 1 Carton contains 10 Packs / 200 Heatsticks 文案，不能证明实拍整条外箱或 10 个同 SKU 包装，因此降为数量来源线索，实时库存以门店为准。",
     },
   ],
   [
@@ -729,13 +729,13 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001887?category_page_id=ct304",
       imageNote:
         "World Tobacco 对应 Ruby Regular SKU 页面图；图面为蓝红色 TEREA 日本警示版，作为单盒辨认参考，不等同整条外箱核验。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-ruby-regular-iqosheets-carton.webp",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://iqosheets-uae.ae/products/iqos-terea-ruby-regular-japan-dubai-uae",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "IQOSHeets UAE 商品页标题为“TEREA Ruby Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为蓝红渐变 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和 Ruby 色系共同核对；实时库存以门店为准。",
+        "IQOSHeets UAE 商品页标题为“TEREA Ruby Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；但公开图像更像单盒商品渲染并叠加 1 Carton contains 10 Packs / 200 Heatsticks 文案，不能证明实拍整条外箱或 10 个同 SKU 包装，因此降为数量来源线索，实时库存以门店为准。",
     },
   ],
   [
@@ -745,14 +745,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001897",
       imageNote:
         "World Tobacco 对应 Fusion Menthol SKU 页面图；图面为紫粉色 TEREA 日本警示版，但正面不直接写完整 FUSION MENTHOL，因此标为来源页参考。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-fusion-menthol-iqosheets-carton.webp",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "IQOSHeets UAE 商品页标题为“TEREA Fusion Menthol for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为紫粉渐变 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和 Fusion 色系共同核对；实时库存以门店为准。",
+        "IQOSHeets UAE 商品页标题为“TEREA Fusion Menthol for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；但公开图像更像单盒商品渲染并叠加 1 Carton contains 10 Packs / 200 Heatsticks 文案，不能证明实拍整条外箱或 10 个同 SKU 包装，因此降为数量来源线索，实时库存以门店为准。",
     },
   ],
   [
@@ -762,14 +762,14 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://www.world-tobacco.jp/view/item/000000001898?category_page_id=ct304",
       imageNote:
         "World Tobacco 对应 Warm Regular SKU 页面图；图面为暖棕色 TEREA 日本警示版，按来源页标题与实物色系共同核对。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/terea-warm-regular-iqosheets-carton.webp",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
       cartonPackCount: 10,
       cartonStickCount: 200,
       cartonNote:
-        "IQOSHeets UAE 商品页标题为“TEREA Warm Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；主图为暖棕色 TEREA 日本警示版整条外盒，图底写明 1 Carton contains 10 Packs / 200 Heatsticks。该图带海外零售商水印，按来源页标题、文件名和 Warm 色系共同核对；实时库存以门店为准。",
+        "IQOSHeets UAE 商品页标题为“TEREA Warm Regular for ILUMA Japan / 1 Carton”，规格写明 Single Carton / 10 Packs；但公开图像更像单盒商品渲染并叠加 1 Carton contains 10 Packs / 200 Heatsticks 文案，不能证明实拍整条外箱或 10 个同 SKU 包装，因此降为数量来源线索，实时库存以门店为准。",
     },
   ],
   [
@@ -1375,14 +1375,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス リッチ|Ploom X 浓郁经典",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/ploom-mevius-rich-jcigarette-6pack-carton.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "日本版 MEVIUS Rich 整条外箱图：页面与图片均标注 1 Carton = 6 pack = 120 pieces。该 SKU 与“Deep Regular”口味方向接近，但本站按页面实名单独收录，避免混用。",
+        "j-Cigarette 页面标题与正文标注 1 Carton = 6 pack = 120 pieces，可作为 MEVIUS Rich 数量线索；但公开图更像单盒商品渲染并叠加 1 Carton = 120 pcs 文案，不能证明实拍整条外箱或 6 个同 SKU 包装，因此不标为已核验整条。该 SKU 与“Deep Regular”口味方向接近，但本站按页面实名单独收录，避免混用。",
     },
   ],
   [
@@ -1562,14 +1562,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/ploom-mevius-smooth-carton.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
       cartonPackCount: 6,
       cartonStickCount: 120,
       cartonNote:
-        "j-Cigarette 页面标题和 SKU 均指向 [1Carton] Ploom X / Ploom S Mevius Smooth；商品正文写明 1 Carton = 6 pack = 120 pieces。商品图正面可读 MEVIUS / ploom X / SMOOTH，图面上方标注 1 Carton = 120 pcs，且画面展示完整一カートン外装/外箱折线，因此按 exact heated-tobacco 6-pack carton / 120 sticks 核验；该旧短名 Smooth 与后续 Smooth Regular 分开，不回填后继款。",
+        "j-Cigarette 页面标题和 SKU 均指向 [1Carton] Ploom X / Ploom S Mevius Smooth；商品正文写明 1 Carton = 6 pack = 120 pieces。商品图正面可读 MEVIUS / ploom X / SMOOTH，图面上方标注 1 Carton = 120 pcs；但画面更像单盒商品渲染并叠加数量文案，不能证明实拍整条外箱或 6 个同 SKU 包装，因此短名 Smooth 降为数量来源线索，不回填后继 Smooth Regular。",
     },
   ],
   [
@@ -1697,15 +1697,15 @@ const MEDIA_OVERRIDES = new Map([
     "キャメル・メンソール・マスカット・プルーム用|Ploom 骆驼 Muscat 葡萄薄荷",
     {
       image: "./images/cartons/ploom-camel-menthol-muscat-jcigarette-120pcs-carton.jpg",
-      imageStatus: "verified",
+      imageStatus: "reference",
       imageSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-muscat-green-stick-1-carton-120-pcs-muscat-flavor-with-a-refreshing-scent/",
       imageNote:
         "j-Cigarette 来源图可读 CAMEL / ploom X / MENTHOL MUSCAT GREEN，图上标注 1 Carton = 120 pcs，用于 Muscat exact 外箱辨认。",
       packageFormat: "加热式烟弹盒",
       packageFormatJp: "たばこスティック",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/ploom-camel-menthol-muscat-jcigarette-120pcs-carton.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-muscat-green-stick-1-carton-120-pcs-muscat-flavor-with-a-refreshing-scent/",
       cartonPackCount: 6,
@@ -1719,7 +1719,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "j-Cigarette exact 页面标题为 [1Carton] Ploom X / Ploom S Camel Menthol Muscat green stick 1 Carton (120 pcs)，正文写 1 Carton = 6 pack = 120 pieces，图面可读 CAMEL / ploom X / MENTHOL MUSCAT GREEN 与 1 Carton = 120 pcs。按来源定义的 exact Muscat 6 包 / 120 支外箱核验；日本零售页另常见 1カートン/10個 数量线索，仅作参考。该证据不能回填 Ploom X キャメル メンソール泛称或 Fresh/Cold/Yellow 变体。",
+        "j-Cigarette exact 页面标题为 [1Carton] Ploom X / Ploom S Camel Menthol Muscat green stick 1 Carton (120 pcs)，正文写 1 Carton = 6 pack = 120 pieces，图面可读 CAMEL / ploom X / MENTHOL MUSCAT GREEN 与 1 Carton = 120 pcs；但该图更像单盒商品渲染并叠加数量文案，不能证明实拍整条外箱或 6 个同 SKU 包装，因此仅作数量/外观参考。日本零售页另常见 1カートン/10個 数量线索，仅作参考。该证据不能回填 Ploom X キャメル メンソール泛称或 Fresh/Cold/Yellow 变体。",
     },
   ],
   [
@@ -2164,8 +2164,8 @@ const MEDIA_OVERRIDES = new Map([
       imageSource: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
       imageNote:
         "Hand Rolling Tobacco UK / HRT 商品页 Pack of 20 变体图，图面可读 SENTIA、for IQOS ILUMA，用于核对黄色 Balanced Yellow 单包包装。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/sentia-balanced-yellow-hrt-box200.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
       cartonPackCount: 10,
       cartonStickCount: 200,
@@ -2184,7 +2184,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Hand Rolling Tobacco UK / HRT 页面为 SENTIA Balanced Yellow 提供 Pack of 20 与 Box of 200 两个变体；Box of 200 变体图展示黄色横向外盒，图面可读 SENTIA 与 for IQOS ILUMA，页面说明 1 carton contains 10 packs of 20 tobacco sticks / Total 200 tobacco sticks。AMANOYA、Placer 另确认日本渠道按 1カートン10個 / 5,700円级别销售。",
+        "Hand Rolling Tobacco UK / HRT 页面为 SENTIA Balanced Yellow 提供 Pack of 20 与 Box of 200 两个变体，页面说明 1 carton contains 10 packs of 20 tobacco sticks / Total 200 tobacco sticks；但 Box of 200 变体图仍更像单盒商品图，不能证明实拍整条外箱或 10 个同 SKU 包装，因此仅作数量来源线索。AMANOYA、Placer 另确认日本渠道按 1カートン10個 / 5,700円级别销售。",
     },
   ],
   [

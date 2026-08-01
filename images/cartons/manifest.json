@@ -147,15 +147,6 @@
       "sha256": "25d5da7ef9995a4822a7c0470139d154c3f96955c93d1f74a56765f60ab44760"
     },
     {
-      "productId": "p-fb4c1e4f",
-      "jp": "Ploom X メビウス リッチ",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-mevius-rich-jcigarette-6pack-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-rich-1-carton-120pcs-deep-rich-taste/",
-      "sha256": "0384dbd7b47109d76aca3eeeb1e1070cff9639e74abae06da0ab38e98913db07"
-    },
-    {
       "productId": "p-267dfca2",
       "jp": "Ploom X メビウス メンソール フレッシュ",
       "status": "verified",
@@ -271,60 +262,6 @@
       "localPath": "images/cartons/american-spirit-turquoise-ana-carton-side.jpg",
       "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100073",
       "sha256": "f398f767aa70eb803dbbdea05fc33b4abcdc288012d45cd8c667441f0f242ae6"
-    },
-    {
-      "productId": "p-8e0ca7db",
-      "jp": "IQOS テリア ブラックメンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/terea-black-menthol-iqosheets-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-black-menthol-japan-dubai-uae",
-      "sha256": "ea279a8523bac8e4227781e0cdf9dc0b18756ec8c0f94fd25ca30abb752e4650"
-    },
-    {
-      "productId": "p-5814d907",
-      "jp": "IQOS テリア レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/terea-regular-iqosheets-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-regular-japan-dubai-uae",
-      "sha256": "9c03f979970958197d902e943d6e1cf2ae59e125c2589c635318bdd30cf46c63"
-    },
-    {
-      "productId": "p-1b6407ab",
-      "jp": "IQOS テリア スムース レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/terea-smooth-regular-iqosheets-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-smooth-regular-japan-dubai-uae",
-      "sha256": "3e5548e605d0f88d862bc844e90c01371ff52e823c13c59792b4e25448b9f28f"
-    },
-    {
-      "productId": "p-ae6a1a1c",
-      "jp": "IQOS テリア フュージョン メンソール",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/terea-fusion-menthol-iqosheets-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-fusion-menthol-japan-dubai-uae",
-      "sha256": "c6fdb4c37ce5148a2adf6af9ebf63ad10c9959a1715bd17b18db51a9bba76d5b"
-    },
-    {
-      "productId": "p-496b84df",
-      "jp": "IQOS テリア ルビー レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/terea-ruby-regular-iqosheets-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-ruby-regular-japan-dubai-uae",
-      "sha256": "d439f25749e6af78fd0a40e6c6b01e8bb00dea604b68c6af8ae7a932d281c133"
-    },
-    {
-      "productId": "p-5d9f5770",
-      "jp": "IQOS テリア ウォーム レギュラー",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 heatsticks",
-      "localPath": "images/cartons/terea-warm-regular-iqosheets-carton.webp",
-      "sourcePage": "https://iqosheets-uae.ae/products/iqos-terea-warm-regular-japan-dubai-uae",
-      "sha256": "2e9936356cd6ea364d0e4a4e8f9ef70126caedcea8659a5b663a50be8e91828c"
     },
     {
       "productId": "p-67412a06",
@@ -453,15 +390,6 @@
       "sha256": "a7a7479d1cade06bf07bc3e948b0cb4517cda37d3eabdf31cbe21df1c8ab5663"
     },
     {
-      "productId": "p-25406e8f",
-      "jp": "キャメル・メンソール・マスカット・プルーム用",
-      "status": "verified",
-      "quantity": "1 carton / 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-camel-menthol-muscat-jcigarette-120pcs-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-menthol-muscat-green-stick-1-carton-120-pcs-muscat-flavor-with-a-refreshing-scent/",
-      "sha256": "c3a5b15611b40da48616e2a7cb706ae3bcf55ad281aefd7d819ef1416736bbcb"
-    },
-    {
       "productId": "p-a1c7765a",
       "jp": "Ploom X キャメル メンソール イエロー",
       "status": "verified",
@@ -505,15 +433,6 @@
       "localPath": "images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
       "sourcePage": "https://monolog.r-n-i.jp/item/4902210153810",
       "sha256": "09c157e4a7739a7a79ae8032fc3e98d53ac04a4f8abfa803d705c7df1e010069"
-    },
-    {
-      "productId": "p-dde44cf6",
-      "jp": "Ploom X メビウス スムース",
-      "status": "verified",
-      "quantity": "1 carton / heated-tobacco 6 packs / 120 sticks",
-      "localPath": "images/cartons/ploom-mevius-smooth-carton.jpg",
-      "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
-      "sha256": "a1b3c0212951bf0dbc63ae68459ff9b0ef489a10ef1a3548da7b0aab787bd987"
     },
     {
       "productId": "p-5da7f3bb",
