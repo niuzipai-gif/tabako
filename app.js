@@ -46,6 +46,7 @@ const elements = {
   aiPrompt: document.querySelector("#aiPrompt"),
   aiRecommendSubmit: document.querySelector("#aiRecommendSubmit"),
   aiResultBadge: document.querySelector("#aiResultBadge"),
+  aiResultActions: document.querySelector("#aiResultActions"),
   aiResultSection: document.querySelector("#aiResultSection"),
   aiServiceNote: document.querySelector("#aiServiceNote"),
   aiServiceStatus: document.querySelector("#aiServiceStatus"),
@@ -303,6 +304,40 @@ function marketStatusMeta(item) {
     copy: "设备状态仍需按官方来源核对。",
     tone: "overseas",
   };
+}
+
+function imageAuditStatus(status) {
+  if (status === "verified") return { label: "已核验", tone: "verified" };
+  if (status === "archive-reference") return { label: "旧版实拍", tone: "reference" };
+  return { label: "待核对", tone: "review" };
+}
+
+function cartonAuditStatus(item) {
+  if (item.cartonStatus === "verified" || item.cartonStatus === "archive-reference") {
+    return { label: "已核验", tone: "verified" };
+  }
+  if (!item.cartonApplicable || item.cartonStatus === "not-applicable") {
+    return { label: "不适用", tone: "reference" };
+  }
+  return { label: "未作为准确整条", tone: "review" };
+}
+
+function mediaStatusStrip(item) {
+  const pack = imageAuditStatus(item.imageStatus);
+  const carton = cartonAuditStatus(item);
+  return `
+    <a class="detail-media-status-strip" href="#packageIdentity" aria-label="查看一包图和一条图核验说明">
+      <span data-status="${escapeHtml(pack.tone)}">
+        <small>一包图</small>
+        <strong>${escapeHtml(pack.label)}</strong>
+      </span>
+      <span data-status="${escapeHtml(carton.tone)}">
+        <small>一条图</small>
+        <strong>${escapeHtml(carton.label)}</strong>
+      </span>
+      <i data-lucide="chevron-down" aria-hidden="true"></i>
+    </a>
+  `;
 }
 
 function filtersActive() {
@@ -777,11 +812,12 @@ function renderProductDetail(item) {
           ${officialLabel} · ${item.priceChecked}
         </span>
         ${detailMarketStatus}
+        ${mediaStatusStrip(item)}
         ${variantNote}
       </div>
     </section>
 
-    <section class="detail-block package-identity">
+    <section class="detail-block package-identity" id="packageIdentity">
       <div class="detail-block-heading">
         <div>
           <p class="section-kicker">${identityKicker}</p>
@@ -1100,6 +1136,8 @@ function renderAiResult(payload, badge = "本地目录") {
   elements.aiResultBadge.textContent = badge;
   elements.aiMatchList.replaceChildren();
   elements.aiSourceList.replaceChildren();
+  elements.aiResultActions.replaceChildren();
+  elements.aiResultActions.hidden = true;
 
   for (const match of payload.matches ?? []) {
     const card = createAiMatchCard(match);
@@ -1122,6 +1160,8 @@ function renderAiResult(payload, badge = "本地目录") {
     elements.aiSourceList.appendChild(link);
   }
 
+  renderAiRecoveryActions(payload);
+
   elements.aiResultSection.hidden = false;
   hydrateIcons(elements.aiResultSection);
   if (elements.aiProgress.hidden) {
@@ -1140,6 +1180,32 @@ function setButtonBusy(button, busy, busyText) {
     button.innerHTML = button.dataset.idleHtml;
     hydrateIcons(button);
   }
+}
+
+function renderAiRecoveryActions(payload) {
+  if (!payload.recovery) return;
+
+  const links = buildExternalSearchLinks(currentSearchPhrase());
+  const localButton = document.createElement("button");
+  localButton.type = "button";
+  localButton.className = "secondary-button";
+  localButton.textContent = "只看本地匹配";
+  localButton.disabled = elements.aiMatchList.children.length === 0;
+  localButton.addEventListener("click", () => {
+    const target = elements.aiMatchList.firstElementChild ?? elements.aiAnswer;
+    target.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if ("focus" in target) target.focus({ preventScroll: true });
+  });
+
+  const webLink = document.createElement("a");
+  webLink.className = "secondary-button";
+  webLink.href = links.web;
+  webLink.target = "_blank";
+  webLink.rel = "noopener noreferrer";
+  webLink.textContent = "打开联网搜索关键词";
+
+  elements.aiResultActions.append(localButton, webLink);
+  elements.aiResultActions.hidden = false;
 }
 
 function resetAiProgress() {
@@ -1338,6 +1404,7 @@ async function runAiRecommendation() {
       {
         ...(localResult ?? { matches: [], sources: [] }),
         answer: `${localResult?.answer || "本地匹配已保留。"} ${feedback.detail}`,
+        recovery: true,
       },
       `本地匹配 · ${feedback.title}`,
     );
@@ -1478,7 +1545,12 @@ async function runAiVision() {
       percentLabel: "失败",
     });
     renderAiResult(
-      { answer: feedback.detail || "图片识别暂不可用，请稍后重试。", matches: [], sources: [] },
+      {
+        answer: feedback.detail || "图片识别暂不可用，请稍后重试。",
+        matches: [],
+        sources: [],
+        recovery: true,
+      },
       `识别未完成 · ${feedback.title}`,
     );
   } finally {

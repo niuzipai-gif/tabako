@@ -501,6 +501,22 @@ test("detail renderer labels non-verified reference images as not exact cartons"
   assert.match(styles, /\.carton-reference-gallery em\s*\{/);
 });
 
+test("detail hero exposes a compact pack and carton status strip", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(source, /function mediaStatusStrip/);
+  assert.match(source, /detail-media-status-strip/);
+  assert.match(source, /href="#packageIdentity"/);
+  assert.match(source, /一包图/);
+  assert.match(source, /一条图/);
+  assert.match(source, /已核验/);
+  assert.match(source, /未作为准确整条/);
+  assert.match(source, /id="packageIdentity"/);
+  assert.match(styles, /\.detail-media-status-strip\s*\{/);
+  assert.match(styles, /backdrop-filter:\s*blur/);
+});
+
 test("Mevius reference price is corrected to 580 yen", () => {
   const result = enrichProduct({
     type: "cigarette",

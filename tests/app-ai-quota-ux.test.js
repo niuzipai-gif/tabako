@@ -28,3 +28,16 @@ test("AI service status is updated after upstream quota, auth, or availability f
   assert.match(appSource, /代理已接通；MiniMax 上游额度不足或请求过于频繁/);
   assert.match(appSource, /showAiServiceFailure\(feedback\)/);
 });
+
+test("AI failure result cards expose local-only and web-search recovery actions", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+
+  assert.match(html, /id="aiResultActions"/);
+  assert.match(appSource, /function renderAiRecoveryActions/);
+  assert.match(appSource, /只看本地匹配/);
+  assert.match(appSource, /打开联网搜索关键词/);
+  assert.match(appSource, /buildExternalSearchLinks\(currentSearchPhrase\(\)\)/);
+  assert.match(styles, /\.ai-result-actions\s*\{/);
+  assert.doesNotMatch(styles, /ai-result-actions[\s\S]{0,240}var\(--red\)/);
+});
