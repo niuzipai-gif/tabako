@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 35);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 35);
+  assert.equal(manifest.items.length, 37);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 37);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -218,6 +218,45 @@ test("Marlboro Double Burst and Camel Craft 6 do not publish weak carton images 
   assert.equal(camel.cartonStatus, "contents-reference");
   assert.equal(camel.cartonImage, "");
   assert.match(camel.cartonNote, /主来源已无法稳定访问|降级为数量\/参考线索/);
+});
+
+test("split Marlboro Purple 5 and Ploom Camel Menthol Fresh rows publish only exact verified cartons", () => {
+  const genericDoubleBurst = enrichProduct(
+    rawProducts.find((product) => product.jp === "マールボロ ダブルバースト"),
+  );
+  assert.equal(genericDoubleBurst.cartonStatus, "variant-reference");
+  assert.equal(genericDoubleBurst.cartonImage, "");
+
+  const purple5 = enrichProduct(
+    rawProducts.find(
+      (product) => product.jp === "マールボロ・ダブルバースト・パープル・5・ボックス",
+    ),
+  );
+  assert.equal(purple5.cartonStatus, "verified");
+  assert.match(purple5.cartonImage, /marlboro-wburst-purple-5-ameblo-10packs\.png/);
+  assert.equal(purple5.cartonPackCount, 10);
+  assert.equal(purple5.cartonStickCount, 200);
+  assert.match(purple5.cartonSource, /ameblo\.jp\/tobacco-kodama\/entry-12864805962/);
+  assert.match(purple5.cartonNote, /パープル・5・ボックス|カートンの画像|10 包/);
+
+  const genericCamelMenthol = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール"),
+  );
+  assert.equal(genericCamelMenthol.cartonStatus, "variant-reference");
+  assert.equal(genericCamelMenthol.cartonImage, "");
+
+  const camelFresh = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X キャメル メンソール フレッシュ"),
+  );
+  assert.equal(camelFresh.cartonStatus, "verified");
+  assert.match(
+    camelFresh.cartonImage,
+    /ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes\.jpg/,
+  );
+  assert.equal(camelFresh.cartonPackCount, 10);
+  assert.equal(camelFresh.cartonStickCount, 200);
+  assert.match(camelFresh.cartonSource, /auctions\.yahoo\.co\.jp\/jp\/auction\/n1206003967/);
+  assert.match(camelFresh.cartonNote, /CAMEL MENTHOL FRESH|10 包|200/);
 });
 
 test("Virginia S Rose Menthol and Wakaba do not publish weak carton references as verified", () => {

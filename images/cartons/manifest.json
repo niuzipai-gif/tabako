@@ -316,6 +316,24 @@
       "localPath": "images/cartons/hope-original-ana-carton-side.jpg",
       "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051019",
       "sha256": "0f9e4642f09b436cb69d1c7900591dd920c52d5c8de1e0e9876a2dd30e2fe43c"
+    },
+    {
+      "productId": "p-f5d04592",
+      "jp": "マールボロ・ダブルバースト・パープル・5・ボックス",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png",
+      "sourcePage": "https://ameblo.jp/tobacco-kodama/entry-12864805962.html",
+      "sha256": "42b6430c2d14e0616718d6aab2e4f6dbe9f172c053921db40145a708a9a6ba33"
+    },
+    {
+      "productId": "p-7925e187",
+      "jp": "Ploom X キャメル メンソール フレッシュ",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 heatsticks",
+      "localPath": "images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
+      "sourcePage": "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
+      "sha256": "5e3666b0c9942c537eacec61448500621f77da5f8adced89763a03b7a73d0c97"
     }
   ]
 }

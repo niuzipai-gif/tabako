@@ -173,6 +173,39 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "マールボロ・ダブルバースト・パープル・5・ボックス|万宝路 双爆珠 紫 5mg 盒装",
+    {
+      image: "./images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png",
+      imageStatus: "verified",
+      imageSource: "https://ameblo.jp/tobacco-kodama/entry-12864805962.html",
+      imageNote:
+        "大阪京橋たばこセンターこだま掲載图，图中文字与页面标题均指向 マールボロ・ダブルバースト・パープル・5・ボックス。",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png",
+      cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12864805962.html",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "KIX 官方 Purple 5 单包参考",
+          image: "./images/cartons/marlboro-wburst-purple-5-kix-official-pack.jpg",
+          source:
+            "https://www.kixdutyfree.jp/en/marlboro-w-burst-purple-5-box-2405300106.html",
+          note: "KIX 官方页用于辅助确认 W-Burst Purple 5 当前单包视觉；主整条图仍使用 Ameblo 10 包实拍。",
+        },
+        {
+          label: "ANA 官方 1カートン规格 / 单包图",
+          image: "./images/cartons/marlboro-double-burst-5-pack-content.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098247",
+          note: "ANA 免税店规格源确认 20本×10箱 / 1カートン；主图为单包，不替代 Ameblo 10 包实拍。",
+        },
+      ],
+      cartonNote:
+        "页面标题和正文精确写明“マールボロ・ダブル・バースト・パープル・5・ボックス”，规格为 20本，且正文说明“今回はカートンの画像を掲載”。主图可见 10 包同 SKU Purple 5 日本警示版排列，按 10 包 / 200 支核验；该 verified 只绑定精确 Purple 5 行，不回填泛称 DoubleBurst 行。",
+    },
+  ],
+  [
     "ラーク クラシック|乐富门 经典",
     {
       cartonStatus: "verified",
@@ -1283,6 +1316,41 @@ const MEDIA_OVERRIDES = new Map([
       ],
       cartonNote:
         "Yahoo!オークション标题和图片均为 CAMEL MENTHOL FRESH 10 個，但目录项是“Ploom X キャメル メンソール”。Fresh 不能直接替代非 Fresh/泛称 Menthol，因此降级为变体参考；若后续把目录明确改为 Menthol Fresh，需要重新配套核验。",
+    },
+  ],
+  [
+    "Ploom X キャメル メンソール フレッシュ|Ploom X 骆驼清新薄荷",
+    {
+      image:
+        "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
+      imageNote:
+        "Yahoo!オークション画像可见 10 个 CAMEL / ploom X / MENTHOL FRESH 同款盒；用作精确 Menthol Fresh 多盒视觉参考。",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
+      cartonSource: "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "Cigars of Dubai Box of 200 数量参考",
+          image: "./images/cartons/ploom-camel-menthol-fresh-cod-pack.jpg",
+          source:
+            "https://cigarsofdubai.com/product/camel-menthol-fresh-ploom-x-jp/",
+          note: "页面结构化描述写明 Camel Menthol Fresh for Ploom X，1 pack contains 20 tobacco sticks，1 carton contains 10 packs / Total 200 tobacco sticks；图片仅作单盒参考。",
+        },
+        {
+          label: "7盒旧实拍参考",
+          image:
+            "./images/cartons/ploom-camel-menthol-fresh-paypay-7-empty-boxes.jpg",
+          source: "https://paypayfleamarket.yahoo.co.jp/item/z545895006",
+          note: "旧 PayPay フリマ来源为 7 个 CAMEL ploom X MENTHOL FRESH 空盒，只保留为多盒外观参考，不作为主一条图。",
+        },
+      ],
+      cartonNote:
+        "Yahoo!オークション主图可见 10 个 CAMEL / ploom X / MENTHOL FRESH 同款盒，视觉满足 10 包门槛；Cigars of Dubai 页面结构化描述补充 exact Camel Menthol Fresh for Ploom X 的 1 carton = 10 packs × 20 sticks = 200 heatsticks。该 verified 只绑定精确 Menthol Fresh 行，不回填泛称 Camel Menthol 行。",
     },
   ],
   [
