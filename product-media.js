@@ -277,7 +277,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャメル クラフト 6|骆驼 Craft 6",
     {
-      cartonStatus: "contents-reference",
+      cartonStatus: "verified",
       cartonImage: "./images/cartons/camel-craft6-paypay-84-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z441431200",
       cartonPackCount: 10,
@@ -297,7 +297,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "原 Yahoo!フリマ 主来源已无法稳定访问；替代来源只能提供规格、单包图或空盒参考，未找到可访问且满足 sealed carton/10 同 SKU 视觉门槛的证据。ANA 官方页可补充 20本×10箱 / 1カートン规格，但主图仍是单包，因此降级为数量/参考线索。",
+        "Yahoo!フリマ主来源图可见 84 个 CAMEL 1913 CRAFT 6 同款空盒，图面可读 CAMEL 6/Craft，远超 10 包视觉门槛；同一搜索回读也出现“キャメル クラフト 6 空箱 89個セット”。ANA 官方页可补充该 SKU 通常按 20本×10箱 / 1カートン销售。该来源为空盒/收藏图，不代表当前库存；按 10 包 / 200 支核验。",
     },
   ],
   [
@@ -447,6 +447,31 @@ const MEDIA_OVERRIDES = new Map([
       ],
       cartonNote:
         "Mercari 标题为“煙草空箱 LARK SELECT 1 ★72箱”，图片可见大量 LARK SELECT 1 空盒；但目录名为泛称“ラーク 1”，图库数量来源又指向“ラーク ウルトラ 1mg 100 ボックス”单包。Select 1 / Ultra 1 不能混用为同一已核验整条，因此降级为变体参考，购买时必须核对具体 1mg SKU。",
+    },
+  ],
+  [
+    "ラーク・セレクト・1・100sボックス|乐富门 Select 1 100s 盒装",
+    {
+      image: "./images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://jp.mercari.com/item/m67407962256",
+      imageNote:
+        "Mercari 图可见大量 LARK SELECT 1 空盒，图面可读 SELECT 1；用于精确 Select 1 多盒视觉核验。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m67407962256",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "Ultra 1 数量/近似参考",
+          image: "./images/cartons/lark-ultra-1-placer-carton-reference.jpg",
+          source: "https://www.placer-tabaco.com/product/1022",
+          note: "プラセール页面标题确认“ラーク ウルトラ 1mg 100 ボックス”按カートン（10個）单位销售；这是同 1mg 系列数量参考，不替代 Select 1 主核验图。",
+        },
+      ],
+      cartonNote:
+        "Mercari 标题为“煙草空箱 LARK SELECT 1 ★72箱”，图片可见大量 LARK SELECT 1 空盒，远超 10 包视觉门槛；主图和标题均指向 exact Select 1。按常规 1カートン 10 包 / 200 支核验；该 verified 只绑定精确 Select 1 行，不回填泛称 Lark 1 行。",
     },
   ],
   [
@@ -1640,6 +1665,31 @@ const MEDIA_OVERRIDES = new Map([
       ],
       cartonNote:
         "ものログ商品名和可见图均指向“JT エコー・シガー 10P”，不是旧紙巻き/泛称“エコー”。在目录未拆分或改名为“エコー・シガー”前，不能作为泛称 Echo 的已核验整条图，降级为变体参考。",
+    },
+  ],
+  [
+    "エコー・シガー 10P|Echo Cigar 10P",
+    {
+      image: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
+      imageStatus: "verified",
+      imageSource: "https://monolog.r-n-i.jp/item/4902210153919",
+      imageNote:
+        "ものログ图可见 echo CIGARS 横向外箱侧面；商品名为 JT エコー・シガー 10P。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
+      cartonSource: "https://monolog.r-n-i.jp/item/4902210153919",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "旧 Echo 单包辨认图",
+          image: "./images/cartons/echo-kikuya-content.gif",
+          source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+          note: "きくや页面列出旧 Echo，并说明该店按カートン（ケース）单位销售，1カートン为 10 箱；用于区分旧紙巻き泛称 Echo。",
+        },
+      ],
+      cartonNote:
+        "ものログ商品名为“JT エコー・シガー 10P”，主图可见 echo CIGARS 横向外箱侧面；10P 指向 10 包/一条规格，按 10 包 / 200 支核验。该 verified 只绑定精确 エコー・シガー 10P 行，不回填旧紙巻き/泛称 Echo 行。",
     },
   ],
   [

@@ -352,6 +352,33 @@
       "localPath": "images/cartons/glo-lucky-strike-dark-menthol-paypay-52-empty-boxes.jpg",
       "sourcePage": "https://paypayfleamarket.yahoo.co.jp/item/z562041458",
       "sha256": "1afdde2f88ac7e65b36eb7079685cfe87a76949bf9bef358664da9f68c4e67a5"
+    },
+    {
+      "productId": "p-248e5846",
+      "jp": "キャメル クラフト 6",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/camel-craft6-paypay-84-empty-boxes.jpg",
+      "sourcePage": "https://paypayfleamarket.yahoo.co.jp/item/z441431200",
+      "sha256": "5442957a78e143803221a23fca984fb339952d7eda5e467986d395a92653c3c4"
+    },
+    {
+      "productId": "p-a1a6ecb0",
+      "jp": "ラーク・セレクト・1・100sボックス",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
+      "sourcePage": "https://jp.mercari.com/item/m67407962256",
+      "sha256": "3aeacb876493b1f7a58f038a33020338672bae9e4ddb5d868847e1f5bcd6492f"
+    },
+    {
+      "productId": "p-887ffafb",
+      "jp": "エコー・シガー 10P",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
+      "sourcePage": "https://monolog.r-n-i.jp/item/4902210153919",
+      "sha256": "94f06c0884896e645f8c661331f4fa5ffd100c34835637608a1319db58840987"
     }
   ]
 }

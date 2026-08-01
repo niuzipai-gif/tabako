@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 39);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 39);
+  assert.equal(manifest.items.length, 42);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 42);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -204,20 +204,13 @@ test("Marlboro Menthol stays below verified until exact Menthol 8 evidence is sp
   );
 });
 
-test("Marlboro Double Burst and Camel Craft 6 do not publish weak carton images as verified", () => {
+test("Marlboro Double Burst does not publish a variant carton image as verified", () => {
   const doubleBurst = enrichProduct(
     rawProducts.find((product) => product.jp === "マールボロ ダブルバースト"),
   );
   assert.equal(doubleBurst.cartonStatus, "variant-reference");
   assert.equal(doubleBurst.cartonImage, "");
   assert.match(doubleBurst.cartonNote, /Purple 5 .*不能混用|降级为变体参考/);
-
-  const camel = enrichProduct(
-    rawProducts.find((product) => product.jp === "キャメル クラフト 6"),
-  );
-  assert.equal(camel.cartonStatus, "contents-reference");
-  assert.equal(camel.cartonImage, "");
-  assert.match(camel.cartonNote, /主来源已无法稳定访问|降级为数量\/参考线索/);
 });
 
 test("split Marlboro Purple 5 and Ploom Camel Menthol Fresh rows publish only exact verified cartons", () => {
@@ -301,6 +294,43 @@ test("Lark 1 keeps Select 1 and Ultra 1 evidence below verified until SKU is spl
     item.cartonGallery.some((entry) => /1カートン\/10個/.test(entry.note)),
     "Placer 1-carton quantity reference should remain as gallery context",
   );
+});
+
+test("Camel Craft 6, Lark Select 1, and Echo Cigar publish only exact verified cartons", () => {
+  const camel6 = enrichProduct(
+    rawProducts.find((product) => product.jp === "キャメル クラフト 6"),
+  );
+  assert.equal(camel6.cartonStatus, "verified");
+  assert.match(camel6.cartonImage, /camel-craft6-paypay-84-empty-boxes\.jpg/);
+  assert.equal(camel6.cartonPackCount, 10);
+  assert.equal(camel6.cartonStickCount, 200);
+  assert.match(camel6.cartonNote, /CAMEL 6|84個|10 包/);
+
+  const genericLark1 = enrichProduct(rawProducts.find((product) => product.jp === "ラーク 1"));
+  assert.equal(genericLark1.cartonStatus, "variant-reference");
+  assert.equal(genericLark1.cartonImage, "");
+
+  const select1 = enrichProduct(
+    rawProducts.find((product) => product.jp === "ラーク・セレクト・1・100sボックス"),
+  );
+  assert.equal(select1.cartonStatus, "verified");
+  assert.match(select1.cartonImage, /lark-select1-mercari-72-empty-boxes\.jpg/);
+  assert.equal(select1.cartonPackCount, 10);
+  assert.equal(select1.cartonStickCount, 200);
+  assert.match(select1.cartonNote, /LARK SELECT 1|72箱|10 包/);
+
+  const genericEcho = enrichProduct(rawProducts.find((product) => product.jp === "エコー"));
+  assert.equal(genericEcho.cartonStatus, "variant-reference");
+  assert.equal(genericEcho.cartonImage, "");
+
+  const echoCigar = enrichProduct(
+    rawProducts.find((product) => product.jp === "エコー・シガー 10P"),
+  );
+  assert.equal(echoCigar.cartonStatus, "verified");
+  assert.match(echoCigar.cartonImage, /echo-cigar-10p-monolog-carton-side\.jpg/);
+  assert.equal(echoCigar.cartonPackCount, 10);
+  assert.equal(echoCigar.cartonStickCount, 200);
+  assert.match(echoCigar.cartonNote, /エコー・シガー 10P|10P|外箱/);
 });
 
 test("Mevius Original uses exact 20x10 carton artwork instead of the JDF 2-carton image", () => {
