@@ -174,24 +174,6 @@
       "sha256": "dd535bb9b66ba244bb661aee1a33ef8d805ac4639d83c68a38d79a79fed1ce01"
     },
     {
-      "productId": "p-664334db",
-      "jp": "セブンスター",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/sevenstars-soft-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=3211051013",
-      "sha256": "fe906d691db86ca5240919547e82983eb411fd0e9d634c95ccdf6e9d9fd49e41"
-    },
-    {
-      "productId": "p-6f2e33ac",
-      "jp": "キャスター 3",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/winston-caster-white3-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100027",
-      "sha256": "b874f4ca051ea355e01e123f0bebc8b9dab9348a94f8a31d2d2b4b8ea610e74c"
-    },
-    {
       "productId": "p-4c84898a",
       "jp": "ピース ライト",
       "status": "verified",
@@ -210,15 +192,6 @@
       "sha256": "96cdbdb222c46bf6271ba59a0be35f3062dc7aebad5f31696641a65b055578a3"
     },
     {
-      "productId": "p-91298bb7",
-      "jp": "メビウス ゴールド オリジナル",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/mevius-gold-original-ana-carton-side.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
-      "sha256": "84f393a304bcca0b6b67f1fab4cf5464b289e1d36c09e74585399aa9320ec308"
-    },
-    {
       "productId": "p-da62e662",
       "jp": "クール ブースト フレッシュ 8",
       "status": "verified",
@@ -226,15 +199,6 @@
       "localPath": "images/cartons/kool-boost-fresh-8-ana-carton.jpg",
       "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
       "sha256": "93f4b304777d754b795d562742d198ea63f907e70c7067899af95e99a8b4bf71"
-    },
-    {
-      "productId": "p-2c66f9db",
-      "jp": "クール ブースト 5 ボックス",
-      "status": "verified",
-      "quantity": "1 carton / 10 packs / 200 sticks",
-      "localPath": "images/cartons/kool-boost-5-ana-carton.jpg",
-      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
-      "sha256": "0b097aacdca3fb7434fc16e0d246b0f3821f87ba9c3a350863d801fa12141089"
     },
     {
       "productId": "p-84898a7d",

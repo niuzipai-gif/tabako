@@ -523,6 +523,50 @@ function brandSeriesOrder(item) {
   return item.type === "device" || item.type === "pod" ? deviceModelOrder(item) : 500;
 }
 
+const SEARCH_ALIAS_REPLACEMENTS = [
+  [/エボ/gi, "EVO"],
+  [/プルーム/gi, "Ploom"],
+  [/ディープ/gi, "Deep"],
+  [/レギュラー/gi, "Regular"],
+  [/サクラ/gi, "Sakura"],
+  [/コールド/gi, "Cold"],
+  [/メンソール/gi, "Menthol"],
+  [/フレッシュ/gi, "Fresh"],
+  [/ミント/gi, "Mint"],
+  [/ブラック/gi, "Black"],
+  [/グリーン/gi, "Green"],
+  [/ベリー/gi, "Berry"],
+  [/クリスタル/gi, "Crystal"],
+  [/トロピカル/gi, "Tropical"],
+  [/バナナ/gi, "Banana"],
+  [/ハチミツ/gi, "Honey"],
+  [/レモン/gi, "Lemon"],
+  [/カカオ/gi, "Cacao"],
+  [/ライム/gi, "Lime"],
+];
+
+function searchAliases(item) {
+  let romanized = item.jp;
+  for (const [pattern, replacement] of SEARCH_ALIAS_REPLACEMENTS) {
+    romanized = romanized.replace(pattern, replacement);
+  }
+  romanized = romanized.replace(/[・ー]/g, " ").replace(/\s+/g, " ").trim();
+  const ploomEvoAlias = /エボ|EVO/i.test(item.jp)
+    ? romanized
+        .replace(/\bPloom\b/gi, "")
+        .replace(/\b用\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim()
+    : "";
+  return [
+    `${item.jp} ${item.cn}`,
+    romanized,
+    romanized.replace(/\s+/g, ""),
+    ploomEvoAlias ? `Ploom ${ploomEvoAlias}` : "",
+    ploomEvoAlias ? `Ploom${ploomEvoAlias.replace(/\s+/g, "")}` : "",
+  ].join(" ");
+}
+
 export function enrichProduct(item, index = 0) {
   const key = `${item.jp}|${item.cn}`;
   const hash = fnv1a(key);
@@ -557,6 +601,7 @@ export function enrichProduct(item, index = 0) {
     jpImpression: profile.jpImpression,
     cnImpression: profile.cnImpression,
     source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : (item.source ?? profile.source),
+    searchText: searchAliases(item),
     marketStatus: item.type === "pod" ? "restricted-regulatory-reference" : item.marketStatus,
     productSubtype: podSubtype(item),
     priceChecked: PRICE_CHECKED,
@@ -599,6 +644,7 @@ export function filterProducts(products, filters = {}) {
       item.brand,
       item.categoryLabel,
       item.categoryLabelJp,
+      item.searchText,
       item.description,
       item.compatibility,
       ...(Array.isArray(item.relatedExactJp) ? item.relatedExactJp : []),

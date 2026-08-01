@@ -125,6 +125,13 @@ const TOBACCO_SOURCE_DOMAINS = Object.freeze([
   "paypayfleamarket.yahoo.co.jp",
   "monolog.r-n-i.jp",
 ]);
+const BLOCKED_SEARCH_SOURCE_DOMAINS = Object.freeze([
+  "youdao.com",
+  "dict.youdao.com",
+  "dictionary.cambridge.org",
+  "collinsdictionary.com",
+  "wiktionary.org",
+]);
 const TOBACCO_RELEVANCE_TERMS = Object.freeze([
   "たばこ",
   "タバコ",
@@ -190,6 +197,9 @@ function getHostname(url) {
 function isRelevantSearchSource(source, query) {
   const url = String(source?.url ?? "");
   const hostname = getHostname(url);
+  if (BLOCKED_SEARCH_SOURCE_DOMAINS.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) {
+    return false;
+  }
   const haystack = [source?.title, source?.content, source?.snippet, url]
     .map((value) => cleanText(value, 1200).toLocaleLowerCase())
     .join(" ");

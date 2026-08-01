@@ -412,6 +412,12 @@ test("online search drops unrelated web results instead of showing noisy fallbac
                   url: "https://example.org/report",
                   content: "Generic market research with no product evidence.",
                 },
+                {
+                  type: "web_search_result",
+                  title: "Japan Tobacco - Youdao dictionary",
+                  url: "https://dict.youdao.com/result?word=Japan%20Tobacco&lang=en",
+                  content: "Dictionary translation for Japan Tobacco.",
+                },
               ],
             },
           ],

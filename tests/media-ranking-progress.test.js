@@ -50,6 +50,8 @@ test("Seven Stars soft pack and box are distinct, explained variants", () => {
   assert.notEqual(soft.image, box.image);
   assert.match(soft.variantNote, /软包/);
   assert.match(box.variantNote, /硬盒/);
+  assert.equal(soft.cartonStatus, "source-only");
+  assert.equal(soft.cartonImage, "");
   assert.match(soft.cartonSearchQuery, /10包/);
   assert.doesNotMatch(soft.cartonSearchQuery, /10箱/);
 });
@@ -72,8 +74,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 51);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 51);
+  assert.equal(manifest.items.length, 47);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 47);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -359,9 +361,7 @@ test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton refere
 test("verified alias rows disclose the exact printed SKU behind the carton image", () => {
   const expectations = [
     ["ラーク クラシック", /CLASSIC MILDS|クラシック マイルド/],
-    ["メビウス ゴールド オリジナル", /Gold 6|6mg/],
     ["ウィンストン キャスター ホワイト", /ホワイト・5|5mg/],
-    ["キャスター 3", /ホワイト・3|Caster White 3/],
     ["キャスター 5", /ホワイト・5|Caster White 5/],
   ];
 
@@ -369,6 +369,22 @@ test("verified alias rows disclose the exact printed SKU behind the carton image
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.cartonStatus, "verified", jp);
     assert.match(item.variantNote, pattern, jp);
+  }
+});
+
+test("single-pack or ambiguous carton sources stay below verified after pixel audit", () => {
+  const expectations = [
+    ["メビウス ゴールド オリジナル", /Gold 6|单包|verified 门槛/],
+    ["キャスター 3", /ホワイト・3|单包|verified 门槛/],
+    ["クール ブースト 5 ボックス", /KOOL BOOST 5 BOX|单包|verified 门槛/],
+    ["セブンスター", /软包|单包|verified 门槛/],
+  ];
+
+  for (const [jp, pattern] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(`${item.variantNote} ${item.cartonNote}`, pattern, jp);
   }
 });
 
@@ -1472,17 +1488,17 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
 });
 
-test("KOOL Boost 5 BOX publishes the exact ANA 10-box carton outer image", () => {
+test("KOOL Boost 5 BOX keeps the ANA source below verified after image review", () => {
   const raw = rawProducts.find((product) => product.jp === "クール ブースト 5 ボックス");
   assert.ok(raw);
   const boost5 = enrichProduct(raw);
 
-  assert.equal(boost5.cartonStatus, "verified");
-  assert.match(boost5.cartonImage, /kool-boost-5-ana-carton\.jpg/);
+  assert.equal(boost5.cartonStatus, "source-only");
+  assert.equal(boost5.cartonImage, "");
   assert.match(boost5.cartonSource, /anadf\.com\/itemdetail\.aspx\?s_cd=7000050840/);
   assert.equal(boost5.cartonPackCount, 10);
   assert.equal(boost5.cartonStickCount, 200);
-  assert.match(boost5.cartonNote, /KOOL BOOST 5 BOX.*20本×10箱/s);
+  assert.match(boost5.cartonNote, /KOOL BOOST 5 BOX.*20本×10箱.*单包/s);
 });
 
 test("glo Lucky Strike Dark publishes exact Dark Tobacco multi-box evidence", () => {

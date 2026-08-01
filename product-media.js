@@ -11,12 +11,12 @@ const MEDIA_OVERRIDES = new Map([
       packageFormat: "软包",
       packageFormatJp: "ソフトパック",
       variantNote: "这是软包版；与“セブンスター ボックス”烟支配方接近，但外壳结构不同，购买时请直接说“ソフト”。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/sevenstars-soft-ana-carton-side.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource:
         "https://www.anadf.com/itemdetail.aspx?s_cd=3211051013",
       cartonNote:
-        "ANA 免税店页面确认软包 Seven Stars 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向外箱侧面（SevenStars Charcoal Filter + 警示文字）。本站另保留历史软包照片用于辨认软包结构；当前价格和库存以 ANA 页面为准。",
+        "ANA 免税店页面确认软包 Seven Stars 销售规格为 20本×10箱 / 1カートン；但本轮像素复核发现现有图片只足以作为单包/包装结构参考，未达到“可见完整 10 包或封闭一条外箱”的 verified 门槛。本站另保留历史软包照片用于辨认软包结构；整条图仍待重新核验。",
     },
   ],
   [
@@ -276,13 +276,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "キャスター 3|卡斯特 3mg",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/winston-caster-white3-ana-carton-side.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100027",
       variantNote:
         "图片印刷 SKU 是 ウィンストン・キャスター・ホワイト・3・ボックス；“Caster 3”是中文/口语搜索别名，购买时请说完整现行日文名。",
       cartonNote:
-        "ANA 免税店页面确认现行名“ウィンストン・キャスター・ホワイト・3・ボックス”销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录沿用中国游客常说的 Caster 3，购买时请同时核对 Winston Caster White 3。",
+        "ANA 免税店页面确认现行名“ウィンストン・キャスター・ホワイト・3・ボックス”销售规格为 20本×10箱 / 1カートン；但本轮像素复核发现现有图仅能确认单包/盒装正面，未达到完整一条外箱 verified 门槛。目录沿用中国游客常说的 Caster 3，购买时请同时核对 Winston Caster White 3。",
     },
   ],
   [
@@ -433,9 +433,9 @@ const MEDIA_OVERRIDES = new Map([
       imageStatus: "verified",
       imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
       imageNote:
-        "ANA 免税店 exact SKU 页面为 KOOL BOOST 5 BOX，Size 为 20本×10箱；第二张官方图展示 KOOL BOOST FRESH 5 的整条外盒视角。",
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/kool-boost-5-ana-carton.jpg",
+        "ANA 免税店 exact SKU 页面为 KOOL BOOST 5 BOX；本地复核后此图仅作为单包/包装参考，不再当作整条外箱。",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
       cartonPackCount: 10,
       cartonStickCount: 200,
@@ -444,11 +444,11 @@ const MEDIA_OVERRIDES = new Map([
           label: "ANA 单包正面参考",
           image: "./images/cartons/kool-boost-5-ana-pack.jpg",
           source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
-          note: "同一 ANA exact SKU 页面第一张图为单包正面，仅作包装参考；verified 主图使用第二张整条外盒图。",
+          note: "同一 ANA exact SKU 页面第一张图为单包正面，仅作包装参考；本轮复核后不发布主整条图。",
         },
       ],
       cartonNote:
-        "ANA 免税店页面商品名为 KOOL BOOST 5 BOX，商品编号 7000050840，Size 明确为 20本×10箱；第二张官方图展示 KOOL BOOST FRESH 5 的长条外盒/整条包装视角，按 10 包 / 200 支核验。该 exact 5mg 行为新增 SKU，不回填泛称“クール ブースト”。",
+        "ANA 免税店页面商品名为 KOOL BOOST 5 BOX，商品编号 7000050840，Size 明确为 20本×10箱；但本轮像素复核发现现有图仅能作为单包/包装参考，未达到完整一条外箱 verified 门槛。该 exact 5mg 行为独立 SKU，不回填泛称“クール ブースト”。",
     },
   ],
   [
@@ -475,13 +475,13 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス ゴールド オリジナル|梅比乌斯 金装原味",
     {
-      cartonStatus: "verified",
-      cartonImage: "./images/cartons/mevius-gold-original-ana-carton-side.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
       variantNote:
         "图片印刷 SKU 是 MEVIUS Gold 6；目录的 Gold Original 是中国游客常用泛称，购买时请核对 6mg/Box 与 Gold 字样。",
       cartonNote:
-        "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン，第二张官方图展示横向 BOX 外箱侧面。目录项为“Gold Original”泛称，此图按 6mg Gold 主流款作整条外观参考。",
+        "ANA 免税店页面确认 MEVIUS Gold 6 销售规格为 20本×10箱 / 1カートン；但本轮像素复核发现现有图仅能确认 Gold 6 单包，不满足完整一条外箱 verified 门槛。目录项为“Gold Original”泛称，购买时请核对 6mg/Box 与 Gold 字样，整条图仍待重新核验。",
     },
   ],
   [

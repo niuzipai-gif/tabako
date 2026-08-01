@@ -379,10 +379,22 @@ test("Ploom EVO current full lineup follows the 2026 JT price notice", () => {
     assert.equal(item.jpy, 580, item.jp);
     assert.equal(item.priceStatus, "official", item.jp);
     assert.match(item.source, /jti\.co\.jp\/investors\/library\/press_releases\/20260310_J01/, item.jp);
+    assert.match(item.image, /images\/evo-/i, item.jp);
+    assert.match(item.imageStatus, /reference/, item.jp);
+    assert.match(item.imageNote, /单包|不是一カートン/, item.jp);
     assert.match(item.compatibility, /Ploom AURA \/ Ploom CUBE \/ Ploom X/, item.jp);
     assert.equal(item.cartonStatus === "verified", false, item.jp);
     assert.equal(item.cartonImage, "", item.jp);
   }
+});
+
+test("English Ploom EVO flavor aliases search exact Japanese rows", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const greenMint = filterProducts(products, { query: "Ploom EVO Green Mint" });
+  const cacao = filterProducts(products, { query: "EVO Cacao Mint Crystal" });
+
+  assert.ok(greenMint.some((item) => item.jp === "エボ・グリーン・ミント・プルーム用"));
+  assert.ok(cacao.some((item) => item.jp === "エボ・カカオ・ミント・クリスタル・プルーム用"));
 });
 
 test("current official TEREA and SENTIA lineups are represented without carton claims", () => {
