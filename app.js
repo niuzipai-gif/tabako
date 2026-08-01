@@ -1095,6 +1095,7 @@ function compactCatalogForAi() {
     jpy: item.jpy,
     availability: item.availability,
     purchaseAllowed: item.purchaseAllowed,
+    relatedExactJp: item.relatedExactJp,
     jpScore: item.jpScore,
     cnScore: item.cnScore,
     searchText: [

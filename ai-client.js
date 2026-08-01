@@ -99,6 +99,23 @@ export function localRecommend(query, catalog = [], limit = 3) {
     ? "light"
     : inferHint(value, STRENGTH_HINTS);
   const targetPrice = priceTarget(value);
+  const relatedExactBoost = new Set();
+
+  for (const item of catalog) {
+    if (!Array.isArray(item?.relatedExactJp) || item.purchaseAllowed === false) continue;
+    const haystack = [item.searchText, item.jp, item.cn, item.brand]
+      .join(" ")
+      .normalize("NFKC")
+      .toLocaleLowerCase();
+    const compactHaystack = haystack.replace(/\s+/g, "");
+    const matchedTokenCount = tokens.filter((token) => {
+      if (token.length < 2) return false;
+      return haystack.includes(token) || compactHaystack.includes(token.replace(/\s+/g, ""));
+    }).length;
+    if (matchedTokenCount >= Math.min(2, tokens.length)) {
+      item.relatedExactJp.forEach((jp) => relatedExactBoost.add(jp));
+    }
+  }
 
   return catalog
     .filter((item) => item?.id && item.purchaseAllowed !== false)
@@ -150,6 +167,10 @@ export function localRecommend(query, catalog = [], limit = 3) {
       }
       if (tokens.some((token) => token.length >= 2 && haystack.includes(token))) {
         reasons.unshift("名称或包装线索匹配");
+      }
+      if (relatedExactBoost.has(item.jp)) {
+        score += 24;
+        reasons.unshift("已拆分到更准确的核验 SKU");
       }
 
       score += Math.max(0, Number(item.jpScore ?? 0) + Number(item.cnScore ?? 0) - 7);

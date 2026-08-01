@@ -229,6 +229,46 @@ test("recommendations use MiniMax-M3 chat completions and normalize JSON", async
   assert.equal(JSON.stringify(payload).includes("test-secret"), false);
 });
 
+test("recommendations promote exact verified SKUs when MiniMax returns a generic alias", async () => {
+  const generic = canonicalCatalog.find((item) => item.jp === "Ploom X キャメル スムース");
+  const exact = canonicalCatalog.find((item) => item.jp === "キャメル・スムース・プルーム用");
+  assert.ok(generic);
+  assert.ok(exact);
+
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          choices: [
+            {
+              message: {
+                content: JSON.stringify({
+                  answer: "柔和口味候选。",
+                  matches: [{ id: generic.id, reason: "名称匹配 Ploom X Camel Smooth" }],
+                  sources: [],
+                }),
+              },
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "recommend", query: "Ploom X キャメル スムース" }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(
+    payload.matches.map((match) => match.id).slice(0, 2),
+    [exact.id, generic.id],
+  );
+  assert.match(payload.matches[0].reason, /更准确的核验 SKU/);
+});
+
 test("vision mode sends only supported image data to chat completions", async () => {
   let body;
   const worker = createWorker({

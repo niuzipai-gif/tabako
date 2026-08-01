@@ -30,6 +30,9 @@ const CANONICAL_CATALOG = Object.freeze(
         jpy: Number.isFinite(Number(item.jpy)) ? Number(item.jpy) : null,
         availability: cleanText(item.availability, 40),
         purchaseAllowed: true,
+        relatedExactJp: Array.isArray(item.relatedExactJp)
+          ? item.relatedExactJp.map((jp) => cleanText(jp, 160)).filter(Boolean).slice(0, 8)
+          : [],
       }),
     ),
 );
@@ -205,6 +208,39 @@ function extractJsonObject(value) {
   return JSON.parse(text.slice(start, end + 1));
 }
 
+function boostRelatedExactMatches(matches, catalog) {
+  const byId = new Map(catalog.map((item) => [item.id, item]));
+  const byJp = new Map(catalog.map((item) => [item.jp, item]));
+  const originalById = new Map(matches.map((match) => [match.id, match]));
+  const boosted = [];
+  const seen = new Set();
+
+  const push = (match) => {
+    if (!match?.id || seen.has(match.id) || !ALLOWED_PRODUCT_IDS.has(match.id)) return;
+    seen.add(match.id);
+    boosted.push(match);
+  };
+
+  for (const match of matches) {
+    const item = byId.get(match.id);
+    if (Array.isArray(item?.relatedExactJp) && item.relatedExactJp.length) {
+      for (const jp of item.relatedExactJp) {
+        const exact = byJp.get(jp);
+        if (!exact) continue;
+        push(
+          originalById.get(exact.id) ?? {
+            id: exact.id,
+            reason: "已拆分到更准确的核验 SKU",
+          },
+        );
+      }
+    }
+    push(match);
+  }
+
+  return boosted.slice(0, 6);
+}
+
 function buildChatRequest({ mode, query, catalog, image }) {
   const catalogJson = JSON.stringify(catalog);
   const instructions = BASE_SYSTEM_PROMPT;
@@ -252,7 +288,10 @@ async function callChat(fetchImpl, key, input) {
   const result = normalizeAiPayload(extractJsonObject(content));
   return {
     ...result,
-    matches: result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id)),
+    matches: boostRelatedExactMatches(
+      result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id)),
+      input.catalog,
+    ),
   };
 }
 

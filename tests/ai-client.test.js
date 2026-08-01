@@ -107,6 +107,36 @@ test("local recommendation understands that '不要太浓' means a lighter profi
   assert.match(matches[0].reason, /轻柔/);
 });
 
+test("local recommendation promotes verified exact SKUs behind generic aliases", () => {
+  const matches = localRecommend("Ploom X キャメル スムース", [
+    {
+      id: "generic",
+      jp: "Ploom X キャメル スムース",
+      cn: "Ploom X 骆驼柔和",
+      brand: "Ploom",
+      flavor: "tobacco",
+      strength: "medium",
+      searchText: "ploom x camel smooth 骆驼 柔和",
+      relatedExactJp: ["キャメル・スムース・プルーム用"],
+      purchaseAllowed: true,
+    },
+    {
+      id: "exact",
+      jp: "キャメル・スムース・プルーム用",
+      cn: "Ploom 骆驼 Smooth 柔和",
+      brand: "Ploom",
+      flavor: "tobacco",
+      strength: "medium",
+      searchText: "camel smooth ploom 骆驼 柔和 已核验",
+      cartonStatus: "verified",
+      purchaseAllowed: true,
+    },
+  ]);
+
+  assert.equal(matches[0].id, "exact");
+  assert.match(matches[0].reason, /更准确的核验 SKU/);
+});
+
 test("unconfigured AI client reports offline without fetching", async () => {
   let called = false;
   const client = createAiClient({
