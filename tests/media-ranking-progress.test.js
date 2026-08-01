@@ -980,7 +980,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .map((product) => enrichProduct(product))
     .filter((product) => product.brand === "Cigaronne");
 
-  assert.equal(items.length, 22);
+  assert.equal(items.length, 23);
   assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 8);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
@@ -1007,6 +1007,11 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, item.jp);
       assert.match(item.cartonNote, /Royal Slims XL Filter|10 пачек|200 сигарет/, item.jp);
+    } else if (item.jp === "シガローネ・ロイヤルスリム・ホワイト") {
+      assert.equal(item.cartonStatus, "source-only", item.jp);
+      assert.equal(item.cartonImage, "", item.jp);
+      assert.match(item.image, /cigaronne-royal-slims-white-dougenzaka-pack\.jpg/, item.jp);
+      assert.match(item.cartonNote, /Royal Slims.*三选项|1 Carton = 10 packs = 200 cigarettes|source-only/, item.jp);
     } else if (item.jp === "シガローネ・スーパースリム・ブラック") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/, item.jp);
@@ -1332,6 +1337,7 @@ test("lil HYBRID MIIX lineup includes Mix and Ice Plus with exact pack media but
 test("Cigaronne pack media uses exact local images while American Spirit separates generic and Light media", () => {
   const cigaronne = [
     ["シガローネ・ロイヤルスリム・メンソール", /cigaronne-royal-menthol-worldtobacco-pack\.jpg/],
+    ["シガローネ・ロイヤルスリム・ホワイト", /cigaronne-royal-slims-white-dougenzaka-pack\.jpg/],
     ["シガローネ・スーパースリム・メンソール", /cigaronne-super-menthol-worldtobacco-pack\.jpg/],
     ["シガローネ・タトゥー・チェリー", /cigaronne-tattoo-cherry-worldtobacco-pack\.jpg/],
     ["シガローネ・タトゥー・チョコレート", /cigaronne-tattoo-chocolate-worldtobacco-pack\.jpg/],

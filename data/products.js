@@ -43,6 +43,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "エコー", cn: "Echo", jpy: 450, img: "https://picsum.photos/seed/echo/640/420" },
   { type: "cigarette", jp: "エコー・シガー 10P", cn: "Echo Cigar 10P", jpy: 500, img: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg" },
   { type: "cigarette", jp: "シガローネ・ロイヤルスリム・メンソール", cn: "卡比龙 Royal Slims Menthol", jpy: 1200, img: "https://picsum.photos/seed/cigaronne-royal-slims-menthol/640/420" },
+  { type: "cigarette", jp: "シガローネ・ロイヤルスリム・ホワイト", cn: "卡比龙 Royal Slims White", jpy: 900, img: "./images/verified/cigaronne-royal-slims-white-dougenzaka-pack.jpg" },
   { type: "cigarette", jp: "シガローネ・スーパースリム・メンソール", cn: "卡比龙 Super Slims Menthol", jpy: 780, img: "https://picsum.photos/seed/cigaronne-super-slims-menthol/640/420" },
   { type: "cigarette", jp: "シガローネ・スーパースリム・ホワイト", cn: "卡比龙 Super Slims White", jpy: 780, img: "./images/cartons/cigaronne-super-slims-white-rozetka-open-carton.jpg" },
   { type: "cigarette", jp: "シガローネ・タトゥー・チェリー", cn: "卡比龙 Tattoo Cherry", jpy: 800, img: "https://picsum.photos/seed/cigaronne-tattoo-cherry/640/420" },

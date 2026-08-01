@@ -472,6 +472,7 @@ function brandSeriesOrder(item) {
     if (/レジェンド|Legend/i.test(text)) return 10;
     if (/ビッグボス|Big Boss/i.test(text)) return 20;
     if (/ロイヤルスリム.*ブラック|Royal Slims Black/i.test(text)) return 30;
+    if (/ロイヤルスリム.*ホワイト|Royal Slims White/i.test(text)) return 35;
     if (/ロイヤルスリム.*メンソール|Royal Slims Menthol/i.test(text)) return 40;
     if (/ファントム|Phantom/i.test(text)) return 50;
     if (/エクスクルーシブ|Exclusive/i.test(text)) return 60;

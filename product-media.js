@@ -826,6 +826,34 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "シガローネ・ロイヤルスリム・ホワイト|卡比龙 Royal Slims White",
+    {
+      image: "./images/verified/cigaronne-royal-slims-white-dougenzaka-pack.jpg",
+      imageStatus: "verified",
+      imageSource:
+        "https://ameblo.jp/dougenzaka-tabaco-shop/entry-12281071982.html",
+      imageNote:
+        "道玄坂のたばこ屋发布的日本店铺实拍/告知图，图面可见 Cigaronne Royal slims XL FILTER White 与 3mg/900円/20cigarettes；用于补齐 Royal Slims 白款辨认，不替代整条外箱。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource:
+        "https://cigarsofdubai.com/product/cigaronne-royal-slims-white-idf/",
+      cartonGallery: [
+        {
+          title: "日本店铺白款实拍 / 20 本信息",
+          image: "./images/verified/cigaronne-royal-slims-white-dougenzaka-pack.jpg",
+          source:
+            "https://ameblo.jp/dougenzaka-tabaco-shop/entry-12281071982.html",
+          note: "日本店铺页面文字写 シガローネ・ロイヤル・スリム・ホワイト / Cigaronne ROYAL SLIM WHITE、900円/一箱、ロングサイズ(20本入)、3mg/0.3mg；图片同时展示 Black/White，但可读白款 Royal slims XL FILTER。不是 10 包整条图。",
+        },
+      ],
+      cartonNote:
+        "Cigaronne 官方 Collection 说明 Royal Slims 是 Imperial Collection 的三选项之一；道玄坂のたばこ屋页面确认日本流通名为 シガローネ・ロイヤル・スリム・ホワイト、900円/一箱、20本入、3mg/0.3mg。Cigars of Dubai 页面补充 Royal Slims White 的 1 Carton = 10 packs = 200 cigarettes total，但目前未找到可见密封一条外箱或 10+ 同款白盒实拍，所以保持 source-only，不标 verified。",
+    },
+  ],
+  [
     "シガローネ・スーパースリム・メンソール|卡比龙 Super Slims Menthol",
     {
       image: "./images/verified/cigaronne-super-menthol-worldtobacco-pack.jpg",
