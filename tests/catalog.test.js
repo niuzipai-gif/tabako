@@ -161,7 +161,7 @@ test("Cigaronne has a dedicated brand category with the full official series", (
 
   assert.match(html, /data-category="brand:cigaronne"/);
   assert.match(html, />卡比龙全系列</);
-  assert.equal(cigaronne.length, 23);
+  assert.equal(cigaronne.length, 24);
   assert.deepEqual(
     cigaronne.map((item) => item.jp).sort((a, b) => a.localeCompare(b, "ja")),
     [
@@ -181,6 +181,7 @@ test("Cigaronne has a dedicated brand category with the full official series", (
       "シガローネ・タトゥー・チョコレート",
       "シガローネ・タトゥー・バニラ",
       "シガローネ・ビッグボス",
+      "シガローネ・ファントム",
       "シガローネ・ファントム・シルバー",
       "シガローネ・マグネット",
       "シガローネ・レジェンド",
@@ -211,6 +212,7 @@ test("Cigaronne brand page follows a stable series order", () => {
       "シガローネ・ロイヤルスリム・ブラック",
       "シガローネ・ロイヤルスリム・ホワイト",
       "シガローネ・ロイヤルスリム・メンソール",
+      "シガローネ・ファントム",
       "シガローネ・ファントム・シルバー",
       "シガローネ・エクスクルーシブ・ブラウン",
       "シガローネ・クラシック・キングサイズ",

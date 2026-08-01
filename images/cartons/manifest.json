@@ -496,6 +496,33 @@
       "localPath": "images/cartons/ploom-mevius-smooth-carton.jpg",
       "sourcePage": "https://j-cigarette.com/1carton-ploom-x-ploom-s-mevius-smooth-1-carton-120pcs-harmonious-and-smooth-taste/",
       "sha256": "a1b3c0212951bf0dbc63ae68459ff9b0ef489a10ef1a3548da7b0aab787bd987"
+    },
+    {
+      "productId": "p-5da7f3bb",
+      "jp": "シガローネ・ロイヤルスリム・ホワイト",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-royal-slims-white-rozetka-carton.jpg",
+      "sourcePage": "https://rozetka.com.ua/ua/cigaronne-4850008001785/p430594658/",
+      "sha256": "101d8a3314fcaab9ef896c176b738b43559dbceab778621df86f950312060d2d"
+    },
+    {
+      "productId": "p-7257af17",
+      "jp": "シガローネ・ファントム",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-phantom-rozetka-carton.jpg",
+      "sourcePage": "https://rozetka.com.ua/ua/cigaronne-4850008002232/p452660369/",
+      "sha256": "abc4b3885ce83c637d55702472538bb66b2eeaa83b982f77807d4eca0fc35493"
+    },
+    {
+      "productId": "p-f56a7e8b",
+      "jp": "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 cigarettes",
+      "localPath": "images/cartons/winston-caster-white-one-100s-ana-carton-side.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
+      "sha256": "26d1410565efa54094d7ad5557f180c4853e225d48d53d4e59a3f92c9a564aab"
     }
   ]
 }

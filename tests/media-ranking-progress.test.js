@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 55);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 55);
+  assert.equal(manifest.items.length, 58);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 58);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -1007,8 +1007,8 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .map((product) => enrichProduct(product))
     .filter((product) => product.brand === "Cigaronne");
 
-  assert.equal(items.length, 23);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 8);
+  assert.equal(items.length, 24);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 10);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -1022,6 +1022,10 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-phantom-silver-mercari-shops-carton-set\.jpg/, item.jp);
       assert.match(item.cartonNote, /PHANTOM SILVER|カートン空箱|1カートン10箱/, item.jp);
+    } else if (item.jp === "シガローネ・ファントム") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-phantom-rozetka-carton\.jpg/, item.jp);
+      assert.match(item.cartonNote, /Cigaronne Phantom x 10|EAN 4850008002232|Phantom Silver/, item.jp);
     } else if (item.jp === "シガローネ・エクスクルーシブ・ブラウン") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-exclusive-brown-mercari-carton-box\.jpg/, item.jp);
@@ -1035,10 +1039,10 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, item.jp);
       assert.match(item.cartonNote, /Royal Slims XL Filter|10 пачек|200 сигарет/, item.jp);
     } else if (item.jp === "シガローネ・ロイヤルスリム・ホワイト") {
-      assert.equal(item.cartonStatus, "source-only", item.jp);
-      assert.equal(item.cartonImage, "", item.jp);
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-royal-slims-white-rozetka-carton\.jpg/, item.jp);
       assert.match(item.image, /cigaronne-royal-slims-white-dougenzaka-pack\.jpg/, item.jp);
-      assert.match(item.cartonNote, /Royal Slims.*三选项|Пачок в блоці 10|EAN 4850008001785|source-only/, item.jp);
+      assert.match(item.cartonNote, /Royal Slims White х 10|EAN 4850008001785|10 包 \/ 200 支/, item.jp);
     } else if (item.jp === "シガローネ・スーパースリム・ブラック") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-super-slims-black-rozetka-carton\.jpg/, item.jp);
@@ -1300,6 +1304,25 @@ test("remaining non-Cigaronne carton gaps document checked quantity sources with
   }
 });
 
+test("Winston Caster White One 100s is split from legacy XS and verified exactly", () => {
+  const xs = enrichProduct(rawProducts.find((product) => product.jp === "ウィンストン XS"));
+  assert.equal(xs.cartonStatus, "contents-reference");
+  assert.equal(xs.cartonImage, "");
+  assert.match(xs.cartonNote, /旧款\/历史名|近似包装参考/);
+
+  const one100s = enrichProduct(
+    rawProducts.find(
+      (product) => product.jp === "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス",
+    ),
+  );
+  assert.equal(one100s.cartonStatus, "verified");
+  assert.match(one100s.cartonImage, /winston-caster-white-one-100s-ana-carton-side\.jpg/);
+  assert.match(one100s.cartonSource, /anadf\.com\/itemdetail\.aspx\?s_cd=2010100028/);
+  assert.equal(one100s.cartonPackCount, 10);
+  assert.equal(one100s.cartonStickCount, 200);
+  assert.match(one100s.cartonNote, /20本×10箱|BOX 100's|旧“ウィンストン XS”仍保持近似参考/);
+});
+
 test("lil HYBRID source-only carton references use exact AMANOYA ten-unit pages where available", () => {
   const expectations = new Map([
     [
@@ -1379,6 +1402,9 @@ test("Cigaronne pack media uses exact local images while American Spirit separat
     if (jp === "シガローネ・ロイヤルスリム・メンソール") {
       assert.equal(item.cartonStatus, "verified", jp);
       assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, jp);
+    } else if (jp === "シガローネ・ロイヤルスリム・ホワイト") {
+      assert.equal(item.cartonStatus, "verified", jp);
+      assert.match(item.cartonImage, /cigaronne-royal-slims-white-rozetka-carton\.jpg/, jp);
     } else if (jp === "シガローネ・マグネット") {
       assert.equal(item.cartonStatus, "verified", jp);
       assert.match(item.cartonImage, /cigaronne-magnet-kix-carton\.jpg/, jp);

@@ -301,6 +301,25 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "ウィンストン・キャスター・ホワイト・ワン・100s・ボックス|Winston Caster White One 100s 盒装",
+    {
+      image: "./images/cartons/winston-caster-white-one-100s-ana-carton-side.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
+      imageNote:
+        "ANA DUTY FREE exact 页面第二张图，图面可读 BOX 100's / Winston / CASTER / 1，用于现行 1mg Caster White One 100s 盒装一条辨认。",
+      packageFormat: "100s 盒装",
+      packageFormatJp: "100's ボックス",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/winston-caster-white-one-100s-ana-carton-side.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100028",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonNote:
+        "ANA DUTY FREE 页面商品名为“ウィンストン・キャスター・ホワイト・ワン・100’s・ボックス”，规格写明 20本×10箱；第二张官方图展示横向外箱侧面，可读 BOX 100's / Winston / CASTER / 1。按 exact 现行 1mg Caster White One 100s 一条 / 10 包 / 200 支核验；旧“ウィンストン XS”仍保持近似参考，不覆盖。",
+    },
+  ],
+  [
     "ウィンストン キャスター ホワイト|温斯顿 白",
     {
       cartonStatus: "verified",
@@ -847,11 +866,18 @@ const MEDIA_OVERRIDES = new Map([
         "道玄坂のたばこ屋发布的日本店铺实拍/告知图，图面可见 Cigaronne Royal slims XL FILTER White 与 3mg/900円/20cigarettes；用于补齐 Royal Slims 白款辨认，不替代整条外箱。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-royal-slims-white-rozetka-carton.jpg",
       cartonSource:
         "https://rozetka.com.ua/ua/cigaronne-4850008001785/p430594658/",
       cartonGallery: [
+        {
+          title: "Rozetka 开盒 10 包图",
+          image: "./images/cartons/cigaronne-royal-slims-white-rozetka-open-carton.jpg",
+          source:
+            "https://rozetka.com.ua/ua/cigaronne-4850008001785/p430594658/",
+          note: "同一 Rozetka exact 页面图组，开盒图可见多包同款白色 Royal slims XL FILTER，商品标题和规格闭合到 10 包 / 20 支 / EAN 4850008001785。",
+        },
         {
           title: "日本店铺白款实拍 / 20 本信息",
           image: "./images/verified/cigaronne-royal-slims-white-dougenzaka-pack.jpg",
@@ -861,7 +887,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "Cigaronne 官方 Collection 说明 Royal Slims 是 Imperial Collection 的三选项之一；道玄坂のたばこ屋页面确认日本流通名为 シガローネ・ロイヤル・スリム・ホワイト、900円/一箱、20本入、3mg/0.3mg。Rozetka exact 页面标题为 Cigaronne Royal Slims White х 10 пачок，规格写 Пачок в блоці 10、Цигарок в пачці 20、EAN 4850008001785；但当前未取得可本地复核的密封一条外箱或 10+ 同款白盒实拍，所以保持 source-only，不标 verified。",
+        "Rozetka exact 页面标题为“Cigaronne Royal Slims White х 10 пачок”，规格写 Пачок в блоці 10、Цигарок в пачці 20、Упаковка Блок、Комплектація 10 пачок у блоці、EAN 4850008001785；图组可见白色 Royal slims XL FILTER 外盒和开盒多包同款内容物。道玄坂のたばこ屋页面另确认日本流通名为 シガローネ・ロイヤル・スリム・ホワイト、900円/一箱、20本入、3mg/0.3mg。按 exact Royal Slims White 一条 / 10 包 / 200 支核验。",
     },
   ],
   [
@@ -1097,6 +1123,33 @@ const MEDIA_OVERRIDES = new Map([
       cartonSource: "https://www.kixdutyfree.jp/en/cigaronne-magnet-2407000017.html",
       cartonNote:
         "KIX DUTY FREE 官方页标题为“CIGARONNE MAGNET”，规格写明 1 carton contains 10 packs、1 pack contains 20 sticks；主图为日文警示版蓝色横向整条外盒，图面可读 Cigaronne MAGNET。DAIYOSTORE 与 Rakuten/堀商事另确认日本渠道按 1カートン(10箱) / 10packs 销售。",
+    },
+  ],
+  [
+    "シガローネ・ファントム|卡比龙 Phantom",
+    {
+      image: "./images/cartons/cigaronne-phantom-rozetka-carton.jpg",
+      imageStatus: "verified",
+      imageSource: "https://rozetka.com.ua/ua/cigaronne-4850008002232/p452660369/",
+      imageNote:
+        "Rozetka exact Phantom 页面图，图面可读 Cigaronne PHANTOM / The slimmest XL FILTER；这是灰色 Phantom，不等同现有 Phantom Silver。",
+      packageFormat: "横向硬盒",
+      packageFormatJp: "ボックス",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-phantom-rozetka-carton.jpg",
+      cartonSource: "https://rozetka.com.ua/ua/cigaronne-4850008002232/p452660369/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          title: "Rozetka 侧角度外盒图",
+          image: "./images/cartons/cigaronne-phantom-rozetka-carton-angle.jpg",
+          source: "https://rozetka.com.ua/ua/cigaronne-4850008002232/p452660369/",
+          note: "同一 Rozetka exact 页面图组，外盒正面可读 Cigaronne PHANTOM，不写 Silver；用于避免把 Phantom 和 Phantom Silver 混用。",
+        },
+      ],
+      cartonNote:
+        "Rozetka exact 页面标题为“Cigaronne Phantom x 10 пачок”，规格写 Пачок в блоці 10、Цигарок в пачці 20、Упаковка Блок、Комплектація 10 пачок в блоці、EAN 4850008002232；图面可读 Cigaronne PHANTOM / The slimmest XL FILTER。Cigaronne 官方 Phantom 页面说明该款为 light-grey packaging、5mg/0.5mg。该 verified 只绑定灰色 Phantom，不覆盖既有 Phantom Silver。",
     },
   ],
   [
