@@ -688,6 +688,52 @@ img {
   font-weight: 650;
 }
 
+.brand-jump {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 8px;
+  margin: -2px 0 12px;
+  overflow-x: auto;
+  padding: 2px 2px 8px;
+  scrollbar-width: none;
+}
+
+.brand-jump::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-jump-label,
+.brand-jump-chip {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.brand-jump-label {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 2px;
+  color: var(--ink-faint);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.brand-jump-chip {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(39, 34, 28, 0.1);
+  background: rgba(255, 254, 250, 0.82);
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 760;
+  box-shadow: 0 8px 20px rgba(48, 41, 31, 0.045);
+}
+
+.brand-jump-top {
+  color: var(--accent-strong);
+}
+
 .cards {
   display: grid;
   gap: 10px;

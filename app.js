@@ -52,6 +52,7 @@ const elements = {
   aiServiceStatus: document.querySelector("#aiServiceStatus"),
   aiSourceList: document.querySelector("#aiSourceList"),
   aiVisionSubmit: document.querySelector("#aiVisionSubmit"),
+  brandJump: document.querySelector("#brandJump"),
   cards: document.querySelector("#cards"),
   cardTemplate: document.querySelector("#cardTemplate"),
   emptyImagesLink: document.querySelector("#emptyImagesLink"),
@@ -453,10 +454,49 @@ function updateEmptyRecovery() {
   });
 }
 
+function renderBrandJump(groups) {
+  if (!elements.brandJump) return;
+  elements.brandJump.replaceChildren();
+  elements.brandJump.hidden = groups.length < 4;
+  if (groups.length < 4) return;
+
+  const label = document.createElement("span");
+  label.className = "brand-jump-label";
+  label.textContent = "跳品牌";
+  elements.brandJump.appendChild(label);
+
+  groups.forEach((group) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "brand-jump-chip";
+    button.textContent = `${group.brand} ${group.count}`;
+    button.addEventListener("click", () => {
+      document.getElementById(group.id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+    elements.brandJump.appendChild(button);
+  });
+
+  const topButton = document.createElement("button");
+  topButton.type = "button";
+  topButton.className = "brand-jump-chip brand-jump-top";
+  topButton.textContent = "回到顶部";
+  topButton.addEventListener("click", () => {
+    document.querySelector("#catalog")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+  elements.brandJump.appendChild(topButton);
+}
+
 function renderCatalog() {
   const visibleProducts = currentProducts();
   const fragment = document.createDocumentFragment();
   let currentBrandKey = "";
+  const brandGroups = [];
   elements.cards.replaceChildren();
 
   visibleProducts.forEach((item) => {
@@ -468,12 +508,14 @@ function renderCatalog() {
       ).length;
       const heading = document.createElement("section");
       heading.className = "brand-section-card";
+      heading.id = `brand-section-${brandGroups.length + 1}`;
       heading.setAttribute("aria-label", `${item.brand} 分组`);
       heading.innerHTML = `
         <span>${escapeHtml(item.categoryLabel)}</span>
         <strong>${escapeHtml(item.brand)}</strong>
         <small>${brandCount} 款 · 按品牌/型号排序</small>
       `;
+      brandGroups.push({ id: heading.id, brand: item.brand, count: brandCount });
       fragment.appendChild(heading);
     }
 
@@ -536,6 +578,7 @@ function renderCatalog() {
     `当前 ${visibleProducts.length} 款 · 全库 ${products.length} 款`;
   elements.emptyState.hidden = visibleProducts.length > 0;
   if (visibleProducts.length === 0) updateEmptyRecovery();
+  renderBrandJump(brandGroups);
   hydrateIcons(elements.cards);
 }
 
@@ -1890,6 +1933,7 @@ if ("serviceWorker" in navigator) {
 }
 
 updateAiEntryStatus();
+refreshAiHealth();
 renderAll();
 hydrateIcons();
 loadRate();

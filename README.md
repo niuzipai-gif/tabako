@@ -60,7 +60,7 @@
 - `worker.js`：校验来源、请求模式、查询长度和图片大小；AI 匹配只使用服务端随版本发布的 146 款目录，并过滤购买权限受限条目；密钥只从 `MINIMAX_API_KEY` 服务端变量读取。
 - `wrangler.toml`：公开 Worker 配置，默认仅允许 `https://niuzipai-gif.github.io`。Cloudflare Rate Limiting 绑定是生产保护项；没有绑定时 Worker 仍可调用 MiniMax，便于先把 AI 跑通。
 - `.github/workflows/deploy-ai-worker.yml`：仓库配置 `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`、`MINIMAX_API_KEY` 三个 GitHub Actions secrets 后，可手动或随 `main` 分支变更自动部署代理。
-- `config.js`：公开页面只保存部署后的代理 URL，不放密钥；也支持用 `?aiProxyUrl=https://你的-worker地址/` 临时写入本机浏览器，便于上线前测试。
+- `config.js`：公开页面只保存部署后的代理 URL，不放密钥；默认代理只在 GitHub Pages 正式域名启用，本地开发需用 `?aiProxyUrl=https://你的-worker地址/` 或本机代理地址显式测试，避免误打临时公网代理。
 - `scripts/local-ai-proxy.mjs`：本机临时代理，默认监听 `127.0.0.1:8789`，可配合 Tailscale Funnel 暴露公网 HTTPS。
 
 部署时必须先撤销任何曾在聊天、截图或日志中出现的旧 Key，然后创建新 Key：
@@ -137,7 +137,7 @@ https://niuzipai-gif.github.io/tabako/?aiProxyUrl=https%3A%2F%2F你的-worker地
 
 ### Tailscale Funnel 临时公网代理
 
-当前 GitHub Pages 默认 AI 地址可以指向 Tailscale Funnel：
+当前 GitHub Pages 正式域名默认 AI 地址可以指向 Tailscale Funnel：
 
 ```text
 https://tabako.tail74d566.ts.net/tabako-ai
@@ -153,6 +153,8 @@ tailscale funnel --bg --set-path=/tabako-ai 8789
 ```
 
 这个方案能快速接通公网，但依赖当前电脑在线、Tailscale 在线、本机代理进程持续运行。长期稳定上线仍建议迁移到 Cloudflare Worker、Vercel 或其它 serverless 代理。
+
+本地 `127.0.0.1` 或 `localhost` 预览不会默认直连这个 Funnel 地址；如需本地联调，请先启动本机代理并用 `?aiProxyUrl=` 显式传入可接受当前 origin 的代理地址。
 
 ## 本地运行与验证
 

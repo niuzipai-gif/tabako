@@ -207,6 +207,8 @@
           <button class="subtle-button" id="resetFilters" type="button" hidden>清除筛选</button>
         </div>
 
+        <nav class="brand-jump" id="brandJump" aria-label="快速跳转品牌" hidden></nav>
+
         <div class="cards" id="cards"></div>
 
         <section class="empty-state" id="emptyState" hidden>
@@ -312,7 +314,7 @@
 
       <div class="ai-service-note" id="aiServiceNote" data-state="local">
         <span class="status-dot" aria-hidden="true"></span>
-        <span id="aiServiceStatus">本地匹配可用 · 在线 MiniMax 未连接，照片不会上传</span>
+        <span id="aiServiceStatus">本地匹配可用 · 正在检查在线 MiniMax 代理</span>
       </div>
 
       <section class="ai-progress" id="aiProgress" data-state="running" aria-live="polite" hidden>
@@ -377,7 +379,7 @@
         </label>
         <p class="privacy-note">
           <i data-lucide="shield-check" aria-hidden="true"></i>
-          只有点击“开始识别”后才会发送图片；代理未配置时不会上传。
+          只有点击“开始识别”后才会发送图片；在线代理不可用时不会上传。
         </p>
         <button class="primary-button full-width" id="aiVisionSubmit" type="button" disabled>
           <i data-lucide="scan-search" aria-hidden="true"></i>

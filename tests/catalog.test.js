@@ -312,10 +312,17 @@ test("public config supports a runtime AI proxy URL without storing secrets", ()
   assert.match(config, /TABAKO_AI_PROXY_URL/);
   assert.match(config, /URLSearchParams/);
   assert.match(config, /tabako\.tail74d566\.ts\.net\/tabako-ai/);
+  assert.match(config, /window\.location\.origin === productionOrigin/);
   assert.equal(packageJson.scripts["ai:local"], "node scripts/local-ai-proxy.mjs");
   assert.equal(existsSync(workflowPath), true);
   assert.equal(existsSync(localProxyPath), true);
   assert.equal(existsSync(startupScriptPath), true);
+});
+
+test("home page starts an AI proxy health check so the entry does not stay stale", () => {
+  const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
+
+  assert.match(source, /updateAiEntryStatus\(\);\s*refreshAiHealth\(\);\s*renderAll\(\);/);
 });
 
 test("device sorting groups by brand and then machine generation", () => {
@@ -540,10 +547,22 @@ test("catalog renderer inserts visible brand section headers", () => {
   const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
 
   assert.match(source, /brand-section-card/);
+  assert.match(source, /renderBrandJump/);
+  assert.match(source, /brand-jump-chip/);
   assert.match(source, /按品牌\/型号排序/);
   assert.equal(source.includes("const brandKey = `${item.type}:${item.brand}`;"), true);
   assert.match(styles, /\.brand-section-card\s*\{/);
+  assert.match(styles, /\.brand-jump\s*\{/);
   assert.match(styles, /grid-column:\s*1\s*\/\s*-1/);
+});
+
+test("AI dialog default copy reflects online proxy check without implying permanent outage", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+
+  assert.match(html, /本地匹配可用 · 正在检查在线 MiniMax 代理/);
+  assert.match(html, /在线代理不可用时不会上传/);
+  assert.doesNotMatch(html, /在线 MiniMax 未连接，照片不会上传/);
+  assert.doesNotMatch(html, /代理未配置时不会上传/);
 });
 
 test("device catalog and detail views expose readable market status badges", () => {

@@ -1,6 +1,8 @@
 const params = new URLSearchParams(window.location.search);
 const queryProxyUrl = params.get("aiProxyUrl") || "";
-const defaultProxyUrl = "https://tabako.tail74d566.ts.net/tabako-ai";
+const productionOrigin = "https://niuzipai-gif.github.io";
+const defaultProxyUrl =
+  window.location.origin === productionOrigin ? "https://tabako.tail74d566.ts.net/tabako-ai" : "";
 
 function storedProxyUrl(nextValue = "") {
   try {
