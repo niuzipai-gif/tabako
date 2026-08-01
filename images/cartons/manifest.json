@@ -66,6 +66,15 @@
       "sha256": "ede15b037fd339b716d9166fbd84967f1ca2bf10e03e487422fb190973330c38"
     },
     {
+      "productId": "p-68c8ef22",
+      "jp": "シガローネ・レジェンド",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/cigaronne-legend-cigaronne-app-outer-box.jpg",
+      "sourcePage": "https://armshop.ru/catalog/sigaronne/sigarety-armyanskie-cigaronne-royal-legend-black-gold-new-120mm-xl-filter-sps-cigaronne/",
+      "sha256": "b135148f61a6a3daf46fb33caf710eb589bcc610cd3cd0f01c36d979f3ce65d4"
+    },
+    {
       "productId": "p-0c3cf525",
       "jp": "glo hyper ラッキー ストライク メンソール",
       "status": "verified",

@@ -55,7 +55,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "シガローネ・クラシック・コンパット", cn: "卡比龙 Classic Compatto", jpy: 700, img: "https://picsum.photos/seed/cigaronne-classic-compatto/640/420" },
   { type: "cigarette", jp: "シガローネ・クラシック・ウルトラスリム", cn: "卡比龙 Classic Ultra Slims", jpy: 700, img: "https://picsum.photos/seed/cigaronne-classic-ultra-slims/640/420" },
   { type: "cigarette", jp: "シガローネ・クラシック・スーパースリム", cn: "卡比龙 Classic Super Slims", jpy: 700, img: "https://picsum.photos/seed/cigaronne-classic-super-slims/640/420" },
-  { type: "cigarette", jp: "シガローネ・レジェンド", cn: "卡比龙 Imperial Legend", jpy: 1200, img: "https://picsum.photos/seed/cigaronne-imperial-legend/640/420" },
+  { type: "cigarette", jp: "シガローネ・レジェンド", cn: "卡比龙 Imperial Legend", jpy: 1200, img: "./images/cartons/cigaronne-legend-cigaronne-app-outer-box.jpg" },
   { type: "cigarette", jp: "シガローネ・ビッグボス", cn: "卡比龙 Imperial Big Boss", jpy: 1200, img: "https://picsum.photos/seed/cigaronne-imperial-big-boss/640/420" },
   { type: "cigarette", jp: "シガローネ・ファントム", cn: "卡比龙 Phantom", jpy: 1100, img: "./images/cartons/cigaronne-phantom-rozetka-carton.jpg" },
   { type: "cigarette", jp: "シガローネ・ファントム・シルバー", cn: "卡比龙 Phantom Silver", jpy: 1100, img: "https://picsum.photos/seed/cigaronne-phantom-silver/640/420" },

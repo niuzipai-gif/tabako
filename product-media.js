@@ -775,19 +775,34 @@ const MEDIA_OVERRIDES = new Map([
   [
     "シガローネ・レジェンド|卡比龙 Imperial Legend",
     {
-      image: "./images/verified/cigaronne-imperial-legend-official.png",
-      imageStatus: "reference",
-      imageSource: "https://cigaronne.com/our-collection/imperial-collection",
+      image: "./images/cartons/cigaronne-legend-cigaronne-app-outer-box.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.cigaronne.app/products/",
       imageNote:
-        "Cigaronne 官网 Imperial Collection 图；官网列 Legend、Big Boss、Royal Slims、Phantom 四个代表款，此图用于补齐卡比龙官网全系列识别。",
+        "Cigaronne.app 产品卡图可读 Cigaronne LEGEND / Time-Tested XL FILTER，展示横向外盒形态，用于 Legend 外盒辨认。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
-      cartonStatus: "source-only",
-      cartonImage: "",
-      cartonSource:
-        "https://mostabaktorg.moscow/sigareti/cigaronne/cigaronne-legend-xl-filter",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/cigaronne-legend-cigaronne-app-outer-box.jpg",
+      cartonSource: "https://armshop.ru/catalog/sigaronne/sigarety-armyanskie-cigaronne-royal-legend-black-gold-new-120mm-xl-filter-sps-cigaronne/",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "Cigaronne.app 水印版外盒参考",
+          image: "./images/cartons/cigaronne-legend-cigaronne-app-outer-box.jpg",
+          source: "https://www.cigaronne.app/products/",
+          note: "图面可读 Cigaronne LEGEND / IMPERIAL COLLECTION / Time-Tested XL FILTER；用于核对外盒外观。",
+        },
+        {
+          label: "Cigaronne 官方系列参考",
+          image: "./images/verified/cigaronne-imperial-legend-official.png",
+          source: "https://cigaronne.com/our-collection/imperial-collection",
+          note: "Cigaronne 官网 Imperial Collection 图，保留作系列识别参考。",
+        },
+      ],
       cartonNote:
-        "Cigaronne 官网确认 Imperial Collection 包含 Legend；MostabakTorg 对应页面标题为“Cigaronne Legend XL Filter”，规格写明 Количество пачек в блоке 10、Количество сигарет в пачке 20，并说明 Цена указана за один блок / В упаковке 10 пачек。该页图片为单包/开盒商品图，未取得可读完整 SKU 的 10 包整条外箱实拍，因此不展示为已核验整条图。",
+        "Armshop exact 页面标题为 Cigaronne Royal Legend Black&Gold New 120mm XL FILTER / SPS Cigaronne，并写明 Цена указана за блок、В блоке 10 пачек、Блок с магнитным закрытием；Cigaronne.app 产品图可读 Cigaronne LEGEND / Time-Tested XL FILTER 的横向外盒。按 exact Legend Black&Gold / Legend XL Filter 的 10 包 / 200 支外盒证据核验；该证据仅绑定 Legend，不可回填 Big Boss、Phantom、Royal Slims 或其它 Imperial Collection 款。",
     },
   ],
   [

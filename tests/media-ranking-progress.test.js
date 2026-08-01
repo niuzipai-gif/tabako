@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 58);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 58);
+  assert.equal(manifest.items.length, 59);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 59);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -1015,7 +1015,7 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
     .filter((product) => product.brand === "Cigaronne");
 
   assert.equal(items.length, 24);
-  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 10);
+  assert.equal(items.filter((item) => item.cartonStatus === "verified").length, 11);
   for (const item of items) {
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, item.jp);
@@ -1041,6 +1041,11 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-big-boss-rozetka-open-carton\.jpg/, item.jp);
       assert.match(item.cartonNote, /Big Boss XL Filter х 10|Пачок в блоці 10|Цигарок в пачці 20/, item.jp);
+    } else if (item.jp === "シガローネ・レジェンド") {
+      assert.equal(item.cartonStatus, "verified", item.jp);
+      assert.match(item.cartonImage, /cigaronne-legend-cigaronne-app-outer-box\.jpg/, item.jp);
+      assert.match(item.cartonSource, /armshop\.ru\/catalog\/sigaronne\/sigarety-armyanskie-cigaronne-royal-legend-black-gold-new-120mm-xl-filter-sps-cigaronne/, item.jp);
+      assert.match(item.cartonNote, /Legend Black&Gold|В блоке 10 пачек|Cigaronne LEGEND|不可回填/, item.jp);
     } else if (item.jp === "シガローネ・ロイヤルスリム・メンソール") {
       assert.equal(item.cartonStatus, "verified", item.jp);
       assert.match(item.cartonImage, /cigaronne-royal-menthol-cigarpro-carton\.webp/, item.jp);
@@ -1081,7 +1086,6 @@ test("all Cigaronne catalog entries have sourced pack media and hide unverified 
 
 test("Cigaronne official collection additions use local official media but no unverified carton image", () => {
   const expectations = new Map([
-    ["シガローネ・レジェンド", /cigaronne-imperial-legend-official\.png/],
     ["シガローネ・クラシック・キングサイズ", /cigaronne-classic-king-size-official\.png/],
     ["シガローネ・クラシック・コンパット", /cigaronne-classic-compatto-official\.png/],
     ["シガローネ・クラシック・ウルトラスリム", /cigaronne-classic-ultra-slims-official\.png/],
@@ -1105,6 +1109,23 @@ test("Cigaronne official collection additions use local official media but no un
     const imagePath = new URL(`../${item.image.replace(/^\.\//, "")}`, import.meta.url);
     assert.equal(existsSync(imagePath), true, jp);
   }
+});
+
+test("Cigaronne Legend uses the exact outer-box evidence and keeps official series reference in gallery", () => {
+  const item = enrichProduct(rawProducts.find((product) => product.jp === "シガローネ・レジェンド"));
+
+  assert.equal(item.cartonStatus, "verified");
+  assert.equal(item.imageStatus, "verified");
+  assert.match(item.image, /cigaronne-legend-cigaronne-app-outer-box\.jpg/);
+  assert.match(item.cartonImage, /cigaronne-legend-cigaronne-app-outer-box\.jpg/);
+  assert.match(item.cartonSource, /armshop\.ru/);
+  assert.equal(item.cartonPackCount, 10);
+  assert.equal(item.cartonStickCount, 200);
+  assert.match(item.cartonNote, /Time-Tested XL FILTER|10 包 \/ 200 支|不可回填 Big Boss/);
+  assert.match(
+    item.cartonGallery.map((entry) => entry.image).join(" "),
+    /cigaronne-imperial-legend-official\.png/,
+  );
 });
 
 test("Cigaronne Classic source-only gaps use exact SAS ten-piece SKU leads without publishing display images", () => {
@@ -1152,13 +1173,6 @@ test("Cigaronne Classic source-only gaps use exact SAS ten-piece SKU leads witho
 
 test("source-only Cigaronne carton gaps point to exact 1-carton product sources", () => {
   const expectations = new Map([
-    [
-      "シガローネ・レジェンド",
-      {
-        source: /mostabaktorg\.moscow\/sigareti\/cigaronne\/cigaronne-legend-xl-filter/,
-        note: /Cigaronne Legend XL Filter|Количество пачек в блоке 10|В упаковке 10 пачек/,
-      },
-    ],
     [
       "シガローネ・スーパースリム・メンソール",
       {

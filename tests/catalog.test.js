@@ -546,6 +546,28 @@ test("recommended sorting groups every catalog type by brand before individual r
   );
 });
 
+test("ranking sorts verified exact carton SKUs before weak generic aliases on score ties", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const sorted = sortProducts(products, "jp");
+  const indexOf = (jp) => sorted.findIndex((item) => item.jp === jp);
+
+  for (const [generic, exact] of [
+    ["マールボロ メンソール", "マールボロ・メンソール・8・ボックス"],
+    ["マールボロ ダブルバースト", "マールボロ・ダブルバースト・パープル・5・ボックス"],
+    ["ナチュラル アメリカン スピリット", "ナチュラル アメリカン スピリット ライト 14本入"],
+    ["ラーク 1", "ラーク・セレクト・1・100sボックス"],
+    ["Ploom X キャメル スムース", "キャメル・スムース・プルーム用"],
+  ]) {
+    assert.ok(indexOf(exact) >= 0, exact);
+    assert.ok(indexOf(generic) >= 0, generic);
+    assert.equal(
+      indexOf(exact) < indexOf(generic),
+      true,
+      `${exact} should rank before weak alias ${generic}`,
+    );
+  }
+});
+
 test("catalog renderer inserts visible brand section headers", () => {
   const source = readFileSync(new URL("../app.js", import.meta.url), "utf8");
   const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");

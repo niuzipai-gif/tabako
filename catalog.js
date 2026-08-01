@@ -580,6 +580,27 @@ export function filterProducts(products, filters = {}) {
   });
 }
 
+function mediaTrustRank(item) {
+  const cartonRank =
+    {
+      verified: 0,
+      "archive-reference": 1,
+      "multi-carton-reference": 4,
+      "contents-reference": 5,
+      "variant-reference": 6,
+      "source-only": 7,
+      "needs-review": 8,
+    }[item.cartonStatus] ?? 9;
+  const imageRank =
+    {
+      verified: 0,
+      "archive-reference": 1,
+      reference: 3,
+      "review-required": 4,
+    }[item.imageStatus] ?? 5;
+  return cartonRank * 10 + imageRank;
+}
+
 export function sortProducts(products, sort = "recommended") {
   const result = [...products];
   const compareName = (a, b) => a.jp.localeCompare(b.jp, "ja");
@@ -602,6 +623,7 @@ export function sortProducts(products, sort = "recommended") {
       (a, b) =>
         b.jpScore - a.jpScore ||
         b.cnScore - a.cnScore ||
+        mediaTrustRank(a) - mediaTrustRank(b) ||
         (a.originalIndex ?? 0) - (b.originalIndex ?? 0) ||
         compareName(a, b),
     );
@@ -611,6 +633,7 @@ export function sortProducts(products, sort = "recommended") {
       (a, b) =>
         b.cnScore - a.cnScore ||
         b.jpScore - a.jpScore ||
+        mediaTrustRank(a) - mediaTrustRank(b) ||
         (a.originalIndex ?? 0) - (b.originalIndex ?? 0) ||
         compareName(a, b),
     );
