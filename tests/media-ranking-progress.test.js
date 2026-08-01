@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 48);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 48);
+  assert.equal(manifest.items.length, 49);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 49);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -447,6 +447,19 @@ test("Ploom X generic Camel Menthol stays reference-only while exact Cold and Sh
   assert.equal(blackCold.cartonPackCount, 16);
   assert.equal(blackCold.cartonStickCount, 320);
   assert.match(blackCold.cartonNote, /BLACK COLD MENTHOL|16箱|20本×10箱/);
+
+  const aromaRich = enrichProduct(
+    rawProducts.find((product) => product.jp === "Ploom X メビウス アロマリッチ レギュラー"),
+  );
+  assert.equal(aromaRich.cartonStatus, "verified");
+  assert.match(
+    aromaRich.cartonImage,
+    /ploom-mevius-aromarich-regular-mercari-15-empty-boxes\.jpg/,
+  );
+  assert.match(aromaRich.cartonSource, /jp\.mercari\.com\/item\/m56874401248/);
+  assert.equal(aromaRich.cartonPackCount, 15);
+  assert.equal(aromaRich.cartonStickCount, 300);
+  assert.match(aromaRich.cartonNote, /AROMARICH REGULAR|15箱|カートン（10箱）/);
 });
 
 test("Ploom X Mevius Smooth does not publish a quantity-only render as verified", () => {

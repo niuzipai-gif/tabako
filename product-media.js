@@ -1352,6 +1352,44 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "Ploom X メビウス アロマリッチ レギュラー|Ploom X 梅比乌斯 醇香经典",
+    {
+      image:
+        "./images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg",
+      imageStatus: "verified",
+      imageSource: "https://jp.mercari.com/item/m56874401248",
+      imageNote:
+        "Mercari 页面标题/说明写明 Ploom メビウス アロマリッチ レギュラー 空箱15箱セット，第 1 张商品图可见 15 个以上 MEVIUS / for ploom / AROMARICH REGULAR 同款空盒。",
+      packageFormat: "加热式烟弹盒",
+      packageFormatJp: "たばこスティック",
+      cartonStatus: "verified",
+      cartonImage:
+        "./images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg",
+      cartonSource: "https://jp.mercari.com/item/m56874401248",
+      cartonPackCount: 15,
+      cartonStickCount: 300,
+      cartonGallery: [
+        {
+          label: "大浦商店 10 箱规格参考",
+          image:
+            "./images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg",
+          source: "https://tabaccoshop-ooura.com/?page_id=709",
+          note: "大浦商店页面列出“メビウス・アロマリッチ・レギュラー・プルーム用”，规格为 20本、カートン（10箱）；该 gallery 复用主图，仅作为数量来源链接入口。",
+        },
+        {
+          label: "Cigars of Dubai 数量参考",
+          image:
+            "./images/cartons/ploom-mevius-aromarich-regular-mercari-15-empty-boxes.jpg",
+          source:
+            "https://cigarsofdubai.com/product/mevius-aroma-rich-regular-ploom-x-jp/",
+          note: "Cigars of Dubai 页面确认 Mevius Aroma Rich Regular for Ploom X 为 1 pack 20 sticks、1 carton 10 packs / 200 sticks；图片不作为主证据。",
+        },
+      ],
+      cartonNote:
+        "Mercari 页面标题为“Ploom メビウス アロマリッチ レギュラー 空箱 15箱セット”，说明重复“メビウス アロマリッチ レギュラー 空箱15箱”；第 1 张和第 2 张商品图可见 4列多排同款 MEVIUS / for ploom / AROMARICH REGULAR 空盒，满足 10+ same-SKU packs proof。大浦商店页面另列出“メビウス・アロマリッチ・レギュラー・プルーム用”，规格为 20本、カートン（10箱）；Cigars of Dubai 补充 1 carton = 10 packs × 20 sticks。该 exact 行按 15箱 / 300 sticks 记录，不回填 Ploom X メビウス リッチ、スムース、メンソール フレッシュ 或其他短名行。",
+    },
+  ],
+  [
     "Ploom X メビウス スムース|Ploom X 柔和",
     {
       cartonStatus: "contents-reference",
