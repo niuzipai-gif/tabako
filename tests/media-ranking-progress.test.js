@@ -72,8 +72,8 @@ test("production carton manifest only publishes exact verified or visibly histor
     readFileSync(new URL("../images/cartons/manifest.json", import.meta.url), "utf8"),
   );
 
-  assert.equal(manifest.items.length, 52);
-  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 52);
+  assert.equal(manifest.items.length, 53);
+  assert.equal(manifest.items.filter((item) => item.status === "verified").length, 53);
   assert.equal(
     manifest.items.filter((item) => item.status === "archive-reference").length,
     0,
@@ -1395,6 +1395,19 @@ test("glo Lucky Strike Menthol uses exact 10-box evidence", () => {
   assert.match(tropical.cartonNote, /不是完整 10 盒/);
   assert.match(tropical.cartonNote, /大浦商店.*カートン（10箱）/s);
   assert.match(tropical.cartonNote, /リニューアル.*ネオ・ブリリアント・トロピカル/s);
+});
+
+test("KOOL Boost 5 BOX publishes the exact ANA 10-box carton outer image", () => {
+  const raw = rawProducts.find((product) => product.jp === "クール ブースト 5 ボックス");
+  assert.ok(raw);
+  const boost5 = enrichProduct(raw);
+
+  assert.equal(boost5.cartonStatus, "verified");
+  assert.match(boost5.cartonImage, /kool-boost-5-ana-carton\.jpg/);
+  assert.match(boost5.cartonSource, /anadf\.com\/itemdetail\.aspx\?s_cd=7000050840/);
+  assert.equal(boost5.cartonPackCount, 10);
+  assert.equal(boost5.cartonStickCount, 200);
+  assert.match(boost5.cartonNote, /KOOL BOOST 5 BOX.*20本×10箱/s);
 });
 
 test("glo Lucky Strike Dark publishes exact Dark Tobacco multi-box evidence", () => {

@@ -19,6 +19,7 @@ export const rawProducts = [
   { type: "cigarette", jp: "ウィンストン XS", cn: "温斯顿 XS", jpy: 560, img: "https://picsum.photos/seed/winston-xs/640/420" },
   { type: "cigarette", jp: "ウィンストン キャスター ホワイト", cn: "温斯顿 白", jpy: 560, img: "https://picsum.photos/seed/winston-white/640/420" },
   { type: "cigarette", jp: "クール ブースト", cn: "KOOL 爆珠", jpy: 580, img: "https://picsum.photos/seed/kool-boost/640/420" },
+  { type: "cigarette", jp: "クール ブースト 5 ボックス", cn: "KOOL Boost Fresh 5", jpy: 580, img: "./images/cartons/kool-boost-5-ana-carton.jpg" },
   { type: "cigarette", jp: "メビウス ゴールド オリジナル", cn: "梅比乌斯 金装原味", jpy: 640, img: "https://picsum.photos/seed/mevius-gold-original/640/420" },
   { type: "cigarette", jp: "メビウス・プレミアムメンソール・オプション・パープル・8", cn: "梅比乌斯 高级薄荷 紫莓爆珠 8", jpy: 580, img: "https://picsum.photos/seed/mevius-premium-menthol-option-purple-8/640/420" },
   { type: "cigarette", jp: "セーラム ライト", cn: "沙龙 淡味", jpy: 600, img: "https://picsum.photos/seed/salem-lights/640/420" },

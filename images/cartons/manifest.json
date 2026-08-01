@@ -228,6 +228,15 @@
       "sha256": "93f4b304777d754b795d562742d198ea63f907e70c7067899af95e99a8b4bf71"
     },
     {
+      "productId": "p-2c66f9db",
+      "jp": "クール ブースト 5 ボックス",
+      "status": "verified",
+      "quantity": "1 carton / 10 packs / 200 sticks",
+      "localPath": "images/cartons/kool-boost-5-ana-carton.jpg",
+      "sourcePage": "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
+      "sha256": "0b097aacdca3fb7434fc16e0d246b0f3821f87ba9c3a350863d801fa12141089"
+    },
+    {
       "productId": "p-84898a7d",
       "jp": "ウィンストン キャスター ホワイト",
       "status": "verified",

@@ -395,6 +395,31 @@ const MEDIA_OVERRIDES = new Map([
     },
   ],
   [
+    "クール ブースト 5 ボックス|KOOL Boost Fresh 5",
+    {
+      image: "./images/cartons/kool-boost-5-ana-carton.jpg",
+      imageStatus: "verified",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
+      imageNote:
+        "ANA 免税店 exact SKU 页面为 KOOL BOOST 5 BOX，Size 为 20本×10箱；第二张官方图展示 KOOL BOOST FRESH 5 的整条外盒视角。",
+      cartonStatus: "verified",
+      cartonImage: "./images/cartons/kool-boost-5-ana-carton.jpg",
+      cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
+      cartonPackCount: 10,
+      cartonStickCount: 200,
+      cartonGallery: [
+        {
+          label: "ANA 单包正面参考",
+          image: "./images/cartons/kool-boost-5-ana-pack.jpg",
+          source: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
+          note: "同一 ANA exact SKU 页面第一张图为单包正面，仅作包装参考；verified 主图使用第二张整条外盒图。",
+        },
+      ],
+      cartonNote:
+        "ANA 免税店页面商品名为 KOOL BOOST 5 BOX，商品编号 7000050840，Size 明确为 20本×10箱；第二张官方图展示 KOOL BOOST FRESH 5 的长条外盒/整条包装视角，按 10 包 / 200 支核验。该 exact 5mg 行为新增 SKU，不回填泛称“クール ブースト”。",
+    },
+  ],
+  [
     "クール ブースト フレッシュ 8|KOOL Boost Fresh 8",
     {
       cartonStatus: "verified",
