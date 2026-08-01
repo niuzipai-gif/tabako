@@ -355,6 +355,15 @@ function mediaStatusStrip(item) {
   `;
 }
 
+function relatedExactProducts(item) {
+  if (!Array.isArray(item.relatedExactJp) || item.relatedExactJp.length === 0) {
+    return [];
+  }
+  return item.relatedExactJp
+    .map((jp) => products.find((candidate) => candidate.jp === jp))
+    .filter(Boolean);
+}
+
 function filtersActive() {
   return Boolean(
     state.query ||
@@ -792,6 +801,27 @@ function renderProductDetail(item) {
   const variantNote = item.variantNote
     ? `<p class="variant-note"><i data-lucide="split" aria-hidden="true"></i>${escapeHtml(item.variantNote)}</p>`
     : "";
+  const relatedExact = relatedExactProducts(item);
+  const relatedExactBlock = relatedExact.length
+    ? `
+      <div class="related-exact-products" role="note">
+        <strong>已拆分的准确款</strong>
+        <span>当前名称偏泛，优先点下面这些 exact SKU 看已核验一条图。</span>
+        <div>
+          ${relatedExact
+            .map(
+              (related) => `
+                <button type="button" data-related-product="${escapeHtml(related.id)}">
+                  ${escapeHtml(related.jp)}
+                  <small>${escapeHtml(related.cartonStatus === "verified" ? "整条已核验" : "来源参考")}</small>
+                </button>
+              `,
+            )
+            .join("")}
+        </div>
+      </div>
+    `
+    : "";
   const purchaseSection = item.purchaseAllowed
     ? `
       <section class="detail-block">
@@ -883,6 +913,8 @@ function renderProductDetail(item) {
         ${variantNote}
       </div>
     </section>
+
+    ${relatedExactBlock}
 
     <section class="detail-block package-identity" id="packageIdentity">
       <div class="detail-block-heading">
@@ -992,6 +1024,11 @@ function renderProductDetail(item) {
       openAiDialog("japanese", { productId });
     },
   );
+  elements.productDetail.querySelectorAll("[data-related-product]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      openProduct(event.currentTarget.dataset.relatedProduct, event.currentTarget);
+    });
+  });
 
   elements.productDetail.querySelectorAll("img").forEach(setImageFallback);
   hydrateIcons(elements.productDetail);

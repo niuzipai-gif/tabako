@@ -107,6 +107,7 @@ const MEDIA_OVERRIDES = new Map([
     "マールボロ メンソール|万宝路 薄荷",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: ["マールボロ・メンソール・8・ボックス"],
       cartonImage: "./images/cartons/marlboro-menthol8-monolog-20x10.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210129006",
       cartonPackCount: 10,
@@ -167,6 +168,7 @@ const MEDIA_OVERRIDES = new Map([
     "マールボロ ダブルバースト|万宝路 双爆珠",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: ["マールボロ・ダブルバースト・パープル・5・ボックス"],
       cartonImage:
         "./images/cartons/marlboro-wburst-purple-5-ameblo-10packs.png",
       cartonSource: "https://ameblo.jp/tobacco-kodama/entry-12864805962.html",
@@ -380,6 +382,10 @@ const MEDIA_OVERRIDES = new Map([
     "クール ブースト|KOOL 爆珠",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: [
+        "クール ブースト 5 ボックス",
+        "クール ブースト フレッシュ 8",
+      ],
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000048009",
       cartonGallery: [
         {
@@ -454,6 +460,10 @@ const MEDIA_OVERRIDES = new Map([
     "メビウス メンソール|梅比乌斯 薄荷",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: [
+        "メビウス・プレミアムメンソール・オプション・パープル・8",
+        "メビウス・アップル・オプション・プルーム用",
+      ],
       cartonImage:
         "./images/cartons/mevius-premium-menthol8-10p-monolog-reference.png",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210166117",
@@ -492,6 +502,7 @@ const MEDIA_OVERRIDES = new Map([
     "ラーク 1|乐富门 1mg",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: ["ラーク・セレクト・1・100sボックス"],
       cartonImage: "./images/cartons/lark-select1-mercari-72-empty-boxes.jpg",
       cartonSource: "https://jp.mercari.com/item/m67407962256",
       cartonPackCount: 10,
@@ -1547,6 +1558,11 @@ const MEDIA_OVERRIDES = new Map([
     "Ploom X キャメル メンソール|Ploom X 骆驼薄荷",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: [
+        "Ploom X キャメル メンソール フレッシュ",
+        "Ploom X キャメル メンソール コールド",
+        "Ploom X キャメル メンソール イエロー",
+      ],
       cartonImage:
         "./images/cartons/ploom-camel-menthol-fresh-yahoo-auctions-10-empty-boxes.jpg",
       cartonSource: "https://auctions.yahoo.co.jp/jp/auction/n1206003967",
@@ -1664,6 +1680,7 @@ const MEDIA_OVERRIDES = new Map([
     "Ploom X キャメル スムース|Ploom X 骆驼柔和",
     {
       cartonStatus: "contents-reference",
+      relatedExactJp: ["キャメル・スムース・プルーム用"],
       cartonImage: "./images/cartons/ploom-camel-smooth-carton.jpg",
       cartonSource:
         "https://j-cigarette.com/1carton-ploom-x-ploom-s-camel-smooth-stick-1-carton-120pcs-palatable-smooth-taste/",
@@ -1914,6 +1931,7 @@ const MEDIA_OVERRIDES = new Map([
     "わかば|若叶",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: ["わかば・シガー 10P"],
       cartonImage: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210153810",
       cartonPackCount: 10,
@@ -1959,6 +1977,7 @@ const MEDIA_OVERRIDES = new Map([
     "エコー|Echo",
     {
       cartonStatus: "variant-reference",
+      relatedExactJp: ["エコー・シガー 10P"],
       cartonImage: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210153919",
       cartonPackCount: 10,
@@ -2598,6 +2617,7 @@ export function resolveProductMedia(item, originalImage) {
     cartonNote: applicable
       ? (override.cartonNote ?? "整条外箱尚未人工核对；为避免认错，暂不展示不确定图片。")
       : "设备本体和电子烟配件不按传统香烟“一カートン”展示。",
+    relatedExactJp: Array.isArray(override.relatedExactJp) ? override.relatedExactJp : [],
     cartonSearchUrl: searchUrl(query),
     cartonSearchQuery: query,
   };

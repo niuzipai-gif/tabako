@@ -608,8 +608,12 @@ test("detail hero exposes a compact pack and carton status strip", () => {
   assert.match(source, /已拆分变体/);
   assert.match(source, /来源已记录/);
   assert.match(source, /待找整条/);
+  assert.match(source, /relatedExactProducts/);
+  assert.match(source, /data-related-product/);
+  assert.match(source, /已拆分的准确款/);
   assert.match(source, /id="packageIdentity"/);
   assert.match(styles, /\.detail-media-status-strip\s*\{/);
+  assert.match(styles, /\.related-exact-products\s*\{/);
   assert.match(styles, /backdrop-filter:\s*blur/);
 });
 

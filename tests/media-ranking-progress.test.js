@@ -242,6 +242,33 @@ test("Marlboro Double Burst does not publish a variant carton image as verified"
   assert.match(doubleBurst.cartonNote, /Purple 5 .*不能混用|降级为变体参考/);
 });
 
+test("generic variant rows expose exact SKU shortcuts instead of pretending verified", () => {
+  const expectations = new Map([
+    ["マールボロ メンソール", ["マールボロ・メンソール・8・ボックス"]],
+    ["マールボロ ダブルバースト", ["マールボロ・ダブルバースト・パープル・5・ボックス"]],
+    ["クール ブースト", ["クール ブースト 5 ボックス", "クール ブースト フレッシュ 8"]],
+    ["ラーク 1", ["ラーク・セレクト・1・100sボックス"]],
+    ["わかば", ["わかば・シガー 10P"]],
+    ["エコー", ["エコー・シガー 10P"]],
+    [
+      "Ploom X キャメル メンソール",
+      [
+        "Ploom X キャメル メンソール フレッシュ",
+        "Ploom X キャメル メンソール コールド",
+        "Ploom X キャメル メンソール イエロー",
+      ],
+    ],
+    ["Ploom X キャメル スムース", ["キャメル・スムース・プルーム用"]],
+  ]);
+
+  for (const [jp, exactNames] of expectations) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.deepEqual(item.relatedExactJp, exactNames, jp);
+    assert.notEqual(item.cartonStatus, "verified", jp);
+    assert.equal(item.cartonImage, "", jp);
+  }
+});
+
 test("split Marlboro Purple 5 and Ploom Camel Menthol Fresh rows publish only exact verified cartons", () => {
   const genericDoubleBurst = enrichProduct(
     rawProducts.find((product) => product.jp === "マールボロ ダブルバースト"),
