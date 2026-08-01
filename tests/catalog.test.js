@@ -113,8 +113,8 @@ test("installable shell links a manifest and registers an offline worker", () =>
   assert.match(worker, /"\.\/vendor\/lucide\.min\.js"/);
 });
 
-test("catalog keeps the expanded 163-product source set", () => {
-  assert.equal(rawProducts.length, 163);
+test("catalog keeps the expanded product source set open to new verified additions", () => {
+  assert.equal(rawProducts.length >= 163, true);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
     new Set(["cigarette", "heated", "device", "pod"]),
@@ -227,6 +227,7 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
     /IQOS ILUMA i ONE/i,
     /IQOS 3 MULTI/i,
     /Ploom AURA/i,
+    /Ploom CUBE/i,
     /with2/i,
     /Ploom X ADVANCED/i,
     /glo HYPER pro\+/i,
@@ -236,10 +237,17 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
     /lil HYBRID 3\.0/i,
     /RELX Infinity/i,
     /VAPORESSO XROS 5/i,
+    /VAPORESSO XROS 5 Nano/i,
     /VAPORESSO XROS 4/i,
+    /Uwell Caliburn G4 Pro/i,
     /Uwell Caliburn G4/i,
+    /Voopoo Argus P3/i,
     /Voopoo Argus G3/i,
+    /OXVA XLIM PRO 2 DNA/i,
+    /OXVA XLIM GO 2/i,
     /OXVA XLIM SQ Pro 2/i,
+    /Geekvape Wenax Q Ultra/i,
+    /Geekvape Wenax Q2/i,
   ]) {
     assert.match(deviceNames, family);
   }
@@ -258,6 +266,23 @@ test("heated device entries carry source, status, and explicit sort metadata", (
     assert.match(
       item.marketStatus,
       /^(current-mainstream|current-limited|legacy|discontinued-stock-only|discontinued)$/i,
+      `${item.jp} marketStatus`,
+    );
+  }
+});
+
+test("all device entries carry explicit brand, source, status, and sort metadata", () => {
+  const devices = rawProducts
+    .map((item) => enrichProduct(item))
+    .filter((item) => item.type === "device");
+
+  for (const item of devices) {
+    assert.match(item.brand, /\S/, `${item.jp} brand`);
+    assert.match(item.source, /^https?:\/\//, `${item.jp} source`);
+    assert.equal(Number.isFinite(Number(item.deviceOrder)), true, `${item.jp} deviceOrder`);
+    assert.match(
+      item.marketStatus,
+      /^(current-mainstream|current-limited|legacy|discontinued-stock-only|discontinued|overseas-reference)$/i,
       `${item.jp} marketStatus`,
     );
   }
@@ -286,7 +311,8 @@ test("device sorting groups by brand and then machine generation", () => {
       enrichProduct({ type: "device", jp: "IQOS イルマ i ワン", cn: "IQOS ILUMA i ONE", jpy: 3980 }),
       enrichProduct({ type: "device", jp: "IQOS イルマ i リミックスモデル", cn: "IQOS ILUMA i REMIX 限定款", jpy: 6980 }),
       enrichProduct({ type: "device", jp: "Ploom AURA", cn: "Ploom AURA", jpy: 2980 }),
-      enrichProduct({ type: "device", jp: "with2", cn: "with2 加热设备", jpy: 1980, deviceBrand: "Ploom", deviceOrder: 13 }),
+      enrichProduct({ type: "device", jp: "Ploom CUBE", cn: "Ploom CUBE", jpy: 1980, deviceBrand: "Ploom", deviceOrder: 2020 }),
+      enrichProduct({ type: "device", jp: "with2", cn: "with2 加热设备", jpy: 1980, deviceBrand: "Ploom", deviceOrder: 2400 }),
       enrichProduct({ type: "device", jp: "Ploom X ADVANCED", cn: "Ploom X ADVANCED", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom X", cn: "Ploom X", jpy: 1980 }),
       enrichProduct({ type: "device", jp: "Ploom S 2.0", cn: "Ploom S 2.0", jpy: 3480 }),
@@ -306,6 +332,7 @@ test("device sorting groups by brand and then machine generation", () => {
       "IQOS ILUMA i REMIX 限定款",
       "IQOS ILUMA i ONE",
       "Ploom AURA",
+      "Ploom CUBE",
       "with2 加热设备",
       "Ploom X ADVANCED",
       "Ploom X",

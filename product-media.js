@@ -1483,7 +1483,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "バージニア エス ロゼ メンソール|Virginia S 粉薄荷",
     {
-      cartonStatus: "verified",
+      cartonStatus: "contents-reference",
       cartonImage:
         "./images/cartons/virginia-rose-menthol-10p-monolog-carton.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4930941000004",
@@ -1537,7 +1537,7 @@ const MEDIA_OVERRIDES = new Map([
   [
     "わかば|若叶",
     {
-      cartonStatus: "verified",
+      cartonStatus: "variant-reference",
       cartonImage: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210153810",
       cartonPackCount: 10,

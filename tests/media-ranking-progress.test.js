@@ -220,6 +220,20 @@ test("Marlboro Double Burst and Camel Craft 6 do not publish weak carton images 
   assert.match(camel.cartonNote, /主来源已无法稳定访问|降级为数量\/参考线索/);
 });
 
+test("Virginia S Rose Menthol and Wakaba do not publish weak carton references as verified", () => {
+  const virginia = enrichProduct(
+    rawProducts.find((product) => product.jp === "バージニア エス ロゼ メンソール"),
+  );
+  assert.equal(virginia.cartonStatus, "contents-reference");
+  assert.equal(virginia.cartonImage, "");
+  assert.match(virginia.cartonNote, /不足以视觉确认完整 10 个同 SKU|降级为数量参考/);
+
+  const wakaba = enrichProduct(rawProducts.find((product) => product.jp === "わかば"));
+  assert.equal(wakaba.cartonStatus, "variant-reference");
+  assert.equal(wakaba.cartonImage, "");
+  assert.match(wakaba.cartonNote, /わかば・シガー|降级为变体参考/);
+});
+
 test("Lark Classic uses exact 10-box evidence instead of the ANA 2-carton reference", () => {
   const item = enrichProduct(rawProducts.find((product) => product.jp === "ラーク クラシック"));
 

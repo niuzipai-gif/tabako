@@ -436,11 +436,14 @@ function brandSortOrder(item) {
 function deviceModelOrder(item) {
   if (Number.isFinite(Number(item.deviceOrder))) return Number(item.deviceOrder);
   const text = `${item.jp} ${item.cn}`;
-  if (/Ploom AURA/i.test(text)) return 12;
-  if (/with2/i.test(text)) return /Special|スペシャル/i.test(text) ? 14 : 13;
+  if (/Ploom AURA/i.test(text)) return 2010;
+  if (/Ploom CUBE/i.test(text)) return 2020;
+  if (/with2/i.test(text)) return /Special|スペシャル/i.test(text) ? 2410 : 2400;
   if (/PRIME/i.test(text)) return 10;
-  if (/ADVANCED/i.test(text)) return 15;
-  if (/Ploom X\b/i.test(text)) return 16;
+  if (/ADVANCED/i.test(text)) return 2500;
+  if (/Ploom X\b/i.test(text)) return 2600;
+  if (/Ploom S 2\.0/i.test(text)) return 2700;
+  if (/Ploom TECH\+/i.test(text)) return 2900;
   if (/HYPER pro\+/i.test(text)) return 18;
   if (/Hilo/i.test(text)) return 22;
   if (/HYPER air/i.test(text)) return 30;
