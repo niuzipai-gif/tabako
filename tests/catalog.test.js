@@ -235,6 +235,27 @@ test("Cigaronne brand page follows a stable series order", () => {
   );
 });
 
+test("Cigaronne search accepts common Chinese and romanized misspellings", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+
+  for (const query of [
+    "卡比龙 phantom silver",
+    "cigarone phantom silver",
+    "cigaronee royal black",
+    "sigaron big boss",
+    "シガロン ファントム",
+  ]) {
+    const result = filterProducts(products, {
+      query,
+      category: "all",
+      flavor: "all",
+      favorites: [],
+    });
+
+    assert.equal(result.some((item) => item.brand === "Cigaronne"), true, query);
+  }
+});
+
 test("device catalog covers mainstream heated and vapor hardware families", () => {
   const devices = rawProducts.filter((item) => item.type === "device");
   const deviceNames = devices.map((item) => `${item.jp} ${item.cn}`).join("\n");
@@ -317,6 +338,23 @@ test("glo Hilo Plus and virto Hilo-only sticks are grouped under glo with offici
 
   assert.ok(virto.some((item) => /ブライト・ピーチ/.test(item.jp)));
   assert.ok(virto.some((item) => /ダーク・タバコ/.test(item.jp)));
+});
+
+test("glo Hilo, HYPER devices, and hyper consumables expose non-overlapping compatibility", () => {
+  const products = rawProducts.map((item, index) => enrichProduct(item, index));
+  const hilo = products.find((item) => item.jp === "glo Hilo Plus");
+  const hyper = products.find((item) => item.jp === "glo HYPER pro+");
+  const neo = products.find((item) => item.jp === "ネオ・ブリリアント・ベリー・hyper用");
+  const switchStick = products.find((item) => item.jp === "ラッキー・ストライク・ベリー・スイッチ・hyper用");
+
+  assert.match(hilo.compatibility, /仅使用 virto/);
+  assert.doesNotMatch(hilo.compatibility, /适配 glo HYPER 系列$/);
+  assert.match(hyper.compatibility, /neo、Lucky Strike、KENT/);
+  assert.match(hyper.compatibility, /不使用 virto/);
+  assert.match(neo.compatibility, /HYPER pro\+/);
+  assert.doesNotMatch(neo.compatibility, /纸卷香烟/);
+  assert.match(switchStick.compatibility, /HYPER pro\+/);
+  assert.doesNotMatch(switchStick.compatibility, /纸卷香烟/);
 });
 
 test("lil HYBRID liquid cartridge is represented as a separate required consumable", () => {

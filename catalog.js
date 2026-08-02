@@ -402,11 +402,19 @@ function describeProduct(item, flavor, strength, profile) {
 }
 
 function compatibility(item) {
+  const text = `${item.jp} ${item.cn}`;
   if (/テリア|センティア/i.test(item.jp)) return "仅适配 IQOS ILUMA 系列";
+  if (item.type === "device" && /Hilo/i.test(text)) return "glo Hilo/Hilo Plus 本体；仅使用 virto，不使用 glo HYPER 用 neo / Lucky Strike / KENT";
+  if (item.type === "device" && /glo\s*HYPER/i.test(text)) return "glo HYPER 本体；使用 neo、Lucky Strike、KENT 的 glo hyper用烟草棒；不使用 virto";
+  if (item.type === "device" && /^with2/i.test(text)) return "with2 本体；使用 ウィズ用 烟草胶囊+液体烟弹组合，不适配 Ploom 烟草棒";
+  if (item.type === "device" && /Ploom TECH\+/i.test(text)) return "已停产设备；仅作 Ploom TECH+ / with2-family capsule-cartridge 兼容参考，不适配 Ploom 烟草棒";
+  if (item.type === "device" && /Ploom/i.test(text)) return "Ploom 本体；使用 EVO、Mevius、Camel プルーム用烟草棒，不适配 with2 ウィズ用";
+  if (item.type === "device" && /lil HYBRID/i.test(text)) return "lil HYBRID 本体；请按对应代际确认 MIIX 与液体烟弹，非 IQOS ILUMA";
   if (/ウィズ用/i.test(item.jp)) return "仅适配 with2 / Ploom TECH+ with / Ploom TECH+，不适配 Ploom AURA/X 烟弹设备";
   if (/エボ|EVO|プルーム用/i.test(item.jp)) return "适配 Ploom AURA、Ploom CUBE、Ploom X ADVANCED、Ploom X、Ploom S；不适配 with2";
   if (/Ploom/i.test(item.jp)) return "适配对应 Ploom 设备";
   if (/ヴァルト|virto/i.test(`${item.jp} ${item.cn}`)) return "仅适配 glo Hilo / glo Hilo Plus；不适配 glo HYPER";
+  if (/(?:glo\s*hyper|hyper用|HYPER)/i.test(text)) return "适配 glo HYPER pro+ / HYPER pro 及兼容 HYPER 系列；不适配 glo Hilo / Hilo Plus";
   if (/glo/i.test(item.jp)) return "适配 glo HYPER 系列";
   if (/lil HYBRID/i.test(`${item.jp} ${item.cn}`)) return "仅适配 lil HYBRID 3.0；需要 MIIX 专用烟草棒与专用リキッド配套使用";
   if (item.type === "device") return "设备本体，请查看商品名称确认型号";
@@ -568,6 +576,7 @@ const SEARCH_ALIAS_REPLACEMENTS = [
   [/フレーバー/gi, "Flavor"],
   [/リキッド/gi, "Liquid"],
   [/カートリッジ/gi, "Cartridge"],
+  [/シガローネ|シガロン/gi, "Cigaronne"],
 ];
 
 function searchAliases(item) {
@@ -592,6 +601,38 @@ function searchAliases(item) {
         .replace(/\s+/g, " ")
         .trim()
     : "";
+  const cigaronneAlias = /シガローネ|Cigaronne|卡比龙/i.test(`${item.jp} ${item.cn}`)
+    ? (() => {
+      const englishName = item.cn.replace(/^卡比龙\s*/u, "");
+      const compactSeriesName = englishName
+        .replace(/\bRoyal Slims\b/gi, "Royal")
+        .replace(/\bSuper Slims\b/gi, "Super")
+        .replace(/\bUltra Slims\b/gi, "Ultra")
+        .replace(/\bClassic\b/gi, "Classic")
+        .replace(/\bCenter\b/gi, "Center")
+        .replace(/\bImperial\s+/gi, "");
+      return [
+        item.jp.replace(/シガローネ/gu, "シガロン"),
+        romanized,
+        romanized.replace(/\bCigaronne\b/gi, "Cigarone"),
+        romanized.replace(/\bCigaronne\b/gi, "Cigaronee"),
+        romanized.replace(/\bCigaronne\b/gi, "Sigaron"),
+        romanized.replace(/\bCigaronne\b/gi, "Sigaronne"),
+        `Cigaronne ${englishName}`,
+        `Cigarone ${englishName}`,
+        `Cigaronee ${englishName}`,
+        `Sigaron ${englishName}`,
+        `Sigaronne ${englishName}`,
+        `Cigaronne ${compactSeriesName}`,
+        `Cigarone ${compactSeriesName}`,
+        `Cigaronee ${compactSeriesName}`,
+        `Sigaron ${compactSeriesName}`,
+        `Sigaronne ${compactSeriesName}`,
+        `卡比龙 ${englishName}`,
+        `卡比龙 ${compactSeriesName}`,
+      ].join(" ");
+    })()
+    : "";
   return [
     `${item.jp} ${item.cn}`,
     romanized,
@@ -600,6 +641,7 @@ function searchAliases(item) {
     ploomEvoAlias ? `Ploom${ploomEvoAlias.replace(/\s+/g, "")}` : "",
     with2Alias ? `with2 ${with2Alias}` : "",
     with2Alias ? `with2${with2Alias.replace(/\s+/g, "")}` : "",
+    cigaronneAlias,
   ].join(" ");
 }
 
