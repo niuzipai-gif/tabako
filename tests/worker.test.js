@@ -229,6 +229,58 @@ test("recommendations use MiniMax-M3 chat completions and normalize JSON", async
   assert.equal(JSON.stringify(payload).includes("test-secret"), false);
 });
 
+test("recommendations constrain glo Hilo queries to the Hilo/virto platform", async () => {
+  const hiloDevice = canonicalCatalog.find((item) => item.jp === "glo Hilo Plus");
+  const virto = canonicalCatalog.find((item) => item.jp === "ヴァルト・ダーク・タバコ");
+  const hyperDevice = canonicalCatalog.find((item) => item.jp === "glo HYPER pro+");
+  const hyperStick = canonicalCatalog.find((item) => item.jp === "ネオ・ブリリアント・ベリー・hyper用");
+  assert.ok(hiloDevice);
+  assert.ok(virto);
+  assert.ok(hyperDevice);
+  assert.ok(hyperStick);
+
+  let upstreamBody;
+  const worker = createWorker({
+    fetchImpl: async (_url, init) => {
+      upstreamBody = JSON.parse(init.body);
+      return new Response(
+        JSON.stringify({
+          choices: [
+            {
+              message: {
+                content: JSON.stringify({
+                  answer: "Hilo 只应返回 virto 平台。",
+                  matches: [
+                    { id: hyperStick.id, reason: "不应返回 HYPER 烟弹" },
+                    { id: virto.id, reason: "Hilo 对应 virto" },
+                  ],
+                }),
+              },
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      );
+    },
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "recommend", query: "glo Hilo Plus" }),
+    ENV,
+  );
+  const payload = await response.json();
+  const promptText = upstreamBody.messages[1].content;
+
+  assert.equal(response.status, 200);
+  assert.match(promptText, /glo Hilo Plus/);
+  assert.match(promptText, /ヴァルト・ダーク・タバコ/);
+  assert.doesNotMatch(promptText, /glo HYPER pro\+/);
+  assert.doesNotMatch(promptText, /ネオ・ブリリアント・ベリー・hyper用/);
+  assert.deepEqual(payload.matches, [
+    { id: virto.id, reason: "Hilo 对应 virto" },
+  ]);
+});
+
 test("recommendations do not call MiniMax or hallucinate matches when the catalog has no evidence", async () => {
   let called = false;
   const worker = createWorker({

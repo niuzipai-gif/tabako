@@ -29,6 +29,7 @@ const CANONICAL_CATALOG = Object.freeze(
         strength: cleanText(item.strength, 40),
         jpy: Number.isFinite(Number(item.jpy)) ? Number(item.jpy) : null,
         availability: cleanText(item.availability, 40),
+        compatibility: cleanText(item.compatibility, 220),
         purchaseAllowed: true,
         searchText: cleanText(
           [
@@ -373,6 +374,31 @@ function boostRelatedExactMatches(matches, catalog) {
   return boosted.slice(0, 6);
 }
 
+function platformIntent(query) {
+  const text = String(query ?? "").normalize("NFKC");
+  if (/Hilo|virto|ヴァルト/i.test(text)) return "glo-hilo";
+  if (/(?:glo\s*hyper|hyper用|HYPER|ネオ|neo|ラッキー・ストライク|Lucky Strike|ケント|KENT)/i.test(text)) {
+    return "glo-hyper";
+  }
+  return "";
+}
+
+function productPlatform(item) {
+  const text = `${item?.jp ?? ""} ${item?.cn ?? ""}`.normalize("NFKC");
+  if (/Hilo|virto|ヴァルト/i.test(text)) return "glo-hilo";
+  if (/(?:glo\s*hyper|hyper用|HYPER|ネオ|neo|ラッキー・ストライク|Lucky Strike|ケント|KENT)/i.test(text)) {
+    return "glo-hyper";
+  }
+  return "";
+}
+
+function catalogForQuery(query, catalog) {
+  const intent = platformIntent(query);
+  if (!intent) return catalog;
+  const filtered = catalog.filter((item) => productPlatform(item) === intent);
+  return filtered.length ? filtered : catalog;
+}
+
 function buildChatRequest({ mode, query, catalog, image }) {
   const catalogJson = JSON.stringify(catalog);
   const instructions = BASE_SYSTEM_PROMPT;
@@ -418,10 +444,11 @@ async function callChat(fetchImpl, key, input) {
   const payload = await upstream.json();
   const content = payload?.choices?.[0]?.message?.content;
   const result = normalizeAiPayload(extractJsonObject(content));
+  const inputCatalogIds = new Set(input.catalog.map((item) => item.id));
   return {
     ...result,
     matches: boostRelatedExactMatches(
-      result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id)),
+      result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id) && inputCatalogIds.has(match.id)),
       input.catalog,
     ),
   };
@@ -571,13 +598,14 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
             allowedOrigin,
           );
         }
+        const recommendCatalog = mode === "recommend" ? catalogForQuery(query, CANONICAL_CATALOG) : CANONICAL_CATALOG;
         const result =
           mode === "search"
             ? await callSearch(fetchImpl, env.MINIMAX_API_KEY, query)
             : await callChat(fetchImpl, env.MINIMAX_API_KEY, {
                 mode,
                 query,
-                catalog: CANONICAL_CATALOG,
+                catalog: recommendCatalog,
                 image,
               });
         return jsonResponse(result, 200, requestOrigin, allowedOrigin);
