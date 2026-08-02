@@ -484,6 +484,12 @@ test("online search uses MiniMax web_search server tool and returns source leads
                   url: "https://www.jti.co.jp/tobacco/products/example/",
                   content: "蓝色七星 / Seven Stars の商品信息摘要。たばこ包装の核对线索。",
                 },
+                {
+                  type: "web_search_result",
+                  title: "蓝色七星 日本 香烟 视频",
+                  url: "https://www.bilibili.com/video/BV1dV4y1t76h/",
+                  content: "蓝色七星 日本 香烟 たばこ 包装。",
+                },
               ],
             },
             { type: "text", text: "找到了一个可能相关的厂商页面，请核对包装与价格日期。" },

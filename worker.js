@@ -127,6 +127,13 @@ const TOBACCO_SOURCE_DOMAINS = Object.freeze([
   "monolog.r-n-i.jp",
 ]);
 const BLOCKED_SEARCH_SOURCE_DOMAINS = Object.freeze([
+  "bilibili.com",
+  "youtube.com",
+  "youtu.be",
+  "tiktok.com",
+  "instagram.com",
+  "facebook.com",
+  "pinterest.com",
   "youdao.com",
   "dict.youdao.com",
   "dictionary.cambridge.org",
@@ -163,6 +170,7 @@ const TOBACCO_RELEVANCE_TERMS = Object.freeze([
   "virto",
   "ヴァルト",
 ]);
+const TOBACCO_HOST_HINT_PATTERN = /(?:tabako|tobacco|smoke|cigar|cigarette|iqos|glo|ploom|jt|dutyfree|kix|rakuten|marlboro|mevius|terea|sentia)/i;
 
 function cleanText(value, limit) {
   return String(value ?? "")
@@ -217,7 +225,7 @@ function isRelevantSearchSource(source, query) {
   );
 
   if (isTrustedDomain) return hasQueryOverlap && hasTobaccoContext;
-  return hasQueryOverlap && hasTobaccoContext;
+  return hasQueryOverlap && hasTobaccoContext && TOBACCO_HOST_HINT_PATTERN.test(hostname);
 }
 
 function isRestrictedSearch(query) {
