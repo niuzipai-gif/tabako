@@ -1122,6 +1122,65 @@ function compactCatalogForAi() {
   }));
 }
 
+function compactLookupText(value) {
+  return String(value ?? "")
+    .normalize("NFKC")
+    .toLocaleLowerCase()
+    .replace(/[^\p{Letter}\p{Number}]+/gu, "");
+}
+
+const aiTobaccoIntentTerms = [
+  "たばこ",
+  "タバコ",
+  "煙草",
+  "香烟",
+  "烟草",
+  "cigarette",
+  "cigar",
+  "tobacco",
+  "carton",
+  "カートン",
+  "一条",
+  "包装",
+  "iqos",
+  "terea",
+  "sentia",
+  "ploom",
+  "mevius",
+  "seven stars",
+  "marlboro",
+  "camel",
+  "lark",
+  "winston",
+  "kool",
+  "cigaronne",
+  "卡比龙",
+  "glo",
+  "virto",
+  "ヴァルト",
+];
+
+function hasAiWebEvidenceIntent(query, catalog = compactCatalogForAi()) {
+  const text = String(query ?? "").normalize("NFKC").toLocaleLowerCase().trim();
+  const compact = compactLookupText(text);
+  if (!compact) return false;
+  if (
+    aiTobaccoIntentTerms.some((term) => {
+      const normalized = term.toLocaleLowerCase();
+      return text.includes(normalized) || compact.includes(compactLookupText(normalized));
+    })
+  ) {
+    return true;
+  }
+  if (localRecommend(query, catalog, 1).length > 0) return true;
+  return catalog.some((item) =>
+    [item.jp, item.cn, item.brand, item.relatedExactJp?.join(" "), item.cartonSearchQuery].some((value) => {
+      const token = compactLookupText(value);
+      return token.length >= 3 && compact.includes(token);
+    }),
+  );
+}
+
 function setAiMode(mode) {
   if (!["recommend", "vision", "japanese"].includes(mode)) return;
   state.aiMode = mode;
@@ -1470,31 +1529,41 @@ async function runAiRecommendation() {
     const result = await resultPromise;
     let finalResult = result;
     if ((result.matches ?? []).length === 0) {
-      const fallbackQuery = [query, result.answer, "日本 たばこ パッケージ 価格 販売店"]
-        .filter(Boolean)
-        .join(" ");
-      setAiProgress({
-        value: 84,
-        label: "目录未命中；正在自动联网补充库外线索",
-        steps,
-        current: 3,
-      });
-      try {
-        const online = await aiClient.ask({ mode: "search", query: fallbackQuery });
+      if (!hasAiWebEvidenceIntent(query, catalog)) {
         finalResult = {
           ...result,
           answer:
-            `${result.answer || "本地目录没有命中。"} 已自动联网查找库外资料；下方来源仅作核对线索，未自动写入目录。`,
+            `${result.answer || "本地目录没有命中。"} 没有识别到品牌、烟草、包装或目录线索；为避免返回无关网页，本次不展示联网来源。`,
           matches: [],
-          sources: online.sources ?? [],
+          sources: [],
         };
-      } catch (fallbackError) {
-        finalResult = {
-          ...result,
-          answer:
-            `${result.answer || "本地目录没有命中。"} 自动联网补充未完成：${fallbackError.message || "请稍后重试"}。`,
-          matches: [],
-        };
+      } else {
+        const fallbackQuery = [query, result.answer, "日本 たばこ パッケージ 価格 販売店"]
+          .filter(Boolean)
+          .join(" ");
+        setAiProgress({
+          value: 84,
+          label: "目录未命中；正在自动联网补充库外线索",
+          steps,
+          current: 3,
+        });
+        try {
+          const online = await aiClient.ask({ mode: "search", query: fallbackQuery });
+          finalResult = {
+            ...result,
+            answer:
+              `${result.answer || "本地目录没有命中。"} 已自动联网查找库外资料；下方来源仅作核对线索，未自动写入目录。`,
+            matches: [],
+            sources: online.sources ?? [],
+          };
+        } catch (fallbackError) {
+          finalResult = {
+            ...result,
+            answer:
+              `${result.answer || "本地目录没有命中。"} 自动联网补充未完成：${fallbackError.message || "请稍后重试"}。`,
+            matches: [],
+          };
+        }
       }
     }
     setAiProgress({ value: 94, label: "已收到返回，正在整理 AI 与本地目录结果", steps, current: 4 });
@@ -1618,33 +1687,43 @@ async function runAiVision() {
     let finalResult = result;
     let badge = "MiniMax 图片理解";
     if ((result.matches ?? []).length === 0) {
-      const fallbackQuery = [result.answer, "日本 たばこ パッケージ 価格"]
-        .join(" ")
-        .replace(/\s+/g, " ")
-        .slice(0, AI_LIMITS.query);
-      setAiProgress({
-        value: 90,
-        label: "目录未命中；正在自动联网补充库外线索",
-        steps,
-        current: 4,
-      });
-      try {
-        const online = await aiClient.ask({ mode: "search", query: fallbackQuery });
+      if (!hasAiWebEvidenceIntent(result.answer, compactCatalogForAi())) {
         finalResult = {
           answer:
-            `${result.answer || "图片识别没有命中本地目录。"} 已自动联网查找库外资料；下方来源仅作核对线索，未自动写入目录。`,
-          matches: [],
-          sources: online.sources ?? [],
-        };
-        badge = "MiniMax 图片理解 + 联网补充";
-      } catch (fallbackError) {
-        finalResult = {
-          answer:
-            `${result.answer || "图片识别没有命中本地目录。"} 自动联网补充未完成：${fallbackError.message || "请稍后重试"}。`,
+            `${result.answer || "图片识别没有命中本地目录。"} 没有识别到品牌、烟草、包装或目录线索；为避免返回无关网页，本次不展示联网来源。`,
           matches: [],
           sources: [],
         };
-        badge = "MiniMax 图片理解 · 库外未补全";
+        badge = "MiniMax 图片理解 · 无可靠线索";
+      } else {
+        const fallbackQuery = [result.answer, "日本 たばこ パッケージ 価格"]
+          .join(" ")
+          .replace(/\s+/g, " ")
+          .slice(0, AI_LIMITS.query);
+        setAiProgress({
+          value: 90,
+          label: "目录未命中；正在自动联网补充库外线索",
+          steps,
+          current: 4,
+        });
+        try {
+          const online = await aiClient.ask({ mode: "search", query: fallbackQuery });
+          finalResult = {
+            answer:
+              `${result.answer || "图片识别没有命中本地目录。"} 已自动联网查找库外资料；下方来源仅作核对线索，未自动写入目录。`,
+            matches: [],
+            sources: online.sources ?? [],
+          };
+          badge = "MiniMax 图片理解 + 联网补充";
+        } catch (fallbackError) {
+          finalResult = {
+            answer:
+              `${result.answer || "图片识别没有命中本地目录。"} 自动联网补充未完成：${fallbackError.message || "请稍后重试"}。`,
+            matches: [],
+            sources: [],
+          };
+          badge = "MiniMax 图片理解 · 库外未补全";
+        }
       }
     }
     renderAiResult(finalResult, badge);

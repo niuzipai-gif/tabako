@@ -382,6 +382,40 @@ test("recommendations promote exact verified SKUs when MiniMax returns a generic
   assert.match(payload.matches[0].reason, /更准确的核验 SKU/);
 });
 
+test("recommendations discard model-provided sources before UI fallback", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          choices: [
+            {
+              message: {
+                content: JSON.stringify({
+                  answer: "没有目录候选。",
+                  matches: [],
+                  sources: [
+                    {
+                      title: "Unrelated source",
+                      url: "https://example.com/noisy",
+                      snippet: "Model-provided source should not pass through recommend mode.",
+                    },
+                  ],
+                }),
+              },
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(post({ mode: "recommend", query: "蓝色七星" }), ENV);
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(payload.sources, []);
+});
+
 test("vision mode sends only supported image data to chat completions", async () => {
   let body;
   const worker = createWorker({

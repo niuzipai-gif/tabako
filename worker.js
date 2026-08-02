@@ -487,6 +487,7 @@ async function callChat(fetchImpl, key, input) {
   const inputCatalogIds = new Set(input.catalog.map((item) => item.id));
   return {
     ...result,
+    sources: [],
     matches: groundMatchReasons(boostRelatedExactMatches(
       result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id) && inputCatalogIds.has(match.id)),
       input.catalog,

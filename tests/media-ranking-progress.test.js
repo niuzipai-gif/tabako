@@ -757,6 +757,9 @@ test("AI dialog exposes live progress, stages, and terminal states", () => {
   assert.match(source, /MiniMax \+ 联网补充/);
   assert.match(source, /已自动联网查找库外资料/);
   assert.match(source, /mode: "search", query: fallbackQuery/);
+  assert.match(source, /function hasAiWebEvidenceIntent/);
+  assert.match(source, /没有识别到品牌、烟草、包装或目录线索/);
+  assert.match(source, /if \(!hasAiWebEvidenceIntent\(query, catalog\)\)/);
 
   const received = source.indexOf("已收到，正在理解你的描述");
   const localMatch = source.indexOf("本地目录已匹配");
@@ -769,6 +772,31 @@ test("AI dialog exposes live progress, stages, and terminal states", () => {
   const noUpload = source.indexOf("图片没有上传");
   const visionCall = source.indexOf('mode: "vision"');
   assert.ok(proxyCheck > -1 && proxyCheck < noUpload && noUpload < visionCall);
+});
+
+test("new official TEREA reference images stay non-carton", () => {
+  const expected = [
+    "テリア ブラック フューシャ メンソール",
+    "テリア ブラック サンシャイン メンソール",
+    "テリア イエロー メンソール",
+    "テリア トロピカル メンソール",
+    "テリア ブライト メンソール",
+    "テリア ブラック イエロー メンソール",
+  ];
+  const products = rawProducts.map((product) => enrichProduct(product));
+
+  for (const jp of expected) {
+    const rawItem = rawProducts.find((product) => product.jp === jp);
+    const item = products.find((product) => product.jp === jp);
+    assert.ok(rawItem, jp);
+    assert.ok(item, jp);
+    assert.match(rawItem.img, /jp\.iqos\.com\/sites\/g\/files\/default\/files\/styles\/hd\/public\/intro-text-video\/PDP/i, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.match(item.imageSource, /jp\.iqos\.com\/products\/terea-/, jp);
+    assert.match(item.imageNote, /不是 10 包一カートン整条证据/, jp);
+    assert.notEqual(item.cartonStatus, "verified", jp);
+  }
 });
 
 test("device and pod media identities are not mislabeled as a single cigarette pack", () => {
@@ -824,6 +852,7 @@ test("recent real-image device replacements carry explicit image source and note
     "IQOS イルマ i ワン",
     "Ploom CUBE",
     "glo Hilo Plus",
+    "glo HYPER pro+",
     "lil HYBRID 3.0",
     "VAPORESSO XROS 5 Nano",
     "Uwell Caliburn G4 Pro",
