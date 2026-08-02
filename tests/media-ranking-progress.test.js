@@ -819,7 +819,12 @@ test("item-level media metadata passes through for device images without carton 
 
 test("recent real-image device replacements carry explicit image source and note", () => {
   const expectedDevices = [
+    "IQOS イルマ i プライム",
+    "IQOS イルマ i",
+    "IQOS イルマ i ワン",
     "Ploom CUBE",
+    "glo Hilo Plus",
+    "lil HYBRID 3.0",
     "VAPORESSO XROS 5 Nano",
     "Uwell Caliburn G4 Pro",
     "Uwell Caliburn G4 Classic",

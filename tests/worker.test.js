@@ -483,8 +483,11 @@ test("online search uses MiniMax web_search server tool and returns source leads
 });
 
 test("online search drops unrelated web results instead of showing noisy fallback sources", async () => {
+  let called = false;
   const worker = createWorker({
-    fetchImpl: async () =>
+    fetchImpl: async () => {
+      called = true;
+      return (
       new Response(
         JSON.stringify({
           content: [
@@ -515,15 +518,18 @@ test("online search drops unrelated web results instead of showing noisy fallbac
           ],
         }),
         { status: 200, headers: { "content-type": "application/json" } },
-      ),
+      )
+      );
+    },
   });
 
   const response = await worker.fetch(post({ mode: "search", query: "qxzvnonexistent987" }), ENV);
   const payload = await response.json();
 
   assert.equal(response.status, 200);
+  assert.equal(called, false);
   assert.deepEqual(payload.sources, []);
-  assert.match(payload.answer, /没有留下足够相关/);
+  assert.match(payload.answer, /没有识别到品牌、烟草、包装或目录线索/);
 });
 
 test("online search blocks restricted electronic-product queries before calling MiniMax", async () => {

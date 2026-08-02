@@ -228,6 +228,25 @@ function isRestrictedSearch(query) {
   );
 }
 
+function hasSearchEvidenceIntent(query) {
+  const text = cleanText(query, 240).toLocaleLowerCase();
+  const compact = compactLookupText(text);
+  if (!text) return false;
+  if (
+    TOBACCO_RELEVANCE_TERMS.some((term) => {
+      const normalized = term.toLocaleLowerCase();
+      return text.includes(normalized) || compact.includes(compactLookupText(normalized));
+    })
+  ) {
+    return true;
+  }
+  if (localRecommend(query, RECOMMEND_GATE_CATALOG, 1).length > 0) return true;
+  return CANONICAL_CATALOG.some((item) =>
+    [item.jp, item.cn, item.brand, item.relatedExactJp?.join(" "), item.cartonSearchQuery]
+      .some((value) => value && compact.includes(compactLookupText(value))),
+  );
+}
+
 function isSafeUrl(value) {
   try {
     const url = new URL(String(value));
@@ -591,6 +610,18 @@ export function createWorker({ fetchImpl = globalThis.fetch } = {}) {
           return errorResponse(
             "法规状态不明或购买权限受限的电子烟条目不提供联网购买检索",
             400,
+            requestOrigin,
+            allowedOrigin,
+          );
+        }
+        if (mode === "search" && !hasSearchEvidenceIntent(query)) {
+          return jsonResponse(
+            normalizeAiPayload({
+              answer: "没有识别到品牌、烟草、包装或目录线索；为避免返回无关网页，本次不展示联网来源。请换成日文商品名、品牌名、包装文字或加上“香烟/たばこ/カートン”等线索再试。",
+              matches: [],
+              sources: [],
+            }),
+            200,
             requestOrigin,
             allowedOrigin,
           );
