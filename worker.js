@@ -216,7 +216,7 @@ function isRelevantSearchSource(source, query) {
     (token) => haystack.includes(token) || compactHaystack.includes(compactLookupText(token)),
   );
 
-  if (isTrustedDomain && (hasQueryOverlap || hasTobaccoContext)) return true;
+  if (isTrustedDomain) return hasQueryOverlap && hasTobaccoContext;
   return hasQueryOverlap && hasTobaccoContext;
 }
 

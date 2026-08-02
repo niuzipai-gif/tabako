@@ -131,7 +131,7 @@ test("catalog keeps the expanded product source set open to new verified additio
   assert.equal(rawProducts.length >= 163, true);
   assert.deepEqual(
     new Set(rawProducts.map((item) => item.type)),
-    new Set(["cigarette", "heated", "device", "pod"]),
+    new Set(["cigarette", "heated", "device", "vape-device", "pod"]),
   );
 });
 
@@ -257,7 +257,7 @@ test("Cigaronne search accepts common Chinese and romanized misspellings", () =>
 });
 
 test("device catalog covers mainstream heated and vapor hardware families", () => {
-  const devices = rawProducts.filter((item) => item.type === "device");
+  const devices = rawProducts.filter((item) => item.type === "device" || item.type === "vape-device");
   const deviceNames = devices.map((item) => `${item.jp} ${item.cn}`).join("\n");
 
   assert.equal(devices.length >= 24, true);
@@ -282,6 +282,8 @@ test("device catalog covers mainstream heated and vapor hardware families", () =
     /Uwell Caliburn G4 Pro/i,
     /Uwell Caliburn G4/i,
     /Voopoo Argus P3/i,
+    /Voopoo Argus G4/i,
+    /Voopoo Argus G4 mini/i,
     /Voopoo Argus G3/i,
     /OXVA XLIM PRO 2 DNA/i,
     /OXVA XLIM GO 2/i,
@@ -646,7 +648,7 @@ test("device and pod category pages ignore score sorts and keep brand-model orde
 
   assert.match(
     source,
-    /state\.category === "device" \|\| state\.category === "pod" \? "device" : state\.sort/,
+    /state\.category === "device" \|\| state\.category === "vape-device" \|\| state\.category === "pod"/,
   );
 });
 
@@ -685,9 +687,11 @@ test("all device and pod catalog pages keep each brand in one contiguous block",
 test("device and pod category feeds stay separated while device brands follow the hardware family order", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const deviceFeed = sortProducts(filterProducts(products, { category: "device" }), "device");
+  const vapeDeviceFeed = sortProducts(filterProducts(products, { category: "vape-device" }), "device");
   const podFeed = sortProducts(filterProducts(products, { category: "pod" }), "device");
 
   assert.ok(deviceFeed.every((item) => item.type === "device"));
+  assert.ok(vapeDeviceFeed.every((item) => item.type === "vape-device"));
   assert.ok(podFeed.every((item) => item.type === "pod"));
   assert.deepEqual(
     [...new Set(deviceFeed.map((item) => item.brand))],
@@ -697,6 +701,11 @@ test("device and pod category feeds stay separated while device brands follow th
       "with2",
       "glo",
       "lil HYBRID",
+    ],
+  );
+  assert.deepEqual(
+    [...new Set(vapeDeviceFeed.map((item) => item.brand))],
+    [
       "RELX",
       "MOTI",
       "VAPORESSO",
@@ -707,7 +716,7 @@ test("device and pod category feeds stay separated while device brands follow th
     ],
   );
   assert.deepEqual(
-    deviceFeed
+    vapeDeviceFeed
       .filter((item) => item.brand === "VAPORESSO")
       .slice(0, 4)
       .map((item) => item.cn),
@@ -980,7 +989,7 @@ test("maps and electronic product entry points expose lightweight Japanese compl
   assert.match(html, /传统烟可用 Google 地图找烟草店/);
   assert.match(html, /电子烟\/烟弹需确认日本法规和门店实际销售/);
   assert.match(source, /function updateComplianceNotice/);
-  assert.match(source, /state\.category === "device" \|\| state\.category === "pod"/);
+  assert.match(source, /state\.category === "vape-device" \|\| state\.category === "pod"/);
   assert.match(source, /mapComplianceNotice/);
 });
 
@@ -1090,7 +1099,7 @@ test("electronic pods with unknown nicotine status do not expose purchase guidan
 
   assert.equal(result.availability, "restricted");
   assert.equal(result.purchaseAllowed, false);
-  assert.match(result.source, /mhlw\.go\.jp/);
+  assert.match(result.regulatorySource, /mhlw\.go\.jp/);
 });
 
 test("pod entries expose explicit regulatory metadata and disposable subtype", () => {
@@ -1101,7 +1110,8 @@ test("pod entries expose explicit regulatory metadata and disposable subtype", (
   for (const item of pods) {
     assert.equal(item.purchaseAllowed, false, item.jp);
     assert.equal(item.marketStatus, "restricted-regulatory-reference", item.jp);
-    assert.match(item.source, /kennet\.mhlw\.go\.jp/, item.jp);
+    assert.match(item.source, /^https?:\/\//, item.jp);
+    assert.match(item.regulatorySource, /kennet\.mhlw\.go\.jp/, item.jp);
     assert.ok(["replacement-pod", "disposable-vape"].includes(item.productSubtype), item.jp);
   }
 

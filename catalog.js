@@ -8,6 +8,7 @@ const TYPE_LABELS = {
   cigarette: "传统香烟",
   heated: "加热烟弹",
   device: "加热设备",
+  "vape-device": "雾化设备（海外参考）",
   pod: "电子烟弹 / 一次性参考",
 };
 
@@ -15,6 +16,7 @@ const TYPE_LABELS_JP = {
   cigarette: "紙巻きたばこ",
   heated: "加熱式たばこ",
   device: "加熱式デバイス",
+  "vape-device": "ベイプデバイス海外参考",
   pod: "電子たばこポッド・使い捨て参考",
 };
 
@@ -326,13 +328,13 @@ function resolveFlavor(item) {
   if (/メンソール|ミント|薄荷|アイス|冰|コールド|フロスト|クール/.test(text)) {
     return "menthol";
   }
-  if (item.type === "device") return "device";
+  if (item.type === "device" || item.type === "vape-device") return "device";
   if (item.type === "pod") return "vapor";
   return "tobacco";
 }
 
 function resolveStrength(item, flavor) {
-  if (item.type === "device" || item.type === "pod") return "not-applicable";
+  if (item.type === "device" || item.type === "vape-device" || item.type === "pod") return "not-applicable";
   const text = `${item.jp} ${item.cn}`;
   const amount = text.match(/(?:^|\s)(1|2|3|5|6|7|8|10|12|14|18)(?:mg)?(?:\s|$)/i);
   const value = amount ? Number(amount[1]) : null;
@@ -370,7 +372,7 @@ function resolveProfile(item) {
 
 function resolveAvailability(item, profile) {
   const text = `${item.jp} ${item.cn}`;
-  if (item.type === "pod") return "restricted";
+  if (item.type === "pod" || item.type === "vape-device") return "restricted";
   if (item.type === "device" && /discontinued/i.test(String(item.marketStatus ?? ""))) return "discontinued";
   if (/わかば|若叶|エコー|Echo|セーラム|沙龙|RELX|MOTI|ELFBAR|VAPORESSO|Uwell|Voopoo/i.test(text)) {
     return /わかば|若叶|エコー|Echo|セーラム|沙龙/i.test(text) ? "discontinued" : "specialist";
@@ -382,6 +384,9 @@ function resolveAvailability(item, profile) {
 function describeProduct(item, flavor, strength, profile) {
   if (item.type === "device") {
     return `${profile.brand} 设备本体。购买前请核对适配烟弹、颜色与套装内容；便利店并非每家都备货。`;
+  }
+  if (item.type === "vape-device") {
+    return "海外开放式雾化设备参考。页面只能用于辨认型号；无法确认日本当地尼古丁合规、销售许可或门店供应，因此不提供购买地点引导。";
   }
   if (item.type === "pod") {
     return "电子烟或替换烟弹类产品。页面无法确认其中是否含尼古丁；日本国内对含尼古丁烟液的销售有严格许可要求，因此不提供购买地点引导。";
@@ -404,6 +409,8 @@ function describeProduct(item, flavor, strength, profile) {
 function compatibility(item) {
   const text = `${item.jp} ${item.cn}`;
   if (/テリア|センティア/i.test(item.jp)) return "仅适配 IQOS ILUMA 系列";
+  if (item.type === "device" && /IQOS\s*3|3\s*DUO|3\s*MULTI/i.test(text)) return "旧款 IQOS 3 系列本体；使用 HEETS / Marlboro HeatSticks，不适配 IQOS ILUMA 专用 TEREA / SENTIA";
+  if (item.type === "device" && /IQOS|イルマ|ILUMA/i.test(text)) return "IQOS ILUMA 系列本体；使用 TEREA / SENTIA，不适配旧 HEETS / Marlboro HeatSticks";
   if (item.type === "device" && /Hilo/i.test(text)) return "glo Hilo/Hilo Plus 本体；仅使用 virto，不使用 glo HYPER 用 neo / Lucky Strike / KENT";
   if (item.type === "device" && /glo\s*HYPER/i.test(text)) return "glo HYPER 本体；使用 neo、Lucky Strike、KENT 的 glo hyper用烟草棒；不使用 virto";
   if (item.type === "device" && /^with2/i.test(text)) return "with2 本体；使用 ウィズ用 烟草胶囊+液体烟弹组合，不适配 Ploom 烟草棒";
@@ -418,6 +425,7 @@ function compatibility(item) {
   if (/glo/i.test(item.jp)) return "适配 glo HYPER 系列";
   if (/lil HYBRID/i.test(`${item.jp} ${item.cn}`)) return "仅适配 lil HYBRID 3.0；需要 MIIX 专用烟草棒与专用リキッド配套使用";
   if (item.type === "device") return "设备本体，请查看商品名称确认型号";
+  if (item.type === "vape-device") return "海外开放式雾化设备；日本含尼古丁烟液/烟弹销售许可需另行核实，本站不提供购买引导";
   if (item.type === "pod") return "请严格核对烟弹/雾化芯型号";
   return "纸卷香烟，无设备兼容要求";
 }
@@ -546,7 +554,7 @@ function brandSeriesOrder(item) {
     if (/センター.*スーパー|Center Super Slims/i.test(text)) return 200;
     if (/マグネット|Magnet/i.test(text)) return 210;
   }
-  return item.type === "device" || item.type === "pod" ? deviceModelOrder(item) : 500;
+  return item.type === "device" || item.type === "vape-device" || item.type === "pod" ? deviceModelOrder(item) : 500;
 }
 
 const SEARCH_ALIAS_REPLACEMENTS = [
@@ -678,9 +686,17 @@ export function enrichProduct(item, index = 0) {
     description: describeProduct(item, flavor, strength, profile),
     jpImpression: profile.jpImpression,
     cnImpression: profile.cnImpression,
-    source: item.type === "pod" ? MHLW_E_CIGARETTE_GUIDANCE : (item.source ?? profile.source),
+    source: item.source ?? profile.source,
+    regulatorySource:
+      item.regulatorySource ??
+      (item.type === "pod" || item.type === "vape-device" ? MHLW_E_CIGARETTE_GUIDANCE : ""),
     searchText: searchAliases(item),
-    marketStatus: item.type === "pod" ? "restricted-regulatory-reference" : item.marketStatus,
+    marketStatus:
+      item.type === "pod"
+        ? "restricted-regulatory-reference"
+        : item.type === "vape-device"
+          ? "overseas-reference"
+          : item.marketStatus,
     productSubtype: item.productSubtype ?? podSubtype(item),
     priceChecked: PRICE_CHECKED,
     originalIndex: index,
@@ -766,6 +782,11 @@ function mediaTrustRank(item) {
   return cartonRank * 10 + imageRank;
 }
 
+function priceComparable(value, fallback) {
+  const numeric = Number(value);
+  return Number.isFinite(numeric) ? numeric : fallback;
+}
+
 export function sortProducts(products, sort = "recommended") {
   const result = [...products];
   const compareName = (a, b) => a.jp.localeCompare(b.jp, "ja");
@@ -804,10 +825,10 @@ export function sortProducts(products, sort = "recommended") {
     );
   }
   if (sort === "price-asc") {
-    return result.sort((a, b) => a.jpy - b.jpy || compareName(a, b));
+    return result.sort((a, b) => priceComparable(a.jpy, Number.POSITIVE_INFINITY) - priceComparable(b.jpy, Number.POSITIVE_INFINITY) || compareName(a, b));
   }
   if (sort === "price-desc") {
-    return result.sort((a, b) => b.jpy - a.jpy || compareName(a, b));
+    return result.sort((a, b) => priceComparable(b.jpy, Number.NEGATIVE_INFINITY) - priceComparable(a.jpy, Number.NEGATIVE_INFINITY) || compareName(a, b));
   }
 
   return result.sort(
@@ -844,6 +865,7 @@ export function chainMapUrl(chain) {
 }
 
 export function yen(value) {
+  if (!Number.isFinite(Number(value))) return "价格待核对";
   return new Intl.NumberFormat("ja-JP", {
     style: "currency",
     currency: "JPY",
@@ -852,6 +874,7 @@ export function yen(value) {
 }
 
 export function yuan(value, rate) {
+  if (!Number.isFinite(Number(value))) return "待核对";
   return new Intl.NumberFormat("zh-CN", {
     style: "currency",
     currency: "CNY",

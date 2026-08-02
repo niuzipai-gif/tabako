@@ -835,7 +835,7 @@ test("recent real-image device replacements carry explicit image source and note
   for (const name of expectedDevices) {
     const item = products.find((product) => `${product.jp} ${product.cn}`.includes(name));
     assert.ok(item, `${name} exists`);
-    assert.equal(item.type, "device", `${name} type`);
+    assert.ok(item.type === "device" || item.type === "vape-device", `${name} type`);
     assert.match(item.imageSource, /^https:\/\//, `${name} imageSource`);
     assert.match(item.imageNote, /营销图|组合图|官方|来源|设备外观/, `${name} imageNote`);
     assert.doesNotMatch(item.image, /picsum\.photos/, `${name} image`);

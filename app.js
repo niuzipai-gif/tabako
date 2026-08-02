@@ -266,7 +266,7 @@ function availabilityMeta(item) {
 }
 
 function marketStatusMeta(item) {
-  if (item.type !== "device") return null;
+  if (item.type !== "device" && item.type !== "vape-device") return null;
 
   const meta = {
     "current-mainstream": {
@@ -309,7 +309,7 @@ function marketStatusMeta(item) {
 }
 
 function imageSourceLabel(item) {
-  if (item.type === "device") return "查看设备图片来源";
+  if (item.type === "device" || item.type === "vape-device") return "查看设备图片来源";
   if (item.type === "pod") return "查看图片来源";
   return "查看单包图片来源";
 }
@@ -382,7 +382,9 @@ function activeFilterCount() {
 }
 
 function currentProducts() {
-  const sort = state.category === "device" || state.category === "pod" ? "device" : state.sort;
+  const sort = state.category === "device" || state.category === "vape-device" || state.category === "pod"
+    ? "device"
+    : state.sort;
   return sortProducts(
     filterProducts(products, {
       query: state.query,
@@ -425,7 +427,7 @@ function updateFilterUi() {
 
 function updateComplianceNotice() {
   if (!elements.mapComplianceNotice) return;
-  const electronicSelected = state.category === "device" || state.category === "pod";
+  const electronicSelected = state.category === "vape-device" || state.category === "pod";
   elements.mapComplianceNotice.dataset.tone = electronicSelected ? "caution" : "default";
   elements.mapComplianceNotice.textContent = electronicSelected
     ? "设备/烟弹需先确认日本法规、尼古丁状态和门店实际销售；这里不提供误导性购买指引。"
@@ -602,6 +604,7 @@ function rankingPool() {
   return products.filter(
     (item) =>
       item.type !== "device" &&
+      item.type !== "vape-device" &&
       item.type !== "pod" &&
       item.availability !== "discontinued",
   );
@@ -682,7 +685,7 @@ function toggleFavorite(productId) {
 function renderProductDetail(item) {
   const availability = availabilityMeta(item);
   const officialLabel = item.priceStatus === "official" ? "官方参考价" : "指导价";
-  const sourceLabel = item.purchaseAllowed ? "查看厂商/品牌来源" : "查看日本官方法规说明";
+  const sourceLabel = "查看厂商/品牌来源";
   const marketStatus = marketStatusMeta(item);
   const detailMarketStatus = marketStatus
     ? `
@@ -864,13 +867,14 @@ function renderProductDetail(item) {
         <p>页面不能确认这款电子烟或烟弹是否含尼古丁。日本厚生劳动省说明，含尼古丁烟液的销售需要许可；因此这里不提供门店或地图购买链接。</p>
         <a
           class="primary-button"
-          href="${escapeHtml(item.source)}"
+          href="${escapeHtml(item.regulatorySource || item.source)}"
           target="_blank"
           rel="noopener noreferrer"
         >
           <i data-lucide="shield-alert" aria-hidden="true"></i>
           查看日本厚生劳动省说明
         </a>
+        ${item.source ? `<a class="secondary-button full-width" href="${escapeHtml(item.source)}" target="_blank" rel="noopener noreferrer">查看产品身份来源</a>` : ""}
       </section>
     `;
 

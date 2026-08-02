@@ -2599,7 +2599,7 @@ function baseFormat(item) {
   if (item.productSubtype === "liquid-cartridge") {
     return { packageFormat: "专用液体烟弹", packageFormatJp: "リキッドカートリッジ" };
   }
-  if (item.type === "device") {
+  if (item.type === "device" || item.type === "vape-device") {
     return { packageFormat: "设备本体", packageFormatJp: "デバイス" };
   }
   if (item.type === "pod") {
@@ -2626,12 +2626,15 @@ function identityLabels(item) {
       identityNote: "lil HYBRID 专用リキッドカートリッジ不是 20 支烟草棒，也不按传统香烟“一カートン”展示；购买时要和 MIIX 专用烟草棒、lil HYBRID 设备一起核对。",
     };
   }
-  if (item.type === "device") {
+  if (item.type === "device" || item.type === "vape-device") {
     return {
       unitLabel: "设备本体",
       bulkLabel: "购买规格",
       identityHeading: "先认准设备本体与型号",
-      identityNote: "设备本体不使用传统香烟“一カートン”规格；购买时要同时核对完整型号与兼容烟弹。",
+      identityNote:
+        item.type === "vape-device"
+          ? "海外雾化设备不使用传统香烟“一カートン”规格；本站只作型号识别和法规提醒，不提供日本购买地点。"
+          : "设备本体不使用传统香烟“一カートン”规格；购买时要同时核对完整型号与兼容烟弹。",
     };
   }
   if (item.type === "pod") {

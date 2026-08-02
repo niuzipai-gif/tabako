@@ -446,9 +446,9 @@ test("online search uses MiniMax web_search server tool and returns source leads
               content: [
                 {
                   type: "web_search_result",
-                  title: "メーカー商品情報",
+                  title: "セブンスター ブルー系パッケージ メーカー商品情報",
                   url: "https://www.jti.co.jp/tobacco/products/example/",
-                  content: "商品信息摘要",
+                  content: "蓝色七星 / Seven Stars の商品信息摘要。たばこ包装の核对线索。",
                 },
               ],
             },
@@ -475,9 +475,9 @@ test("online search uses MiniMax web_search server tool and returns source leads
   );
   assert.deepEqual(payload.sources, [
     {
-      title: "メーカー商品情報",
+      title: "セブンスター ブルー系パッケージ メーカー商品情報",
       url: "https://www.jti.co.jp/tobacco/products/example/",
-      snippet: "商品信息摘要",
+      snippet: "蓝色七星 / Seven Stars の商品信息摘要。たばこ包装の核对线索。",
     },
   ]);
 });

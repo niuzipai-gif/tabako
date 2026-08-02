@@ -3207,6 +3207,12 @@ textarea {
     linear-gradient(150deg, #fbfbfd, #e6e8ed);
 }
 
+.product-card[data-category="vape-device"] .product-visual {
+  background:
+    radial-gradient(circle at 70% 18%, rgba(112, 138, 166, 0.32), transparent 44%),
+    linear-gradient(150deg, #fbfcfd, #e5ebef);
+}
+
 .product-card[data-category="pod"] .product-visual {
   background:
     radial-gradient(circle at 70% 18%, rgba(189, 171, 208, 0.36), transparent 44%),
