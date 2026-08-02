@@ -276,9 +276,49 @@ test("recommendations constrain glo Hilo queries to the Hilo/virto platform", as
   assert.match(promptText, /ヴァルト・ダーク・タバコ/);
   assert.doesNotMatch(promptText, /glo HYPER pro\+/);
   assert.doesNotMatch(promptText, /ネオ・ブリリアント・ベリー・hyper用/);
-  assert.deepEqual(payload.matches, [
-    { id: virto.id, reason: "Hilo 对应 virto" },
-  ]);
+  assert.deepEqual(payload.matches.map((match) => match.id), [virto.id]);
+  assert.match(payload.matches[0].reason, /ヴァルト・ダーク・タバコ/);
+  assert.match(payload.matches[0].reason, /glo Hilo/);
+  assert.doesNotMatch(payload.matches[0].reason, /HYPER pro\+/);
+});
+
+test("recommendations rewrite Cigaronne reasons from catalog facts", async () => {
+  const royalMenthol = canonicalCatalog.find(
+    (item) => item.jp === "シガローネ・ロイヤルスリム・メンソール",
+  );
+  assert.ok(royalMenthol);
+
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          choices: [
+            {
+              message: {
+                content: JSON.stringify({
+                  answer: "候选。",
+                  matches: [
+                    { id: royalMenthol.id, reason: "错误地写成 Legend" },
+                  ],
+                }),
+              },
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "recommend", query: "cigaronee royal black" }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(payload.matches.map((match) => match.id), [royalMenthol.id]);
+  assert.match(payload.matches[0].reason, /シガローネ・ロイヤルスリム・メンソール/);
+  assert.doesNotMatch(payload.matches[0].reason, /Legend/);
 });
 
 test("recommendations do not call MiniMax or hallucinate matches when the catalog has no evidence", async () => {

@@ -399,6 +399,27 @@ function catalogForQuery(query, catalog) {
   return filtered.length ? filtered : catalog;
 }
 
+function groundMatchReasons(matches, catalog) {
+  const byId = new Map(catalog.map((item) => [item.id, item]));
+  return matches.map((match) => {
+    const item = byId.get(match.id);
+    if (!item) return match;
+    if (item.brand === "Cigaronne" || item.brand === "glo") {
+      const traits = [
+        item.flavor ? `口味 ${item.flavor}` : "",
+        item.strength ? `强度 ${item.strength}` : "",
+        Number.isFinite(Number(item.jpy)) ? `参考价 ¥${item.jpy}` : "",
+        item.compatibility ? `兼容性：${item.compatibility}` : "",
+      ].filter(Boolean).join("；");
+      return {
+        ...match,
+        reason: `${item.jp} / ${item.cn}${traits ? `：${traits}` : ""}；价格和库存以门店为准。`,
+      };
+    }
+    return match;
+  });
+}
+
 function buildChatRequest({ mode, query, catalog, image }) {
   const catalogJson = JSON.stringify(catalog);
   const instructions = BASE_SYSTEM_PROMPT;
@@ -447,10 +468,10 @@ async function callChat(fetchImpl, key, input) {
   const inputCatalogIds = new Set(input.catalog.map((item) => item.id));
   return {
     ...result,
-    matches: boostRelatedExactMatches(
+    matches: groundMatchReasons(boostRelatedExactMatches(
       result.matches.filter((match) => ALLOWED_PRODUCT_IDS.has(match.id) && inputCatalogIds.has(match.id)),
       input.catalog,
-    ),
+    ), input.catalog),
   };
 }
 
