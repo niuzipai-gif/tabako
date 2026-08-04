@@ -1249,6 +1249,38 @@ test("round55 immediate media replacements stay reference-only and keep carton g
   }
 });
 
+test("round56 immediate device media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["IQOS イルマ i プライム アスペングリーン", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/AspenGreen_Delist_News_landscape\.png/, source: /iqos\.com\/news\/suspension-of-iqos-iluma-i-prime-aspen-green/ }],
+    ["IQOS イルマ プライム", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/ILUMA-PRIME_PDP_200x500\.png/, source: /iqos\.com\/news\/iluma-prime-iluma-difference/ }],
+    ["IQOS イルマ", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/ILUMA_PDP_200x500\.png/, source: /iqos\.com\/news\/iluma-prime-iluma-difference/ }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /device reference|official|not tobacco|not pack\/carton evidence|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round56 source should survive media enrichment`);
+    assert.match(item.imageNote, /device reference|official|not tobacco|not pack\/carton evidence|not carton verified/i, `${jp} round56 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, "not-applicable", `${jp} device carton status must remain not-applicable`);
+    assert.equal(item.cartonImage, "", `${jp} device must not publish carton image`);
+  }
+
+  for (const jp of ["IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル"]) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because evidence is WE 2023 non-i`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
