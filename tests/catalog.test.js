@@ -867,7 +867,8 @@ test("detail hero exposes a compact pack and carton status strip", () => {
   assert.match(source, /一条图/);
   assert.match(source, /已核验/);
   assert.match(source, /已拆分变体/);
-  assert.match(source, /来源已记录/);
+  assert.doesNotMatch(source, /来源已记录/);
+  assert.match(source, /"source-only": \{ label: "来源线索", tone: "reference" \}/);
   assert.match(source, /待找整条/);
   assert.match(source, /relatedExactProducts/);
   assert.match(source, /data-related-product/);

@@ -1020,6 +1020,51 @@ test("round48 immediate media replacements do not fall back to picsum or upgrade
   }
 });
 
+test("round49 immediate media replacements do not fall back to picsum or override carton guardrails", () => {
+  const expected = new Map([
+    ["セブンスター ボックス", /anadf\.com\/images\/item\/7000007061_00\.jpg/],
+    ["マールボロ アイスブラスト 8", /anadf\.com\/images\/item\/2010200068_00\.jpg/],
+    ["マールボロ ゴールド", /anadf\.com\/images\/item\/8000002097_00\.jpg/],
+    ["シガローネ・ロイヤルスリム・メンソール", /buy\.am\/media\/image\/3e\/a7\/a9\/sas-608010\.jpg/],
+    ["シガローネ・マグネット", /static\.parma\.am\/origin\/product\/1024\/96357\.jpg/],
+    ["シガローネ・ビッグボス", /tobaccoash\.com\/wp-content\/uploads\/2024\/03\/Cigaronne-Big-Boss-XL-Filter\.jpg/],
+    ["シガローネ・ファントム・シルバー", /tobaccoash\.com\/wp-content\/uploads\/2024\/03\/Cigaronne-Phantom-Slims-Silver\.jpg/],
+    ["シガローネ・エクスクルーシブ・ブラウン", /cdn\.store-assets\.com\/s\/185568\/i\/75246362\.jpeg\?width=1024/],
+    ["シガローネ・ウルトラスリム・ブラック", /tobaccoash\.com\/wp-content\/uploads\/2024\/03\/Cigaronne-Ultra-Slims-Black\.jpg/],
+    ["シガローネ・スーパースリム・ブラック", /tobaccoash\.com\/wp-content\/uploads\/2024\/03\/Cigaronne-Super-Slims-Black\.jpg/],
+    ["シガローネ・ロイヤルスリム・ブラック", /tobaccoash\.com\/wp-content\/uploads\/2024\/03\/Cigaronne-Royal-Slims-XL-Filter-Black\.jpg/],
+  ]);
+  const preExistingStrictCartonVerified = new Set([
+    "セブンスター ボックス",
+    "マールボロ アイスブラスト 8",
+    "マールボロ ゴールド",
+    "シガローネ・ロイヤルスリム・メンソール",
+    "シガローネ・マグネット",
+    "シガローネ・ビッグボス",
+    "シガローネ・ファントム・シルバー",
+    "シガローネ・エクスクルーシブ・ブラウン",
+    "シガローネ・スーパースリム・ブラック",
+    "シガローネ・ロイヤルスリム・ブラック",
+  ]);
+
+  for (const [jp, imagePattern] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, imagePattern, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.match(raw.imageNote, /参考|単包|单包|海外|carton reference|JTeXpress|ANA|Duty-free|辨认/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.doesNotMatch(item.imageNote, /picsum/i, jp);
+    if (preExistingStrictCartonVerified.has(jp)) {
+      assert.equal(item.cartonStatus, "verified", `${jp} keeps pre-existing strict carton evidence`);
+    } else {
+      assert.notEqual(item.cartonStatus, "verified", `${jp} must not be upgraded to carton verified by round49 reference media`);
+    }
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [

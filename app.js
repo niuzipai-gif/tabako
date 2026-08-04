@@ -334,7 +334,7 @@ function cartonAuditStatus(item) {
     "contents-reference": { label: "数量参考", tone: "reference" },
     "multi-carton-reference": { label: "多盒参考", tone: "reference" },
     "variant-reference": { label: "已拆分变体", tone: "reference" },
-    "source-only": { label: "来源已记录", tone: "reference" },
+    "source-only": { label: "来源线索", tone: "reference" },
     "needs-review": { label: "待找整条", tone: "review" },
   };
   return nuanced[item.cartonStatus] ?? { label: "待找整条", tone: "review" };

@@ -186,7 +186,7 @@ function cleanText(value, limit) {
 }
 
 function hasNoSearchSourceMessage(value) {
-  return /没有留下足够相关|没有找到|未直接命中(?:\s*JP)?\s*官方|未命中官方|没有直接命中/.test(
+  return /没有留下足够相关|没有找到|未直接命中(?:\s*JP)?\s*官方|未命中官方|没有直接命中|未在搜索结果中找到|未能直接确认|无法直接确认|搜索结果中没有|未找到官方/.test(
     cleanText(value, AI_LIMITS.answer),
   );
 }

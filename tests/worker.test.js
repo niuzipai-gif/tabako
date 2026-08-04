@@ -623,7 +623,11 @@ test("online search answer acknowledges injected exact catalog sources", async (
       new Response(
         JSON.stringify({
           content: [
-            { type: "text", text: "日文检索未直接命中 JP 官方网页，请尝试更多关键词。" },
+            {
+              type: "text",
+              text:
+                "未在搜索结果中找到完全名为「TEREA Bright Menthol」的官方日本版产品；未能直接确认存在以 Bright Menthol 为名的日本版 IQOS TEREA。",
+            },
             {
               type: "web_search_tool_result",
               content: [
@@ -651,7 +655,7 @@ test("online search answer acknowledges injected exact catalog sources", async (
   assert.equal(payload.sources[0].url, "https://jp.iqos.com/products/terea-bright-menthol");
   assert.doesNotMatch(
     payload.answer,
-    /没有留下足够相关来源|没有留下足够相关的烟草\/包装来源|没有找到|未直接命中|未命中|没有直接命中/,
+    /没有留下足够相关来源|没有留下足够相关的烟草\/包装来源|没有找到|未直接命中|未命中|没有直接命中|未在搜索结果中找到|未能直接确认|无法直接确认|搜索结果中没有|未找到官方/,
   );
   assert.match(payload.answer, /已找到|官方来源|核对来源/);
 });
