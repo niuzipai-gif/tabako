@@ -307,7 +307,7 @@ test("heated device entries carry source, status, and explicit sort metadata", (
     assert.equal(Number.isFinite(Number(item.deviceOrder)), true, `${item.jp} deviceOrder`);
     assert.match(
       item.marketStatus,
-      /^(current-mainstream|current-limited|legacy|discontinued-stock-only|discontinued)$/i,
+      /^(current-mainstream|current-limited|legacy|discontinued-stock-only|discontinued|overseas-reference)$/i,
       `${item.jp} marketStatus`,
     );
   }

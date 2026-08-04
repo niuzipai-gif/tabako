@@ -1402,7 +1402,7 @@ test("round59 immediate device and pod media replacements stay reference-only an
     assert.equal(item.cartonImage, "", `${jp} device or pod must not publish carton image`);
   }
 
-  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω"]) {
+  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY ミント ポッド"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round59 evidence is source-only, pending, flavor-missing, or not exact carton/size proof`);
@@ -1701,6 +1701,36 @@ test("round66 exact source-only product references never publish carton images",
     assert.equal(item.cartonStatus, "source-only", jp);
     assert.equal(item.cartonImage, "", jp);
     assert.match(item.cartonNote, expectation.note, jp);
+  }
+});
+
+test("round67 exact pod and device references stay not-applicable without carton images", () => {
+  const expected = new Map([
+    ["Uwell Caliburn G3 ポッド 0.6Ω", { image: /vapecloud\.co\.nz\/cdn\/shop\/files\/uwell-caliburn-g3-replacement-pods-canada-0\.6\.png\?v=1750417985/, source: "https://vapecloud.co.nz/products/caliburn-g3-replacement-pod-4pk", note: /exact 0\.6 resistance pod image\/page text.*vape pod only.*not tobacco\/carton proof/i }],
+    ["Uwell Caliburn G3 ポッド 0.9Ω", { image: /vapecloud\.co\.nz\/cdn\/shop\/files\/uwell-caliburn-g3-replacement-pods-canada-0\.9\.png\?v=1750417985/, source: "https://vapecloud.co.nz/products/caliburn-g3-replacement-pod-4pk", note: /exact 0\.9 resistance pod image\/page text.*vape pod only.*not tobacco\/carton proof/i }],
+    ["Uwell Caliburn G3 ポッド 1.2Ω", { image: /vapecloud\.co\.nz\/cdn\/shop\/files\/uwell-caliburn-g3-replacement-pods-canada-1\.2\.png\?v=1750417986/, source: "https://vapecloud.co.nz/products/caliburn-g3-replacement-pod-4pk", note: /slightly weaker.*page meta emphasizes 0\.6\/0\.9.*image filename exact 1\.2.*vape pod only.*not tobacco\/carton proof/i }],
+    ["glo HYPER air", { image: /bat\.com\/brands-and-innovation\/glo\/_jcr_content\/root\/container\/batcom_container_1571064729\/batcom_columncontrol_1927994936\/col_1\/batcom_image_copy\.coreimg\.png\/1775729877185\/hyper-air\.png/, source: "https://www.bat.com/brands-and-innovation/glo", note: /BAT official glo brand image.*glo HYPER air.*overseas device reference only.*not tobacco\/carton evidence/i }],
+    ["glo HYPER X2", { image: /bat\.com\/brands-and-innovation\/glo\/_jcr_content\/root\/container\/batcom_container_1571064729\/batcom_columncontrol_1927994936\/col_2\/batcom_image\.coreimg\.png\/1775729864846\/hyper-x2\.png/, source: "https://www.bat.com/brands-and-innovation/glo", note: /BAT official glo brand image.*glo HYPER X2.*overseas device reference only.*not tobacco\/carton evidence/i }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.equal(raw.imageSource, expectation.source, jp);
+    assert.equal(raw.source, expectation.source, jp);
+    assert.equal(raw.marketStatus, "overseas-reference", jp);
+    assert.equal(raw.cartonStatus, "not-applicable", jp);
+    assert.match(raw.imageNote, expectation.note, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.equal(item.imageSource, expectation.source, jp);
+    assert.equal(item.cartonStatus, "not-applicable", jp);
+    assert.equal(item.cartonImage, "", jp);
   }
 });
 
