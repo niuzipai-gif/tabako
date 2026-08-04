@@ -135,7 +135,7 @@ const MEDIA_OVERRIDES = new Map([
     "マールボロ・メンソール・8・ボックス|万宝路 薄荷 8mg 盒装",
     {
       image: "./images/cartons/marlboro-menthol8-box-ana-2carton.jpg",
-      imageStatus: "verified",
+      imageStatus: "reference",
       imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000098242",
       imageNote:
         "ANA DUTY FREE 官方 2カートンセット图，可读 Marlboro menthol 8 与日本警示；用于 exact Menthol 8 Box 行的外箱识别。",
@@ -376,9 +376,8 @@ const MEDIA_OVERRIDES = new Map([
   [
     "ピース インフィニティ|和平 无限",
     {
-      cartonStatus: "verified",
-      cartonImage:
-        "./images/cartons/peace-infinity-monolog-20px10-carton.jpg",
+      cartonStatus: "source-only",
+      cartonImage: "",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210141015",
       cartonPackCount: 10,
       cartonStickCount: 200,
@@ -392,7 +391,7 @@ const MEDIA_OVERRIDES = new Map([
         },
       ],
       cartonNote:
-        "ものログ商品名为“JT ピースインフィニティ 20PX10”，主图可见 10 包整条塑封实拍，按 20 本×10 包 / 200 支核验；单包正面图另放入图库辅助辨认。",
+        "ものログ商品名为“JT ピースインフィニティ 20PX10”，页面包含 JAN 4902210141015 和 20PX10 数量线索；本地图为塑封 carton-like reference, but the visible face is not enough to clearly prove all 10 packs，因此只保留 source-only 参考，不展示 cartonImage，not carton verified by round60 addendum。",
     },
   ],
   [
@@ -921,10 +920,10 @@ const MEDIA_OVERRIDES = new Map([
     "シガローネ・スーパースリム・メンソール|卡比龙 Super Slims Menthol",
     {
       image: "./images/verified/cigaronne-super-menthol-worldtobacco-pack.jpg",
-      imageStatus: "verified",
+      imageStatus: "reference",
       imageSource: "https://www.world-tobacco.jp/view/item/000000002255",
       imageNote:
-        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Super Slims，绿色包装对应薄荷款；JAL 同款页另确认 1カートン10箱。",
+        "World Tobacco 对应 SKU 页面图，图面可读 Cigaronne Menthol / Super Slims，绿色包装对应薄荷款；JAL 同款页另确认 1カートン10箱，但当前图是单盒参考，不是完整 10 包/一カートン外箱实拍，not carton verified。",
       packageFormat: "横向硬盒",
       packageFormatJp: "ボックス",
       cartonStatus: "source-only",

@@ -171,6 +171,30 @@ test("Peace Super Lights keeps ANA single-pack artwork below verified", () => {
   assert.match(peace.cartonNote, /单包\+警示面板|不是整条外箱|ANA/);
 });
 
+test("Peace Infinity uses the Monolog 20PX10 carton-like reference below verified", () => {
+  const raw = rawProducts.find((item) => item.jp === "ピース インフィニティ");
+  assert.ok(raw);
+  assert.equal(raw.img, "./images/cartons/peace-infinity-monolog-20px10-carton.jpg");
+  assert.equal(raw.imageStatus, "reference");
+  assert.equal(raw.imageSource, "https://monolog.r-n-i.jp/item/4902210141015");
+  assert.equal(raw.cartonStatus, "source-only");
+  assert.match(raw.imageNote, /ピースインフィニティ|20PX10|JAN 4902210141015/);
+  assert.match(raw.imageNote, /carton-like reference/i);
+  assert.match(raw.imageNote, /not enough for complete 10-pack carton verification/i);
+  assert.match(raw.imageNote, /not carton verified by round60 addendum/i);
+
+  const item = enrichProduct(raw);
+  assert.equal(item.cartonStatus, "source-only");
+  assert.equal(item.cartonImage, "");
+  assert.match(item.cartonSource, /monolog\.r-n-i\.jp\/item\/4902210141015/);
+  assert.match(item.cartonNote, /20PX10|JAN 4902210141015/);
+  assert.match(item.cartonNote, /visible face is not enough to clearly prove all 10 packs/i);
+  assert.notEqual(item.imageStatus, "verified");
+
+  const referencePath = new URL("../images/cartons/peace-infinity-monolog-20px10-carton.jpg", import.meta.url);
+  assert.equal(existsSync(referencePath), true);
+});
+
 test("Marlboro Gold uses exact 10-box artwork instead of the ANA single pack or 2-carton image", () => {
   const item = enrichProduct(
     rawProducts.find((product) => product.jp === "マールボロ ゴールド"),
@@ -1343,7 +1367,7 @@ test("round58 immediate device media replacements stay reference-only and keep c
     assert.equal(item.cartonImage, "", `${jp} device must not publish carton image`);
   }
 
-  for (const jp of ["Uwell Caliburn G4", "Uwell Caliburn G4 Mini", "IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID", "シガローネ・クラシック・キングサイズ", "シガローネ・センター・キングサイズ"]) {
+  for (const jp of ["Uwell Caliburn G4", "Uwell Caliburn G4 Mini", "IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round58 evidence is backup-only, source-only, mismatched, or not exact carton/size proof`);
@@ -1378,10 +1402,45 @@ test("round59 immediate device and pod media replacements stay reference-only an
     assert.equal(item.cartonImage, "", `${jp} device or pod must not publish carton image`);
   }
 
-  for (const jp of ["RELX Infinity Device", "RELX Infinity ミント ポッド", "MOTI PLAY Device", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス", "シガローネ・クラシック・キングサイズ", "シガローネ・センター・キングサイズ"]) {
+  for (const jp of ["RELX Infinity Device", "RELX Infinity ミント ポッド", "MOTI PLAY Device", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round59 evidence is source-only, pending, flavor-missing, or not exact carton/size proof`);
+  }
+});
+
+test("round60 official Cigaronne format references replace raw Picsum without carton verification", () => {
+  const expected = new Map([
+    ["シガローネ・スーパースリム・メンソール", { image: /be\.cigaronne\.com\/uploads\/SS_menthol_mob_01_01_03_03_04_b66244675d\.png/, source: /cigaronne\.com\/products\/super-slims/ }],
+    ["シガローネ・クラシック・キングサイズ", { image: /be\.cigaronne\.com\/uploads\/KS_mob_5cc78e8bb6\.png/, source: /cigaronne\.com\/products\/king-size/ }],
+    ["シガローネ・クラシック・コンパット", { image: /be\.cigaronne\.com\/uploads\/compato_mobil_188137ede1\.png/, source: /cigaronne\.com\/products\/compatto/ }],
+    ["シガローネ・クラシック・ウルトラスリム", { image: /be\.cigaronne\.com\/uploads\/ultra_mobil_02_823736ffb0\.png/, source: /cigaronne\.com\/products\/ultra-slim/ }],
+    ["シガローネ・センター・キングサイズ", { image: /be\.cigaronne\.com\/uploads\/center_KS_e1919ae1b0\.png/, source: /cigaronne\.com\/products\/center-king-size/ }],
+    ["シガローネ・センター・コンパット", { image: /be\.cigaronne\.com\/uploads\/listing_web_f85ea94245\.png/, source: /cigaronne\.com\/products\/center-compatto/ }],
+    ["シガローネ・センター・ウルトラスリム", { image: /be\.cigaronne\.com\/uploads\/center_ultra_c89f25de9a\.png/, source: /cigaronne\.com\/products\/center-ultra-slims/ }],
+    ["シガローネ・センター・スーパースリム", { image: /be\.cigaronne\.com\/uploads\/center_super_7b699f4640\.png/, source: /cigaronne\.com\/products\/center-super-slims/ }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /official Cigaronne pack\/format reference only/i, jp);
+    assert.match(raw.imageNote, /not carton evidence/i, jp);
+    assert.match(raw.imageNote, /not Japan sales proof/i, jp);
+    assert.match(raw.imageNote, /not carton verified by round60/i, jp);
+    assert.notEqual(raw.cartonStatus, "verified", jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, `${jp} enriched display image must not fall back to Picsum`);
+    assert.equal(item.imageStatus, "reference", `${jp} enriched image status must stay conservative`);
+    assert.match(item.imageSource, /cigaronne\.com|world-tobacco\.jp/, `${jp} enriched source should stay source-backed`);
+    assert.match(item.imageNote, /Cigaronne|World Tobacco|官网|not carton verified|不是完整|不是.*外箱/i, `${jp} enriched note must stay conservative`);
+    assert.notEqual(item.cartonStatus, "verified", `${jp} must not become carton verified after enrichment`);
+    assert.equal(item.cartonImage, "", `${jp} must not publish carton image from a pack/format reference`);
   }
 });
 
@@ -1954,7 +2013,12 @@ test("Cigaronne pack media uses exact local images while American Spirit separat
 
   for (const [jp, imagePattern] of cigaronne) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
-    assert.equal(item.imageStatus, "verified", jp);
+    if (jp === "シガローネ・スーパースリム・メンソール") {
+      assert.equal(item.imageStatus, "reference", jp);
+      assert.match(item.imageNote, /not carton verified|不是完整.*外箱/i, jp);
+    } else {
+      assert.equal(item.imageStatus, "verified", jp);
+    }
     assert.match(item.image, imagePattern, jp);
     if (jp === "シガローネ・ロイヤルスリム・メンソール") {
       assert.equal(item.cartonStatus, "verified", jp);
