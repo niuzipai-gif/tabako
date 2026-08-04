@@ -2,6 +2,56 @@ const GOOGLE_IMAGE_SEARCH = "https://www.google.com/search";
 
 const MEDIA_OVERRIDES = new Map([
   [
+    "メビウス・レギュラー・フレーバー・ウィズ用|with2 梅比乌斯 经典胶囊+烟弹",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/",
+      cartonNote:
+        "NEOSMO shared/current lineup image visibly includes Regular Flavor；JTI confirms exact current name, 2026-08-04 release, 10 capsules + 2 cartridges, 1200円; not carton proof.",
+    },
+  ],
+  [
+    "メビウス・メンソール・フレーバー・ウィズ用|with2 梅比乌斯 薄荷胶囊+烟弹",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/",
+      cartonNote:
+        "NEOSMO shared/current lineup image visibly includes Menthol Flavor；JTI confirms exact current name, 2026-08-04 release, 10 capsules + 2 cartridges, 1200円; not carton proof.",
+    },
+  ],
+  [
+    "メビウス・フローズン・フレーバー・ウィズ用|with2 梅比乌斯 冰感胶囊+烟弹",
+    {
+      cartonStatus: "contents-reference",
+      cartonImage: "",
+      cartonSource: "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/",
+      cartonNote:
+        "NEOSMO image shows Frozen pack plus 10 capsules and 2 cartridges；JTI confirms exact current name/spec, 2026-08-04 release and 1200円; contents reference not carton proof.",
+    },
+  ],
+  [
+    "メビウス・レッド・ミント・フレーバー・ウィズ用|with2 梅比乌斯 红薄荷胶囊+烟弹",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/",
+      cartonNote:
+        "NEOSMO shared/current lineup image visibly includes Red Mint Flavor；JTI confirms exact current name, 2026-08-04 release, 10 capsules + 2 cartridges, 1200円; not carton proof.",
+    },
+  ],
+  [
+    "メビウス・パープル・ミント・フレーバー・ウィズ用|with2 梅比乌斯 紫薄荷胶囊+烟弹",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/",
+      cartonNote:
+        "NEOSMO shared/current lineup image visibly includes Purple Mint Flavor；JTI confirms exact current name, 2026-08-04 release, 10 capsules + 2 cartridges, 1200円; not carton proof.",
+    },
+  ],
+  [
     "セブンスター|七星",
     {
       image: "./images/verified/seven-stars-soft-archive.jpg",

@@ -1402,7 +1402,7 @@ test("round59 immediate device and pod media replacements stay reference-only an
     assert.equal(item.cartonImage, "", `${jp} device or pod must not publish carton image`);
   }
 
-  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY Device", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス"]) {
+  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round59 evidence is source-only, pending, flavor-missing, or not exact carton/size proof`);
@@ -1580,6 +1580,66 @@ test("round63 lil HYBRID liquid cartridge uses official accessory media without 
   assert.equal(item.imageSource, "https://jp.iqos.com/discover/lil-hybrid");
   assert.equal(item.cartonStatus, "not-applicable");
   assert.equal(item.cartonImage, "");
+});
+
+test("round64 with2 flavor cartridge references stay non-verified without carton images", () => {
+  const expected = new Map([
+    ["メビウス・レギュラー・フレーバー・ウィズ用", { image: /yosk8\.com\/wp-content\/uploads\/2026\/06\/with2-tobacco-capsule-big-pack-renewal-2\.jpg/, status: "source-only", note: /Regular Flavor.*JTI confirms exact current name.*2026-08-04.*10 capsules \+ 2 cartridges.*not carton proof/i }],
+    ["メビウス・メンソール・フレーバー・ウィズ用", { image: /yosk8\.com\/wp-content\/uploads\/2026\/06\/with2-tobacco-capsule-big-pack-renewal-2\.jpg/, status: "source-only", note: /Menthol Flavor.*JTI confirms exact current name.*2026-08-04.*10 capsules \+ 2 cartridges.*not carton proof/i }],
+    ["メビウス・フローズン・フレーバー・ウィズ用", { image: /yosk8\.com\/wp-content\/uploads\/2026\/06\/with2-tobacco-capsule-big-pack-renewal-4\.jpg/, status: "contents-reference", note: /Frozen pack plus 10 capsules and 2 cartridges.*contents reference.*not carton/i }],
+    ["メビウス・レッド・ミント・フレーバー・ウィズ用", { image: /yosk8\.com\/wp-content\/uploads\/2026\/06\/with2-tobacco-capsule-big-pack-renewal-2\.jpg/, status: "source-only", note: /Red Mint Flavor.*JTI confirms exact current name.*2026-08-04.*10 capsules \+ 2 cartridges.*not carton proof/i }],
+    ["メビウス・パープル・ミント・フレーバー・ウィズ用", { image: /yosk8\.com\/wp-content\/uploads\/2026\/06\/with2-tobacco-capsule-big-pack-renewal-2\.jpg/, status: "source-only", note: /Purple Mint Flavor.*JTI confirms exact current name.*2026-08-04.*10 capsules \+ 2 cartridges.*not carton proof/i }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.equal(raw.imageSource, "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/", jp);
+    assert.equal(raw.source, "https://www.jti.co.jp/tobacco/products/ploomtechplus/", jp);
+    assert.match(raw.imageNote, expectation.note, jp);
+    assert.equal(raw.cartonStatus, expectation.status, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.equal(item.imageSource, "https://yosk8.com/with2-tobacco-capsule-big-pack-renewal/", jp);
+    assert.notEqual(item.cartonStatus, "verified", jp);
+    assert.equal(item.cartonStatus, expectation.status, jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, expectation.note, jp);
+  }
+});
+
+test("round64 addendum legacy device references stay not-applicable without carton images", () => {
+  const expected = new Map([
+    ["IQOS 3 DUO", { image: /cdn\.iqos\.jp\/images\/detailed\/5\/EC_PDP_Carousel_white_no-stick_500x415\.png/, source: "https://jp.iqos.com/products/5297", note: /IQOS official device reference only.*not tobacco\/carton evidence/i }],
+    ["IQOS 3 MULTI", { image: /cdn\.iqos\.jp\/images\/variant_image\/4\/Multi_Brilliant_Gold_img1_7eq7-jy\.png/, source: "https://jp.iqos.com/products/5213", note: /IQOS official device reference only.*not tobacco\/carton evidence/i }],
+    ["Ploom X ADVANCED", { image: /shop\.clubjt\.jp\/online\/images\/GroupNews\/PXA_salestart_231121\.jpg/, source: "https://shop.clubjt.jp/online/GroupNews.aspx?nid=GN000144", note: /JT\/CLUB JT official device reference only.*not tobacco\/carton evidence/i }],
+    ["Ploom X", { image: /clubjt\.jp\/brand-assets\/ploom\/images\/support\/bluetooth\/ploomx\/device-remove\.png/, source: "https://www.clubjt.jp/brand-site/ploom/support/ploomx/bluetooth/", note: /JT\/CLUB JT official device reference only.*not tobacco\/carton evidence/i }],
+    ["Ploom TECH+", { image: /shop\.clubjt\.jp\/online\/images\/GroupNews\/news_image_PTplus_230629\.jpg/, source: "https://shop.clubjt.jp/online/GroupNews.aspx?nid=GN000129", note: /JT\/CLUB JT official device reference only.*not tobacco\/carton evidence/i }],
+    ["MOTI PLAY Device", { image: /motiplanet\.com\/cdn\/shop\/products\/Alloy_Black\.png\?v=1661486008/, source: "https://www.motiplanet.com/products/moti-play", note: /MOTI brand device reference only.*not tobacco\/carton evidence.*not Japan sales\/nicotine-compliance proof/i }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.equal(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, expectation.note, jp);
+    assert.equal(raw.cartonStatus, "not-applicable", jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.equal(item.imageSource, expectation.source, jp);
+    assert.equal(item.cartonStatus, "not-applicable", jp);
+    assert.equal(item.cartonImage, "", jp);
+  }
 });
 
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
