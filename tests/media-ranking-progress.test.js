@@ -1132,6 +1132,36 @@ test("round51 immediate media replacements stay reference-only and keep carton g
   }
 });
 
+test("round52 immediate media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["キャスター 3", { image: /anadf\.com\/images\/item\/2010100027_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100027/, carton: "source-only" }],
+    ["キャスター 5", { image: /anadf\.com\/images\/item\/2010100026_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100026/, carton: "contents-reference" }],
+    ["バージニア エス ロゼ メンソール", { image: /makeshop-multi-images\.akamaized\.net\/kdaisho\/itemimages\/000000001119_7u01G5K\.jpg/, source: /world-tobacco\.jp\/view\/item\/000000001119/, carton: "contents-reference" }],
+    ["メビウス・シトラス・オプション・プルーム用", { image: /anadf\.com\/images\/item\/2030100195_00\.jpg/, source: /anadf\.com\/ItemDetail\.aspx\?s_cd=2030100195/i, carton: "needs-review" }],
+    ["メビウス・ペアー・オプション・プルーム用", { image: /anadf\.com\/images\/item\/2030100211_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100211/i, carton: "needs-review" }],
+    ["ラッキー・ストライク・ベリー・メンソール・glo hyper用", { image: /anadf\.com\/images\/item\/2030100225_00\.jpg/, source: /anadf\.com\/ItemDetail\.aspx\?s_cd=2030100225/i, carton: "needs-review" }],
+    ["ケント・トゥルー・リッチ・メンソール・glo hyper用", { image: /anadf\.com\/images\/item\/2030100175_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100175/i, carton: "needs-review" }],
+    ["glo HYPER pro", { image: /myglo\.com\/jp\/ja\/device\/glo-hyper-pro\/.*hyperpro-lineup-lapisblue-2x\.webp/, source: /myglo\.com\/jp\/ja\/device\/glo-hyper-pro/, carton: "not-applicable" }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|参考|single-product|retailer|device|not visible carton|不是整条|不是 10 包|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round52 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|参考|single-product|retailer|device|not visible carton|不是整条|不是 10 包|not carton verified/i, `${jp} round52 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, expectation.carton, `${jp} carton status must not change because of round52 reference media`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
