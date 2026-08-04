@@ -261,6 +261,47 @@ function rankSearchSources(sources, query) {
   return [...primary, ...secondary].map((item) => item.source);
 }
 
+function sourceUrlKey(url) {
+  try {
+    const parsed = new URL(String(url));
+    parsed.hash = "";
+    return parsed.toString();
+  } catch {
+    return "";
+  }
+}
+
+function localExactSourceForQuery(query, sources) {
+  const existingUrls = new Set(sources.map((source) => sourceUrlKey(source.url)).filter(Boolean));
+  const exactMatches = findExactCatalogMatches(query)
+    .filter((item) => isSafeUrl(item.source))
+    .map((item) => {
+      const hostname = getHostname(item.source);
+      return {
+        item,
+        urlKey: sourceUrlKey(item.source),
+        score: isJapanOfficialSource(hostname) ? 100 : isTrustedTobaccoSource(hostname) ? 50 : 0,
+      };
+    })
+    .filter((match) => match.urlKey && !existingUrls.has(match.urlKey));
+
+  exactMatches.sort((left, right) => right.score - left.score);
+  const match = exactMatches[0];
+  if (!match) return null;
+
+  return {
+    title: cleanText(`${match.item.jp} / ${match.item.cn} 官方/目录来源`, 180),
+    url: String(match.item.source),
+    snippet: "本地目录记录的官方/产品来源，用于优先核对 SKU，不代表实时库存。",
+  };
+}
+
+function injectLocalExactSource(sources, query) {
+  const localSource = localExactSourceForQuery(query, sources);
+  if (!localSource) return sources;
+  return [localSource, ...sources];
+}
+
 function isRelevantSearchSource(source, query) {
   const url = String(source?.url ?? "");
   const hostname = getHostname(url);
@@ -607,7 +648,7 @@ async function callSearch(fetchImpl, key, query) {
       ? textBlocks.at(-1) || "已找到一些可能相关的网页线索，请打开来源核对。"
       : "联网搜索没有留下足够相关的烟草/包装来源；请换成品牌、日文名或包装文字再试。",
     matches: [],
-    sources: rankSearchSources(sources, query),
+    sources: injectLocalExactSource(rankSearchSources(sources, query), query),
   });
 }
 

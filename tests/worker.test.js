@@ -574,6 +574,93 @@ test("online search prioritizes Japanese official sources for exact TEREA querie
   );
 });
 
+test("online search injects local exact catalog source when upstream misses Japanese official source", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          content: [
+            { type: "text", text: "找到了一个跨市场页面，请核对。" },
+            {
+              type: "web_search_tool_result",
+              content: [
+                {
+                  type: "web_search_result",
+                  title: "TEREA Bright Menthol overseas carton listing",
+                  url: "https://world-tobacco.example/terea-bright-menthol-carton",
+                  content: "IQOS TEREA Bright Menthol tobacco carton information for an overseas market.",
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "search", query: "IQOS TEREA Bright Menthol" }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(
+    payload.sources.map((source) => source.url),
+    [
+      "https://jp.iqos.com/products/terea-bright-menthol",
+      "https://world-tobacco.example/terea-bright-menthol-carton",
+    ],
+  );
+  assert.match(payload.sources[0].title, /テリア ブライト メンソール|TEREA Bright Menthol/);
+  assert.match(payload.sources[0].snippet, /本地目录记录的官方\/产品来源/);
+  assert.match(payload.sources[0].snippet, /不代表实时库存/);
+});
+
+test("online search does not duplicate an upstream source that matches the exact local catalog URL", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          content: [
+            {
+              type: "web_search_tool_result",
+              content: [
+                {
+                  type: "web_search_result",
+                  title: "テリア ブライト メンソール | IQOS 日本公式",
+                  url: "https://jp.iqos.com/products/terea-bright-menthol",
+                  content: "テリア ブライト メンソール TEREA Bright Menthol の日本公式たばこ製品情報。",
+                },
+                {
+                  type: "web_search_result",
+                  title: "TEREA Bright Menthol overseas carton listing",
+                  url: "https://world-tobacco.example/terea-bright-menthol-carton",
+                  content: "IQOS TEREA Bright Menthol tobacco carton information for an overseas market.",
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "search", query: "IQOS TEREA Bright Menthol" }),
+    ENV,
+  );
+  const payload = await response.json();
+  const urls = payload.sources.map((source) => source.url);
+
+  assert.equal(response.status, 200);
+  assert.equal(urls[0], "https://jp.iqos.com/products/terea-bright-menthol");
+  assert.equal(
+    urls.filter((url) => url === "https://jp.iqos.com/products/terea-bright-menthol").length,
+    1,
+  );
+});
+
 test("online search drops unrelated web results instead of showing noisy fallback sources", async () => {
   let called = false;
   const worker = createWorker({
