@@ -1162,6 +1162,36 @@ test("round52 immediate media replacements stay reference-only and keep carton g
   }
 });
 
+test("round53 immediate media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["キャメル クラフト 14", { image: /makeshop-multi-images\.akamaized\.net\/kdaisho\/itemimages\/000000001935_LH9nIAZ\.jpg/, source: /world-tobacco\.jp\/view\/item\/000000001935/, carton: "verified" }],
+    ["キャメル・メンソール・コールド・プルーム用", { image: /anadf\.com\/images\/item\/2030100203_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100203/i, carton: "verified" }],
+    ["キャメル・メンソール・ベリー・プルーム用", { image: /anadf\.com\/images\/item\/2030100205_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100205/i, carton: "needs-review" }],
+    ["キャメル・ベリー・オプション・プルーム用", { image: /anadf\.com\/images\/item\/2030100212_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100212/i, carton: "needs-review" }],
+    ["ラッキー・ストライク・リッチ・タバコ・glo hyper用", { image: /kishida\.ocnk\.net\/data\/kishida\/product\/p_image\/k3965_1\.jpg/, source: /kishida\.ocnk\.net\/product\/3285/, carton: "verified" }],
+    ["ラッキー・ストライク・メンソール・glo hyper用", { image: /tabako\.co\.jp\/tabako\/wp-content\/uploads\/2022\/12\/tvp-lky_me20glohpr\.jpg/, source: /tabako\.co\.jp\/item\/tvp-lky_me20glohpr/, carton: "verified" }],
+    ["ラッキー・ストライク・ベリー・ブースト・glo hyper用", { image: /tabako\.co\.jp\/tabako\/wp-content\/uploads\/2024\/01\/tvp-lky_berryboost\.jpg/, source: /tabako\.co\.jp\/item\/tvp-lky_berryboost/, carton: "needs-review" }],
+    ["ラッキー・ストライク・トロピカル・ブースト・glo hyper用", { image: /tabako\.co\.jp\/tabako\/wp-content\/uploads\/2024\/01\/tvp-lky_tropicalboost\.jpg/, source: /tabako\.co\.jp\/item\/tvp-lky_tropicalboost/, carton: "needs-review" }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|参考|single-product|retail|ANA|not visible|不是整条|不是 10 包|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round53 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|参考|single-product|retail|ANA|not visible|不是整条|不是 10 包|not carton verified/i, `${jp} round53 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, expectation.carton, `${jp} carton status must not change because of round53 reference media`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
