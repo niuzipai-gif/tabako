@@ -186,7 +186,9 @@ function cleanText(value, limit) {
 }
 
 function hasNoSearchSourceMessage(value) {
-  return /没有留下足够相关|没有找到/.test(cleanText(value, AI_LIMITS.answer));
+  return /没有留下足够相关|没有找到|未直接命中(?:\s*JP)?\s*官方|未命中官方|没有直接命中/.test(
+    cleanText(value, AI_LIMITS.answer),
+  );
 }
 
 function compactLookupText(value) {

@@ -623,6 +623,7 @@ test("online search answer acknowledges injected exact catalog sources", async (
       new Response(
         JSON.stringify({
           content: [
+            { type: "text", text: "日文检索未直接命中 JP 官方网页，请尝试更多关键词。" },
             {
               type: "web_search_tool_result",
               content: [
@@ -648,7 +649,10 @@ test("online search answer acknowledges injected exact catalog sources", async (
 
   assert.equal(response.status, 200);
   assert.equal(payload.sources[0].url, "https://jp.iqos.com/products/terea-bright-menthol");
-  assert.doesNotMatch(payload.answer, /没有留下足够相关来源|没有留下足够相关的烟草\/包装来源|没有找到/);
+  assert.doesNotMatch(
+    payload.answer,
+    /没有留下足够相关来源|没有留下足够相关的烟草\/包装来源|没有找到|未直接命中|未命中|没有直接命中/,
+  );
   assert.match(payload.answer, /已找到|官方来源|核对来源/);
 });
 
