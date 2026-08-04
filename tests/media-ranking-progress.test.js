@@ -1402,7 +1402,7 @@ test("round59 immediate device and pod media replacements stay reference-only an
     assert.equal(item.cartonImage, "", `${jp} device or pod must not publish carton image`);
   }
 
-  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス"]) {
+  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round59 evidence is source-only, pending, flavor-missing, or not exact carton/size proof`);
@@ -1639,6 +1639,35 @@ test("round64 addendum legacy device references stay not-applicable without cart
     assert.equal(item.imageSource, expectation.source, jp);
     assert.equal(item.cartonStatus, "not-applicable", jp);
     assert.equal(item.cartonImage, "", jp);
+  }
+});
+
+test("round65 ELFBAR 600 exact flavor references stay overseas non-carton", () => {
+  const expected = new Map([
+    ["ELFBAR 600 ピーチアイス", /dbh4s5ja0maaw\.cloudfront\.net\/products\/elfbar600\/1%25\/13-PEACH%20ICE\.png/],
+    ["ELFBAR 600 ブルーベリー", /dbh4s5ja0maaw\.cloudfront\.net\/products\/elfbar600\/0%25\/3-BLUEBERRY\.png/],
+    ["ELFBAR 600 ストロベリーキウイ", /dbh4s5ja0maaw\.cloudfront\.net\/products\/elfbar600\/1%25\/19-STRAWBERRY%20KIWI\.png/],
+  ]);
+
+  for (const [jp, image] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.equal(raw.imageSource, "https://www.elfbar.com/product/ELFBAR-600.html", jp);
+    assert.equal(raw.source, "https://www.elfbar.com/product/ELFBAR-600.html", jp);
+    assert.equal(raw.marketStatus, "overseas-reference", jp);
+    assert.equal(raw.cartonStatus, "not-applicable", jp);
+    assert.match(raw.imageNote, /official exact.*flavor image.*overseas vape-product only.*not Japan sales\/nicotine-compliance proof.*not carton evidence/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.equal(item.imageSource, "https://www.elfbar.com/product/ELFBAR-600.html", jp);
+    assert.equal(item.cartonStatus, "not-applicable", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.equal(item.marketStatus, "restricted-regulatory-reference", jp);
   }
 });
 
