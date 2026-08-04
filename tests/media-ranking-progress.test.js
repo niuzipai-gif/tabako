@@ -1281,6 +1281,40 @@ test("round56 immediate device media replacements stay reference-only and keep c
   }
 });
 
+test("round57 immediate device media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["IQOS イルマ ワン", { image: /iqos\.com\/sites\/g\/files\/default\/files\/styles\/module\/public\/Compare-Device_ILUMA-ONE\.png\?itok=3gQtizqJ/, source: /iqos\.com\/comparison/ }],
+    ["VAPORESSO XROS 5", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros5-colors-web\.webp/, source: /vaporesso\.com\/series-product\/xros-series\/xros5/ }],
+    ["VAPORESSO XROS 5 Mini", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros_5_mini-pc-colors-1\.webp/, source: /vaporesso\.com\/series-product\/xros-series\/xros5-mini/ }],
+    ["VAPORESSO XROS 4", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros_4-pc-spec-1\.png/, source: /vaporesso\.com\/series-product\/xros-series\/xros4/ }],
+    ["Voopoo Argus G3", { image: /sen\.voopoo\.com\.cn\/www-voopoo\/static\/dist\/images\/product\/detail\/argus-g3\/banner_20250802\.webp\?v=5cbce2bc53/, source: /voopoo\.com\/argus-series\/argus-g3/ }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|official|device|not tobacco|not pack\/carton evidence|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round57 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|official|device|not tobacco|not pack\/carton evidence|not carton verified/i, `${jp} round57 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, "not-applicable", `${jp} device carton status must remain not-applicable`);
+    assert.equal(item.cartonImage, "", `${jp} device must not publish carton image`);
+  }
+
+  for (const jp of ["IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID"]) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round57 evidence has naming/generation mismatch`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
