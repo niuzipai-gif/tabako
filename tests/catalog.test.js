@@ -378,6 +378,14 @@ test("lil HYBRID liquid cartridge is represented as a separate required consumab
 test("glo HYPER current sticks follow the 2026 BAT price notice", () => {
   const products = rawProducts.map((item, index) => enrichProduct(item, index));
   const sourcePattern = /prtimes\.jp\/a\/\?c=51859&f=d51859-175/;
+  const exactRound66Sources = new Map([
+    ["ネオ・クラシック・タバコ・hyper用", "https://www.placer-tabaco.com/product/6188"],
+    ["ネオ・アークティック・メンソール・hyper用", "https://www.placer-tabaco.com/product/6189"],
+    ["ネオ・チルド・メンソール・hyper用", "https://www.placer-tabaco.com/product/6279"],
+    ["ネオ・ブリリアント・ワイルドベリー・hyper用", "https://www.placer-tabaco.com/product/6238"],
+    ["ネオ・ブリリアント・マスカット・hyper用", "https://www.placer-tabaco.com/product/6237"],
+    ["ネオ・ブリリアント・レッドフルーツ・hyper用", "https://www.placer-tabaco.com/product/6212"],
+  ]);
   const neo = products.filter((item) => /ネオ・/.test(item.jp));
   const lucky = products.filter((item) => /ラッキー・ストライク/.test(item.jp));
   const kentTrue = products.filter((item) => /ケント・トゥルー/.test(item.jp));
@@ -389,7 +397,11 @@ test("glo HYPER current sticks follow the 2026 BAT price notice", () => {
   for (const item of neo) {
     assert.equal(item.brand, "glo", item.jp);
     assert.equal(item.jpy, 530, item.jp);
-    assert.match(item.source, sourcePattern, item.jp);
+    if (exactRound66Sources.has(item.jp)) {
+      assert.equal(item.source, exactRound66Sources.get(item.jp), item.jp);
+    } else {
+      assert.match(item.source, sourcePattern, item.jp);
+    }
     if (!/マスカット|レッドフルーツ/.test(item.jp)) {
       assert.notEqual(item.marketStatus, "discontinued-stock-only", item.jp);
     }

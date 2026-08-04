@@ -2,6 +2,86 @@ const GOOGLE_IMAGE_SEARCH = "https://www.google.com/search";
 
 const MEDIA_OVERRIDES = new Map([
   [
+    "メビウス・ベリー・オプション・プルーム用|Ploom 梅比乌斯 莓果爆珠",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://duty-free-japan.jp/narita/jp/goodsDetail.aspx?sCD=5302030503",
+      cartonNote:
+        "Exact Japan Duty Free product page for メビウス・ベリー・オプション・プルーム用；product reference only, not visible whole carton/10-pack proof.",
+    },
+  ],
+  [
+    "メビウス・マスカット・オプション・プルーム用|Ploom 梅比乌斯 麝香葡萄爆珠",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.932.co.jp/ec/products/detail/1884",
+      cartonNote:
+        "Sakimura exact product page title for メビウス・マスカット・オプション・プルーム用；product reference only, not visible carton proof.",
+    },
+  ],
+  [
+    "ネオ・クラシック・タバコ・hyper用|glo neo 经典烟草",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.placer-tabaco.com/product/6188",
+      cartonNote:
+        "Exact Placer page states carton 10 unit for ネオ・クラシック・タバコ・hyper用, but image not visually verified as whole carton/10 packs; source-only.",
+    },
+  ],
+  [
+    "ネオ・アークティック・メンソール・hyper用|glo neo 极寒薄荷",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.placer-tabaco.com/product/6189",
+      cartonNote:
+        "Exact Placer page states carton 10 unit for ネオ・アークティック・メンソール・hyper用, but image not visually verified as whole carton/10 packs; source-only.",
+    },
+  ],
+  [
+    "ネオ・チルド・メンソール・hyper用|glo neo 冷感薄荷",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.placer-tabaco.com/product/6279",
+      cartonNote:
+        "Exact Placer page states carton 10 unit for ネオ・チルド・メンソール・hyper用, but image not visually verified as whole carton/10 packs; source-only.",
+    },
+  ],
+  [
+    "ネオ・ブリリアント・ワイルドベリー・hyper用|glo neo 闪耀野莓",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.placer-tabaco.com/product/6238",
+      cartonNote:
+        "Exact Placer page states carton 10 unit for ネオ・ブリリアント・ワイルドベリー・hyper用, but image not visually verified as whole carton/10 packs; source-only.",
+    },
+  ],
+  [
+    "ネオ・ブリリアント・マスカット・hyper用|glo neo 闪耀麝香葡萄",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.placer-tabaco.com/product/6237",
+      cartonNote:
+        "Exact Placer page states carton 10 unit for ネオ・ブリリアント・マスカット・hyper用, but image not visually verified as whole carton/10 packs; source-only.",
+    },
+  ],
+  [
+    "ネオ・ブリリアント・レッドフルーツ・hyper用|glo neo 闪耀红果",
+    {
+      cartonStatus: "source-only",
+      cartonImage: "",
+      cartonSource: "https://www.placer-tabaco.com/product/6212",
+      cartonNote:
+        "Exact Placer page states carton 10 unit for ネオ・ブリリアント・レッドフルーツ・hyper用, 旧クール・エックス lineage noted, but image not visually verified as whole carton/10 packs; source-only.",
+    },
+  ],
+  [
     "メビウス・レギュラー・フレーバー・ウィズ用|with2 梅比乌斯 经典胶囊+烟弹",
     {
       cartonStatus: "source-only",

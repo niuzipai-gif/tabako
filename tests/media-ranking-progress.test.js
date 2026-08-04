@@ -1671,6 +1671,39 @@ test("round65 ELFBAR 600 exact flavor references stay overseas non-carton", () =
   }
 });
 
+test("round66 exact source-only product references never publish carton images", () => {
+  const expected = new Map([
+    ["メビウス・ベリー・オプション・プルーム用", { image: /duty-free-japan\.jp\/narita\/jp\/images\/item\/5302030503\.jpg/, source: "https://duty-free-japan.jp/narita/jp/goodsDetail.aspx?sCD=5302030503", note: /exact Japan Duty Free product page.*product reference only.*not visible whole carton\/10-pack proof/i }],
+    ["メビウス・マスカット・オプション・プルーム用", { image: /932\.co\.jp\/ec\/html\/upload\/save_image\/0427164426_680de05a270a2\.jpg/, source: "https://www.932.co.jp/ec/products/detail/1884", note: /Sakimura exact product page title.*product reference only.*not visible carton proof/i }],
+    ["ネオ・クラシック・タバコ・hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20250402_550ab9\.jpg/, source: "https://www.placer-tabaco.com/product/6188", note: /exact Placer page states carton 10 unit.*image not visually verified as whole carton\/10 packs.*source-only/i }],
+    ["ネオ・アークティック・メンソール・hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20250402_0be0f0\.jpg/, source: "https://www.placer-tabaco.com/product/6189", note: /exact Placer page states carton 10 unit.*image not visually verified as whole carton\/10 packs.*source-only/i }],
+    ["ネオ・チルド・メンソール・hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20250511_d71191\.jpg/, source: "https://www.placer-tabaco.com/product/6279", note: /exact Placer page states carton 10 unit.*image not visually verified as whole carton\/10 packs.*source-only/i }],
+    ["ネオ・ブリリアント・ワイルドベリー・hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20250515_d3a3d4\.jpg/, source: "https://www.placer-tabaco.com/product/6238", note: /exact Placer page states carton 10 unit.*image not visually verified as whole carton\/10 packs.*source-only/i }],
+    ["ネオ・ブリリアント・マスカット・hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20250515_95e1c2\.jpg/, source: "https://www.placer-tabaco.com/product/6237", note: /exact Placer page states carton 10 unit.*image not visually verified as whole carton\/10 packs.*source-only/i }],
+    ["ネオ・ブリリアント・レッドフルーツ・hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20250424_5bf076\.jpg/, source: "https://www.placer-tabaco.com/product/6212", note: /exact Placer page states carton 10 unit.*旧クール・エックス.*image not visually verified as whole carton\/10 packs.*source-only/i }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.equal(raw.imageSource, expectation.source, jp);
+    assert.equal(raw.source, expectation.source, jp);
+    assert.equal(raw.cartonStatus, "source-only", jp);
+    assert.match(raw.imageNote, expectation.note, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.equal(item.imageSource, expectation.source, jp);
+    assert.equal(item.cartonStatus, "source-only", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, expectation.note, jp);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
