@@ -907,8 +907,8 @@ test("TEREA Fusion uses the official Japanese Menthol SKU name instead of the fa
   const imagePath = new URL(`../${product.originalImage.replace(/^\.\//, "")}`, import.meta.url);
   assert.equal(existsSync(imagePath), true);
   assert.equal(product.imageStatus, "reference");
-  assert.match(product.imageSource, /world-tobacco\.jp\/view\/item\/000000001897/);
-  assert.match(product.imageNote, /来源页参考|World Tobacco|FUSION MENTHOL/);
+  assert.match(product.imageSource, /jp\.iqos\.com\/discover\/iluma\/terea/);
+  assert.match(product.imageNote, /IQOS 官方|Fusion Menthol|一カートン整条证据/);
 });
 
 test("round47 immediate official media replacements stay conservative", () => {
@@ -979,6 +979,47 @@ test("round47 immediate official media replacements stay conservative", () => {
   assert.match(with2Device.imageNote, /不是 Ploom AURA\/Ploom X/);
 });
 
+test("round48 immediate media replacements do not fall back to picsum or upgrade cartons", () => {
+  const expected = new Map([
+    ["IQOS テリア フュージョン メンソール", /PDP_KV_TEREAFusionMenthol_Desktop\.jpg/],
+    ["IQOS センティア フロスト グリーン", /SentiaBrandDiscovery_Regular_sentia-frost-green\.png/],
+    ["メビウス・ディープ・レギュラー・プルーム用", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2023\/0221_01\.png/],
+    ["Ploom X メビウス リッチ", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2021\/0715_04\.png/],
+    ["Ploom X メビウス スムース", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2023\/0221_01\.png/],
+    ["メビウス・コールド・メンソール・プルーム用", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2023\/0221_01\.png/],
+    ["メビウス・シャープ・コールド・メンソール・プルーム用", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2023\/0221_01\.png/],
+    ["メビウス・ミックス・ミント・メンソール・プルーム用", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2023\/0419_01\.png/],
+    ["キャメル・リッチ・プルーム用", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2021\/0715_04\.png/],
+    ["Ploom X キャメル スムース", /jti\.co\.jp\/investors\/library\/press_releases\/images\/2021\/0715_03\.jpg/],
+    ["シガローネ・タトゥー・チェリー", /cdn\.store-assets\.com\/s\/185568\/i\/75246507\.jpeg\?width=1024/],
+    ["シガローネ・タトゥー・チョコレート", /cdn\.store-assets\.com\/s\/185568\/i\/75246507\.jpeg\?width=1024/],
+    ["シガローネ・タトゥー・バニラ", /cdn\.store-assets\.com\/s\/185568\/i\/75246508\.jpeg\?width=1024/],
+  ]);
+  const existingStrictCartonVerified = new Set([
+    "IQOS センティア フロスト グリーン",
+    "メビウス・ディープ・レギュラー・プルーム用",
+    "メビウス・コールド・メンソール・プルーム用",
+    "メビウス・シャープ・コールド・メンソール・プルーム用",
+  ]);
+
+  for (const [jp, imagePattern] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, imagePattern, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.match(raw.imageNote, /参考|单包|lineup|composite|JTeXpress|JTI|IQOS/i, jp);
+    assert.match(item.imageNote, /参考|source-only|线索|单包|lineup|composite|JTI|IQOS|JTeXpress|辨认|用于区分/i, jp);
+    if (existingStrictCartonVerified.has(jp)) {
+      assert.equal(item.cartonStatus, "verified", `${jp} keeps pre-existing strict carton evidence`);
+    } else {
+      assert.notEqual(item.cartonStatus, "verified", `${jp} must not be upgraded to carton verified by round48 media`);
+    }
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
@@ -1008,10 +1049,9 @@ test("TEREA single-pack photos use matching World Tobacco pages while caption-on
     [
       "IQOS テリア フュージョン メンソール",
       {
-        pack: /000000001897/,
+        pack: /jp\.iqos\.com\/discover\/iluma\/terea/,
         source: /iqosheets-uae\.ae\/products\/iqos-terea-fusion-menthol-japan-dubai-uae/,
         note: /Fusion|10 Packs|200 Heatsticks|不能证明/,
-        oldWorldTobaccoReference: true,
       },
     ],
     [

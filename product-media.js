@@ -752,9 +752,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア フュージョン メンソール|IQOS TEREA 融合薄荷",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001897",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 Fusion Menthol SKU 页面图；图面为紫粉色 TEREA 日本警示版，但正面不直接写完整 FUSION MENTHOL，因此标为来源页参考。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Fusion Menthol SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:

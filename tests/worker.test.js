@@ -617,6 +617,41 @@ test("online search injects local exact catalog source when upstream misses Japa
   assert.match(payload.sources[0].snippet, /不代表实时库存/);
 });
 
+test("online search answer acknowledges injected exact catalog sources", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          content: [
+            {
+              type: "web_search_tool_result",
+              content: [
+                {
+                  type: "web_search_result",
+                  title: "Unrelated blog",
+                  url: "https://example.com/unrelated-blog",
+                  content: "General article without matching tobacco product evidence.",
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "search", query: "IQOS TEREA Bright Menthol" }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(payload.sources[0].url, "https://jp.iqos.com/products/terea-bright-menthol");
+  assert.doesNotMatch(payload.answer, /没有留下足够相关来源|没有留下足够相关的烟草\/包装来源|没有找到/);
+  assert.match(payload.answer, /已找到|官方来源|核对来源/);
+});
+
 test("online search does not duplicate an upstream source that matches the exact local catalog URL", async () => {
   const worker = createWorker({
     fetchImpl: async () =>

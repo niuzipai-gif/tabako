@@ -185,6 +185,10 @@ function cleanText(value, limit) {
     .slice(0, limit);
 }
 
+function hasNoSearchSourceMessage(value) {
+  return /没有留下足够相关|没有找到/.test(cleanText(value, AI_LIMITS.answer));
+}
+
 function compactLookupText(value) {
   return String(value ?? "")
     .normalize("NFKC")
@@ -643,12 +647,17 @@ async function callSearch(fetchImpl, key, query) {
     }
   }
 
+  const finalSources = injectLocalExactSource(rankSearchSources(sources, query), query);
+  const latestAnswer = textBlocks.at(-1) || "";
+
   return normalizeAiPayload({
-    answer: sources.length
-      ? textBlocks.at(-1) || "已找到一些可能相关的网页线索，请打开来源核对。"
+    answer: finalSources.length
+      ? hasNoSearchSourceMessage(latestAnswer)
+        ? "已找到可核对来源；请优先打开官方或可信来源确认包装、价格和日期，价格库存仍以门店/官网为准。"
+        : latestAnswer || "已找到可核对来源；请优先打开官方或可信来源确认包装、价格和日期，价格库存仍以门店/官网为准。"
       : "联网搜索没有留下足够相关的烟草/包装来源；请换成品牌、日文名或包装文字再试。",
     matches: [],
-    sources: injectLocalExactSource(rankSearchSources(sources, query), query),
+    sources: finalSources,
   });
 }
 
