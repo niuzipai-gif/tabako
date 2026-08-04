@@ -1343,10 +1343,45 @@ test("round58 immediate device media replacements stay reference-only and keep c
     assert.equal(item.cartonImage, "", `${jp} device must not publish carton image`);
   }
 
-  for (const jp of ["Geekvape Wenax Q Pro", "Uwell Caliburn G4", "Uwell Caliburn G4 Mini", "IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID", "シガローネ・クラシック・キングサイズ", "シガローネ・センター・キングサイズ"]) {
+  for (const jp of ["Uwell Caliburn G4", "Uwell Caliburn G4 Mini", "IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID", "シガローネ・クラシック・キングサイズ", "シガローネ・センター・キングサイズ"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round58 evidence is backup-only, source-only, mismatched, or not exact carton/size proof`);
+  }
+});
+
+test("round59 immediate device and pod media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["Geekvape Wenax Q Pro", { image: /ossus\.geekvape\.com\/products\/WQP\/p-1\.jpg/, source: /us\.geekvape\.com\/product\/QPRO\.html/ }],
+    ["VAPORESSO XROS メッシュポッド 0.6Ω", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros-pod-web-0\.6_standard\.png\?v=1780559025/, source: /vaporesso\.com\/series-product\/xros-pods\/xros-pod/ }],
+    ["VAPORESSO XROS メッシュポッド 0.8Ω", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros-pod-web-0\.8_standard\.png\?v=1780559025/, source: /vaporesso\.com\/series-product\/xros-pods\/xros-pod/ }],
+    ["VAPORESSO XROS メッシュポッド 1.0Ω", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros-pod-web-1\.0_standard\.png\?v=1780559025/, source: /vaporesso\.com\/series-product\/xros-pods\/xros-pod/ }],
+    ["Voopoo Argus POD 0.7Ω", { image: /sen\.voopoo\.com\.cn\/www-voopoo\/static\/dist\/images\/product\/detail\/argus-cartridges\/ARGUS-Top-Fill-Cartridge-0\.7-n\.png\?v=408909bc55/, source: /voopoo\.com\/argus-series\/argus-pod\.html/ }],
+    ["Voopoo Argus POD カートリッジ", { image: /sen\.voopoo\.com\.cn\/www-voopoo\/static\/dist\/images\/product\/pro-pod\/argus\/cartridge_01\.png\?v=f7969a558e/, source: /voopoo\.com\/argus-series\/argus-pod\.html/ }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|official|device|pod|cartridge|not tobacco|not pack\/carton evidence|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round59 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|official|device|pod|cartridge|not tobacco|not pack\/carton evidence|not carton verified/i, `${jp} round59 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, "not-applicable", `${jp} device or pod carton status must remain not-applicable`);
+    assert.equal(item.cartonImage, "", `${jp} device or pod must not publish carton image`);
+  }
+
+  for (const jp of ["RELX Infinity Device", "RELX Infinity ミント ポッド", "MOTI PLAY Device", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス", "シガローネ・クラシック・キングサイズ", "シガローネ・センター・キングサイズ"]) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round59 evidence is source-only, pending, flavor-missing, or not exact carton/size proof`);
   }
 });
 
