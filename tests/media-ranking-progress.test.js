@@ -1065,6 +1065,43 @@ test("round49 immediate media replacements do not fall back to picsum or overrid
   }
 });
 
+test("round50 immediate media replacements do not fall back to picsum or get hidden by overrides", () => {
+  const expected = new Map([
+    ["メビウス スーパーライト", { image: /anadf\.com\/images\/item\/7000083033_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=7000083033/, carton: "verified" }],
+    ["マールボロ レッド", { image: /anadf\.com\/images\/item\/7000098238_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=7000098238/, carton: "verified" }],
+    ["マールボロ メンソール", { image: /anadf\.com\/images\/item\/7000098245_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=7000098245/, carton: "variant-reference" }],
+    ["ラーク クラシック", { image: /placer-tabaco\.com\/data\/placer\/product\/18a5d1c093\.jpg/, source: /placer-tabaco\.com\/product\/2884/, carton: "verified" }],
+    ["ラーク ハイブリッド", { image: /anadf\.com\/images\/item\/2010200052_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010200052/, carton: "contents-reference" }],
+    ["キャメル クラフト 6", { image: /anadf\.com\/images\/item\/2010100180_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100180/, carton: "verified" }],
+    ["ピース ライト", { image: /anadf\.com\/images\/item\/3211051018_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=3211051018/, carton: "contents-reference" }],
+    ["ウィンストン XS", { image: /anadf\.com\/images\/item\/2010100123_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100123/, carton: "contents-reference" }],
+    ["ウィンストン キャスター ホワイト", { image: /anadf\.com\/images\/item\/2010100026_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100026/, carton: "variant-warning" }],
+    ["メビウス・プレミアムメンソール・オプション・パープル・8", { image: /anadf\.com\/images\/item\/2010100049_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100049/, carton: "contents-reference" }],
+    ["ピース スーパーライト", { image: /anadf\.com\/images\/item\/3211051034_00\.jpg/, source: /anadf\.com\/en\/itemdetail\.aspx\?s_cd=3211051034/, carton: "contents-reference" }],
+    ["クール ブースト フレッシュ 8", { image: /anadf\.com\/images\/item\/7000048009_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=7000048009/, carton: "contents-reference" }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|参考|单包|single-pack|not carton verified|不是整条|不是 10 包/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.match(item.imageSource, expectation.source, `${jp} round50 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|参考|单包|single-pack|not carton verified|不是整条|不是 10 包/i, `${jp} round50 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, expectation.carton, `${jp} carton status must not change because of round50 reference media`);
+  }
+
+  const xs = enrichProduct(rawProducts.find((product) => product.jp === "ウィンストン XS"));
+  assert.match(xs.imageNote, /XS Caster White 1|旧款|完整日文名/);
+  const casterWhite = enrichProduct(rawProducts.find((product) => product.jp === "ウィンストン キャスター ホワイト"));
+  assert.match(casterWhite.imageNote, /5mg Box|泛称|1mg\/3mg\/5mg/);
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
