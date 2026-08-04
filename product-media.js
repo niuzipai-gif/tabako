@@ -5,9 +5,10 @@ const MEDIA_OVERRIDES = new Map([
     "セブンスター|七星",
     {
       image: "./images/verified/seven-stars-soft-archive.jpg",
-      imageStatus: "archive-reference",
-      imageSource: "https://www.sakuya765.work/entry/seven_stars",
-      imageNote: "软包实拍，可用来辨认软质折边；照片为旧版警示文字，购买时仍需核对当前包装。",
+      imageStatus: "reference",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=3211051013",
+      imageNote:
+        "ANA DUTY FREE official single-product reference for Seven Stars soft pack；source page states 20本×10箱, but the image is not visible carton/10-pack proof and remains source-only for carton. 本地历史软包图仅辅助辨认软包折边。",
       packageFormat: "软包",
       packageFormatJp: "ソフトパック",
       variantNote: "这是软包版；与“セブンスター ボックス”烟支配方接近，但外壳结构不同，购买时请直接说“ソフト”。",
@@ -1918,10 +1919,10 @@ const MEDIA_OVERRIDES = new Map([
     "ナチュラル アメリカン スピリット ライト 14本入|美式精神 Light 14支",
     {
       image: "./images/verified/american-spirit-light-14-ana-pack.jpg",
-      imageStatus: "verified",
-      imageSource: "https://www.anadf.com/cn/itemdetail.aspx?s_cd=2010100174",
+      imageStatus: "reference",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100174",
       imageNote:
-        "ANA DUTY FREE SHOP 商品图，页面商品名为“ナチュラル アメリカン スピリット ライト １４本入”，图面为黄色 Light 单包，适合旅行时辨认具体 SKU。",
+        "ANA DUTY FREE official single-product reference for exact American Spirit Light 14本入；source page states 14本×10箱, but the image is not visible carton/10-pack proof and round51 does not add carton verified.",
       cartonStatus: "verified",
       cartonImage: "./images/cartons/american-spirit-yellow-kurivip-carton.jpg",
       cartonSource: "https://kurivip18.com/katalog/cigarettes/american_spirit_yellow1",

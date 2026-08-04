@@ -1102,6 +1102,36 @@ test("round50 immediate media replacements do not fall back to picsum or get hid
   assert.match(casterWhite.imageNote, /5mg Box|泛称|1mg\/3mg\/5mg/);
 });
 
+test("round51 immediate media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["メビウス オリジナル", { image: /anadf\.com\/images\/item\/2010100109_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100109/, carton: "verified" }],
+    ["セブンスター", { image: /anadf\.com\/images\/item\/3211051013_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=3211051013/, carton: "source-only" }],
+    ["マールボロ ダブルバースト", { image: /anadf\.com\/images\/item\/7000098247_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=7000098247/, carton: "variant-reference" }],
+    ["ナチュラル アメリカン スピリット ライト 14本入", { image: /anadf\.com\/images\/item\/2010100174_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100174/, carton: "verified" }],
+    ["アメリカン スピリット ターコイズ", { image: /anadf\.com\/images\/item\/2010100073_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100073/, carton: "contents-reference" }],
+    ["ピアニッシモ アリア メンソール", { image: /anadf\.com\/images\/item\/2010100121_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2010100121/, carton: "contents-reference" }],
+    ["バージニア エス ロゼ メンソール", { image: /makeshop-multi-images\.akamaized\.net\/kdaisho\/itemimages\/000000001119_7u01G5K\.jpg/, source: /world-tobacco\.jp\/view\/item\/000000001119/, carton: "contents-reference" }],
+    ["ホープ", { image: /anadf\.com\/images\/item\/3211051019_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=3211051019/, carton: "contents-reference" }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|参考|单包|single-product|retailer|not visible carton|不是整条|不是 10 包|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round51 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|参考|单包|single-product|retailer|not visible carton|不是整条|不是 10 包|not carton verified/i, `${jp} round51 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, expectation.carton, `${jp} carton status must not change because of round51 reference media`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
@@ -1701,7 +1731,7 @@ test("Cigaronne pack media uses exact local images while American Spirit separat
     rawProducts.find((product) => product.jp === "ナチュラル アメリカン スピリット ライト 14本入"),
   );
   assert.equal(americanSpiritLight.brand, "American Spirit");
-  assert.equal(americanSpiritLight.imageStatus, "verified");
+  assert.equal(americanSpiritLight.imageStatus, "reference");
   assert.match(americanSpiritLight.image, /american-spirit-light-14-ana-pack\.jpg/);
   assert.equal(americanSpiritLight.cartonStatus, "verified");
   assert.match(americanSpiritLight.cartonImage, /american-spirit-yellow-kurivip-carton\.jpg/);
