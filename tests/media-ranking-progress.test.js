@@ -1192,6 +1192,34 @@ test("round53 immediate media replacements stay reference-only and keep carton g
   }
 });
 
+test("round54 immediate media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["ラッキー・ストライク・ベリー・スイッチ・hyper用", { image: /tabako\.co\.jp\/tabako\/wp-content\/uploads\/2025\/02\/tvp-lky_berryswitch\.jpg/, source: /tabako\.co\.jp\/item\/tvp-lky_berryswitch/, carton: "needs-review" }],
+    ["ラッキー・ストライク・トロピカル・スイッチ・hyper用", { image: /tabako\.co\.jp\/tabako\/wp-content\/uploads\/2025\/02\/tvp-lky_toropicalswitch\.jpg/, source: /tabako\.co\.jp\/item\/tvp-lky_toropicalswitch/, carton: "needs-review" }],
+    ["ケント・トゥルー・タバコ・glo hyper用", { image: /anadf\.com\/images\/item\/2030100174_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100174/i, carton: "needs-review" }],
+    ["ケント・トゥルー・メンソール・glo hyper用", { image: /placer-tabaco\.com\/data\/placer\/product\/20240929_ffe3e1\.jpg/, source: /placer-tabaco\.com\/product\/6068/, carton: "needs-review" }],
+    ["ケント・トゥルー・ベリー・ブースト・glo hyper用", { image: /anadf\.com\/images\/item\/2030100176_00\.jpg/, source: /anadf\.com\/itemdetail\.aspx\?s_cd=2030100176/i, carton: "needs-review" }],
+    ["IQOS イルマ i ワン ミネラ モデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/One_MINERA\.png/, source: /iqos\.com\/news\/iqos-iluma-i-minera-limited-edition/, carton: "not-applicable" }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|参考|single-product|retail|official|device|not visible|不是整条|不是 10 包|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round54 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|参考|single-product|retail|official|device|not visible|不是整条|不是 10 包|not carton verified/i, `${jp} round54 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, expectation.carton, `${jp} carton status must not change because of round54 reference media`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
