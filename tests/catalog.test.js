@@ -370,7 +370,7 @@ test("lil HYBRID liquid cartridge is represented as a separate required consumab
   assert.equal(cartridge.productSubtype, "liquid-cartridge");
   assert.match(cartridge.compatibility, /lil HYBRID 3\.0/);
   assert.match(cartridge.compatibility, /MIIX/);
-  assert.match(cartridge.source, /tabako\.co\.jp\/category\/item\/tvp-all\/tvp-lilhybrid/);
+  assert.match(cartridge.source, /jp\.iqos\.com\/discover\/lil-hybrid/);
   assert.equal(regular.jpy, 560);
   assert.match(regular.source, /iqos\.com\/discover\/lil-hybrid/);
 });

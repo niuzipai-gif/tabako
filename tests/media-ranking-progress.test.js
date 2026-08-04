@@ -1564,6 +1564,24 @@ test("round62 addendum official and regional device references stay non-carton",
   }
 });
 
+test("round63 lil HYBRID liquid cartridge uses official accessory media without carton claims", () => {
+  const raw = rawProducts.find((product) => product.jp === "lil HYBRID リキッド カートリッジ");
+  assert.ok(raw);
+  assert.match(raw.img, /jp\.iqos\.com\/sites\/g\/files\/default\/files\/styles\/module\/public\/Entry-points-Thumb-Cartrige_1\.png\?itok=TlB3tUPz/);
+  assert.doesNotMatch(raw.img, /picsum\.photos/);
+  assert.equal(raw.imageStatus, "reference");
+  assert.equal(raw.imageSource, "https://jp.iqos.com/discover/lil-hybrid");
+  assert.match(raw.imageNote, /official cartridge reference.*exact liquid cartridge accessory.*not tobacco stick\/carton evidence/i);
+  assert.equal(raw.cartonStatus, "not-applicable");
+
+  const item = enrichProduct(raw);
+  assert.doesNotMatch(item.image, /picsum\.photos/);
+  assert.equal(item.imageStatus, "reference");
+  assert.equal(item.imageSource, "https://jp.iqos.com/discover/lil-hybrid");
+  assert.equal(item.cartonStatus, "not-applicable");
+  assert.equal(item.cartonImage, "");
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
