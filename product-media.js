@@ -2049,9 +2049,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "わかば|若叶",
     {
+      image: "./images/cartons/wakaba-kikuya-content.gif",
+      imageStatus: "reference",
+      imageSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      imageNote:
+        "Historical single-pack reference only for legacy Wakaba from きくや；not carton evidence and not current availability proof.",
       cartonStatus: "variant-reference",
       relatedExactJp: ["わかば・シガー 10P"],
-      cartonImage: "./images/cartons/wakaba-cigar-10p-monolog-carton.jpg",
+      cartonImage: "",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210153810",
       cartonPackCount: 10,
       cartonStickCount: 200,
@@ -2095,9 +2100,14 @@ const MEDIA_OVERRIDES = new Map([
   [
     "エコー|Echo",
     {
+      image: "./images/cartons/echo-kikuya-content.gif",
+      imageStatus: "reference",
+      imageSource: "https://kikuya.my.coocan.jp/jp_etc_tb.htm",
+      imageNote:
+        "Historical single-pack reference only for legacy Echo from きくや；not carton evidence and not current availability proof.",
       cartonStatus: "variant-reference",
       relatedExactJp: ["エコー・シガー 10P"],
-      cartonImage: "./images/cartons/echo-cigar-10p-monolog-carton-side.jpg",
+      cartonImage: "",
       cartonSource: "https://monolog.r-n-i.jp/item/4902210153919",
       cartonPackCount: 10,
       cartonStickCount: 200,

@@ -1444,6 +1444,58 @@ test("round60 official Cigaronne format references replace raw Picsum without ca
   }
 });
 
+test("round61 safest carton-media candidates replace raw Picsum while preserving strict classifications", () => {
+  const expectedRaw = new Map([
+    ["セーラム ライト", { image: "./images/cartons/salem-light-box10-monolog-carton.png", status: "reference", source: "https://monolog.r-n-i.jp/item/0012300197137", note: /historical Salem Light Box 10個 Monolog image|historical carton reference|do not imply current availability/i }],
+    ["シガローネ・クラシック・スーパースリム", { image: "./images/verified/cigaronne-classic-super-slims-official.png", status: "reference", source: "https://cigaronne.com/our-collection/classic-collection", note: /official Cigaronne pack\/format reference only|not Japan sales|not carton evidence/i }],
+    ["わかば", { image: "./images/cartons/wakaba-kikuya-content.gif", status: "reference", source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm", note: /historical single-pack reference only/i }],
+    ["エコー", { image: "./images/cartons/echo-kikuya-content.gif", status: "reference", source: "https://kikuya.my.coocan.jp/jp_etc_tb.htm", note: /historical single-pack reference only/i }],
+    ["ネオ・ブリリアント・ベリー・hyper用", { image: "./images/cartons/glo-neo-brilliant-berry-paypay-15-empty-boxes.jpg" }],
+    ["ネオ・ブリリアント・トロピカル・hyper用", { image: "./images/cartons/glo-neo-tropical-swirl-jcigarette-multipack-reference.jpg", status: "reference", note: /contents-reference|not complete 10 packs|not verified/i }],
+  ]);
+
+  for (const [jp, expectation] of expectedRaw) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.equal(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    if (expectation.status) assert.equal(raw.imageStatus, expectation.status, jp);
+    if (expectation.source) assert.equal(raw.imageSource, expectation.source, jp);
+    if (expectation.note) assert.match(raw.imageNote, expectation.note, jp);
+  }
+
+  const salem = enrichProduct(rawProducts.find((product) => product.jp === "セーラム ライト"));
+  assert.equal(salem.cartonStatus, "verified");
+  assert.match(salem.cartonImage, /salem-light-box10-monolog-carton\.png/);
+  assert.match(salem.cartonSource, /monolog\.r-n-i\.jp\/item\/0012300197137/);
+  assert.match(salem.cartonNote, /歴史|历史|終售|current|库存|availability/i);
+
+  for (const jp of ["わかば", "エコー"]) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.match(item.image, /kikuya-content\.gif/, jp);
+    assert.match(item.imageSource, /kikuya\.my\.coocan\.jp\/jp_etc_tb\.htm/, jp);
+    assert.match(item.imageNote, /historical single-pack reference only/i, jp);
+    assert.equal(item.cartonStatus, "variant-reference", jp);
+    assert.equal(item.cartonImage, "", jp);
+  }
+
+  const classicSuper = enrichProduct(rawProducts.find((product) => product.jp === "シガローネ・クラシック・スーパースリム"));
+  assert.equal(classicSuper.cartonStatus, "source-only");
+  assert.equal(classicSuper.cartonImage, "");
+  assert.match(classicSuper.image, /cigaronne-classic-super-slims-official\.png/);
+
+  const berry = enrichProduct(rawProducts.find((product) => product.jp === "ネオ・ブリリアント・ベリー・hyper用"));
+  assert.equal(berry.cartonStatus, "verified");
+  assert.match(berry.cartonImage, /glo-neo-brilliant-berry-paypay-15-empty-boxes\.jpg/);
+
+  const tropical = enrichProduct(rawProducts.find((product) => product.jp === "ネオ・ブリリアント・トロピカル・hyper用"));
+  assert.equal(tropical.cartonStatus, "contents-reference");
+  assert.equal(tropical.cartonImage, "");
+  assert.match(tropical.image, /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/);
+}
+);
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
