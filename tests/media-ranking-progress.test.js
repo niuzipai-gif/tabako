@@ -1220,6 +1220,35 @@ test("round54 immediate media replacements stay reference-only and keep carton g
   }
 });
 
+test("round55 immediate media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["ケント・トゥルー・リッチ・タバコ・glo hyper用", { image: /makeshop-multi-images\.akamaized\.net\/izumiya77\/itemimages\/000000002526_V8jybPd\.jpg/, source: /izumiya-tobacco\.com\/shopdetail\/000000002526/, carton: "needs-review" }],
+    ["IQOS イルマ i ミネラ モデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/Mid_MINERA\.png/, source: /iqos\.com\/news\/iqos-iluma-i-minera-limited-edition/, carton: "not-applicable" }],
+    ["IQOS イルマ i アニバーサリーモデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/10YA_SET\.jpg/, source: /iqos\.com\/news\/iqos-iluma-i-anniversary-edition/, carton: "not-applicable" }],
+    ["IQOS イルマ i プライム アニバーサリーモデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/inline-images\/IQOS_4_ILUMA_PRIME_CORE_E_BREEZE_BLUE_A01_R8%20%281%29_0\.png/, source: /iqos\.com\/news\/iqos-iluma-i-anniversary-edition/, carton: "not-applicable" }],
+    ["IQOS イルマ i プライム リミックスモデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/styles\/hd_webp\/public\/hero\/remix_pdp_d_banner_kv_prime\.jpg\.webp\?itok=wuQspQhf/, source: /iqos\.com\/products\/iluma\/iluma-i-prime-remix-limited-edition/, carton: "not-applicable" }],
+    ["IQOS イルマ i リミックスモデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/styles\/hd_webp\/public\/hero\/remix_pdp_d_banner_kv_mid\.jpg\.webp\?itok=x6gQsD8G/, source: /iqos\.com\/products\/iluma\/iluma-i-remix-limited-edition/, carton: "not-applicable" }],
+    ["IQOS イルマ i ワン リミックスモデル", { image: /iqos\.com\/sites\/g\/files\/default\/files\/styles\/hd_webp\/public\/hero\/remix_pdp_d_banner_kv_one\.jpg\.webp\?itok=L7VM7tFX/, source: /iqos\.com\/products\/iluma\/iluma-i-one-remix-limited-edition/, carton: "not-applicable" }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|参考|single-product|retail|official|device|not visible|不是整条|不是 10 包|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round55 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|参考|single-product|retail|official|device|not visible|不是整条|不是 10 包|not carton verified/i, `${jp} round55 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, expectation.carton, `${jp} carton status must not change because of round55 reference media`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
