@@ -1315,6 +1315,41 @@ test("round57 immediate device media replacements stay reference-only and keep c
   }
 });
 
+test("round58 immediate device media replacements stay reference-only and keep carton guardrails", () => {
+  const expected = new Map([
+    ["VAPORESSO XROS 4 Mini", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros_4_mini-pc-spec-1\.png/, source: /vaporesso\.com\/series-product\/xros-series\/xros4-mini/ }],
+    ["VAPORESSO XROS Pro", { image: /cdn\.shopify\.com\/s\/files\/1\/0703\/9873\/8521\/files\/xros_pro-spec-1-1\.webp/, source: /vaporesso\.com\/series-product\/xros-series\/xros-pro/ }],
+    ["Voopoo Argus G2", { image: /sen\.voopoo\.com\.cn\/www-voopoo\/static\/dist\/images\/product\/detail\/argus-g2\/banner\.jpg\?v=53f88aeeaf/, source: /voopoo\.com\/argus-series\/argus-g2/ }],
+    ["Voopoo Argus P2", { image: /sen\.voopoo\.com\.cn\/www-voopoo\/static\/dist\/images\/product\/detail\/argus-p2\/banner-n\.jpg\?v=3fcffe172b/, source: /voopoo\.com\/argus-series\/argus-p2/ }],
+    ["OXVA XLIM Pro 2", { image: /cdn\.shopify\.com\/s\/files\/1\/0502\/8033\/3505\/files\/Amber_Orange\.png\?v=1741242057/, source: /oxva\.com\/pages\/xlim-pro-2/ }],
+    ["OXVA XLIM SQ Pro 2", { image: /cdn\.shopify\.com\/s\/files\/1\/0502\/8033\/3505\/files\/XLIM_SQ_PRO_2\.png\?v=1744013319/, source: /oxva\.com\/pages\/xlim-sq-pro-2/ }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, /reference|official|device|not tobacco|not pack\/carton evidence|not carton verified/i, jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", `${jp} image status should stay conservative after enrichment`);
+    assert.match(item.imageSource, expectation.source, `${jp} round58 source should survive media enrichment`);
+    assert.match(item.imageNote, /reference|official|device|not tobacco|not pack\/carton evidence|not carton verified/i, `${jp} round58 note should survive media enrichment`);
+    assert.equal(item.cartonStatus, "not-applicable", `${jp} device carton status must remain not-applicable`);
+    assert.equal(item.cartonImage, "", `${jp} device must not publish carton image`);
+  }
+
+  for (const jp of ["Geekvape Wenax Q Pro", "Uwell Caliburn G4", "Uwell Caliburn G4 Mini", "IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID", "シガローネ・クラシック・キングサイズ", "シガローネ・センター・キングサイズ"]) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round58 evidence is backup-only, source-only, mismatched, or not exact carton/size proof`);
+  }
+});
+
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
     [
