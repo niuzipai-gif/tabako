@@ -661,9 +661,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア レギュラー|IQOS TEREA 经典",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001829",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 SKU 页面图；图面为日本警示版 TEREA 单盒，部分页面商品图不在正面印完整口味名，购买时仍按页面标题与实物色系核对。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Regular SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:
@@ -678,9 +678,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア メンソール|IQOS TEREA 薄荷",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001828",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 Menthol SKU 页面图；单盒图为青绿色 TEREA 日本警示版，用于辨认，不把它当作整条外箱证明。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Menthol SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "verified",
       cartonImage: "./images/cartons/terea-menthol-paypay-39-empty-boxes.jpg",
       cartonSource: "https://paypayfleamarket.yahoo.co.jp/item/z302147694",
@@ -702,9 +702,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア ブラックメンソール|IQOS TEREA 黑薄荷",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001830",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 Black Menthol SKU 页面图；图面为深色 TEREA 日本警示版，按来源页标题确认口味。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Black Menthol SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:
@@ -719,9 +719,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア スムース レギュラー|IQOS TEREA 柔和经典",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001891",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 Smooth Regular SKU 页面图；图面为浅蓝色 TEREA 日本警示版，正面不完整显示口味名时按来源页标题核对。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Smooth Regular SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:
@@ -736,9 +736,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア ルビー レギュラー|IQOS TEREA 红宝石经典",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001887?category_page_id=ct304",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 Ruby Regular SKU 页面图；图面为蓝红色 TEREA 日本警示版，作为单盒辨认参考，不等同整条外箱核验。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Ruby Regular SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource: "https://iqosheets-uae.ae/products/iqos-terea-ruby-regular-japan-dubai-uae",
@@ -769,9 +769,9 @@ const MEDIA_OVERRIDES = new Map([
     "IQOS テリア ウォーム レギュラー|IQOS TEREA 温感经典",
     {
       imageStatus: "reference",
-      imageSource: "https://www.world-tobacco.jp/view/item/000000001898?category_page_id=ct304",
+      imageSource: "https://jp.iqos.com/discover/iluma/terea",
       imageNote:
-        "World Tobacco 对应 Warm Regular SKU 页面图；图面为暖棕色 TEREA 日本警示版，按来源页标题与实物色系共同核对。",
+        "IQOS 官方单包/产品页参考图，匹配 TEREA Warm Regular SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource:
@@ -2169,11 +2169,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "IQOS センティア バランスド イエロー|IQOS SENTIA 均衡黄",
     {
-      image: "./images/verified/sentia-balanced-yellow-hrt-pack.jpg",
-      imageStatus: "verified",
-      imageSource: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",
+      image: "https://jp.iqos.com/sites/g/files/default/files/2026-04/SentiaBrandDiscovery_Regular_sentia-balanced-yellow.png",
+      imageStatus: "reference",
+      imageSource: "https://jp.iqos.com/discover/iluma/sentia",
       imageNote:
-        "Hand Rolling Tobacco UK / HRT 商品页 Pack of 20 变体图，图面可读 SENTIA、for IQOS ILUMA，用于核对黄色 Balanced Yellow 单包包装。",
+        "IQOS 官方单包/产品页参考图，匹配 SENTIA Balanced Yellow SKU；用于辨认包装，不是 10 包/一カートン整条证据。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource: "https://handrollingtobacco.co.uk/product/sentia-balanced-yellow-jp/",

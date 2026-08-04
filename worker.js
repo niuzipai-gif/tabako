@@ -126,6 +126,12 @@ const TOBACCO_SOURCE_DOMAINS = Object.freeze([
   "paypayfleamarket.yahoo.co.jp",
   "monolog.r-n-i.jp",
 ]);
+const JAPAN_OFFICIAL_SOURCE_DOMAINS = Object.freeze([
+  "jp.iqos.com",
+  "jti.co.jp",
+  "clubjt.jp",
+  "discoverglo.jp",
+]);
 const BLOCKED_SEARCH_SOURCE_DOMAINS = Object.freeze([
   "bilibili.com",
   "youtube.com",
@@ -203,19 +209,69 @@ function getHostname(url) {
   }
 }
 
+function hostnameMatchesDomain(hostname, domain) {
+  return hostname === domain || hostname.endsWith(`.${domain}`);
+}
+
+function isJapanOfficialSource(hostname) {
+  return JAPAN_OFFICIAL_SOURCE_DOMAINS.some((domain) => hostnameMatchesDomain(hostname, domain));
+}
+
+function isTrustedTobaccoSource(hostname) {
+  return TOBACCO_SOURCE_DOMAINS.some((domain) => hostnameMatchesDomain(hostname, domain));
+}
+
+function findExactCatalogMatches(query) {
+  const compactQuery = compactLookupText(query);
+  if (compactQuery.length < 8) return [];
+  return ALL_CANONICAL_PRODUCTS.filter((item) => item.purchaseAllowed !== false).filter((item) =>
+    [item.jp, item.cn, ...(Array.isArray(item.relatedExactJp) ? item.relatedExactJp : [])]
+      .map(compactLookupText)
+      .filter((value) => value.length >= 8)
+      .some((value) => compactQuery.includes(value) || value.includes(compactQuery)),
+  );
+}
+
+function rankSearchSources(sources, query) {
+  const exactSourceHosts = new Set(
+    findExactCatalogMatches(query)
+      .map((item) => getHostname(item.source))
+      .filter(Boolean),
+  );
+  const scored = sources.map((source, index) => {
+    const hostname = getHostname(source.url);
+    const exactSourceHost = exactSourceHosts.has(hostname);
+    const japanOfficial = isJapanOfficialSource(hostname);
+    const trusted = isTrustedTobaccoSource(hostname);
+    const score =
+      (exactSourceHost ? 120 : 0) +
+      (japanOfficial ? 90 : 0) +
+      (trusted ? 30 : 0) +
+      (hostname.endsWith(".jp") || hostname.endsWith(".co.jp") ? 10 : 0);
+    return { source, index, hostname, score, japanOfficial };
+  });
+
+  scored.sort((left, right) => right.score - left.score || left.index - right.index);
+  if (!scored.some((item) => item.japanOfficial)) {
+    return scored.map((item) => item.source);
+  }
+
+  const primary = scored.filter((item) => item.japanOfficial);
+  const secondary = scored.filter((item) => !item.japanOfficial).slice(0, 1);
+  return [...primary, ...secondary].map((item) => item.source);
+}
+
 function isRelevantSearchSource(source, query) {
   const url = String(source?.url ?? "");
   const hostname = getHostname(url);
-  if (BLOCKED_SEARCH_SOURCE_DOMAINS.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) {
+  if (BLOCKED_SEARCH_SOURCE_DOMAINS.some((domain) => hostnameMatchesDomain(hostname, domain))) {
     return false;
   }
   const haystack = [source?.title, source?.content, source?.snippet, url]
     .map((value) => cleanText(value, 1200).toLocaleLowerCase())
     .join(" ");
   const compactHaystack = compactLookupText(haystack);
-  const isTrustedDomain = TOBACCO_SOURCE_DOMAINS.some(
-    (domain) => hostname === domain || hostname.endsWith(`.${domain}`),
-  );
+  const isTrustedDomain = isTrustedTobaccoSource(hostname);
   const hasTobaccoContext = TOBACCO_RELEVANCE_TERMS.some((term) => {
     const normalized = term.toLocaleLowerCase();
     return haystack.includes(normalized) || compactHaystack.includes(compactLookupText(normalized));
@@ -551,7 +607,7 @@ async function callSearch(fetchImpl, key, query) {
       ? textBlocks.at(-1) || "已找到一些可能相关的网页线索，请打开来源核对。"
       : "联网搜索没有留下足够相关的烟草/包装来源；请换成品牌、日文名或包装文字再试。",
     matches: [],
-    sources,
+    sources: rankSearchSources(sources, query),
   });
 }
 

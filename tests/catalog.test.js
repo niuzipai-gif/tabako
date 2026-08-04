@@ -857,6 +857,10 @@ test("detail hero exposes a compact pack and carton status strip", () => {
   assert.match(source, /function mediaStatusStrip/);
   assert.match(source, /detail-media-status-strip/);
   assert.match(source, /href="#packageIdentity"/);
+  assert.match(source, /status === "reference"/);
+  assert.match(source, /来源参考|参考图/);
+  assert.doesNotMatch(source, /status === "reference"[^\n]+待核对/);
+  assert.match(source, /status === "review-required"[^\n]+待核对/);
   assert.match(source, /一包图/);
   assert.match(source, /一条图/);
   assert.match(source, /已核验/);

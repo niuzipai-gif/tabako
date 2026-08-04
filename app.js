@@ -316,7 +316,9 @@ function imageSourceLabel(item) {
 
 function imageAuditStatus(status) {
   if (status === "verified") return { label: "已核验", tone: "verified" };
-  if (status === "archive-reference") return { label: "旧版实拍", tone: "reference" };
+  if (status === "reference") return { label: "来源参考", tone: "reference" };
+  if (status === "archive-reference") return { label: "参考图", tone: "reference" };
+  if (status === "review-required") return { label: "待核对", tone: "review" };
   return { label: "待核对", tone: "review" };
 }
 

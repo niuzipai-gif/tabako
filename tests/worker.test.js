@@ -522,6 +522,58 @@ test("online search uses MiniMax web_search server tool and returns source leads
   ]);
 });
 
+test("online search prioritizes Japanese official sources for exact TEREA queries", async () => {
+  const worker = createWorker({
+    fetchImpl: async () =>
+      new Response(
+        JSON.stringify({
+          content: [
+            {
+              type: "web_search_tool_result",
+              content: [
+                {
+                  type: "web_search_result",
+                  title: "TEREA Bright Menthol overseas carton listing",
+                  url: "https://world-tobacco.example/terea-bright-menthol-carton",
+                  content: "IQOS TEREA Bright Menthol tobacco carton information for an overseas market.",
+                },
+                {
+                  type: "web_search_result",
+                  title: "テリア ブライト メンソール | IQOS 日本公式",
+                  url: "https://jp.iqos.com/products/terea-bright-menthol",
+                  content: "テリア ブライト メンソール TEREA Bright Menthol の日本公式たばこ製品情報。",
+                },
+                {
+                  type: "web_search_result",
+                  title: "TEREA Bright Menthol video",
+                  url: "https://www.bilibili.com/video/BV1dV4y1t76h/",
+                  content: "TEREA Bright Menthol tobacco package video.",
+                },
+              ],
+            },
+          ],
+        }),
+        { status: 200, headers: { "content-type": "application/json" } },
+      ),
+  });
+
+  const response = await worker.fetch(
+    post({ mode: "search", query: "IQOS TEREA Bright Menthol" }),
+    ENV,
+  );
+  const payload = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(payload.sources[0].url, "https://jp.iqos.com/products/terea-bright-menthol");
+  assert.deepEqual(
+    payload.sources.map((source) => source.url),
+    [
+      "https://jp.iqos.com/products/terea-bright-menthol",
+      "https://world-tobacco.example/terea-bright-menthol-carton",
+    ],
+  );
+});
+
 test("online search drops unrelated web results instead of showing noisy fallback sources", async () => {
   let called = false;
   const worker = createWorker({
