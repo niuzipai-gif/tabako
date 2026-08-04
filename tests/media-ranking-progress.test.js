@@ -1367,7 +1367,7 @@ test("round58 immediate device media replacements stay reference-only and keep c
     assert.equal(item.cartonImage, "", `${jp} device must not publish carton image`);
   }
 
-  for (const jp of ["Uwell Caliburn G4", "Uwell Caliburn G4 Mini", "IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID"]) {
+  for (const jp of ["IQOS イルマ i プライム WE モデル", "IQOS イルマ i ワン WE モデル", "lil HYBRID 2.0", "lil HYBRID"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round58 evidence is backup-only, source-only, mismatched, or not exact carton/size proof`);
@@ -1402,7 +1402,7 @@ test("round59 immediate device and pod media replacements stay reference-only an
     assert.equal(item.cartonImage, "", `${jp} device or pod must not publish carton image`);
   }
 
-  for (const jp of ["RELX Infinity Device", "RELX Infinity ミント ポッド", "MOTI PLAY Device", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス"]) {
+  for (const jp of ["RELX Infinity ミント ポッド", "MOTI PLAY Device", "MOTI PLAY ミント ポッド", "Uwell Caliburn G3 ポッド 0.6Ω", "Uwell Caliburn G3 ポッド 0.9Ω", "Uwell Caliburn G3 ポッド 1.2Ω", "ELFBAR 600 ピーチアイス"]) {
     const raw = rawProducts.find((product) => product.jp === jp);
     assert.ok(raw, jp);
     assert.match(raw.img, /picsum\.photos/, `${jp} stays unlanded because round59 evidence is source-only, pending, flavor-missing, or not exact carton/size proof`);
@@ -1495,6 +1495,74 @@ test("round61 safest carton-media candidates replace raw Picsum while preserving
   assert.match(tropical.image, /glo-neo-tropical-swirl-jcigarette-multipack-reference\.jpg/);
 }
 );
+
+test("round62 lil HYBRID and Neo Iced candidates keep reference and exact override classifications", () => {
+  const expectedRaw = new Map([
+    ["lil HYBRID ミックス アイス", { image: "./images/verified/lil-miix-ice-sirius-pack.jpg", status: "reference", source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/", note: /Sirius Tobacco.*MIIX Ice.*reference only.*not carton verified/i }],
+    ["lil HYBRID ミックス ミックス", { image: "./images/verified/lil-miix-mix-sirius-pack.jpg", status: "reference", source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/", note: /Sirius Tobacco.*MIIX Mix.*reference only.*not carton verified/i }],
+    ["lil HYBRID ミックス アイス プラス", { image: "./images/verified/lil-miix-ice-plus-sirius-pack.jpg", status: "reference", source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/", note: /Sirius Tobacco.*MIIX Ice Plus.*reference only.*not carton verified/i }],
+    ["lil HYBRID ミックス ベルベット", { image: "./images/verified/lil-miix-velvet-sirius-pack.jpg", status: "reference", source: "https://www.tabako.co.jp/category/item/tvp-all/tvp-lilhybrid/", note: /Sirius Tobacco.*MIIX Velvet.*reference only.*not carton verified/i }],
+    ["lil HYBRID ミックス レギュラー", { image: "./images/cartons/lil-miix-regular-kodama-content.png", status: "reference", source: "https://ameblo.jp/tobacco-kodama/entry-12838717652.html", note: /Kodama.*MIIX Regular.*reference only.*not carton/i }],
+    ["ネオ・アイスド・メンソール・hyper用", { image: "./images/cartons/glo-neo-iced-menthol-paypay-24-empty-boxes.jpg" }],
+  ]);
+
+  for (const [jp, expectation] of expectedRaw) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.equal(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    if (expectation.status) assert.equal(raw.imageStatus, expectation.status, jp);
+    if (expectation.source) assert.equal(raw.imageSource, expectation.source, jp);
+    if (expectation.note) assert.match(raw.imageNote, expectation.note, jp);
+  }
+
+  for (const jp of [
+    "lil HYBRID ミックス アイス",
+    "lil HYBRID ミックス ミックス",
+    "lil HYBRID ミックス アイス プラス",
+    "lil HYBRID ミックス ベルベット",
+    "lil HYBRID ミックス レギュラー",
+  ]) {
+    const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.equal(item.cartonStatus, "contents-reference", jp);
+    assert.equal(item.cartonImage, "", jp);
+    assert.match(item.cartonNote, /不是已核对的一カートン外箱|不是.*整条外箱/, jp);
+  }
+
+  const iced = enrichProduct(rawProducts.find((product) => product.jp === "ネオ・アイスド・メンソール・hyper用"));
+  assert.equal(iced.cartonStatus, "verified");
+  assert.match(iced.cartonImage, /glo-neo-iced-menthol-paypay-24-empty-boxes\.jpg/);
+  assert.match(iced.cartonSource, /paypayfleamarket\.yahoo\.co\.jp\/item\/z462331094/);
+});
+
+test("round62 addendum official and regional device references stay non-carton", () => {
+  const expected = new Map([
+    ["Uwell Caliburn G4", { image: /files\.myuwell\.com\/uwell\/product\/caliburn-g4\/pc\/1\.webp/, source: /myuwell\.com\/caliburn\/caliburn-g4/, note: /official device only.*not tobacco\/carton evidence/i }],
+    ["Uwell Caliburn G4 Mini", { image: /files\.myuwell\.com\/uwell\/product\/caliburn-g4-mini\/pc\/1\.webp/, source: /myuwell\.com\/caliburn\/caliburn-g4-mini/, note: /official device only.*not tobacco\/carton evidence/i }],
+    ["Uwell Caliburn G3", { image: /files\.myuwell\.com\/uwell\/product\/caliburn-g3\/pc\/pc-inbox-1-20240415\.webp/, source: /myuwell\.com\/caliburn\/caliburn-g3/, note: /official device only.*not tobacco\/carton evidence.*not pod-resistance-specific/i }],
+    ["Uwell Caliburn AK3", { image: /files\.myuwell\.com\/blob\/product\/caliburn-ak3\/pc\/green\.webp/, source: /myuwell\.com\/products\/pod-system\/caliburn-ak3\.html/, note: /official device only.*not tobacco\/carton evidence/i }],
+    ["RELX Infinity Device", { image: /relxaustralia\.myshopify\.com\/cdn\/shop\/products\/relx-australia-device-gold-relx-infinity-device-28568889589899\.jpg\?v=1679292032/, source: /relxaustralia\.myshopify\.com\/products\/infinity-device/, note: /overseas\/regional device reference.*not Japan sales\/nicotine-compliance proof/i }],
+  ]);
+
+  for (const [jp, expectation] of expected) {
+    const raw = rawProducts.find((product) => product.jp === jp);
+    assert.ok(raw, jp);
+    assert.match(raw.img, expectation.image, jp);
+    assert.doesNotMatch(raw.img, /picsum\.photos/, jp);
+    assert.equal(raw.imageStatus, "reference", jp);
+    assert.match(raw.imageSource, expectation.source, jp);
+    assert.match(raw.imageNote, expectation.note, jp);
+    assert.equal(raw.cartonStatus, "not-applicable", jp);
+
+    const item = enrichProduct(raw);
+    assert.doesNotMatch(item.image, /picsum\.photos/, jp);
+    assert.equal(item.imageStatus, "reference", jp);
+    assert.match(item.imageSource, expectation.source, jp);
+    assert.equal(item.cartonStatus, "not-applicable", jp);
+    assert.equal(item.cartonImage, "", jp);
+  }
+});
 
 test("TEREA single-pack photos use matching World Tobacco pages while caption-only carton renders stay source-only", () => {
   const expected = new Map([
@@ -2042,7 +2110,7 @@ test("lil HYBRID MIIX lineup includes Mix and Ice Plus with exact pack media but
   for (const [jp, imagePattern] of expectations) {
     const item = enrichProduct(rawProducts.find((product) => product.jp === jp));
     assert.equal(item.brand, "lil HYBRID", jp);
-    assert.equal(item.imageStatus, "verified", jp);
+    assert.equal(item.imageStatus, "reference", jp);
     assert.match(item.image, imagePattern, jp);
     assert.equal(item.cartonStatus, "contents-reference", jp);
     assert.match(item.cartonNote, /不是已核对的一カートン外箱/, jp);
