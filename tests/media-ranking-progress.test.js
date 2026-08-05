@@ -2442,6 +2442,24 @@ test("glo Brilliant Berry, Dark Tobacco, and split Dark Menthol publish only exa
   assert.match(darkMenthol.cartonNote, /DARK MENTHOL|52 个|10 boxes per carton/);
 });
 
+test("final safe fallback replacements stay reference-only and never publish carton images", () => {
+  const cases = [
+    ["クール ブースト", /7000050840_00\.jpg/, /KOOL Boost.*近似包装参考|Fresh 5/s, "variant-reference"],
+    ["メビウス ゴールド オリジナル", /2010100099_00\.jpg/, /Gold 6.*包装线索/s, "source-only"],
+    ["glo HYPER+", /static\.mega-image\.ro.*9539642490910\.jpg/, /Glo Hyper\+ Blue/, "not-applicable"],
+    ["lil HYBRID 2.0", /Lil_Hybrid_2\.0_White\.jpg/, /heated tobacco device/i, "not-applicable"],
+  ];
+
+  for (const [jp, imagePattern, notePattern, cartonStatus] of cases) {
+    const product = enrichProduct(rawProducts.find((item) => item.jp === jp));
+    assert.equal(product.imageStatus, "reference", jp);
+    assert.match(product.image, imagePattern, jp);
+    assert.match(product.imageNote, notePattern, jp);
+    assert.equal(product.cartonStatus, cartonStatus, jp);
+    assert.equal(product.cartonImage, "", jp);
+  }
+});
+
 test("SENTIA Balanced Yellow keeps Box of 200 as source-only until a real carton image is found", () => {
   const sentia = enrichProduct(
     rawProducts.find((product) => product.jp === "IQOS センティア バランスド イエロー"),

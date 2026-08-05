@@ -537,6 +537,11 @@ const MEDIA_OVERRIDES = new Map([
   [
     "クール ブースト|KOOL 爆珠",
     {
+      image: "https://www.anadf.com/images/item/7000050840_00.jpg",
+      imageStatus: "reference",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=7000050840",
+      imageNote:
+        "ANA 免税店 exact 页面为“クール・ブースト・フレッシュ・5・ボックス”，规格 20本×10箱；这里只作为 KOOL Boost 系列近似包装参考，购买时必须核对 Fresh 5 / 5mg 字样，不当作泛称 exact verified。",
       cartonStatus: "variant-reference",
       relatedExactJp: [
         "クール ブースト 5 ボックス",
@@ -605,9 +610,15 @@ const MEDIA_OVERRIDES = new Map([
   [
     "メビウス ゴールド オリジナル|梅比乌斯 金装原味",
     {
+      image: "https://www.anadf.com/images/item/2010100099_00.jpg",
+      imageStatus: "reference",
+      imageSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
+      imageNote:
+        "ANA 免税店 exact 页面为“メビウス ゴールド 6”，规格 20本×10箱；目录 Gold Original 是游客常用泛称，这张图仅用于辨认 Gold 6 包装线索，购买时请核对 6mg/Box 与 Gold 字样。",
       cartonStatus: "source-only",
       cartonImage: "",
       cartonSource: "https://www.anadf.com/itemdetail.aspx?s_cd=2010100099",
+      cartonGallery: [],
       variantNote:
         "图片印刷 SKU 是 MEVIUS Gold 6；目录的 Gold Original 是中国游客常用泛称，购买时请核对 6mg/Box 与 Gold 字样。",
       cartonNote:
@@ -2691,6 +2702,30 @@ const MEDIA_OVERRIDES = new Map([
         "Sirius Tobacco 类目页列出ミックス ベルベット（リルハイブリッド専用）并提供可读单包图；こだま页面说明 Velvet 为 2023 年 11 月下旬発売、20本入り，PR TIMES 也确认其为 Philip Morris Japan 发布的新口味。Oricon 资料说明官方线上专用たばこ按カートン单位销售，但未找到 Velvet 可读同 SKU 10 包整条图。当前图为 Velvet 单盒图，不是已核对的一カートン外箱；购买时还需同时核对专用リキッド。",
     },
   ],
+  [
+    "glo HYPER+|glo HYPER+",
+    {
+      image:
+        "https://static.mega-image.ro/medias/sys_master/products/hf9/h10/9539642490910.jpg?buildNumber=5802351afd8bb3c139407addb1ec642da1e3b94d89760a37dd3f45f360a2d649&imwidth=320",
+      imageStatus: "reference",
+      imageSource: "https://www.mega-image.ro/Bauturi/Tutun/Tigari/Glo-Hyper-Blue/p/37496",
+      imageNote:
+        "Mega Image 页面标题为 Glo Hyper+ Blue；用于替换旧占位图，只作海外商品页设备外观参考。该型号在日本目录中属于旧款风险，购买前请以 BAT/glo 当前设备列表为准。",
+      cartonStatus: "not-applicable",
+    },
+  ],
+  [
+    "lil HYBRID 2.0|lil HYBRID 2.0",
+    {
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Lil_Hybrid_2.0_White.jpg/960px-Lil_Hybrid_2.0_White.jpg",
+      imageStatus: "reference",
+      imageSource: "https://commons.wikimedia.org/wiki/File:Lil_Hybrid_2.0_White.jpg",
+      imageNote:
+        "Wikimedia Commons file description identifies the photo as a Lil Hybrid 2.0 heated tobacco device; used only as device appearance reference, not official Japanese sales proof.",
+      cartonStatus: "not-applicable",
+    },
+  ],
 ]);
 
 const REVIEW_NOTES = new Map([
@@ -2823,7 +2858,7 @@ function generatedReferenceNote(status, cartonNote) {
 
 function resolveCartonGallery(override, originalImage, status, allowed) {
   if (!allowed) return [];
-  if (Array.isArray(override.cartonGallery) && override.cartonGallery.length) {
+  if (Array.isArray(override.cartonGallery)) {
     return override.cartonGallery;
   }
   const image = override.cartonImage || override.image || originalImage;
