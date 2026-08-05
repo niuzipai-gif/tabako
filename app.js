@@ -17,6 +17,12 @@ import {
   yen,
   yuan,
 } from "./catalog.js";
+import {
+  manualOverrideKey,
+  buildManualMediaBackup,
+  normalizeManualMediaBackup,
+  normalizeManualOverride,
+} from "./manual-media-overrides.js";
 
 const products = enrichProducts(rawProducts);
 const productById = new Map(products.map((item) => [item.id, item]));
@@ -68,6 +74,17 @@ const elements = {
   filterReset: document.querySelector("#filterReset"),
   mapComplianceNotice: document.querySelector("#mapComplianceNotice"),
   methodDialog: document.querySelector("#methodDialog"),
+  imageManagerButton: document.querySelector("#imageManagerButton"),
+  imageManagerClear: document.querySelector("#imageManagerClear"),
+  imageManagerDialog: document.querySelector("#imageManagerDialog"),
+  imageManagerExport: document.querySelector("#imageManagerExport"),
+  imageManagerFile: document.querySelector("#imageManagerFile"),
+  imageManagerImport: document.querySelector("#imageManagerImport"),
+  imageManagerPreview: document.querySelector("#imageManagerPreview"),
+  imageManagerProduct: document.querySelector("#imageManagerProduct"),
+  imageManagerPatch: document.querySelector("#imageManagerPatch"),
+  imageManagerSave: document.querySelector("#imageManagerSave"),
+  imageManagerStatus: document.querySelector("#imageManagerStatus"),
   onlineImagesLink: document.querySelector("#onlineImagesLink"),
   onlineOfficialLink: document.querySelector("#onlineOfficialLink"),
   onlineResultList: document.querySelector("#onlineResultList"),
@@ -142,6 +159,14 @@ const initialFavorites = (() => {
   }
 })();
 
+const USER_IMAGE_DB = "tabako-user-image-overrides";
+const USER_IMAGE_DB_VERSION = 2;
+const USER_IMAGE_STORE = "images";
+const MAX_UPLOAD_IMAGE_SIZE = 12 * 1024 * 1024;
+const MAX_MANUAL_IMAGE_SIDE = 1400;
+const MANUAL_IMAGE_QUALITY = 0.86;
+let pendingManualImage = null;
+
 const state = {
   query: "",
   category: "all",
@@ -150,6 +175,7 @@ const state = {
   rankingAudience: "jp",
   favoritesOnly: false,
   favorites: new Set(initialFavorites),
+  imageOverrides: new Map(),
   activeProductId: null,
   aiImageData: "",
   aiMode: "recommend",
@@ -179,6 +205,310 @@ function aiHealthDetail(health = state.aiHealth) {
   if (health.state === "proxy-timeout") return "在线代理检查超时，已切换本地匹配";
   if (health.state === "proxy-unreachable") return "在线代理暂不可达，已切换本地匹配";
   return "正在检查在线代理是否可用…";
+}
+
+function supportsUserImageStorage() {
+  return typeof indexedDB !== "undefined";
+}
+
+function openUserImageDb() {
+  if (!supportsUserImageStorage()) {
+    return Promise.reject(new Error("当前浏览器不支持 IndexedDB，无法永久保存图片"));
+  }
+
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(USER_IMAGE_DB, USER_IMAGE_DB_VERSION);
+    request.addEventListener("upgradeneeded", () => {
+      const db = request.result;
+      if (db.objectStoreNames.contains(USER_IMAGE_STORE)) {
+        const store = request.transaction.objectStore(USER_IMAGE_STORE);
+        if (store.keyPath !== "key") {
+          db.deleteObjectStore(USER_IMAGE_STORE);
+        }
+      }
+      if (!db.objectStoreNames.contains(USER_IMAGE_STORE)) {
+        db.createObjectStore(USER_IMAGE_STORE, { keyPath: "key" });
+      }
+    });
+    request.addEventListener("success", () => resolve(request.result));
+    request.addEventListener("error", () => reject(request.error ?? new Error("图片数据库打开失败")));
+  });
+}
+
+async function withUserImageStore(mode, callback) {
+  const db = await openUserImageDb();
+  return new Promise((resolve, reject) => {
+    const transaction = db.transaction(USER_IMAGE_STORE, mode);
+    const store = transaction.objectStore(USER_IMAGE_STORE);
+    const result = callback(store);
+    transaction.addEventListener("complete", () => {
+      db.close();
+      resolve(result);
+    });
+    transaction.addEventListener("error", () => {
+      db.close();
+      reject(transaction.error ?? new Error("图片数据库操作失败"));
+    });
+    transaction.addEventListener("abort", () => {
+      db.close();
+      reject(transaction.error ?? new Error("图片数据库操作已取消"));
+    });
+  });
+}
+
+function requestToPromise(request) {
+  return new Promise((resolve, reject) => {
+    request.addEventListener("success", () => resolve(request.result));
+    request.addEventListener("error", () => reject(request.error ?? new Error("图片数据库请求失败")));
+  });
+}
+
+async function loadUserImageOverrides() {
+  const records = await withUserImageStore("readonly", (store) =>
+    requestToPromise(store.getAll()),
+  );
+  const allowedIds = new Set(products.map((item) => item.id));
+  const imported = normalizeManualMediaBackup({ overrides: records }, allowedIds);
+  state.imageOverrides = new Map(
+    [...imported.values()].map((record) => [
+      manualOverrideKey(record.productId, record.kind),
+      record,
+    ]),
+  );
+}
+
+async function saveUserImageOverride(record) {
+  const normalized = normalizeManualOverride(record, new Set(products.map((item) => item.id)));
+  await withUserImageStore("readwrite", (store) => {
+    store.put({ ...normalized, key: manualOverrideKey(normalized.productId, normalized.kind) });
+  });
+  state.imageOverrides.set(manualOverrideKey(normalized.productId, normalized.kind), normalized);
+}
+
+async function deleteUserImageOverride(productId, kind = "pack") {
+  const key = manualOverrideKey(productId, kind);
+  await withUserImageStore("readwrite", (store) => {
+    store.delete(key);
+  });
+  state.imageOverrides.delete(key);
+}
+
+function displayImage(item) {
+  const override = state.imageOverrides.get(manualOverrideKey(item.id, "pack"));
+  return override?.dataUrl ?? item.image;
+}
+
+function displayCartonImage(item) {
+  const override = state.imageOverrides.get(manualOverrideKey(item.id, "carton"));
+  return override?.dataUrl ?? item.cartonImage;
+}
+
+function hasUserImageOverride(item, kind = null) {
+  if (kind) return state.imageOverrides.has(manualOverrideKey(item.id, kind));
+  return (
+    state.imageOverrides.has(manualOverrideKey(item.id, "pack")) ||
+    state.imageOverrides.has(manualOverrideKey(item.id, "carton"))
+  );
+}
+
+function userImageOverrideBadge(item, kind = null) {
+  return hasUserImageOverride(item, kind)
+    ? `<span class="manual-image-badge"><i data-lucide="hard-drive" aria-hidden="true"></i>本机手动图</span>`
+    : "";
+}
+
+function imageManagerKind() {
+  return document.querySelector('input[name="imageManagerKind"]:checked')?.value ?? "pack";
+}
+
+function setImageManagerKind(kind) {
+  const input = document.querySelector(`input[name="imageManagerKind"][value="${kind}"]`);
+  if (input) input.checked = true;
+}
+
+function selectedImageManagerProduct() {
+  return productById.get(elements.imageManagerProduct?.value);
+}
+
+function populateImageManagerProducts(productId = state.activeProductId) {
+  if (!elements.imageManagerProduct) return;
+  elements.imageManagerProduct.replaceChildren();
+  products.forEach((item) => {
+    const option = document.createElement("option");
+    option.value = item.id;
+    option.textContent = `${item.brand} · ${item.jp} / ${item.cn}`;
+    elements.imageManagerProduct.appendChild(option);
+  });
+  const selectedId = productById.has(productId) ? productId : products[0]?.id;
+  if (selectedId) elements.imageManagerProduct.value = selectedId;
+}
+
+function updateImageManagerPreview() {
+  const item = selectedImageManagerProduct();
+  const kind = imageManagerKind();
+  const override = item ? state.imageOverrides.get(manualOverrideKey(item.id, kind)) : null;
+  const candidate = pendingManualImage ?? override;
+  const previewImage = elements.imageManagerPreview?.querySelector("img");
+
+  if (!elements.imageManagerPreview || !previewImage || !elements.imageManagerStatus) return;
+
+  if (candidate?.dataUrl) {
+    previewImage.src = candidate.dataUrl;
+    previewImage.alt = `${item?.jp ?? "当前商品"} 手动图片预览`;
+    elements.imageManagerPreview.hidden = false;
+    elements.imageManagerStatus.textContent = pendingManualImage
+      ? `待保存 · ${candidate.width}×${candidate.height} · ${(candidate.bytes / 1024).toFixed(0)}KB`
+      : `已保存 · ${candidate.kind === "carton" ? "一条图" : "单包/设备图"} · ${new Date(candidate.updatedAt).toLocaleString("zh-CN")}`;
+  } else {
+    previewImage.removeAttribute("src");
+    elements.imageManagerPreview.hidden = true;
+    elements.imageManagerStatus.textContent = "未保存覆盖图";
+  }
+
+  if (elements.imageManagerSave) elements.imageManagerSave.disabled = !pendingManualImage;
+}
+
+function refreshManualMediaPatch() {
+  if (!elements.imageManagerPatch) return;
+  const backup = buildManualMediaBackup({ products, overrides: state.imageOverrides });
+  elements.imageManagerPatch.value = backup.patchText;
+}
+
+function openImageManager(productId = state.activeProductId, kind = "pack") {
+  pendingManualImage = null;
+  populateImageManagerProducts(productId);
+  setImageManagerKind(kind);
+  if (elements.imageManagerFile) elements.imageManagerFile.value = "";
+  updateImageManagerPreview();
+  refreshManualMediaPatch();
+  openSimpleDialog(elements.imageManagerDialog);
+}
+
+async function compressUserImage(file) {
+  if (!file?.type?.startsWith("image/")) throw new Error("请选择图片文件");
+  if (file.size > MAX_UPLOAD_IMAGE_SIZE) throw new Error("图片超过 12MB，请先压缩后再上传");
+
+  const originalDataUrl = await readImageFile(file);
+  const image = await new Promise((resolve, reject) => {
+    const img = new Image();
+    img.addEventListener("load", () => resolve(img));
+    img.addEventListener("error", () => reject(new Error("图片解析失败，请换一张图")));
+    img.src = originalDataUrl;
+  });
+  const scale = Math.min(1, MAX_MANUAL_IMAGE_SIDE / Math.max(image.naturalWidth, image.naturalHeight));
+  const width = Math.max(1, Math.round(image.naturalWidth * scale));
+  const height = Math.max(1, Math.round(image.naturalHeight * scale));
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+  const dataUrl = canvas.toDataURL("image/webp", MANUAL_IMAGE_QUALITY);
+  return {
+    dataUrl,
+    mime: "image/webp",
+    width,
+    height,
+    bytes: Math.round((dataUrl.length * 3) / 4),
+  };
+}
+
+async function selectManualImage(file) {
+  if (!file) return;
+  const item = selectedImageManagerProduct();
+  if (!item) return;
+  try {
+    const compressed = await compressUserImage(file);
+    pendingManualImage = {
+      productId: item.id,
+      kind: imageManagerKind(),
+      ...compressed,
+      updatedAt: new Date().toISOString(),
+    };
+    updateImageManagerPreview();
+    showToast("图片已读取，点保存覆盖后生效");
+  } catch (error) {
+    pendingManualImage = null;
+    updateImageManagerPreview();
+    showToast(error?.message || "图片读取失败");
+  }
+}
+
+async function persistManualImage() {
+  if (!pendingManualImage) return;
+  try {
+    await saveUserImageOverride(pendingManualImage);
+    pendingManualImage = null;
+    updateImageManagerPreview();
+    refreshManualMediaPatch();
+    renderAll();
+    if (state.activeProductId) renderProductDetail(productById.get(state.activeProductId));
+    showToast("已保存到当前浏览器");
+  } catch (error) {
+    showToast(error?.message || "保存失败");
+  }
+}
+
+async function clearManualImage() {
+  const item = selectedImageManagerProduct();
+  if (!item) return;
+  try {
+    await deleteUserImageOverride(item.id, imageManagerKind());
+    pendingManualImage = null;
+    if (elements.imageManagerFile) elements.imageManagerFile.value = "";
+    updateImageManagerPreview();
+    refreshManualMediaPatch();
+    renderAll();
+    if (state.activeProductId) renderProductDetail(productById.get(state.activeProductId));
+    showToast("已恢复目录默认图片");
+  } catch (error) {
+    showToast(error?.message || "清除失败");
+  }
+}
+
+function exportManualImages() {
+  const backup = buildManualMediaBackup({ products, overrides: state.imageOverrides });
+  const blob = new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `tabako-manual-images-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
+  refreshManualMediaPatch();
+  showToast("已导出手动图片备份");
+}
+
+async function importManualImages(file) {
+  if (!file) return;
+  try {
+    const payload = JSON.parse(await file.text());
+    const imported = normalizeManualMediaBackup(payload, new Set(products.map((item) => item.id)));
+    for (const record of imported.values()) {
+      await saveUserImageOverride(record);
+    }
+    pendingManualImage = null;
+    updateImageManagerPreview();
+    refreshManualMediaPatch();
+    renderAll();
+    if (state.activeProductId) renderProductDetail(productById.get(state.activeProductId));
+    showToast(`已导入 ${imported.size} 张手动图片`);
+  } catch (error) {
+    showToast(error?.message || "导入失败");
+  } finally {
+    if (elements.imageManagerImport) elements.imageManagerImport.value = "";
+  }
+}
+
+async function hydrateUserImageOverrides() {
+  if (!supportsUserImageStorage()) return;
+  try {
+    await loadUserImageOverrides();
+    renderAll();
+    if (state.activeProductId) renderProductDetail(productById.get(state.activeProductId));
+  } catch {
+    showToast("手动图片读取失败，可继续使用默认目录");
+  }
 }
 
 function updateAiEntryStatus() {
@@ -316,6 +646,7 @@ function imageSourceLabel(item) {
 
 function imageAuditStatus(status) {
   if (status === "verified") return { label: "已核验", tone: "verified" };
+  if (status === "manual-local") return { label: "本机覆盖", tone: "reference" };
   if (status === "reference") return { label: "来源参考", tone: "reference" };
   if (status === "archive-reference") return { label: "参考图", tone: "reference" };
   if (status === "source-only") return { label: "来源线索", tone: "reference" };
@@ -334,6 +665,7 @@ function cartonAuditStatus(item) {
     "contents-reference": { label: "数量参考", tone: "reference" },
     "multi-carton-reference": { label: "多盒参考", tone: "reference" },
     "variant-reference": { label: "已拆分变体", tone: "reference" },
+    "manual-local-reference": { label: "本机参考", tone: "reference" },
     "source-only": { label: "来源线索", tone: "reference" },
     "needs-review": { label: "待找整条", tone: "review" },
   };
@@ -546,13 +878,15 @@ function renderCatalog() {
     const image = card.querySelector(".product-image");
     const availability = availabilityMeta(item);
     const marketStatus = marketStatusMeta(item);
+    const isManualImage = hasUserImageOverride(item, "pack");
 
     card.dataset.productId = item.id;
     card.dataset.category = item.type;
+    card.classList.toggle("has-manual-image", isManualImage);
     openButton.setAttribute("aria-label", `查看 ${item.jp}，${item.cn} 的详情`);
     openButton.addEventListener("click", (event) => openProduct(item.id, event.currentTarget));
 
-    image.src = item.image;
+    image.src = displayImage(item);
     image.alt = `${item.jp} / ${item.cn} 包装参考图`;
     setImageFallback(image);
 
@@ -627,7 +961,7 @@ function renderRankings() {
     card.setAttribute("aria-label", `排行第 ${index + 1}，查看 ${item.jp}`);
     card.addEventListener("click", (event) => openProduct(item.id, event.currentTarget));
     card.querySelector(".rank-number").textContent = String(index + 1).padStart(2, "0");
-    image.src = item.image;
+    image.src = displayImage(item);
     image.alt = `${item.jp} 包装参考图`;
     setImageFallback(image);
     card.querySelector(".ranking-brand").textContent = item.brand;
@@ -690,6 +1024,10 @@ function renderProductDetail(item) {
   const officialLabel = item.priceStatus === "official" ? "官方参考价" : "指导价";
   const sourceLabel = "查看厂商/品牌来源";
   const marketStatus = marketStatusMeta(item);
+  const primaryImage = displayImage(item);
+  const cartonImage = displayCartonImage(item);
+  const primaryManualBadge = userImageOverrideBadge(item, "pack");
+  const cartonManualBadge = userImageOverrideBadge(item, "carton");
   const detailMarketStatus = marketStatus
     ? `
       <span class="detail-market-status" data-status="${escapeHtml(marketStatus.tone)}">
@@ -707,6 +1045,7 @@ function renderProductDetail(item) {
   const cnWidth = `${Math.min(100, item.cnScore * 20)}%`;
   const imageStatus = {
     verified: "已核对",
+    "manual-local": "本机覆盖",
     "archive-reference": "旧版实拍",
     "review-required": "图片待核对",
     reference: "包装参考",
@@ -716,6 +1055,7 @@ function renderProductDetail(item) {
     "contents-reference": "10 包内容物参考",
     "multi-carton-reference": "多条装参考",
     "variant-reference": "近似 SKU 参考",
+    "manual-local-reference": "本机整条参考",
     "archive-reference": "历史整条外箱",
     "source-only": "数量来源已核对",
     "needs-review": "整条图片待核对",
@@ -734,10 +1074,11 @@ function renderProductDetail(item) {
     "multi-carton-reference": `${item.jp} 多条装外包装参考`,
     "variant-reference": `${item.jp} 近似 SKU 外包装参考`,
   }[item.cartonStatus] ?? `${item.jp} 一カートン包装参考`;
-  const cartonVisual = item.cartonImage
+  const cartonVisual = cartonImage
     ? `
       <div class="package-media-visual carton-visual">
-        <img src="${escapeHtml(item.cartonImage)}" alt="${escapeHtml(cartonAlt)}" />
+        ${cartonManualBadge}
+        <img src="${escapeHtml(cartonImage)}" alt="${escapeHtml(cartonAlt)}" />
       </div>
     `
     : item.cartonApplicable
@@ -901,7 +1242,8 @@ function renderProductDetail(item) {
 
     <section class="detail-hero">
       <div class="detail-image-wrap">
-        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.jp)} 包装参考图" />
+        ${primaryManualBadge}
+        <img src="${escapeHtml(primaryImage)}" alt="${escapeHtml(item.jp)} 包装参考图" />
       </div>
       <div class="detail-heading">
         <span class="category-tag">${escapeHtml(item.categoryLabel)} · ${escapeHtml(item.packageFormat)}</span>
@@ -918,6 +1260,10 @@ function renderProductDetail(item) {
         ${detailMarketStatus}
         ${mediaStatusStrip(item)}
         ${variantNote}
+        <button class="secondary-button manual-image-action" type="button" data-manual-image="${escapeHtml(item.id)}" data-manual-kind="pack">
+          <i data-lucide="image-plus" aria-hidden="true"></i>
+          上传/替换这款单包图
+        </button>
       </div>
     </section>
 
@@ -938,9 +1284,10 @@ function renderProductDetail(item) {
             <span data-status="${escapeHtml(item.imageStatus)}">${escapeHtml(imageStatus)}</span>
           </header>
           <div class="package-media-visual">
-            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.jp)} ${escapeHtml(item.packageFormat)}包装参考图" />
+            ${primaryManualBadge}
+            <img src="${escapeHtml(primaryImage)}" alt="${escapeHtml(item.jp)} ${escapeHtml(item.packageFormat)}包装参考图" />
           </div>
-          <p>${escapeHtml(item.imageNote)}</p>
+          <p>${escapeHtml(hasUserImageOverride(item, "pack") ? "当前显示你手动保存在本机浏览器的图片；目录原始核验状态和来源未被改变。" : item.imageNote)}</p>
           ${packageSource}
         </article>
         <article class="package-media-card carton-card">
@@ -951,7 +1298,7 @@ function renderProductDetail(item) {
           ${cartonVisual}
           ${cartonIntegrityNotice}
           ${cartonGallery}
-          <p>${escapeHtml(item.cartonNote)}</p>
+          <p>${escapeHtml(hasUserImageOverride(item, "carton") ? "当前显示你手动保存在本机浏览器的一条/一カートン参考图；不会自动标记为整条实拍已核对。" : item.cartonNote)}</p>
           <div class="package-media-links">
             ${cartonSource}
             ${
@@ -960,6 +1307,10 @@ function renderProductDetail(item) {
                 : ""
             }
           </div>
+          <button class="secondary-button full-width manual-image-action" type="button" data-manual-image="${escapeHtml(item.id)}" data-manual-kind="carton">
+            <i data-lucide="image-plus" aria-hidden="true"></i>
+            上传/替换一条图
+          </button>
         </article>
       </div>
       <p class="section-note">${escapeHtml(item.identityNote)}</p>
@@ -1034,6 +1385,13 @@ function renderProductDetail(item) {
   elements.productDetail.querySelectorAll("[data-related-product]").forEach((button) => {
     button.addEventListener("click", (event) => {
       openProduct(event.currentTarget.dataset.relatedProduct, event.currentTarget);
+    });
+  });
+  elements.productDetail.querySelectorAll("[data-manual-image]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const productId = event.currentTarget.dataset.manualImage;
+      const kind = event.currentTarget.dataset.manualKind ?? "pack";
+      openImageManager(productId, kind);
     });
   });
 
@@ -1941,6 +2299,28 @@ elements.favoritesButton.addEventListener("click", () => {
   }
 });
 
+elements.imageManagerButton?.addEventListener("click", () => openImageManager());
+elements.imageManagerProduct?.addEventListener("change", () => {
+  pendingManualImage = null;
+  if (elements.imageManagerFile) elements.imageManagerFile.value = "";
+  updateImageManagerPreview();
+});
+document.querySelectorAll('input[name="imageManagerKind"]').forEach((input) => {
+  input.addEventListener("change", () => {
+    if (pendingManualImage) pendingManualImage.kind = imageManagerKind();
+    updateImageManagerPreview();
+  });
+});
+elements.imageManagerFile?.addEventListener("change", (event) => {
+  selectManualImage(event.currentTarget.files?.[0]);
+});
+elements.imageManagerSave?.addEventListener("click", persistManualImage);
+elements.imageManagerClear?.addEventListener("click", clearManualImage);
+elements.imageManagerExport?.addEventListener("click", exportManualImages);
+elements.imageManagerImport?.addEventListener("change", (event) => {
+  importManualImages(event.currentTarget.files?.[0]);
+});
+
 elements.aiOpenButton.addEventListener("click", () => openAiDialog("recommend"));
 elements.onlineSearchButton.addEventListener("click", openOnlineSearch);
 
@@ -2075,6 +2455,7 @@ if ("serviceWorker" in navigator) {
 updateAiEntryStatus();
 refreshAiHealth();
 renderAll();
+hydrateUserImageOverrides();
 hydrateIcons();
 loadRate();
 
