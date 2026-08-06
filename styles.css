@@ -257,6 +257,27 @@ img {
   backdrop-filter: blur(16px);
 }
 
+.hero-showcase { position: relative; min-height: clamp(292px, 76vw, 390px); margin: 12px 0 4px; isolation: isolate; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.78); border-radius: 26px; background: #e9e1d5; box-shadow: 0 18px 46px rgba(54, 43, 29, 0.12); }
+.hero-showcase-image, .hero-showcase-scrim { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-showcase-image { z-index: -2; object-fit: cover; object-position: 65% center; transform: scale(1.025); animation: hero-image-arrive 880ms var(--spring) both; }
+.hero-showcase-scrim { z-index: -1; background: linear-gradient(90deg, rgba(255, 253, 248, 0.98) 0%, rgba(255, 253, 248, 0.88) 40%, rgba(255, 253, 248, 0.3) 67%, rgba(255, 253, 248, 0.02) 100%), linear-gradient(0deg, rgba(35, 28, 19, 0.18), transparent 37%); }
+.hero-showcase-content { display: grid; align-content: center; min-height: clamp(292px, 76vw, 390px); max-width: min(74%, 30rem); padding: 28px 22px 46px; }
+.hero-showcase-kicker { margin: 0 0 8px; color: var(--accent-strong); font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; animation: hero-copy-arrive 600ms 80ms var(--spring) both; }
+.hero-showcase h2 { margin: 0; font-family: "Songti SC", "Yu Mincho", Georgia, serif; font-size: clamp(28px, 8vw, 48px); font-weight: 700; letter-spacing: -0.065em; line-height: 1.04; text-wrap: balance; animation: hero-copy-arrive 650ms 140ms var(--spring) both; }
+.hero-showcase-content > p:not(.hero-showcase-kicker) { max-width: 23ch; margin: 12px 0 0; color: var(--ink-soft); font-size: 11px; line-height: 1.65; animation: hero-copy-arrive 650ms 200ms var(--spring) both; }
+.hero-showcase-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; animation: hero-copy-arrive 650ms 270ms var(--spring) both; }
+.hero-button { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; gap: 7px; padding: 0 13px; border: 1px solid transparent; border-radius: 13px; font-size: 11px; font-weight: 750; cursor: pointer; transition: transform 280ms var(--spring), box-shadow 240ms ease, background 200ms ease; }
+.hero-button:hover { transform: translateY(-2px); }
+.hero-button:active { transform: scale(0.96); }
+.hero-button svg { width: 15px; height: 15px; }
+.hero-button-primary { background: var(--ink); color: white; box-shadow: 0 10px 22px rgba(23, 22, 18, 0.16); }
+.hero-button-primary:hover { box-shadow: 0 14px 28px rgba(23, 22, 18, 0.22); }
+.hero-button-secondary { border-color: rgba(23, 22, 18, 0.12); background: rgba(255, 255, 255, 0.72); color: var(--ink); backdrop-filter: blur(12px); }
+.hero-showcase-caption { position: absolute; right: 14px; bottom: 11px; left: 14px; margin: 0; color: rgba(60, 52, 42, 0.72); font-size: 9px; line-height: 1.45; text-align: right; animation: hero-copy-arrive 650ms 330ms var(--spring) both; }
+@keyframes hero-image-arrive { from { opacity: 0; transform: scale(1.075); } }
+@keyframes hero-copy-arrive { from { opacity: 0; transform: translateY(12px); } }
+
+
 .search-bar {
   display: grid;
   min-height: 56px;
@@ -2256,6 +2277,12 @@ img {
   .main-content {
     padding: 28px 0 60px;
   }
+
+  .hero-showcase { min-height: 400px; margin-top: 4px; border-radius: 30px; }
+  .hero-showcase-image { object-position: center; }
+  .hero-showcase-content { min-height: 400px; max-width: 42rem; padding: 46px 46px 54px; }
+  .hero-showcase-content > p:not(.hero-showcase-kicker) { font-size: 13px; }
+  .hero-showcase-caption { right: 24px; bottom: 16px; left: auto; }
 
   .discovery-panel {
     top: calc(var(--header-height) + 14px);

@@ -45,3 +45,17 @@ test("AI failure result cards expose local-only and web-search recovery actions"
   assert.match(styles, /\.ai-recovery-query\s*\{/);
   assert.doesNotMatch(styles, /ai-result-actions[\s\S]{0,240}var\(--red\)/);
 });
+
+test("home page provides an accessible animated product-identification hero", () => {
+  const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+  const styles = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+  const worker = readFileSync(new URL("../sw.js", import.meta.url), "utf8");
+
+  assert.match(html, /class="hero-showcase" aria-labelledby="heroShowcaseTitle"/);
+  assert.match(html, /images\/hero\/tabako-home-hero-20260806\.png/);
+  assert.match(html, /data-open-ai-search/);
+  assert.match(styles, /@keyframes hero-image-arrive/);
+  assert.match(styles, /\.hero-button:active/);
+  assert.match(styles, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(worker, /tabako-home-hero-20260806\.png/);
+});
